@@ -17,25 +17,13 @@ import json
 import os
 import sys
 
-sys.path.insert(0, os.path.dirname(__file__))
+os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__))))
 
 mcp = FastMCP("fashion-trend-crawler")
 
-print("---------------------------------------------------")
-print("  fashion-trend-crawler mcp server")
-print("---------------------------------------------------")
-print("  server is running and waiting for connections.")
-print("  connect an mcp client (like claude desktop) to")
-print("  start using the tools.")
-print("")
-print("  available tools:")
-print("    crawl_fashion_trends  -∘♥∘− crawl pages for headlines")
-print("    get_cached_trends     −∘♥∘- return last crawled data")
-print("    search_trends         −∘♥∘− search headlines by keyword")
-print("")
-print("  to stop the server: press ctrl+c")
-print("  if nothing happens after 30s, something is wrong.")
-print("---------------------------------------------------")
+sys.stderr.write("fashion-trend-crawler mcp server running\n")
+sys.stderr.flush()
 
 @mcp.tool()
 def crawl_fashion_trends(urls: list[str] = None) -> str:
