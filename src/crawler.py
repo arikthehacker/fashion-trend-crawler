@@ -119,7 +119,7 @@ def crawl(start_url, max_depth=2, max_pages=20):
                 })
                 count = len(titles)
                 label = "headline" if count == 1 else "headlines"
-                print(f"[depth {depth}] {url} -♡♥♡- {count} {label} found")
+                print(f"[depth {depth}] {url} -- {count} {label} found")
 
             # queue up links to follow if we haven't hit max depth yet
             if depth < max_depth:
