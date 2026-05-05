@@ -1,0 +1,23 @@
+{
+  "the_moment": "The 2026 Met Gala has consumed the entire fashion conversation, with art-meets-costume the undeniable thesis of the season.",
+  "summary": "Every outlet is locked in on the Met Gala, and the theme \u2014 fashion as costume art \u2014 is hitting differently this year, with designers pulling from Botticelli, Van Gogh, and Kahlo to blur the line between gallery wall and red carpet. The subtext is bigger than one night: there's a cultural hunger to elevate fashion back to the level of fine art, and the industry is answering loudly. Meanwhile, on the quieter side of things, menswear is whispering something more restrained \u2014 summer minimalism and tailored ease are emerging as the antidote to maximalist spectacle.",
+  "trends": [
+    {
+      "trend": "Fashion as Fine Art",
+      "signal": "The Met Gala's 'Costume Art' theme and its companion exhibition are driving a widespread editorial narrative that positions clothing as museum-worthy artistic expression."
+    },
+    {
+      "trend": "Art Historical Dressing",
+      "signal": "A pre-Met runway crawl confirms designers are directly referencing Old Masters and modern icons \u2014 Botticelli, Van Gogh, Kahlo \u2014 as literal aesthetic source material."
+    },
+    {
+      "trend": "Summer Minimalism in Menswear",
+      "signal": "Hypebeast's coverage of Studio Nicholson and Nike x NOCTA's Cardinal Stock collection signals a menswear pivot toward clean, understated warm-weather dressing over streetwear maximalism."
+    }
+  ],
+  "sources_summary": {
+    "vogue.com": "Vogue is fully devoted to the 2026 Met Gala, covering everything from the exhibition concept to the art historical references embedded in this season's runway work.",
+    "whowhatwear.com": "Who What Wear is leading with real-time Met Gala red carpet reactions and beauty breakdowns while layering in practical consumer content like workwear guides and promo codes.",
+    "hypebeast.com": "Hypebeast is bridging the Met Gala cultural moment with quieter drops in menswear, spotlighting collections that favor refined minimalism and vintage sportswear nostalgia over hype-driven noise."
+  }
+}

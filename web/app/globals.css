@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+:root {
+  --font-instrument: 'Instrument Serif', serif;
+  --font-franklin: 'Libre Franklin', sans-serif;
+  --font-reenie: 'Reenie Beanie', cursive;
+  --black: #0a0a0a;
+  --white: #f8f6f1;
+  --red: #c8102e;
+  --gray: #6b6b6b;
+  --border: #e0ddd8;
+}
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font-franklin);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-instrument);
+}
+
+.note {
+  font-family: var(--font-reenie);
+}
