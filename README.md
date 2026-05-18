@@ -1,5 +1,5 @@
 # fashion-trend-crawler 
-
+## now live at [ari3lla.com](https://ari3lla.com)
 ### a tool for the busy human who still wants to know what's going on in fashion
 
 ---
@@ -57,11 +57,28 @@ python src/crawler.py https://www.elle.com https://www.harpersbazaar.com
 
 ## what's next
 
-- [ ] landing page for trend summaries
-- [ ] claude integration for ai-generated trend analysis
+- [x] landing page for trend summaries - now live at [ari3lla.com](https://ari3lla.com)
+- [x] claude integration for ai-generated trend analysis
 - [ ] more fashion sources & nuance (tiktok is one of the top hubs of fashion trends: need to find how to utilize this)
 - [ ] scheduled crawls so it stays fresh automatically
 
 ---
+
+## project structure
+```
+fashion-trend-crawler/
+  src/
+    crawler.py      # core crawler — bfs, robots.txt, headline extraction
+    server.py       # mcp server with three tools
+    summarize.py    # calls claude api to generate trend summary
+  web/              # next.js editorial site
+    app/
+      page.tsx      # homepage
+    lib/
+      trends.ts     # data layer
+  trends_raw.json   # cached crawl output
+  trends_summary.json # ai-generated summary
+  run.sh            # full pipeline runner
+```
 
 *TLDR: I miss having time to read vogue.*
