@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-07 ~08:30 PDT — [Loop run 26](changelog-entries/run-26.md)** — Resolved
+  review_status/reviewed_by (rendered, real data); 19th report; periodic audit flags
+  layered-tops-styling as 13-windows dormant; genuine Southeast Asian source progress
+  (first local-language outlet added); fixed a real UX gap — corrections/AI-disclosure
+  content had no pointer from report pages, the actual reader entry point.
+
 - **2026-07-07 ~07:10 PDT — [Loop run 25](changelog-entries/run-25.md)** — Built a
   structural fix (`check_field_coverage.py`) for the 3-times-recurring unrendered-field
   bug; 18th report honestly logs an unresolved signal instead of fabricating; first full

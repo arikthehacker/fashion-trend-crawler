@@ -532,15 +532,33 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       `independent_criticism` signals have appeared since the fix shipped, so it remains
       genuinely untested in practice, neither confirmed working nor failing.
 
-## Next up (run 26 candidates)
-- [ ] Southeast Asian source coverage remains open (vogue.ph blocked by Cloudflare JS
-      challenge — would need a headless-browser approach, likely out of scope).
-- [ ] `review_status`/`reviewed_by` flagged by the new coverage tool as neither typed nor
-      referenced — decide whether they belong in the backend-only suppression set or
-      represent a real gap (unlike the other 3 fields, this wasn't force-fixed this run).
-- [ ] Run `python src/check_field_coverage.py` periodically (like `audit_confidence.py`)
-      as new schema fields get added, rather than waiting for another dedicated sweep run.
+## Run 26 — done
+- [x] Resolved `review_status`/`reviewed_by`: data check confirmed they're populated with
+      genuinely varying, meaningful values (not schema defaults) across 15/18 reports —
+      rendered them (real editorial provenance, same category as prior fixes), not
+      suppressed as backend-only.
+- [x] Added `data/reports/2026-11-02.json`, a 19th report — re-checked the open CFDA/
+      Vogue Fashion Fund signal (still unresolved after 2 windows, honestly carried
+      forward, not fabricated).
+- [x] Periodic field-coverage/confidence audit run — clean, but flagged a real gap:
+      `layered-tops-styling` has gone silent for 13 consecutive windows with no
+      dormancy-check or close-out, unlike its sibling signals from the same period.
+- [x] **Southeast Asian source coverage: genuine progress.** Found `dewimagazine.com`
+      (Indonesia) — the first truly local-for-local, non-English-language source in the
+      list — verified crawlable. Honestly rejected 2 other candidates that failed
+      (Cloudflare block) or didn't fit (expat lifestyle content, not local fashion press).
+- [x] Reader-trust-signal research found a real UX gap: Corrections/AI-disclosure content
+      is buried at the bottom of methodology/about pages with zero inline pointer from
+      report pages (the actual reader entry point). **Fixed**: added a "Corrections & AI
+      use" link to report page footers.
+
+## Next up (run 27 candidates)
+- [ ] **`layered-tops-styling` needs a dormancy decision** — 13 silent windows is well
+      past the close-out threshold used for every other dormant signal; make the call
+      next run using `get_signal_status_history()`.
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
-      `independent_criticism` sources reappear in a report.
-- [ ] `gh` CLI still unavailable in this environment — CI's real pass/fail status on
-      GitHub remains unconfirmed across 4+ runs now.
+      `independent_criticism` sources reappear.
+- [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
+- [ ] Consider whether `dewimagazine.com`'s Bahasa Indonesia content needs any
+      translation/handling consideration in `summarize.py`'s prompt, since it's the
+      first non-English source in the crawler's list.
