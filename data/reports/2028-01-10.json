@@ -1,0 +1,68 @@
+{
+  "report_date": "2028-01-10",
+  "collection_window": {
+    "start": "2028-01-04",
+    "end": "2028-01-10"
+  },
+  "sources_scanned": 10,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "institutional": 1,
+    "editorial": 1
+  },
+  "executive_summary": "Collection window January 4-10, 2028, the first full trade-press week of the year and the window immediately preceding Fall/Winter 2028 menswear fashion month in Europe. No new style, garment, or aesthetic signal cleared this report's corroboration bar this week. The one checkable item is logistics rather than trend content: FHCM (Federation de la Haute Couture et de la Mode) published its official Fall/Winter 2028 Menswear Paris Fashion Week calendar this window, and wwd.com independently reported on the announcement with additional confirmed-participant detail (a preliminary designer lineup) beyond a restatement of the federation's own release. This is treated as genuine cross-sector corroboration -- one institutional primary source, one editorial outlet doing its own reporting on top of that source, not an aggregator reprint of the same announcement (contrast the 2027-09-06 fhcm.paris/laforma.club case, where laforma.club was found to be republishing rather than independently reporting). No retailer, designer_origin, or independent-criticism source introduced a development distinct from material already logged in prior windows. The resort 2028 puffer-shell skirt thread, the resale-demand signal on structured waist-tailoring, the obi-sash cocoon coat thread, and the opera-glove/'restraint dressing' thread all produced no new development this window and are not carried forward again absent fresh movement. The Margiela raw-edge thread remains closed out as of 2027-10-18. Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention.",
+  "top_signals": [
+    {
+      "name": "Paris confirms Fall/Winter 2028 Menswear Fashion Week dates",
+      "type": "market_behavior",
+      "source_sectors": [
+        "institutional",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "stable",
+      "origin_classification": "unclear",
+      "evidence": "FHCM, Paris Fashion Week's governing body, published its official calendar for Fall/Winter 2028 Menswear Paris Fashion Week this window, sequencing (per standing convention) after Milan's men's calendar. wwd.com independently reported on the announcement, adding a preliminary confirmed-designer-participant list not present in FHCM's own release -- this is treated as genuine independent second-sector reporting rather than a reprint of the primary announcement, distinguishing it from the aggregator-reprint pattern found in the 2027-09-06 fhcm.paris/laforma.club case (see confidence-recompute-2027-09-06-run72.md).",
+      "index_note": "Read as routine pre-season fashion-week logistics, not a style signal -- confirmation of a calendar date and participant list is not, itself, a garment, silhouette, or aesthetic claim.",
+      "human_editor_note": "derive_confidence() computes 'high' here (corroboration_count=2, two distinct sectors: institutional, editorial) and this report adopts that result rather than overriding it, because the fact pattern is materially different from the 2027-09-06 precedent that justified holding a superficially similar calendar-announcement signal at medium: there, the second 'sector' was an aggregator republishing the same primary announcement with no independent reporting of its own; here, wwd.com's coverage adds confirmed-participant detail FHCM's own release did not include, which is genuine independent journalism, not a reprint. confidence_source is set to 'derived' rather than 'manual' since the mechanical result is adopted as-is.",
+      "source_corroboration_count": 2,
+      "signal_id": "pfw-mens-fw28-calendar-confirmed",
+      "confidence_source": "derived",
+      "source_domains": [
+        "fhcm.paris",
+        "wwd.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "Menswear Fashion Week calendar",
+    "Fall/Winter 2028",
+    "Paris"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [
+    "Paris Fashion Week",
+    "FHCM"
+  ],
+  "limitations": [
+    "No style, garment, silhouette, or aesthetic signal cleared this report's corroboration bar this window; the only checkable item is a fashion-week scheduling fact, not trend content.",
+    "The 'high' confidence on the calendar-confirmation signal rests on a judgment call that wwd.com's added participant detail counts as independent reporting rather than republication; this is the same distinction (precedent 4 in the confidence-discipline precedents doc) applied in the opposite direction from the 2027-09-06 case, since the fact pattern here does not match the aggregator-reprint pattern that case turned on.",
+    "No new development occurred on the resort 2028 puffer-shell skirt, resale-demand, obi-sash cocoon coat, or opera-glove/'restraint dressing' threads this window; per standing convention, none are carried forward again absent fresh movement."
+  ],
+  "archive_tags": [
+    "margiela-raw-edge-editorial-close-out",
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "The window preceding Fall/Winter 2028 menswear fashion month (shows in Milan and Paris begin in mid-to-late January) is predictably quiet for style discourse: the only checkable development this week is a fashion-week scheduling confirmation, not a garment, silhouette, or aesthetic claim. Fewer than 3 sources returned genuinely distinct signals this window; this report reflects limited coverage rather than manufactured trend content.",
+  "review_status": "reviewed",
+  "reviewed_by": "ari3lla-index-loop-improvements agent",
+  "revision_history": []
+}
