@@ -117,7 +117,10 @@ public weekly report
 - each report is validated against a controlled schema
   (`src/report_schema.py`) before it can be considered part of the
   archive, and CI (`.github/workflows/validate-reports.yml`) re-runs that
-  validation on every push/PR against everything in `data/reports/`
+  validation on every push/PR against everything in `data/reports/`;
+  the same workflow's `lint-web` job runs ESLint (including
+  `eslint-plugin-jsx-a11y` accessibility rules) against `web/` on every
+  push/PR
 - confidence can be derived deterministically from source-corroboration
   count and source-sector diversity (`derive_confidence()`), tracked
   against a manual "confidence_source" so editorial judgment calls stay
@@ -138,11 +141,18 @@ public weekly report
 - `/methodology`, `/taxonomy`, `/sources`, `/about` — how signals are
   evaluated, the full source-sector and confidence/volatility taxonomy,
   and the outlet lists behind it
+- `/glossary` — plain-language definitions of aesthetic terms and cultural
+  references, but only for terms that actually appear in an archived
+  report (sourced from `data/reports/*.json` at build time, not an
+  abstract style dictionary)
 - `/case-study` — project write-up
 - `/search` — full-text search over report prose (Pagefind, indexed at
   build time via a `postbuild` step against the static export) alongside
   client-side facet filters (source sector, confidence, volatility)
 - `/rss.xml` — RSS feed over the report archive
+- the homepage includes a "This Week's Index" module — a condensed
+  metrics summary of the latest report (doc section 27/28), distinct from
+  the full per-date report render at `/reports/[date]`
 - report pages carry `NewsArticle` JSON-LD, a stable "Cite as" line, and a
   sitemap/robots setup for discoverability; heading structure follows
   WCAG hierarchy rather than styled paragraphs standing in for headings
@@ -258,7 +268,7 @@ about limitations.
 - signal classification depends on human/editorial review, which does not
   yet run on a fixed cadence
 - historical continuity claims are limited until the archive accumulates
-  more than a few reporting periods (10 dated reports as of this writing)
+  more than a few reporting periods (15 dated reports as of this writing)
 - confidence can be derived deterministically (`derive_confidence()`) but
   is not yet auto-applied — it currently runs as a non-blocking warning
   in CI, flagging mismatches for human review rather than overwriting them
@@ -293,24 +303,29 @@ fashion-trend-crawler/
     manual_sample.py           # compliant manual social-signal sampling helper
     validate_all_reports.py    # CI check against every file in data/reports/
   data/
-    reports/                   # dated JSON reports (10 as of this writing:
+    reports/                   # dated JSON reports (15 as of this writing:
                                 #   2026-05-07, -07-06, -07-13, -07-20, -07-27,
-                                #   -08-03, -08-10, -08-17, -08-24, -08-31)
+                                #   -08-03, -08-10, -08-17, -08-24, -08-31,
+                                #   -09-07, -09-14, -09-21, -09-28, -10-05)
   web/                          # next.js editorial site
     app/
-      page.tsx                  # homepage — reads off reports.ts (trends.ts retired)
+      page.tsx                  # homepage — reads off reports.ts (trends.ts retired);
+                                #   includes "This Week's Index" condensed metrics module
       archive/                  # historical report list
       reports/[date]/           # per-date report render
       timeline/                 # reverse-chronological signal index
       signals/[slug]/           # per-signal longitudinal view
       search/                   # Pagefind full-text search + client-side facet filters
+      glossary/                  # archive-sourced definitions of observed aesthetic terms
       methodology/, taxonomy/, sources/, about/  # static reference pages
       case-study/                # portfolio case study
       sitemap.ts, robots.ts, rss.xml/  # SEO / syndication
     lib/
       reports.ts                 # archive data layer, reads data/reports/*.json
       site.ts                     # shared SITE_URL/SITE_NAME constants
-  .github/workflows/validate-reports.yml  # CI: validates the archive on push/PR
+  .github/workflows/validate-reports.yml  # CI: validates the archive (`validate` job)
+                                #   and lints web/ with ESLint + jsx-a11y (`lint-web` job)
+                                #   on push/PR
   run.sh                        # full pipeline runner
 ```
 

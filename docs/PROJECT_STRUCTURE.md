@@ -3,8 +3,9 @@
 This reflects the intended structure per `docs/ARI3LLA INDEX.txt` (sections 23 & 40),
 mapping the doc's `app/` onto this repo's `web/app/`. Some paths already existed before
 the reorg work; others were built by parallel agents. Status noted per entry. Last synced
-against the actual file tree on 2026-07-06 (run 18 doc-sync pass updated the report
-count/date range and search/docs entries below without re-walking the whole tree).
+against the actual file tree on 2026-07-06 (run 23 doc-sync pass updated the report
+count/date range, added `/glossary`, and confirmed the `lint-web` CI job / jsx-a11y
+lint config below without re-walking the whole tree).
 
 ```
 fashion-trend-crawler/
@@ -19,7 +20,7 @@ fashion-trend-crawler/
 │   └── skills/ari3lla-index/SKILL.md   existing — working skill / project context doc
 ├── data/
 │   └── reports/                existing — dated JSON trend reports (schema-driven);
-│       │                       10 reports as of run 18 (2026-05-07 through 2026-08-31)
+│       │                       15 reports as of run 23 (2026-05-07 through 2026-10-05)
 │       ├── 2026-05-07.json     existing — first report under new schema
 │       ├── 2026-07-06.json     existing — dated report
 │       ├── 2026-07-13.json     existing — dated report (see agent-logs/real-report-2026-07-13.md)
@@ -29,7 +30,12 @@ fashion-trend-crawler/
 │       ├── 2026-08-10.json     existing — dated report
 │       ├── 2026-08-17.json     existing — dated report
 │       ├── 2026-08-24.json     existing — dated report (thin/low-volatility stretch ends)
-│       └── 2026-08-31.json     existing — dated report
+│       ├── 2026-08-31.json     existing — dated report
+│       ├── 2026-09-07.json     existing — dated report (fashion month window begins)
+│       ├── 2026-09-14.json     existing — dated report
+│       ├── 2026-09-21.json     existing — dated report
+│       ├── 2026-09-28.json     existing — dated report
+│       └── 2026-10-05.json     existing — dated report
 ├── docs/
 │   ├── ARI3LLA INDEX.txt       existing — the reorg/spec doc driving this work, read-only
 │   ├── CHANGELOG.md            existing — master reconciled log
@@ -65,6 +71,10 @@ fashion-trend-crawler/
 │   │                           report_schema.py, left alone unless migrating it
 │   └── run.sh                  existing — fixed run 1 (no longer stale): runs
 │                               crawler.py -> summarize.py (classify+summarize+save dated report)
+├── .github/
+│   └── workflows/validate-reports.yml   existing — two jobs: `validate` (py_compile +
+│       schema validation of data/reports/) and `lint-web` (ESLint incl. jsx-a11y over
+│       web/), both on push/PR
 └── web/
     ├── .gitignore               existing — covers node_modules/.next already
     ├── package.json / package-lock.json   existing — Next.js app config; `pagefind`
@@ -75,7 +85,11 @@ fashion-trend-crawler/
     ├── next-env.d.ts            existing
     ├── tsconfig.json / tsconfig.tsbuildinfo   existing
     ├── postcss.config.mjs       existing
-    ├── eslint.config.mjs        existing
+    ├── eslint.config.mjs        existing — layers extra `eslint-plugin-jsx-a11y` rules
+    │                              (heading-has-content, anchor-has-content, etc.) on top
+    │                              of eslint-config-next's defaults; explicitly notes no
+    │                              jsx-a11y rule can catch a styled `<p>` masquerading as
+    │                              a heading — see workflow convention #3 in the skill doc
     ├── app/
     │   ├── page.tsx              existing — homepage (hero/tagline/footer, section 2/25 voice)
     │   ├── layout.tsx            existing — site-wide title/description metadata
@@ -99,6 +113,9 @@ fashion-trend-crawler/
     │   │                          confirmed working end-to-end via a real
     │   │                          `npm install && npm run build` in
     │   │                          agent-logs/pagefind-verification-run15.md)
+    │   ├── glossary/page.tsx     existing — definitions of aesthetic terms/cultural
+    │   │                          references, filtered to only terms that actually
+    │   │                          appear in data/reports/*.json (not a static dictionary)
     │   └── rss.xml/route.ts      existing — RSS feed over the report archive
     ├── lib/
     │   ├── reports.ts            existing — archive data layer, reads data/reports/*.json;
