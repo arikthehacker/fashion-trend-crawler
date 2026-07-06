@@ -1,0 +1,75 @@
+{
+  "report_date": "2027-03-22",
+  "collection_window": {
+    "start": "2027-03-16",
+    "end": "2027-03-22"
+  },
+  "sources_scanned": 14,
+  "items_collected": 1,
+  "source_sector_breakdown": {
+    "editorial": 4
+  },
+  "executive_summary": "This collection window (March 16-22, 2027) is the thirty-ninth archived window. The Fall/Winter 2027-28 women's ready-to-wear fashion month logged last window (fw27-28-rtw-fashion-month) had already concluded before this window opened -- Paris's leg closed March 9, per FHCM's published calendar -- so no new runway content originates inside these dates. Reachable coverage this window consists of post-season trend-confirmation roundups (WGSN-style catwalk-trend summaries and general editorial recaps) restating themes already logged last window -- sheer/transparent layering (organza, tulle, muslin at Valentino under Alessandro Michele, and layered sheers at Dior and Chloe) and a 'human craft vs AI' framing emphasizing artisanal, hand-made techniques over digitally-generated aesthetics. This is treated as a single new low-confidence signal (source_id fw27-28-post-season-trend-confirmation) rather than an extension of last week's fashion-month signal, since it is retrospective trend-forecasting commentary, not new runway or designer-origin content. Per SKILL.md workflow note 10, the Wales Bonner/Hermes debut question and the CFDA Fashion Fund/Awards questions remain untracked pending new information and were not re-litigated; brief checks found no new coverage on either. Haute Couture Spring/Summer 2027 was checked again for post-show coverage and again found none reachable, unchanged from the prior seven windows. On balance this window is thin: the fashion month itself has closed, and the only in-window discourse found is secondary trend-confirmation commentary restating last window's findings rather than new, independently verifiable in-window content.",
+  "top_signals": [
+    {
+      "name": "Post-season trend-confirmation roundups restate FW27-28 sheer-layering and craft themes",
+      "type": "aesthetic_term",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "declining",
+      "origin_classification": "editorial_amplified",
+      "evidence": "With the FW27-28 women's ready-to-wear fashion month closed as of March 9 (FHCM calendar), this window's reachable coverage is limited to editorial trend-confirmation summaries restating the season's own reporting rather than presenting new runway or designer-origin material: sheer/transparent layering (organza, tulle, muslin) attributed to Valentino under Alessandro Michele and to Dior and Chloe's layered sheers, and a 'human craft vs AI' framing emphasizing hand-made, process-led techniques over digitally generated aesthetics. No new house, silhouette, or material claim beyond what was already logged in the 2027-03-15 report was found.",
+      "index_note": "New signal_id distinct from fw27-28-rtw-fashion-month (2027-03-15), since this window's content is retrospective trend-confirmation commentary about an already-closed season, not new in-window runway or designer-origin content. Kept low confidence and declining volatility to reflect that this is secondary restatement, not a fresh finding.",
+      "source_corroboration_count": 2,
+      "signal_id": "fw27-28-post-season-trend-confirmation",
+      "confidence_source": "manual",
+      "human_editor_note": "Set to low/declining rather than treating this as a continuation of last window's medium-confidence fashion-month signal: the underlying show season has fully concluded, and this window's editorial material is generic post-season trend-forecast summarization rather than dated in-window reporting on a new event. Recommend a human editor decide whether to keep tracking this as a distinct signal_id in coming windows or fold any future restatement into fw27-28-rtw-fashion-month's own history instead.",
+      "source_domains": [
+        "wgsn.com",
+        "numero.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "post-season trend confirmation",
+    "sheer layering",
+    "human craft vs AI",
+    "Haute Couture SS27 coverage gap",
+    "Wales Bonner untracked"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [
+    "organza",
+    "tulle",
+    "muslin"
+  ],
+  "colors": [],
+  "aesthetic_terms": [
+    "human craft vs AI"
+  ],
+  "cultural_references": [],
+  "limitations": [
+    "The Wales Bonner/Hermes debut signal was not re-litigated this window per the 2027-03-08 transition to 'untracked going forward pending new information.' A brief check found no new coverage; this is consistent with the transition decision, not a new finding.",
+    "The CFDA Fashion Fund winner and CFDA Fashion Awards questions remain untracked pending new information per SKILL.md workflow note 10 and were not re-litigated as top signals.",
+    "Haute Couture Spring/Summer 2027 was checked again for post-show coverage and again found none reachable -- unchanged from the prior seven windows, kept under normal tracking per the same signal_id.",
+    "This window's only in-window content is post-season trend-confirmation commentary restating last window's fashion-month findings; no new runway, designer-origin, or retail-adoption discourse independently verifiable to this specific window was found.",
+    "This report was assembled via targeted web search rather than a live automated crawl timed to the actual show days or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "fw27-28-fashion-month-closed",
+    "post-season-trend-confirmation",
+    "wales-bonner-untracked-pending-new-information",
+    "cfda-signals-untracked-pending-new-information",
+    "couture-ss27-coverage-gap-continued",
+    "2027-q1"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "The FW27-28 women's ready-to-wear fashion month logged last window closed before this window opened (Paris concluded March 9). The only reachable in-window content is secondary trend-confirmation commentary restating last window's findings; no new runway, designer-origin, or retail signal was found.",
+  "review_status": "reviewed",
+  "reviewed_by": "loop-consolidation",
+  "revision_history": [],
+  "content_hash": "8818084ae14df1fefb6882a1b96e98b4f7d2d56dc4ac98199c37ce69e019d88d"
+}
