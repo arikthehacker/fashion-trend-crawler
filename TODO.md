@@ -1692,14 +1692,24 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       impact on RSS/glossary since `lib/reports.ts` was untouched.
 - [x] Nav/build regression sweep and periodic audit both clean.
 
-## Next up (run 85 candidates)
-- [ ] A candidate 13th precedent (resale-platform corroboration reliability)
-      was flagged by run 84's report agent but not formalized — worth
-      attention if the pattern recurs enough to generalize.
-- [ ] `archive_tags` remains unsurfaced as a filter on the archive page — future
-      scope if the archive grows enough to need it, not a current gap.
-- [ ] Manual-sampling cadence next due ~run 87 (tracked directly in
-      `docs/manual-sampling-workflow.md` — update it in place when re-run).
+## Run 85 — done
+- [x] Added `data/reports/2027-12-27.json`, a 78th report — genuinely thin
+      Christmas week, `collection_status: "thin"`, zero manufactured signals.
+- [x] Formalized precedent 13 (resale-platform corroboration reliability) after
+      real research finding split evidence on resale data as a demand
+      indicator, extending the existing Pinterest-marketing skepticism to
+      resale platforms.
+- [x] Archive tag-filter feasibility: pulled real tag data across 77 reports
+      (68% of distinct tags occur exactly once) and correctly declined to build
+      a filter the data doesn't yet support, with concrete prerequisites
+      documented for revisiting later.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Next up (run 86 candidates)
+- [ ] The archive_tags filter has concrete, documented prerequisites (consistent
+      quarter/thin-week tagging as a real facet) before it's worth building —
+      not a current gap.
+- [ ] Manual-sampling cadence next due ~run 87 — getting close.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven
       only.

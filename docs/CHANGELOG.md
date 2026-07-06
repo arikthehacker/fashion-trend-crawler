@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-10 ~12:15 PDT — [Loop run 85](changelog-entries/run-85.md)** — a
+  78th report honestly logs a thin Christmas week with zero manufactured
+  signals; a 13th confidence precedent formalized after real research
+  (resale-platform data reflects supply/discard behavior, not demand); a
+  genuinely data-driven "not yet" on an archive tag-filter, backed by real
+  tag-distribution numbers; nav/build and periodic audits both clean.
+
 - **2026-07-10 ~11:00 PDT — [Loop run 84](changelog-entries/run-84.md)** — both
   run-83 flagged confidence-precedent inconsistencies resolved as corrections
   (a directly on-point counter-example found in precedent 2's own worked
