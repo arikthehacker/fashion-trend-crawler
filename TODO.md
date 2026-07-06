@@ -1033,10 +1033,42 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       coverage warnings, `gh` CLI unavailable (16th+ consecutive check), confirmed run
       48's `styleOnly` recurrence filter behaves correctly.
 
-## Next up (run 50 candidates)
+## Run 50 — done (50th loop run milestone)
+- [x] Added `data/reports/2027-04-19.json`, a 43rd report — logged a genuine new
+      Moschino co-creative-director signal, and deliberately did not repeat
+      `glamoratti-revival` as a top signal absent fresh coverage.
+- [x] **Major finding, flagged for a human decision (not a routine item):** a 50-report
+      milestone gap analysis found the loop's own process doesn't fully satisfy the
+      site's stated human-in-the-loop principle — `reviewed_by` values are agent
+      self-attribution, and almost all reports are WebSearch reconstructions rather
+      than live crawls, despite the site's copy describing genuine human review and a
+      real pipeline. See `docs/agent-logs/gap-analysis-50-report-milestone-run50.md`
+      and the changelog's "Flagged for the user" section for full detail — this needs
+      a human decision about what to claim honestly vs. what to change in the process.
+- [x] Fixed a real redundant-read regression: `web/app/glossary/page.tsx` had drifted
+      back into its own independent full-archive read, bypassing run 31's shared
+      `getAllReports()` cache. Fixed; build time confirmed holding flat as report count
+      doubled since run 31's baseline.
+- [x] Fixed a real sitemap gap: `lastModified` was never set (Google ignores
+      `changeFrequency`/`priority`, the fields that WERE tuned, and only trusts
+      `lastModified`). Added to archive-dependent routes; left fixed-prose pages
+      without a fabricated timestamp.
+- [x] Periodic audit — clean. 50 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (18th+ consecutive check).
+
+## Next up (run 51 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
-- [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
+- [ ] `gh` CLI still unavailable after 18+ consecutive checks; CI's real GitHub
+      pass/fail status remains unconfirmed — consider whether this itself now warrants
+      escalating to the user rather than re-checking indefinitely.
+- [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
+      correctness for 7+ runs — flagged in the run-50 gap analysis as arguably needing
+      a human decision rather than further autonomous deferral.
 - [ ] Two pre-existing `human_editor_note` values (2026-07-13, 2026-11-09) remain
-      verbatim duplicates of `index_note` — deliberately left as-is; the prompt fix
-      prevents new occurrences.
+      verbatim duplicates of `index_note` — deliberately left as-is; the run-49 prompt
+      fix prevents new occurrences.
+- [ ] See the run-50 gap analysis for additional lower-priority findings: manual
+      social-sampling exercised only 3 times in 50 runs, geographic/language source
+      coverage still Western/English-skewed — both repeatedly acknowledged without a
+      defined resolution or acceptance endpoint.

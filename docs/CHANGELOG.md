@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-08 ~16:45 PDT — [Loop run 50](changelog-entries/run-50.md)** — 50th loop
+  run, 43rd report. A milestone gap analysis surfaces a significant structural finding:
+  the loop's own process doesn't fully satisfy the site's stated human-in-the-loop
+  principle (flagged directly for a human decision, not filed as routine TODO); a real
+  redundant full-archive read regression fixed in the glossary page; sitemap `lastMod`
+  gap fixed; periodic audit clean.
+
 - **2026-07-08 ~15:30 PDT — [Loop run 49](changelog-entries/run-49.md)** — 42nd report
   catches a real false-resolution trap (a 2025-cycle CFDA announcement mistaken for the
   tracked 2026 question) and honestly revises a saturated signal's volatility; all 27
