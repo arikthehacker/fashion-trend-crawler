@@ -34,6 +34,7 @@ const DEFINITIONS: Record<string, string> = {
   "coastal cowgirl": "A styling term combining beach-adjacent casualwear with Western references such as denim, fringe, and boots.",
   "color drenching": "A styling approach of dressing in a single color head-to-toe, including accessories, rather than mixing multiple colors in one look.",
   "eighties luxury": "A style reference to the structured, high-shine, status-signaling dressing associated with 1980s luxury fashion.",
+  "funmaxxing": "A maximalist-play aesthetic cluster observed on TikTok combining icy-blue and candy-pink palettes, 1980s technical sportswear, and tassels or fringe; logged as the narrower, checkable styling cluster rather than the broader generational-mood framing some coverage has attached to the term.",
   "layered tops styling": "A styling pattern of wearing multiple visible top layers — camisoles, shirts, sweaters — rather than a single garment, observed primarily in social-platform sources.",
   "maximalism": "A styling approach favoring visible pattern mixing, layering, color, and ornamentation, framed in coverage as a counterpoint to pared-back minimalism.",
   "micro-bag styling": "The continued presence of small, low-capacity handbags as a recurring accessory signal rather than a newly emerging one.",
@@ -59,6 +60,7 @@ function normalize(term: string): string {
   return term
     .replace(/\s*\(carryover\)\s*$/i, "")
     .replace(/,\s*(forecast stage|third and final recheck|still unconfirmed at [^)]*|dormancy check|continuing|social)\s*$/i, "")
+    .replace(/^"funmaxxing".*$/i, "funmaxxing")
     .trim();
 }
 
