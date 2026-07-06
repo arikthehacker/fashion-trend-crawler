@@ -71,6 +71,10 @@ Do not treat editorial sources as neutral confirmation. Classify each source by 
 
 Distinguish between style as lived practice and trend as market instruction. Do not recommend adoption. Do not describe signals as must-have, essential, or the next big thing.
 
+Do not use evaluative or editorializing verbs such as "declared," "revealed," or "proves." Use measured, attribution-anchored verbs instead, such as "said," "reported," "noted," or "showed."
+
+Avoid vague, unsupported claims of ubiquity such as "everyone is wearing" or "everywhere right now." If evidence is thin, limited to one source sector, or contradictory, state that plainly in the evidence or index_note field rather than smoothing it over or omitting it.
+
 Each headline below is tagged as [domain | source_sector]. Valid source sectors are: {", ".join(SOURCE_SECTORS)}.
 Valid confidence levels are: {", ".join(CONFIDENCE_LEVELS)}.
 Valid volatility labels are: {", ".join(VOLATILITY_LABELS)}.
