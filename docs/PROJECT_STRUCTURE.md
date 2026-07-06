@@ -17,7 +17,8 @@ fashion-trend-crawler/
 │   ├── scheduled_tasks.lock    existing
 │   └── skills/ari3lla-index/SKILL.md   existing — working skill / project context doc
 ├── data/
-│   └── reports/                existing — dated JSON trend reports (schema-driven)
+│   └── reports/                existing — dated JSON trend reports (schema-driven);
+│       │                       7 reports as of run 13 (2026-05-07 through 2026-08-10)
 │       ├── 2026-05-07.json     existing — first report under new schema
 │       ├── 2026-07-06.json     existing — dated report
 │       └── 2026-07-13.json     existing — dated report (see agent-logs/real-report-2026-07-13.md)
@@ -48,14 +49,10 @@ fashion-trend-crawler/
 │   ├── server.py               existing — MCP server (crawl/cache/search/list/get report tools)
 │   ├── report_schema.py        existing — Report/Signal/CollectionWindow schema, save/load/list by date
 │   ├── taxonomy.py             existing — source sector / confidence / volatility / origin vocab + classify_source(url)
-│   ├── test_tools.py           existing — MCP tool smoke tests, reads legacy trends_raw.json
-│   ├── run.sh                  existing — KNOWN STALE — runs crawler -> test_tools -> server,
-│   │                           never calls summarize.py; needs a follow-up pass to wire the
-│   │                           full crawl -> classify -> summarize -> save pipeline
-│   ├── trends_raw.json         legacy — pre-archive-schema cache, superseded by data/reports/
-│   └── trends_summary.json     legacy — pre-archive-schema summary, superseded by data/reports/
-├── trends_raw.json             legacy — root-level duplicate/older copy of src/trends_raw.json
-├── trends_summary.json         legacy — root-level duplicate/older copy of src/trends_summary.json
+│   ├── test_tools.py           existing — tests the old raw-cache pipeline; unrelated to
+│   │                           report_schema.py, left alone unless migrating it
+│   └── run.sh                  existing — fixed run 1 (no longer stale): runs
+│                               crawler.py -> summarize.py (classify+summarize+save dated report)
 └── web/
     ├── .gitignore               existing — covers node_modules/.next already
     ├── package.json / package-lock.json   existing — Next.js app config
@@ -76,34 +73,32 @@ fashion-trend-crawler/
     │   ├── sources/page.tsx      existing — doc section 11's outlet lists
     │   ├── about/page.tsx        existing — doc sections 37/38
     │   ├── case-study/page.tsx   existing — doc section 33, portfolio framing
-    │   ├── timeline/page.tsx     PLANNED — not yet created; doc section 24 "optional later pages",
-    │   │                          longitudinal recurrence view, once enough dated reports exist
-    │   └── signals/[slug]/page.tsx   PLANNED — not yet created; doc section 24, per-signal
-    │                                history page across reports
+    │   ├── timeline/page.tsx     existing — built run 3; doc section 24, reverse-chronological
+    │   │                          longitudinal recurrence view across all reports
+    │   ├── signals/[slug]/page.tsx   existing — shipped run 4; doc section 24, per-signal
+    │   │                                history page across reports
+    │   ├── search/page.tsx, search/SearchClient.tsx   existing — added run 12; client-side
+    │   │                          facet filter (source sector, confidence, volatility)
+    │   └── rss.xml/route.ts      existing — RSS feed over the report archive
     ├── lib/
-    │   ├── trends.ts             existing — ORIGINAL data layer for live/current-crawl view,
-    │   │                          not repurposed for archive reads
-    │   └── reports.ts            existing — archive data layer, reads data/reports/*.json
+    │   ├── reports.ts            existing — archive data layer, reads data/reports/*.json;
+    │   │                          homepage reads off this too (trends.ts retired run 13);
+    │   │                          also exposes getSearchIndex() (run 12) for /search
+    │   └── site.ts               existing — shared SITE_URL/SITE_NAME constants for
+    │                              metadata/sitemap/robots/JSON-LD
     ├── public/                  existing — static assets
     └── node_modules/, .next/    build artifacts, gitignored, not tracked
 ```
 
 ## Notes / Follow-ups (informational only, not acted on)
 
-- **Legacy trend files**: `trends_raw.json` / `trends_summary.json` exist in both the repo
-  root and `src/`, and the two copies have diverged content (different Met Gala article
-  sets/summaries) — they look stale and duplicated. Left in place per instructions since
-  the new `data/reports/` pipeline (via `report_schema.py`) is still being wired up.
-  Once that pipeline is confirmed working end-to-end, all four legacy files should be
-  removed (tracked in `docs/CHANGELOG.md` "Known gaps").
-- **`src/run.sh` / `src/test_tools.py`**: `run.sh` currently runs `crawler.py` ->
-  `test_tools.py` -> `server.py`, and `test_tools.py` reads `trends_raw.json` directly.
-  Once `report_schema.py` / `taxonomy.py` are fully integrated into `summarize.py`/`server.py`,
-  the pipeline order and the test fixture path will likely need updating to point at
-  `data/reports/*.json` instead of the legacy cache file.
-- **`/timeline` and `/signals/[slug]`** remain planned-only (doc section 24, "optional later
-  pages") — not yet built, worth revisiting once there are enough dated reports in
-  `data/reports/` to make recurrence tracking meaningful.
+- **Legacy trend files removed**: `trends_raw.json` / `trends_summary.json` (root and
+  `src/`) and `web/lib/trends.ts` have all been retired (`trends.ts` retired run 13, once
+  the homepage was rebuilt off `reports.ts`). `git ls-files` confirms none of the legacy
+  JSON cache files remain tracked; `src/test_tools.py` still exercises the old raw-cache
+  pipeline directly but is left alone unless it's migrated.
+- **`/timeline` and `/signals/[slug]`** were built (run 3 / run 4 respectively) and are no
+  longer planned-only.
 - **No stray `.git` directories** found anywhere else in the tree besides the repo root
   `.git/`.
 - **No `__pycache__` dirs or `.pyc` files** present anywhere in the tree; `src/.gitignore`

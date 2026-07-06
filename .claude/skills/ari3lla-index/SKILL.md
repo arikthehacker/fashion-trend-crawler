@@ -62,9 +62,10 @@ web/                   # Next.js app
     case-study/page.tsx   # doc section 33, portfolio framing
     layout.tsx           # site-wide <title>/description metadata — keep in sync with rebrand, this has gone stale before
     sitemap.ts, robots.ts  # added run 5
+    rss.xml/route.ts      # RSS feed over the report archive
   lib/
-    trends.ts           # ORIGINAL data layer for the live/current-crawl view — don't repurpose for archive reads
-    reports.ts           # archive data layer, reads data/reports/*.json — separate from trends.ts on purpose; now also exposes getSearchIndex() (run 12) for the /search facet filter
+    reports.ts           # archive data layer, reads data/reports/*.json; homepage now reads off this too (trends.ts retired run 13); also exposes getSearchIndex() (run 12) for the /search facet filter
+    site.ts               # shared SITE_URL/SITE_NAME constants for metadata/sitemap/robots/JSON-LD
 docs/
   ARI3LLA INDEX.txt      # source concept doc, read-only reference, don't edit
   CHANGELOG.md           # master INDEX — one paragraph + link per run, chronological, PDT/PST timestamps
@@ -115,11 +116,9 @@ docs/
 See `TODO.md` at repo root for the current authoritative, per-run list (updated every loop
 run) — don't duplicate it here. As of run 12, the highest-priority open items are:
 
-- **Still pending your sign-off:** retire `web/lib/trends.ts` (the stale, un-versioned
-  live-crawl loader the homepage currently reads) and rebuild the homepage off
-  `reports.ts` instead — proposal in `docs/agent-logs/trends-ts-fate-proposal.md` (run 11).
-  This is genuinely blocked on a human decision, not neglected, since it changes the
-  homepage's data source.
+- **Resolved run 13:** `web/lib/trends.ts` (the stale, un-versioned live-crawl loader) was
+  retired and the homepage now reads off `reports.ts` instead — see
+  `docs/agent-logs/trends-ts-fate-proposal.md` (run 11) for the original proposal.
 - `off-duty-varsity`'s dormancy flag — flagged quiet for 3 consecutive reports as of the
   run 12 health check — was resolved this run via `revision_history` on
   `data/reports/2026-07-20.json` (editorial close-out, using

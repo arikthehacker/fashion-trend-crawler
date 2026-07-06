@@ -232,12 +232,11 @@ about limitations.
   exercised twice, not automated ingestion
 - [x] signal timelines and longitudinal tracking per signal (`/timeline`,
   `/signals/[slug]`)
+- [x] homepage rebuilt off `reports.ts`; legacy `web/lib/trends.ts` retired
 - [ ] source-sector-aware crawling (more nuance beyond editorial/retail)
 - [ ] scheduled crawls so the archive stays fresh automatically
 - [ ] a live `crawler.py` + `summarize.py` run merged into the archive
   (one has succeeded against real sources — see Limitations)
-- [ ] final step of the legacy cache-file migration (safe deletion once
-  nothing references the old literal filename)
 
 ## Limitations
 
@@ -255,13 +254,10 @@ about limitations.
 - signal classification depends on human/editorial review, which does not
   yet run on a fixed cadence
 - historical continuity claims are limited until the archive accumulates
-  more than a few reporting periods (4 dated reports as of this writing)
+  more than a few reporting periods (7 dated reports as of this writing)
 - confidence can be derived deterministically (`derive_confidence()`) but
   is not yet auto-applied — it currently runs as a non-blocking warning
   in CI, flagging mismatches for human review rather than overwriting them
-- migration off the legacy `trends_raw.json`/`trends_summary.json` cache
-  files is 4 of 5 steps complete; final deletion is unblocked but not
-  yet done
 - this project does not use paid trend-data feeds; everything is derived
   from public, crawlable, or API-accessible sources
 
@@ -293,22 +289,22 @@ fashion-trend-crawler/
     manual_sample.py           # compliant manual social-signal sampling helper
     validate_all_reports.py    # CI check against every file in data/reports/
   data/
-    reports/                   # 4 dated JSON reports (2026-05-07, -07-06, -07-13, -07-20)
+    reports/                   # dated JSON reports (2026-05-07, -07-06, -07-13, -07-20)
   web/                          # next.js editorial site
     app/
-      page.tsx                  # homepage — current report
+      page.tsx                  # homepage — reads off reports.ts (trends.ts retired)
       archive/                  # historical report list
       reports/[date]/           # per-date report render
       timeline/                 # reverse-chronological signal index
       signals/[slug]/           # per-signal longitudinal view
+      search/                   # client-side facet search over the archive
       methodology/, taxonomy/, sources/, about/  # static reference pages
       case-study/                # portfolio case study
-      sitemap.ts, robots.ts      # SEO
+      sitemap.ts, robots.ts, rss.xml/  # SEO / syndication
     lib/
-      trends.ts                  # live/current-crawl data layer (separate on purpose)
       reports.ts                 # archive data layer, reads data/reports/*.json
+      site.ts                     # shared SITE_URL/SITE_NAME constants
   .github/workflows/validate-reports.yml  # CI: validates the archive on push/PR
-  trends_raw.json / trends_summary.json  # legacy cache files, migration 4/5 steps complete
   run.sh                        # full pipeline runner
 ```
 
