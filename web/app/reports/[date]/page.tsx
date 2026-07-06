@@ -12,9 +12,24 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ date: string }> }) {
   const { date } = await params;
+  const title = `${date} — ARI3LLA INDEX`;
+  const description = `Weekly style signal report issued ${date}.`;
   return {
-    title: `${date} — ARI3LLA INDEX`,
-    description: `Weekly style signal report issued ${date}.`,
+    title,
+    description,
+    alternates: { canonical: `${SITE_URL}/reports/${date}` },
+    openGraph: {
+      siteName: SITE_NAME,
+      title,
+      description,
+      url: `${SITE_URL}/reports/${date}`,
+      type: "article",
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
+    },
   };
 }
 
