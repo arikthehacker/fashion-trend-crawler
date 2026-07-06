@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-09 ~00:15 PDT — [Loop run 56](changelog-entries/run-56.md)** — 49th report's
+  drafted Met Gala reasoning contradicted the archive's own established finding about
+  the event's date; caught and corrected before committing. Two domains classified,
+  a real skip-link accessibility gap fixed across all 13 pages, a thorough post-Brotli
+  crawler health check confirms only one source was affected, and a structural gap
+  found (Met Gala 2027 has no real tracked signal_id).
+
 - **2026-07-08 ~23:00 PDT — [Loop run 55](changelog-entries/run-55.md)** — Run 54's
   independent-criticism source fix was actually broken under the real crawl path
   (Brotli decoding); found via real-pipeline testing and fixed by adding `brotli` as

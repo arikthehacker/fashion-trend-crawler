@@ -1194,8 +1194,33 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       warnings.
 
 ## Next up (run 56 candidates)
-- [ ] `runwaylive.com`/`stylerave.com` aren't yet in `DOMAIN_SECTOR_MAP` — minor,
-      non-urgent follow-up.
+- [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
+      correctness — still awaiting a human decision (run 50).
+- [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
+      run 50 remain open.
+- [ ] `gh` CLI/CI-status check next due at run 60.
+
+## Run 56 — done
+- [x] Added `data/reports/2027-05-31.json`, a 49th report — honest thin week.
+      **Consolidation catch**: the drafted Met Gala 2027 reasoning contradicted the
+      archive's own established finding (run 52) about the event's May 3, 2027 date,
+      incorrectly hypothesizing it "hasn't occurred yet." Caught before committing and
+      corrected via `save_report(revision_reason=..., corrected_at=...)`.
+- [x] Classified `runwaylive.com`/`stylerave.com` as `editorial` in `DOMAIN_SECTOR_MAP`
+      after verifying both are legitimate outlets, not content farms.
+- [x] Fixed a real WCAG 2.4.1 (skip-link) accessibility gap across all 13 route pages —
+      the site had no skip-to-content link anywhere.
+- [x] Post-Brotli-fix crawler health check — thorough, clean conclusion: only
+      `dieworkwear.com` was ever affected by the missing decoder; the other 12 sources
+      correctly negotiate gzip fallback and were never silently broken.
+- [x] Periodic audit — clean. 52 confidence mismatches, only the documented override
+      non-conservative. Found Met Gala 2027 has no real tracked `signal_id` (prose-only),
+      so dormancy tooling structurally can't see it.
+
+## Next up (run 57 candidates)
+- [ ] Consider giving Met Gala 2027 a real tracked `signal_id` so
+      `is_prolonged_silence()`/dormancy tooling can actually see it — same fix pattern
+      as CFDA Fashion Awards (run 30).
 - [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
       correctness — still awaiting a human decision (run 50).
 - [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
