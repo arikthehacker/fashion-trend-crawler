@@ -1137,10 +1137,38 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       sitemap/robots fix) — caught by the verification suite before committing, fixed.
 
 ## Next up (run 54 candidates)
-- [ ] The run-19 confidence-gate fix remains untested — revisit once
-      `independent_criticism` sources reappear.
 - [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
       correctness — still awaiting a human decision (run 50).
 - [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
       run 50 remain open — runs 51-52 only corrected the site's own claims about them.
 - [ ] `gh` CLI/CI-status check now due again at run 60 (every-10th-run cadence, run 53).
+
+## Run 54 — done
+- [x] **Solved a 30+ run mystery**: the run-19 confidence-gate fix was untested because
+      the `independent_criticism` sector was structurally unreachable — no source in
+      `FASHION_SOURCES` was ever classified as that sector, and the crawler's
+      same-domain-only BFS meant it could never surface one regardless of the
+      report-writing process. Added `dieworkwear.com` (WebFetch-verified: real
+      independent menswear-criticism blog, permissive robots.txt) to `FASHION_SOURCES`.
+      `throwingfits.com` tried and rejected (Patreon paywall redirect).
+- [x] Added `data/reports/2027-05-17.json`, a 47th report — Dior Cruise 2027 at LACMA
+      (Jonathan Anderson's debut) cleared the corroboration bar with 6 editorial
+      sources; confidence manually elevated to "high" with the override reasoning
+      documented, exercising the audit-tool's flag-for-review convention correctly.
+- [x] Rich Results validation against Google's actual documented requirements (not
+      assumption) — clean. Dataset's required properties present; NewsArticle missing
+      only `image`, a legitimate gap (no representative image exists for report pages).
+- [x] Font-loading performance check — clean. `next/font/google` already defaults to
+      `font-display: swap` and self-hosts font files; exceeds best practice.
+- [x] Periodic audit — clean. 50 confidence mismatches all editor-conservative, 0 field
+      coverage warnings.
+
+## Next up (run 55 candidates)
+- [ ] Watch future reports for whether `dieworkwear.com` actually produces a real
+      `independent_criticism` signal, finally exercising the run-19 confidence-gate fix
+      after 30+ runs of it sitting untested.
+- [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
+      correctness — still awaiting a human decision (run 50).
+- [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
+      run 50 remain open.
+- [ ] `gh` CLI/CI-status check next due at run 60.
