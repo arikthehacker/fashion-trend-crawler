@@ -1,0 +1,73 @@
+{
+  "report_date": "2026-08-10",
+  "collection_window": {
+    "start": "2026-08-04",
+    "end": "2026-08-10"
+  },
+  "sources_scanned": 14,
+  "items_collected": 4,
+  "source_sector_breakdown": {
+    "editorial": 2,
+    "independent_criticism": 1,
+    "retail": 1
+  },
+  "executive_summary": "This collection window (August 4-10, 2026) directly follows Copenhagen Fashion Week SS27, which ran August 3-7 and overlapped four of the window's seven days -- a genuine dated industry event, unlike the two prior quiet windows. However, targeted search this week could not surface dated post-show discourse: reviews, street-style recaps, or reaction coverage specifically datelined to the show itself. What search returned instead was pre-show forecast content (a Copenhagen SS27 preview published mid-June anticipating a peplum/exaggerated-waistline direction across the collection line-up) and separately, cross-outlet editorial, retail, and independent-criticism coverage of a broader peplum/basque-waist revival already circulating this year (WWD, an independent Substack critic, and a retail styling outlet). Both strands point at the same silhouette shift, but neither confirms what actually appeared on the Copenhagen runways this week -- the search tooling available to this report has no access to dated coverage published after the show closed. This is logged as a single forecast-stage signal rather than a confirmed runway finding, and the report is marked thin: the marquee in-window event exists, but verifiable dated discourse about what happened at it does not, which is a different and more specific limitation than the prior two windows' 'no event fell in this window' finding. The sheer-layering and soft-tailoring dormancy checks from the July 27 and August 3 reports were spot-checked again; both remain surrounded only by undated evergreen guide content, so they are not re-logged a third consecutive time to avoid padding the report with repeat non-findings -- see limitations.",
+  "top_signals": [
+    {
+      "name": "Peplum / exaggerated-waistline revival, forecast stage",
+      "type": "silhouette",
+      "source_sectors": [
+        "editorial",
+        "independent_criticism",
+        "retail"
+      ],
+      "confidence": "low",
+      "volatility": "emerging",
+      "origin_classification": "unclear",
+      "evidence": "A Copenhagen Fashion Week SS27 preview piece (published mid-June 2026, ahead of the August 3-7 show) forecast exaggerated waistlines, exposed waistbands, and peplum-shaped skirts and trousers across the line-up. Independently, WWD ('A Reviled 2010s Trend Is Suddenly Hot Again'), an independent-criticism Substack essay ('The Return of Peplum'), and a retail styling outlet's coverage of a related 'basque waist' trend at Paris Fall 2026 shows all describe the same silhouette direction -- exaggerated, structured waist emphasis -- as already circulating this year. No dated coverage confirming which pieces actually appeared on the Copenhagen runway during the August 3-7 show, or how critics/attendees reacted, could be located within this collection window.",
+      "index_note": "Treated as forecast-stage rather than confirmed: three source sectors independently describe the same waist-emphasis silhouette direction, which is unusual cross-sector agreement for a signal this early, but all of that agreement predates or is separate from the specific Copenhagen show this signal is nominally about. Confidence is held at 'low' until dated post-show coverage (reviews, street style, designer statements from the event itself) becomes available to confirm or contradict the forecast.",
+      "human_editor_note": "This is the first window where a real, dated fashion-calendar event (Copenhagen SS27) fell inside the collection window, but the report still could not find dated post-show coverage of it. Worth a human editor's judgment on whether that's a genuine one-week reporting lag (recap coverage often trails a show by 1-2 weeks) or a gap in the sources this project currently searches -- recommend rechecking this signal_id specifically in next window before treating the silence as meaningful.",
+      "source_corroboration_count": 3,
+      "signal_id": "peplum-waist-revival",
+      "confidence_source": "manual"
+    }
+  ],
+  "repeated_keywords": [
+    "peplum",
+    "basque waist",
+    "exaggerated waistline"
+  ],
+  "garments": [
+    "peplum skirt",
+    "peplum trouser",
+    "structured blazer"
+  ],
+  "silhouettes": [
+    "exaggerated waistline",
+    "basque waist"
+  ],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [
+    "Copenhagen Fashion Week SS27",
+    "Collina Strada international guest slot",
+    "Institution / Zalando Visionary Award 2026"
+  ],
+  "limitations": [
+    "Copenhagen Fashion Week SS27 (August 3-7, 2026) fell largely within this collection window, but no dated post-show reviews, street-style recaps, or reaction coverage from the event itself could be located via search as of this report's compilation -- only pre-show forecast/lineup content and separate, non-Copenhagen-specific peplum/basque-waist trend coverage. The single logged signal reflects that forecast, not a confirmed runway finding.",
+    "The sheer-layering (signal_id sheer-layering) and soft-tailoring (signal_id soft-tailoring) dormancy checks logged in the July 27 and August 3 reports were checked again this window; both are still surrounded only by undated evergreen 'trend guide' content with no fresh dated corroboration. They are not re-logged this window to avoid padding the report with a third consecutive non-finding on the same two signals -- recommend a human editor make a retirement/recheck-cadence call on both.",
+    "The 'Off-Duty Varsity' signal (signal_id off-duty-varsity), flagged for editorial retirement in the July 27 report, was not rechecked this window.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach.",
+    "Per project convention (see docs/agent-logs/thin-week-fallback.md), this report is marked collection_status: thin rather than manufacturing additional signals to match the signal count of earlier weekly reports."
+  ],
+  "archive_tags": [
+    "copenhagen-fashion-week-ss27",
+    "thin-week",
+    "2026-q3"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "Copenhagen Fashion Week SS27 (August 3-7) genuinely fell inside this collection window -- the first real in-window fashion-calendar event in three reports -- but search could not surface dated post-show discourse about it, only pre-show forecast content and separately-sourced peplum/basque-waist trend coverage unrelated to the specific show. One signal is logged at forecast-stage, low confidence, explicitly flagged as unconfirmed. The sheer-layering and soft-tailoring dormancy checks from the prior two reports were checked again and found still dormant but are not re-logged a third time to avoid padding. Per project policy, this is marked thin rather than filled out with repeated non-findings or unconfirmed forecasts inflated to a higher confidence tier.",
+  "revision_history": [],
+  "content_hash": "43c66a0fdb3c9f9b5734fca83900da0e5a3fef952044090e792e07e46e78fe4e"
+}
