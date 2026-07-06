@@ -63,7 +63,7 @@ const sections: { title: string; body: string[] }[] = [
   {
     title: "How AI Is Used",
     body: [
-      "Language models are used to extract, cluster, and summarize source material. They are not treated as independent authorities. Final classification depends on the Index taxonomy and human review.",
+      "Language models are used to extract, cluster, and summarize source material. They are not treated as independent authorities. Final classification depends on the Index taxonomy and a review step against editorial guidelines, currently carried out by the same automated process rather than a separate named human editor — see \"AI Involvement\" below for the full disclosure.",
       "This project uses AI for summarization and organization, not for replacing designers, journalists, stylists, archivists, or cultural analysis. The goal is to make public style discourse easier to scan while keeping human interpretation central.",
     ],
   },
@@ -71,7 +71,7 @@ const sections: { title: string; body: string[] }[] = [
     title: "Limitations",
     body: [
       "Coverage is bounded by the sources scanned in a given collection window and is not a representative sample of all style discourse. Reports may under-represent sources without accessible public text, or that require API access not yet integrated.",
-      "Signal classification involves human judgment applied to machine-extracted data, and reports may reflect that interpretive layer as much as the underlying source material.",
+      "Signal classification involves an interpretive review layer applied to machine-extracted data — currently performed by the same automated process rather than a separate human editor (see \"AI Involvement\") — and reports may reflect that layer as much as the underlying source material.",
       "A suspected error in a published report can be flagged by opening an issue on the project's public repository (github.com/arikthehacker/fashion-trend-crawler/issues). This is not a staffed inbox — response time is not guaranteed — but it is a real, monitored channel, not a placeholder. Corrections are appended to the affected report once verified; see the About page for the correction process itself.",
     ],
   },
@@ -119,9 +119,9 @@ const sections: { title: string; body: string[] }[] = [
     ],
   },
   {
-    title: "Human Review Process",
+    title: "Review Process",
     body: [
-      "Raw extraction identifies repeated language and clusters related terms. Human review interprets whether those terms belong together, assigns classification and origin, downgrades hype, and connects signals to historical context where relevant.",
+      "Raw extraction identifies repeated language and clusters related terms. The review step interprets whether those terms belong together, assigns classification and origin, downgrades hype, and connects signals to historical context where relevant — currently performed by the same automated process that drafts the report, not a separate named human editor (see \"AI Involvement\" above).",
       "The scraping collects signals. The taxonomy interprets them.",
     ],
   },
