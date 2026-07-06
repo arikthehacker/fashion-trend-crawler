@@ -19,6 +19,25 @@ than raw automated pulls.
    hashtag, trend name, or aesthetic pattern on TikTok, Pinterest, or
    another social platform, using only publicly visible pages — no login-walled scraping,
    no automated pulls.
+
+   **Concrete acceptance criterion for "opportunistic" (set run 52, replacing the
+   open-ended "no defined endpoint" status flagged by run 50's gap analysis):**
+   "opportunistic" means *checked* at least once every ~10 runs (a cheap WebSearch pass
+   over current Pinterest Predicts/Trends and TikTok discover/hashtag pages), but
+   *exercised* — i.e. an entry actually added — only when a candidate clears this bar:
+
+   - at least one source independent of the platform's own newsroom/PR page, AND
+   - that independent source shows actual editorial judgment/critique/observation, not
+     a repackaging of the platform's press-release stats and copy (a real-world
+     recurring failure mode: outlets like WhoWhatWear, Axios, or SEO content mills that
+     simply restate Pinterest's "X search up N%" figures verbatim do not count — see
+     runs 41 and 52, both of which found only this pattern for that cycle's Pinterest
+     Predicts report).
+
+   A "checked, nothing cleared the bar" outcome (runs 32, 41, 52 so far) is a complete,
+   successful exercise of this step — it is not a gap, does not need a "resolution," and
+   does not accumulate into a debt that must eventually be paid off with a forced entry.
+   The workflow's endpoint is the check itself, not a guaranteed signal at the end of it.
 2. **Log it.** For each observed signal, fill out one block of
    `docs/manual-sampling-template.md`: name, platform(s), hashtag/trend name, date
    observed, approximate volume/reach (or "unknown" — never guessed), public source
