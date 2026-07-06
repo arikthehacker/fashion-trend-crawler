@@ -63,10 +63,27 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       file in `data/reports/` so a bad hand-authored value (like the run-3 bug) can't sit
       undetected again.
 
-## Next up (run 4 candidates)
-- [ ] Add the CI/lint check for report validation mentioned above.
-- [ ] Exercise `manual_sample.py` to produce one real social-sector signal.
-- [ ] Consider whether `/signals/[slug]` should ship now that `signal_id` exists, even
-      with only 2 recurring slugs, vs. waiting for more data — worth a design decision.
-- [ ] Look at whether `content_hash`/`source_corroboration_count` should be surfaced in
-      the UI (report pages) now that they exist in the schema, or stay backend-only.
+## Run 4 — done
+- [x] CI validation check: `src/validate_all_reports.py` + `.github/workflows/validate-reports.yml`,
+      tested against an injected failure case, not just the happy path.
+- [x] Exercised `manual_sample.py`: added a real Pinterest-sourced social signal
+      ("Off-Duty Varsity", flagged low-confidence/flash/event-driven in its own
+      human_editor_note) to `data/reports/2026-07-13.json`.
+- [x] Shipped `/signals/[slug]` — decided to ship now rather than wait; low cost, and more
+      reports/slugs will only make it more useful over time.
+- [x] Surfaced `source_corroboration_count` and `content_hash` in the report UI (small,
+      unobtrusive — corroboration count only shown when >1, checksum truncated in footer).
+
+## Next up (run 5 candidates)
+- [ ] Accessibility/SEO audit found real gaps (`docs/agent-logs/accessibility-seo-research.md`):
+      report page section labels are styled `<p>` not `<h2>`/`<h3>` (breaks WCAG heading
+      hierarchy), no `sitemap.xml`/`robots.txt`, no JSON-LD structured data (Article/
+      NewsArticle schema), no canonical/OG metadata. Concrete file-level fixes documented,
+      not yet implemented.
+- [ ] Add a stable per-report citation line (date + archive URL + checksum) for archival
+      permanence, per the same research's Library of Congress-derived recommendation.
+- [ ] Run `validate_all_reports.py` locally as a pre-commit habit until the GitHub Actions
+      workflow actually runs on a real push (untested against live CI, only run locally).
+- [ ] Consider whether `/signals/[slug]`'s long auto-slugified IDs (e.g.
+      "off-duty-varsity-sports-luxe-summer-uniform") should be shortened/curated by a human
+      editor rather than mechanically generated from the full signal name.
