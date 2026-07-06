@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-07 ~17:00 PDT — [Loop run 32](changelog-entries/run-32.md)** — 25th report
+  avoids conflating two similarly-named award shows; periodic audit closes out 2 more
+  overdue dormant signals; year-end review research correctly declines an unsupported
+  feature; search facets confirmed fully dynamic; manual-sampling cadence check declines
+  to manufacture a signal just to hit a quota.
+
 - **2026-07-07 ~15:30 PDT — [Loop run 31](changelog-entries/run-31.md)** — Confirms
   `human_editor_note` was the one real "populated by convention, not schema-enforced"
   gap; 24th report; resort/cruise calendar research added; full-year coherence review

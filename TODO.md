@@ -658,12 +658,29 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       cache, no behavior change. Build time measured at ~9s for 80 pages/23 reports,
       confirmed not currently a bottleneck.
 
-## Next up (run 32 candidates)
+## Run 32 — done
+- [x] Added `data/reports/2026-12-14.json`, a 25th report — Fashion Fund winner now 8
+      windows open, Fashion Awards now 3 tracked windows. Correctly distinguished the
+      unrelated BFC "The Fashion Awards" (Royal Albert Hall, Nov 30) from the still-open
+      CFDA question rather than conflating them.
+- [x] Periodic audit found and closed out 2 more dormant signals
+      (`versace-mulier-debut-timing-unconfirmed`, `armani-post-founder-transition-continues`,
+      both silent 8 windows) that had never gotten the standard close-out treatment.
+- [x] Year-end review research: recounted real signal recurrence across all 24 reports —
+      still doesn't clear run 24's threshold, and the one signal that does recur 4+ times
+      is a non-style award-status item, not a genuine style thread. Correctly declined to
+      build either a quarterly retrospective or year-in-review page.
+- [x] Search-facet verification confirmed everything is already genuinely dynamic (no
+      hardcoded value lists) and Pagefind's index is current, not stale — no bugs found.
+- [x] Manual-sampling cadence check correctly declined to manufacture a 4th sample just
+      to hit a quota — doc §31 has no cadence requirement, and forcing an entry would
+      violate the workflow's own human-judgment principle. Softened the workflow doc's
+      "weekly" wording to "opportunistically" to match actual/correct practice.
+
+## Next up (run 33 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
-- [ ] Re-measure build performance once the archive crosses ~100 reports — page count,
-      not `getAllReports()` cost, will likely dominate by then.
-- [ ] Continue monitoring both CFDA questions; consider whether the Fashion Awards
-      question (informally old but newly tracked) needs any special handling once it also
-      crosses the prolonged-silence threshold on its own tracked history.
+- [ ] Continue monitoring both CFDA questions as their tracked histories grow.
+- [ ] Year-end review threshold still not met — re-check after a few more reports land,
+      per the research's recommendation.
