@@ -1,0 +1,92 @@
+{
+  "report_date": "2027-07-19",
+  "collection_window": {
+    "start": "2027-07-13",
+    "end": "2027-07-19"
+  },
+  "sources_scanned": 15,
+  "items_collected": 1,
+  "source_sector_breakdown": {
+    "editorial": 3,
+    "institutional": 1,
+    "unclear": 2
+  },
+  "executive_summary": "This collection window (July 13 - July 19, 2027) is the fifty-sixth archived window. The dominant new discourse is Thom Browne's first-ever Milan menswear runway show, staged at Palazzo Serbelloni for the SS27 season, which drew broad trade-press coverage framing it as a milestone for the designer. Reception is coded as mostly positive with one clear dissent (Highsnobiety), rather than a unanimous triumph -- a distinction this report holds onto deliberately. Met Gala 2027 remains untracked going forward per its existing status; a check this window surfaced no new theme, co-chair, or red-carpet coverage. Wales Bonner/Hermes and CFDA Fashion Fund/Awards were not re-litigated this window per SKILL.md workflow note 10.",
+  "top_signals": [
+    {
+      "name": "Thom Browne's Milan menswear debut (Palazzo Serbelloni)",
+      "type": "designer_signal",
+      "source_sectors": [
+        "editorial",
+        "institutional",
+        "unclear"
+      ],
+      "confidence": "high",
+      "volatility": "flash",
+      "origin_classification": "designer_originated",
+      "evidence": "Thom Browne staged his first-ever Milan runway show (SS27 menswear) in the courtyard of Palazzo Serbelloni, ending nearly two decades of showing menswear outside Italy. Coverage is broad and largely, though not unanimously, positive: WWD's runway review frames it as a bold, well-executed reset for the brand; CFDA's own writeup covers it as a milestone Milan debut; FashionNetwork and InsideHook cover the nature-themed, beekeeper-hat, seersucker-rose set design and tailoring as a high point of the men's season. Highsnobiety is the outlier, headlining its review 'Why Thom Browne's Milan Debut Was a Sumptuous Snooze' and framing the same craft and spectacle as over-familiar rather than a genuine risk.",
+      "index_note": "Classified designer_originated: this is a single house's runway event, not a retail or social amplification pattern. Reception is coded as broadly positive with one notable dissent rather than uniform, since collapsing Highsnobiety's negative read into a unanimous 'triumph' framing would misrepresent the actual spread of published opinion. fashionnetwork.com and insidehook.com are not yet in DOMAIN_SECTOR_MAP and classify as 'unclear' -- same taxonomy-coverage gap flagged in the two prior windows, still not closed.",
+      "source_corroboration_count": 5,
+      "signal_id": "thom-browne-milan-debut",
+      "confidence_source": "manual",
+      "human_editor_note": "Worth naming directly: three of this signal's five sources (WWD, CFDA, FashionNetwork) are trade-press or trade-body outlets with a structural interest in framing a first-time Milan debut by an established American designer as a milestone success story -- CFDA covering one of its own members' international expansion is not a neutral read in the way an unaffiliated critic's would be. Highsnobiety's dissenting 'snooze' review is the only source in this set with no institutional stake in the outcome, which is a reason to weight it more, not less, than its single-source status alone would suggest. Held this signal at 'high' confidence on corroboration/sector-diversity grounds per the formula, but the editorial judgment is that the discourse reads more like 'well-covered' than 'well-received' -- those are not the same claim, and the report should not let the volume of trade coverage stand in for consensus quality.",
+      "source_domains": [
+        "wwd.com",
+        "cfda.com",
+        "highsnobiety.com",
+        "fashionnetwork.com",
+        "insidehook.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "Thom Browne Milan debut",
+    "Palazzo Serbelloni menswear"
+  ],
+  "garments": [
+    "tailored suit",
+    "seersucker jacket",
+    "beekeeper hat accessory"
+  ],
+  "silhouettes": [
+    "tailored",
+    "structured shoulder"
+  ],
+  "materials": [
+    "seersucker",
+    "wool tailoring"
+  ],
+  "colors": [
+    "ivory",
+    "moss green"
+  ],
+  "aesthetic_terms": [
+    "preppy tailoring",
+    "nature motif embroidery"
+  ],
+  "cultural_references": [
+    "Palazzo Serbelloni",
+    "Milan Men's Fashion Week SS27"
+  ],
+  "limitations": [
+    "This signal is built from post-show trade-press coverage, not a systematic or representative sample of all published reviews.",
+    "fashionnetwork.com and insidehook.com remain outside taxonomy.py's DOMAIN_SECTOR_MAP and classify as 'unclear' sector rather than a verified one -- the same taxonomy coverage gap flagged on 2027-07-05 and 2027-07-12, not yet closed.",
+    "Three of five corroborating sources (WWD, CFDA, FashionNetwork) are trade-press/trade-body outlets with a structural interest in framing the debut favorably; this report does not treat volume of trade coverage as equivalent to critical consensus (see human_editor_note).",
+    "Met Gala 2027 was checked again this window per its 'untracked going forward pending new information' status (set 2027-07-05); no new coverage surfaced, consistent with continuing to leave it untracked rather than a claim the question is resolved.",
+    "Wales Bonner/Hermes and CFDA Fashion Fund/Awards were not re-litigated this window per SKILL.md workflow note 10; no coverage was searched for or found for either.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "thom-browne-milan-debut",
+    "wales-bonner-untracked-pending-new-information",
+    "cfda-signals-untracked-pending-new-information",
+    "met-gala-2027-untracked-pending-new-information",
+    "2027-q3"
+  ],
+  "content_hash": "22f0522b9caaea7c59494c6e0e77fc47523083065a60287761a1a66688b31d9f",
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": ""
+}
