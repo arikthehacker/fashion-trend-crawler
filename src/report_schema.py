@@ -72,6 +72,12 @@ class Signal:
     # see docs/agent-logs/journalism-research.md #1. optional/backward
     # compatible: old reports missing this field are treated as single-source.
     source_corroboration_count: int = 1
+    # URL-safe slug identifying this signal across reports for recurrence
+    # tracking (e.g. "sheer-layering"), assigned by summarize.py or a human
+    # editor note — see docs/agent-logs/signals-timeline-design.md. optional/
+    # backward compatible: empty string until assigned; old reports without
+    # it still validate.
+    signal_id: str = ""
 
 
 @dataclass
@@ -164,6 +170,24 @@ def validate_report(data: dict) -> None:
                 f"top_signals[{i}].source_corroboration_count must be an int >= 1, "
                 f"got {corroboration_count!r}"
             )
+
+        # optional field: only validated when non-empty, so reports without
+        # a signal_id (assigned pre-slug-field or never editorially linked)
+        # still validate. must be a lowercase-alphanumeric-with-hyphens slug.
+        signal_id = signal.get("signal_id", "")
+        if signal_id:
+            is_valid_slug = (
+                isinstance(signal_id, str)
+                and all(c.islower() or c.isdigit() or c == "-" for c in signal_id)
+                and not signal_id.startswith("-")
+                and not signal_id.endswith("-")
+                and "--" not in signal_id
+            )
+            if not is_valid_slug:
+                raise SchemaValidationError(
+                    f"top_signals[{i}].signal_id must be a lowercase "
+                    f"alphanumeric-with-hyphens slug, got {signal_id!r}"
+                )
 
     # optional field: only checked if present, so old reports without a
     # content_hash still validate.
