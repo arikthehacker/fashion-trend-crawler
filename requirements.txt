@@ -1,0 +1,13 @@
+# Python dependencies for the ARI3LLA INDEX crawler/summarizer pipeline
+# (src/crawler.py, src/summarize.py, src/server.py, src/manual_sample.py).
+#
+# brotli is required so `requests` can decode responses from hosts that
+# serve Brotli-compressed content (Content-Encoding: br) regardless of
+# Accept-Encoding -- without it, requests.Response.text comes back garbled
+# and crawl() silently finds 0 headlines with no error (found run 55,
+# dieworkwear.com; see docs/agent-logs/dieworkwear-crawl-verification-run55.md).
+
+requests
+beautifulsoup4
+anthropic
+brotli

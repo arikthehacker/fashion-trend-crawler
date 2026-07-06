@@ -88,6 +88,15 @@ DEFAULT_OUTPUT_FILE = "trends_raw.json"
 HEADERS = {
     "User-Agent": "fashion-trend-crawler/1.0 (educational project)"
 }
+# some hosts (e.g. dieworkwear.com, found run 55) respond with Brotli
+# (Content-Encoding: br) regardless of Accept-Encoding -- confirmed by
+# testing (the server ignores an Accept-Encoding: gzip, deflate override
+# and sends br anyway). requests only decodes Brotli if the `brotli` (or
+# `brotlicffi`) package is installed; without it response.text comes back
+# garbled and crawl() silently finds 0 headlines with no error. Fixed by
+# adding brotli as a real dependency (see requirements.txt) rather than
+# fighting the server's encoding choice. See
+# docs/agent-logs/dieworkwear-crawl-verification-run55.md.
 
 # cache robots parsers by domain so we dont re-fetch the same robots.txt repeatedly
 robots_cache = {}
