@@ -151,6 +151,7 @@ export default function Glossary() {
             { href: "/sources", label: "Sources" },
             { href: "/timeline", label: "Timeline" },
             { href: "/archive", label: "Archive" },
+            { href: "/search", label: "Search" },
             { href: "/about", label: "About" },
             { href: "/case-study", label: "Case Study" },
           ].map((item) => (

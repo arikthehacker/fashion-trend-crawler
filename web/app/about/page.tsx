@@ -59,6 +59,7 @@ export default function About() {
             { href: "/glossary", label: "Glossary" },
             { href: "/timeline", label: "Timeline" },
             { href: "/archive", label: "Archive" },
+            { href: "/search", label: "Search" },
             { href: "/case-study", label: "Case Study" },
           ].map((item) => (
             <Link

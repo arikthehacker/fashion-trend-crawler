@@ -141,6 +141,7 @@ export default function Taxonomy() {
             { href: "/glossary", label: "Glossary" },
             { href: "/timeline", label: "Timeline" },
             { href: "/archive", label: "Archive" },
+            { href: "/search", label: "Search" },
             { href: "/about", label: "About" },
             { href: "/case-study", label: "Case Study" },
           ].map((item) => (
