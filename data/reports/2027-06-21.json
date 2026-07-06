@@ -1,0 +1,136 @@
+{
+  "report_date": "2027-06-21",
+  "collection_window": {
+    "start": "2027-06-15",
+    "end": "2027-06-21"
+  },
+  "sources_scanned": 18,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "editorial": 2,
+    "retail": 2,
+    "unclear": 5
+  },
+  "executive_summary": "This collection window (June 15-21, 2027) is the fifty-second archived window. Two signals cleared the cross-source corroboration bar: a blokecore/soccer-jersey styling wave tied to the concurrent men's international football tournament calendar, spanning designer collaborations and street-style adoption, and a tomato-red color trend traced to Loewe's runway and repeated across color-trend roundups and event dressing (Royal Ascot). Met Gala 2027 was checked an eighth consecutive window -- still no theme, co-chair, or red-carpet coverage has surfaced for an event this index's own calendar research places on May 3, 2027, already past. Wales Bonner/Hermes and CFDA Fashion Fund/Awards were not re-litigated this window per SKILL.md workflow note 10; no new coverage surfaced incidentally.",
+  "top_signals": [
+    {
+      "name": "Blokecore / soccer jersey styling wave",
+      "type": "aesthetic_signal",
+      "source_sectors": [
+        "editorial",
+        "retail",
+        "unclear"
+      ],
+      "confidence": "medium",
+      "volatility": "seasonal",
+      "origin_classification": "retail_adopted",
+      "evidence": "Marie Claire, Who What Wear, Complex, and SoccerBible independently covered oversized vintage soccer jerseys worn as everyday streetwear ('blokecore') as a peak cultural moment tied to the current men's international football tournament, citing designer collaborations (H&M x Stella McCartney, Gap x Victoria Beckham, Uniqlo x Cecilie Bahnsen, Old Navy x Christopher John Rogers, Loewe as an official national-team apparel partner) and womenswear styling choices (jerseys paired with bloomer shorts, lace waist wraps, ballet flats). A retail-analytics blog (Trendalytics) separately reported sharp search-volume growth for jerseys over the same period.",
+      "index_note": "Classified retail_adopted rather than social_amplified or designer_originated: the pattern is fan apparel moving into designer-collaboration retail and styling-advice editorial coverage, not a single designer's runway statement or platform-native social trend. Tournament-driven volatility expected -- watch whether coverage persists past the tournament's conclusion or fades with it.",
+      "source_corroboration_count": 4,
+      "signal_id": "blokecore-world-cup-jersey-styling",
+      "confidence_source": "manual",
+      "human_editor_note": "Held at 'medium' rather than upgraded despite four corroborating outlets: two of the four domains (marieclaire.com, soccerbible.com) aren't in DOMAIN_SECTOR_MAP and classify 'unclear', and the entire signal is calendar-driven by an external sporting event rather than an independent fashion-cycle development -- real discourse, but its durability is genuinely unknown until it's tracked past the tournament window. Complex's commerce-adjacent styling-guide format carries the same incentive flagged for Who What Wear in prior reports.",
+      "source_domains": [
+        "marieclaire.com",
+        "whowhatwear.com",
+        "complex.com",
+        "soccerbible.com"
+      ]
+    },
+    {
+      "name": "Tomato red as dominant seasonal color",
+      "type": "aesthetic_signal",
+      "source_sectors": [
+        "retail",
+        "unclear"
+      ],
+      "confidence": "medium",
+      "volatility": "seasonal",
+      "origin_classification": "editorial_amplified",
+      "evidence": "Stylist, Coveteur, Who What Wear, and Wardrobe Oxygen each named bright tomato red as a defining color across current runway and event coverage, citing Loewe's runway execution (textured dresses and skirts, layered under sporty anoraks) as the trend's origin point and Royal Ascot's designation of tomato as its year-opening color as evidence of adoption into event dressing.",
+      "index_note": "Classified editorial_amplified rather than designer_originated: while Loewe's runway is cited as the originating reference, the trend claim itself is the outlets' synthesis across runway plus event-dressing contexts, not Loewe's own stated seasonal messaging.",
+      "source_corroboration_count": 4,
+      "signal_id": "tomato-red-color-trend",
+      "confidence_source": "manual",
+      "human_editor_note": "Held at 'medium': three of the four domains (stylist.co.uk, coveteur.com, wardrobeoxygen.com) fall outside DOMAIN_SECTOR_MAP and classify 'unclear', so the apparent editorial/retail diversity is thinner than the raw count suggests -- the same taxonomy-coverage caveat applied to prior color-trend signals (royal-purple-color-trend, 2027-06-14).",
+      "source_domains": [
+        "stylist.co.uk",
+        "coveteur.com",
+        "whowhatwear.com",
+        "wardrobeoxygen.com"
+      ]
+    },
+    {
+      "name": "Met Gala 2027 coverage gap",
+      "type": "factual_question",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "declining",
+      "origin_classification": "editorial_amplified",
+      "evidence": "Targeted search across eight consecutive weekly collection windows (2027-05-03 through 2027-06-21) found zero reachable coverage of a Met Gala 2027 theme, co-chairs, or red-carpet under that name, despite the event historically generating same-day saturation coverage.",
+      "index_note": "Reuses the signal_id introduced on 2027-05-31 (and reused 2027-06-14) so cross-report history keeps accumulating for this index's dormancy tooling. The event's date is not in question -- the Editorial Calendar places it on May 3, 2027, already past. Eight consecutive windows of zero coverage for an event that normally generates same-day reporting remains a genuine, unresolved coverage absence, not a calendar mismatch and not evidence the event didn't occur.",
+      "source_corroboration_count": 1,
+      "signal_id": "met-gala-2027-coverage-gap",
+      "confidence_source": "manual",
+      "human_editor_note": "Third occurrence of this exact signal_id (2027-05-31, 2027-06-14, now 2027-06-21), now covering window 8 of the gap. Confirmed no collision with any other signal_id before writing; reused verbatim per SKILL.md's explicit instruction and run 58's consolidation fix, which corrected a prior agent's mistaken archive_tag-only substitution.",
+      "source_domains": []
+    }
+  ],
+  "repeated_keywords": [
+    "blokecore jersey styling",
+    "tomato red color trend",
+    "Met Gala 2027 no coverage eighth window"
+  ],
+  "garments": [
+    "soccer jersey",
+    "anthem jacket",
+    "bloomer shorts",
+    "textured skirt"
+  ],
+  "silhouettes": [
+    "oversized",
+    "layered",
+    "column"
+  ],
+  "materials": [
+    "jersey mesh",
+    "poplin",
+    "raffia"
+  ],
+  "colors": [
+    "tomato red",
+    "cobalt",
+    "chartreuse"
+  ],
+  "aesthetic_terms": [
+    "blokecore",
+    "expressive dressing"
+  ],
+  "cultural_references": [
+    "men's international football tournament 2026 cycle",
+    "Royal Ascot"
+  ],
+  "limitations": [
+    "Met Gala 2027 was checked an eighth consecutive window (following 2027-05-03 through 2027-06-14). No theme, co-chair, or red-carpet coverage has ever surfaced across any of the eight windows checked, for an event this index's own calendar research places on May 3, 2027. This continues to be treated as a genuine, unresolved coverage gap, not a calendar question and not evidence of cancellation.",
+    "The blokecore/jersey signal is tied to an external sporting event's calendar rather than an independent fashion-cycle development; its durability past the tournament window is unknown and should be re-checked in future reports rather than assumed to persist.",
+    "2 of 4 blokecore source domains and 3 of 4 tomato-red source domains are not yet present in taxonomy.py's DOMAIN_SECTOR_MAP and classify as 'unclear' sector rather than a verified one -- a taxonomy coverage gap, not a claim those outlets are unreliable.",
+    "Wales Bonner/Hermes and CFDA Fashion Fund/Awards were not re-checked this window per SKILL.md workflow note 10; both remain 'untracked going forward pending new information.'",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "blokecore-world-cup-jersey-styling",
+    "tomato-red-color-trend",
+    "wales-bonner-untracked-pending-new-information",
+    "cfda-signals-untracked-pending-new-information",
+    "2027-q2",
+    "met-gala-2027-coverage-gap"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "review_status": "reviewed",
+  "reviewed_by": "",
+  "revision_history": [],
+  "content_hash": "4b0b30918bac5bd61499059597c4f3f2d992d31888990c407a2abe1d69f8bf59"
+}
