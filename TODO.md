@@ -1359,10 +1359,29 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       (`src/trends_raw.json`) left by the crawler-pipeline agent; renamed a
       misnumbered log file.
 
-## Next up (run 64 candidates)
-- [ ] `summarize.py` requires `ANTHROPIC_API_KEY`, unset in this environment — a
-      concrete, distinct blocker on real-pipeline reports beyond the crawler itself
-      working. Worth a human decision on whether/how to provide it.
+## Run 64 — done
+- [x] **Corrected run 63's finding**: `ANTHROPIC_API_KEY` is NOT actually missing —
+      a valid, working key exists in a git-ignored `.env`, and `summarize.py` already
+      loads it via `python-dotenv`. Verified live with a real API call returning a
+      genuine model response. The real pipeline can run end-to-end; the actual gap
+      is missing setup docs (no `.env.example`, README doesn't explain the mechanism).
+- [x] Added `data/reports/2027-07-26.json`, a 57th report — real Louis Vuitton
+      waterfall-staging backlash logged, with a genuine judgment call treating the
+      general-news-vs-trade-press coverage asymmetry as informative rather than
+      ignoring it.
+- [x] "Cool URIs don't change" review — clean. Report/signal URLs are keyed on
+      immutable dates/schema-validated slugs, independent of editable display text.
+- [x] Nav/build regression sweep — clean, no signal-anchor collisions, dark
+      mode/skip-link/Open Graph all still intact.
+- [x] Periodic audit — clean. 65 confidence mismatches, only the documented override
+      non-conservative; signal-reuse checker unchanged at 4 known false positives.
+
+## Next up (run 65 candidates)
+- [ ] Now that the API key is confirmed available, consider actually attempting a
+      full crawl→summarize→save cycle end-to-end for a future report, rather than
+      the crawl-only verification done so far.
+- [ ] Add a `.env.example` and setup documentation for the `.env` mechanism — the
+      real remaining gap, distinct from the (resolved) key-availability question.
 - [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
       correctness — still awaiting a human decision (run 50).
 - [ ] The underlying human-in-the-loop process gap flagged in run 50 remains open.

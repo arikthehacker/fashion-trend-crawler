@@ -18,6 +18,14 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-09 ~10:30 PDT — [Loop run 64](changelog-entries/run-64.md)** —
+  Significant correction to run 63: the "missing API key" blocker on real-pipeline
+  reports was wrong — a working key exists in a git-ignored `.env`, verified live
+  with a real API call. The real pipeline can actually run end-to-end; the gap is
+  now just missing setup docs (`.env.example`). 57th report logs a genuine
+  cross-sector coverage-asymmetry judgment call; URL-persistence review and nav/build
+  regression sweep both clean.
+
 - **2026-07-09 ~09:15 PDT — [Loop run 63](changelog-entries/run-63.md)** — Retried run
   62's stalled crawler-pipeline attempt with a strict synchronous time-box; completed
   cleanly, confirmed the pipeline's real output corroborates rather than duplicates
