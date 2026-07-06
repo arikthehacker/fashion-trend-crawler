@@ -135,56 +135,78 @@ export default function Archive() {
           </p>
         ) : (
           <div style={{ display: "flex", flexDirection: "column" }}>
-            {reports.map((report) => (
-              <Link
-                key={report.report_date}
-                href={`/reports/${report.report_date}`}
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "160px 1fr auto",
-                    gap: "2rem",
-                    alignItems: "start",
-                    padding: "1.75rem 0",
-                    borderBottom: "1px solid var(--border)",
-                  }}
-                >
-                  <p style={{
-                    fontFamily: "var(--font-franklin)",
-                    fontSize: "0.75rem",
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                    color: "var(--black)",
-                    paddingTop: "0.2rem",
-                  }}>
-                    {report.report_date}
-                  </p>
-                  <p style={{
-                    fontFamily: "var(--font-franklin)",
-                    fontSize: "0.95rem",
-                    lineHeight: "1.6",
-                    color: "var(--gray)",
-                  }}>
-                    {report.top_signals?.[0]?.name
-                      ? `Top signal: ${report.top_signals[0].name}`
-                      : "Report on file"}
-                  </p>
-                  <p style={{
-                    fontFamily: "var(--font-franklin)",
-                    fontSize: "0.7rem",
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                    color: "var(--gray)",
-                    whiteSpace: "nowrap",
-                    paddingTop: "0.2rem",
-                  }}>
-                    {report.sources_scanned} sources
-                  </p>
+            {reports.map((report, i) => {
+              const year = report.report_date.slice(0, 4);
+              const prevYear = i > 0 ? reports[i - 1].report_date.slice(0, 4) : null;
+              const isNewYear = year !== prevYear;
+              return (
+                <div key={report.report_date}>
+                  {isNewYear && (
+                    <h2
+                      style={{
+                        fontFamily: "var(--font-franklin)",
+                        fontSize: "0.75rem",
+                        letterSpacing: "0.15em",
+                        textTransform: "uppercase",
+                        color: "var(--red)",
+                        margin: i === 0 ? "0 0 0.5rem" : "2.5rem 0 0.5rem",
+                        paddingTop: i === 0 ? 0 : "1rem",
+                        borderTop: i === 0 ? "none" : "1px solid var(--border)",
+                      }}
+                    >
+                      {year}
+                    </h2>
+                  )}
+                  <Link
+                    href={`/reports/${report.report_date}`}
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    <div
+                      style={{
+                        display: "grid",
+                        gridTemplateColumns: "160px 1fr auto",
+                        gap: "2rem",
+                        alignItems: "start",
+                        padding: "1.75rem 0",
+                        borderBottom: "1px solid var(--border)",
+                      }}
+                    >
+                      <p style={{
+                        fontFamily: "var(--font-franklin)",
+                        fontSize: "0.75rem",
+                        letterSpacing: "0.1em",
+                        textTransform: "uppercase",
+                        color: "var(--black)",
+                        paddingTop: "0.2rem",
+                      }}>
+                        {report.report_date}
+                      </p>
+                      <p style={{
+                        fontFamily: "var(--font-franklin)",
+                        fontSize: "0.95rem",
+                        lineHeight: "1.6",
+                        color: "var(--gray)",
+                      }}>
+                        {report.top_signals?.[0]?.name
+                          ? `Top signal: ${report.top_signals[0].name}`
+                          : "Report on file"}
+                      </p>
+                      <p style={{
+                        fontFamily: "var(--font-franklin)",
+                        fontSize: "0.7rem",
+                        letterSpacing: "0.1em",
+                        textTransform: "uppercase",
+                        color: "var(--gray)",
+                        whiteSpace: "nowrap",
+                        paddingTop: "0.2rem",
+                      }}>
+                        {report.sources_scanned} sources
+                      </p>
+                    </div>
+                  </Link>
                 </div>
-              </Link>
-            ))}
+              );
+            })}
           </div>
         )}
       </section>
