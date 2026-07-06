@@ -193,13 +193,34 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       was already stale the moment it landed, since revision_history shipped concurrently
       with the note claiming it was still open).
 
-## Next up (run 10 candidates)
-- [ ] Wire `summarize.py`'s save call through `revision_history` so re-running the pipeline
-      on today's already-used date works safely instead of being blocked/ignored.
-- [ ] Execute migration step 5: delete legacy `trends_raw.json`/`trends_summary.json` (root
-      + `src/`, 4 files) now that nothing references the hardcoded literal filename —
-      needs one final grep-wide verification pass first.
-- [ ] Continue watching for confidence-warning drift as new reports are added (currently
-      14 mismatches, all reviewed as non-concerning conservative-LLM cases).
-- [ ] Consider whether the git-safety guardrail should also apply to the coordinator's own
-      consolidation step, not just subagents.
+## Run 10 — done
+- [x] Wired `revision_history` into `summarize.py` — `summarize()` takes optional
+      `revision_reason`/`corrected_at` (CLI flags via argparse), blocks with a clear
+      re-run message on an unreasoned overwrite instead of crashing, first-time saves
+      unaffected.
+- [x] **Migration step 5 verification found a real blocker prior runs missed:**
+      `web/lib/trends.ts` (the Next.js live-crawl data loader) still reads root-level
+      `trends_raw.json`/`trends_summary.json` directly via `fs.readFileSync` — every prior
+      migration-step run only checked `src/*.py`, never the frontend. Legacy files
+      correctly NOT deleted. See `docs/agent-logs/migration-step5-final.md`.
+- [x] Second full voice audit (first since run 1) — found and fixed a tonal outlier on the
+      about page (manifesto-style aphorisms that read as "stylist voice" without using a
+      literal banned word). Everything else already compliant.
+- [x] Added `data/reports/2026-07-27.json`, a 5th report — **first real-world test of the
+      thin-week honesty mechanism**: genuinely found too few distinct signals in-window and
+      correctly set `collection_status: "thin"` with an honest note instead of padding.
+      This validates the run-7 schema work actually holds up in practice.
+- [x] Refreshed `README.md` and `case-study/page.tsx` to match 9 runs of actual shipped
+      work (they'd drifted well behind reality).
+
+## Next up (run 11 candidates)
+- [ ] **New migration blocker:** `web/lib/trends.ts` needs to be migrated off the legacy
+      `trends_raw.json`/`trends_summary.json` files (or explicitly retired/repurposed)
+      before those files can finally be deleted. This is real, scoped frontend work, not
+      just a backend constant swap like steps 1-4 were.
+      See `docs/agent-logs/migration-step5-final.md`.
+- [ ] Continue watching for confidence-warning drift as new reports are added.
+- [ ] Consider whether `web/lib/trends.ts`'s live-crawl view (separate from the archive
+      view in `web/lib/reports.ts` by design, per the skill doc) is still a feature this
+      project wants, or whether it should be retired now that the archive view has grown
+      into the primary interface — worth a design decision before migrating it.
