@@ -406,15 +406,33 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       external citation: Getty AAT/ICOM Costume Core controlled-vocabulary standards,
       relevant to `taxonomy.py`'s garment/material vocab as the archive scales.
 
-## Next up (run 20 candidates)
-- [ ] **Build the "THIS WEEK'S INDEX" condensed metrics module** — a real, doc-central
-      feature missed for 18 runs. Needs design (what metrics: dominant mood, rising term,
-      noise level, highest-volatility sector) before implementation.
-- [ ] **Build `/glossary`** — style/aesthetic terms glossary, doc §24, listed as an
-      optional page but never built while other optional pages exist.
-- [ ] Consider Costume Core/Getty AAT as a reference standard for `taxonomy.py`'s garment
-      vocabulary as the archive grows.
-- [ ] Southeast Asian source coverage remains open; vogue.ph specifically is blocked by a
-      Cloudflare JS challenge that `requests` can't pass — would need a different
-      crawling approach (headless browser) if pursued, likely out of scope for the
-      current lightweight crawler design.
+## Run 20 — done
+- [x] **Built "THIS WEEK'S INDEX"** — `getThisWeeksIndex()` in `reports.ts` derives 8
+      real metrics (sources scanned, items collected, top signal, rising term, recurring
+      material, dominant mood, highest-volatility sector, overall confidence) from actual
+      report data, no hardcoding. Compact, plain-text module on the homepage per doc §27/28.
+- [x] **Built `/glossary`** — ~29 terms extracted from `aesthetic_terms`/
+      `cultural_references`/`top_signals[].name` across all 13 reports, deduplicated,
+      wire-service definitions, linked from nav on 4 pages.
+- [x] Costume Core/Getty AAT research: found one genuine terminology drift case
+      (`peplum-waist-revival`'s garment description silently changed across 3 reports) but
+      concluded a formal controlled vocabulary isn't worth adopting yet at this archive
+      size — recommended a lightweight interim practice instead.
+- [x] Nav-consistency audit found and fixed real drift in the "minimal footer nav" family
+      (missing Search/Home links on 3 pages) — independent of and complementary to the
+      glossary page's own nav wiring.
+- [x] Added `data/reports/2026-09-21.json`, a 13th report (LFW week) — continued the
+      established discipline of not re-asserting unverified prior signals without fresh
+      evidence.
+
+## Next up (run 21 candidates)
+- [ ] Interim garment-terminology practice from the Costume Core research (append-only
+      terms per carried-forward `signal_id` unless a note documents a change) — not yet
+      formally adopted as a stated convention anywhere.
+- [ ] Now that "THIS WEEK'S INDEX" and `/glossary` are both built, do a fresh full-doc
+      re-read style check to see if any other doc-central features were missed alongside
+      these two — worth confirming there isn't a third.
+- [ ] Southeast Asian source coverage remains open (vogue.ph blocked by Cloudflare JS
+      challenge — would need a headless-browser approach, likely out of scope).
+- [ ] Consider whether "THIS WEEK'S INDEX" should also appear on `/archive` or per-report
+      pages, or if homepage-only is the right scope.

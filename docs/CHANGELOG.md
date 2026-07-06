@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-07 ~00:30 PDT — [Loop run 20](changelog-entries/run-20.md)** — Shipped the
+  two doc-central gaps run 19 found: "THIS WEEK'S INDEX" (real derived metrics on the
+  homepage) and `/glossary` (terms extracted from the actual archive). Also fixed real
+  nav drift, researched Costume Core vocabulary standards (concluded not worth adopting
+  yet), and added a 13th report.
+
 - **2026-07-06 ~23:50 PDT — [Loop run 19](changelog-entries/run-19.md)** — Tuned the
   confidence-conservatism prompt; added manual-sampling marketing-vs-organic guidance; a
   12th report proved the busy-week fixes hold under real fashion-week volume; source
