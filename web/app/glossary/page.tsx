@@ -157,6 +157,10 @@ const DEFINITIONS: Record<string, string> = {
   "awards season dressing": "Style coverage tied to the period surrounding televised or industry award ceremonies, tracked as occasion-specific rather than everyday styling.",
   "british fashion awards": "An annual British Fashion Council ceremony recognizing designers and industry figures, cited as a source event for pre-ceremony occasion-dressing style coverage.",
   "restraint dressing": "A critical framing describing covered-hand, high-neckline eveningwear as a deliberate counterpoint to overtly skin-baring red-carpet styling, proposed in independent-criticism commentary rather than by a designer or retailer.",
+  "chanel": "A Paris-based luxury fashion house, cited as a designer-origin source when its runway, resort, or retail output is tracked.",
+  "gift-wrap dressing": "A social-platform styling term for bow-and-ribbon accent detailing added to coats, bags, or hair, observed circulating on TikTok during the Black Friday/Cyber Monday holiday shopping window; tracked as a single-source, platform-native signal, not yet picked up editorially or at retail.",
+  "obi-sash cocoon coat": "A rounded, sculpted cocoon-shaped coat closed with a wide obi-style sash tied at the waist, observed across resort 2028 previews from multiple houses.",
+  "cocoon silhouette": "A rounded, voluminous garment shape that tapers inward at the hem, named for its resemblance to a cocoon rather than a fitted or A-line cut.",
 };
 
 function normalize(term: string): string {
