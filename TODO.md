@@ -724,12 +724,37 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       window counts, threshold-crossing notes), so the module reads as an evolving status
       line, not stale data.
 
-## Next up (run 35 candidates)
+## Run 35 — done (all 5 tasks tightly scoped, no stalls)
+- [x] Added `data/reports/2027-01-04.json`, a 28th report, crossing into the new year —
+      **both CFDA questions transitioned to "untracked going forward pending new
+      information" for the first time**, exercising the run-34 convention in practice
+      immediately.
+- [x] Slug-quality check found 11+ candidates over the length threshold — correctly
+      stopped without editing since that's well past the run's 5-candidate scope cap;
+      flagged for a dedicated future pass that checks cross-file signal_id references
+      before any renaming.
+- [x] Archival-practice research found a genuine, actionable gap: no `source_url` field
+      exists anywhere in the schema, so link-rot mitigation (Wayback/Perma.cc-style
+      snapshotting) is premature — nothing is actually cited/linked yet. Recommends
+      adding `source_url(s)` wired from the crawler's fetched URLs, but **note the
+      tension with run 34's removal of `source_links`** for source-protection reasons —
+      needs reconciling, not blind implementation.
+- [x] 3-report quality spot-check across the archive's full timeline (early/mid/recent)
+      — all clean, no fixes needed. Correctly deferred a judgment call on convention
+      timing to the coordinator rather than acting unilaterally.
+- [x] Pagefind regression check confirmed the search index still builds correctly after
+      run 34's `source_links` removal — 81 pages/3456 words indexed, consistent growth.
+
+## Next up (run 36 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
-- [ ] Watch for either CFDA question to actually need the new "untracked going forward"
-      treatment once enough further windows pass with no resolution.
-- [ ] Note for future dispatches: keep single-topic research/maintenance tasks tightly
-      scoped (2-3 searches, one concrete addition) after this run's stall — broad
-      "do a full pass" framings risk open-ended agent runtime.
+- [ ] **Reconcile the `source_url` vs. `source_links` tension**: run 34 removed
+      `source_links` as unnecessary dead typing with a source-protection concern; run 35
+      independently found a real citation gap that would need a similar field. If pursued,
+      design the source-protection mitigation (link to outlet homepage/section, not
+      per-article permalink, per run 33's original recommendation) as part of the same
+      change, not as an afterthought.
+- [ ] Dedicated slug-quality pass needed — 11+ signal_ids exceed the length convention,
+      requires checking cross-file references before renaming, out of scope for a quick
+      check.

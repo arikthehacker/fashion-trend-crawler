@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-07 ~21:30 PDT — [Loop run 35](changelog-entries/run-35.md)** — All 5 tasks
+  tightly scoped, no stalls. 28th report exercises the "untracked going forward"
+  convention for real; slug-quality check correctly stops at its scope boundary;
+  archival research finds a real citation gap in tension with a prior run's removal;
+  quality spot-check and Pagefind regression check both clean.
+
 - **2026-07-07 ~20:15 PDT — [Loop run 34](changelog-entries/run-34.md)** — 27th report;
   editorial calendar addition retried successfully after last run's stall; `source_links`
   removed with real reasoning; a genuinely new honest "untracked going forward" state
