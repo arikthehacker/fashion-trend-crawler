@@ -1,0 +1,63 @@
+{
+  "report_date": "2026-07-27",
+  "collection_window": {
+    "start": "2026-07-21",
+    "end": "2026-07-27"
+  },
+  "sources_scanned": 11,
+  "items_collected": 6,
+  "source_sector_breakdown": {
+    "editorial": 4,
+    "social": 1,
+    "retail": 1
+  },
+  "executive_summary": "This collection window (July 21-27, 2026) falls in a genuine off-season lull: no runway/fashion-week event occurred during this period (Paris Couture and Men's wrapped in late June/early July; the next major show, Copenhagen Fashion Week SS27, does not open until August), and targeted web search surfaced only recycled seasonal-roundup content (generic 'summer trends,' 'back-to-school' pieces) rather than dated, verifiable discourse specific to this window. Two items previously logged as active signals -- the Chanel/Charvet acquisition and the 'Off-Duty Varsity' World Cup jersey-styling signal -- were checked for continuation. Charvet coverage has fully quieted (no new trade-press follow-up found this window, consistent with a completed, already-reported acquisition rather than an ongoing discourse signal). The jersey-styling signal's post-tournament check (recommended in the July 20 report, since the 2026 FIFA World Cup ended July 19) also came up empty: no dated coverage from this window was found reframing jersey styling outside the tournament occasion, which is itself weak evidence for the declining/event-driven reading rather than a durable style shift, but is not strong enough on its own to log as a fresh finding. Per the project's honesty-over-quota principle (see thin-week fallback guidance), this report is marked 'thin' rather than padded with repackaged seasonal-roundup copy to hit a target signal count.",
+  "top_signals": [
+    {
+      "name": "\"Off-Duty Varsity\" jersey styling, post-tournament check",
+      "type": "styling_behavior",
+      "source_sectors": [
+        "editorial",
+        "social"
+      ],
+      "confidence": "low",
+      "volatility": "declining",
+      "origin_classification": "platform_native",
+      "evidence": "Following the July 20, 2026 report's flag to re-check this signal after the 2026 FIFA World Cup closed (June 11-July 19), a targeted search this window for post-tournament jersey-styling coverage returned only pieces published during the tournament itself (Who What Wear's 'How to Style a Soccer Jersey for the World Cup,' The Zoe Report's jersey-styling piece, Complex's styling guide) -- no editorial or retail source was found this window reframing soccer-jersey styling as a standalone, tournament-independent wardrobe habit.",
+      "index_note": "Absence of new post-tournament coverage is treated as weak corroborating evidence for the 'event-driven search noise' reading flagged in the prior two reports, not confirmation -- a search returning no new hits could equally reflect the general slowdown in fashion-press output this window rather than the signal's actual demise. Confidence held at low; volatility held at declining rather than downgraded to a terminal state, since one absent-evidence window is not sufficient to close the signal out.",
+      "human_editor_note": "This closes the loop the July 13 and July 20 reports opened, but on thin evidence (absence of hits, not a positive statement that jersey styling has stopped). A human editor should decide whether one more quiet window is enough to retire this signal_id from active tracking, or whether it should simply lapse from future reports without a formal close-out.",
+      "source_corroboration_count": 1,
+      "signal_id": "off-duty-varsity"
+    }
+  ],
+  "repeated_keywords": [
+    "jersey styling",
+    "World Cup"
+  ],
+  "garments": [
+    "soccer jersey"
+  ],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [
+    "2026 FIFA World Cup"
+  ],
+  "limitations": [
+    "This was a genuinely low-output collection window: no fashion week or comparable industry event occurred July 21-27, 2026, and search results for this period were dominated by generic, undated 'summer 2026' and 'back-to-school 2026' roundup content rather than discourse specific to this window.",
+    "Several items considered for inclusion (Gymshark founder Ben Francis's stake buyback talks with General Atlantic, reported July 4, 2026; France's ultra-fast-fashion advertising-restriction law, passed by the French Senate June 29, 2026) were excluded because they fall outside this collection window and are business/regulatory news rather than style discourse.",
+    "The single logged signal (off-duty-varsity post-tournament check) is a continuation/close-out check on a signal first logged July 13, 2026, not a newly discovered signal this window; its evidence is an absence of new coverage, which is weaker than a positive finding and is flagged as such.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach.",
+    "Per project convention (see docs/agent-logs/thin-week-fallback.md), this report is marked collection_status: thin rather than manufacturing additional signals to match the signal count of prior weekly reports."
+  ],
+  "archive_tags": [
+    "off-duty-varsity-closeout",
+    "thin-week",
+    "2026-q3"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "Only one genuinely trackable item (a continuation/close-out check, not a new discovery) was found for this window after multiple targeted searches across editorial, retail, and social-adjacent sources. No fashion week or comparable event fell in this period, and the Chanel/Charvet story already reported on July 20 has gone quiet. Rather than fill out a full signal roster with repackaged seasonal 'summer trends' listicles that were not specific to this window, this report is marked thin per the project's Nieman Lab-informed policy against inflating weak coverage to hit a quota.",
+  "revision_history": [],
+  "content_hash": "90db65e62de3e0e5cc8633f5f51d532eca39eb9baf09481f29e431db8e400530"
+}
