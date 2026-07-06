@@ -1409,10 +1409,26 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       rssboard's Best Practices Profile.
 - [x] Nav/build regression sweep and periodic audit both clean.
 
-## Next up (run 67 candidates)
-- [ ] Do NOT attempt the real crawler pipeline again until `crawler.py`'s hang is
-      directly debugged (likely a missing timeout on a `requests.get()` call in the
-      BFS loop) — three autonomous attempts have all stalled for this same reason.
+## Run 67 — done
+- [x] Diagnosed the crawler hang via pure static code review (no execution): both
+      network calls already have `timeout=8`, but that only bounds individual reads,
+      not total transfer time on a slow-trickle host. Corroborated by a delayed
+      straggler finding: `crawl_all_sources()` only writes output once at the end,
+      discarding all progress on a hang/kill. Applied a safe incremental-flush
+      mitigation (writes after every source, not just at the end) — verified only via
+      `py_compile`, crawler never executed.
+- [x] Added `data/reports/2027-08-23.json`, a 60th report — Glenn Martens' Margiela
+      debut, confidence discipline holding for a 3rd consecutive report.
+- [x] Fixed a real garments/silhouettes controlled-vocabulary boundary violation
+      ("godet skirt" in both lists for one report) — added explicit prompt guidance
+      separating the two categories going forward.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Next up (run 68 candidates)
+- [ ] `crawler.py`'s underlying hang is diagnosed but not fixed at the root — the
+      incremental-flush change is a mitigation, not a cure. A real fix (streamed
+      reads with a monotonic deadline, or a per-source watchdog thread) needs a human-
+      supervised live test to verify; still off-limits for autonomous runs.
 - [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
       correctness — still awaiting a human decision (run 50).
 - [ ] The underlying human-in-the-loop process gap flagged in run 50 remains open.

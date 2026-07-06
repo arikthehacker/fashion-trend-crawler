@@ -18,6 +18,14 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-09 ~14:15 PDT — [Loop run 67](changelog-entries/run-67.md)** — Made real
+  progress diagnosing the crawler hang via pure static code review (no execution): a
+  plausible per-read-vs-total-transfer-time timeout mismatch, corroborated by a
+  delayed straggler finding that crawl output is only written once at the end,
+  discarding all progress on a hang/kill. Applied a safe incremental-flush mitigation,
+  verified only via py_compile. 60th report continues confidence discipline; a real
+  garments/silhouettes vocabulary boundary violation found and fixed.
+
 - **2026-07-09 ~13:00 PDT — [Loop run 66](changelog-entries/run-66.md)** — Root cause
   of three consecutive crawler-pipeline stalls (runs 62, 65, 66) finally found: not
   agent scoping, but `crawler.py` itself hanging indefinitely — two real hung
