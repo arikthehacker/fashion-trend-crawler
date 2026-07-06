@@ -745,16 +745,37 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [x] Pagefind regression check confirmed the search index still builds correctly after
       run 34's `source_links` removal — 81 pages/3456 words indexed, consistent growth.
 
-## Next up (run 36 candidates)
+## Run 36 — done
+- [x] **Reconciled the `source_url`/`source_links` tension with a final decision**: added
+      `Signal.source_domains` (bare homepage domains only, e.g. `"vogue.com"`) — satisfies
+      the citation need from run 35 while structurally avoiding run 33's per-article
+      pile-on risk, enforced by schema validation (rejects `/` or `http`-prefixed values),
+      not just convention. Deliberately schema-only this run — not populated by
+      `summarize.py`, not rendered anywhere yet (that's separately scoped future work).
+      `check_field_coverage.py` correctly flags it as unreferenced — expected, not a bug.
+- [x] Added `data/reports/2027-01-11.json`, a 29th report — correctly stopped
+      re-litigating the untracked CFDA questions weekly per the new convention, and
+      honestly logged a real Golden Globes calendar-date signal without fabricating
+      post-ceremony coverage that doesn't exist yet.
+- [x] **Dedicated slug-curation pass completed**: all 12 over-length signal_ids from run
+      35's flag renamed across 19 report files, including the high-impact recurring CFDA
+      Fashion Fund signal (spans 7+ reports) — safety-checked first (slugs are looked up
+      dynamically, no hardcoded references anywhere).
+- [x] IPTC metadata check found and fixed a real bug: `dateModified` in report pages'
+      JSON-LD was hardcoded equal to `datePublished` even for reports with real
+      corrections — now correctly uses the latest `revision_history` entry when present.
+- [x] Fresh CI environment verification (new venv, `node_modules` wiped and reinstalled)
+      found no environment-assumption bugs — everything that passes locally also passes
+      fresh. `gh` CLI still unavailable, so real GitHub Actions status remains
+      unconfirmed. Also cleaned up a stale `eslint-disable` comment flagged in 2
+      consecutive runs.
+
+## Next up (run 37 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
-- [ ] **Reconcile the `source_url` vs. `source_links` tension**: run 34 removed
-      `source_links` as unnecessary dead typing with a source-protection concern; run 35
-      independently found a real citation gap that would need a similar field. If pursued,
-      design the source-protection mitigation (link to outlet homepage/section, not
-      per-article permalink, per run 33's original recommendation) as part of the same
-      change, not as an afterthought.
-- [ ] Dedicated slug-quality pass needed — 11+ signal_ids exceed the length convention,
-      requires checking cross-file references before renaming, out of scope for a quick
-      check.
+- [ ] `source_domains` exists in the schema now but isn't populated by `summarize.py` or
+      rendered anywhere — decide whether/when to wire it through, as a deliberately
+      separate, smaller follow-up (not bundled into the schema decision).
+- [ ] Consider whether `summarize.py`'s prompt should be updated to actually populate
+      `source_domains` for new signals going forward, now that the field exists.
