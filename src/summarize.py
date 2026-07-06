@@ -81,6 +81,8 @@ When a signal continues an existing signal_id carried forward from a prior repor
 
 If a headline is in a language other than English, do not silently translate and classify it as if it were equivalent to English-language coverage. You may interpret it to extract the signal, but note in the evidence or index_note field that the source material was non-English (name the language if identifiable) and that the term/description is a translation, not a direct quote.
 
+Do not write anything into human_editor_note yourself -- leave it empty. It is populated by a separate human/editorial review pass and exists specifically to hold a judgment call that evidence and index_note cannot: what a cluster of raw signals actually means, what to watch for next, or a call the archive is choosing not to make yet. A human_editor_note that only rephrases the evidence or index_note sentence in different words defeats the field's purpose (see doc section 18/19 and SKILL.md workflow note 5) and should not be produced.
+
 If the source material yields only a small number of genuinely distinct, well-supported signals, do not stretch, duplicate, or manufacture additional signals to appear more comprehensive. Instead, set "collection_status" to "thin" and use "thin_week_note" to state plainly that this reporting period had limited signal volume, so the report reflects the actual state of coverage rather than an inflated one. Use "collection_status": "normal" and leave "thin_week_note" empty when signal volume is adequate.
 
 For each signal, populate "source_domains" with the bare homepage domain(s) (the same domain form shown in each headline's [domain | source_sector] tag, e.g. "vogue.com" — never a full article URL or path) of the sources supporting that signal. List each distinct domain once.
@@ -108,7 +110,8 @@ Return your response as JSON with exactly this structure (no markdown, no backti
       "volatility": "stable | emerging | seasonal | volatile | flash | microtrend | recurring | revival | long_tail | saturated | declining",
       "origin_classification": "designer_originated | editorial_amplified | retail_adopted | social_amplified | platform_native | archive_revival | unclear",
       "evidence": "one sentence describing what the data shows, citing source sectors, not opinion.",
-      "index_note": "one sentence of methodological context, e.g. why this confidence/volatility was assigned."
+      "index_note": "one sentence of methodological context, e.g. why this confidence/volatility was assigned.",
+      "human_editor_note": "leave empty here -- this field is a human editorial judgment call, not AI output, and must not restate evidence or index_note in different words. Populated later by a human/editor pass per doc section 18/19."
     }}
   ],
   "repeated_keywords": [],
