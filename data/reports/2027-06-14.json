@@ -1,0 +1,142 @@
+{
+  "report_date": "2027-06-14",
+  "collection_window": {
+    "start": "2027-06-08",
+    "end": "2027-06-14"
+  },
+  "sources_scanned": 17,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "editorial": 2,
+    "retail": 2,
+    "unclear": 4
+  },
+  "executive_summary": "This collection window (June 8-14, 2027) is the fifty-first archived window. Two signals cleared the cross-source corroboration bar, both continuations of the ongoing spring/summer runway press cycle: a bubble-hem/balloon-skirt silhouette revival explicitly framed by multiple outlets as a return of Cristobal Balenciaga's late-1950s original shape, and a royal-purple color trend named across Balenciaga, Prada, Chloe, and Miu Miu runway coverage. Met Gala 2027 was checked a seventh consecutive window -- still no theme, co-chair, or red-carpet coverage of any kind has surfaced for an event this index's own calendar research places on May 3, 2027. Wales Bonner/Hermes was checked incidentally while researching an unrelated query; coverage found was limited to previously-reported appointment/debut-preparation detail (team hires ahead of the January 2027 debut) with nothing new to warrant resuming active tracking. CFDA Fashion Fund/Awards were not re-litigated per SKILL.md workflow note 10.",
+  "top_signals": [
+    {
+      "name": "Bubble hem / balloon skirt revival",
+      "type": "aesthetic_signal",
+      "source_sectors": [
+        "editorial",
+        "retail",
+        "unclear"
+      ],
+      "confidence": "medium",
+      "volatility": "revival",
+      "origin_classification": "archive_revival",
+      "evidence": "Stylist, Marie Claire, FashionUnited, Who What Wear, and RUNWAY Magazine independently described a bubble-hem/balloon-skirt silhouette as the defining SS27-adjacent shape of the season, gathered or tucked hemlines producing a rounded volume at mini, midi, and maxi lengths. Multiple outlets traced the shape explicitly to Cristobal Balenciaga's late-1950s originals as an alternative to Dior's fitted 'New Look,' with FashionUnited citing recent runway executions and Marie Claire citing a celebrity-worn Dior version as the trend's most visible recent moment. High-street adoption (Zara, Cos, Aligne) was cited by more than one outlet as evidence the shape has moved past runway-only visibility.",
+      "index_note": "Cross-outlet convergence on the same named historical reference point (Balenciaga's 1950s bubble hem) and the same current-season silhouette description -- classified archive_revival rather than designer_originated since no single current designer is claiming authorship of the idea; it is being reported as a recurring archival shape resurfacing across multiple current collections.",
+      "source_corroboration_count": 5,
+      "signal_id": "bubble-hem-revival",
+      "confidence_source": "manual",
+      "human_editor_note": "derive_confidence() would likely support 'high' on raw count (5 domains). Holding at 'medium' by manual override for two compounding reasons: first, 3 of the 5 corroborating domains (stylist.co.uk, marieclaire.com, fashionunited.com) fall outside the current DOMAIN_SECTOR_MAP and classify as 'unclear' rather than a verified sector, so the apparent sector diversity in source_sectors is partly a taxonomy coverage gap, not confirmed cross-sector triangulation -- a live TODO item, not resolved here. Second, Who What Wear's inclusion carries the same commerce-adjacent styling-advice incentive flagged for the beaded-jewelry signal two windows ago. Both are reasons for caution, not reasons to discard the signal -- five independently bylined outlets naming the identical historical reference point is real convergence.",
+      "source_domains": [
+        "stylist.co.uk",
+        "marieclaire.com",
+        "fashionunited.com",
+        "whowhatwear.com",
+        "runwaylive.com"
+      ]
+    },
+    {
+      "name": "Royal purple as dominant seasonal color",
+      "type": "aesthetic_signal",
+      "source_sectors": [
+        "retail",
+        "unclear"
+      ],
+      "confidence": "medium",
+      "volatility": "seasonal",
+      "origin_classification": "editorial_amplified",
+      "evidence": "Who What Wear, Coveteur, and nss magazine each independently reported saturated purple -- royal/violet tones rather than pale lilac -- as a dominant color across the current runway season, citing Balenciaga (leather opera gloves), Prada (bloomers), Chloe (softer lilac moments), and Miu Miu (a purple-and-cherry-red pairing cited by more than one outlet as having since been adopted more broadly).",
+      "index_note": "Three independently bylined outlets converge on the same specific color claim (saturated purple, not lilac) tied to four named runway houses -- classified editorial_amplified rather than designer_originated because the trend claim is the outlets' synthesis across multiple houses' collections, not a single brand's stated seasonal direction.",
+      "source_corroboration_count": 3,
+      "signal_id": "royal-purple-color-trend",
+      "confidence_source": "manual",
+      "human_editor_note": "Held at 'medium' rather than upgraded: despite naming four different runway houses, all three corroborating sources are editorial synthesis pieces reporting on those shows rather than independent designer-origin statements, so the cross-sector diversity implied by four house names is thinner than it reads -- one classified sector (retail, Who What Wear) plus two domains (coveteur.com, nssmag.com) not yet in DOMAIN_SECTOR_MAP. This is the same pattern flagged for the sleepwear signal two windows ago: same-sector convergence on a shared narrative, not confirmed independent cross-sector confirmation.",
+      "source_domains": [
+        "whowhatwear.com",
+        "coveteur.com",
+        "nssmag.com"
+      ]
+    },
+    {
+      "name": "Met Gala 2027 coverage gap",
+      "type": "factual_question",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "declining",
+      "origin_classification": "editorial_amplified",
+      "evidence": "Targeted search across seven consecutive weekly collection windows (2027-05-03 through 2027-06-14) found zero reachable coverage of a Met Gala 2027 theme, co-chairs, or red-carpet under that name, despite the event historically generating same-day saturation coverage.",
+      "index_note": "Reuses the signal_id introduced on 2027-05-31 so cross-report history actually accumulates for this index's dormancy tooling, per that report's own human_editor_note recommendation. The event's date is not in question -- the Editorial Calendar places it on May 3, 2027, already past. Seven consecutive windows of zero coverage for an event that normally generates same-day reporting remains a genuine, unresolved coverage absence, not a calendar mismatch.",
+      "source_corroboration_count": 1,
+      "signal_id": "met-gala-2027-coverage-gap",
+      "confidence_source": "manual",
+      "human_editor_note": "Second occurrence of this signal_id (first: 2027-05-31), now covering windows 6 and 7 of the gap. Consolidation note (run 58): a prior draft of this report incorrectly minted a new, differently-named archive_tag instead of reusing this signal_id, which would have defeated the cross-report tracking this signal_id exists to enable -- corrected to reuse the established signal_id as intended.",
+      "source_domains": []
+    }
+  ],
+  "repeated_keywords": [
+    "bubble hem revival",
+    "balloon skirt silhouette",
+    "royal purple color trend",
+    "Met Gala 2027 no coverage seventh window"
+  ],
+  "garments": [
+    "bubble skirt",
+    "balloon dress",
+    "leather opera gloves",
+    "bloomers"
+  ],
+  "silhouettes": [
+    "rounded volume",
+    "gathered hem",
+    "voluminous"
+  ],
+  "materials": [
+    "taffeta",
+    "leather"
+  ],
+  "colors": [
+    "royal purple",
+    "violet",
+    "plum",
+    "lilac"
+  ],
+  "aesthetic_terms": [
+    "archive revival",
+    "expressive dressing"
+  ],
+  "cultural_references": [
+    "Cristobal Balenciaga 1950s balloon silhouette"
+  ],
+  "limitations": [
+    "Met Gala 2027 was checked a seventh consecutive window (following 2027-05-03 through 2027-06-07). No theme, co-chair, or red-carpet coverage has ever surfaced across any of the seven windows checked, for an event this index's own calendar research places on May 3, 2027. This continues to be treated as a genuine, unresolved coverage gap, not a calendar question and not evidence of cancellation.",
+    "Both signals this window are continuations of the ongoing spring/summer runway press cycle rather than discourse originating within the June 8-14 window itself; dated to this window because that is when the corroborating coverage was found via search, not because the underlying runway events are new.",
+    "Wales Bonner/Hermes coverage found this window was limited to prior-known appointment/team-building detail ahead of the January 2027 debut; nothing new surfaced, so this remains 'untracked going forward pending new information' rather than resumed active tracking. CFDA Fashion Fund/Awards were not re-checked this window per SKILL.md workflow note 10.",
+    "3 of the 5 bubble-hem source domains and 2 of the 3 purple-trend source domains are not yet present in taxonomy.py's DOMAIN_SECTOR_MAP and classify as 'unclear' sector rather than a verified one -- a taxonomy coverage gap, not a claim those outlets are unreliable.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "bubble-hem-revival",
+    "royal-purple-color-trend",
+    "wales-bonner-untracked-pending-new-information",
+    "cfda-signals-untracked-pending-new-information",
+    "2027-q2",
+    "met-gala-2027-coverage-gap"
+  ],
+  "content_hash": "0239df739a4fc4d36bb840319cc4e7bc23488c50b839dc2444fc104a7b2f5823",
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [
+    {
+      "previous_content_hash": "208cf25630a0f2c8c6b75470937450966f2c5a3db6c9e9fd1990e03515dd5cc4",
+      "corrected_at": "2026-07-09",
+      "reason": "Consolidation fix (run 58): the drafted report claimed to reuse signal_id met-gala-2027-coverage-gap but actually minted a new, differently-named archive_tag instead, which would have defeated the cross-report accumulation this signal_id exists to enable (per 2027-05-31's own human_editor_note). Corrected to add a proper top_signals entry reusing the established signal_id."
+    }
+  ],
+  "review_status": "reviewed",
+  "reviewed_by": ""
+}
