@@ -105,11 +105,11 @@
         "editorial"
       ],
       "confidence": "low",
-      "volatility": "volatile",
+      "volatility": "declining",
       "origin_classification": "social_amplified",
       "evidence": "This signal was first logged in the July 13, 2026 report as social-only. This window, Who What Wear's TikTok trend roundup ('The 7 Biggest TikTok Fashion Trends of 2026') continues to describe multi-layered-top styling (creator content building on the 1990s sitcom/Rachel Green reference) as ongoing into July, now also naming a 'more-is-more maximalism' framing, but still without designer-origin or retail-catalog corroboration collected this period.",
       "index_note": "Confidence remains low and volatility remains volatile per project convention for social-dominant signals; light editorial pickup this window is not treated as independent corroboration since it restates the same creator-content framing rather than adding a new sector's material.",
-      "human_editor_note": "Continuing hold per the July 13 note: this is now in its second consecutive logged window without non-social/non-restating corroboration. Recommend a human editor decide next window whether persistence alone justifies an upgrade, or whether this stays capped at low/volatile indefinitely absent retail or designer-origin sightings.",
+      "human_editor_note": "Continuing hold per the July 13 note: this is now in its second consecutive logged window without non-social/non-restating corroboration. Recommend a human editor decide next window whether persistence alone justifies an upgrade, or whether this stays capped at low/volatile indefinitely absent retail or designer-origin sightings. EDITORIAL CLOSE-OUT (2026-07-07): this signal is considered resolved/closed as of this review. It has produced no fresh corroborating evidence across 13+ subsequent collection windows (2026-07-27 through 2026-10-26, per periodic-audit run 26) -- see get_signal_status_history('layered-tops-styling', ...) for the full trend. No further re-checks are needed; future reports should not re-flag this signal_id absent genuinely new evidence.",
       "source_corroboration_count": 1,
       "signal_id": "layered-tops-styling"
     },
@@ -209,7 +209,7 @@
     "off-duty-varsity-followup",
     "2026-q3"
   ],
-  "content_hash": "0132f3cc90147dc7385692acbdcd30481f891ab5a79acbce07dc7035325971bb",
+  "content_hash": "538023e10833d4aed22db5dbdd9dcc5d14b76c6276db82a8c8f2ea4b36edb1f5",
   "revision_history": [
     {
       "previous_content_hash": "87e7782686feee93cd46c303462b83b4b7270ead8ba895f3e27d23fe8e53eaae",
@@ -220,6 +220,11 @@
       "previous_content_hash": "7df04941152aaa8cd5e66761286ed33553217e8813d79fb7cfb4b9eaff1b08f4",
       "corrected_at": "2026-08-10",
       "reason": "Editorial close-out of off-duty-varsity signal: World-Cup-driven signal quiet across 3 subsequent windows (07-27, 08-03, 08-10) per get_signal_status_history; marking resolved so future reports stop re-flagging it."
+    },
+    {
+      "previous_content_hash": "0132f3cc90147dc7385692acbdcd30481f891ab5a79acbce07dc7035325971bb",
+      "corrected_at": "2026-07-07",
+      "reason": "Editorial close-out of layered-tops-styling signal: silent across 13+ subsequent collection windows (07-27 through 10-26) per periodic-audit run 26, far past the 3-window threshold used for prior close-outs (off-duty-varsity, sheer-layering, soft-tailoring, peplum-waist-revival); marking resolved so future reports stop re-flagging it."
     }
   ]
 }
