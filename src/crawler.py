@@ -59,6 +59,22 @@ FASHION_SOURCES = [
     # docs/agent-logs/new-source-crawl-verification-run40.md and
     # docs/agent-logs/thenationalnews-decision-run41.md). Not worth adding
     # JS-rendering complexity for one source; crawler.py stays static-HTML.
+    # dieworkwear.com added run 54 -- this is the root-cause fix for the
+    # long-standing "independent_criticism sources never reappear" carry-
+    # forward: DOMAIN_SECTOR_MAP already classified dieworkwear.com/
+    # throwingfits.com/blackbirdspyplane.com/substack.com as
+    # independent_criticism, but NONE of them were ever seeded in
+    # FASHION_SOURCES, and crawl() only follows same-domain links
+    # (is_same_domain()), so the sector was structurally unreachable
+    # regardless of what summarize.py's WebSearch step did. Verified via
+    # WebFetch: dieworkwear.com is a real, independently-run static-HTML
+    # menswear/workwear criticism blog (not a major-outlet property, not
+    # PR-adjacent), robots.txt is fully permissive ("Disallow:" empty), and
+    # the homepage renders real headline links without JS. throwingfits.com
+    # was also tried and rejected -- it 302-redirects to a Patreon login
+    # gate, not independently fetchable. See
+    # docs/agent-logs/independent-criticism-source-investigation-run54.md.
+    "https://dieworkwear.com",
 ]
 
 # default cache output path, pulled out as a named constant so future callers
