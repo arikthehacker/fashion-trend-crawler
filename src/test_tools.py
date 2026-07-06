@@ -12,8 +12,9 @@ import sys
 import os
 import json
 
+from crawler import DEFAULT_OUTPUT_FILE
 
-CACHE_FILE = "trends_raw.json"
+CACHE_FILE = DEFAULT_OUTPUT_FILE
 passed = 0
 failed = 0
 
