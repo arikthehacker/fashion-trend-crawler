@@ -28,9 +28,9 @@ from report_schema import save_report
 client = Anthropic()
 
 
-def load_trends():
+def load_trends(path="trends_raw.json"):
     # load the raw crawled data
-    with open("trends_raw.json", "r", encoding="utf-8") as f:
+    with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -75,6 +75,8 @@ Do not use evaluative or editorializing verbs such as "declared," "revealed," or
 
 Avoid vague, unsupported claims of ubiquity such as "everyone is wearing" or "everywhere right now." If evidence is thin, limited to one source sector, or contradictory, state that plainly in the evidence or index_note field rather than smoothing it over or omitting it.
 
+If the source material yields only a small number of genuinely distinct, well-supported signals, do not stretch, duplicate, or manufacture additional signals to appear more comprehensive. Instead, set "collection_status" to "thin" and use "thin_week_note" to state plainly that this reporting period had limited signal volume, so the report reflects the actual state of coverage rather than an inflated one. Use "collection_status": "normal" and leave "thin_week_note" empty when signal volume is adequate.
+
 Each headline below is tagged as [domain | source_sector]. Valid source sectors are: {", ".join(SOURCE_SECTORS)}.
 Valid confidence levels are: {", ".join(CONFIDENCE_LEVELS)}.
 Valid volatility labels are: {", ".join(VOLATILITY_LABELS)}.
@@ -108,7 +110,9 @@ Return your response as JSON with exactly this structure (no markdown, no backti
   "aesthetic_terms": [],
   "cultural_references": [],
   "limitations": ["note any gaps, e.g. limited source sectors, small sample size, single reporting period"],
-  "archive_tags": []
+  "archive_tags": [],
+  "collection_status": "normal | thin",
+  "thin_week_note": "if collection_status is 'thin', explain why in one sentence; otherwise leave empty"
 }}
 
 Leave source_sector_breakdown as an empty object; it is computed separately from the raw data.
@@ -119,9 +123,10 @@ Headlines:
 Return only valid JSON. No markdown, no backticks, no preamble."""
 
 
-def summarize():
-    print("loading trends...")
-    pages = load_trends()
+def summarize(pages=None):
+    if pages is None:
+        print("loading trends...")
+        pages = load_trends()
 
     today = date.today()
     report_date = today.isoformat()
