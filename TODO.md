@@ -1670,19 +1670,32 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       precedent departures (below) — a real finding, not a silent bug.
 - [x] Nav/build regression sweep and periodic audit both clean.
 
-## Human decision needed
-- [ ] **Two flagged confidence-precedent inconsistencies**: `data/reports/2027-05-17.json`
-      (Dior Cruise, bumped to "high" on single-sector corroboration, contradicting
-      precedent 2) and `data/reports/2027-07-12.json` (Couture FW27 reception,
-      upgraded to "high" despite an acknowledged domain-taxonomy gap, contradicting
-      precedent 3 and inconsistent with the prior week's handling of the identical
-      pattern). Both are reasoned departures already recorded in the report's own
-      `human_editor_note`, not oversights — full detail in
-      `docs/agent-logs/confidence-precedents-consolidation-run83.md`. Needs a human
-      call: formalize a narrower sub-exception in the precedents doc, or correct
-      the confidence field via `save_report()`.
+## Run 84 — done
+- [x] Resolved both run-83 flagged confidence-precedent inconsistencies as
+      corrections, not new precedents. `dior-cruise-2027-lacma-debut` (2027-05-17):
+      a directly on-point counter-example already existed in precedent 2's own
+      worked examples (chanel-cruise-2027-biarritz-debut, held at medium two
+      weeks earlier under an identical fact pattern) — formalizing the proposed
+      exception would create a loophole. `couture-fw27-debuts-reception`
+      (2027-07-12): the "backward-looking vs. forward-looking" argument doesn't
+      engage precedent 3's actual mechanism and contradicts the immediately
+      preceding week's identical handling. Both corrected high → medium via
+      `save_report()`; the long-standing 2027-05-17 confidence warning is now
+      fully resolved.
+- [x] Added `data/reports/2027-12-20.json`, a 77th report — a novel single-
+      source resale-platform case didn't match any of the 12 documented
+      precedents, so the mechanical "low" was correctly left as-is and flagged
+      as a future precedent candidate rather than silently inventing an
+      exception.
+- [x] Archive year-grouping change (run 83) independently re-verified: all
+      reports appear exactly once with correct year placement, no downstream
+      impact on RSS/glossary since `lib/reports.ts` was untouched.
+- [x] Nav/build regression sweep and periodic audit both clean.
 
-## Next up (run 84 candidates)
+## Next up (run 85 candidates)
+- [ ] A candidate 13th precedent (resale-platform corroboration reliability)
+      was flagged by run 84's report agent but not formalized — worth
+      attention if the pattern recurs enough to generalize.
 - [ ] `archive_tags` remains unsurfaced as a filter on the archive page — future
       scope if the archive grows enough to need it, not a current gap.
 - [ ] Manual-sampling cadence next due ~run 87 (tracked directly in

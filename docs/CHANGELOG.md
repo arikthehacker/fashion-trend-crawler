@@ -18,6 +18,15 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-10 ~11:00 PDT — [Loop run 84](changelog-entries/run-84.md)** — both
+  run-83 flagged confidence-precedent inconsistencies resolved as corrections
+  (a directly on-point counter-example found in precedent 2's own worked
+  examples, invalidating one proposed exception outright); a 77th report
+  correctly leaves a genuinely novel case unforced rather than inventing a
+  silent exception; run 82's `changed_signals` provenance feature exercised
+  for real for the first time and confirmed working; archive year-grouping
+  independently re-verified clean; nav/build and periodic audits both clean.
+
 - **2026-07-10 ~09:50 PDT — [Loop run 83](changelog-entries/run-83.md)** — 76th
   report correctly trusts the mechanical formula where no override applies;
   archive page gets a proportionate year-grouping fix (not over-built); a
