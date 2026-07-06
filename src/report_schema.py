@@ -207,6 +207,42 @@ def get_signal_status_history(signal_id: str, all_reports: list) -> list:
     return history
 
 
+def is_prolonged_silence(signal_id: str, all_reports: list, threshold: int = 4) -> bool:
+    """
+    return True if `signal_id` has appeared in `threshold` or more
+    consecutive reports (by report_date, ascending) with no resolution --
+    i.e. it keeps getting explicitly carried forward as "still open"
+    rather than being resolved or dropped.
+
+    this is deliberately a thin wrapper over get_signal_status_history():
+    it does not introduce a new schema field or status enum (see TODO.md's
+    "awaiting resolution" question). the reasoning is the same as for
+    get_signal_status_history() itself -- whether a question has gone
+    unresolved too long is an observation about cross-report recurrence,
+    not a property of any single report's signal entry, so a report-writing
+    agent should compute it on demand rather than have each agent
+    re-derive "is this taking too long" from scratch or a human have to
+    hardcode a schema field that immediately goes stale.
+
+    note this is distinct from signal *dormancy* (see
+    get_signal_status_history()'s docstring / signal-dormancy-mechanism.md):
+    dormancy means a signal stopped appearing across reports. prolonged
+    silence is the opposite pattern -- the signal keeps appearing, window
+    after window, because the underlying question (e.g. "who won the CFDA
+    Fashion Fund") is still open and being explicitly re-asserted as
+    unresolved, not because coverage of it went quiet.
+
+    callers (e.g. summarize.py or a human editor) can use the return value
+    to decide whether report copy/human_editor_note should name the
+    prolonged-silence pattern itself, as guidance rather than a hard gate.
+
+    returns False if signal_id has fewer than `threshold` entries in its
+    history (including if it never appears at all).
+    """
+    history = get_signal_status_history(signal_id, all_reports)
+    return len(history) >= threshold
+
+
 @dataclass
 class Report:
     report_date: str = ""
