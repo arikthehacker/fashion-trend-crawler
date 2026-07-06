@@ -153,6 +153,9 @@ const DEFINITIONS: Record<string, string> = {
   "sao paulo fashion week": "Sao Paulo's market-week fashion showcase, cited as a source event for South American runway and resort-collection coverage.",
   "dieworkwear": "Dieworkwear.com, an independent menswear and tailoring criticism site, cited as an independent-criticism-sector source.",
   "business of fashion": "Business of Fashion (businessoffashion.com), a trade and industry-news editorial title, cited as an editorial-sector source.",
+  "opera gloves": "Long gloves extending past the elbow, traditionally worn with formal eveningwear, cited when current styling or retail coverage revives them as an occasion-dressing element.",
+  "awards season dressing": "Style coverage tied to the period surrounding televised or industry award ceremonies, tracked as occasion-specific rather than everyday styling.",
+  "british fashion awards": "An annual British Fashion Council ceremony recognizing designers and industry figures, cited as a source event for pre-ceremony occasion-dressing style coverage.",
 };
 
 function normalize(term: string): string {
