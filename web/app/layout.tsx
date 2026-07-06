@@ -22,6 +22,11 @@ const reenieBeanie = Reenie_Beanie({
 export const metadata: Metadata = {
   title: "ARI3LLA INDEX: Weekly Style Signal Report",
   description: "A source-linked index tracking recurring style language, silhouettes, materials, aesthetics, and cultural signals across the web.",
+  alternates: {
+    types: {
+      "application/rss+xml": "/rss.xml",
+    },
+  },
 };
 
 export default function RootLayout({
