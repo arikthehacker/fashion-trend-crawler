@@ -161,6 +161,7 @@ const DEFINITIONS: Record<string, string> = {
   "gift-wrap dressing": "A social-platform styling term for bow-and-ribbon accent detailing added to coats, bags, or hair, observed circulating on TikTok during the Black Friday/Cyber Monday holiday shopping window; tracked as a single-source, platform-native signal, not yet picked up editorially or at retail.",
   "obi-sash cocoon coat": "A rounded, sculpted cocoon-shaped coat closed with a wide obi-style sash tied at the waist, observed across resort 2028 previews from multiple houses.",
   "cocoon silhouette": "A rounded, voluminous garment shape that tapers inward at the hem, named for its resemblance to a cocoon rather than a fitted or A-line cut.",
+  "elle": "A fashion and lifestyle magazine title, cited as an editorial-sector source when its coverage is tracked.",
 };
 
 function normalize(term: string): string {
