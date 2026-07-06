@@ -77,6 +77,20 @@ def test_hard_deadline_aborts_on_trickle():
         # and must not silently take significantly longer than the deadline
         assert elapsed < 6, f"took {elapsed:.1f}s, expected to abort near 3s deadline"
         print(f"PASS: hard deadline fired after {elapsed:.2f}s (deadline was 3s)")
+
+        # run 73: the leaked worker thread (still blocked inside
+        # requests.get() against the trickle server) must be a daemon
+        # thread, so it cannot block interpreter/process exit on its own.
+        leaked_non_daemon = [
+            t for t in threading.enumerate()
+            if t is not threading.current_thread() and not t.daemon and t.is_alive()
+        ]
+        assert not leaked_non_daemon, (
+            f"found non-daemon thread(s) still alive after timeout: "
+            f"{[t.name for t in leaked_non_daemon]} -- these would block "
+            f"process exit"
+        )
+        print("PASS: no leaked non-daemon threads after hard deadline fired")
     finally:
         crawler.HARD_FETCH_DEADLINE = original_deadline
         server.shutdown()

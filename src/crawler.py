@@ -20,7 +20,9 @@
 import requests
 from bs4 import BeautifulSoup
 from collections import deque
-from concurrent.futures import ThreadPoolExecutor, TimeoutError as FutureTimeoutError
+from concurrent.futures import TimeoutError as FutureTimeoutError
+import threading
+import queue as _queue
 from urllib.parse import urljoin, urlparse, urldefrag
 from urllib.robotparser import RobotFileParser
 import json
@@ -44,18 +46,38 @@ def get_with_hard_deadline(url, **kwargs):
     its socket) may still be alive in the background until the OS or
     requests' own low-level timeout eventually cleans it up.
     """
-    # NOTE: deliberately not using ThreadPoolExecutor as a context manager --
-    # `with` calls shutdown(wait=True) on exit, which blocks until the worker
-    # thread finishes, defeating the whole point of the hard deadline if the
-    # request never returns. shutdown(wait=False) lets the calling code move
-    # on immediately; the worker thread is leaked until its own underlying
-    # requests timeout=/socket eventually resolves it.
-    executor = ThreadPoolExecutor(max_workers=1)
+    # NOTE: deliberately not using ThreadPoolExecutor here. Its internal
+    # worker threads are non-daemon by default (and Python's
+    # ThreadPoolExecutor does not expose a daemon= kwarg), so a leaked
+    # worker -- e.g. one still blocked in requests.get() on a trickling
+    # host after this function has already given up and returned -- keeps
+    # the whole interpreter alive at process exit until that socket is
+    # cleaned up. A plain daemon thread has the same "leak until the
+    # request resolves" behavior but never blocks process exit, since
+    # daemon threads are killed outright when the main thread ends.
+    result_q = _queue.Queue(maxsize=1)
+
+    def _worker():
+        try:
+            result_q.put(("ok", requests.get(url, **kwargs)))
+        except Exception as exc:
+            result_q.put(("error", exc))
+
+    thread = threading.Thread(target=_worker, daemon=True)
+    thread.start()
     try:
-        future = executor.submit(requests.get, url, **kwargs)
-        return future.result(timeout=HARD_FETCH_DEADLINE)
-    finally:
-        executor.shutdown(wait=False)
+        status, value = result_q.get(timeout=HARD_FETCH_DEADLINE)
+    except _queue.Empty:
+        # deadline hit -- the worker thread may still be alive in the
+        # background, but being a daemon thread it will not prevent the
+        # process from exiting.
+        raise FutureTimeoutError(
+            f"get_with_hard_deadline: {url} did not complete within "
+            f"{HARD_FETCH_DEADLINE}s"
+        )
+    if status == "error":
+        raise value
+    return value
 
 # default sources that you can override later (see beginning note block)
 FASHION_SOURCES = [
@@ -106,6 +128,17 @@ FASHION_SOURCES = [
     # gate, not independently fetchable. See
     # docs/agent-logs/independent-criticism-source-investigation-run54.md.
     "https://dieworkwear.com",
+    # added run 73 -- South America was a genuine 0-source gap (vogue.mx is
+    # Mexico/North America, not South America). ffw.com.br is FFW, an
+    # independent Brazilian fashion/culture editorial platform (est. 2009,
+    # ~15+ years running, staff bylines, not PR-adjacent or a content mill).
+    # Verified: robots.txt only disallows /wp-admin/ (fully permissive
+    # otherwise); both the root domain and /materias/ return HTTP 200 via
+    # curl with this project's own User-Agent and render real static-HTML
+    # headline links (<h1>/<h2> article titles, /category/moda/ fashion
+    # section) with no JS rendering required. See
+    # docs/agent-logs/source-diversity-research-run73.md.
+    "https://ffw.com.br",
 ]
 
 # default cache output path, pulled out as a named constant so future callers
