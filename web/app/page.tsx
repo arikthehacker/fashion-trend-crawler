@@ -232,7 +232,7 @@ export default function Home() {
             {latest.executive_summary}
           </p>
 
-          {(latest as unknown as { collection_status?: string }).collection_status === "thin" && (
+          {latest.collection_status === "thin" && (
             <p style={{
               fontFamily: "var(--font-franklin)",
               fontSize: "0.75rem",
@@ -251,6 +251,7 @@ export default function Home() {
               >
                 methodology
               </Link>.
+              {latest.thin_week_note && <> {latest.thin_week_note}</>}
             </p>
           )}
 

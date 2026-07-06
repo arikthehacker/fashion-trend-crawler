@@ -49,6 +49,8 @@ export interface Report {
   human_editor_note?: string;
   content_hash?: string;
   revision_history?: RevisionEntry[];
+  collection_status?: string;
+  thin_week_note?: string;
 }
 
 export interface RevisionEntry {
@@ -209,7 +211,7 @@ export function getConsecutiveThinWeekCount(): number {
   let count = 0;
 
   for (const report of reports) {
-    if ((report as { collection_status?: string }).collection_status === "thin") {
+    if (report.collection_status === "thin") {
       count++;
     } else {
       break;

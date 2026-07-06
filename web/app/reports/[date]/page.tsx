@@ -373,6 +373,22 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
         </section>
       )}
 
+      {/* thin collection window note */}
+      {report.collection_status === "thin" && (
+        <section aria-label="Collection status" style={sectionStyle}>
+          <h2 style={labelStyle}>Collection Status: Thin</h2>
+          <p style={{
+            fontFamily: "var(--font-franklin)",
+            fontSize: "0.9rem",
+            lineHeight: "1.7",
+            color: "var(--gray)",
+          }}>
+            {report.thin_week_note ||
+              "Fewer signals met the recurrence and source-diversity thresholds than in a typical reporting period. This window is recorded as a verified low-volatility data point rather than filled to a target count."}
+          </p>
+        </section>
+      )}
+
       {/* volatility / incentive / confidence notes */}
       {(report.volatility_notes || report.incentive_notes || report.confidence_notes) && (
         <section aria-label="Methodology notes" style={sectionStyle}>
