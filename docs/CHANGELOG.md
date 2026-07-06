@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-08 ~14:15 PDT — [Loop run 48](changelog-entries/run-48.md)** — 41st report
+  avoids a false recurrence claim; the run-47-flagged recurrence threshold gets a real
+  `styleOnly` filter instead of another deferral; the external correction-request
+  channel question is finally closed with a real GitHub Issues link; an AP-style
+  headline-case check returns an honest compliance result; periodic audit clean.
+
 - **2026-07-08 ~13:00 PDT — [Loop run 47](changelog-entries/run-47.md)** — Archive
   crosses 40 reports. The run-24 recurrence threshold is finally met, but composed of
   unresolved-question signals, not style trends — built a minimal honest addition

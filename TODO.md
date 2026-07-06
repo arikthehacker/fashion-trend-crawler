@@ -986,13 +986,33 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [x] Periodic audit — clean. 47 confidence mismatches all editor-conservative, 0 field
       coverage warnings, `gh` CLI unavailable (13th+ consecutive check).
 
-## Next up (run 48 candidates)
+## Run 48 — done
+- [x] Added `data/reports/2027-04-05.json`, a 41st report — logged `glamoratti-revival`
+      (Pinterest Predicts 1980s power-dressing aesthetic, editorially amplified),
+      checking first that `poetcore-aesthetic` was already archived to avoid a false
+      recurrence claim.
+- [x] Recurrence threshold revised: `getRecurringSignals()` in `web/lib/reports.ts` now
+      accepts `{ styleOnly: true }`, filtering to signals whose `type` is a genuine
+      style-aesthetic type rather than factual/administrative (institutional_policy,
+      designer_signal, etc.). The run-24/47 "4-5 signals recurring 4+ times"
+      retrospective-trigger threshold must be evaluated with `styleOnly: true` going
+      forward (currently 0 qualifying signals — retrospective still correctly not
+      warranted). The raw/unfiltered count stays correct for `/archive`'s honest
+      factual/administrative surface — a different use of the same data. See
+      `docs/agent-logs/recurrence-threshold-revision-run48.md`.
+- [x] External correction-request channel decided, not left perpetual: linked the
+      project's real public GitHub Issues tracker from About and Methodology. Fits a
+      static-export site with no backend and no deployed domain yet — deliberately did
+      NOT build a contact form or mailto (premature infra pre-deployment). Revisit only
+      if the repo goes private or the tracker proves unmonitored. See
+      `docs/agent-logs/correction-channel-decision-run48.md`.
+- [x] AP-style headline capitalization check — honest "already compliant" result across
+      `top_signals[].name`, `executive_summary` openers, and page `<title>` metadata; no
+      changes needed.
+- [x] Periodic audit — clean. 48 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (15th+ consecutive check).
+
+## Next up (run 49 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
-- [ ] Consider revising the run-24 recurrence threshold to exclude factual/
-      administrative carry-forward signals from counting toward a retrospective-feature
-      trigger, since genuine style-trend recurrence has never exceeded 3 consecutive
-      reports while unresolved-question signals now recur far more.
-- [ ] No external correction-request channel exists — honestly disclosed for now;
-      consider adding a real one (e.g. a monitored contact address) in the future.
