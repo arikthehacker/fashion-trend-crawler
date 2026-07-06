@@ -1738,13 +1738,30 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       simple same-run timing race, confirmed correctly updated at
       consolidation.
 
-## Next up (run 88 candidates)
-- [ ] A candidate 14th precedent (forecast/speculative-content exclusion,
-      flagged run 86) remains open — worth attention if the pattern recurs.
+## Run 88 — done
+- [x] Added `data/reports/2028-01-17.json`, an 81st report — Gucci menswear
+      debut coverage correctly held at "medium" per precedent 2 (same-sector
+      coverage, not cross-sector corroboration).
+- [x] Formalized precedent 14 (forecast/speculative-content exclusion) after
+      real scrutiny, not a rubber stamp — found a genuine taxonomy gap
+      (no `origin_classification` value fits a pure forecast), a narrow
+      never-yet-triggered carve-out for genuine multi-outlet convergence, and
+      independent corroborating evidence from a report a full year earlier
+      that silently applied the same logic.
+- [x] Fixed a real README/live-site inconsistency: README presented
+      `crawler.py`/`run.sh` as ordinary runnable commands, contradicting the
+      standing off-limits status documented since run 66. Report-count
+      framing, Limitations/roadmap alignment, and API key setup all confirmed
+      already accurate.
+- [x] Nav/build regression sweep and periodic audit both clean; periodic audit
+      added a lightweight agent-log directory hygiene check (441 files, no
+      empty/truncated entries).
+
+## Next up (run 89 candidates)
 - [ ] Manual-sampling cadence next due ~run 97.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven
-      only.
+      only; README now accurately reflects this off-limits status.
 - [ ] `SITE_URL` remains a placeholder domain — correctly confirmed as needing only
       a human-supplied real domain, no further autonomous work possible here.
 - [ ] The underlying human-in-the-loop process gap flagged in run 50 remains open.

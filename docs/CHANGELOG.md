@@ -18,6 +18,14 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-10 ~15:50 PDT — [Loop run 88](changelog-entries/run-88.md)** — an
+  81st report correctly applies precedent 2; precedent 14 (forecast/
+  speculative-content exclusion) formalized after real scrutiny of a genuine
+  counter-argument, backed by independent corroborating evidence from a
+  report a full year earlier; a real README/live-site inconsistency found
+  and fixed (README presented the off-limits `crawler.py` as routine); nav/
+  build and periodic audits both clean.
+
 - **2026-07-10 ~14:40 PDT — [Loop run 87](changelog-entries/run-87.md)** — an
   80th report correctly applies precedent 4 on its earning side; the run-86
   resale-source-seeding gap closed with a rigorous, honest "none pass" verdict
