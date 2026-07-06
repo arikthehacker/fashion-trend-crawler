@@ -47,6 +47,23 @@ spike of designer-origin and editorial red-carpet signals in the days immediatel
 surrounding this date each year; treat it as a known recurring window rather than an
 anomalous single-day volume spike.
 
+## Menswear + Haute Couture, January window
+
+A second annual fashion-week cluster, distinct from the Sept–Oct ready-to-wear
+fashion month above — men's collections and haute couture run back-to-back in
+mid-to-late January each year, then quiet again until fashion month.
+
+- **Paris Fashion Week Men's**: runs mid-to-late January (e.g. Jan 19–24, 2027
+  for Fall-Winter 2027-28) — precedes couture by about a week.
+- **Haute Couture (Paris)**: runs immediately after menswear, also
+  mid-to-late January (e.g. Jan 25–28, 2027 for Spring-Summer 2027).
+
+Overall window: roughly **mid-to-late January** each year. Expect a
+concentrated cluster of designer-origin and editorial signals in this window,
+separate from and much smaller in scope than the Sept–Oct fashion month
+(couture and menswear are lower-volume categories than the four major
+ready-to-wear weeks).
+
 ## Extensible: add future recurring windows here
 
 Candidates for later entries — pre-fall show calendars,
