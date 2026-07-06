@@ -822,14 +822,32 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       coverage warnings, `gh` CLI unavailable (7th consecutive check), 3-report spot-check
       consistent.
 
-## Next up (run 40 candidates)
+## Run 40 — done
+- [x] Added `data/reports/2027-02-08.json`, a 33rd report — Wales Bonner/Hermès debut
+      crosses the prolonged-silence threshold (4 windows) for the first time, flagged
+      explicitly rather than fabricated or prematurely marked "untracked."
+- [x] Curated real definitions for all 19 glossary terms run 39's filter identified —
+      build now shows zero "no DEFINITIONS entry" warnings.
+- [x] Tested the two run-39 sources against the real crawler path (not just WebFetch):
+      scmp.com fully works (48 headlines); thenationalnews.com fetches fine but yields 0
+      headlines because its content is client-side rendered — a different failure mode
+      than prior UA-blocking bugs, flagged for a future decision (drop vs. extend parsing).
+- [x] Brought correction-notice placement in line with AP/NYT/ONA standards — added a
+      pinned top-of-page notice on report pages when `revision_history` has entries,
+      instead of only a buried bottom-of-page section.
+- [x] Full-archive coherence review — clean. No orphaned signal_ids, docs still accurate,
+      voice spot-check clean.
+
+## Next up (run 41 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
-- [ ] 19 real glossary terms still lack curated definitions (down from ~130 after run
-      39's filter) — small enough now to curate a batch directly.
-- [ ] New sources (SCMP, The National) verified only via WebFetch, not the project's own
-      `requests`+`get_robots_parser()` crawl path — re-check on the next real crawl run.
+- [ ] Decide whether to drop `thenationalnews.com` from `FASHION_SOURCES` (yields 0
+      headlines via the real static-HTML crawl path since its content is client-side
+      rendered) or extend the crawler to handle JS-rendered sources.
+- [ ] Watch the Wales Bonner/Hermès debut signal — now past the prolonged-silence
+      threshold; consider transitioning to "untracked going forward" if a 5th window
+      also comes up empty.
 - [ ] Consider periodic Wayback "Save Page Now" snapshotting of the site's own
       `/reports/[date]` pages as a smaller future self-archival improvement (distinct
       from per-article source citations, which are deliberately not permalinked).

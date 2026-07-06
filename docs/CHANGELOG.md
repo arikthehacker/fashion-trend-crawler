@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-08 ~04:00 PDT — [Loop run 40](changelog-entries/run-40.md)** — 33rd report
+  crosses the prolonged-silence threshold for the Wales Bonner/Hermès debut for the
+  first time; glossary build warnings curated down to zero; a real crawl-path test finds
+  one new source is client-side rendered and yields no headlines; correction notices
+  brought in line with AP/NYT placement standards; full-archive coherence review clean.
+
 - **2026-07-08 ~02:45 PDT — [Loop run 39](changelog-entries/run-39.md)** — 32nd report
   honestly reports 3 consecutive windows with no post-show coverage; glossary
   build-warning noise cut 130 → 19 with a term-plausibility filter; two new
