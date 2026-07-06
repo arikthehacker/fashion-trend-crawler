@@ -193,6 +193,11 @@ DOMAIN_SECTOR_MAP = {
     # documentary lists), not a governing body -- same editorial-plus-content
     # pattern as okayafrica.com/stylerave.com, not institutional
     "laforma.club": "editorial",
+
+    # added run 73 -- ffw.com.br (FFW) is an independent Brazilian
+    # fashion/culture editorial platform, the first South American source
+    # in FASHION_SOURCES; see docs/agent-logs/source-diversity-research-run73.md
+    "ffw.com.br": "editorial",
 }
 
 
