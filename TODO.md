@@ -1459,15 +1459,31 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       deliberately held "low" as an absence-of-evidence claim.
 - [x] Nav/build regression sweep and periodic audit both clean.
 
-## Next up (run 71 candidates)
+## Run 71 — done
+- [x] Added `data/reports/2027-09-20.json`, a 64th report — CFDA confirmed NYFW
+      SS28's dates, resolving run 70's unannounced-schedule thread; a second signal
+      (Margiela raw-edge tailoring) kept confidence manually held at "medium",
+      independently re-verified against `taxonomy.py`'s actual `DOMAIN_SECTOR_MAP`.
+- [x] Refined the crawler-hang diagnosis and drafted (but did not apply or execute)
+      a `ThreadPoolExecutor`-based hard-deadline fix — the standard, Windows-portable
+      pattern for this bug class. Found a real gap in run 67's flush mitigation: it
+      only protects progress between sources, not a hang within one `crawl()` call.
+- [x] Journalism-standards check against AP corrections and Reuters sourcing
+      conventions — clean, no gap found.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Next up (run 72 candidates)
+- [ ] Apply and human-test the drafted `ThreadPoolExecutor` hard-deadline fix for
+      `crawler.py`'s hang — draft is in
+      `docs/agent-logs/crawler-hang-research-run71.md`, still needs a human-
+      supervised live test before it can be considered safe to execute
+      autonomously.
 - [ ] `data/reports/2027-09-06.json` still cites `fhcm.paris`/`laforma.club` as
-      `unclear` in its confidence reasoning even though the taxonomy fix landed this
-      run — small optional follow-up if a retroactive confidence recompute is
+      `unclear` in its confidence reasoning even though the taxonomy fix landed run
+      70 — small optional follow-up if a retroactive confidence recompute is
       desired.
 - [ ] The manual-sampling cadence has no enforcement mechanism beyond documentation —
       worth a periodic spot-check to catch future lapses earlier.
-- [ ] `crawler.py`'s underlying hang is diagnosed but not fixed at the root — still
-      off-limits for autonomous runs.
 - [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
       correctness — still awaiting a human decision (run 50).
 - [ ] The underlying human-in-the-loop process gap flagged in run 50 remains open.

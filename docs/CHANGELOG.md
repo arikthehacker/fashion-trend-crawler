@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-09 ~19:15 PDT — [Loop run 71](changelog-entries/run-71.md)** — 64th
+  report resolves the NYFW SS28 scheduling thread and continues confidence
+  discipline on a Margiela signal; crawler hang gets a refined diagnosis and a
+  drafted (unexecuted) `ThreadPoolExecutor` fix; journalism-standards check against
+  AP/Reuters conventions clean; nav/build regression and periodic audit both clean.
+
 - **2026-07-09 ~18:00 PDT — [Loop run 70](changelog-entries/run-70.md)** — `gh`/CI
   check re-confirmed unchanged, cadence extended to run 80; two new domains
   classified (`fhcm.paris`, `laforma.club`); 63rd report continues the honest
