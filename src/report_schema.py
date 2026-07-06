@@ -189,6 +189,14 @@ class Report:
     # reflects limited coverage rather than manufactured trends." optional/
     # backward compatible: empty string when not thin.
     thin_week_note: str = ""
+    # audit trail of corrections made to this report after initial save.
+    # each entry: {"previous_content_hash": str, "corrected_at": str (ISO
+    # date string, caller-supplied for determinism/testability), "reason":
+    # str (non-empty, required)}. populated by save_report() itself when it
+    # detects it's overwriting an existing report file for this date with
+    # differing content — see docs/agent-logs/retention-versioning-design.md.
+    # optional/backward compatible: old reports without it default to [].
+    revision_history: list = field(default_factory=list)
 
     def to_dict(self) -> dict:
         d = asdict(self)
@@ -293,6 +301,41 @@ def validate_report(data: dict) -> None:
 
     # optional field: only checked if present, so old reports without a
     # content_hash still validate.
+    # optional field: default to [] if absent so old reports (predating
+    # revision_history) remain valid.
+    revision_history = data.get("revision_history", [])
+    if not isinstance(revision_history, list):
+        raise SchemaValidationError("revision_history must be a list")
+    for i, entry in enumerate(revision_history):
+        if not isinstance(entry, dict):
+            raise SchemaValidationError(f"revision_history[{i}] must be a dict")
+        missing_rev_keys = [
+            k for k in ("previous_content_hash", "corrected_at", "reason") if k not in entry
+        ]
+        if missing_rev_keys:
+            raise SchemaValidationError(
+                f"revision_history[{i}] missing keys: {missing_rev_keys}"
+            )
+        prev_hash = entry["previous_content_hash"]
+        is_valid_hex = (
+            isinstance(prev_hash, str)
+            and len(prev_hash) == SHA256_HEX_LENGTH
+            and all(c in "0123456789abcdef" for c in prev_hash.lower())
+        )
+        if not is_valid_hex:
+            raise SchemaValidationError(
+                f"revision_history[{i}].previous_content_hash must be a "
+                f"{SHA256_HEX_LENGTH}-char hex sha256 digest, got {prev_hash!r}"
+            )
+        if not isinstance(entry["corrected_at"], str) or not entry["corrected_at"]:
+            raise SchemaValidationError(
+                f"revision_history[{i}].corrected_at must be a non-empty string"
+            )
+        if not isinstance(entry["reason"], str) or not entry["reason"].strip():
+            raise SchemaValidationError(
+                f"revision_history[{i}].reason must be a non-empty string"
+            )
+
     content_hash = data.get("content_hash", "")
     if content_hash:
         is_valid_hex = (
@@ -312,14 +355,64 @@ def report_path(report_date: str) -> str:
     return os.path.join(REPORTS_DIR, f"{report_date}.json")
 
 
-def save_report(data: dict, validate: bool = True) -> str:
+def save_report(
+    data: dict,
+    validate: bool = True,
+    revision_reason: str = None,
+    corrected_at: str = None,
+) -> str:
     """
     validate (optional) and write a report dict to
     data/reports/<report_date>.json. returns the path written.
+
+    if a report already exists for this date and its content differs from
+    the new content (by content_hash), this is treated as a correction:
+    both `revision_reason` (non-empty string explaining the correction) and
+    `corrected_at` (an ISO date string) must be supplied by the caller —
+    this function deliberately does not call datetime.now() so behavior
+    stays deterministic/testable. An entry recording the OLD content_hash,
+    `corrected_at`, and `reason` is appended to `revision_history` before
+    the new content_hash is computed and written. See
+    docs/agent-logs/retention-versioning-design.md.
+
+    if no existing report exists for this date (first save), no
+    revision_history entry is created and `revision_reason`/`corrected_at`
+    are not required.
     """
+    new_hash = compute_content_hash(data)
+
+    existing_path = report_path(data["report_date"])
+    if os.path.exists(existing_path):
+        with open(existing_path, "r", encoding="utf-8") as f:
+            existing_data = json.load(f)
+        old_hash = existing_data.get("content_hash", "")
+        if old_hash and old_hash != new_hash:
+            if not revision_reason or not str(revision_reason).strip():
+                raise SchemaValidationError(
+                    "save_report() is overwriting an existing report with "
+                    "differing content; a non-empty revision_reason is required"
+                )
+            if not corrected_at or not str(corrected_at).strip():
+                raise SchemaValidationError(
+                    "save_report() is overwriting an existing report with "
+                    "differing content; a non-empty corrected_at (ISO date "
+                    "string) is required"
+                )
+            revision_history = list(existing_data.get("revision_history", []))
+            revision_history.append({
+                "previous_content_hash": old_hash,
+                "corrected_at": corrected_at,
+                "reason": revision_reason,
+            })
+            data["revision_history"] = revision_history
+        elif "revision_history" not in data:
+            data["revision_history"] = existing_data.get("revision_history", [])
+    elif "revision_history" not in data:
+        data["revision_history"] = []
+
     # compute fixity checksum before validation so a bad hash the caller
     # supplied gets overwritten with the correct one rather than rejected.
-    data["content_hash"] = compute_content_hash(data)
+    data["content_hash"] = new_hash
 
     if validate:
         validate_report(data)
