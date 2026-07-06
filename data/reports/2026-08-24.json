@@ -24,7 +24,7 @@
       "origin_classification": "unclear",
       "evidence": "Third consecutive rechecking window: search again surfaced only the March 2026 Paris Fashion Week fall/winter coverage (Jacquemus, Saint Laurent, Alaia basque waist; Dior, Alexander McQueen, Stella McCartney peplum) already cited in the August 10 and August 17 reports, plus generic recirculated 'fall 2026 trends' listicles. No source dated to Copenhagen Fashion Week SS27 (closed August 7) or to this window specifically was found in any sector searched.",
       "index_note": "The August 17 report set an explicit threshold: if a third consecutive window turned up nothing, treat the gap as a methods limitation rather than keep rechecking. That threshold is now met. This entry closes active rechecking of peplum-waist-revival under current search-based tooling -- the underlying trend (documented at Paris Fashion Week in March) is not in question, only whether this project's method can ever surface Copenhagen-specific confirmation, and three windows of identical results say it cannot.",
-      "human_editor_note": "CLOSE-OUT (2026-08-24): retiring peplum-waist-revival from active per-window rechecking. This is a methods-reach limitation, not evidence the trend didn't happen at Copenhagen -- the Paris-dated coverage of the same silhouette family remains solid, dated, multi-designer confirmation from earlier in the season. Recommend documenting the search-tooling gap on the methodology page (see TODO.md) rather than continuing to spend a report slot on this question.",
+      "human_editor_note": "CLOSE-OUT (2026-08-24): retiring peplum-waist-revival from active per-window rechecking. This is a methods-reach limitation, not evidence the trend didn't happen at Copenhagen -- the Paris-dated coverage of the same silhouette family remains solid, dated, multi-designer confirmation from earlier in the season. Recommend documenting the search-tooling gap on the methodology page (see TODO.md) rather than continuing to spend a report slot on this question. [Terminology correction, 2026-11-09: the garments field for this window previously read peplum jacket, silently dropping the peplum skirt/peplum trouser terms used in the August 10 and August 17 reports for this same signal_id with no note explaining the change (flagged in docs/agent-logs/costume-core-research.md, run 19/20). Restored to the original append-only garment list on close-out; no new evidence changed the garment type.]",
       "source_corroboration_count": 2,
       "signal_id": "peplum-waist-revival",
       "confidence_source": "manual"
@@ -36,7 +36,8 @@
     "waist emphasis"
   ],
   "garments": [
-    "peplum jacket",
+    "peplum skirt",
+    "peplum trouser",
     "structured blazer"
   ],
   "silhouettes": [
@@ -67,8 +68,14 @@
   ],
   "collection_status": "thin",
   "thin_week_note": "No in-window fashion-calendar event and no new corroborating discourse this week. The peplum/exaggerated-waistline signal completes its third uncorroborated recheck and is closed out as a methods-reach limitation rather than continued indefinitely. sheer-layering and soft-tailoring, quiet for a third consecutive window since their 2026-08-03 dormancy check, are closed out this run via a revision to that file, using the same 3-window threshold applied to off-duty-varsity's July 20 close-out. This is the fifth consecutive thin report.",
-  "revision_history": [],
+  "revision_history": [
+    {
+      "previous_content_hash": "c10960e6886317795fc3affaeea34ed916f20648c95a625c462d23fda199e075",
+      "corrected_at": "2026-11-09",
+      "reason": "Terminology drift correction: restored peplum skirt/peplum trouser to the garments list (originally silently replaced with peplum jacket with no note); documented as historical inconsistency found in run 19/20 research, fixed in run 28 verification."
+    }
+  ],
   "review_status": "reviewed",
   "reviewed_by": "loop-consolidation",
-  "content_hash": "c10960e6886317795fc3affaeea34ed916f20648c95a625c462d23fda199e075"
+  "content_hash": "6bc0b7c6d8f0235f4901417007cdd41a0996ca00ea1246b717aafed50ca75471"
 }
