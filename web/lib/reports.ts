@@ -180,6 +180,44 @@ export function getSignalHistory(slug: string): SignalOccurrence[] {
   return occurrences.sort((a, b) => (a.report_date < b.report_date ? -1 : 1));
 }
 
+export interface SignalRecencyStatus {
+  lastSeen: string;
+  isMostRecentReport: boolean;
+  reportsSinceLastSeen: number;
+}
+
+/**
+ * Purely computed recency read for /signals/[slug]'s header, added run 76
+ * (docs/agent-logs/longitudinal-tracking-research-run76.md). Real tracker
+ * pages (e.g. promise/story trackers) put a status read near the top so a
+ * reader doesn't have to scroll every dated entry to tell if a signal is
+ * still active. This does NOT introduce an editorial "resolved/dormant"
+ * verdict -- that judgment already lives in human_editor_note/index_note
+ * prose per this archive's design (see SKILL.md workflow note 10 and
+ * is_prolonged_silence()'s docstring in report_schema.py: dormancy/
+ * resolution is an editorial call, not something to auto-derive). This only
+ * states the plain, unopinionated fact of how many published reports have
+ * gone by since the signal's last occurrence, computed from data already
+ * loaded by getSignalHistory()/getAllReports() -- no new schema field, no
+ * Python change.
+ *
+ * Returns null if the signal_id has no occurrences (mirrors getSignalHistory).
+ */
+export function getSignalRecencyStatus(slug: string): SignalRecencyStatus | null {
+  const occurrences = getSignalHistory(slug);
+  if (occurrences.length === 0) return null;
+
+  const allReportDates = getAllReports().map((r) => r.report_date); // newest first
+  const lastSeen = occurrences[occurrences.length - 1].report_date;
+  const reportsSinceLastSeen = allReportDates.findIndex((d) => d === lastSeen);
+
+  return {
+    lastSeen,
+    isMostRecentReport: reportsSinceLastSeen === 0,
+    reportsSinceLastSeen: reportsSinceLastSeen === -1 ? 0 : reportsSinceLastSeen,
+  };
+}
+
 export interface RecurringSignal {
   signal_id: string;
   name: string;

@@ -5,7 +5,7 @@
 
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllSignalSlugs, getSignalHistory } from "../../../lib/reports";
+import { getAllSignalSlugs, getSignalHistory, getSignalRecencyStatus } from "../../../lib/reports";
 
 export function generateStaticParams() {
   return getAllSignalSlugs().map((slug) => ({ slug }));
@@ -43,6 +43,7 @@ export default async function SignalPage({ params }: { params: Promise<{ slug: s
 
   const firstSeen = occurrences[0].report_date;
   const name = occurrences[occurrences.length - 1].signal.name;
+  const recency = getSignalRecencyStatus(slug);
 
   return (
     <main id="main-content" style={{
@@ -89,6 +90,19 @@ export default async function SignalPage({ params }: { params: Promise<{ slug: s
         }}>
           First recorded {firstSeen} &nbsp;·&nbsp; {occurrences.length} occurrence{occurrences.length === 1 ? "" : "s"} on file
         </p>
+        {recency && (
+          <p style={{
+            fontFamily: "var(--font-franklin)",
+            fontSize: "0.75rem",
+            letterSpacing: "0.05em",
+            color: "var(--gray)",
+            marginTop: "0.5rem",
+          }}>
+            {recency.isMostRecentReport
+              ? "Appeared in the most recently published report."
+              : `Last appeared ${recency.lastSeen} — ${recency.reportsSinceLastSeen} published report${recency.reportsSinceLastSeen === 1 ? "" : "s"} since, with no further occurrence on file.`}
+          </p>
+        )}
       </header>
 
       {/* occurrence list */}
