@@ -282,3 +282,31 @@ instruction level without touching control flow or schema — the model still de
 case by case, but silent drift is now explicitly discouraged and a documented-change
 path is offered as the alternative. Only `build_prompt()`'s prompt text was touched;
 no control-flow or schema changes. Verified with `python -m py_compile src/*.py`.
+
+### Run 21 — non-English source disclosure instruction
+**2026-07-06** — see `docs/agent-logs/southeast-asia-source-attempt.md` (added
+`dewimagazine.com`, Bahasa Indonesia, as the crawler's first non-English source) and
+`docs/agent-logs/non-english-source-handling.md`. Prior to this run, `build_prompt()`
+said nothing about non-English headline text; the model was free to silently translate
+and classify a Bahasa Indonesia headline exactly as it would an English one, with no
+indication in `evidence`/`index_note` that the underlying source material required
+translation. That is a transparency gap the same honesty standard already applied to
+thin evidence and terminology drift should also cover.
+
+Added to `build_prompt()`, immediately after the existing carried-forward
+garment-terminology instruction:
+
+> "If a headline is in a language other than English, do not silently translate and
+> classify it as if it were equivalent to English-language coverage. You may interpret
+> it to extract the signal, but note in the evidence or index_note field that the
+> source material was non-English (name the language if identifiable) and that the
+> term/description is a translation, not a direct quote."
+
+Why here and phrased this way: mirrors the existing pattern in this file — permit the
+model to do the interpretive work it's already trusted with, but require the fact of
+interpretation (translation) to be disclosed rather than smoothed over, consistent
+with doc section 2's "uncertainty is allowed and should be stated plainly." Only
+`build_prompt()`'s prompt text was touched; no control-flow or schema changes.
+`src/crawler.py`'s headline extraction itself has no English-specific logic (h1/h2/h3
+extraction + a `len(text) > 20` length filter, both script-agnostic), so no crawler
+change was needed. Verified with `python -m py_compile src/*.py`.

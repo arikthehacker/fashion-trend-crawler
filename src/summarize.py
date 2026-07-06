@@ -79,6 +79,8 @@ Avoid vague, unsupported claims of ubiquity such as "everyone is wearing" or "ev
 
 When a signal continues an existing signal_id carried forward from a prior report, keep garment/material terminology describing it consistent with prior usage unless the change is genuine — in which case note it explicitly (e.g. "garment description updated from X to Y because...") rather than letting the terminology silently drift.
 
+If a headline is in a language other than English, do not silently translate and classify it as if it were equivalent to English-language coverage. You may interpret it to extract the signal, but note in the evidence or index_note field that the source material was non-English (name the language if identifiable) and that the term/description is a translation, not a direct quote.
+
 If the source material yields only a small number of genuinely distinct, well-supported signals, do not stretch, duplicate, or manufacture additional signals to appear more comprehensive. Instead, set "collection_status" to "thin" and use "thin_week_note" to state plainly that this reporting period had limited signal volume, so the report reflects the actual state of coverage rather than an inflated one. Use "collection_status": "normal" and leave "thin_week_note" empty when signal volume is adequate.
 
 Each headline below is tagged as [domain | source_sector]. Valid source sectors are: {", ".join(SOURCE_SECTORS)}.
