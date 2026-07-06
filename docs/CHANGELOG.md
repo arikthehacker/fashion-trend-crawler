@@ -18,6 +18,14 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-10 ~02:10 PDT — [Loop run 77](changelog-entries/run-77.md)** — 70th
+  report keeps an independent São Paulo echo distinct from its parent Bogotá
+  thread; the manual-sampling cadence was run proactively before it could
+  lapse again (honest negative, consistent with every prior check); the
+  "Vogue" glossary gap resolved with a real definition rather than a scanner
+  hack; nav/build sweep correctly distinguished concurrent-agent timing from
+  a real regression; periodic audit clean.
+
 - **2026-07-10 ~01:05 PDT — [Loop run 76](changelog-entries/run-76.md)** — 69th
   report continues the Bogotá thread on genuine new movement; a real
   accessibility bug fixed (most signal titles had no heading element at all,

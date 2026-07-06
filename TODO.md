@@ -1561,13 +1561,22 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       flagged the manual-sampling cadence (7/10 runs since reset) as due for a
       proactive run soon.
 
-## Next up (run 77 candidates)
-- [ ] The manual-sampling cadence is 7 runs into its ~10-run window — due for a
-      proactive run soon per this run's periodic audit recommendation, rather
-      than waiting for it to lapse again.
-- [ ] One benign glossary gap remains: "Vogue" (a publication name) has no
-      `DEFINITIONS` entry — likely shouldn't need one at all; small follow-up to
-      either add a minimal entry or exclude known publication names from the scan.
+## Run 77 — done
+- [x] Added `data/reports/2027-11-01.json`, a 70th report — kept a São Paulo
+      echo of the Bogotá waist-tailoring silhouette as a distinct sibling signal
+      rather than merging it, correctly held at "medium" for single-sector
+      corroboration.
+- [x] Ran the manual-sampling cadence proactively before it could lapse again —
+      honest negative, consistent with every prior check. Next due ~run 87.
+- [x] Resolved the "Vogue" glossary gap with a real definition (legitimate
+      citation of vogue.com in a report's `cultural_references`, same pattern as
+      other publication/institution entries) rather than weakening the scanner.
+- [x] Nav/build regression sweep and periodic audit both clean; nav/build sweep
+      correctly identified a report-count discrepancy as concurrent-agent timing,
+      not a regression — coordinator independently confirmed via `git diff --stat`.
+
+## Next up (run 78 candidates)
+- [ ] Manual-sampling cadence next due ~run 87.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven
       only.
