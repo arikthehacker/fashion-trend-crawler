@@ -207,9 +207,26 @@ export default function About() {
               marginBottom: "1rem",
             }}
           >
-            AI assists with crawling, extraction, and summarization. A human reviews that output,
-            makes the interpretive classification calls, and records them in a human-editor note
-            attached to each report.
+            ARI3LLA INDEX is an independently operated research and reporting project, not a
+            staffed newsroom or a commercial publication. It is built and maintained by a single
+            researcher-developer, with source code published on the project&apos;s public
+            repository; there is no separate editorial board, ownership structure, or funding
+            source to disclose beyond that.
+          </p>
+          <p
+            style={{
+              fontFamily: "var(--font-franklin)",
+              fontSize: "0.95rem",
+              lineHeight: "1.8",
+              color: "var(--gray)",
+              marginBottom: "1rem",
+            }}
+          >
+            AI assists with crawling, extraction, and summarization. Each report is reviewed
+            against the project&apos;s editorial guidelines, including the interpretive classification
+            calls, which are recorded in a human-editor note attached to each report. That review
+            is currently carried out by the same automated process that drafts the report, not by
+            a separate named human editor — see <Link href="/methodology" style={{ color: "var(--gray)" }}>methodology</Link> for the full disclosure.
           </p>
           <p
             style={{

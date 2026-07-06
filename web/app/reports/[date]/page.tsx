@@ -241,8 +241,8 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
           }}>
             AI-assisted collection, extraction, and drafting for this report;{" "}
             {report.reviewed_by
-              ? `human-reviewed by ${report.reviewed_by}`
-              : "human-reviewed classification"}
+              ? `reviewed against editorial guidelines (process: ${report.reviewed_by})`
+              : "reviewed against editorial guidelines"}
             . <Link href="/methodology" style={{ color: "var(--gray)", textDecoration: "underline" }}>
               Full methodology
             </Link>
@@ -539,8 +539,8 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
             {report.reviewed_by && (
               <p style={{ fontFamily: "var(--font-franklin)", fontSize: "0.9rem", lineHeight: "1.7", color: "var(--gray)" }}>
                 <strong style={{ color: "var(--black)" }}>Review: </strong>
-                {report.review_status === "draft" ? "Draft, " : "Reviewed, "}
-                {report.reviewed_by}
+                {report.review_status === "draft" ? "Draft, " : "Reviewed against editorial guidelines, "}
+                process: {report.reviewed_by}
               </p>
             )}
           </div>

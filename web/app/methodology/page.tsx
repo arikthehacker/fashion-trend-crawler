@@ -100,8 +100,8 @@ const sections: { title: string; body: string[] }[] = [
   {
     title: "AI Involvement",
     body: [
-      "AI assists with crawling source material, extracting recurring language, clustering related terms, and drafting summaries. It does not make final classification decisions.",
-      "A human reviews AI-assisted output before publication, deciding what a cluster of terms means culturally, assigning taxonomy and origin classification, and recording judgment calls in a human-editor note attached to the report data.",
+      "AI assists with crawling source material, extracting recurring language, clustering related terms, and drafting summaries. In most collection windows to date, this has meant AI-directed research (web search and direct review of outlet coverage) rather than the project's automated `crawler.py` fetching live pages end to end; the automated crawler has been run directly for a minority of windows so far. Per-report \"sources scanned\" and \"items collected\" counts reflect the sources reviewed in that window either way, not exclusively a live-crawl page count — that distinction is a known limitation of the current process, not a claim this page makes otherwise.",
+      "Each report is reviewed against this project's editorial guidelines — what a cluster of terms means culturally, taxonomy and origin classification, and judgment calls recorded in a human-editor-note field attached to the report data — before publication. This review is currently performed by the same automated process that drafts the report, not by a separate named human editor; that distinction is a known limitation of the current process, not a claim this page makes otherwise.",
     ],
   },
   {
