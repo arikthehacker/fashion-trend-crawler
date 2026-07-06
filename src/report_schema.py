@@ -248,6 +248,35 @@ def is_prolonged_silence(signal_id: str, all_reports: list, threshold: int = 4) 
 
     returns False if signal_id has fewer than `threshold` entries in its
     history (including if it never appears at all).
+
+    on the "what happens if it NEVER resolves" question (see TODO.md and
+    docs/agent-logs/permanent-open-signal-design.md): do NOT reuse the
+    dormant-signal "EDITORIAL CLOSE-OUT" pattern (see
+    layered-tops-styling-closeout.md / off-duty-varsity-resolution.md) for
+    a prolonged-silence factual question. A close-out declares a STYLE
+    signal resolved/faded, which is a legitimate editorial observation
+    about discourse volume. A factual question like "who won the CFDA
+    Fashion Fund" has no such resolution available from silence -- silence
+    is evidence the crawler hasn't found an answer, not evidence there
+    isn't one. Declaring it "closed" would misrepresent an open question
+    as answered.
+
+    the intended convention instead: once is_prolonged_silence() has been
+    True for several consecutive windows in a row (a coordinator/human call,
+    not a hardcoded second threshold in this function -- e.g. ~3 windows
+    past the initial crossing is a reasonable default), a report may mark
+    the signal_id "untracked going forward pending new information" in its
+    human_editor_note/index_note/archive_tags, instead of repeating the
+    same "still open" note indefinitely. This is an honest third state,
+    distinct from both "resolved" (close-out) and "still actively
+    tracked" (routine carry-forward): it says the archive is deprioritizing
+    further weekly re-litigation of the question without claiming to know
+    the answer, and any future agent that finds real coverage should
+    resume tracking / add a normal resolution note at that point. No new
+    schema enum value is introduced for this -- it is expressed the same
+    way close-outs are, as prose in existing free-text fields, so it stays
+    a report-writing convention rather than a schema commitment made before
+    it's been used more than once in practice.
     """
     history = get_signal_status_history(signal_id, all_reports)
     return len(history) >= threshold

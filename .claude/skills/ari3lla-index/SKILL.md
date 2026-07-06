@@ -143,6 +143,26 @@ docs/
    render site, or actually run the command) rather than trusting that "it's in the
    data/doc" means "it's true of the live site."
 
+10. **A prolonged-silence factual question is not the same as a dormant style signal, and
+    must not be closed out the same way.** Dormant STYLE signals (off-duty-varsity,
+    layered-tops-styling) get an `EDITORIAL CLOSE-OUT` note declaring them
+    resolved/faded — a legitimate call, since discourse volume genuinely dropping is an
+    observable fact. A tracked FACTUAL question (e.g. CFDA Fashion Fund winner, CFDA
+    Fashion Awards — both past `is_prolonged_silence()`'s threshold as of the
+    2026-12-21 report) has no such resolution available from silence: the crawler not
+    finding an answer is not evidence the question is settled. Do not declare these
+    "closed" or "resolved." Once `is_prolonged_silence()` has been True for several
+    consecutive windows running (roughly 3 windows past the initial crossing), mark the
+    signal_id **"untracked going forward pending new information"** in prose
+    (`human_editor_note`/`index_note`/`archive_tags`) instead of repeating the same
+    "still open" note every week. This is a third, honest state — distinct from
+    "resolved" and from routine "still tracked" — that lets future report-writing
+    agents stop re-litigating the question weekly without fabricating an answer. Any
+    agent that later finds real coverage should resume normal tracking/resolution.
+    See `is_prolonged_silence()`'s docstring in `src/report_schema.py` and
+    `docs/agent-logs/permanent-open-signal-design.md` for full reasoning. No new schema
+    enum was added for this — it's expressed as prose in existing free-text fields.
+
 ## Institutional knowledge worth knowing before you start
 
 **Fashion-week calendar context (run 16 research,
