@@ -20,11 +20,42 @@
 import requests
 from bs4 import BeautifulSoup
 from collections import deque
+from concurrent.futures import ThreadPoolExecutor, TimeoutError as FutureTimeoutError
 from urllib.parse import urljoin, urlparse, urldefrag
 from urllib.robotparser import RobotFileParser
 import json
 import time
 import sys
+
+# per-call hard wall-clock deadline, independent of requests' own timeout=.
+# requests' timeout only bounds gaps *between* bytes, not total transfer
+# time -- a host that trickles data can stall forever without ever
+# tripping that per-read timeout. This bounds the whole call.
+# See docs/agent-logs/crawler-hang-research-run71.md and
+# docs/agent-logs/crawler-hang-fix-run72.md.
+HARD_FETCH_DEADLINE = 20  # seconds, wall clock, per HTTP call
+
+def get_with_hard_deadline(url, **kwargs):
+    """requests.get() wrapped with a total wall-clock deadline.
+
+    Runs the blocking call in a worker thread so a slow-trickling host
+    cannot hang the crawler indefinitely -- the caller gets control back
+    after HARD_FETCH_DEADLINE seconds even though the worker thread (and
+    its socket) may still be alive in the background until the OS or
+    requests' own low-level timeout eventually cleans it up.
+    """
+    # NOTE: deliberately not using ThreadPoolExecutor as a context manager --
+    # `with` calls shutdown(wait=True) on exit, which blocks until the worker
+    # thread finishes, defeating the whole point of the hard deadline if the
+    # request never returns. shutdown(wait=False) lets the calling code move
+    # on immediately; the worker thread is leaked until its own underlying
+    # requests timeout=/socket eventually resolves it.
+    executor = ThreadPoolExecutor(max_workers=1)
+    try:
+        future = executor.submit(requests.get, url, **kwargs)
+        return future.result(timeout=HARD_FETCH_DEADLINE)
+    finally:
+        executor.shutdown(wait=False)
 
 # default sources that you can override later (see beginning note block)
 FASHION_SOURCES = [
@@ -122,7 +153,7 @@ def get_robots_parser(base_url):
         # robots.txt (confirmed via curl/requests with our own UA) allows
         # crawling. Fetching robots.txt with the same headers we use for
         # every other request avoids that false "blocked" result.
-        resp = requests.get(robots_url, headers=HEADERS, timeout=8)
+        resp = get_with_hard_deadline(robots_url, headers=HEADERS, timeout=8)
         if resp.status_code == 200:
             parser.parse(resp.text.splitlines())
         elif resp.status_code in (401, 403):
@@ -131,7 +162,7 @@ def get_robots_parser(base_url):
             # missing/other error -> assume allowed, matching RobotFileParser's
             # own default behavior for non-401/403 errors
             parser.allow_all = True
-    except Exception:
+    except (Exception, FutureTimeoutError):
         # if we cant read it just assume we're allowed
         pass
 
@@ -170,7 +201,7 @@ def crawl(start_url, max_depth=2, max_pages=20):
         visited.add(url)
 
         try:
-            response = requests.get(url, headers=HEADERS, timeout=8)
+            response = get_with_hard_deadline(url, headers=HEADERS, timeout=8)
 
             # skip anything that didn't load cleanly
             if response.status_code != 200:
@@ -210,7 +241,7 @@ def crawl(start_url, max_depth=2, max_pages=20):
             # niceness level
             time.sleep(1)
 
-        except Exception as e:
+        except (Exception, FutureTimeoutError) as e:
             # log any error & continue
             print(f"error crawling {url}: {e}")
             continue
