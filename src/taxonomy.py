@@ -188,6 +188,14 @@ DOMAIN_SECTOR_MAP = {
     # (confirmed official site, mirrors cfda.com/britishfashioncouncil.co.uk)
     "fhcm.paris": "institutional",
 
+    # added run 74 -- Inexmoda (Instituto para la Exportacion y la Moda),
+    # Colombia's nonprofit fashion/textile industry institute; runs
+    # Colombiatex/Colombiamoda trade fairs, publishes trend/research
+    # reports, provides training -- genuine institutional body, not a PR/
+    # event-management site (unlike SPFW, re-checked and re-rejected this
+    # same run). See docs/agent-logs/spfw-institutional-recheck-run74.md.
+    "inexmoda.org.co": "institutional",
+
     # added run 70 -- laforma.club is an independent fashion-calendar/
     # editorial outlet (fashion week schedules, designer/bag guides,
     # documentary lists), not a governing body -- same editorial-plus-content

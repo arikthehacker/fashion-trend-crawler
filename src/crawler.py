@@ -139,6 +139,24 @@ FASHION_SOURCES = [
     # section) with no JS rendering required. See
     # docs/agent-logs/source-diversity-research-run73.md.
     "https://ffw.com.br",
+    # added run 74 -- second look at the run-73 institutional-sector gap.
+    # SPFW (spfw.com.br) re-verified and re-rejected: WebFetch confirms it's
+    # event-management/PR content (designer showcase + ticketing via
+    # Eventim, run by IMM/INMODE/F2), not a governing body -- run 73's call
+    # stands. Inexmoda (inexmoda.org.co), Colombia's Instituto para la
+    # Exportacion y la Moda, is a private nonprofit institute (est. 1987)
+    # that runs the Colombiatex/Colombiamoda trade fairs, publishes
+    # industry trend/research reports, and provides training -- an actual
+    # institutional/research body, not an event-PR site. Verified: robots.txt
+    # explicitly allows AI crawlers and search engines (only disallows
+    # /wp-admin/, /xmlrpc.php); WebFetch on the root got HTTP 403 but curl
+    # with this project's own User-Agent returned HTTP 200 with real
+    # static-HTML headline markup (<h1>"INFORME DE TENDENCIAS",
+    # <h2>"PROYECCIONES PARA LA INDUSTRIA DE LA MODA!") -- no JS rendering
+    # required. First genuine second institutional-sector source alongside
+    # cfda.com/fhcm.paris/britishfashioncouncil.co.uk. See
+    # docs/agent-logs/spfw-institutional-recheck-run74.md.
+    "https://inexmoda.org.co",
 ]
 
 # default cache output path, pulled out as a named constant so future callers
