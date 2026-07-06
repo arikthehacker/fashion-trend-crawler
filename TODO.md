@@ -213,14 +213,39 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [x] Refreshed `README.md` and `case-study/page.tsx` to match 9 runs of actual shipped
       work (they'd drifted well behind reality).
 
-## Next up (run 11 candidates)
-- [ ] **New migration blocker:** `web/lib/trends.ts` needs to be migrated off the legacy
-      `trends_raw.json`/`trends_summary.json` files (or explicitly retired/repurposed)
-      before those files can finally be deleted. This is real, scoped frontend work, not
-      just a backend constant swap like steps 1-4 were.
-      See `docs/agent-logs/migration-step5-final.md`.
-- [ ] Continue watching for confidence-warning drift as new reports are added.
-- [ ] Consider whether `web/lib/trends.ts`'s live-crawl view (separate from the archive
-      view in `web/lib/reports.ts` by design, per the skill doc) is still a feature this
-      project wants, or whether it should be retired now that the archive view has grown
-      into the primary interface — worth a design decision before migrating it.
+## Run 11 — done
+- [x] **`web/lib/trends.ts` decision proposal ready for human sign-off**
+      (`docs/agent-logs/trends-ts-fate-proposal.md`): `getTrends()` is used by the
+      homepage specifically, currently rendering a stale, un-versioned crawl snapshot from
+      run 8's live-crawl test rather than anything from the dated-report archive — a real,
+      user-visible inconsistency. Recommendation: retire `trends.ts`, rebuild the homepage
+      as a masthead + latest-report teaser sourced from `reports.ts`, then delete the 4
+      legacy JSON files. **Not yet executed — needs sign-off since it changes the
+      homepage's data source**, see below.
+- [x] Periodic confidence review — no new concerning cases across the 2 reports added in
+      runs 9-10; all mismatches remain in the harmless conservative-editor direction.
+- [x] Site-wide nav/link audit — found and fixed real drift: `/case-study` was completely
+      orphaned (no inbound links from anywhere), and methodology/taxonomy/sources/about had
+      fallen behind the homepage's nav set as newer pages (timeline, archive) shipped in
+      later runs without updating the older pages' nav. Unified nav across 5 pages.
+- [x] Search/discoverability design (`docs/agent-logs/search-discoverability-design.md`):
+      recommends Pagefind (static post-build indexing, zero backend) for free-text search
+      plus a small client-side facet filter over `source_sectors`/`confidence`/
+      `volatility`/`origin_classification`, given the site is a fully static export.
+      Not implemented — scoped as its own future build.
+- [x] Added `data/reports/2026-08-03.json`, a 6th report — again honestly thin, plus two
+      "dormancy check" signals correctly downgraded from earlier medium/high ratings due to
+      lack of fresh corroboration (sheer-layering, soft-tailoring), consistent with
+      `derive_confidence()`.
+
+## Next up (run 12 candidates)
+- [ ] **Needs a decision:** retire `web/lib/trends.ts` and rebuild the homepage off
+      `reports.ts` (per the run-11 proposal), then delete the 4 legacy JSON files to
+      finally close out the migration. This is the last real blocker on a 5-run-old plan.
+- [ ] Build the search/discoverability feature (Pagefind + facet filtering) as its own
+      dedicated run, per `docs/agent-logs/search-discoverability-design.md`.
+- [ ] Continue tracking signal dormancy — `off-duty-varsity` has now been flagged quiet
+      twice (2026-07-27, 2026-08-03) without being formally marked "declining"/retired in
+      its own record; consider what "retiring" a signal_id should look like in the schema.
+- [ ] Keep the nav-consistency check in mind for any future new page — it drifted silently
+      across at least 3 runs before this audit caught it.
