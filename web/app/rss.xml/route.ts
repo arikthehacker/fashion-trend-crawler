@@ -36,13 +36,35 @@ export async function GET() {
         ? report.revision_history[report.revision_history.length - 1]
         : undefined;
       const lastUpdated = lastRevision?.corrected_at ?? report.report_date;
+      // RSS best practice (rssboard.org profile): item titles should be
+      // meaningful on their own in an aggregator's list view, not just a
+      // bare date repeated across every item. Lead with the top tracked
+      // signals for the window, falling back to the date if a report has
+      // none (thin week).
+      const signalNames = (report.top_signals ?? [])
+        .slice(0, 3)
+        .map((s) => s.name)
+        .filter(Boolean);
+      const title =
+        signalNames.length > 0
+          ? `${report.report_date}: ${signalNames.join(", ")}`
+          : report.report_date;
+      // Optional <category> per item (rssboard.org profile) surfaces the
+      // source-sector taxonomy already tracked in the schema, so readers/
+      // aggregators can filter by sector instead of only by date.
+      const categories = Array.from(
+        new Set((report.top_signals ?? []).flatMap((s) => s.source_sectors ?? []))
+      );
+      const categoryTags = categories
+        .map((c) => `      <category>${escapeXml(c)}</category>`)
+        .join("\n");
       return `    <item>
-      <title>${escapeXml(report.report_date)}</title>
+      <title>${escapeXml(title)}</title>
       <link>${escapeXml(url)}</link>
       <guid isPermaLink="true">${escapeXml(url)}</guid>
       <pubDate>${toRfc822(lastUpdated)}</pubDate>
       <description>${escapeXml(description)}</description>
-    </item>`;
+${categoryTags ? categoryTags + "\n" : ""}    </item>`;
     })
     .join("\n");
 
