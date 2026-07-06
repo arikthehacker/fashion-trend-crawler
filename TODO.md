@@ -266,17 +266,33 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       the cadence concern** by giving 2026-08-10 a distinct, honestly-argued thin-status
       reason instead of repeating prior boilerplate.
 
-## Next up (run 13 candidates, from the health check)
-- [ ] **Still pending your sign-off:** retire `web/lib/trends.ts`, rebuild the homepage off
-      `reports.ts` (proposal in `docs/agent-logs/trends-ts-fate-proposal.md`, run 11).
-      2 runs old now — flagging again since it's genuinely blocked, not forgotten.
-- [ ] Resolve `off-duty-varsity`'s dormancy — 3 reports have now flagged it quiet without
-      a resolution. `get_signal_status_history()` now exists to check its actual trend;
-      use it to make a final call (declining vs. genuinely ended) rather than flagging a
-      4th time.
-- [ ] Consider whether to explicitly surface "N consecutive thin/low-signal weeks" as its
-      own noted pattern on the site (e.g. in the archive or methodology page) rather than
-      leaving each thin report to read as an isolated event — per the health check's
-      reader-experience observation.
-- [ ] Consider prioritizing qualitative fixes (the above) over mechanically adding an 8th
-      report every run, per the health check's explicit recommendation.
+## Run 13 — done
+- [x] Resolved `off-duty-varsity` dormancy via `get_signal_status_history()` — confirmed
+      3+ weeks silent since the World Cup ended, closed it out with a `revision_history`
+      entry on `2026-07-20.json`.
+- [x] Surfaced consecutive-thin-week pattern on the archive page via
+      `getConsecutiveThinWeekCount()`, shown when streak >= 2.
+- [x] Reorganized `docs/CHANGELOG.md` into a concise index + `docs/changelog-entries/*.md`
+      per-run detail files (13 files), all content preserved.
+- [x] Added Pagefind full-text search wiring — **found and fixed a real build break
+      during consolidation**: the agent's `output: "export"` config change broke the build
+      because `sitemap.ts`/`robots.ts` aren't yet export-compatible (need explicit
+      `dynamic = "force-static"`). Reverted that one line; Pagefind's devDependency/postbuild
+      script are left in place but inert until static export is properly restored.
+- [x] Refreshed skill doc file map and next-steps for run 12-13 state.
+- [x] **User approved the `trends.ts` retirement mid-run** — executing now, see below.
+
+- [x] **`trends.ts` retirement executed — user approved mid-run-13.** Rewrote the
+      homepage as a masthead + latest-report teaser sourced from `reports.ts`'s new
+      `getLatestReport()`. Deleted `web/lib/trends.ts` and all 4 legacy
+      `trends_raw.json`/`trends_summary.json` files (root + `src/`). **Migration step 5/5
+      complete** — the 6-run-old legacy-migration plan is finally closed out.
+
+## Next up (run 14 candidates)
+- [ ] Fix `sitemap.ts`/`robots.ts` for static-export compatibility (`dynamic =
+      "force-static"`), then restore `output: "export"` in `next.config.ts` so Pagefind's
+      postbuild indexing actually works.
+- [ ] Verify Pagefind end-to-end locally once static export is restored (`npm install &&
+      npm run build`) — not verified in this environment.
+- [ ] Continue prioritizing qualitative fixes over mechanically adding reports, per the
+      run-12 health check.
