@@ -54,6 +54,22 @@ const DEFINITIONS: Record<string, string> = {
   "utility belt": "A wide, hardware-heavy belt style referencing workwear and functional gear rather than purely decorative belting.",
   "victorian undergarments": "A historical reference to 19th-century foundation garments — corsetry, underpinnings — cited when current silhouettes are read as drawing on that period.",
   "y2k nostalgia": "A style reference to early-2000s fashion — low-rise cuts, logo-forward branding, metallics — recurring across reports as a sustained rather than one-off revival.",
+  "1990s minimalism revival": "A pared-back, low-ornamentation aesthetic associated with 1990s fashion, referenced when current minimal styling is framed as an explicit historical revival.",
+  "1970s 'boho' revival styling": "A recurrence of loose, textured, folk-influenced dressing associated with 1970s fashion, cited when current coverage draws an explicit period parallel.",
+  "resale/secondhand retail growth": "Continued expansion of secondhand and resale clothing sales as a retail category, tracked as a structural market trend rather than a seasonal style signal.",
+  "coastal-cowgirl styling evolution": "Continued change in the coastal cowgirl styling term — combining beach-adjacent casualwear with Western references such as denim, fringe, and boots — tracked across reports as the specific combination of elements shifts.",
+  "2026 fifa world cup": "The 2026 FIFA World Cup, a men's international soccer tournament co-hosted by the United States, Canada, and Mexico, cited as a source of team-branded and sport-referencing style coverage.",
+  "oversized 'bug-eye' sunglasses": "Oversized, rounded, wraparound-style sunglasses noted repeatedly across sources as a recurring accessory shape.",
+  "utility-detailed belts": "Wide, hardware-heavy belt styles referencing workwear and functional gear rather than purely decorative belting.",
+  "copenhagen fashion week ss27": "Copenhagen Fashion Week's Spring/Summer 2027 runway season, cited as a designer-origin source event for signals tracked in that reporting window.",
+  "collina strada international guest slot": "A guest-designer or guest-show slot on an international fashion week schedule occupied by the New York-based label Collina Strada, cited as a designer-origin sourcing event.",
+  "cfda september 2026 nyfw schedule": "The Council of Fashion Designers of America's published show schedule for New York Fashion Week in September 2026, cited as a designer-origin source document.",
+  "pre-fashion-week anticipation": "Coverage published ahead of a fashion week's official start that speculates about or previews upcoming shows, tracked as anticipatory rather than confirmed-runway coverage.",
+  "cfda fur-free policy": "A policy position from the Council of Fashion Designers of America addressing the use of fur in member designers' collections, cited as an institutional-sector source.",
+  "cfda/vogue fashion fund 2026": "The 2026 cycle of the CFDA/Vogue Fashion Fund, an annual award and mentorship program for emerging American designers jointly run by the CFDA and Vogue.",
+  "rachel comey 25th anniversary": "The 25th anniversary of designer Rachel Comey's eponymous label, cited as a designer-origin milestone event.",
+  "conner ives nyfw debut": "Designer Conner Ives's first runway show at New York Fashion Week, cited as a designer-origin sourcing event.",
+  "magda butrym nyfw debut": "Designer Magda Butrym's first runway show at New York Fashion Week, cited as a designer-origin sourcing event.",
 };
 
 function normalize(term: string): string {
