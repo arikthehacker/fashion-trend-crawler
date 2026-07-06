@@ -1606,13 +1606,24 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       confirmed the key is present both times; this specific sub-check should be
       treated as low-trust and always independently re-verified going forward.
 
-## Next up (run 80 candidates)
-- [ ] `gh` CLI/CI-status check officially due this run (run 80) — run 79 already
-      confirmed it unchanged as a courtesy, so run 80 can just confirm rather
-      than re-verify from scratch. Next full check after that at run 90.
-- [ ] The periodic audit's `ANTHROPIC_API_KEY` presence check is now unreliable
-      across two consecutive runs — always independently re-verify rather than
-      trusting its self-report.
+## Run 80 — done
+- [x] Added `data/reports/2027-11-22.json`, a 73rd report — Bogotá/São Paulo
+      thread deliberately not padded; a new opera-gloves awards-season thread
+      split into two distinct signals, their same-week co-occurrence correctly
+      not treated as cross-sector corroboration.
+- [x] `gh`/CI check hit its official run-80 checkpoint — 9th consecutive match,
+      cadence extended to run 90.
+- [x] About/case-study freshness audit clean — case-study page already
+      accurately states the crawler limitation and hand-authored-report reality.
+- [x] Nav/build regression sweep clean, all 8 tracked prior fixes verified
+      intact in built output.
+- [x] Root-caused and fixed the `ANTHROPIC_API_KEY` false-negative pattern from
+      runs 78-79: split shell invocations of `load_dotenv()` and the
+      subsequent check lose the environment mutation between processes. A
+      single combined invocation works correctly — independently reproduced
+      by the coordinator.
+
+## Next up (run 81 candidates)
 - [ ] Manual-sampling cadence next due ~run 87.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven
@@ -1620,3 +1631,4 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [ ] `SITE_URL` remains a placeholder domain — correctly confirmed as needing only
       a human-supplied real domain, no further autonomous work possible here.
 - [ ] The underlying human-in-the-loop process gap flagged in run 50 remains open.
+- [ ] `gh` CLI/CI-status check next due at run 90.

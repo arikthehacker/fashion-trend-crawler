@@ -18,6 +18,14 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-10 ~05:40 PDT — [Loop run 80](changelog-entries/run-80.md)** — 73rd
+  report keeps a thread honestly un-padded and a new one correctly un-merged;
+  gh/CI check hits its official run-80 checkpoint (9th consecutive match,
+  cadence to run 90); About/case-study freshness audit clean; nav/build clean;
+  periodic audit finds and fixes the actual root cause of two prior API-key
+  false negatives (split shell invocations losing environment state) instead
+  of just re-flagging it again.
+
 - **2026-07-10 ~04:30 PDT — [Loop run 79](changelog-entries/run-79.md)** — 72nd
   report adds the Bogotá thread's first designer-sourced intent statement;
   gh/CI check confirmed unchanged a run early as a courtesy for run 80;
