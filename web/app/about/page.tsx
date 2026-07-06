@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function About() {
   return (
-    <main
+    <main id="main-content"
       style={{
         minHeight: "100vh",
         background: "var(--white)",

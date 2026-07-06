@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function NotFound() {
   return (
-    <main
+    <main id="main-content"
       style={{
         minHeight: "100vh",
         background: "var(--white)",

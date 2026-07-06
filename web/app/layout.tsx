@@ -58,6 +58,9 @@ export default function RootLayout({
       <body
         className={`${instrumentSerif.variable} ${libreFranklin.variable} ${reenieBeanie.variable}`}
       >
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         {children}
       </body>
     </html>

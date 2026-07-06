@@ -69,7 +69,7 @@ const sections: { title: string; body: string[] }[] = [
 
 export default function CaseStudy() {
   return (
-    <main
+    <main id="main-content"
       style={{
         minHeight: "100vh",
         background: "var(--white)",

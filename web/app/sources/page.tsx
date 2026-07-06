@@ -74,7 +74,7 @@ const sectors: { name: string; def: string; items: string[] }[] = [
 
 export default function Sources() {
   return (
-    <main
+    <main id="main-content"
       style={{
         minHeight: "100vh",
         background: "var(--white)",

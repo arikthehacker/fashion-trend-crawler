@@ -14,7 +14,7 @@ export default function Home() {
   const index = getThisWeeksIndex();
 
   return (
-    <main style={{
+    <main id="main-content" style={{
       minHeight: "100vh",
       background: "var(--white)",
       display: "flex",

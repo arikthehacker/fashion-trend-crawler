@@ -88,7 +88,7 @@ function Table({ rows }: { rows: { label: string; def: string }[] }) {
 
 export default function Taxonomy() {
   return (
-    <main
+    <main id="main-content"
       style={{
         minHeight: "100vh",
         background: "var(--white)",

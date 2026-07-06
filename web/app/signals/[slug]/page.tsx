@@ -45,7 +45,7 @@ export default async function SignalPage({ params }: { params: Promise<{ slug: s
   const name = occurrences[occurrences.length - 1].signal.name;
 
   return (
-    <main style={{
+    <main id="main-content" style={{
       minHeight: "100vh",
       background: "var(--white)",
       display: "flex",

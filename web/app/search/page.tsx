@@ -18,7 +18,7 @@ export default function Search() {
   const index = getSearchIndex();
 
   return (
-    <main style={{
+    <main id="main-content" style={{
       minHeight: "100vh",
       background: "var(--white)",
       display: "flex",

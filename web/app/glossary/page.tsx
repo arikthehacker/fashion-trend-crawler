@@ -139,7 +139,7 @@ export default function Glossary() {
   const terms = loadGlossaryTerms();
 
   return (
-    <main
+    <main id="main-content"
       style={{
         minHeight: "100vh",
         background: "var(--white)",
