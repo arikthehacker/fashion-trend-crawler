@@ -8,6 +8,7 @@
 #############################################################
 
 from dataclasses import dataclass, field, asdict
+import hashlib
 import json
 import os
 
@@ -66,6 +67,11 @@ class Signal:
     origin_classification: str = ""
     evidence: str = ""
     index_note: str = ""
+    # number of independent sources reporting this signal. defaults to 1
+    # (single-source, unconfirmed) per AP/Reuters attribution norms —
+    # see docs/agent-logs/journalism-research.md #1. optional/backward
+    # compatible: old reports missing this field are treated as single-source.
+    source_corroboration_count: int = 1
 
 
 @dataclass
@@ -86,6 +92,12 @@ class Report:
     cultural_references: list = field(default_factory=list)
     limitations: list = field(default_factory=list)
     archive_tags: list = field(default_factory=list)
+    # sha256 of the report's serialized signal content, computed at save
+    # time by save_report() for fixity/integrity verification (DPC/NDSA
+    # checksum guidance — see docs/agent-logs/journalism-research.md #3).
+    # empty string until save_report() populates it; optional/backward
+    # compatible with reports saved before this field existed.
+    content_hash: str = ""
 
     def to_dict(self) -> dict:
         d = asdict(self)
@@ -94,6 +106,21 @@ class Report:
 
 class SchemaValidationError(ValueError):
     pass
+
+
+SHA256_HEX_LENGTH = 64
+
+
+def compute_content_hash(data: dict) -> str:
+    """
+    sha256 hex digest of the report's serialized signal content
+    (top_signals), used as a fixity checksum. computed over a
+    canonical (sorted-key) JSON encoding so it's stable regardless
+    of dict key ordering.
+    """
+    signals = data.get("top_signals", [])
+    canonical = json.dumps(signals, sort_keys=True, ensure_ascii=False)
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
 def validate_report(data: dict) -> None:
@@ -129,6 +156,29 @@ def validate_report(data: dict) -> None:
                 f"top_signals[{i}].origin_classification "
                 f"'{signal['origin_classification']}' not in {ORIGIN_CLASSIFICATIONS}"
             )
+        # optional field: default to 1 (single-source) if absent so old
+        # reports remain valid.
+        corroboration_count = signal.get("source_corroboration_count", 1)
+        if not isinstance(corroboration_count, int) or corroboration_count < 1:
+            raise SchemaValidationError(
+                f"top_signals[{i}].source_corroboration_count must be an int >= 1, "
+                f"got {corroboration_count!r}"
+            )
+
+    # optional field: only checked if present, so old reports without a
+    # content_hash still validate.
+    content_hash = data.get("content_hash", "")
+    if content_hash:
+        is_valid_hex = (
+            isinstance(content_hash, str)
+            and len(content_hash) == SHA256_HEX_LENGTH
+            and all(c in "0123456789abcdef" for c in content_hash.lower())
+        )
+        if not is_valid_hex:
+            raise SchemaValidationError(
+                f"content_hash must be a {SHA256_HEX_LENGTH}-char hex sha256 digest, "
+                f"got {content_hash!r}"
+            )
 
 
 def report_path(report_date: str) -> str:
@@ -141,6 +191,10 @@ def save_report(data: dict, validate: bool = True) -> str:
     validate (optional) and write a report dict to
     data/reports/<report_date>.json. returns the path written.
     """
+    # compute fixity checksum before validation so a bad hash the caller
+    # supplied gets overwritten with the correct one rather than rejected.
+    data["content_hash"] = compute_content_hash(data)
+
     if validate:
         validate_report(data)
 
