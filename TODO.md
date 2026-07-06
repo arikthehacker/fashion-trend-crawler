@@ -1304,10 +1304,29 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
       run 50 remain open; the real-pipeline ratio has proportionally worsened since
       (2/43 → 2/52 reports).
-- [ ] Consider whether a lightweight check should verify agent self-reported claims
-      ("reused signal X", "verified Y") against actual saved file content, given two
-      recent instances where a summary didn't match what was actually written.
-- [ ] Now that `met-gala-2027-coverage-gap` has crossed the prolonged-silence
-      threshold, a future run should make the actual "untracked going forward"
-      transition decision (deliberately left open this run).
 - [ ] `gh` CLI/CI-status check next due at run 70.
+
+## Run 61 — done
+- [x] Built `src/check_signal_reuse_claims.py` in direct response to run 60's flagged
+      gap — a narrow heuristic script catching the exact "prose claims signal reuse
+      but top_signals doesn't actually contain it" bug pattern seen in runs 57-58.
+      Verified honestly: 0 false positives on the real archive, correctly skips
+      negated cases.
+- [x] `met-gala-2027-coverage-gap` transitioned to "untracked going forward pending
+      new information" — two independent agents (periodic audit reading the 4th
+      occurrence directly, new-report agent on the 5th) converged on the same call,
+      verified consistent with each other.
+- [x] Added `data/reports/2027-07-05.json`, a 54th report — new couture-debuts signal,
+      agent explicitly re-read its own saved JSON to confirm claims before reporting.
+- [x] Keyboard-only navigability and nav/build regression sweep both clean — native
+      elements sufficient for WCAG 2.1.1, dark mode/skip-link/Open Graph all still
+      correctly present in real built output.
+
+## Next up (run 62 candidates)
+- [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
+      correctness — still awaiting a human decision (run 50).
+- [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
+      run 50 remain open.
+- [ ] `gh` CLI/CI-status check next due at run 70.
+- [ ] Consider periodically running `check_signal_reuse_claims.py --all` (not just the
+      latest report) as part of the periodic-audit routine, now that it exists.

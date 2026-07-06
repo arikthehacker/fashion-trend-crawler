@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-09 ~06:45 PDT — [Loop run 61](changelog-entries/run-61.md)** — Direct
+  response to run 60's flagged self-report reliability gap: a real checker script
+  built and honestly verified for the exact signal-reuse bug pattern seen twice;
+  two independent agents converge on the same Met Gala "untracked going forward"
+  transition, verified consistent; new report's agent explicitly self-verified before
+  reporting; keyboard-navigability and full nav/build regression sweeps both clean.
+
 - **2026-07-09 ~05:30 PDT — [Loop run 60](changelog-entries/run-60.md)** — 60th loop
   run milestone. `is_prolonged_silence()` fires on real accumulated data for the first
   time (Met Gala 2027, 4 occurrences); `gh`/CI check re-confirmed unchanged; internal
