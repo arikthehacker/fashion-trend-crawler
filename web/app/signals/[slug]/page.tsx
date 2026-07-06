@@ -124,6 +124,9 @@ export default async function SignalPage({ params }: { params: Promise<{ slug: s
                 {signal.source_sectors?.length > 0 && (
                   <span>Sectors: {signal.source_sectors.join(", ")}</span>
                 )}
+                {signal.source_domains && signal.source_domains.length > 0 && (
+                  <span>Sources: {signal.source_domains.join(", ")}</span>
+                )}
               </div>
               <p style={{
                 fontFamily: "var(--font-franklin)",
