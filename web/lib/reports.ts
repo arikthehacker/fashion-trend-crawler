@@ -66,6 +66,12 @@ export function getAllReports(): Report[] {
   return reports.sort((a, b) => (a.report_date < b.report_date ? 1 : -1));
 }
 
+/** Returns the most recently dated report, or null if the archive is empty. */
+export function getLatestReport(): Report | null {
+  const reports = getAllReports();
+  return reports.length > 0 ? reports[0] : null;
+}
+
 /** Returns a single report by its report_date (YYYY-MM-DD), or null. */
 export function getReportByDate(date: string): Report | null {
   const dir = reportsDir();
