@@ -45,6 +45,7 @@ src/
   validate_all_reports.py  # CI check — runs validate_report() against every file in data/reports/, see .github/workflows/validate-reports.yml; also runs derive_confidence() as a non-blocking warning (run 8)
   audit_confidence.py # reusable script (run 7) comparing assigned confidence vs. derive_confidence() across all reports; used for periodic confidence/dormancy review, not wired into CI
   check_field_coverage.py # reusable script (run 25) enumerating every Report/Signal schema field and flagging any that's neither typed in reports.ts nor referenced in a .tsx file — the structural fix for the "claimed but not shown" bug pattern (human_editor_note/thin_week_note/revision_history all shipped in data before they were ever rendered); non-blocking, not wired into CI
+  check_heading_patterns.py # reusable script (run 22, revisited run 29) — heuristic scan for the recurring styled-<p>-as-heading bug that ESLint/jsx-a11y cannot catch; not wired into CI, manual/heuristic
 data/
   reports/<YYYY-MM-DD>.json   # one archived report per collection window, schema in report_schema.py
 web/                   # Next.js app
