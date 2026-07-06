@@ -1,0 +1,111 @@
+{
+  "report_date": "2026-11-30",
+  "collection_window": {
+    "start": "2026-11-24",
+    "end": "2026-11-30"
+  },
+  "sources_scanned": 13,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "institutional": 1,
+    "editorial": 1,
+    "retail": 1
+  },
+  "executive_summary": "This collection window (November 24 - 30, 2026) is the twenty-third archived window overall and the first to nominally cover actual Black Friday/Cyber Monday dates (Nov 27-30, 2026) rather than the retail calendar's early-access run-up. Fresh search again found no dated, sourced coverage of a CFDA/Vogue Fashion Fund 2026 winner from CFDA, Vogue, WWD, Business of Fashion, or Fashionista -- available coverage remains limited to the June finalist announcement and the October 20 gala date. This is now the sixth consecutive window this signal has been carried forward open, and applying this archive's own is_prolonged_silence() check (four-or-more-consecutive-window threshold) against this signal_id's tracked history returns True as of last window and remains True here; this report's human_editor_note reflects that formal result rather than an informal 'still open' note. The CFDA Fashion Awards question was also re-checked with a fresh search, again finding no confirmed 2026 date, nominee list, or post-event coverage; this report formalizes that question as a tracked top_signals entry with its own signal_id for the first time (it was previously narrative-only in executive summaries and limitations, not machine-trackable), so is_prolonged_silence() cannot yet return True for it under this archive's own history mechanism even though five prior reports have informally called it open -- that gap between narrative claim and tracked history is itself noted below. Separately, this window's search specifically targeted post-event Black Friday/Cyber Monday 2026 sales-performance coverage, since last window's early-retail-calendar signal predicted the event would fall inside this window (Nov 27). Search did not surface genuine 2026 post-event results: pages nominally dated or titled 2026 either restated pre-event projections or reused prior-year (2025) National Retail Federation-sourced figures (e.g. the widely syndicated '202.9 million shoppers' and '$45.6B apparel' figures, which are 2025 holiday-weekend results, not 2026 ones) under 2026-tagged URLs and headlines. This is a known constraint of point-in-time web search rather than a finding about the event itself -- Black Friday/Cyber Monday 2026 did occur within this window per the retail calendar, but this report cannot verify its sales outcome with genuine in-window sourced coverage, so no sales-performance claim is made. The prior window's early-access retail-calendar signal is carried forward and updated to note only that the full event is now confirmed to have occurred within this window's dates, not what its results were. No other in-window garment, silhouette, or aesthetic discourse independently verifiable to this window was found. On balance this window remains thin, continuing the post-fashion-month quiet stretch, with one institutional signal now past this archive's own prolonged-silence threshold, a second institutional question newly formalized for tracking, and the retail-calendar signal updated but not resolved.",
+  "top_signals": [
+    {
+      "name": "CFDA/Vogue Fashion Fund 2026 winner still unconfirmed (sixth consecutive window; now past this archive's prolonged-silence threshold)",
+      "type": "institutional_policy",
+      "source_sectors": [
+        "institutional",
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "emerging",
+      "origin_classification": "unclear",
+      "evidence": "The CFDA/Vogue Fashion Fund's 2026 winner gala was held October 20, 2026. As of this window's search (covering Nov 24 - 30, roughly six weeks after the gala), still no dated post-gala reporting naming a winner has surfaced from CFDA.com, Vogue, WWD, Business of Fashion, or Fashionista. The most recent dated coverage available remains the June 2026 finalist announcement (ten designers: Aisling Camps, Amir Taghi, Terrence Zhou/Bad Binch TONGTONG, Emily Dawn Long, Jamie Haller, Julia Ferentinos/Juju Vera, Zane Li/Lii, George Inaki/Milamore, Claire Sullivan, Zoe Gustavia Anna Whalen).",
+      "index_note": "Carried forward from the 2026-11-23 report -- same signal_id, now a sixth consecutive open window. Running this archive's report_schema.is_prolonged_silence('cfda-vogue-fashion-fund-2026-winner', all_reports) against the pre-this-window history (five entries: 2026-10-26 through 2026-11-23) already returns True at the default four-window threshold; adding this window's entry keeps it True. This report treats that as a formal, code-checked result, not an editorial impression.",
+      "human_editor_note": "Prior windows' notes described this signal as 'still open' informally. As of this window, this archive's own is_prolonged_silence() check formally confirms the pattern: six consecutive windows with zero indexed coverage of a CFDA/Vogue Fashion Fund winner is well outside ordinary reporting lag for a program this well-covered in prior years, and now clears this archive's own four-window threshold for flagging prolonged silence rather than routine carry-forward. This does not change what is asserted -- no winner name, no cancellation, no delay is claimed -- but it does change how the report frames the open question: this is no longer just a recurring caveat, it is a signal this archive's own mechanism identifies as having gone unresolved longer than its default tolerance. The most defensible reading remains either (a) a search-tool recency/indexing gap specific to this query that has now persisted across six windows, or (b) a genuine change in how this cycle's outcome was publicized. Both remain stated as open possibilities. If dated coverage appears in a future window, reconcile and close this signal_id there with a real name and source; do not edit this or prior reports retroactively without new evidence.",
+      "source_corroboration_count": 1,
+      "signal_id": "cfda-vogue-fashion-fund-2026-winner",
+      "confidence_source": "manual"
+    },
+    {
+      "name": "CFDA Fashion Awards 2026 date/nominees still unconfirmed (formally tracked this window for the first time)",
+      "type": "institutional_policy",
+      "source_sectors": [
+        "institutional",
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "emerging",
+      "origin_classification": "unclear",
+      "evidence": "Fresh search (including a targeted postponed/canceled query) again found no confirmed 2026 date, nominee list, or post-event coverage for the CFDA Fashion Awards, distinct from the CFDA/Vogue Fashion Fund. 2025's ceremony precedent (early November) has now passed with no 2026 equivalent surfaced in search.",
+      "index_note": "Prior reports (2026-11-02 through 2026-11-23) described this question as open in executive_summary/limitations text but never gave it a signal_id or a top_signals entry, so it was not machine-trackable via get_signal_status_history()/is_prolonged_silence(). This report adds it as a tracked signal for the first time. Because history only starts here, is_prolonged_silence('cfda-fashion-awards-2026', all_reports) correctly returns False despite the informal narrative across prior windows describing it as a fourth-and-then-later-consecutive open question -- that narrative claim was never backed by tracked history until now.",
+      "human_editor_note": "This report is formalizing, not backdating, the tracking of this question: it does not retroactively edit prior reports to add signal_id entries they never had, and it does not claim is_prolonged_silence() confirms a pattern the code cannot actually see in history it wasn't given. The informal record across roughly five prior windows describing this as repeatedly open is accurate as prose but was, until this window, invisible to this archive's own cross-report tooling -- a real gap between what the report said and what the schema could verify, worth naming rather than quietly closing over.",
+      "source_corroboration_count": 1,
+      "signal_id": "cfda-fashion-awards-2026",
+      "confidence_source": "manual"
+    },
+    {
+      "name": "Black Friday/Cyber Monday 2026 occurred within this window; sales-performance outcome unverifiable via search",
+      "type": "retail_calendar_event",
+      "source_sectors": [
+        "retail"
+      ],
+      "confidence": "low",
+      "volatility": "seasonal",
+      "origin_classification": "retail_adopted",
+      "evidence": "Black Friday 2026 (Nov 27) and Cyber Monday 2026 (Nov 30) both fall within this window per the standard US retail calendar, continuing directly from last window's confirmed early-access sale scheduling (JCPenney, Target, Macy's). This window's search specifically sought post-event 2026 sales-performance coverage. It did not find any: results tagged or dated 2026 either repeated pre-event spending projections (e.g. a $14.2B Cyber Monday online-sales projection) or restated prior-year NRF-sourced holiday-weekend results (202.9 million shoppers, $45.6B in apparel sales, up 9.9% YoY) that are documented 2025 Black Friday/Cyber Monday figures republished or mislabeled under 2026-dated pages.",
+      "index_note": "Carried forward in kind from the 2026-11-23 report's early-retail-calendar signal, but distinct in scope: that signal confirmed dated pre-event scheduling; this one confirms the event's occurrence within the window while explicitly declining to assert a sales outcome. This is a limitation of point-in-time web search reaching forward past its own real-world present, not a finding about 2026 holiday retail performance -- no sales figure, growth rate, or trend claim from the 2025 data found in search is attributed to 2026 in this report.",
+      "human_editor_note": "This entry deliberately reports an absence: the archive can confirm Black Friday/Cyber Monday 2026 happened on schedule, but cannot verify what happened commercially, because search results attributed to 2026 for this topic are demonstrably recycled or mislabeled 2025 figures. Rather than presenting those numbers as 2026 results (which would misrepresent search-tool artifacts as verified current-window fact), this report states the gap directly. Confidence is set to low, lower than last window's medium, specifically because this window's claim is narrower and less corroborated than last window's dated retailer-schedule confirmation.",
+      "source_corroboration_count": 1,
+      "signal_id": "2026-black-friday-cyber-monday-outcome",
+      "confidence_source": "manual"
+    }
+  ],
+  "repeated_keywords": [
+    "CFDA Vogue Fashion Fund",
+    "CFDA Fashion Awards",
+    "post-fashion-month",
+    "prolonged silence",
+    "unresolved institutional signal",
+    "Black Friday",
+    "Cyber Monday",
+    "holiday retail calendar"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [
+    "CFDA/Vogue Fashion Fund 2026 gala (held Oct 20, 2026 -- winner outcome still not verifiable via dated sourced coverage as of this window's search, sixth consecutive window unresolved, now past this archive's own prolonged-silence threshold)",
+    "CFDA Fashion Awards 2026 (distinct ceremony from the Fashion Fund) expected in early November 2026 per 2025's November 3 precedent -- still no confirmed 2026 date, nominees, or coverage of the event occurring were found this window; formally tracked as a signal for the first time this window",
+    "Black Friday (Nov 27) and Cyber Monday (Nov 30) 2026 -- both fall within this window per the retail calendar, but no genuine 2026 post-event sales-performance coverage was found in search; results attributed to 2026 for this topic trace back to 2025 NRF holiday-weekend figures"
+  ],
+  "limitations": [
+    "items_collected (2) and sources_scanned (13) remain below the fashion-month baseline; this window continues the post-fashion-month quiet stretch.",
+    "The CFDA/Vogue Fashion Fund's 2026 winner remains unconfirmed by dated, sourced coverage as of this window's search, now across six consecutive windows and roughly six weeks after the gala occurred. is_prolonged_silence('cfda-vogue-fashion-fund-2026-winner', all_reports) formally returns True as of last window and remains True. Full history via get_signal_status_history('cfda-vogue-fashion-fund-2026-winner', ...).",
+    "The CFDA Fashion Awards remains unconfirmed for 2026 by dated, sourced coverage; this window is the first in which it was given a signal_id and added to top_signals, so is_prolonged_silence() cannot yet reflect the roughly five prior windows in which it was informally described as open in narrative text only -- that narrative/tracking gap is itself logged here rather than papered over.",
+    "This window's search for Black Friday/Cyber Monday 2026 post-event sales-performance coverage did not find genuine 2026 results; content tagged or dated 2026 traced back to 2025 NRF-sourced holiday-weekend figures or pre-event projections. No 2025 figure is reported here as a 2026 outcome.",
+    "General 2026 trend-forecast content encountered during search was again excluded as pre-window forecast copy, not in-window reporting.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach.",
+    "No fabricated show content, reviews, winner names, sales figures, or trend claims were introduced to fill this window's gaps."
+  ],
+  "archive_tags": [
+    "post-fashion-month-2026",
+    "cfda-vogue-fashion-fund-unresolved",
+    "cfda-fashion-awards-unconfirmed",
+    "black-friday-2026",
+    "cyber-monday-2026",
+    "thin-week",
+    "2026-q4"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "Fewer than 3 distinct, independently verifiable style-discourse signals were found despite an active, non-assumed search effort. Both carried-forward institutional questions remain unresolved -- one now formally past this archive's own prolonged-silence threshold, the other newly formalized for tracking -- and the one retail-calendar item this window confirms an event occurred without being able to verify its outcome.",
+  "review_status": "reviewed",
+  "reviewed_by": "loop-consolidation",
+  "revision_history": [],
+  "content_hash": "ccdbaecff6a338b3ea0cf5fae5b6783599b2f3e7187cd8306781f7fe532a5853"
+}
