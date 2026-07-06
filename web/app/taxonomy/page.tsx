@@ -138,6 +138,7 @@ export default function Taxonomy() {
             { href: "/", label: "Report" },
             { href: "/methodology", label: "Methodology" },
             { href: "/sources", label: "Sources" },
+            { href: "/glossary", label: "Glossary" },
             { href: "/timeline", label: "Timeline" },
             { href: "/archive", label: "Archive" },
             { href: "/about", label: "About" },
@@ -173,7 +174,8 @@ export default function Taxonomy() {
           }}
         >
           Signals are classified along four dimensions: signal type, source sector, volatility, and
-          confidence. Definitions below are applied consistently across reports.
+          confidence. Definitions below are applied consistently across reports. For definitions of
+          the aesthetic terms themselves, see the Glossary.
         </p>
 
         <div style={{ marginBottom: "3.5rem" }}>

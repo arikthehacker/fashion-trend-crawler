@@ -171,6 +171,7 @@ export default function Methodology() {
             { href: "/", label: "Report" },
             { href: "/taxonomy", label: "Taxonomy" },
             { href: "/sources", label: "Sources" },
+            { href: "/glossary", label: "Glossary" },
             { href: "/timeline", label: "Timeline" },
             { href: "/archive", label: "Archive" },
             { href: "/about", label: "About" },
