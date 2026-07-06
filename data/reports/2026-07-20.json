@@ -128,6 +128,21 @@
       "human_editor_note": "This is the follow-up review flagged in the July 13 report. A human editor should do one more check in the next collection window (post-tournament, no active World Cup news cycle) to see whether jersey-as-daily-top coverage or search interest persists or drops off; a drop-off would confirm this was tournament-driven search noise rather than a fashion trend, consistent with the original caution against upgrading confidence on the strength of large percentage figures with an unknown base.",
       "source_corroboration_count": 1,
       "signal_id": "off-duty-varsity"
+    },
+    {
+      "name": "\"Poetcore\" literary/dark-academia-adjacent aesthetic (Pinterest 2026 trend)",
+      "type": "social_observation",
+      "source_sectors": [
+        "social"
+      ],
+      "confidence": "low",
+      "volatility": "emerging",
+      "origin_classification": "platform_native",
+      "evidence": "Pinterest's official Pinterest Predicts 2026 trend report names \"Poetcore\" as one of 21 trends for 2026, framed as \"college professor meets Dead Poets Society\" styling (oversized turtlenecks, vintage blazers, worn-in messenger bags), evolving out of grandmillennial and dark academia aesthetics. Pinterest cites year-on-year search growth: \"the poet aesthetic\" +175%%, \"poet core\" +75%%, with related searches \"tie accessories\" +85%% and \"cape outfit\" +65%%. Covered independently by WWD (\"Pinterest Predicts 2026: Cool Blue, Glamoratti, Poetcore & More Trends\"). Sources: https://business.pinterest.com/pinterest-predicts/2026/poetcore/ and https://wwd.com/fashion-news/fashion-trends/pinterest-2026-trends-cool-blue-glamoratti-poetcore-fashion-1238385199/",
+      "index_note": "Second exercise of the manual-sampling workflow, distinct signal from the Off-Duty Varsity entry logged 2026-07-06. Source is Pinterest's own official Pinterest Predicts 2026 trend page (business.pinterest.com), not a scraped feed, corroborated by independent WWD trade coverage of the same report -- two distinct public sources rather than one, which is why corroboration count is set to 2 despite both ultimately tracing back to Pinterest's underlying search-index data. The framing (\"college professor meets Dead Poets Society\", \"borrowed-from-your-grandfather\") mixes dark-academia and grandmillennial references that have circulated for several seasons already, so this reads more like a rebrand/relabeling of an existing aesthetic cluster under a new name than a genuinely new style behavior -- a naming/marketing signal as much as a discourse signal. As with the Off-Duty Varsity entry, Pinterest reports percentage search growth, not absolute volume or engagement, so a large jump (poet aesthetic +175%%, poetcore +75%%) could still sit on a small base. Holding at low/medium rather than upgrading on the strength of two aligned percentage figures alone, since WWD's coverage restates rather than independently verifies Pinterest's own numbers. Flag for a re-check next quarter to see whether \"poetcore\" persists as a term used outside Pinterest-adjacent coverage (retail buys, designer references, other platforms) or fades as a one-report naming exercise.",
+      "source_corroboration_count": 2,
+      "signal_id": "poetcore-aesthetic",
+      "confidence_source": "manual"
     }
   ],
   "repeated_keywords": [
@@ -194,5 +209,12 @@
     "off-duty-varsity-followup",
     "2026-q3"
   ],
-  "content_hash": "87e7782686feee93cd46c303462b83b4b7270ead8ba895f3e27d23fe8e53eaae"
+  "content_hash": "7df04941152aaa8cd5e66761286ed33553217e8813d79fb7cfb4b9eaff1b08f4",
+  "revision_history": [
+    {
+      "previous_content_hash": "87e7782686feee93cd46c303462b83b4b7270ead8ba895f3e27d23fe8e53eaae",
+      "corrected_at": "2026-07-06",
+      "reason": "Added second manually-sampled social signal (poetcore, Pinterest Predicts 2026) per manual-sampling workflow repeatability check"
+    }
+  ]
 }
