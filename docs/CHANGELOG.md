@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-08 ~19:15 PDT — [Loop run 52](changelog-entries/run-52.md)** — 45th report
+  ends the thin-week streak with a genuine Chanel Cruise signal; the manual-sampling
+  ambiguity flagged in run 50 gets a concrete acceptance policy instead of open-ended
+  acknowledgment; Open Graph/social-card metadata added; a follow-up check finds and
+  fixes real methodology-page overclaims run 51 missed; `gh` CLI unavailability hits a
+  20-consecutive-check milestone.
+
 - **2026-07-08 ~18:00 PDT — [Loop run 51](changelog-entries/run-51.md)** — Responds to
   run 50's flagged human-in-the-loop finding by fixing three real overclaims in the
   site's own copy (a byline literally read "human-reviewed by loop-consolidation"),

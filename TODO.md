@@ -1092,6 +1092,35 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       the process itself; that decision is still the user's.
 - [ ] Two pre-existing `human_editor_note` values (2026-07-13, 2026-11-09) remain
       verbatim duplicates of `index_note` — deliberately left as-is.
-- [ ] Manual social-sampling exercised only 3 times in 51 runs, geographic/language
-      source coverage still Western/English-skewed — both repeatedly acknowledged
-      without a defined resolution or acceptance endpoint.
+
+## Run 52 — done
+- [x] Added `data/reports/2027-05-03.json`, a 45th report — Chanel Cruise 2027
+      Biarritz debut (Matthieu Blazy) ends the recent thin-week streak on a genuine
+      basis; Met Gala 2027 checked specifically and honestly logged as having no
+      reachable pre-event coverage rather than assumed quiet.
+- [x] Closed the manual-sampling ambiguity flagged in run 50: added a concrete
+      acceptance criterion to `docs/manual-sampling-workflow.md` (check every ~10 runs,
+      exercise only when genuine independent corroboration exists; "checked, nothing
+      cleared the bar" is now a defined complete outcome, not open debt).
+- [x] Added Open Graph/Twitter-card metadata site-wide and per-report (`layout.tsx`,
+      `web/app/reports/[date]/page.tsx`) — the site had zero social-card metadata
+      despite otherwise disciplined metadata hygiene elsewhere.
+- [x] Disclosure consistency follow-up found and fixed real overclaims run 51 missed:
+      methodology's "How AI Is Used," "Limitations," and "Human Review Process"
+      sections still flatly asserted human review, contradicting the disclosure added
+      elsewhere on the same page. Fixed all three; renamed the section to "Review
+      Process."
+- [x] Periodic audit — clean. 50 confidence mismatches all editor-conservative, 0 field
+      coverage warnings; `gh` CLI unavailability confirmed across 20 consecutive checks
+      (runs 26-52) — a milestone worth deciding whether to keep re-checking indefinitely
+      or accept as a standing, disclosed environment limitation.
+
+## Next up (run 53 candidates)
+- [ ] The run-19 confidence-gate fix remains untested — revisit once
+      `independent_criticism` sources reappear.
+- [ ] `gh` CLI unavailable for 20+ consecutive checks — consider whether to keep
+      re-checking each run or accept and disclose as a standing limitation.
+- [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
+      correctness — still awaiting a human decision (run 50).
+- [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
+      run 50 remain open — runs 51-52 only corrected the site's own claims about them.
