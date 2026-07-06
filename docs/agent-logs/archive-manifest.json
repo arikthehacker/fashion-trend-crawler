@@ -1,0 +1,181 @@
+{
+  "note": "PLACEHOLDER SITE_URL -- these links do not resolve. Re-run with --site-url once the site has a real deployed domain, then feed each url below to https://web.archive.org/save/<url> or https://web.archive.org/save manually (or a scheduled job).",
+  "site_url_is_placeholder": true,
+  "reports": [
+    {
+      "report_date": "2026-05-07",
+      "url": "https://ari3lla-index.example.com/reports/2026-05-07",
+      "content_hash": "9dff572cae32dd7bff6c585303e9da3c42d39e8d626aa7bcb393e6db404eb4e8"
+    },
+    {
+      "report_date": "2026-07-06",
+      "url": "https://ari3lla-index.example.com/reports/2026-07-06",
+      "content_hash": "c995e033868859f0ff515f06f30805cbb1b1490cd80b52225517201ba98bc35e"
+    },
+    {
+      "report_date": "2026-07-13",
+      "url": "https://ari3lla-index.example.com/reports/2026-07-13",
+      "content_hash": "ebe3c076f92628d2702323b01481db45aed78573e1190f5fba3cc120b01b56a3"
+    },
+    {
+      "report_date": "2026-07-20",
+      "url": "https://ari3lla-index.example.com/reports/2026-07-20",
+      "content_hash": "8abffcec09b16f22d922354aa6865d203590dfd6c99dec59923ff644999d8a8c"
+    },
+    {
+      "report_date": "2026-07-27",
+      "url": "https://ari3lla-index.example.com/reports/2026-07-27",
+      "content_hash": "90db65e62de3e0e5cc8633f5f51d532eca39eb9baf09481f29e431db8e400530"
+    },
+    {
+      "report_date": "2026-08-03",
+      "url": "https://ari3lla-index.example.com/reports/2026-08-03",
+      "content_hash": "22756f0ccd1826a749fe391acd21fa8aacdb5bda42e16a203aeae4d6e9318eaa"
+    },
+    {
+      "report_date": "2026-08-10",
+      "url": "https://ari3lla-index.example.com/reports/2026-08-10",
+      "content_hash": "43c66a0fdb3c9f9b5734fca83900da0e5a3fef952044090e792e07e46e78fe4e"
+    },
+    {
+      "report_date": "2026-08-17",
+      "url": "https://ari3lla-index.example.com/reports/2026-08-17",
+      "content_hash": "f96a3c97bf248c0dda7e5e27606e82c72d4297fe53403628723335a95c23ec98"
+    },
+    {
+      "report_date": "2026-08-24",
+      "url": "https://ari3lla-index.example.com/reports/2026-08-24",
+      "content_hash": "6bc0b7c6d8f0235f4901417007cdd41a0996ca00ea1246b717aafed50ca75471"
+    },
+    {
+      "report_date": "2026-08-31",
+      "url": "https://ari3lla-index.example.com/reports/2026-08-31",
+      "content_hash": "a6f84d0604998170ee13eeb5fa2d810fc8a15a52849a3b90d8f88679790f33a5"
+    },
+    {
+      "report_date": "2026-09-07",
+      "url": "https://ari3lla-index.example.com/reports/2026-09-07",
+      "content_hash": "eb917b1232ea8f373c8520b54315c6b550230c512ed0ede40ad0314ba276fcaf"
+    },
+    {
+      "report_date": "2026-09-14",
+      "url": "https://ari3lla-index.example.com/reports/2026-09-14",
+      "content_hash": "26f661de7b2c26c0a1b9a532914cbc408463aa583394b6f3b40e20a8afc9b741"
+    },
+    {
+      "report_date": "2026-09-21",
+      "url": "https://ari3lla-index.example.com/reports/2026-09-21",
+      "content_hash": "7bce3b9871fe41413511c9f743c2fe50334dba4afc4fe0bf38f629a6ff490694"
+    },
+    {
+      "report_date": "2026-09-28",
+      "url": "https://ari3lla-index.example.com/reports/2026-09-28",
+      "content_hash": "104e37bc14637c6030e64ee43fa30152f66504c46897ca399a65b53b13d5a764"
+    },
+    {
+      "report_date": "2026-10-05",
+      "url": "https://ari3lla-index.example.com/reports/2026-10-05",
+      "content_hash": "699e8fb4f34497d781c92b6d4c45bfe416909711427ffd9e69ca2f0ae170eb21"
+    },
+    {
+      "report_date": "2026-10-12",
+      "url": "https://ari3lla-index.example.com/reports/2026-10-12",
+      "content_hash": "1fc5311ccee510ccc78fbd68d7a74f6c7e416707c49acdac14e48bd705db9e40"
+    },
+    {
+      "report_date": "2026-10-19",
+      "url": "https://ari3lla-index.example.com/reports/2026-10-19",
+      "content_hash": "b3049fefdb4b3918d6f217fc7ec2456314a59564c153d4b789d4e76974ed2c67"
+    },
+    {
+      "report_date": "2026-10-26",
+      "url": "https://ari3lla-index.example.com/reports/2026-10-26",
+      "content_hash": "d0c08dc77fddbe89fbc6d7992f5ae3f816b6ab4a9c7c962e624123fcbe8a75bb"
+    },
+    {
+      "report_date": "2026-11-02",
+      "url": "https://ari3lla-index.example.com/reports/2026-11-02",
+      "content_hash": "668d2dea71de72718735acd70d460a38abbdf332d33702867fe39772bc3d2fd5"
+    },
+    {
+      "report_date": "2026-11-09",
+      "url": "https://ari3lla-index.example.com/reports/2026-11-09",
+      "content_hash": "5ca3a72954e69b4c26f58726f86f29788a2d29c3bfc40856ba95894ec5afc0c7"
+    },
+    {
+      "report_date": "2026-11-16",
+      "url": "https://ari3lla-index.example.com/reports/2026-11-16",
+      "content_hash": "c5f00312760479e4e08786824cc87d0bd33ff7410977ced0e143bc00d7d79406"
+    },
+    {
+      "report_date": "2026-11-23",
+      "url": "https://ari3lla-index.example.com/reports/2026-11-23",
+      "content_hash": "9abcb7e98a91351bfa9bc3c86713816b89a5ff9b088b654ea45e1e6f581966e2"
+    },
+    {
+      "report_date": "2026-11-30",
+      "url": "https://ari3lla-index.example.com/reports/2026-11-30",
+      "content_hash": "994b6908e05c501322a552c3af99338c19a906ecf74ca871d8df36fb0897f539"
+    },
+    {
+      "report_date": "2026-12-07",
+      "url": "https://ari3lla-index.example.com/reports/2026-12-07",
+      "content_hash": "4e4f4da031053cd621a4bee7522743a8435e1388bbafd905b0e64ecb75273f13"
+    },
+    {
+      "report_date": "2026-12-14",
+      "url": "https://ari3lla-index.example.com/reports/2026-12-14",
+      "content_hash": "e57b191138feff418deeb95c39723c622d7c6a3b5bc999a4f994c07705a9a9c7"
+    },
+    {
+      "report_date": "2026-12-21",
+      "url": "https://ari3lla-index.example.com/reports/2026-12-21",
+      "content_hash": "9d3f818cb4026f38f8a94aee17d5b6920aeabc3f103b676217a8fc2de1e65b15"
+    },
+    {
+      "report_date": "2026-12-28",
+      "url": "https://ari3lla-index.example.com/reports/2026-12-28",
+      "content_hash": "b111964c2712d1c8874b3f0c170fd25334d187c82998746971974f864f7b133a"
+    },
+    {
+      "report_date": "2027-01-04",
+      "url": "https://ari3lla-index.example.com/reports/2027-01-04",
+      "content_hash": "0937a506c9578567c436323c0b0d277b576fba1e97d53e03aae95f4fdfa30237"
+    },
+    {
+      "report_date": "2027-01-11",
+      "url": "https://ari3lla-index.example.com/reports/2027-01-11",
+      "content_hash": "9093ddfdb46faf1bd537a29eb8ea314d7d9f1500e804c55bccbab9e14ed41761"
+    },
+    {
+      "report_date": "2027-01-18",
+      "url": "https://ari3lla-index.example.com/reports/2027-01-18",
+      "content_hash": "232428d4384bf5a659c06305de2ca0bd575195c1ffbea7e7a5d5c0c336c1ca3d"
+    },
+    {
+      "report_date": "2027-01-25",
+      "url": "https://ari3lla-index.example.com/reports/2027-01-25",
+      "content_hash": "3a87f829ac21b47a28a253e7682598d93560886fba5e682a793c0456be7dfb3c"
+    },
+    {
+      "report_date": "2027-02-01",
+      "url": "https://ari3lla-index.example.com/reports/2027-02-01",
+      "content_hash": "d9d30a385c5d7a5569713ee46cc5bed71ef7e3b1441f16452520fa2da2ebd71c"
+    },
+    {
+      "report_date": "2027-02-08",
+      "url": "https://ari3lla-index.example.com/reports/2027-02-08",
+      "content_hash": "3b38f8962c7bd3c09fe1343db573e701b58938f8292e4a265893241d2bd89813"
+    },
+    {
+      "report_date": "2027-02-15",
+      "url": "https://ari3lla-index.example.com/reports/2027-02-15",
+      "content_hash": "aa7c80d73b5ffc61e77d9a425288c8bfaf024df305045ecbbb3ba8030448dca6"
+    },
+    {
+      "report_date": "2027-02-22",
+      "url": "https://ari3lla-index.example.com/reports/2027-02-22",
+      "content_hash": "fc439e7824ca37c40f9f9dc60f86d6c62a11fa80ccff537868538c5325b666bb"
+    }
+  ]
+}
