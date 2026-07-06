@@ -1,0 +1,78 @@
+{
+  "report_date": "2027-08-23",
+  "collection_window": {
+    "start": "2027-08-17",
+    "end": "2027-08-23"
+  },
+  "sources_scanned": 8,
+  "items_collected": 6,
+  "source_sector_breakdown": {
+    "editorial": 2,
+    "unclear": 4
+  },
+  "executive_summary": "Collection window August 17-23, 2027. The notable item this week is critical reception of Glenn Martens' debut collection for Maison Margiela, his first outing as creative director following John Galliano's exit. Coverage across editorial and independent-leaning outlets converges on a specific read: the collection leans into raw, deconstructed, artisanal codes closely tied to Martin Margiela's own founding aesthetic, rather than importing Martens' prior house's signatures wholesale. Reception is described in the coverage itself as divided, not uniformly positive. Met Gala 2027, Wales Bonner, and CFDA remain untracked going forward per standing convention and are not re-litigated in this report.",
+  "top_signals": [
+    {
+      "name": "Martens' Margiela debut reception",
+      "type": "designer_transition",
+      "source_sectors": [
+        "editorial",
+        "unclear"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "Glenn Martens' debut collection for Maison Margiela was covered by WWD, Highsnobiety, nss magazine, AnOther, Coveteur, and V Magazine. Coverage describes the collection as returning to raw, unfinished, deconstructivist codes associated with Martin Margiela's original 1990s output -- exposed seams, inverted garments, and a scraped-together, first-collection feel -- rather than carrying over the maximalist codes from Martens' prior post at Diesel. Multiple outlets explicitly characterize the online response as divided rather than a consensus triumph.",
+      "index_note": "Framed by coverage as a house-codes-continuity story: the significance is that Martens chose to anchor his debut in archival Margiela language rather than his own established aesthetic signature, which is itself the signal, independent of whether reception was positive.",
+      "source_corroboration_count": 6,
+      "signal_id": "martens-margiela-debut",
+      "confidence_source": "manual",
+      "human_editor_note": "Held at medium rather than derive_confidence()'s literal high: only two of six corroborating domains (wwd.com, highsnobiety.com) land inside taxonomy.py's DOMAIN_SECTOR_MAP as a named sector -- the other four (nssmag.com, anothermag.com, coveteur.com, vmagazine.com) classify 'unclear'. Counting 'unclear' as a genuine second sector would reward a gap in the domain map rather than real cross-sector confirmation, same call as the 08-09 and 08-16 reports. Separately worth flagging on its own terms: the coverage itself reports a divided public reception, not a landslide -- this report tracks that a debut happened and what codes it drew on, not that it was well-received, and those are different claims worth keeping apart.",
+      "source_domains": [
+        "wwd.com",
+        "highsnobiety.com",
+        "nssmag.com",
+        "anothermag.com",
+        "coveteur.com",
+        "vmagazine.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "deconstruction",
+    "house codes",
+    "debut collection",
+    "raw finishing"
+  ],
+  "garments": [],
+  "silhouettes": [
+    "inverted construction"
+  ],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [
+    "deconstructivist",
+    "unfinished seams"
+  ],
+  "cultural_references": [
+    "Martin Margiela",
+    "Glenn Martens",
+    "John Galliano"
+  ],
+  "limitations": [
+    "Four of six corroborating domains fall outside taxonomy.py's DOMAIN_SECTOR_MAP and classify as 'unclear', limiting genuine cross-sector confirmation.",
+    "Coverage itself reports divided public reception; this report does not treat that divide as resolved or as evidence of lasting influence.",
+    "This is a single designer-transition event, not a cross-house pattern; no attempt is made here to generalize it into a broader aesthetic trend."
+  ],
+  "archive_tags": [
+    "met-gala-2027-coverage-gap (untracked going forward pending new information)",
+    "wales-bonner (untracked going forward pending new information)",
+    "cfda (untracked going forward pending new information)"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "review_status": "reviewed",
+  "reviewed_by": "",
+  "revision_history": [],
+  "content_hash": "91a01742ad1aeb7888e54067d1aacbfdea86a286c119a57cbffe7a0b5ebbf7ea"
+}
