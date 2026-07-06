@@ -1056,19 +1056,42 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [x] Periodic audit — clean. 50 confidence mismatches all editor-conservative, 0 field
       coverage warnings, `gh` CLI unavailable (18th+ consecutive check).
 
-## Next up (run 51 candidates)
+## Run 51 — done
+- [x] Fixed a real overclaim: the report byline literally rendered "human-reviewed by
+      loop-consolidation," using an agent-process string as if it were a named human
+      reviewer. Rewrote byline/Notes/About/Methodology to state review is against
+      editorial guidelines, currently performed by the same automated process that
+      drafts the report — honest disclosure, not a process change.
+- [x] Ran the real `crawler.py` pipeline end-to-end: 12/12 sources succeeded, 454
+      headlines, no errors — infrastructure is healthy. The run-50 gap is about report
+      authorship (WebSearch vs. live crawl), not broken tooling. Also fixed a second
+      overclaim: methodology's "AI assists with crawling" language implied more
+      live-crawl provenance than the ~2/44 real pipeline runs represent.
+- [x] Fixed an operator-transparency gap: the About page never stated who operates the
+      site (only surfaced incidentally on `/case-study`) — added a paragraph disclosing
+      it's an independently operated single-researcher project.
+- [x] Added `data/reports/2027-04-26.json`, a 44th report — honest thin-week call, the
+      requested Moschino follow-up found only republication of the original
+      announcement, logged as an unchanged status update rather than manufacturing
+      movement.
+- [x] Periodic audit — clean. 50 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (19th+ consecutive check).
+- [x] Consolidation caught and fixed a real ESLint error (`react/no-unescaped-entities`)
+      introduced by one of three agents that concurrently edited the same two pages —
+      all three edits were otherwise compatible.
+
+## Next up (run 52 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
-- [ ] `gh` CLI still unavailable after 18+ consecutive checks; CI's real GitHub
-      pass/fail status remains unconfirmed — consider whether this itself now warrants
-      escalating to the user rather than re-checking indefinitely.
+- [ ] `gh` CLI still unavailable after 19+ consecutive checks; CI's real GitHub
+      pass/fail status remains unconfirmed.
 - [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
-      correctness for 7+ runs — flagged in the run-50 gap analysis as arguably needing
-      a human decision rather than further autonomous deferral.
+      correctness for 7+ runs — still awaiting a human decision (run 50).
+- [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
+      run 50 remain open — run 51 only corrected the site's own claims about them, not
+      the process itself; that decision is still the user's.
 - [ ] Two pre-existing `human_editor_note` values (2026-07-13, 2026-11-09) remain
-      verbatim duplicates of `index_note` — deliberately left as-is; the run-49 prompt
-      fix prevents new occurrences.
-- [ ] See the run-50 gap analysis for additional lower-priority findings: manual
-      social-sampling exercised only 3 times in 50 runs, geographic/language source
-      coverage still Western/English-skewed — both repeatedly acknowledged without a
-      defined resolution or acceptance endpoint.
+      verbatim duplicates of `index_note` — deliberately left as-is.
+- [ ] Manual social-sampling exercised only 3 times in 51 runs, geographic/language
+      source coverage still Western/English-skewed — both repeatedly acknowledged
+      without a defined resolution or acceptance endpoint.

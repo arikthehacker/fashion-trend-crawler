@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-08 ~18:00 PDT — [Loop run 51](changelog-entries/run-51.md)** — Responds to
+  run 50's flagged human-in-the-loop finding by fixing three real overclaims in the
+  site's own copy (a byline literally read "human-reviewed by loop-consolidation"),
+  without attempting to resolve the underlying process gap itself; confirms the real
+  crawler pipeline is infrastructurally healthy; adds operator-transparency disclosure;
+  44th report handles a thin week honestly; periodic audit clean.
+
 - **2026-07-08 ~16:45 PDT — [Loop run 50](changelog-entries/run-50.md)** — 50th loop
   run, 43rd report. A milestone gap analysis surfaces a significant structural finding:
   the loop's own process doesn't fully satisfy the site's stated human-in-the-loop
