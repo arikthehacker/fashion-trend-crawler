@@ -95,7 +95,7 @@
       "index_note": "Logged as a media-integrity observation, not a style signal -- confidence held to low and it is explicitly excluded from garments/silhouettes/colors below. This is exactly the kind of editorial-sector content this project's taxonomy exists to catch: editorial framing is a source sector with its own incentives (SEO-driven seasonal content calendars), not a neutral authority, and volume of editorial mentions should never substitute for verifiable, dated, attributable reporting.",
       "human_editor_note": "Do not promote this into garments/silhouettes/colors even if it recurs -- its content reads as generic year-over-year trend-forecast language, not specific to identifiable SS27 shows. Included here so the archive has a record of sourcing friction during fashion month, per the project's standing distinction between reported fact and content-mill copy.",
       "source_corroboration_count": 1,
-      "signal_id": "nyfw-ss27-trend-forecast-content-integrity-flag",
+      "signal_id": "nyfw-forecast-integrity-flag",
       "confidence_source": "manual"
     }
   ],
@@ -147,6 +147,12 @@
   "collection_status": "normal",
   "review_status": "reviewed",
   "reviewed_by": "loop-consolidation",
-  "revision_history": [],
-  "content_hash": "28debb09584197a5fbd05ba45d22e1662e3acf9268ee7e405657c890c7e959cf"
+  "revision_history": [
+    {
+      "previous_content_hash": "28debb09584197a5fbd05ba45d22e1662e3acf9268ee7e405657c890c7e959cf",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    }
+  ],
+  "content_hash": "26f661de7b2c26c0a1b9a532914cbc408463aa583394b6f3b40e20a8afc9b741"
 }

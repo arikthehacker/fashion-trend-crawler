@@ -26,7 +26,7 @@
       "index_note": "Logged as an open, unresolved item rather than a resolved signal -- this archive does not assert outcomes it cannot verify with dated, sourced coverage, even when the underlying event's schedule places it inside the window. Confidence is low specifically because the outcome itself is unconfirmed; the schedule/finalist facts are well-sourced but do not constitute a result.",
       "human_editor_note": "Do not backfill a winner name here from memory or inference -- if lagging trade coverage of the October 20 gala appears after this report is saved, reconcile it into the next window's report rather than editing this one, consistent with this archive's no-forward-fill and no-retroactive-fabrication practice.",
       "source_corroboration_count": 1,
-      "signal_id": "cfda-vogue-fashion-fund-2026-winner",
+      "signal_id": "cfda-fashion-fund-winner",
       "confidence_source": "manual"
     }
   ],
@@ -63,6 +63,12 @@
   "thin_week_note": "Fewer than 3 distinct, independently verifiable in-window signals were found despite an active, non-assumed search effort. This window's single anticipated news event -- the CFDA/Vogue Fashion Fund winner announcement -- falls inside the window by schedule but had not yet produced verifiable dated coverage as of search time, so it is logged as open/unresolved rather than as a completed signal.",
   "review_status": "reviewed",
   "reviewed_by": "loop-consolidation",
-  "revision_history": [],
-  "content_hash": "3488dbc4a18e8edb53395e6b4e5bebc7ef5683633e36cd54a220bbb13b11fae3"
+  "revision_history": [
+    {
+      "previous_content_hash": "3488dbc4a18e8edb53395e6b4e5bebc7ef5683633e36cd54a220bbb13b11fae3",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    }
+  ],
+  "content_hash": "d0c08dc77fddbe89fbc6d7992f5ae3f816b6ab4a9c7c962e624123fcbe8a75bb"
 }

@@ -60,7 +60,7 @@
       "index_note": "Single-sector corroboration (institutional/BFC's own published criteria; no independent editorial confirmation found this window), held at medium rather than high per this archive's confidence formula. This is a structural gate-keeping change -- who is eligible to show, not what is shown -- comparable in kind to the NYFW first-timer cohort signal from September 14, but for London's admission criteria rather than NYFW's actual roster.",
       "human_editor_note": "Worth tracking against this season's actual LFW lineup once announced: if designers without wholesale distribution appear on the schedule as a direct result, that would be a genuine downstream market-behavior signal. One criteria change is not yet evidence of who actually shows.",
       "source_corroboration_count": 1,
-      "signal_id": "lfw-eligibility-wholesale-requirement-dropped",
+      "signal_id": "lfw-wholesale-eligibility-dropped",
       "confidence_source": "manual"
     }
   ],
@@ -104,6 +104,12 @@
   "collection_status": "normal",
   "review_status": "reviewed",
   "reviewed_by": "loop-consolidation",
-  "revision_history": [],
-  "content_hash": "390fd5a2954e98cb96ff6de5d5f09cf8c795f2b3d087101e1017b64a787b746a"
+  "revision_history": [
+    {
+      "previous_content_hash": "390fd5a2954e98cb96ff6de5d5f09cf8c795f2b3d087101e1017b64a787b746a",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    }
+  ],
+  "content_hash": "7bce3b9871fe41413511c9f743c2fe50334dba4afc4fe0bf38f629a6ff490694"
 }

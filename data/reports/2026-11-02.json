@@ -26,7 +26,7 @@
       "index_note": "Carried forward from the 2026-10-26 report rather than logged as a new signal -- same signal_id, continuing an open item across two consecutive windows. This archive does not force-close a signal by elapsed time alone, and does not assert an outcome it cannot verify with dated, sourced coverage.",
       "human_editor_note": "Two consecutive windows (2026-10-26, 2026-11-02) with no coverage of an actual winner is starting to look less like reporting lag and more like a genuine gap -- possible explanations include delayed trade coverage, a quieter-than-usual gala, or search-tool recency limits rather than the event not having occurred. Do not backfill a winner name from memory or inference. If lagging coverage appears in a future window, reconcile it there and close this signal_id at that time rather than editing this or the 2026-10-26 report retroactively.",
       "source_corroboration_count": 1,
-      "signal_id": "cfda-vogue-fashion-fund-2026-winner",
+      "signal_id": "cfda-fashion-fund-winner",
       "confidence_source": "manual"
     }
   ],
@@ -58,10 +58,16 @@
     "thin-week",
     "2026-q4"
   ],
-  "content_hash": "b6fce307d513176eabf2b908717888717f02220cec5d163ce6a992cb66f1dc71",
+  "content_hash": "668d2dea71de72718735acd70d460a38abbdf332d33702867fe39772bc3d2fd5",
   "collection_status": "thin",
   "thin_week_note": "Fewer than 3 distinct, independently verifiable in-window signals were found despite an active, non-assumed search effort. The one carried-forward item (the Fashion Fund winner) remains unresolved rather than newly reported this window.",
-  "revision_history": [],
+  "revision_history": [
+    {
+      "previous_content_hash": "b6fce307d513176eabf2b908717888717f02220cec5d163ce6a992cb66f1dc71",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    }
+  ],
   "review_status": "reviewed",
   "reviewed_by": "loop-consolidation"
 }

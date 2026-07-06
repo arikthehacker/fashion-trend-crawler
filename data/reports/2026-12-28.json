@@ -26,7 +26,7 @@
       "index_note": "Carried forward from the 2026-12-21 report -- same signal_id, now a tenth consecutive open window. report_schema.is_prolonged_silence('cfda-vogue-fashion-fund-2026-winner', all_reports) returns True against the pre-this-window history (nine entries: 2026-10-26 through 2026-12-21) and remains True with this window's entry added.",
       "human_editor_note": "Ten consecutive windows with zero indexed coverage of a named CFDA/Vogue Fashion Fund winner, spanning the year-end holiday period, is well past ordinary reporting lag for a program this well-covered in prior cycles. This report does not speculate about a cause -- no winner name, delay, or cancellation is claimed or implied -- it states only that the silence continues. TODO.md's open question of whether prolonged silence eventually warrants an explicit 'awaiting resolution' status rather than repeated carry-forward remains unresolved and is not decided unilaterally here; this report continues the existing carry-forward convention. If dated coverage appears in a future window, reconcile and close this signal_id there with a real name and source; do not edit this or prior reports retroactively without new evidence.",
       "source_corroboration_count": 1,
-      "signal_id": "cfda-vogue-fashion-fund-2026-winner",
+      "signal_id": "cfda-fashion-fund-winner",
       "confidence_source": "manual"
     },
     {
@@ -85,6 +85,12 @@
   "thin_week_note": "Fewer than 3 distinct, independently verifiable style-discourse signals were found despite an active, non-assumed search effort that specifically checked for genuine year-end retrospective content. Both carried-forward institutional questions remain unresolved and past this archive's own prolonged-silence threshold, and no genuinely new in-window garment, silhouette, aesthetic, or retrospective signal was independently verified.",
   "review_status": "reviewed",
   "reviewed_by": "loop-consolidation",
-  "revision_history": [],
-  "content_hash": "0620e6f55be36a37eb741c1d915d8c903c9f2afbbdf13f9178a6353c16857236"
+  "revision_history": [
+    {
+      "previous_content_hash": "0620e6f55be36a37eb741c1d915d8c903c9f2afbbdf13f9178a6353c16857236",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    }
+  ],
+  "content_hash": "6c45ffdc3e8ebe336f0cae498ab2f24caed5830a745ac32fe12e8ad139795eee"
 }

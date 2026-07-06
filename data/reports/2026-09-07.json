@@ -44,7 +44,7 @@
       "index_note": "Classified recurring rather than emerging: this is CFDA's annual program, not a new institutional behavior. Confidence held high on first-party CFDA sourcing corroborated by independent trade coverage; origin_classification unclear for the same structural reason as the schedule signal -- an institutional award announcement isn't designer, editorial, retail, or social in origin.",
       "human_editor_note": "New signal this window, distinct from the NYFW schedule signal even though both are CFDA-sourced -- the Fashion Fund tracks emerging-designer patronage, not the runway calendar, so keep it as a separate signal_id rather than folding it into nyfw-ss27-schedule-finalization. Worth revisiting at the October 20 announcement.",
       "source_corroboration_count": 3,
-      "signal_id": "cfda-vogue-fashion-fund-2026-finalists",
+      "signal_id": "cfda-fashion-fund-finalists",
       "confidence_source": "manual"
     },
     {
@@ -61,7 +61,7 @@
       "index_note": "Continues signal_id back-to-school-2026-y2k-preppy from August 31 but reclassified volatility from seasonal to declining: this is the same retail-SEO cluster, not new discourse, and its news cycle is visibly winding down as attention shifts to NYFW. Confidence held at medium for the same reason as before -- concrete, cross-outlet item agreement, but sourced entirely from commerce-adjacent content.",
       "human_editor_note": "Recommend closing this out if it doesn't reappear in the next window with dated content of its own -- the pattern here (declining volume, no new sectors joining) looks like the start of a natural wind-down rather than a signal worth carrying into fashion month.",
       "source_corroboration_count": 3,
-      "signal_id": "back-to-school-2026-y2k-preppy",
+      "signal_id": "school-y2k-preppy",
       "confidence_source": "manual"
     }
   ],
@@ -125,6 +125,12 @@
   "collection_status": "normal",
   "review_status": "reviewed",
   "reviewed_by": "loop-consolidation",
-  "revision_history": [],
-  "content_hash": "cf15385f43e7102c4a78c8cea3d331f0b1d11caa47161fa7d8c91d9476b014b2"
+  "revision_history": [
+    {
+      "previous_content_hash": "cf15385f43e7102c4a78c8cea3d331f0b1d11caa47161fa7d8c91d9476b014b2",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    }
+  ],
+  "content_hash": "a2cee80cdc2cdd365ee201b3e7b59a886311c670270d4670b5b08047a0857368"
 }

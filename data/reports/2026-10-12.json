@@ -25,7 +25,7 @@
       "index_note": "Same signal_id carried forward from the September 21 report. Volatility moved emerging -> declining this window: not because the underlying policy changed, but because three windows without any corroborating downstream reporting is itself informative about how much this is actually shaping applicant behavior so far, versus being a rule change noted once and then unobserved.",
       "human_editor_note": "Treat 'declining' here as a statement about reporting activity, not about the policy's importance -- a rule change like this may only become visible in outcomes (who actually shows) at the next LFW cycle, which is outside this archive's current observation window. Worth a longitudinal check when LFW's next season is scheduled.",
       "source_corroboration_count": 1,
-      "signal_id": "lfw-eligibility-wholesale-requirement-dropped",
+      "signal_id": "lfw-wholesale-eligibility-dropped",
       "confidence_source": "manual"
     }
   ],
@@ -63,6 +63,12 @@
   "thin_week_note": "Fewer than 5 distinct, independently verifiable signals were found this window despite active search effort across editorial, institutional, and trade sources. This is the first full week after fashion month's close (Sept 8-Oct 6, 2026) and the drop is consistent with the pre-fashion-month baseline documented in runs 19-22, but this report reached that conclusion by testing for new discourse and finding little, not by assuming the drop in advance.",
   "review_status": "reviewed",
   "reviewed_by": "loop-consolidation",
-  "revision_history": [],
-  "content_hash": "0ed242d60e5bc3826557c05b4f6a9ac4862b216ff4932d2f5d1bee59e5e27b59"
+  "revision_history": [
+    {
+      "previous_content_hash": "0ed242d60e5bc3826557c05b4f6a9ac4862b216ff4932d2f5d1bee59e5e27b59",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    }
+  ],
+  "content_hash": "1fc5311ccee510ccc78fbd68d7a74f6c7e416707c49acdac14e48bd705db9e40"
 }

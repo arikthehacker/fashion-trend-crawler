@@ -25,7 +25,7 @@
       "index_note": "New signal_id, but logged as a continuation of the same pattern flagged for Milan in the September 28 report (mfw-ss27-schedule-date-inconsistency) rather than an isolated one-off: this is the second consecutive fashion-month city where aggregator/reference dates for the same official season diverge by a day or more. That prior Milan discrepancy was not independently re-checked this window (sourcing effort went to Paris), so it remains open, not resolved.",
       "human_editor_note": "Treat the recurrence across two cities as worth a standing methodology note (aggregator calendar copy is not a substitute for the organizing body's own current page), not as evidence either date is wrong -- a one-day boundary discrepancy this close to a multi-source-confirmed season is lower-stakes than the earlier three-way Milan spread.",
       "source_corroboration_count": 2,
-      "signal_id": "pfw-ss27-schedule-date-inconsistency",
+      "signal_id": "pfw-schedule-inconsistency",
       "confidence_source": "manual"
     },
     {
@@ -41,7 +41,7 @@
       "index_note": "Same signal_id as the September 28 report (versace-mulier-debut-timing-unconfirmed), carried forward with a resolved status: the open question (does a Mulier-directed Versace show occur inside fashion month 2026) is now answered -- no, it does not. Volatility moved from emerging to declining to reflect that the story is settling into a confirmed timeline rather than remaining speculative. Confidence held at medium (single-sector, editorial trade coverage) despite three-source corroboration, since all three outlets appear to be reporting the same underlying brand statement rather than independently verifying it.",
       "human_editor_note": "This closes the open question from the prior two reports. Do not expect a Versace show entry in this or upcoming fashion-month windows this year; the next relevant signal for this signal_id would be a confirmed early-2027 show date, which is out of this archive's current season scope.",
       "source_corroboration_count": 3,
-      "signal_id": "versace-mulier-debut-timing-unconfirmed",
+      "signal_id": "versace-mulier-debut-unconfirmed",
       "confidence_source": "manual"
     },
     {
@@ -57,7 +57,7 @@
       "index_note": "Same signal_id as the September 28 report (armani-post-founder-transition-continues), carried forward as a retrospective resolution: the pending show-date question is now answered by a single dated, sourced confirmation (WWD), but the event itself occurred just before this window opened, so it is logged as closing prior uncertainty rather than as an in-window occurrence.",
       "human_editor_note": "This is a scheduling/occurrence confirmation, not a show review -- no content, silhouette, or reception detail is asserted here, consistent with this archive's standing practice of not backfilling show content from adjacent-window reporting.",
       "source_corroboration_count": 1,
-      "signal_id": "armani-post-founder-transition-continues",
+      "signal_id": "armani-founder-transition",
       "confidence_source": "manual"
     }
   ],
@@ -101,6 +101,12 @@
   "collection_status": "normal",
   "review_status": "reviewed",
   "reviewed_by": "loop-consolidation",
-  "revision_history": [],
-  "content_hash": "6666d634094a2caa3cfd6e91bff50fd740a7ee43df703f7d17787410d72ba2bf"
+  "revision_history": [
+    {
+      "previous_content_hash": "6666d634094a2caa3cfd6e91bff50fd740a7ee43df703f7d17787410d72ba2bf",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    }
+  ],
+  "content_hash": "67d900def3db7c37c9d9efa5768be813eab2ef854bf3256bdc58f3051b7b1fe8"
 }

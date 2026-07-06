@@ -27,7 +27,7 @@
       "index_note": "Carried forward from the 2026-11-23 report -- same signal_id, now a sixth consecutive open window. Running this archive's report_schema.is_prolonged_silence('cfda-vogue-fashion-fund-2026-winner', all_reports) against the pre-this-window history (five entries: 2026-10-26 through 2026-11-23) already returns True at the default four-window threshold; adding this window's entry keeps it True. This report treats that as a formal, code-checked result, not an editorial impression.",
       "human_editor_note": "Prior windows' notes described this signal as 'still open' informally. As of this window, this archive's own is_prolonged_silence() check formally confirms the pattern: six consecutive windows with zero indexed coverage of a CFDA/Vogue Fashion Fund winner is well outside ordinary reporting lag for a program this well-covered in prior years, and now clears this archive's own four-window threshold for flagging prolonged silence rather than routine carry-forward. This does not change what is asserted -- no winner name, no cancellation, no delay is claimed -- but it does change how the report frames the open question: this is no longer just a recurring caveat, it is a signal this archive's own mechanism identifies as having gone unresolved longer than its default tolerance. The most defensible reading remains either (a) a search-tool recency/indexing gap specific to this query that has now persisted across six windows, or (b) a genuine change in how this cycle's outcome was publicized. Both remain stated as open possibilities. If dated coverage appears in a future window, reconcile and close this signal_id there with a real name and source; do not edit this or prior reports retroactively without new evidence.",
       "source_corroboration_count": 1,
-      "signal_id": "cfda-vogue-fashion-fund-2026-winner",
+      "signal_id": "cfda-fashion-fund-winner",
       "confidence_source": "manual"
     },
     {
@@ -60,7 +60,7 @@
       "index_note": "Carried forward in kind from the 2026-11-23 report's early-retail-calendar signal, but distinct in scope: that signal confirmed dated pre-event scheduling; this one confirms the event's occurrence within the window while explicitly declining to assert a sales outcome. This is a limitation of point-in-time web search reaching forward past its own real-world present, not a finding about 2026 holiday retail performance -- no sales figure, growth rate, or trend claim from the 2025 data found in search is attributed to 2026 in this report.",
       "human_editor_note": "This entry deliberately reports an absence: the archive can confirm Black Friday/Cyber Monday 2026 happened on schedule, but cannot verify what happened commercially, because search results attributed to 2026 for this topic are demonstrably recycled or mislabeled 2025 figures. Rather than presenting those numbers as 2026 results (which would misrepresent search-tool artifacts as verified current-window fact), this report states the gap directly. Confidence is set to low, lower than last window's medium, specifically because this window's claim is narrower and less corroborated than last window's dated retailer-schedule confirmation.",
       "source_corroboration_count": 1,
-      "signal_id": "2026-black-friday-cyber-monday-outcome",
+      "signal_id": "bfcm-outcome",
       "confidence_source": "manual"
     }
   ],
@@ -106,6 +106,12 @@
   "thin_week_note": "Fewer than 3 distinct, independently verifiable style-discourse signals were found despite an active, non-assumed search effort. Both carried-forward institutional questions remain unresolved -- one now formally past this archive's own prolonged-silence threshold, the other newly formalized for tracking -- and the one retail-calendar item this window confirms an event occurred without being able to verify its outcome.",
   "review_status": "reviewed",
   "reviewed_by": "loop-consolidation",
-  "revision_history": [],
-  "content_hash": "ccdbaecff6a338b3ea0cf5fae5b6783599b2f3e7187cd8306781f7fe532a5853"
+  "revision_history": [
+    {
+      "previous_content_hash": "ccdbaecff6a338b3ea0cf5fae5b6783599b2f3e7187cd8306781f7fe532a5853",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    }
+  ],
+  "content_hash": "d07aca2a2d0d9feffcd0cee2dbd756fcafac55b14d06ff854862e2b67febea87"
 }

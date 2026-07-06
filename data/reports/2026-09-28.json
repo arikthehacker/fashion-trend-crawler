@@ -27,7 +27,7 @@
       "index_note": "Logged as a media-integrity observation, not a schedule fact -- comparable in kind to the September 8-14 report's flagged 'trend forecast published before the week occurred' entry. This archive is not resolving the discrepancy here by picking a date range and presenting it as settled; the collection_window recorded for this report (Sept 22-28) matches this archive's own prior editorial-calendar reference and the sequencing expected after LFW's September 21 close, not an independent re-verification of Camera Moda's calendar.",
       "human_editor_note": "Worth a follow-up pass once the week has actually occurred: whichever date range produces verifiable show-day reporting (not aggregator copy) is the one that was real. Do not treat any of the three date ranges above as confirmed until then.",
       "source_corroboration_count": 3,
-      "signal_id": "mfw-ss27-schedule-date-inconsistency",
+      "signal_id": "mfw-schedule-inconsistency",
       "confidence_source": "manual"
     },
     {
@@ -43,7 +43,7 @@
       "index_note": "New signal_id. Held at medium rather than high confidence: single-sector corroboration (editorial trade coverage) on the appointment-effective-date fact, and the show-timing question -- whether Mulier's Versace debut falls inside this window at all -- remains unverified rather than confirmed.",
       "human_editor_note": "This is a personnel/appointment-timeline fact, not confirmation that a Mulier-for-Versace show occurred this window. If a specific show date surfaces in a later window, give it its own designer_signal entry rather than backfilling it here.",
       "source_corroboration_count": 1,
-      "signal_id": "versace-mulier-debut-timing-unconfirmed",
+      "signal_id": "versace-mulier-debut-unconfirmed",
       "confidence_source": "manual"
     },
     {
@@ -59,7 +59,7 @@
       "index_note": "New signal_id. Confidence held at medium: the succession/joint-direction fact itself is well corroborated from prior reporting, but this window's specific claim -- whether/when the house shows within Milan's SS27 women's calendar -- is unconfirmed, single-sector, and not itself independently re-verified this window.",
       "human_editor_note": "Armani has traditionally closed Milan's calendar in past seasons; that pattern is background context, not confirmation it holds this season. Do not report an Armani SS27 show as having occurred until a dated, sourced confirmation exists.",
       "source_corroboration_count": 1,
-      "signal_id": "armani-post-founder-transition-continues",
+      "signal_id": "armani-founder-transition",
       "confidence_source": "manual"
     }
   ],
@@ -102,6 +102,12 @@
   "collection_status": "normal",
   "review_status": "reviewed",
   "reviewed_by": "loop-consolidation",
-  "revision_history": [],
-  "content_hash": "5f82e498c7554eafc825c139e1ad7249eacee0152f3f74a0d67215685550002f"
+  "revision_history": [
+    {
+      "previous_content_hash": "5f82e498c7554eafc825c139e1ad7249eacee0152f3f74a0d67215685550002f",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    }
+  ],
+  "content_hash": "104e37bc14637c6030e64ee43fa30152f66504c46897ca399a65b53b13d5a764"
 }

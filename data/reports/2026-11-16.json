@@ -26,7 +26,7 @@
       "index_note": "Carried forward from the 2026-11-09 report -- same signal_id, now a fourth consecutive open window. This archive does not force-close a signal by elapsed time alone, and does not assert an outcome, a delay, or a cancellation it cannot verify with dated, sourced coverage. Unlike prior windows, this entry explicitly names the duration itself (four windows, ~4 weeks post-gala) as a fact worth stating plainly rather than repeating an unchanged caveat verbatim.",
       "human_editor_note": "Four consecutive windows with zero indexed coverage of a CFDA/Vogue Fashion Fund winner is well outside ordinary reporting lag for a program this well-covered in prior years. This report does not speculate a winner's identity, does not assume the gala was cancelled or the result withheld, and does not backfill from memory or analogy to other Fashion Fund programs (e.g. the UK's BFC/Vogue Designer Fashion Fund, noted as non-resolving in the prior window). The most defensible reading at this point is either (a) a search-tool recency/indexing gap specific to this query that has persisted unusually long, or (b) a genuine change in how this cycle's outcome was publicized (e.g. limited trade pickup, or a delayed public announcement). Both are stated as open possibilities, not conclusions. If dated coverage appears in a future window, reconcile and close this signal_id there with a real name and source; do not edit this or prior reports retroactively without new evidence.",
       "source_corroboration_count": 1,
-      "signal_id": "cfda-vogue-fashion-fund-2026-winner",
+      "signal_id": "cfda-fashion-fund-winner",
       "confidence_source": "manual"
     }
   ],
@@ -64,6 +64,12 @@
   "thin_week_note": "Fewer than 3 distinct, independently verifiable in-window signals were found despite an active, non-assumed search effort. The one carried-forward item (the Fashion Fund winner) remains unresolved for a fourth consecutive window, and a second institutional question (CFDA Fashion Awards timing) remains open for a third.",
   "review_status": "reviewed",
   "reviewed_by": "loop-consolidation",
-  "revision_history": [],
-  "content_hash": "1d339ef44c2f72ec5db0d6b1a9c2d2c2bf2796cbbba219532cab9ab5a8bdbb9f"
+  "revision_history": [
+    {
+      "previous_content_hash": "1d339ef44c2f72ec5db0d6b1a9c2d2c2bf2796cbbba219532cab9ab5a8bdbb9f",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    }
+  ],
+  "content_hash": "c5f00312760479e4e08786824cc87d0bd33ff7410977ced0e143bc00d7d79406"
 }

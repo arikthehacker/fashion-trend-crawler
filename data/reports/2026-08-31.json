@@ -43,7 +43,7 @@
       "index_note": "Classified revival rather than emerging or seasonal: the underlying report is six months old and not new discourse, only newly re-contextualized by film publicity. Confidence held at low because the causal claim (film imagery 'inspiring' a report published months before most production stills would have circulated) reads as retroactive press-hook framing rather than a verifiable sequence of events.",
       "human_editor_note": "Flag for review: the WWD framing implies the movie influenced Pantone's report, but the report predates public promotional imagery for the film by months, which suggests the causal direction is being reversed for a timely news hook. Treat the color palette itself (Acacia, Red Mahogany, etc.) as legitimately sourced to Pantone; treat the 'inspired by the sequel' narrative as unverified editorial framing, not fact, until a human editor can check Pantone's own account of the report's timeline.",
       "source_corroboration_count": 2,
-      "signal_id": "pantone-fall-2026-devil-wears-prada-tie-in"
+      "signal_id": "pantone-prada-tie-in"
     },
     {
       "name": "Back-to-school 2026 styling: early-2000s/preppy layering, animal and camo print, utility cargo",
@@ -59,7 +59,7 @@
       "index_note": "Medium confidence reflects genuine cross-outlet agreement on specific, concrete items (not just a vague seasonal vibe), but the sourcing sits entirely within retail-adjacent SEO/roundup content rather than reaching designer-origin, institutional, or independent-criticism sectors, so it is capped below high regardless of how many similarly-framed outlets repeat it.",
       "human_editor_note": "Requires human judgment on how much of this cluster is observed consumer behavior versus recycled affiliate-shopping copy: several of these outlets are commerce-content sites with a direct incentive to declare a 'trend' around products they link to. The individual items (chunky sneakers, cargo pants, animal print) have also each appeared in this archive's coverage across multiple prior seasons, so this reads more as an annual back-to-school repackaging than a newly emerging behavior -- hold at medium rather than upgrading on volume of nearly-identical roundups alone.",
       "source_corroboration_count": 3,
-      "signal_id": "back-to-school-2026-y2k-preppy"
+      "signal_id": "school-y2k-preppy"
     }
   ],
   "repeated_keywords": [
@@ -123,6 +123,12 @@
   "collection_status": "normal",
   "review_status": "reviewed",
   "reviewed_by": "loop-consolidation",
-  "revision_history": [],
-  "content_hash": "ebaa7f44e653d503a5850480d004a5a9bab09f9357aef592e7d85e8c3046569d"
+  "revision_history": [
+    {
+      "previous_content_hash": "ebaa7f44e653d503a5850480d004a5a9bab09f9357aef592e7d85e8c3046569d",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    }
+  ],
+  "content_hash": "a6f84d0604998170ee13eeb5fa2d810fc8a15a52849a3b90d8f88679790f33a5"
 }

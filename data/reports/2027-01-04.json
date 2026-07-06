@@ -25,7 +25,7 @@
       "evidence": "The CFDA/Vogue Fashion Fund's 2026 winner gala was held October 20, 2026. As of this window's search (Dec 29, 2026 - Jan 4, 2027, roughly eleven weeks after the gala), still no dated post-gala reporting naming a winner has surfaced from CFDA.com, Vogue, WWD, Business of Fashion, or Fashionista. The most recent dated coverage available remains the June 2026 finalist announcement (ten designers: Aisling Camps, Amir Taghi, Terrence Zhou/Bad Binch TONGTONG, Emily Dawn Long, Jamie Haller, Julia Ferentinos/Juju Vera, Zane Li/Lii, George Inaki/Milamore, Claire Sullivan, Zoe Gustavia Anna Whalen).",
       "index_note": "Carried forward from the 2026-12-28 report -- same signal_id, now an eleventh consecutive open window, crossing into the new year. report_schema.is_prolonged_silence('cfda-vogue-fashion-fund-2026-winner', all_reports) returns True against the pre-this-window history (ten entries: 2026-10-26 through 2026-12-28) and remains True with this window's entry added.",
       "source_corroboration_count": 1,
-      "signal_id": "cfda-vogue-fashion-fund-2026-winner",
+      "signal_id": "cfda-fashion-fund-winner",
       "confidence_source": "manual",
       "human_editor_note": "Per docs/agent-logs/ari3lla-index SKILL.md workflow note 10: this factual question has been past is_prolonged_silence()'s threshold for well over three consecutive windows now (eight windows past the four-window mark). Consistent with that guidance, this entry marks the signal untracked going forward pending new information rather than repeating the same 'still open' note every week -- this is not a claim that the question is resolved or closed, only that this archive will stop re-litigating it weekly absent new evidence. Any future report that finds real dated coverage naming a winner should resume normal tracking and resolve this signal_id with a name and source."
     },
@@ -82,10 +82,16 @@
     "thin-week",
     "2027-q1"
   ],
-  "content_hash": "cb888f7e7ad362714951eb998d2c534ecbb201041baba53ca89537f75c24b800",
+  "content_hash": "2474356d9d26e81560380885d90d39692e839f2161bd9da387aa29b4345c32ee",
   "collection_status": "thin",
   "thin_week_note": "Fewer than 3 distinct, independently verifiable style-discourse signals were found despite an active, non-assumed search effort that specifically checked the editorial calendar for early-January menswear/couture/awards activity. Both carried-forward institutional questions remain unresolved; per SKILL.md workflow note 10 they are marked untracked pending new information this window rather than repeated as unchanged carry-forward notes, and no genuinely new in-window garment, silhouette, aesthetic, or ceremony-linked signal was independently verified.",
-  "revision_history": [],
+  "revision_history": [
+    {
+      "previous_content_hash": "cb888f7e7ad362714951eb998d2c534ecbb201041baba53ca89537f75c24b800",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    }
+  ],
   "review_status": "reviewed",
   "reviewed_by": "loop-consolidation"
 }

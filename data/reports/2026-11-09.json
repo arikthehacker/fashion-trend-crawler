@@ -27,7 +27,7 @@
       "index_note": "Carried forward from the 2026-11-02 report -- same signal_id, now a third consecutive open window. This archive does not force-close a signal by elapsed time alone, and does not assert an outcome it cannot verify with dated, sourced coverage. The BFC/Vogue result surfaced this window is logged as adjacent context in cultural_references, not as resolution.",
       "human_editor_note": "Three consecutive windows (2026-10-26, 2026-11-02, 2026-11-09) with no coverage of an actual CFDA/Vogue Fashion Fund winner is now well past what reads as ordinary reporting lag. Plausible explanations still include a quieter-than-usual gala with limited trade pickup, or a search-tool recency gap specific to this query -- but three misses raises the possibility that the gala's outcome simply isn't indexed yet in generally searchable coverage at time of writing. Do not backfill a winner name from memory, inference, or analogy to the BFC program. If dated coverage appears in a future window, reconcile and close this signal_id there; do not edit this or prior reports retroactively without new evidence.",
       "source_corroboration_count": 1,
-      "signal_id": "cfda-vogue-fashion-fund-2026-winner",
+      "signal_id": "cfda-fashion-fund-winner",
       "confidence_source": "manual"
     },
     {
@@ -92,7 +92,12 @@
       "previous_content_hash": "dfa9932506ca03adad98cb42c741bd7f48edc4d53f2a3f4dc20527d8624e03e7",
       "corrected_at": "2026-07-06",
       "reason": "quality-check run 30: backfill missing human_editor_note field (build_manual_signal only set index_note before this field existed on the Signal dataclass); no dormancy action needed yet, signal has appeared in only 1 window so far"
+    },
+    {
+      "previous_content_hash": "7af6465bb1894ca17b048fa28d061a83be8c7ec86db9a43c11bfb697f24f2780",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
     }
   ],
-  "content_hash": "7af6465bb1894ca17b048fa28d061a83be8c7ec86db9a43c11bfb697f24f2780"
+  "content_hash": "5ca3a72954e69b4c26f58726f86f29788a2d29c3bfc40856ba95894ec5afc0c7"
 }

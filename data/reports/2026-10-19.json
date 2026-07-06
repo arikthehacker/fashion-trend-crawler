@@ -25,7 +25,7 @@
       "index_note": "Final carry-forward of this signal_id. Volatility remains declining; confidence remains medium on the strength of the source being the policy-setting institution itself. This is logged one last time to make the closure explicit in top_signals rather than silently dropping it -- see limitations for why it is not carried into the next window's top_signals, and get_signal_status_history() for the full trend.",
       "human_editor_note": "Closing this out as a top_signal is a call about reporting activity, not about the policy's importance -- a rule change like this may only become visible in outcomes (who actually shows) at LFW's next scheduled season, which is outside this archive's current observation window. Reopen if outcome-level reporting appears; until then it belongs in the historical record via get_signal_status_history(), not in every week's active signal list.",
       "source_corroboration_count": 1,
-      "signal_id": "lfw-eligibility-wholesale-requirement-dropped",
+      "signal_id": "lfw-wholesale-eligibility-dropped",
       "confidence_source": "manual"
     }
   ],
@@ -62,6 +62,12 @@
   "thin_week_note": "Fewer than 3 distinct, independently verifiable in-window signals were found despite an active, non-assumed search effort across editorial, institutional, retail, and trade sources. This is the second full week after fashion month's close and continues the post-fashion-month quiet stretch documented in the prior window, but this report reached that conclusion by re-testing for new discourse this window specifically, not by defaulting to the previous week's finding.",
   "review_status": "reviewed",
   "reviewed_by": "loop-consolidation",
-  "revision_history": [],
-  "content_hash": "5fb0d3e03b261bb8c8083ced2ae8de25ccb4b0d6006bc56975add72817a134ed"
+  "revision_history": [
+    {
+      "previous_content_hash": "5fb0d3e03b261bb8c8083ced2ae8de25ccb4b0d6006bc56975add72817a134ed",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    }
+  ],
+  "content_hash": "b3049fefdb4b3918d6f217fc7ec2456314a59564c153d4b789d4e76974ed2c67"
 }

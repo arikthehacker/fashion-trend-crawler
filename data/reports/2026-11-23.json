@@ -27,7 +27,7 @@
       "index_note": "Carried forward from the 2026-11-16 report -- same signal_id, now a fifth consecutive open window. This archive does not force-close a signal by elapsed time alone, and does not assert an outcome, a delay, or a cancellation it cannot verify with dated, sourced coverage.",
       "human_editor_note": "Five consecutive windows with zero indexed coverage of a CFDA/Vogue Fashion Fund winner is well outside ordinary reporting lag for a program this well-covered in prior years. This report does not speculate a winner's identity, does not assume the gala was cancelled or the result withheld, and does not backfill from memory or analogy to other Fashion Fund programs. The most defensible reading remains either (a) a search-tool recency/indexing gap specific to this query that has now persisted across five windows, or (b) a genuine change in how this cycle's outcome was publicized. Both remain stated as open possibilities, not conclusions. If dated coverage appears in a future window, reconcile and close this signal_id there with a real name and source; do not edit this or prior reports retroactively without new evidence.",
       "source_corroboration_count": 1,
-      "signal_id": "cfda-vogue-fashion-fund-2026-winner",
+      "signal_id": "cfda-fashion-fund-winner",
       "confidence_source": "manual"
     },
     {
@@ -43,7 +43,7 @@
       "index_note": "New this window. Logged as a retail-calendar/commerce-timing signal, distinct in kind from a garment/aesthetic/silhouette trend -- it describes when discounting starts, not what is being worn or designed. Included because the task explicitly asked whether the Thanksgiving/Black Friday retail calendar produces any real in-window signal; it does, but only at this commerce-calendar level, not as style discourse.",
       "human_editor_note": "This signal is intentionally narrow: it confirms that early Black Friday promotional windows are dated and running during Nov 17-23, 2026, per named retailers' own published schedules. It does not assert anything about apparel trend content, sales volume outcomes, or consumer behavior -- those would require post-event reporting not yet available inside this window. Retail-calendar aggregator sites are the corroborating sources rather than primary editorial outlets, so confidence is capped at medium despite multiple retailers being named.",
       "source_corroboration_count": 3,
-      "signal_id": "2026-black-friday-early-retail-calendar",
+      "signal_id": "bfcm-retail-calendar",
       "confidence_source": "manual"
     }
   ],
@@ -86,6 +86,12 @@
   "thin_week_note": "Fewer than 3 distinct, independently verifiable style-discourse signals were found despite an active, non-assumed search effort. The two carried-forward institutional questions (Fashion Fund winner, fifth window; Fashion Awards timing, fourth window) remain unresolved, and the one new item this window is a retail-calendar timing fact rather than a garment/aesthetic trend.",
   "review_status": "reviewed",
   "reviewed_by": "loop-consolidation",
-  "revision_history": [],
-  "content_hash": "25ffe53c24fd777ea458578cd6893e823482d37e9b541c01942291458e5bff85"
+  "revision_history": [
+    {
+      "previous_content_hash": "25ffe53c24fd777ea458578cd6893e823482d37e9b541c01942291458e5bff85",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    }
+  ],
+  "content_hash": "9abcb7e98a91351bfa9bc3c86713816b89a5ff9b088b654ea45e1e6f581966e2"
 }
