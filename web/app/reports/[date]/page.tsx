@@ -159,6 +159,30 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
         </div>
       </header>
 
+      {/* pinned correction notice — corrections policy convention (AP/NYT/Reuters):
+          give a correction prominence roughly equal to the original content, surfaced
+          near the top rather than left only in a footer-adjacent section a reader may
+          never scroll to. See docs/agent-logs/journalism-standards-check-run40.md */}
+      {lastRevision && (
+        <div style={{
+          width: "100%",
+          maxWidth: "720px",
+          padding: "0.85rem 1.5rem",
+          margin: "1.5rem 2rem 0",
+          border: "1px solid var(--red)",
+          fontFamily: "var(--font-franklin)",
+          fontSize: "0.85rem",
+          lineHeight: "1.6",
+          color: "var(--black)",
+        }}>
+          <strong style={{ color: "var(--red)" }}>Corrected {lastRevision.corrected_at}: </strong>
+          {lastRevision.reason}{" "}
+          <a href="#correction-history" style={{ color: "var(--red)", textDecoration: "underline" }}>
+            Full correction history
+          </a>
+        </div>
+      )}
+
       {/* executive summary */}
       <section aria-label="Executive summary" style={sectionStyle}>
         <h2 style={labelStyle}>Executive Summary</h2>
@@ -455,7 +479,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
 
       {/* correction history */}
       {(report.revision_history?.length ?? 0) > 0 && (
-        <section aria-label="Correction history" style={sectionStyle}>
+        <section id="correction-history" aria-label="Correction history" style={sectionStyle}>
           <h2 style={labelStyle}>Correction History</h2>
           <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: "1rem" }}>
             {report.revision_history?.map((revision, i) => (
