@@ -9,9 +9,8 @@
 // rather than an abstract style dictionary. Distinct from /taxonomy, which documents
 // the classification system rather than the aesthetic terms themselves.
 
-import fs from "fs";
-import path from "path";
 import Link from "next/link";
+import { getAllReports } from "../../lib/reports";
 
 interface ReportShape {
   aesthetic_terms?: string[];
@@ -99,16 +98,11 @@ function isPlausibleGlossaryTerm(term: string): boolean {
 }
 
 function loadGlossaryTerms(): { term: string; def: string }[] {
-  const dir = path.join(process.cwd(), "..", "data", "reports");
   const found = new Map<string, string>(); // lowercase key -> display term
 
-  if (fs.existsSync(dir)) {
-    const files = fs.readdirSync(dir).filter((f) => f.endsWith(".json"));
-    for (const file of files) {
-      const report = JSON.parse(
-        fs.readFileSync(path.join(dir, file), "utf-8")
-      ) as ReportShape;
-
+  {
+    const reports = getAllReports() as unknown as ReportShape[];
+    for (const report of reports) {
       const candidates = [
         ...(report.aesthetic_terms ?? []),
         ...(report.cultural_references ?? []),
@@ -129,7 +123,7 @@ function loadGlossaryTerms(): { term: string; def: string }[] {
           // archive that have no curated definition, so they don't silently
           // drop off /glossary. See docs/agent-logs/glossary-freshness-check-run37.md.
           console.warn(
-            `[glossary] no DEFINITIONS entry for term "${cleaned}" (from ${file}) — term will not be shown on /glossary`
+            `[glossary] no DEFINITIONS entry for term "${cleaned}" (from ${(report as { report_date?: string }).report_date ?? "unknown report"}) — term will not be shown on /glossary`
           );
         }
       }
