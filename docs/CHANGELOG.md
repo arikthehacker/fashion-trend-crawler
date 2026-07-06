@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-08 ~10:15 PDT — [Loop run 45](changelog-entries/run-45.md)** — 38th report
+  finds a previously-undocumented Feb-March RTW fashion month underway; a public
+  raw-JSON download route closes run 44's flagged Dataset-schema gap; a methodology
+  transparency box added per Pew/FiveThirtyEight convention; nav/link audit and
+  periodic audit both clean.
+
 - **2026-07-08 ~09:00 PDT — [Loop run 44](changelog-entries/run-44.md)** — 37th report
   finally makes the Wales Bonner "untracked going forward" transition decision at its
   planned checkpoint; homepage dominant-mood metric gets an honest 12-week staleness

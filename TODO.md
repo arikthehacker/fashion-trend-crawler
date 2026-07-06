@@ -919,6 +919,31 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
-- [ ] Consider adding a public raw-JSON download route if the underlying report data is
-      ever meant to be directly downloadable — would let the new Dataset JSON-LD's
-      `distribution`/`contentUrl` be populated honestly instead of omitted.
+
+## Run 45 — done
+- [x] Added `data/reports/2027-03-15.json`, a 38th report — found a genuinely
+      undocumented Feb-March Fall/Winter 2027-28 RTW fashion month underway, distinct
+      from the archive's already-documented Sept-Oct RTW and January menswear/couture
+      windows. Correctly did not re-litigate the now-untracked Wales Bonner question.
+- [x] Implemented the public raw-JSON download route flagged in run 44: each report's
+      raw JSON is now served at `/data/reports/<date>.json` via a `prebuild` npm script,
+      wired into the Dataset JSON-LD's `distribution`/`contentUrl` fields, plus a
+      visible download link on the report page. Note: requires `npm run build`, not a
+      bare `next build`, to actually copy the files.
+- [x] Added a "How This Report Was Compiled" transparency box per Pew/FiveThirtyEight
+      convention — same existing content, now visually distinct instead of reading as
+      ambient header text.
+- [x] Nav/link audit — clean. Run 42's `/case-study` nav and WCAG target-size fixes both
+      still intact; a new site-wide broken-link check found zero broken internal links.
+- [x] Periodic audit — clean. 44 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (11th+ consecutive check), confirmed the
+      Wales Bonner "untracked going forward" transition is being correctly respected.
+
+## Next up (run 46 candidates)
+- [ ] The run-19 confidence-gate fix remains untested — revisit once
+      `independent_criticism` sources reappear.
+- [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
+- [ ] Add the Feb-March RTW fashion month found in run 45 to
+      `docs/EDITORIAL_CALENDAR.md` as its own recurring entry.
+- [ ] Any future CI/deploy wiring must call `npm run build`, not a bare `next build`, or
+      the raw-JSON download route will silently be missing from the output.
