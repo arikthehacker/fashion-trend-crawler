@@ -1,0 +1,89 @@
+{
+  "report_date": "2026-08-03",
+  "collection_window": {
+    "start": "2026-07-28",
+    "end": "2026-08-03"
+  },
+  "sources_scanned": 12,
+  "items_collected": 5,
+  "source_sector_breakdown": {
+    "editorial": 4,
+    "institutional": 1
+  },
+  "executive_summary": "This collection window (July 28-August 3, 2026) again falls in a quiet stretch of the fashion calendar: Copenhagen Fashion Week SS27 does not open until the final day of the window (August 3-7), so no runway coverage from that event exists yet within these dates, and its brand line-up was announced in early June, outside this window. Targeted search this week surfaced mostly undated, evergreen 'trend guide' content recirculating material from earlier in the year rather than fresh, dated discourse. Two signals logged in the May-June collection windows -- sheer layering and soft tailoring -- were checked for continuation: both are still referenced in recent roundup and guide content, but none of it is dated to this specific window, and neither has appeared as an active top_signal since the July 6 report. This reads as dormancy/saturation (the terms have become generic industry shorthand) rather than confirmed continued momentum, so both are logged at low confidence as continuation checks rather than re-asserted at their prior medium/high confidence. The 'Off-Duty Varsity' jersey-styling signal, flagged for editorial retirement in the July 27 report, was checked again and again returned only tournament-era content; per that report's own recommendation, it is not re-logged this window and is treated as lapsed from active tracking. Per the project's honesty-over-quota principle, this report is marked 'thin' rather than padded with repackaged seasonal content to reach a target signal count.",
+  "top_signals": [
+    {
+      "name": "Sheer layering, dormancy check",
+      "type": "styling_behavior",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "declining",
+      "origin_classification": "editorial_amplified",
+      "evidence": "Search this window returned only undated or months-old 'sheer trend 2026' guide and listicle content (e.g. recirculated March/April editorial pieces on transparent layering) rather than coverage dated to July 28-August 3. The signal has not appeared as an active top_signal in any report since July 6.",
+      "index_note": "Absence of new dated coverage after three quiet collection windows is read as the signal settling into generic, undifferentiated trend-guide language (saturation) rather than active discourse. Confidence downgraded from the July 6 report's 'medium' to 'low' to reflect that this window's evidence is recirculated content, not fresh corroboration; volatility changed from 'seasonal' to 'declining' on the same basis.",
+      "human_editor_note": "Recommend a human editor decide whether to retire this signal_id from active tracking or keep it on a lower-frequency recheck cadence -- it has not had fresh, dated corroboration in nearly a month.",
+      "source_corroboration_count": 1,
+      "signal_id": "sheer-layering",
+      "confidence_source": "manual"
+    },
+    {
+      "name": "Soft tailoring, dormancy check",
+      "type": "silhouette",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "declining",
+      "origin_classification": "designer_originated",
+      "evidence": "Search returned menswear trend-guide content still describing relaxed/soft tailoring (dropped shoulders, minimal canvasing, drapey fabrics), but sourced to general '2026 menswear trends' round-ups rather than coverage dated to this window. Like sheer layering, it has not appeared as an active top_signal since July 6.",
+      "index_note": "Same read as the sheer-layering check: continued presence in generic guide content, absent fresh dated corroboration, is treated as saturation rather than confirmed ongoing momentum. Confidence downgraded from the July 6 report's 'high' to 'low' on that basis.",
+      "human_editor_note": "This was a high-confidence, three-sector signal in May/June; its drop to generic guide-copy only, with no designer-origin or retail-category coverage found this window, is worth a human editor's judgment call on whether it has genuinely run its course or simply wasn't covered this particular week.",
+      "source_corroboration_count": 1,
+      "signal_id": "soft-tailoring",
+      "confidence_source": "manual"
+    }
+  ],
+  "repeated_keywords": [
+    "sheer",
+    "soft tailoring",
+    "layering"
+  ],
+  "garments": [
+    "blazer",
+    "organza top"
+  ],
+  "silhouettes": [
+    "relaxed tailoring"
+  ],
+  "materials": [
+    "organza",
+    "mesh",
+    "mohair wool"
+  ],
+  "colors": [],
+  "aesthetic_terms": [
+    "quiet luxury"
+  ],
+  "cultural_references": [
+    "Copenhagen Fashion Week SS27"
+  ],
+  "limitations": [
+    "No fashion week or comparable dated industry event fell within this window: Copenhagen Fashion Week SS27 opens August 3, the window's final day, so no runway coverage from it exists yet, and its brand line-up news (early June) predates this window and was excluded as out-of-window.",
+    "The 'Off-Duty Varsity' jersey-styling signal (signal_id off-duty-varsity), flagged in the July 27 report for a human editor's retirement decision, was checked again this window and again returned only tournament-era (June-July) content. It is not re-logged as a top_signal here and is treated as lapsed from active tracking pending that editorial decision.",
+    "Both logged items this window are continuation/dormancy checks on signals first logged May 7 and July 6, not newly discovered signals -- their evidence is the absence of fresh, dated corroboration, which is inherently weaker than a positive finding.",
+    "Most search results this window were undated or months-old 'trend guide' listicle content rather than discourse specific to July 28-August 3, 2026.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach.",
+    "Per project convention (see docs/agent-logs/thin-week-fallback.md), this report is marked collection_status: thin rather than manufacturing additional signals to match the signal count of earlier weekly reports."
+  ],
+  "archive_tags": [
+    "dormancy-check",
+    "thin-week",
+    "2026-q3"
+  ],
+  "content_hash": "6a82a2f092794aa7e55fff96ad9ea901660dd10fabe6703b477e019a27d14006",
+  "collection_status": "thin",
+  "thin_week_note": "No fashion week fell within this window (Copenhagen Fashion Week SS27 opens on the window's last day, August 3, with its line-up already reported in June), and targeted search across editorial and institutional sources surfaced only undated, recirculated trend-guide content rather than discourse specific to this week. The two items logged here are downgraded continuation checks on already-tracked signals (sheer layering, soft tailoring), not new discoveries, and a third recurring signal (off-duty-varsity) was checked and found still quiet. Rather than fill out a full signal roster with repackaged seasonal listicles, this report is marked thin per the project's Nieman Lab-informed policy against inflating weak coverage to hit a quota.",
+  "revision_history": []
+}
