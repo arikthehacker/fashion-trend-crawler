@@ -73,6 +73,9 @@ web/                   # Next.js app
     case-study/page.tsx   # doc section 33, portfolio framing
     layout.tsx           # site-wide <title>/description metadata — keep in sync with rebrand, this has gone stale before
     sitemap.ts, robots.ts  # added run 5
+    icon.tsx              # route-segment metadata file (run 53) — Next auto-generates the
+      favicon via ImageResponse, no binary asset; needs `dynamic = "force-static"` for
+      static export, same pattern as sitemap.ts/robots.ts
     rss.xml/route.ts      # RSS feed over the report archive
   lib/
     reports.ts           # archive data layer, reads data/reports/*.json; homepage reads off this too (trends.ts retired run 13, confirmed gone — do not re-add); also exposes getSearchIndex() (run 12) for the /search facet filter and getConsecutiveThinWeekCount()/getLatestReport() helpers (run 13)

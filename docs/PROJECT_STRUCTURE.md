@@ -107,7 +107,13 @@ fashion-trend-crawler/
     │   ├── page.tsx              existing — homepage (hero/tagline/footer, section 2/25 voice)
     │   ├── layout.tsx            existing — site-wide title/description metadata
     │   ├── globals.css           existing
-    │   ├── favicon.ico           existing
+    │   ├── favicon.ico           existing — static fallback; icon.tsx (below) is what Next
+    │   │                          actually auto-serves as the favicon route
+    │   ├── icon.tsx               existing (run 53) — route-segment metadata file, Next
+    │   │                          auto-detects it and generates the favicon (32x32 PNG via
+    │   │                          ImageResponse, no binary asset); needs `export const
+    │   │                          dynamic = "force-static"` for static export, same pattern
+    │   │                          as sitemap.ts/robots.ts
     │   ├── archive/page.tsx      existing — lists all dated reports
     │   ├── reports/[date]/page.tsx   existing — renders one report (module order, section 20/36);
     │   │                          carries NewsArticle + Dataset JSON-LD (run 46: Dataset

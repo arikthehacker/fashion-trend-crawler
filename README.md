@@ -351,6 +351,9 @@ fashion-trend-crawler/
       methodology/, taxonomy/, sources/, about/  # static reference pages
       case-study/                # portfolio case study
       sitemap.ts, robots.ts, rss.xml/  # SEO / syndication
+      icon.tsx                  # route-segment metadata file — Next auto-generates the
+                                #   favicon (ImageResponse, no binary asset); force-static
+                                #   like sitemap.ts/robots.ts
     scripts/
       copy-reports.mjs           # copies data/reports/*.json into public/data/reports/
                                 #   for the static export's raw-data download links
