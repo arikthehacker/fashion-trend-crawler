@@ -1339,10 +1339,30 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       check results) — same failure shape as run 33. Not re-dispatched mid-
       consolidation; needs a future, more tightly time-boxed attempt.
 
-## Next up (run 63 candidates)
-- [ ] Retry the real-crawler-pipeline-grounded report attempt with a tight time-box
-      (per the run-33/34 lesson), since run 62's open-ended attempt stalled without
-      producing anything.
+## Run 63 — done
+- [x] Retried the crawler-pipeline attempt with a strict synchronous time-box —
+      completed cleanly this time. Real crawl output cross-checked against the
+      archive; the one genuine signal found already existed, correctly not
+      duplicated. Surfaced a more concrete blocker: `summarize.py` can't run at all
+      without `ANTHROPIC_API_KEY` set in this environment.
+- [x] Added `data/reports/2027-07-19.json`, a 56th report — Thom Browne Milan debut
+      logged with a genuine source-incentive judgment call (trade press vs. the one
+      dissenting independent review).
+- [x] Fixed a real deep-linking gap: individual signals within a report page had no
+      anchor, only the whole page or the separate longitudinal signal page could be
+      linked to. Added per-signal `id` anchors and visible permalinks.
+- [x] Doc-sync fixed a real gap: `check_signal_reuse_claims.py` was undocumented in
+      README/PROJECT_STRUCTURE.md.
+- [x] Periodic audit — clean. 65 confidence mismatches, only the documented override
+      non-conservative; signal-reuse checker unchanged at 4 known false positives.
+- [x] **Consolidation catch**: removed a real, un-gitignored scratch artifact
+      (`src/trends_raw.json`) left by the crawler-pipeline agent; renamed a
+      misnumbered log file.
+
+## Next up (run 64 candidates)
+- [ ] `summarize.py` requires `ANTHROPIC_API_KEY`, unset in this environment — a
+      concrete, distinct blocker on real-pipeline reports beyond the crawler itself
+      working. Worth a human decision on whether/how to provide it.
 - [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
       correctness — still awaiting a human decision (run 50).
 - [ ] The underlying human-in-the-loop process gap flagged in run 50 remains open.

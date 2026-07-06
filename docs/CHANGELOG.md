@@ -18,6 +18,14 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-09 ~09:15 PDT — [Loop run 63](changelog-entries/run-63.md)** — Retried run
+  62's stalled crawler-pipeline attempt with a strict synchronous time-box; completed
+  cleanly, confirmed the pipeline's real output corroborates rather than duplicates
+  existing reporting. Also surfaces a more concrete blocker: `summarize.py` can't run
+  without an API key set in this environment. A real per-signal deep-linking gap
+  fixed; doc-sync catches a missing file reference; a leftover scratch artifact
+  cleaned up during consolidation.
+
 - **2026-07-09 ~08:00 PDT — [Loop run 62](changelog-entries/run-62.md)** —
   `check_signal_reuse_claims.py` made a standing periodic-audit step after
   cross-confirmation by 3 independent agents; reading-level accessibility quantified
