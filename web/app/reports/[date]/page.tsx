@@ -157,6 +157,27 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
           <span>Sources scanned: {report.sources_scanned}</span>
           <span>Items collected: {report.items_collected}</span>
         </div>
+
+        {/* byline-level AI disclosure — per-report, not just the general /about policy page.
+            Research convention (Trusting News byline template; AP/BBC studies on disclosure
+            credibility) recommends surfacing AI involvement at the byline, immediately next to
+            authorship, rather than only in a general site-wide policy a reader may never visit.
+            See docs/agent-logs/journalism-standards-check-run41.md */}
+        <p style={{
+          fontFamily: "var(--font-franklin)",
+          fontSize: "0.7rem",
+          letterSpacing: "0.03em",
+          color: "var(--gray)",
+          marginTop: "1.25rem",
+        }}>
+          AI-assisted collection, extraction, and drafting for this report;{" "}
+          {report.reviewed_by
+            ? `human-reviewed by ${report.reviewed_by}`
+            : "human-reviewed classification"}
+          . <Link href="/methodology" style={{ color: "var(--gray)", textDecoration: "underline" }}>
+            AI use &amp; corrections policy
+          </Link>
+        </p>
       </header>
 
       {/* pinned correction notice — corrections policy convention (AP/NYT/Reuters):
