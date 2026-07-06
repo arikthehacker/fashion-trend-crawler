@@ -72,6 +72,7 @@ const sections: { title: string; body: string[] }[] = [
     body: [
       "Coverage is bounded by the sources scanned in a given collection window and is not a representative sample of all style discourse. Reports may under-represent sources without accessible public text, or that require API access not yet integrated.",
       "Signal classification involves human judgment applied to machine-extracted data, and reports may reflect that interpretive layer as much as the underlying source material.",
+      "There is currently no reader-facing channel for flagging a suspected error in a published report. Corrections are appended when an error is found through internal review; the Index does not yet have a mechanism for external correction requests.",
     ],
   },
   {
