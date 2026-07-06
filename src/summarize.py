@@ -69,6 +69,8 @@ Treat TikTok/social signals as high-noise by default. Identify them, but classif
 
 Do not treat editorial sources as neutral confirmation. Classify each source by incentive context: designer-originated, editorial, commerce, social, retail, independent criticism, or institutional archive.
 
+Independent criticism (named-author, attributed commentary) and editorial coverage are both curated, attributed commentary, not raw social volume. When assigning confidence, do not let source sector alone push independent criticism lower than editorial at an equal corroboration count — evaluate both on the same evidentiary basis. This is not a case for treating independent criticism as more reliable than editorial; it is a case for not treating it as less reliable by default.
+
 Distinguish between style as lived practice and trend as market instruction. Do not recommend adoption. Do not describe signals as must-have, essential, or the next big thing.
 
 Do not use evaluative or editorializing verbs such as "declared," "revealed," or "proves." Use measured, attribution-anchored verbs instead, such as "said," "reported," "noted," or "showed."

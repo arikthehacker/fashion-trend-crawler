@@ -234,3 +234,29 @@ content" from "directly observed user posts," and flag in the workflow doc that 
 current 2-for-2 Pinterest-only, official-report-only sample is itself a reflection of
 which platform has the lowest compliance friction, not a signal that Pinterest is where
 the interesting fashion discourse is happening. No code changed this pass.
+
+### Run 19 — prompt fix for independent_criticism confidence asymmetry
+**2026-07-06** — see `docs/agent-logs/prompt-tuning-run19.md`. Addresses run 18 finding
+(b) directly at the prompt-instruction level (run 18 deliberately made no code change).
+`report_schema.py`'s formula-level gate (`HIGH_RELIABILITY_SECTORS`) already treats
+`editorial` and `independent_criticism` equally as of run 16's fix, but the model was
+still observed assigning `independent_criticism` "low" confidence far more often than
+`editorial` at equal corroboration counts — the asymmetry was happening upstream, in
+how the model itself weighed source sector during generation, not in the deterministic
+formula.
+
+Added to `build_prompt()`, immediately after the existing "Do not treat editorial
+sources as neutral confirmation" instruction:
+
+> "Independent criticism (named-author, attributed commentary) and editorial coverage
+> are both curated, attributed commentary, not raw social volume. When assigning
+> confidence, do not let source sector alone push independent criticism lower than
+> editorial at an equal corroboration count — evaluate both on the same evidentiary
+> basis. This is not a case for treating independent criticism as more reliable than
+> editorial; it is a case for not treating it as less reliable by default."
+
+Why here and phrased this way: kept explicitly scoped to correcting an asymmetry, not
+establishing a new hierarchy in the other direction — consistent with the project's
+anti-gatekeeping framing (doc section 2, run 16 finding (b)). Only `build_prompt()`'s
+prompt text was touched; no control-flow or schema changes. Verified with
+`python -m py_compile src/*.py`.
