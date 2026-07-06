@@ -136,9 +136,17 @@ def summarize(pages=None, revision_reason=None, corrected_at=None):
     print(f"sending {sum(len(p['titles']) for p in pages)} headlines to claude...")
     prompt = build_prompt(pages, report_date, window_start, window_end)
 
+    # 4000 (raised from 2000 in run 8) covers today's thin-week reports (1-8
+    # signals, e.g. 2026-07-20.json's 8 signals ran close to ~3.8k tokens
+    # of completion) but leaves little headroom. Each signal costs ~400-450
+    # tokens of JSON; a genuinely busy fashion-week window (NYFW/LFW/MFW/PFW
+    # from Sept 8, 2026, per docs/EDITORIAL_CALENDAR.md) could plausibly
+    # surface 15+ signals, which extrapolates to ~6000-7000 tokens plus
+    # overhead -- past 4000. Raised to 8000 for headroom; see
+    # docs/agent-logs/busy-week-readiness-run18.md.
     response = client.messages.create(
         model="claude-sonnet-4-6",
-        max_tokens=4000,
+        max_tokens=8000,
         messages=[{"role": "user", "content": prompt}],
     )
 
