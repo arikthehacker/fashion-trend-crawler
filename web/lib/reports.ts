@@ -42,7 +42,6 @@ export interface Report {
   cultural_references: string[];
   limitations: string[];
   archive_tags: string[];
-  source_links?: string[];
   confidence_notes?: string;
   volatility_notes?: string;
   incentive_notes?: string;
