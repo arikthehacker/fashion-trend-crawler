@@ -71,11 +71,18 @@ ${categoryTags ? categoryTags + "\n" : ""}    </item>`;
   const lastBuildDate =
     reports.length > 0 ? toRfc822(reports[0].report_date) : new Date().toUTCString();
 
+  // rssboard.org Best Practices Profile (run 66 research): a feed should
+  // self-identify its own URL via <atom:link rel="self">, per RFC 5005-style
+  // convention. Both the W3C Feed Validator and rssboard's own validator flag
+  // its absence as "Missing atom:link with rel='self'" — a warning, not a
+  // fatal error, but the previous feed had never added it despite otherwise
+  // following the rssboard profile (item <category>/title conventions above).
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>${escapeXml(SITE_NAME)}</title>
     <link>${escapeXml(SITE_URL)}</link>
+    <atom:link href="${escapeXml(`${SITE_URL}/rss.xml`)}" rel="self" type="application/rss+xml" />
     <description>Weekly style signal reports: a source-linked index tracking recurring style language, silhouettes, materials, aesthetics, and cultural signals across the web.</description>
     <language>en-us</language>
     <lastBuildDate>${lastBuildDate}</lastBuildDate>
