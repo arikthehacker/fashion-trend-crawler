@@ -25,3 +25,35 @@ h1, h2, h3 {
 .note {
   font-family: var(--font-reenie);
 }
+
+/* Print stylesheet — report pages are meant to be citable/archivable, and a
+   researcher printing or "Save as PDF"-ing a report page for a citation
+   should get the report text itself, not the site's interactive chrome.
+   .no-print marks in-page navigation (footer links to other site sections);
+   it has no effect on screen. Link URLs are expanded inline so a citation
+   made from a printout still carries the source address. */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #333;
+  }
+
+  @page {
+    margin: 2cm;
+  }
+}

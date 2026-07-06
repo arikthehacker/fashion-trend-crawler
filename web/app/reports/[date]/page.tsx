@@ -598,8 +598,10 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
         </section>
       )}
 
-      {/* footer */}
-      <footer style={{
+      {/* footer — in-page site navigation, not part of the archival report
+          record; hidden when printing/saving as PDF for citation (see
+          globals.css .no-print) */}
+      <footer className="no-print" style={{
         width: "100%",
         borderTop: "1px solid var(--border)",
         padding: "2rem",
