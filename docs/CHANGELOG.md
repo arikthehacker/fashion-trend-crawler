@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-08 ~09:00 PDT — [Loop run 44](changelog-entries/run-44.md)** — 37th report
+  finally makes the Wales Bonner "untracked going forward" transition decision at its
+  planned checkpoint; homepage dominant-mood metric gets an honest 12-week staleness
+  cutoff; report pages gain Dataset structured data alongside NewsArticle; a slug audit
+  renames 4 over-length slugs with a full prose sweep done upfront; a real cross-run
+  slug collision caught and fixed during consolidation.
+
 - **2026-07-08 ~07:45 PDT — [Loop run 43](changelog-entries/run-43.md)** — 36th report
   carefully avoids conflating tracked signals with unrelated real-world events; the
   long-carried self-archival question finally resolved with a concrete manifest tool

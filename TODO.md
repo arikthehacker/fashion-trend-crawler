@@ -894,12 +894,31 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       coverage warnings, `gh` CLI unavailable (9th+ consecutive check), all silent
       signals already carry correct close-out/deferred-transition notes.
 
-## Next up (run 44 candidates)
+## Run 44 — done
+- [x] Added `data/reports/2027-03-08.json`, a 37th report — Wales Bonner/Hermès debut
+      finally transitioned to "untracked going forward pending new information" at its
+      planned checkpoint (8 consecutive unresolved windows), rather than deferring again.
+- [x] Added a 12-week staleness cutoff to the homepage index module's "dominant mood"
+      metric — shows an honest "no distinct mood signal in recent weeks" state instead
+      of indefinite carry-forward once the source is too old.
+- [x] Added Dataset structured data alongside NewsArticle on report pages (schema.org
+      `@graph`), reflecting that report pages are dataset landing pages, not just
+      articles. Omitted `distribution`/`contentUrl` since no public raw-JSON download
+      route exists yet.
+- [x] Renamed 4 over-length signal_ids created since run 36, with the full cross-file
+      prose sweep done upfront in the same pass (applying run 38's lesson from the
+      start, not as a follow-up).
+- [x] Periodic audit — clean. 44 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (10th+ consecutive check).
+- [x] **Consolidation catch:** the new-report agent used pre-rename long slugs (ran
+      concurrently with the slug-rename agent) — same cross-run collision class as run
+      6. Caught via grep and fixed via `save_report(revision_reason=..., corrected_at=...)`
+      before committing.
+
+## Next up (run 45 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
-- [ ] Watch the Wales Bonner/Hermès debut signal — the 2027-03-08 report is the planned
-      checkpoint for whether it transitions to "untracked going forward."
-- [ ] Consider a staleness cutoff for the homepage index module's "dominant mood" metric
-      — currently carried forward from a report ~24 weeks stale (honestly disclosed, but
-      worth a design decision).
+- [ ] Consider adding a public raw-JSON download route if the underlying report data is
+      ever meant to be directly downloadable — would let the new Dataset JSON-LD's
+      `distribution`/`contentUrl` be populated honestly instead of omitted.
