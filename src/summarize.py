@@ -1,8 +1,9 @@
 #############################################################
 # summarize.py
-# last edited: 05/04/2026
+# last edited: 07/06/2026
 # reads trends_raw.json, sends headlines to claude api,
-# saves a human-readable trend summary to trends_summary.json
+# and saves a structured, dated ARI3LLA INDEX style signal
+# report to data/reports/<report_date>.json
 #
 # ways to use:###############################################
 #    python src/summarize.py
@@ -12,70 +13,138 @@ from dotenv import load_dotenv
 load_dotenv()
 import json
 import os
+from datetime import date, timedelta
 from anthropic import Anthropic
 
+from taxonomy import (
+    SOURCE_SECTORS,
+    CONFIDENCE_LEVELS,
+    VOLATILITY_LABELS,
+    ORIGIN_CLASSIFICATIONS,
+    classify_source,
+)
+from report_schema import save_report
+
 client = Anthropic()
+
 
 def load_trends():
     # load the raw crawled data
     with open("trends_raw.json", "r", encoding="utf-8") as f:
         return json.load(f)
 
-def build_prompt(pages):
-    # flatten all headlines into one block for claude to read
+
+def compute_sector_breakdown(pages):
+    """count pages per source sector using taxonomy.classify_source"""
+    breakdown = {}
+    for page in pages:
+        sector = classify_source(page["url"])
+        breakdown[sector] = breakdown.get(sector, 0) + 1
+    return breakdown
+
+
+def build_prompt(pages, report_date, window_start, window_end):
+    # flatten all headlines into one block for claude to read, tagged with
+    # both the domain and the source sector so the model has source-incentive
+    # context per section 21 of docs/ARI3LLA INDEX.txt
     all_headlines = []
     for page in pages:
         domain = page["url"].split("/")[2].replace("www.", "")
+        sector = classify_source(page["url"])
         for title in page["titles"]:
-            all_headlines.append(f"[{domain}] {title}")
+            all_headlines.append(f"[{domain} | {sector}] {title}")
 
     headlines_text = "\n".join(all_headlines)
+    items_collected = sum(len(p["titles"]) for p in pages)
 
-    return f"""You are a fashion trend analyst. Based on these headlines crawled today from Vogue, Who What Wear, and Hypebeast, write a sharp, editorial trend summary.
+    return f"""You are ARI3LLA INDEX, a weekly style signal report.
 
-Format your response as JSON with exactly this structure:
+Analyze the provided source material objectively. Do not write as a stylist, influencer, marketer, or brand forecaster. Do not recommend purchases. Do not hype trends. Do not use first person.
+
+Classify observed style signals by recurrence, source diversity, volatility, visual coherence, historical/aesthetic context, and source incentive.
+
+Use only the provided source material. Do not invent trends, brands, or claims. Focus on repeated language, recurring visual references, garments, silhouettes, colors, materials, styling behaviors, and cultural/aesthetic terms.
+
+Treat TikTok/social signals as high-noise by default. Identify them, but classify them as volatile unless supported by non-social evidence across multiple reporting periods.
+
+Do not treat editorial sources as neutral confirmation. Classify each source by incentive context: designer-originated, editorial, commerce, social, retail, independent criticism, or institutional archive.
+
+Distinguish between style as lived practice and trend as market instruction. Do not recommend adoption. Do not describe signals as must-have, essential, or the next big thing.
+
+Each headline below is tagged as [domain | source_sector]. Valid source sectors are: {", ".join(SOURCE_SECTORS)}.
+Valid confidence levels are: {", ".join(CONFIDENCE_LEVELS)}.
+Valid volatility labels are: {", ".join(VOLATILITY_LABELS)}.
+Valid origin classifications are: {", ".join(ORIGIN_CLASSIFICATIONS)}.
+
+Return your response as JSON with exactly this structure (no markdown, no backticks, no preamble):
 {{
-  "the_moment": "One punchy sentence: the single biggest thing happening in fashion right now.",
-  "summary": "Two to three sentences. What is the dominant trend or cultural moment? What are the undercurrents? Write like a Vogue editor who is talking to their best friend about what they've been overhearing in the designers room.",
-  "trends": [
-    {{"trend": "trend name", "signal": "one sentence on what the data shows"}},
-    {{"trend": "trend name", "signal": "one sentence on what the data shows"}},
-    {{"trend": "trend name", "signal": "one sentence on what the data shows"}}
+  "report_date": "{report_date}",
+  "collection_window": {{"start": "{window_start}", "end": "{window_end}"}},
+  "sources_scanned": {len(pages)},
+  "items_collected": {items_collected},
+  "source_sector_breakdown": {{}},
+  "executive_summary": "3-5 sentences, objective, research-report tone.",
+  "top_signals": [
+    {{
+      "name": "signal name",
+      "type": "garment | silhouette | color | material | styling_behavior | cultural_term",
+      "source_sectors": ["editorial", "retail"],
+      "confidence": "low | medium | high | archival",
+      "volatility": "stable | emerging | seasonal | volatile | flash | microtrend | recurring | revival | long_tail | saturated | declining",
+      "origin_classification": "designer_originated | editorial_amplified | retail_adopted | social_amplified | platform_native | archive_revival | unclear",
+      "evidence": "one sentence describing what the data shows, citing source sectors, not opinion.",
+      "index_note": "one sentence of methodological context, e.g. why this confidence/volatility was assigned."
+    }}
   ],
-  "sources_summary": {{
-    "vogue.com": "one sentence on what vogue is covering most",
-    "whowhatwear.com": "one sentence on what wwwear is covering most",
-    "hypebeast.com": "one sentence on what hypebeast is covering most"
-  }}
+  "repeated_keywords": [],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [],
+  "limitations": ["note any gaps, e.g. limited source sectors, small sample size, single reporting period"],
+  "archive_tags": []
 }}
+
+Leave source_sector_breakdown as an empty object; it is computed separately from the raw data.
 
 Headlines:
 {headlines_text}
 
 Return only valid JSON. No markdown, no backticks, no preamble."""
 
+
 def summarize():
     print("loading trends...")
     pages = load_trends()
 
+    today = date.today()
+    report_date = today.isoformat()
+    window_start = (today - timedelta(days=6)).isoformat()
+    window_end = report_date
+
     print(f"sending {sum(len(p['titles']) for p in pages)} headlines to claude...")
-    prompt = build_prompt(pages)
+    prompt = build_prompt(pages, report_date, window_start, window_end)
 
     response = client.messages.create(
         model="claude-sonnet-4-6",
-        max_tokens=1000,
-        messages=[{"role": "user", "content": prompt}]
+        max_tokens=2000,
+        messages=[{"role": "user", "content": prompt}],
     )
 
     raw = response.content[0].text.strip()
 
-    # parse and save
-    summary = json.loads(raw)
-    with open("trends_summary.json", "w", encoding="utf-8") as f:
-        json.dump(summary, f, indent=2)
+    # parse, fill in the sector breakdown computed from real crawl data
+    # (rather than trusting the model to count it), then save as a dated report
+    report = json.loads(raw)
+    report["source_sector_breakdown"] = compute_sector_breakdown(pages)
 
-    print("saved to trends_summary.json")
-    print(f"\nthe moment: {summary['the_moment']}")
+    path = save_report(report)
+
+    print(f"saved report to {path}")
+    print(f"\nexecutive summary: {report['executive_summary']}")
+
 
 if __name__ == "__main__":
     summarize()

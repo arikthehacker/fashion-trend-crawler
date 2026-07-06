@@ -1,0 +1,80 @@
+{
+  "report_date": "2026-07-06",
+  "collection_window": {
+    "start": "2026-06-30",
+    "end": "2026-07-06"
+  },
+  "sources_scanned": 14,
+  "items_collected": 31,
+  "source_sector_breakdown": {
+    "editorial": 9,
+    "retail": 5,
+    "social": 6,
+    "designer_origin": 2,
+    "independent_criticism": 2
+  },
+  "executive_summary": "This report identifies recurring style signals across 31 collected items from 14 public web sources. The most consistently repeated signals are sheer layering and softened tailoring, both appearing across editorial and retail sectors with limited but growing social amplification. A smaller cluster of references to 1990s minimalist archives suggests early-stage revival activity rather than an established trend. Coverage this period is weighted toward editorial sources, so conclusions about consumer adoption should be treated as limited.",
+  "top_signals": [
+    {
+      "name": "Sheer layering",
+      "type": "styling_behavior",
+      "source_sectors": ["editorial", "retail", "social"],
+      "confidence": "medium",
+      "volatility": "seasonal",
+      "origin_classification": "editorial_amplified",
+      "evidence": "Repeated references to mesh, organza, and layered transparent fabrics across editorial and retail copy, with a smaller number of social captions using the same language.",
+      "index_note": "Classified as seasonal rather than emerging because comparable coverage appeared in the prior collection window."
+    },
+    {
+      "name": "Soft tailoring",
+      "type": "silhouette",
+      "source_sectors": ["designer_origin", "editorial", "retail"],
+      "confidence": "high",
+      "volatility": "stable",
+      "origin_classification": "designer_originated",
+      "evidence": "Relaxed suiting and softened blazer proportions were referenced across designer collection copy, editorial coverage, and retail category naming.",
+      "index_note": "High confidence reflects presence across three distinct source sectors, including designer-origin material."
+    },
+    {
+      "name": "1990s minimalism revival",
+      "type": "cultural_term",
+      "source_sectors": ["independent_criticism", "editorial"],
+      "confidence": "low",
+      "volatility": "emerging",
+      "origin_classification": "unclear",
+      "evidence": "Independent criticism and a small number of editorial pieces referenced slip dresses and column silhouettes tied to 1990s minimalism.",
+      "index_note": "Low confidence due to limited source diversity; requires tracking across further reporting periods before reclassification."
+    },
+    {
+      "name": "Micro-bag styling",
+      "type": "styling_behavior",
+      "source_sectors": ["social"],
+      "confidence": "low",
+      "volatility": "volatile",
+      "origin_classification": "social_amplified",
+      "evidence": "Social captions and comments repeatedly referenced small-format bag styling, with no corroborating designer, editorial, or retail language this period.",
+      "index_note": "Classified as volatile per default handling of social-only signals absent non-social corroboration."
+    }
+  ],
+  "repeated_keywords": [
+    "sheer",
+    "soft tailoring",
+    "relaxed blazer",
+    "slip dress",
+    "column silhouette",
+    "micro bag",
+    "mesh"
+  ],
+  "garments": ["blazer", "slip dress", "trench coat", "micro bag"],
+  "silhouettes": ["relaxed suiting", "column dress", "dropped shoulder"],
+  "materials": ["mesh", "organza", "wool crepe"],
+  "colors": ["ecru", "black", "chocolate brown", "dusty rose"],
+  "aesthetic_terms": ["quiet luxury", "soft minimalism", "1990s minimalism"],
+  "cultural_references": ["1990s minimalism", "office siren"],
+  "limitations": [
+    "Coverage is weighted toward editorial sources; retail and social sectors are comparatively underrepresented.",
+    "Designer-origin sourcing is limited to two entries this period, constraining origin classification confidence for several signals.",
+    "Sample size (31 items across 14 sources) is small relative to the full scope of public style discourse and should not be read as statistically representative."
+  ],
+  "archive_tags": ["sheer-layering", "soft-tailoring", "1990s-minimalism-revival", "2026-q3"]
+}
