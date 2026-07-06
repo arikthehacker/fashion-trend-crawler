@@ -75,6 +75,27 @@ const sections: { title: string; body: string[] }[] = [
     ],
   },
   {
+    title: "Corrections",
+    body: [
+      "When a signal classification or a stated fact is found to be wrong, the affected report is not silently edited. A dated correction note is appended to the report, stating what was wrong and what changed.",
+      "The original entry is preserved alongside the correction so the archive reflects what was published at the time, not a retroactively cleaned-up version of it.",
+    ],
+  },
+  {
+    title: "Editorial Independence",
+    body: [
+      "ARI3LLA INDEX is an independent research project. It is not sponsored by, affiliated with, or produced on behalf of any brand, publication, retailer, or platform referenced in its reports.",
+      "Editorial sources are cited as a source sector, not treated as neutral. Editorial coverage can be shaped by advertising relationships, affiliate commerce, and access to designers and PR — reports account for that incentive structure rather than assuming editorial framing is disinterested.",
+    ],
+  },
+  {
+    title: "AI Involvement",
+    body: [
+      "AI assists with crawling source material, extracting recurring language, clustering related terms, and drafting summaries. It does not make final classification decisions.",
+      "A human reviews AI-assisted output before publication, deciding what a cluster of terms means culturally, assigning taxonomy and origin classification, and recording judgment calls in a human-editor note attached to the report data.",
+    ],
+  },
+  {
     title: "Ethical Scraping and Source Policy",
     body: [
       "Collection respects robots.txt and platform terms, avoids bypassing platform protections, and uses official APIs where available.",

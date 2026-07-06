@@ -165,6 +165,62 @@ export default function About() {
           </p>
         </div>
 
+        <div style={{ borderTop: "1px solid var(--border)", margin: "3rem 0", paddingTop: "2.5rem", textAlign: "left" }}>
+          <p
+            style={{
+              fontFamily: "var(--font-franklin)",
+              fontSize: "0.7rem",
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+              color: "var(--gray)",
+              marginBottom: "1.25rem",
+            }}
+          >
+            Independence, Corrections, AI Use
+          </p>
+          <p
+            style={{
+              fontFamily: "var(--font-franklin)",
+              fontSize: "0.95rem",
+              lineHeight: "1.8",
+              color: "var(--gray)",
+              marginBottom: "1rem",
+            }}
+          >
+            ARI3LLA INDEX is not sponsored by or affiliated with any brand, publication, retailer,
+            or platform named in its reports. Editorial sources are cited as a source sector with
+            its own commercial incentives, not treated as neutral authority.
+          </p>
+          <p
+            style={{
+              fontFamily: "var(--font-franklin)",
+              fontSize: "0.95rem",
+              lineHeight: "1.8",
+              color: "var(--gray)",
+              marginBottom: "1rem",
+            }}
+          >
+            AI assists with crawling, extraction, and summarization. A human reviews that output,
+            makes the interpretive classification calls, and records them in a human-editor note
+            attached to each report.
+          </p>
+          <p
+            style={{
+              fontFamily: "var(--font-franklin)",
+              fontSize: "0.95rem",
+              lineHeight: "1.8",
+              color: "var(--gray)",
+            }}
+          >
+            Errors in a published report are not silently edited. A dated correction is appended
+            to the affected report, and the original entry is kept intact. Full detail is on the{" "}
+            <Link href="/methodology" style={{ color: "var(--black)", textDecoration: "underline" }}>
+              Methodology
+            </Link>{" "}
+            page.
+          </p>
+        </div>
+
         <p
           style={{
             fontFamily: "var(--font-instrument)",
