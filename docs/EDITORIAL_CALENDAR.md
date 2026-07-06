@@ -47,6 +47,18 @@ spike of designer-origin and editorial red-carpet signals in the days immediatel
 surrounding this date each year; treat it as a known recurring window rather than an
 anomalous single-day volume spike.
 
+## Fashion month, Fall/Winter RTW collections (Feb–March)
+
+A second annual ready-to-wear fashion month, distinct from the Sept–Oct fashion month
+above (which shows Spring/Summer collections) — this window shows Fall/Winter
+collections and runs the same Big Four sequence (NY → London → Milan → Paris) roughly
+five to six months earlier in the calendar year. Confirmed via the FW2026-27 cycle:
+NYFW ran Feb 11–16, LFW Feb 19–23, MFW Feb 24 – March 2, and PFW closed by March 10.
+Expect a comparable Big Four cluster of designer-origin and editorial signals roughly
+**mid-February through early-to-mid March** each year; exact dates shift year to year
+but the sequence and rough window are stable. First logged as a gap in the archive at
+the 2027-03-15 report (see `docs/agent-logs/real-report-2027-03-15.md`).
+
 ## Menswear + Haute Couture, January window
 
 A second annual fashion-week cluster, distinct from the Sept–Oct ready-to-wear
