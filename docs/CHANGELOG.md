@@ -18,6 +18,14 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-10 ~03:20 PDT — [Loop run 78](changelog-entries/run-78.md)** — 71st
+  report reasons through a mechanical-vs-intent confidence override in detail;
+  a real RSS bug fixed (unbounded feed growth, now capped at 50 items per
+  researched convention); sitemap/SEO audit confirms complete coverage and
+  existing JSON-LD, with an explicit no-expansion judgment call; nav/build
+  clean; periodic audit self-corrected an inaccurate environment claim after
+  independent verification.
+
 - **2026-07-10 ~02:10 PDT — [Loop run 77](changelog-entries/run-77.md)** — 70th
   report keeps an independent São Paulo echo distinct from its parent Bogotá
   thread; the manual-sampling cadence was run proactively before it could

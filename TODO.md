@@ -1575,7 +1575,22 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       correctly identified a report-count discrepancy as concurrent-agent timing,
       not a regression — coordinator independently confirmed via `git diff --stat`.
 
-## Next up (run 78 candidates)
+## Run 78 — done
+- [x] Added `data/reports/2027-11-08.json`, a 71st report — a mechanical-vs-intent
+      confidence override reasoned through in detail (a citation-free synthesis
+      essay held at "low" despite its sector's usual high-reliability exception).
+- [x] Fixed a real RSS bug: unbounded feed growth (70+ items, growing weekly) —
+      capped at 50 items per researched RSS convention, independently confirmed
+      in built output.
+- [x] Confirmed sitemap/SEO coverage is complete and JSON-LD already exists from
+      a prior run — made an explicit judgment call not to expand further, no
+      real discoverability value at this archive's current size.
+- [x] Nav/build regression sweep clean. Periodic audit initially misreported
+      python-dotenv as missing; coordinator's independent check plus a follow-up
+      with the agent traced it to a PATH/interpreter mismatch in that agent's
+      shell session, not a real environment issue.
+
+## Next up (run 79 candidates)
 - [ ] Manual-sampling cadence next due ~run 87.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven
