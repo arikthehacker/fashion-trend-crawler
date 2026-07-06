@@ -43,6 +43,7 @@ src/
   test_tools.py       # tests the OLD raw-cache pipeline, unrelated to report_schema — leave alone unless migrating it
   manual_sample.py    # helper for the manual TikTok/Pinterest sampling workflow; enforces non-empty human_editor_note
   validate_all_reports.py  # CI check — runs validate_report() against every file in data/reports/, see .github/workflows/validate-reports.yml; also runs derive_confidence() as a non-blocking warning (run 8)
+  audit_confidence.py # reusable script (run 7) comparing assigned confidence vs. derive_confidence() across all reports; used for periodic confidence/dormancy review, not wired into CI
 data/
   reports/<YYYY-MM-DD>.json   # one archived report per collection window, schema in report_schema.py
 web/                   # Next.js app
@@ -64,15 +65,17 @@ web/                   # Next.js app
     sitemap.ts, robots.ts  # added run 5
     rss.xml/route.ts      # RSS feed over the report archive
   lib/
-    reports.ts           # archive data layer, reads data/reports/*.json; homepage now reads off this too (trends.ts retired run 13); also exposes getSearchIndex() (run 12) for the /search facet filter
+    reports.ts           # archive data layer, reads data/reports/*.json; homepage reads off this too (trends.ts retired run 13, confirmed gone — do not re-add); also exposes getSearchIndex() (run 12) for the /search facet filter and getConsecutiveThinWeekCount()/getLatestReport() helpers (run 13)
     site.ts               # shared SITE_URL/SITE_NAME constants for metadata/sitemap/robots/JSON-LD
 docs/
   ARI3LLA INDEX.txt      # source concept doc, read-only reference, don't edit
   CHANGELOG.md           # master INDEX — one paragraph + link per run, chronological, PDT/PST timestamps
-  changelog-entries/*.md # full per-run changelog detail (run-00-branch-setup.md, run-01.md .. run-12.md), linked from CHANGELOG.md
+  changelog-entries/*.md # full per-run changelog detail (run-00-branch-setup.md .. run-16.md), linked from CHANGELOG.md
+  PROMPT_CHANGELOG.md    # dedicated review trail for summarize.py's prompt instructions (added run 15, reconstructed retroactively from git history)
   PROJECT_STRUCTURE.md   # intended end-state tree with per-entry notes
   agent-logs/*.md        # per-agent working logs from the overnight build — provenance detail, not the master log
   agent-logs/live-crawl-2026-07-06-real-output.json  # real crawler.py+summarize.py output (run 8), saved for reference, not merged into data/reports/ (collided with existing curated date)
+  agent-logs/fashion-week-calendar-research.md  # NYFW/LFW/MFW/PFW run ~Sept 8 - Oct 6, 2026 (run 16 research) — see institutional-knowledge note below
 .github/
   workflows/validate-reports.yml  # CI: runs validate_all_reports.py on push/PR (added run 4)
 ```
@@ -111,21 +114,31 @@ docs/
    the original agents' logged specs. Caught only because the coordinator diffed actual
    working-tree state against each agent's described changes before committing.
 
+## Institutional knowledge worth knowing before you start
+
+**Fashion-week calendar context (run 16 research,
+`docs/agent-logs/fashion-week-calendar-research.md`):** NYFW/LFW/MFW/PFW run roughly
+Sept 8 - Oct 6, 2026. The site has logged 5 consecutive thin/low-volatility reports
+(07-27 through 08-24) — this is a **verified, expected quiet stretch**, not a crawl or
+sourcing failure. Don't treat it as a bug to fix or force `collection_status: "normal"`
+before fashion month actually starts around Sept 8, 2026. This isn't obvious from the
+schema or code alone — it only shows up if you've read the run-16 agent log, so it's
+called out here explicitly.
+
 ## Common next steps
 
 See `TODO.md` at repo root for the current authoritative, per-run list (updated every loop
-run) — don't duplicate it here. As of run 12, the highest-priority open items are:
+run) — don't duplicate it here. As of run 16, the highest-priority open items ("run 17
+candidates" in `TODO.md`) are:
 
-- **Resolved run 13:** `web/lib/trends.ts` (the stale, un-versioned live-crawl loader) was
-  retired and the homepage now reads off `reports.ts` instead — see
-  `docs/agent-logs/trends-ts-fate-proposal.md` (run 11) for the original proposal.
-- `off-duty-varsity`'s dormancy flag — flagged quiet for 3 consecutive reports as of the
-  run 12 health check — was resolved this run via `revision_history` on
-  `data/reports/2026-07-20.json` (editorial close-out, using
-  `get_signal_status_history()` to confirm the trend before closing). Check
-  `data/reports/2026-07-20.json`'s `revision_history` before re-raising this.
-- Consider explicitly surfacing "N consecutive thin/low-signal weeks" as its own noted
-  pattern (e.g. archive or methodology page) rather than letting each thin report read as
-  an isolated event — per the run 12 health check's reader-experience observation. The
-  health check also recommends prioritizing this kind of qualitative fix over mechanically
-  adding another report every run.
+- Don't force `collection_status: "normal"` before ~Sept 8, 2026 (NYFW start) — see the
+  fashion-week-calendar note above.
+- Source-list diversity is a real, documented gap: `crawler.py`'s `FASHION_SOURCES` are
+  English-language/Western-editorial only (found in run 16's bias-audit pass). Consider
+  expanding to non-Western fashion discourse outlets.
+- Run-15's product-framing question (should low-volatility reporting be framed as a
+  feature, not a gap) is partially addressed via the new methodology section (run 16);
+  consider whether homepage/archive pages need similar framing.
+- Bias-audit practice has one real exercise on record (run 16, fixed an inconsistent
+  `HIGH_RELIABILITY_SECTORS` gate) — consider making it periodic rather than one-off, per
+  the original AI-journalism-standards recommendation.
