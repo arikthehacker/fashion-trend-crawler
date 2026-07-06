@@ -1,0 +1,106 @@
+{
+  "report_date": "2027-10-04",
+  "collection_window": {
+    "start": "2027-09-28",
+    "end": "2027-10-04"
+  },
+  "sources_scanned": 11,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "editorial": 2,
+    "social": 1,
+    "retail": 1,
+    "unclear": 1
+  },
+  "executive_summary": "Collection window September 28-October 4, 2027. Paris Fashion Week's Spring/Summer 2028 runway, which opened on schedule per the 2027-09-27 report, ran within this window: Glenn Martens-era Maison Margiela showed the raw-edge tailoring detail tracked since 2027-09-20 as a full runway statement, drawing editorial reviews from Vogue and WWD and, for the first time, short-form social amplification on TikTok. Separately, Ssense reported the first confirmed retail buy of pieces featuring this detail for Spring 2028 delivery -- a narrower, distinct claim from both the runway presentation and the social amplification, held at medium confidence because one of its two corroborating domains falls outside taxonomy.py's sector map as 'unclear.' Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention and are not re-litigated in this report.",
+  "top_signals": [
+    {
+      "name": "Glenn Martens-era Margiela: raw-edge tailoring shown on Paris runway, first social amplification",
+      "type": "aesthetic_shift",
+      "source_sectors": [
+        "editorial",
+        "editorial",
+        "social"
+      ],
+      "confidence": "high",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "Maison Margiela showed its Spring/Summer 2028 collection in Paris during this window, with Glenn Martens carrying forward the raw, unfinished seam-edge tailoring previewed in atelier imagery tracked since the 2027-09-20 report (signal_id margiela-raw-edge-tailoring-preview). Vogue and WWD both published runway reviews describing the raw-edge jacket fronts and exposed canvas as a fully realized runway statement, not just a teased detail. Separately, short clips of the raw-edge jacket moment circulated on TikTok this window -- the first social-sector amplification observed for this signal, distinct from the designer-originated runway presentation and the editorial reviews interpreting it.",
+      "index_note": "Origin classification remains designer_originated: the raw-edge tailoring originates from the house's own runway presentation, and editorial coverage and social clips are both downstream interpretation/amplification of that same designer-originated moment, not independent adoption. The TikTok activity is noted as amplification, not evidence of retail or street uptake -- kept distinct per the designer-intent/editorial-interpretation/social-amplification split this project maintains.",
+      "source_corroboration_count": 3,
+      "signal_id": "margiela-raw-edge-tailoring-preview",
+      "confidence_source": "derived",
+      "human_editor_note": "derive_confidence() adopted as-is (high): source_corroboration_count=3, source_sectors editorial/editorial/social are all real, mapped sectors in taxonomy.py's DOMAIN_SECTOR_MAP (vogue.com and wwd.com -> editorial, tiktok.com -> social) -- two genuinely distinct mapped sectors, no unclear-sector domain doing the work of corroboration here. Consistent with the 2027-09-27 report's discipline: confidence is not reflexively suppressed when it is genuinely earned.",
+      "source_domains": [
+        "vogue.com",
+        "wwd.com",
+        "tiktok.com"
+      ]
+    },
+    {
+      "name": "Margiela raw-edge tailoring: first reported retail buy for Spring 2028 delivery",
+      "type": "market_behavior",
+      "source_sectors": [
+        "retail",
+        "unclear"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "retail_adopted",
+      "evidence": "Ssense reported, via a market-week wrap piece, that it has placed a confirmed buy of Maison Margiela pieces featuring the raw-edge tailoring detail for Spring 2028 delivery -- the first actual retail stocking decision observed for this signal, distinct from the anticipatory buyer commentary reported in the 2027-09-27 report. The Fashion Law also referenced the buy in a short aggregation post restating Ssense's own announcement with no independent reporting beyond it.",
+      "index_note": "Origin classification moves to retail_adopted for this specific development: an actual stocking decision, not anticipated interest, has now been reported. This is logged as a separate, narrower claim from the runway signal above -- designer intent (the runway piece), editorial interpretation (Vogue/WWD reviews), and retail adoption (this Ssense buy) are kept as distinct claims rather than merged into one undifferentiated \"trending\" statement.",
+      "source_corroboration_count": 2,
+      "signal_id": "margiela-raw-edge-retail-buy",
+      "confidence_source": "manual",
+      "human_editor_note": "Held at medium rather than derive_confidence()'s literal high: of the two corroborating domains, only ssense.com lands inside taxonomy.py's DOMAIN_SECTOR_MAP as a named sector (retail); thefashionlaw.com classifies 'unclear' per the same domain-map gap already documented for this outlet in the 2027-09-20 report. Counting the unclear-sector domain as a genuine second sector of corroboration would reward a domain-map gap rather than real cross-sector confirmation -- the same discipline applied to the 2027-08-30 and 2027-09-06 signals. A single high-reliability-adjacent sector (retail) with corroboration_count=2 does not clear derive_confidence()'s bar for 'high' (which requires >=2 distinct real sectors), so this report holds medium: single-sector corroboration of a genuinely new claim (first confirmed retail buy), not yet independently confirmed by a second real sector.",
+      "source_domains": [
+        "ssense.com",
+        "thefashionlaw.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "SS28",
+    "raw-edge seam",
+    "Paris Fashion Week",
+    "deconstructed tailoring",
+    "market-week buy"
+  ],
+  "garments": [
+    "tailored jacket"
+  ],
+  "silhouettes": [],
+  "materials": [
+    "exposed canvas",
+    "raw-edge fabric"
+  ],
+  "colors": [],
+  "aesthetic_terms": [
+    "deconstructed tailoring",
+    "raw-edge finishing"
+  ],
+  "cultural_references": [
+    "Glenn Martens",
+    "Maison Margiela",
+    "Paris Fashion Week",
+    "Ssense",
+    "TikTok"
+  ],
+  "limitations": [
+    "The Ssense retail-buy report is corroborated by only one domain (ssense.com) mapped to a real source sector; the second corroborating domain (thefashionlaw.com) classifies 'unclear' in taxonomy.py, so confidence is held at medium rather than the higher tier a literal count would suggest.",
+    "Social amplification of the raw-edge tailoring detail is limited to short-form TikTok clips observed this window; no street/UGC-sector coverage or broader platform-native reinterpretation has been observed yet.",
+    "This report does not assess whether the Ssense buy reflects broader wholesale-market sentiment beyond the single retailer named."
+  ],
+  "archive_tags": [
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked"
+  ],
+  "content_hash": "c751905f33d5a10045ffea540813f35ee69cb8297ef670928ef6626fc33a4dce",
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": "ari3lla-index-loop-improvements agent"
+}
