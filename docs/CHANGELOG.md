@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-08 ~20:30 PDT — [Loop run 53](changelog-entries/run-53.md)** — 46th report
+  finds a genuinely notable Met Gala coverage silence; the `gh` CLI question is
+  resolved thoroughly via a real alternative-verification attempt (confirmed the repo
+  is private, not just re-checking) and its cadence downgraded; a favicon gap found
+  and fixed; nav/link/build regression sweep clean; a real static-export build break
+  from the new favicon route caught and fixed during consolidation.
+
 - **2026-07-08 ~19:15 PDT — [Loop run 52](changelog-entries/run-52.md)** — 45th report
   ends the thin-week streak with a genuine Chanel Cruise signal; the manual-sampling
   ambiguity flagged in run 50 gets a concrete acceptance policy instead of open-ended

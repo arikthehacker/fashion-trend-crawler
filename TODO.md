@@ -1115,12 +1115,32 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       (runs 26-52) — a milestone worth deciding whether to keep re-checking indefinitely
       or accept as a standing, disclosed environment limitation.
 
-## Next up (run 53 candidates)
+## Run 53 — done
+- [x] Added `data/reports/2027-05-10.json`, a 46th report — found a genuinely notable
+      Met Gala 2027 post-event coverage silence (unusual, since that content normally
+      publishes same-day), correctly logged as distinct from the prior week's routine
+      pre-event silence.
+- [x] `gh` CLI/CI-status check downgraded from every-run to every-10th-run cadence
+      (next check due run 60). Tried an unauthenticated GitHub public-API path first —
+      the repo 404s on its own root endpoint, confirming it's private and the API path
+      hits the same no-auth wall as `gh`, not a different one. See
+      `docs/agent-logs/ci-verification-approach-run53.md`.
+- [x] Added a favicon (generated, not a binary asset) — the site had no icon at all.
+      Deliberately did not add a PWA manifest (scope creep for a text-only site).
+- [x] Nav/link/build regression sweep — clean. All links resolve, WCAG target-size
+      padding intact on all 6 Pattern-A pages, Open Graph/recurring-signals/print
+      stylesheet all confirmed rendering correctly in generated HTML output.
+- [x] Periodic audit — clean. 50 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, all dormant signals correctly handled.
+- [x] **Consolidation catch:** the new `icon.tsx` route broke the static export build
+      (needs `export const dynamic = "force-static"`, same failure class as run 24's
+      sitemap/robots fix) — caught by the verification suite before committing, fixed.
+
+## Next up (run 54 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
-- [ ] `gh` CLI unavailable for 20+ consecutive checks — consider whether to keep
-      re-checking each run or accept and disclose as a standing limitation.
 - [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
       correctness — still awaiting a human decision (run 50).
 - [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
       run 50 remain open — runs 51-52 only corrected the site's own claims about them.
+- [ ] `gh` CLI/CI-status check now due again at run 60 (every-10th-run cadence, run 53).
