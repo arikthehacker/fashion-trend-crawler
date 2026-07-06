@@ -67,7 +67,7 @@ Use only the provided source material. Do not invent trends, brands, or claims. 
 
 Treat TikTok/social signals as high-noise by default. Identify them, but classify them as volatile unless supported by non-social evidence across multiple reporting periods.
 
-Do not treat editorial sources as neutral confirmation. Classify each source by incentive context: designer-originated, editorial, commerce, social, retail, independent criticism, or institutional archive.
+Do not treat editorial sources as neutral confirmation. Classify each source by incentive context, using the source sector vocabulary given below (see "Valid source sectors").
 
 Independent criticism (named-author, attributed commentary) and editorial coverage are both curated, attributed commentary, not raw social volume. When assigning confidence, do not let source sector alone push independent criticism lower than editorial at an equal corroboration count — evaluate both on the same evidentiary basis. This is not a case for treating independent criticism as more reliable than editorial; it is a case for not treating it as less reliable by default.
 
