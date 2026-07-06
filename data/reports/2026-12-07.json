@@ -92,7 +92,8 @@
     "General winter-2026 coat-trend editorial roundups encountered in search were excluded as undated evergreen seasonal-trend copy, not in-window reporting, consistent with this archive's handling of similar content in prior windows.",
     "The BoF VOICES 2026 signal is corroborated only by Business of Fashion's own event pages as of this search; no independent outlet's coverage of the proceedings themselves was found, only the schedule/speaker announcement.",
     "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach.",
-    "No fabricated show content, reviews, winner names, or trend claims were introduced to fill this window's gaps."
+    "No fabricated show content, reviews, winner names, or trend claims were introduced to fill this window's gaps.",
+    "Two signal_ids from the 2026-10-05 report -- 'versace-mulier-debut-timing-unconfirmed' and 'armani-post-founder-transition-continues' -- have not reappeared in any of the eight subsequent collection windows (2026-10-12 through this window) and never received an explicit close-out note, unlike this archive's other multi-window dormancy cases (sheer-layering, soft-tailoring, off-duty-varsity, peplum-waist-revival, lfw-eligibility-wholesale-requirement-dropped), each of which was closed by an explicit note after 3-4 consecutive quiet windows. Flagged here retroactively via periodic audit (run 32): both are closed by silence as of this window, consistent with this archive's established precedent. No new reporting on either the Versace creative-director debut timing or the Armani post-founder transition was found this window or in the intervening windows; full history remains available via get_signal_status_history('versace-mulier-debut-timing-unconfirmed', ...) and get_signal_status_history('armani-post-founder-transition-continues', ...)."
   ],
   "archive_tags": [
     "post-fashion-month-2026",
@@ -100,7 +101,8 @@
     "cfda-fashion-awards-unconfirmed",
     "bof-voices-2026",
     "thin-week",
-    "2026-q4"
+    "2026-q4",
+    "versace-armani-closed-by-silence"
   ],
   "collection_status": "thin",
   "thin_week_note": "Fewer than 3 distinct, independently verifiable style-discourse signals were found despite an active, non-assumed search effort. Two carried-forward institutional questions remain unresolved, and the one genuinely new in-window event found (BoF VOICES) is industry-leadership discourse rather than garment or aesthetic discourse.",
