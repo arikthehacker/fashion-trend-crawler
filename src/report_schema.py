@@ -96,6 +96,16 @@ class Signal:
     # predate the derivation formula — see
     # docs/agent-logs/confidence-derivation-impl.md.
     confidence_source: str = "manual"
+    # free-text human-editor judgment call, distinct from index_note.
+    # rendered separately on the site (web/app/reports/[date]/page.tsx,
+    # "Editor review: ...") and required non-empty for manually-sampled
+    # social signals (src/manual_sample.py's build_manual_signal()) per
+    # docs/manual-sampling-template.md. optional/backward compatible: many
+    # older signals only populate index_note. see
+    # docs/agent-logs/manual-sampling-quality-check-run30.md for why this
+    # field was added to the dataclass instead of remaining an ad hoc extra
+    # key some reports had and others didn't.
+    human_editor_note: str = ""
 
 
 CONFIDENCE_SOURCE_VALUES = ["manual", "derived"]

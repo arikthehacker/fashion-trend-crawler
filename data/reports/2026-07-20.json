@@ -142,7 +142,8 @@
       "index_note": "Second exercise of the manual-sampling workflow, distinct signal from the Off-Duty Varsity entry logged 2026-07-06. Source is Pinterest's own official Pinterest Predicts 2026 trend page (business.pinterest.com), not a scraped feed, corroborated by independent WWD trade coverage of the same report -- two distinct public sources rather than one, which is why corroboration count is set to 2 despite both ultimately tracing back to Pinterest's underlying search-index data. The framing (\"college professor meets Dead Poets Society\", \"borrowed-from-your-grandfather\") mixes dark-academia and grandmillennial references that have circulated for several seasons already, so this reads more like a rebrand/relabeling of an existing aesthetic cluster under a new name than a genuinely new style behavior -- a naming/marketing signal as much as a discourse signal. As with the Off-Duty Varsity entry, Pinterest reports percentage search growth, not absolute volume or engagement, so a large jump (poet aesthetic +175%%, poetcore +75%%) could still sit on a small base. Holding at low/medium rather than upgrading on the strength of two aligned percentage figures alone, since WWD's coverage restates rather than independently verifies Pinterest's own numbers. Flag for a re-check next quarter to see whether \"poetcore\" persists as a term used outside Pinterest-adjacent coverage (retail buys, designer references, other platforms) or fades as a one-report naming exercise.",
       "source_corroboration_count": 2,
       "signal_id": "poetcore-aesthetic",
-      "confidence_source": "manual"
+      "confidence_source": "manual",
+      "human_editor_note": "Second exercise of the manual-sampling workflow, distinct signal from the Off-Duty Varsity entry logged 2026-07-06. Source is Pinterest's own official Pinterest Predicts 2026 trend page (business.pinterest.com), not a scraped feed, corroborated by independent WWD trade coverage of the same report -- two distinct public sources rather than one, which is why corroboration count is set to 2 despite both ultimately tracing back to Pinterest's underlying search-index data. The framing (\"college professor meets Dead Poets Society\", \"borrowed-from-your-grandfather\") mixes dark-academia and grandmillennial references that have circulated for several seasons already, so this reads more like a rebrand/relabeling of an existing aesthetic cluster under a new name than a genuinely new style behavior -- a naming/marketing signal as much as a discourse signal. As with the Off-Duty Varsity entry, Pinterest reports percentage search growth, not absolute volume or engagement, so a large jump (poet aesthetic +175%%, poetcore +75%%) could still sit on a small base. Holding at low/medium rather than upgrading on the strength of two aligned percentage figures alone, since WWD's coverage restates rather than independently verifies Pinterest's own numbers. Flag for a re-check next quarter to see whether \"poetcore\" persists as a term used outside Pinterest-adjacent coverage (retail buys, designer references, other platforms) or fades as a one-report naming exercise. EDITORIAL CLOSE-OUT (2026-07-06, quality-check run 30): this signal is considered resolved/closed as of this review. The July 20 note flagged a re-check for \"next quarter\"; that window has long since passed with no recurrence across 18 subsequent collection windows (2026-07-27 through 2026-11-30, per get_signal_status_history(\"poetcore-aesthetic\", ...)) -- \"poetcore\" never surfaced again outside the original Pinterest Predicts 2026 / WWD coverage. Consistent with the off-duty-varsity and layered-tops-styling close-outs, no further re-checks are needed; future reports should not re-flag this signal_id absent genuinely new evidence."
     }
   ],
   "repeated_keywords": [
@@ -209,7 +210,7 @@
     "off-duty-varsity-followup",
     "2026-q3"
   ],
-  "content_hash": "538023e10833d4aed22db5dbdd9dcc5d14b76c6276db82a8c8f2ea4b36edb1f5",
+  "content_hash": "8abffcec09b16f22d922354aa6865d203590dfd6c99dec59923ff644999d8a8c",
   "revision_history": [
     {
       "previous_content_hash": "87e7782686feee93cd46c303462b83b4b7270ead8ba895f3e27d23fe8e53eaae",
@@ -225,6 +226,11 @@
       "previous_content_hash": "0132f3cc90147dc7385692acbdcd30481f891ab5a79acbce07dc7035325971bb",
       "corrected_at": "2026-07-07",
       "reason": "Editorial close-out of layered-tops-styling signal: silent across 13+ subsequent collection windows (07-27 through 10-26) per periodic-audit run 26, far past the 3-window threshold used for prior close-outs (off-duty-varsity, sheer-layering, soft-tailoring, peplum-waist-revival); marking resolved so future reports stop re-flagging it."
+    },
+    {
+      "previous_content_hash": "538023e10833d4aed22db5dbdd9dcc5d14b76c6276db82a8c8f2ea4b36edb1f5",
+      "corrected_at": "2026-07-06",
+      "reason": "quality-check run 30: backfill missing human_editor_note field (build_manual_signal only set index_note before this field existed on the Signal dataclass) and add editorial close-out note for poetcore-aesthetic, dormant across 18 subsequent collection windows past its own stated next-quarter re-check"
     }
   ]
 }

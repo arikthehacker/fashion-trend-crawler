@@ -61,5 +61,14 @@ def build_manual_signal(
         origin_classification=origin_classification,
         evidence=evidence,
         index_note=human_editor_note,
+        # also populate the dedicated human_editor_note field (rendered
+        # separately on the site as "Editor review: ..."). Two of the three
+        # prior manual-sampling exercises only set index_note because this
+        # field didn't exist on the Signal dataclass yet, so their entries
+        # never showed "Editor review" on the live site even though the
+        # workflow's own docs treat human_editor_note as the required
+        # human-in-the-loop field — see
+        # docs/agent-logs/manual-sampling-quality-check-run30.md.
+        human_editor_note=human_editor_note,
         source_corroboration_count=source_corroboration_count,
     )
