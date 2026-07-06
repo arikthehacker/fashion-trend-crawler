@@ -1,0 +1,69 @@
+{
+  "report_date": "2027-01-11",
+  "collection_window": {
+    "start": "2027-01-05",
+    "end": "2027-01-11"
+  },
+  "sources_scanned": 11,
+  "items_collected": 1,
+  "source_sector_breakdown": {
+    "institutional": 1,
+    "editorial": 1
+  },
+  "executive_summary": "This collection window (January 5-11, 2027) is the twenty-ninth archived window overall. Per this archive's updated convention (SKILL.md workflow note 10), the two previously carried-forward CFDA institutional questions -- the 2026 CFDA/Vogue Fashion Fund winner and the 2026 CFDA Fashion Awards -- were checked briefly rather than re-litigated this window; fresh search again found no dated, sourced coverage resolving either, but their continued silence is no longer treated as newsworthy on its own and neither is repeated as a top signal this window, consistent with their prior 'untracked going forward pending new information' status. Checking docs/EDITORIAL_CALENDAR.md and fresh search against this exact window found one confirmed calendar fact: the 84th Golden Globe Awards are scheduled for Sunday, January 10, 2027 at the Beverly Hilton, which falls inside this collection window -- the ceremony is a recurring source of designer-origin and editorial red-carpet signals in other years, so its scheduling is logged here as an editorial-calendar fact. However, no post-ceremony red-carpet coverage, look attributions, or designer credits were found or could be verified as of this window's search -- the report does not fabricate red-carpet content ahead of, or without, verifiable sourcing. Separately, the next Paris menswear runway event (Fall/Winter 2027-2028) is scheduled January 19-24, 2027, and Haute Couture Spring/Summer 2027 is scheduled January 25-28, 2027, both still after this window closes, consistent with the prior report's calendar check. On balance this window is thin: no independently verifiable in-window style discourse beyond the Golden Globes' calendar placement, and no new CFDA resolution.",
+  "top_signals": [
+    {
+      "name": "84th Golden Globe Awards scheduled inside this window (Jan 10, 2027) -- no red-carpet coverage yet verifiable",
+      "type": "institutional_policy",
+      "source_sectors": [
+        "institutional",
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "emerging",
+      "origin_classification": "unclear",
+      "evidence": "The 84th Annual Golden Globes ceremony is confirmed scheduled for Sunday, January 10, 2027, broadcasting live from the Beverly Hilton Hotel in Beverly Hills on CBS/Paramount+, with Nikki Glaser hosting for a third consecutive year -- reported via trade coverage (timetable/eligibility-rules announcements) ahead of the ceremony. This date falls inside the current collection window (Jan 5-11, 2027). As of this window's search, no post-ceremony red-carpet photography, look attribution, or designer-credit coverage was found -- only pre-ceremony scheduling/logistics reporting exists.",
+      "index_note": "New signal_id this window. Logged as a calendar fact (the ceremony's confirmed in-window date), not as a style-discourse signal, since no red-carpet fashion content is independently verifiable yet. A future report covering the days immediately after Jan 10, 2027 should check for actual red-carpet coverage and either resolve or extend this signal_id with real look/designer detail -- do not backfill fabricated looks into this entry.",
+      "source_corroboration_count": 1,
+      "signal_id": "golden-globes-2027-ceremony-date",
+      "confidence_source": "manual",
+      "human_editor_note": "Editorial judgment call: this entry exists to record that a known recurring red-carpet source (per docs/EDITORIAL_CALENDAR.md's Met Gala precedent) falls inside this window, which is useful calendar context for readers -- but confidence is kept low and no garment/silhouette/designer claims are attached, because the actual fashion content of the ceremony was not verifiable via search as of this window. This avoids the failure mode of treating a scheduled date as if it were observed discourse."
+    }
+  ],
+  "repeated_keywords": [
+    "Golden Globes",
+    "84th Golden Globe Awards",
+    "awards season",
+    "untracked pending new information",
+    "editorial calendar"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [
+    "84th Golden Globe Awards (confirmed scheduled Jan 10, 2027, Beverly Hilton -- inside this window; no red-carpet fashion coverage yet verifiable)"
+  ],
+  "limitations": [
+    "items_collected (1) and sources_scanned (11) remain below the fashion-month baseline; this window contains one confirmed calendar event (Golden Globes, Jan 10, 2027) but no verifiable post-event style-discourse content as of search time.",
+    "The CFDA/Vogue Fashion Fund winner and CFDA Fashion Awards questions were checked briefly this window per updated convention (SKILL.md workflow note 10) but not re-litigated as top signals; both remain untracked pending new information, and their continued silence is not treated as newsworthy on its own.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach.",
+    "No fabricated red-carpet looks, designer credits, or trend claims were introduced to fill this window's gaps, including for the in-window Golden Globes ceremony itself."
+  ],
+  "archive_tags": [
+    "golden-globes-2027",
+    "awards-season",
+    "cfda-signals-untracked-pending-new-information",
+    "pre-paris-menswear-fw-window",
+    "pre-couture-window",
+    "thin-week",
+    "2027-q1"
+  ],
+  "content_hash": "9093ddfdb46faf1bd537a29eb8ea314d7d9f1500e804c55bccbab9e14ed41761",
+  "collection_status": "thin",
+  "thin_week_note": "Fewer than 3 distinct, independently verifiable style-discourse signals were found this window. The only confirmed in-window calendar event (Golden Globes, Jan 10, 2027) has no verifiable red-carpet coverage yet, and no genuinely new CFDA resolution surfaced. Consistent with updated convention, the CFDA signals' continued silence is not repeated as a top signal or treated as newsworthy this window.",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": "loop-consolidation"
+}
