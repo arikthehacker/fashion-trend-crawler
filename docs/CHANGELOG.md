@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-07 ~05:50 PDT — [Loop run 24](changelog-entries/run-24.md)** — Systematic
+  transparency sweep finds a third instance of the "claimed but not shown" bug pattern
+  (`thin_week_note`) — fixed; de-staled README/PROJECT_STRUCTURE's report-count claims
+  for good; 17th report closes out a stale signal; retrospective-format research
+  correctly deferred a premature feature; CI verification honestly notes it's never
+  been confirmed against real GitHub Actions.
+
 - **2026-07-07 ~04:30 PDT — [Loop run 23](changelog-entries/run-23.md)** — 16th report
   genuinely confirms the post-fashion-month volume drop (not assumed); fixed real nav
   gaps (`/search`/`Glossary` missing from primary nav); found and fixed the corrections-

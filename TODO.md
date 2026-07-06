@@ -485,13 +485,41 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       undercounting reports) and verified 3 spot-checked claims against actual code —
       all held up.
 
-## Next up (run 24 candidates)
+## Run 24 — done
+- [x] **Systematic transparency-field sweep found a third instance of the same bug
+      pattern**: `thin_week_note` was populated with real per-window explanations and the
+      methodology page explicitly claims thin windows are checked against source volume,
+      but the field was never typed or rendered — homepage and report pages showed
+      generic boilerplate regardless of the actual note. Fixed. Every other schema field
+      checked and confirmed either rendered or legitimately backend-only.
+      `review_status`/`reviewed_by` flagged as borderline, correctly not forced.
+- [x] De-staled README/PROJECT_STRUCTURE's report-count claims — replaced hardcoded
+      counts/date-lists with pointers to the live archive, and added a workflow
+      convention against hardcoding counts that will go stale, so this doesn't recur a
+      third time.
+- [x] Added `data/reports/2026-10-19.json`, a 17th report — independently re-tested (not
+      copied) the thin-week call, and formally closed out
+      `lfw-eligibility-wholesale-requirement-dropped` after 4 silent windows.
+- [x] Retrospective-format research: counted real `signal_id` recurrence across all 16
+      prior reports (only 10 of 36 unique signals recur at all, none beyond 3
+      consecutive reports) and concluded a quarterly retrospective page would be
+      premature — correctly deferred rather than built prematurely. Set a concrete
+      revisit threshold (4-5 signals recurring 4+ times) for a future run.
+- [x] CI verification: no `gh` CLI access in this environment, so real GitHub Actions
+      pass/fail status remains genuinely unverified — documented honestly rather than
+      assumed. Manual YAML read-through found no obvious defects.
+
+## Next up (run 25 candidates)
 - [ ] Southeast Asian source coverage remains open (vogue.ph blocked by Cloudflare JS
       challenge — would need a headless-browser approach, likely out of scope).
-- [ ] Two real "claimed but not shown" transparency gaps have now been found and fixed
-      (`human_editor_note` run 21, `revision_history` run 23) — worth one more sweep to
-      check if any OTHER schema field with a transparency/trust claim is similarly unused
-      in the actual UI.
-- [ ] README/PROJECT_STRUCTURE have now gone stale 2 times (runs 18, 23) — consider
-      whether report-count/feature-list sections should be generated automatically at
-      build time instead of manually maintained, to stop this recurring.
+- [ ] If you have `gh` CLI access locally, run `gh run list --workflow=validate-reports.yml`
+      to get a real answer on whether CI has ever actually passed on GitHub's
+      infrastructure — this has been assumed but never confirmed across runs 4/14/22/24.
+- [ ] Revisit the quarterly-retrospective feature once 4-5 signal_ids each recur across
+      4+ non-adjacent reports (not yet met) — scope the first one to the Sept 8–Oct 6
+      fashion-month window specifically, per the research's recommendation.
+- [ ] This is now the THIRD run to find the same "claimed but not shown" bug pattern
+      (human_editor_note run 21, revision_history run 23, thin_week_note run 24) — worth
+      considering whether new schema fields should have a rendering check baked into
+      their own PR/commit going forward, rather than relying on periodic sweeps to catch
+      the gap after the fact.
