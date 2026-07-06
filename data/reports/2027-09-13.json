@@ -1,0 +1,61 @@
+{
+  "report_date": "2027-09-13",
+  "collection_window": {
+    "start": "2027-09-07",
+    "end": "2027-09-13"
+  },
+  "sources_scanned": 7,
+  "items_collected": 1,
+  "source_sector_breakdown": {
+    "institutional": 1,
+    "editorial": 2
+  },
+  "executive_summary": "A dedicated search for New York Fashion Week Spring/Summer 2028 developments this window -- the point in the annual calendar where the season's opening week would be expected per docs/EDITORIAL_CALENDAR.md -- turned up no CFDA-issued preliminary or official schedule, no dated designer lineup, and no show coverage. This mirrors the 2027-09-06 window's finding for Paris (FHCM had confirmed SS28 dates while New York had not); one week later, New York's SS28 calendar remains unannounced. No other current, well-corroborated style/garment/aesthetic discourse surfaced beyond items already logged in prior reports.",
+  "top_signals": [
+    {
+      "name": "New York SS28 schedule still unannounced",
+      "type": "market_behavior",
+      "source_sectors": [
+        "institutional",
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "stable",
+      "origin_classification": "unclear",
+      "evidence": "Checked cfda.com's fashion-calendar and news pages, plus WWD and Business of Fashion's fashion-week coverage, for a CFDA-issued New York Spring/Summer 2028 preliminary schedule. All available dated schedule coverage from these outlets is for the Spring/Summer 2027 cycle (the Sept 2026 season); nothing for SS28 has been published as of this window. This is a continuation of the same gap flagged for New York in the 2027-09-06 report (signal_id pfw-ss28-calendar-confirmed), where Paris's FHCM had already confirmed its SS28 dates.",
+      "index_note": "Logged as a logistics/calendar gap, not a style signal -- no garment, silhouette, or aesthetic claim is being made here.",
+      "source_corroboration_count": 3,
+      "signal_id": "nyfw-ss28-schedule-still-unannounced",
+      "confidence_source": "manual",
+      "human_editor_note": "Confidence is held manually at 'low' rather than letting derive_confidence() read three sources across two sectors as 'high': this is an absence-of-evidence claim (no schedule found), not a corroborated positive report, and a negative claim from a handful of outlet checks does not warrant the same confidence tier as three sources independently confirming the same positive fact. It is also possible a schedule exists but wasn't surfaced by this search pass -- flagged here rather than treated as confirmed non-existence. Distinct signal_id from last week's pfw-ss28-calendar-confirmed since this is about New York specifically, not a restatement of Paris's already-confirmed dates.",
+      "source_domains": [
+        "cfda.com",
+        "wwd.com",
+        "businessoffashion.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [],
+  "limitations": [
+    "No genuine, current NYFW SS28 schedule, designer lineup, or show coverage was found this window; New York's fashion-week authorities have not yet published SS28 dates.",
+    "This report cannot distinguish 'New York has not announced SS28 dates yet' from 'an announcement exists but wasn't surfaced by this search pass' -- treated as the former per available evidence, flagged as uncertain in the signal's human_editor_note."
+  ],
+  "archive_tags": [
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked"
+  ],
+  "content_hash": "91f0571231c52db4f7d2412c241ae7ff493e36ef18e853af125dc2690afd4344",
+  "collection_status": "thin",
+  "thin_week_note": "Only one genuinely checkable, current item surfaced this window (New York's SS28 schedule remaining unannounced), and it is a calendar/logistics fact, not a style signal. Report reflects limited coverage rather than manufacturing a trend claim to fill the usual signal quota.",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": "loop-consolidation"
+}
