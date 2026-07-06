@@ -1,0 +1,38 @@
+{
+  "report_date": "2027-05-10",
+  "collection_window": {
+    "start": "2027-05-04",
+    "end": "2027-05-10"
+  },
+  "sources_scanned": 11,
+  "items_collected": 0,
+  "source_sector_breakdown": {},
+  "executive_summary": "This collection window (May 4-10, 2027) is the forty-sixth archived window. Per this window's brief, WebSearch specifically checked for Met Gala 2027 post-event coverage now that the Editorial Calendar's first-Monday-in-May date (May 3, 2027) has passed inside the prior window. No reachable red-carpet, theme-execution, or standout-look coverage of the event surfaced -- the same coverage gap flagged in the 2027-05-03 report persists past the event date itself, which is a materially different and more notable gap than a pre-event silence. Dior's Cruise 2027 show (Los Angeles, May 13) and Gucci's Cruise 2027 show (New York) both fall outside this window on either side, so neither is logged as a signal here. No other corroborated, dateable signal met this project's sourcing bar this window; collection_status is set to 'thin' rather than forcing a marginal item into top_signals to fill a quota.",
+  "top_signals": [],
+  "repeated_keywords": [
+    "Met Gala 2027 no post-event coverage",
+    "Dior Cruise 2027 outside window"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [],
+  "limitations": [
+    "Met Gala 2027 was specifically re-checked this window for post-event coverage (red carpet, theme execution, standout looks) now that the May 3, 2027 date has passed. No reachable coverage of any kind -- pre- or post-event -- was found: no theme, no co-chair lineup, no exhibition tie-in, no red-carpet photos or best-dressed roundups. This is a stronger and more unusual gap than the 2027-05-03 report's pre-event silence, since major outlets normally publish red-carpet coverage same-day. Logged honestly as an unresolved coverage gap rather than assumed evidence the event didn't happen or was restructured -- unverified secondary chatter about possible 2027 format changes (guest-list downsizing, scaled-back red carpet) exists but is not corroborated by any primary or editorial-sector source and is not logged as a signal.",
+    "Dior's Cruise 2027 show (Los Angeles, May 13) and Gucci's Cruise 2027 show (New York) were checked; Dior falls just after this window's close and Gucci's New York Cruise 2027 show was confirmed to have already taken place in 2026 (cruise collections are commonly shown roughly a year ahead of the label year) -- neither is logged as a signal in this window.",
+    "Wales Bonner/Hermes and the CFDA Fashion Fund/Awards questions were not re-litigated this window per SKILL.md workflow note 10; both remain 'untracked going forward pending new information' with no new coverage found.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "met-gala-2027-postevent-coverage-gap",
+    "wales-bonner-untracked-pending-new-information",
+    "cfda-signals-untracked-pending-new-information",
+    "2027-q2"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "No signal met this project's cross-source corroboration bar this window. The Met Gala fell inside the prior window and its aftermath fell inside this one, yet produced no reachable coverage at either end -- an unusual and explicitly flagged gap rather than a routine quiet stretch. Dior and Gucci Cruise 2027 shows bracket this window on either side without landing inside it. No item was manufactured to avoid an empty top_signals list.",
+  "revision_history": [],
+  "content_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+}
