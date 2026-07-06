@@ -138,6 +138,15 @@ const DEFINITIONS: Record<string, string> = {
   "unfinished seam": "A garment seam left raw, exposed, or without a concealing finish, used as a deliberate construction detail rather than left incomplete.",
   "net-a-porter": "A London-based online luxury retailer, cited as a retail-adoption source when its buying or merchandising decisions are tracked.",
   "antwerp six": "A group of six designers who graduated from Antwerp's Royal Academy of Fine Arts in the 1980s and became associated with a shared deconstructivist design lineage, cited as a historical reference point for that design approach.",
+  "return to structure": "An editorial framing describing a shift toward defined, structured garment shapes -- tailoring, boning, waist definition -- as a counterpoint to looser or unstructured silhouettes, tracked across resort 2028 coverage.",
+  "waist definition": "A silhouette signal describing garments that visibly shape or emphasize the waist -- boning, corseting, structured waistbands -- as distinct from a looser or undefined torso line.",
+  "bogota fashion week": "Bogota's market-week fashion showcase, organized in coordination with Inexmoda, Colombia's fashion and textile institute, cited as an institutional-sector source event for Latin American runway and market coverage.",
+  "inexmoda": "Instituto para la Exportacion y la Moda, Colombia's nonprofit fashion and textile industry institute, which organizes the Bogota-area Colombiatex and Colombiamoda trade fairs and publishes trend and market research, cited as an institutional-sector source.",
+  "farfetch": "A London-based online luxury fashion marketplace, cited as a retail-adoption source when its buying or merchandising decisions are tracked.",
+  "corseted waistband": "A boned or structured waistband worn as an outer garment element, typically over softer fabrication such as jersey or shirting, rather than as a concealed undergarment.",
+  "shirting": "Lightweight woven fabric traditionally used for dress shirts, cited as a material when it appears in a garment or silhouette outside its conventional shirt context.",
+  "structured waist": "A silhouette built around a defined, shaped waistline -- through boning, corsetry, or structured tailoring -- rather than a loose or undefined torso line.",
+  "boning": "Rigid or semi-rigid strips inserted into a garment, traditionally into corsetry, to hold and shape its structure, cited as a material/construction element when used to create a defined silhouette.",
 };
 
 function normalize(term: string): string {
