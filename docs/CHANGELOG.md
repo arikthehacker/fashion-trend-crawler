@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-09 ~05:30 PDT — [Loop run 60](changelog-entries/run-60.md)** — 60th loop
+  run milestone. `is_prolonged_silence()` fires on real accumulated data for the first
+  time (Met Gala 2027, 4 occurrences); `gh`/CI check re-confirmed unchanged; internal
+  citation persistence verified clean via git history. A milestone retrospective names
+  a real trend — ~40% of the last 10 runs existed to fix a problem a prior run in the
+  same loop introduced — flagged directly to the user, not filed as routine.
+
 - **2026-07-09 ~04:15 PDT — [Loop run 59](changelog-entries/run-59.md)** — Run 58's
   Met Gala signal-reuse bug did not recur, confirmed independently by two agents;
   dark mode verified against real built CSS and 435 inline style usages; robots.txt/

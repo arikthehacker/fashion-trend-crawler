@@ -1280,8 +1280,34 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [ ] `met-gala-2027-coverage-gap` now has 3 occurrences in its cross-report history
       (threshold is 4) — one more recurrence would let `is_prolonged_silence()` fire
       on it for the first time.
+## Run 60 — done (60th loop run milestone)
+- [x] Added `data/reports/2027-06-28.json`, a 53rd report — `met-gala-2027-coverage-gap`
+      reused for its 4th occurrence, crossing `is_prolonged_silence()`'s threshold for
+      the first time. Verified independently: history length 4, returns `True`.
+- [x] Every-10th-run `gh`/CI check re-confirmed unchanged (no CLI, repo still private).
+      Cadence stands, next due run 70.
+- [x] Internal citation persistence verified clean — URL scheme unchanged since runs
+      3-4 (git history), link generation structurally live-built (link rot
+      architecturally impossible), no orphaned signal_id references found.
+- [x] **Major finding, flagged for the user (not a routine item):** a 60-run
+      retrospective found ~40% of the last 10 runs existed primarily to fix or verify
+      a fix for a problem the loop itself introduced in that same window. See
+      `docs/agent-logs/gap-analysis-60-run-milestone-run60.md` and the changelog's
+      "Flagged for the user" section — agent self-reports have proven unreliable
+      without independent verification twice in 10 runs.
+- [x] Periodic audit — clean. 61 confidence mismatches, only the documented override
+      non-conservative.
+
+## Next up (run 61 candidates)
 - [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
       correctness — still awaiting a human decision (run 50).
 - [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
-      run 50 remain open.
-- [ ] `gh` CLI/CI-status check due THIS run (run 60, every-10th-run cadence from run 53).
+      run 50 remain open; the real-pipeline ratio has proportionally worsened since
+      (2/43 → 2/52 reports).
+- [ ] Consider whether a lightweight check should verify agent self-reported claims
+      ("reused signal X", "verified Y") against actual saved file content, given two
+      recent instances where a summary didn't match what was actually written.
+- [ ] Now that `met-gala-2027-coverage-gap` has crossed the prolonged-silence
+      threshold, a future run should make the actual "untracked going forward"
+      transition decision (deliberately left open this run).
+- [ ] `gh` CLI/CI-status check next due at run 70.
