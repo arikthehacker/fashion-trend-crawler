@@ -421,6 +421,28 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
         </section>
       )}
 
+      {/* correction history */}
+      {(report.revision_history?.length ?? 0) > 0 && (
+        <section aria-label="Correction history" style={sectionStyle}>
+          <h2 style={labelStyle}>Correction History</h2>
+          <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: "1rem" }}>
+            {report.revision_history?.map((revision, i) => (
+              <li key={i} style={{
+                fontFamily: "var(--font-franklin)",
+                fontSize: "0.9rem",
+                lineHeight: "1.7",
+                color: "var(--gray)",
+                paddingLeft: "1.25rem",
+                borderLeft: "2px solid var(--border)",
+              }}>
+                <strong style={{ color: "var(--black)" }}>Corrected {revision.corrected_at}: </strong>
+                {revision.reason}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {/* archive tags */}
       {report.archive_tags?.length > 0 && (
         <section aria-label="Archive tags" style={{ ...sectionStyle, borderBottom: "none" }}>

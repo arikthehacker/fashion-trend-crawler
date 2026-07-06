@@ -48,6 +48,13 @@ export interface Report {
   incentive_notes?: string;
   human_editor_note?: string;
   content_hash?: string;
+  revision_history?: RevisionEntry[];
+}
+
+export interface RevisionEntry {
+  previous_content_hash: string;
+  corrected_at: string;
+  reason: string;
 }
 
 function reportsDir(): string {
