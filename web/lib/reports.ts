@@ -51,6 +51,8 @@ export interface Report {
   revision_history?: RevisionEntry[];
   collection_status?: string;
   thin_week_note?: string;
+  review_status?: string;
+  reviewed_by?: string;
 }
 
 export interface RevisionEntry {

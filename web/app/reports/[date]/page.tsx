@@ -390,7 +390,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
       )}
 
       {/* volatility / incentive / confidence notes */}
-      {(report.volatility_notes || report.incentive_notes || report.confidence_notes) && (
+      {(report.volatility_notes || report.incentive_notes || report.confidence_notes || report.reviewed_by) && (
         <section aria-label="Methodology notes" style={sectionStyle}>
           <h2 style={labelStyle}>Notes</h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
@@ -410,6 +410,13 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
               <p style={{ fontFamily: "var(--font-franklin)", fontSize: "0.9rem", lineHeight: "1.7", color: "var(--gray)" }}>
                 <strong style={{ color: "var(--black)" }}>Source incentive: </strong>
                 {report.incentive_notes}
+              </p>
+            )}
+            {report.reviewed_by && (
+              <p style={{ fontFamily: "var(--font-franklin)", fontSize: "0.9rem", lineHeight: "1.7", color: "var(--gray)" }}>
+                <strong style={{ color: "var(--black)" }}>Review: </strong>
+                {report.review_status === "draft" ? "Draft, " : "Reviewed, "}
+                {report.reviewed_by}
               </p>
             )}
           </div>
@@ -520,6 +527,17 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
           textUnderlineOffset: "3px",
         }}>
           Current report
+        </Link>
+        <Link href="/methodology" style={{
+          fontFamily: "var(--font-franklin)",
+          fontSize: "0.75rem",
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          color: "var(--black)",
+          textDecoration: "underline",
+          textUnderlineOffset: "3px",
+        }}>
+          Corrections &amp; AI use
         </Link>
       </footer>
 
