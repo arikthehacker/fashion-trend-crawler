@@ -1435,12 +1435,25 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       67 runs — no navigability drift.
 - [x] Nav/build regression sweep and periodic audit both clean.
 
-## Next up (run 69 candidates)
-- [ ] `crawler.py`'s underlying hang is diagnosed but not fixed at the root — the
-      incremental-flush change is a mitigation, not a cure. A real fix (streamed
-      reads with a monotonic deadline, or a per-source watchdog thread) needs a human-
-      supervised live test to verify; still off-limits for autonomous runs.
+## Run 69 — done
+- [x] Added `data/reports/2027-09-06.json`, a 62nd report — carefully distinguished
+      Paris SS28 scheduling logistics from a real style signal, honest "thin" call.
+- [x] Colors/aesthetic_terms controlled-vocabulary audit — clean, genuinely verified
+      (same check that found run 67's garments/silhouettes overlap; found nothing
+      here).
+- [x] Found a real process gap: the manual-sampling ~10-run cadence (set run 52) had
+      silently lapsed for 17 runs. Ran the overdue check (honest negative result,
+      valid per the workflow's own rules) and reset the cadence clock.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Next up (run 70 candidates)
+- [ ] `gh` CLI/CI-status check due THIS run (run 70, every-10th-run cadence from run 53).
+- [ ] Add `fhcm.paris` to `taxonomy.py`'s `DOMAIN_SECTOR_MAP` as `institutional` —
+      flagged by run 69's report agent.
+- [ ] The manual-sampling cadence has no enforcement mechanism beyond documentation —
+      worth a periodic spot-check to catch future lapses earlier.
+- [ ] `crawler.py`'s underlying hang is diagnosed but not fixed at the root — still
+      off-limits for autonomous runs.
 - [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
       correctness — still awaiting a human decision (run 50).
 - [ ] The underlying human-in-the-loop process gap flagged in run 50 remains open.
-- [ ] `gh` CLI/CI-status check next due at run 70.

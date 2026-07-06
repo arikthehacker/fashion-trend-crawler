@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-09 ~16:45 PDT — [Loop run 69](changelog-entries/run-69.md)** — 62nd report
+  carefully distinguishes scheduling logistics from a real style signal; a
+  colors/aesthetic_terms vocabulary audit comes back genuinely clean (unlike run 67's
+  garments/silhouettes finding); a real process gap found — the manual-sampling
+  ~10-run cadence had silently lapsed for 17 runs — checked and reset; nav/build
+  regression and periodic audit both clean. `gh` CLI check due next run.
+
 - **2026-07-09 ~15:30 PDT — [Loop run 68](changelog-entries/run-68.md)** — The
   historical godet-skirt vocabulary overlap gets a real, decisive fix (controlled
   taxonomy fields warrant retroactive correction, unlike editorial narrative); 61st
