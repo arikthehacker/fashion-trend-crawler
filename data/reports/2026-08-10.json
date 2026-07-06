@@ -69,5 +69,6 @@
   "collection_status": "thin",
   "thin_week_note": "Copenhagen Fashion Week SS27 (August 3-7) genuinely fell inside this collection window -- the first real in-window fashion-calendar event in three reports -- but search could not surface dated post-show discourse about it, only pre-show forecast content and separately-sourced peplum/basque-waist trend coverage unrelated to the specific show. One signal is logged at forecast-stage, low confidence, explicitly flagged as unconfirmed. The sheer-layering and soft-tailoring dormancy checks from the prior two reports were checked again and found still dormant but are not re-logged a third time to avoid padding. Per project policy, this is marked thin rather than filled out with repeated non-findings or unconfirmed forecasts inflated to a higher confidence tier.",
   "revision_history": [],
-  "content_hash": "43c66a0fdb3c9f9b5734fca83900da0e5a3fef952044090e792e07e46e78fe4e"
+  "content_hash": "43c66a0fdb3c9f9b5734fca83900da0e5a3fef952044090e792e07e46e78fe4e",
+  "reviewed_by": "websearch-run-thin-week"
 }

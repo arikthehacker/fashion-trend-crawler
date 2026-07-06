@@ -120,5 +120,13 @@
   "volatility_notes": "Social-origin signals are treated as volatile by default unless corroborated by non-social sources across multiple reporting periods.",
   "incentive_notes": "Editorial sources are not treated as neutral; coverage may be shaped by commerce and PR incentives.",
   "human_editor_note": "Placeholder example report used to scaffold the archive and report page templates.",
-  "content_hash": "5f0918e9d9f4dd8afb8d09b2144f3caf7c057153d36e71b4b5296047fe768ada"
+  "content_hash": "9dff572cae32dd7bff6c585303e9da3c42d39e8d626aa7bcb393e6db404eb4e8",
+  "reviewed_by": "hand-authored-placeholder-run0",
+  "revision_history": [
+    {
+      "previous_content_hash": "5f0918e9d9f4dd8afb8d09b2144f3caf7c057153d36e71b4b5296047fe768ada",
+      "corrected_at": "2026-07-06",
+      "reason": "backfill reviewed_by provenance metadata"
+    }
+  ]
 }

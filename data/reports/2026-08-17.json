@@ -66,5 +66,6 @@
   "collection_status": "thin",
   "thin_week_note": "No in-window fashion-calendar event and no new corroborating discourse this week. The one carried-over signal (peplum/exaggerated-waistline, signal_id peplum-waist-revival) was rechecked and remains unconfirmed at the Copenhagen-specific level two windows after that show closed, which now reads more like a source-reach limitation than a reporting lag. Sheer-layering and soft-tailoring dormancy checks remain unchanged since August 3 and are not re-logged. This is the fourth consecutive thin report; that streak is named explicitly here rather than left implicit.",
   "revision_history": [],
-  "content_hash": "f96a3c97bf248c0dda7e5e27606e82c72d4297fe53403628723335a95c23ec98"
+  "content_hash": "f96a3c97bf248c0dda7e5e27606e82c72d4297fe53403628723335a95c23ec98",
+  "reviewed_by": "websearch-run-thin-week"
 }
