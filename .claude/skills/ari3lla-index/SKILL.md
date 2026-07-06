@@ -52,6 +52,7 @@ src/
   check_field_coverage.py # reusable script (run 25) enumerating every Report/Signal schema field and flagging any that's neither typed in reports.ts nor referenced in a .tsx file — the structural fix for the "claimed but not shown" bug pattern (human_editor_note/thin_week_note/revision_history all shipped in data before they were ever rendered); non-blocking, not wired into CI
   check_heading_patterns.py # reusable script (run 22, revisited run 29) — heuristic scan for the recurring styled-<p>-as-heading bug that ESLint/jsx-a11y cannot catch; not wired into CI, manual/heuristic
   generate_archive_manifest.py # reusable script (run 43) — manifest of /reports/[date] URLs + content hashes for a human operator to feed into archive.org's Save Page Now once a real SITE_URL exists; does not call any Wayback API itself, not wired into CI
+  check_signal_reuse_claims.py # reusable script (run 61) — flags a report's own reuse/continuation prose (index_note/human_editor_note/limitations) naming a signal_id not present in that report's own top_signals; narrow heuristic for the run 57/58 Met Gala signal_id bug pattern; not wired into CI, exit code always 0. Run 62 ran `--all` against the full 54-report archive: 0 true positives, 4 flagged mismatches, all confirmed false positives from the same known limitation (negation/precedent-mention language, e.g. "is not carried forward" or citing a prior signal_id as a precedent rather than claiming reuse of it) — expect a handful of these on every `--all` run, dismiss after a quick read rather than treating as a bug. Made a **standing step of the periodic-audit routine** (run 62 decision) alongside `audit_confidence.py`/`check_field_coverage.py`: run `--all` periodically, not just ad hoc, since it's cheap, non-blocking, and does target a real bug class even though it hasn't caught a live instance since run 57/58.
 data/
   reports/<YYYY-MM-DD>.json   # one archived report per collection window, schema in report_schema.py
 web/                   # Next.js app
@@ -192,6 +193,21 @@ docs/
     last check" rather than silently dropping the topic. If the environment ever changes
     (repo made public, `gh` installed, a token becomes available), resume checking every
     run until confirmed stable. See `docs/agent-logs/ci-verification-approach-run53.md`.
+
+12. **Periodic-audit routine's task template should include `check_signal_reuse_claims.py
+    --all`** (decided run 62), alongside `audit_confidence.py --all`-style checks and
+    `check_field_coverage.py`. It's cheap and non-blocking, and its zero-true-positive
+    track record so far (runs 61-62, full archive both times) doesn't mean it's
+    catching nothing — it means the run 57/58 Met Gala bug class hasn't recurred since it
+    was fixed. Expect a few false-positive warnings each run from its documented
+    negation/precedent-mention limitation (see the script's file-map entry above); a
+    human skims and dismisses those in under a minute, same review step
+    `check_field_coverage.py`/`audit_confidence.py` already expect. `validate_all_reports.py`
+    deliberately does NOT mention this script (or `audit_confidence.py`/
+    `check_field_coverage.py`) in its own output/comments — it's the CI-blocking schema
+    gate, and cross-referencing every non-blocking sibling script there would be scope
+    creep un-related to schema validation; this list in SKILL.md plus TODO.md is the
+    right place to track "what non-blocking checks exist."
 
 ## Institutional knowledge worth knowing before you start
 
