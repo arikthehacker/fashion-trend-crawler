@@ -22,7 +22,7 @@
       "volatility": "flash",
       "origin_classification": "editorial_amplified",
       "evidence": "Searches for Paris Fashion Week's SS27 women's schedule returned September 28-October 6, 2026 from two sources (one an aggregator citing FHCM, the body that organizes the official Paris calendar), while this archive's own editorial-calendar reference states September 29-October 6. No single source reconciled the one-day discrepancy at the season's opening date.",
-      "index_note": "New signal_id, but logged as a continuation of the same pattern flagged for Milan in the September 28 report (mfw-ss27-schedule-date-inconsistency) rather than an isolated one-off: this is the second consecutive fashion-month city where aggregator/reference dates for the same official season diverge by a day or more. That prior Milan discrepancy was not independently re-checked this window (sourcing effort went to Paris), so it remains open, not resolved.",
+      "index_note": "New signal_id, but logged as a continuation of the same pattern flagged for Milan in the September 28 report (mfw-schedule-inconsistency) rather than an isolated one-off: this is the second consecutive fashion-month city where aggregator/reference dates for the same official season diverge by a day or more. That prior Milan discrepancy was not independently re-checked this window (sourcing effort went to Paris), so it remains open, not resolved.",
       "human_editor_note": "Treat the recurrence across two cities as worth a standing methodology note (aggregator calendar copy is not a substitute for the organizing body's own current page), not as evidence either date is wrong -- a one-day boundary discrepancy this close to a multi-source-confirmed season is lower-stakes than the earlier three-way Milan spread.",
       "source_corroboration_count": 2,
       "signal_id": "pfw-schedule-inconsistency",
@@ -84,8 +84,8 @@
     "Giorgio Armani house Brera Pinacoteca show, post-founder era"
   ],
   "limitations": [
-    "mfw-ss27-schedule-date-inconsistency (September 28 report) was not independently re-checked this window -- sourcing effort focused on Paris -- so it remains open rather than resolved; see get_signal_status_history() for its trend.",
-    "lfw-eligibility-wholesale-requirement-dropped (September 21) remains continuing-but-quiet: no new verifiable reporting on its downstream effects surfaced this window either, so it is not re-asserted.",
+    "mfw-schedule-inconsistency (September 28 report) was not independently re-checked this window -- sourcing effort focused on Paris -- so it remains open rather than resolved; see get_signal_status_history() for its trend.",
+    "lfw-wholesale-eligibility-dropped (September 21) remains continuing-but-quiet: no new verifiable reporting on its downstream effects surfaced this window either, so it is not re-asserted.",
     "Paris Fashion Week SS27's exact start date is reported inconsistently (September 28 vs. September 29, 2026) across sources found this window; this report's own collection_window follows this archive's prior editorial-calendar reference rather than an independently re-verified FHCM date, per the media-integrity signal above.",
     "The Versace and Armani resolutions logged this window both rest on this archive's standing practice of not backfilling show occurrence or content from off-window reporting: Armani's confirmed show date falls just before this window opened, and Mulier's confirmed debut falls well after fashion month ends, so neither is reported as an in-window show.",
     "This window closes this archive's fashion-month coverage (NYFW through PFW, Sept 8-Oct 6, 2026 per docs/EDITORIAL_CALENDAR.md). Consistent with the pattern across runs 19-22, volume and volatility are expected to drop back to the lower, quieter baseline seen in the pre-fashion-month reports (late July through August 2026) starting with the next window; a return to low item counts and 'normal'-but-thin-feeling reports should be read as the expected seasonal pattern, not a crawl or sourcing regression.",
@@ -111,7 +111,12 @@
       "previous_content_hash": "67d900def3db7c37c9d9efa5768be813eab2ef854bf3256bdc58f3051b7b1fe8",
       "corrected_at": "2026-07-06",
       "reason": "run 37 periodic audit: index_note prose for versace-mulier-debut-unconfirmed and armani-founder-transition self-referenced the pre-run-36-shortening long-form signal_id text instead of the actual (already-shortened) signal_id field, creating a mismatch that propagated into the 2026-12-07 close-out note"
+    },
+    {
+      "previous_content_hash": "b4ef5709a596ef7eb1327be6c75924b7c4af1c92dc8e78135472434ed7ce1585",
+      "corrected_at": "2026-07-06",
+      "reason": "periodic audit run 38: replaced stale pre-run-36 long-form slug reference(s) (lfw-eligibility-wholesale-requirement-dropped, mfw-ss27-schedule-date-inconsistency) in prose fields with current short-form signal_id equivalents; the underlying signal_id fields were already renamed in run 36, only the prose text still referenced the old names"
     }
   ],
-  "content_hash": "b4ef5709a596ef7eb1327be6c75924b7c4af1c92dc8e78135472434ed7ce1585"
+  "content_hash": "699e8fb4f34497d781c92b6d4c45bfe416909711427ffd9e69ca2f0ae170eb21"
 }

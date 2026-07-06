@@ -24,7 +24,7 @@
       "volatility": "emerging",
       "origin_classification": "unclear",
       "evidence": "The CFDA/Vogue Fashion Fund's 2026 winner gala was held October 20, 2026. As of this window's search (covering Nov 24 - 30, roughly six weeks after the gala), still no dated post-gala reporting naming a winner has surfaced from CFDA.com, Vogue, WWD, Business of Fashion, or Fashionista. The most recent dated coverage available remains the June 2026 finalist announcement (ten designers: Aisling Camps, Amir Taghi, Terrence Zhou/Bad Binch TONGTONG, Emily Dawn Long, Jamie Haller, Julia Ferentinos/Juju Vera, Zane Li/Lii, George Inaki/Milamore, Claire Sullivan, Zoe Gustavia Anna Whalen).",
-      "index_note": "Carried forward from the 2026-11-23 report -- same signal_id, now a sixth consecutive open window. Running this archive's report_schema.is_prolonged_silence('cfda-vogue-fashion-fund-2026-winner', all_reports) against the pre-this-window history (five entries: 2026-10-26 through 2026-11-23) already returns True at the default four-window threshold; adding this window's entry keeps it True. This report treats that as a formal, code-checked result, not an editorial impression.",
+      "index_note": "Carried forward from the 2026-11-23 report -- same signal_id, now a sixth consecutive open window. Running this archive's report_schema.is_prolonged_silence('cfda-fashion-fund-winner', all_reports) against the pre-this-window history (five entries: 2026-10-26 through 2026-11-23) already returns True at the default four-window threshold; adding this window's entry keeps it True. This report treats that as a formal, code-checked result, not an editorial impression.",
       "human_editor_note": "Prior windows' notes described this signal as 'still open' informally. As of this window, this archive's own is_prolonged_silence() check formally confirms the pattern: six consecutive windows with zero indexed coverage of a CFDA/Vogue Fashion Fund winner is well outside ordinary reporting lag for a program this well-covered in prior years, and now clears this archive's own four-window threshold for flagging prolonged silence rather than routine carry-forward. This does not change what is asserted -- no winner name, no cancellation, no delay is claimed -- but it does change how the report frames the open question: this is no longer just a recurring caveat, it is a signal this archive's own mechanism identifies as having gone unresolved longer than its default tolerance. The most defensible reading remains either (a) a search-tool recency/indexing gap specific to this query that has now persisted across six windows, or (b) a genuine change in how this cycle's outcome was publicized. Both remain stated as open possibilities. If dated coverage appears in a future window, reconcile and close this signal_id there with a real name and source; do not edit this or prior reports retroactively without new evidence.",
       "source_corroboration_count": 1,
       "signal_id": "cfda-fashion-fund-winner",
@@ -86,7 +86,7 @@
   ],
   "limitations": [
     "items_collected (2) and sources_scanned (13) remain below the fashion-month baseline; this window continues the post-fashion-month quiet stretch.",
-    "The CFDA/Vogue Fashion Fund's 2026 winner remains unconfirmed by dated, sourced coverage as of this window's search, now across six consecutive windows and roughly six weeks after the gala occurred. is_prolonged_silence('cfda-vogue-fashion-fund-2026-winner', all_reports) formally returns True as of last window and remains True. Full history via get_signal_status_history('cfda-vogue-fashion-fund-2026-winner', ...).",
+    "The CFDA/Vogue Fashion Fund's 2026 winner remains unconfirmed by dated, sourced coverage as of this window's search, now across six consecutive windows and roughly six weeks after the gala occurred. is_prolonged_silence('cfda-fashion-fund-winner', all_reports) formally returns True as of last window and remains True. Full history via get_signal_status_history('cfda-fashion-fund-winner', ...).",
     "The CFDA Fashion Awards remains unconfirmed for 2026 by dated, sourced coverage; this window is the first in which it was given a signal_id and added to top_signals, so is_prolonged_silence() cannot yet reflect the roughly five prior windows in which it was informally described as open in narrative text only -- that narrative/tracking gap is itself logged here rather than papered over.",
     "This window's search for Black Friday/Cyber Monday 2026 post-event sales-performance coverage did not find genuine 2026 results; content tagged or dated 2026 traced back to 2025 NRF-sourced holiday-weekend figures or pre-event projections. No 2025 figure is reported here as a 2026 outcome.",
     "General 2026 trend-forecast content encountered during search was again excluded as pre-window forecast copy, not in-window reporting.",
@@ -111,7 +111,12 @@
       "previous_content_hash": "ccdbaecff6a338b3ea0cf5fae5b6783599b2f3e7187cd8306781f7fe532a5853",
       "corrected_at": "2026-07-06",
       "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    },
+    {
+      "previous_content_hash": "d07aca2a2d0d9feffcd0cee2dbd756fcafac55b14d06ff854862e2b67febea87",
+      "corrected_at": "2026-07-06",
+      "reason": "periodic audit run 38: replaced stale pre-run-36 long-form slug reference(s) (cfda-vogue-fashion-fund-2026-winner) in prose fields with current short-form signal_id equivalents; the underlying signal_id fields were already renamed in run 36, only the prose text still referenced the old names"
     }
   ],
-  "content_hash": "d07aca2a2d0d9feffcd0cee2dbd756fcafac55b14d06ff854862e2b67febea87"
+  "content_hash": "994b6908e05c501322a552c3af99338c19a906ecf74ca871d8df36fb0897f539"
 }

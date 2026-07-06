@@ -67,7 +67,7 @@
   ],
   "limitations": [
     "items_collected (2) and sources_scanned (12) remain below the fashion-month baseline; this window continues the post-fashion-month quiet stretch.",
-    "The CFDA/Vogue Fashion Fund's 2026 winner remains unconfirmed by dated, sourced coverage as of this window's search, now across five consecutive windows and roughly five weeks after the gala occurred. Full history via get_signal_status_history('cfda-vogue-fashion-fund-2026-winner', ...).",
+    "The CFDA/Vogue Fashion Fund's 2026 winner remains unconfirmed by dated, sourced coverage as of this window's search, now across five consecutive windows and roughly five weeks after the gala occurred. Full history via get_signal_status_history('cfda-fashion-fund-winner', ...).",
     "The CFDA Fashion Awards remains unconfirmed for 2026 by dated, sourced coverage, now across four consecutive windows past its 2025-precedent expected date; this is logged as open rather than assumed to mean the event did not occur.",
     "The Black Friday early-retail-calendar signal is sourced primarily from retail-calendar aggregator pages (which compile retailers' own published schedules) rather than first-party editorial or designer-origin reporting; confidence is capped at medium accordingly.",
     "General 2026 trend-forecast content encountered during search (color-of-2026 picks, quarter-zip/polo-knit forecasts, occasionwear roundups) was dated to earlier-2026 forecast publications rather than in-window reporting and was deliberately excluded from this report's signals to avoid misrepresenting forecast copy as current-window discourse.",

@@ -87,7 +87,7 @@
   ],
   "limitations": [
     "nyfw-ss27-close and lfw-ss27-week-opens (both from the September 21 report) are fully closed by the start of this window and are not carried forward as top_signals; see get_signal_status_history() for their trend rather than treating their absence here as new information.",
-    "lfw-eligibility-wholesale-requirement-dropped (September 21) is continuing-but-quiet: no new verifiable reporting on its downstream effects surfaced this window, so it is not re-asserted without new evidence.",
+    "lfw-wholesale-eligibility-dropped (September 21) is continuing-but-quiet: no new verifiable reporting on its downstream effects surfaced this window, so it is not re-asserted without new evidence.",
     "Milan Fashion Week SS27's exact date range is reported inconsistently across sources found during this window's sourcing (September 16-22, 22-28, and 23-29 all appear); this report's collection_window (Sept 22-28) follows this archive's own prior editorial-calendar reference and the expected NY-London-Milan-Paris sequencing rather than an independently re-verified Camera Moda date, per the media-integrity signal above.",
     "Versace's Pieter Mulier debut timing and Armani house's SS27 Milan show date were both unconfirmed within this window's sourcing and are logged as pending, not reported, consistent with this archive's standing practice for unresolved schedule items (e.g. Thom Browne/Sabyasachi in the September 14 report).",
     "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."

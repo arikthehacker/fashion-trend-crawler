@@ -58,7 +58,7 @@
       "volatility": "declining",
       "origin_classification": "retail_adopted",
       "evidence": "Retail-adjacent coverage (Hello Molly's '2026 Back to School Trend Report', Classpop, Macy's back-to-school guide) continues describing the Y2K/preppy cluster logged August 25-31 -- oversized denim jackets, varsity-inspired layers, wide-leg silhouettes, overalls -- with Pantone's Alexandrite (teal-blue-green) cited as a seasonal color addition. Volume is visibly lower than the prior window and increasingly framed as back-to-school/early-fall transition content rather than a standalone seasonal push.",
-      "index_note": "Continues signal_id back-to-school-2026-y2k-preppy from August 31 but reclassified volatility from seasonal to declining: this is the same retail-SEO cluster, not new discourse, and its news cycle is visibly winding down as attention shifts to NYFW. Confidence held at medium for the same reason as before -- concrete, cross-outlet item agreement, but sourced entirely from commerce-adjacent content.",
+      "index_note": "Continues signal_id school-y2k-preppy from August 31 but reclassified volatility from seasonal to declining: this is the same retail-SEO cluster, not new discourse, and its news cycle is visibly winding down as attention shifts to NYFW. Confidence held at medium for the same reason as before -- concrete, cross-outlet item agreement, but sourced entirely from commerce-adjacent content.",
       "human_editor_note": "Recommend closing this out if it doesn't reappear in the next window with dated content of its own -- the pattern here (declining volume, no new sectors joining) looks like the start of a natural wind-down rather than a signal worth carrying into fashion month.",
       "source_corroboration_count": 3,
       "signal_id": "school-y2k-preppy",
@@ -130,7 +130,12 @@
       "previous_content_hash": "cf15385f43e7102c4a78c8cea3d331f0b1d11caa47161fa7d8c91d9476b014b2",
       "corrected_at": "2026-07-06",
       "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    },
+    {
+      "previous_content_hash": "a2cee80cdc2cdd365ee201b3e7b59a886311c670270d4670b5b08047a0857368",
+      "corrected_at": "2026-07-06",
+      "reason": "periodic audit run 38: replaced stale pre-run-36 long-form slug reference(s) (back-to-school-2026-y2k-preppy) in prose fields with current short-form signal_id equivalents; the underlying signal_id fields were already renamed in run 36, only the prose text still referenced the old names"
     }
   ],
-  "content_hash": "a2cee80cdc2cdd365ee201b3e7b59a886311c670270d4670b5b08047a0857368"
+  "content_hash": "eb917b1232ea8f373c8520b54315c6b550230c512ed0ede40ad0314ba276fcaf"
 }
