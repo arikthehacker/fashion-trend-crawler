@@ -219,6 +219,15 @@ via `python-dotenv` (`load_dotenv()`), so no manual `export` is required.
 `run.sh` and the pipeline scripts assume you're running from inside `src/`, not the
 repo root (they call `python crawler.py`/`python summarize.py` with no `src/` prefix).
 
+**`crawler.py` (and therefore `run.sh`, which calls it) is currently off-limits for
+unattended/autonomous runs pending a human-supervised live test.** Two hang-fixes have
+been implemented and locally verified (a hard-deadline `ThreadPoolExecutor` wrapper and
+an incremental-flush mitigation), but neither has been proven against real, live sources
+yet — prior unattended attempts left hung `python crawler.py` processes running for over
+an hour. If you're running this yourself interactively and can watch/kill the process,
+that's a different risk profile than an unattended agent run; either way, expect this
+note to be removed once a supervised live run confirms the fix.
+
 ```bash
 # install dependencies (requirements.txt covers crawler/summarize/server/manual_sample;
 # includes brotli, required for hosts that serve Brotli-compressed responses — see
