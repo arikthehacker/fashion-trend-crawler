@@ -171,16 +171,35 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       `git checkout .`, since concurrent agents' uncommitted changes share the same
       working tree.
 
-## Next up (run 9 candidates)
-- [ ] Decide how to formally save a genuine live-crawled report — today's date collided
-      with existing curated data; either add a manual override path in `run.sh`/
-      `summarize.py` for re-running on an already-used date, or wait for a future date with
-      no existing report and run the (now-fixed) pipeline fresh.
-- [ ] Implement the proposed `revision_history` field on `Report` so corrections actually
-      preserve prior state, matching what the methodology page already claims.
-- [ ] Continue legacy migration: step 4 of 5 (`test_tools.py` — not yet stale, may not need
-      changes; verify).
-- [ ] Manual TikTok/Pinterest sampling still only exercised once.
-- [ ] Add a lightweight convention/guardrail so agents doing exploratory reverts don't
-      accidentally clobber concurrent agents' uncommitted work (e.g. explicit instruction
-      in every prompt to scope git revert commands to named files only).
+## Run 9 — done
+- [x] Implemented `revision_history` on `Report` — `save_report()` now requires
+      `revision_reason`/`corrected_at` when overwriting a differing report for an existing
+      date, appending the old `content_hash` to history first. Matches what the
+      methodology page's Corrections section already claimed.
+- [x] Design proposal for handling pipeline re-runs on an already-used date
+      (`docs/agent-logs/pipeline-rerun-design.md`) — recommends wiring through
+      `revision_history` (mandatory reason) rather than silent overwrite or `--force`.
+      Not yet wired into `summarize.py`'s save call.
+- [x] Migration step 4/5: `test_tools.py` now references the shared `DEFAULT_OUTPUT_FILE`
+      constant too. All 4 files that touch the legacy cache filename now point at one
+      source of truth in `crawler.py`. Step 5 (final deletion) is unblocked.
+- [x] Manual-sampling workflow exercised a second time — added a Pinterest Predicts 2026
+      "Poetcore" signal (WWD-corroborated) to `2026-07-20.json`, proving the workflow is
+      repeatable, not a one-off.
+- [x] Added an explicit git-safety guardrail to the project skill doc after run 8's
+      coordination bug (agents must scope revert commands to exact files, never a bare
+      `git checkout .`) — this run's 5 agents followed it and no work was lost.
+- [x] Refreshed skill doc's "Common next steps" to reflect run 9 status (fixed a note that
+      was already stale the moment it landed, since revision_history shipped concurrently
+      with the note claiming it was still open).
+
+## Next up (run 10 candidates)
+- [ ] Wire `summarize.py`'s save call through `revision_history` so re-running the pipeline
+      on today's already-used date works safely instead of being blocked/ignored.
+- [ ] Execute migration step 5: delete legacy `trends_raw.json`/`trends_summary.json` (root
+      + `src/`, 4 files) now that nothing references the hardcoded literal filename —
+      needs one final grep-wide verification pass first.
+- [ ] Continue watching for confidence-warning drift as new reports are added (currently
+      14 mismatches, all reviewed as non-concerning conservative-LLM cases).
+- [ ] Consider whether the git-safety guardrail should also apply to the coordinator's own
+      consolidation step, not just subagents.
