@@ -231,7 +231,7 @@ export default function About() {
             marginTop: "1rem",
           }}
         >
-          Style should conform to how people want to live, not the other way around.
+          ARI3LLA INDEX does not issue guidance on how readers should dress or live.
         </p>
         <p
           style={{
@@ -242,7 +242,7 @@ export default function About() {
             marginTop: "1.5rem",
           }}
         >
-          ARI3LLA INDEX does not tell readers how to live. It documents the systems that try to.
+          It documents the sources, incentives, and language that shape style discourse.
         </p>
       </section>
 
