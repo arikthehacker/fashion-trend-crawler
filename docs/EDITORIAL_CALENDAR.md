@@ -39,8 +39,16 @@ Sequence is show-first (spring), sell-first (fall/winter) — the same collectio
 spans both windows six-plus months apart, which is a legitimate source of confusion
 when reconciling signal dates against collection windows.
 
+## Met Gala (annual, first Monday in May)
+
+The Costume Institute Gala runs on a fixed, predictable pattern — first Monday in May
+each year. 2026 edition confirmed as **Monday, May 4, 2026**. Expect a concentrated
+spike of designer-origin and editorial red-carpet signals in the days immediately
+surrounding this date each year; treat it as a known recurring window rather than an
+anomalous single-day volume spike.
+
 ## Extensible: add future recurring windows here
 
-Candidates for later entries — pre-fall show calendars, Met Gala,
+Candidates for later entries — pre-fall show calendars,
 major trade fairs (e.g. Pitti Uomo), awards season red carpets — once
 confirmed relevant to signal volume.
