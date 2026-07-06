@@ -77,6 +77,8 @@ Do not use evaluative or editorializing verbs such as "declared," "revealed," or
 
 Avoid vague, unsupported claims of ubiquity such as "everyone is wearing" or "everywhere right now." If evidence is thin, limited to one source sector, or contradictory, state that plainly in the evidence or index_note field rather than smoothing it over or omitting it.
 
+When a signal continues an existing signal_id carried forward from a prior report, keep garment/material terminology describing it consistent with prior usage unless the change is genuine — in which case note it explicitly (e.g. "garment description updated from X to Y because...") rather than letting the terminology silently drift.
+
 If the source material yields only a small number of genuinely distinct, well-supported signals, do not stretch, duplicate, or manufacture additional signals to appear more comprehensive. Instead, set "collection_status" to "thin" and use "thin_week_note" to state plainly that this reporting period had limited signal volume, so the report reflects the actual state of coverage rather than an inflated one. Use "collection_status": "normal" and leave "thin_week_note" empty when signal volume is adequate.
 
 Each headline below is tagged as [domain | source_sector]. Valid source sectors are: {", ".join(SOURCE_SECTORS)}.

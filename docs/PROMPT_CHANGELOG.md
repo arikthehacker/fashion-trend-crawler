@@ -260,3 +260,25 @@ establishing a new hierarchy in the other direction — consistent with the proj
 anti-gatekeeping framing (doc section 2, run 16 finding (b)). Only `build_prompt()`'s
 prompt text was touched; no control-flow or schema changes. Verified with
 `python -m py_compile src/*.py`.
+
+### Run 20 — garment-terminology consistency instruction for carried-forward signal_ids
+**2026-07-06** — see `docs/agent-logs/costume-core-research.md` and
+`docs/agent-logs/garment-terminology-practice.md`. That research log recommended a
+lightweight interim practice for carried-forward `signal_id`s (append-only garment
+terms unless a note documents a change) but the practice was never formally adopted
+anywhere in code or docs, leaving the model free to silently drift garment/material
+wording for a signal that continues across reports.
+
+Added to `build_prompt()`, immediately before the existing thin-week honesty
+instruction:
+
+> "When a signal continues an existing signal_id carried forward from a prior report,
+> keep garment/material terminology describing it consistent with prior usage unless
+> the change is genuine — in which case note it explicitly (e.g. 'garment description
+> updated from X to Y because...') rather than letting the terminology silently drift."
+
+Why here and phrased this way: formalizes the interim recommendation at the
+instruction level without touching control flow or schema — the model still decides
+case by case, but silent drift is now explicitly discouraged and a documented-change
+path is offered as the alternative. Only `build_prompt()`'s prompt text was touched;
+no control-flow or schema changes. Verified with `python -m py_compile src/*.py`.
