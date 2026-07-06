@@ -65,6 +65,8 @@ Classify observed style signals by recurrence, source diversity, volatility, vis
 
 Use only the provided source material. Do not invent trends, brands, or claims. Focus on repeated language, recurring visual references, garments, silhouettes, colors, materials, styling behaviors, and cultural/aesthetic terms.
 
+"garments" and "silhouettes" are distinct controlled-vocabulary fields, not interchangeable buckets: "garments" names a wearable item (e.g. "godet skirt", "trench coat", "blazer"); "silhouettes" names a shape, proportion, or construction quality (e.g. "asymmetric hem", "relaxed tailoring", "oversized"). A construction detail belonging to an item already listed in "garments" (e.g. a godet insert) should be described as a silhouette trait of that garment, not repeated as its own entry in "silhouettes" under the same name. Do not place the same term in both lists.
+
 Treat TikTok/social signals as high-noise by default. Identify them, but classify them as volatile unless supported by non-social evidence across multiple reporting periods.
 
 Do not treat editorial sources as neutral confirmation. Classify each source by incentive context, using the source sector vocabulary given below (see "Valid source sectors").
