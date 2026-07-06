@@ -19,7 +19,11 @@
     {
       "name": "Quiet luxury aesthetic backlash / maximalist pivot",
       "type": "cultural_term",
-      "source_sectors": ["independent_criticism", "editorial", "designer_origin"],
+      "source_sectors": [
+        "independent_criticism",
+        "editorial",
+        "designer_origin"
+      ],
       "confidence": "medium",
       "volatility": "declining",
       "origin_classification": "editorial_amplified",
@@ -31,7 +35,11 @@
     {
       "name": "1970s 'boho' revival styling",
       "type": "aesthetic_term",
-      "source_sectors": ["social", "editorial", "retail"],
+      "source_sectors": [
+        "social",
+        "editorial",
+        "retail"
+      ],
       "confidence": "medium",
       "volatility": "emerging",
       "origin_classification": "social_amplified",
@@ -43,7 +51,11 @@
     {
       "name": "Resale/secondhand retail growth",
       "type": "market_behavior",
-      "source_sectors": ["retail", "editorial", "institutional"],
+      "source_sectors": [
+        "retail",
+        "editorial",
+        "institutional"
+      ],
       "confidence": "high",
       "volatility": "stable",
       "origin_classification": "retail_adopted",
@@ -55,11 +67,14 @@
     {
       "name": "Menswear 'aspirational realism' (loose, soft, muted tailoring)",
       "type": "silhouette",
-      "source_sectors": ["designer_origin", "editorial"],
+      "source_sectors": [
+        "designer_origin",
+        "editorial"
+      ],
       "confidence": "medium",
       "volatility": "seasonal",
       "origin_classification": "designer_originated",
-      "evidence": "Coverage of recent Paris menswear presentations (Lemaire, Louis Vuitton, Hermès, Dries Van Noten) describes a loose, soft, unglossy silhouette in muted tones (olive, stone, tobacco, oatmeal, faded navy), alongside a notable open-toe sandal styling choice across several houses.",
+      "evidence": "Coverage of recent Paris menswear presentations (Lemaire, Louis Vuitton, Herm\u00e8s, Dries Van Noten) describes a loose, soft, unglossy silhouette in muted tones (olive, stone, tobacco, oatmeal, faded navy), alongside a notable open-toe sandal styling choice across several houses.",
       "index_note": "Designer-originated per presence across multiple houses at a single fashion week, with editorial pickup; seasonal volatility assigned since this ties to a specific collection cycle.",
       "human_editor_note": "Flagged for review: editorial framing ('aspirational realism') is a coined term from a single piece of coverage and may be over-fitted branding rather than an industry-wide descriptor. A human editor should check whether other outlets use comparable language before adopting the term into the taxonomy's aesthetic_terms list.",
       "signal_id": "menswear-aspirational-realism"
@@ -67,7 +82,9 @@
     {
       "name": "Layered tops styling (social)",
       "type": "styling_behavior",
-      "source_sectors": ["social"],
+      "source_sectors": [
+        "social"
+      ],
       "confidence": "low",
       "volatility": "volatile",
       "origin_classification": "social_amplified",
@@ -79,7 +96,10 @@
     {
       "name": "Coastal-cowgirl styling evolution",
       "type": "styling_behavior",
-      "source_sectors": ["social", "editorial"],
+      "source_sectors": [
+        "social",
+        "editorial"
+      ],
       "confidence": "low",
       "volatility": "microtrend",
       "origin_classification": "social_amplified",
@@ -91,14 +111,32 @@
     {
       "name": "Textured maximalist layering (fur/sheer/denim/sheer combinations)",
       "type": "styling_behavior",
-      "source_sectors": ["social", "editorial"],
+      "source_sectors": [
+        "social",
+        "editorial"
+      ],
       "confidence": "low",
       "volatility": "emerging",
       "origin_classification": "unclear",
       "evidence": "Trend coverage describes maximalist stylists mixing textures rather than colors or prints (fur with sheer, denim with sheer, embellishment with fringe), attributed loosely to both social creator content and editorial trend forecasting.",
       "index_note": "Origin classification left unclear because the crawl could not trace this language back to a single originating sector; flagged emerging pending firmer sourcing.",
-      "human_editor_note": "Flagged for review: origin is genuinely unclear from the sources collected this crawl — it is not evident whether this originated in designer collections, editorial forecasting copy, or social styling independently. A human editor with runway-season knowledge should trace this back before assigning a firmer origin classification.",
+      "human_editor_note": "Flagged for review: origin is genuinely unclear from the sources collected this crawl \u2014 it is not evident whether this originated in designer collections, editorial forecasting copy, or social styling independently. A human editor with runway-season knowledge should trace this back before assigning a firmer origin classification.",
       "signal_id": "textured-maximalist-layering"
+    },
+    {
+      "name": "\"Off-Duty Varsity\" sports-luxe summer uniform (jerseys + cargo bottoms)",
+      "type": "styling_behavior",
+      "source_sectors": [
+        "social"
+      ],
+      "confidence": "low",
+      "volatility": "flash",
+      "origin_classification": "platform_native",
+      "evidence": "Pinterest Newsroom, 'Summer 2026 Trend Report' (https://newsroom.pinterest.com/news/summer-trend-report-2026/), dated May 26, 2026 and framed as covering Summer 2026 (the season currently underway). Pinterest names the trend 'Off-Duty Varsity': oversized/layered/cropped jerseys as hero tops with cargo bottoms. Cited year-on-year search-index growth: 'World Cup jerseys' +840%, 'cargo jeans' +366%, 'cargo pants for women' +363%, 'denim jorts outfit' +330%, 'Brazil jersey outfits' +302%, 'bedazzled jorts' +212%. Figures are Pinterest's own aggregate search-index percentages (600M+ monthly active users cited by Pinterest), not independently verified by this project, and not a proxy for TikTok video volume -- observed via Pinterest's official trend-report page, not scraped platform content, per the compliant manual-sampling path (doc section 31).",
+      "index_note": "This reads less like an organic styling movement and more like search behavior tracking a live external event (the 2026 World Cup) -- people searching for jersey-outfit inspiration during the tournament window isn't the same claim as a durable sports-luxe aesthetic shift. Pinterest's own framing ('comfort with bite') leans promotional/forecast-branding language, which this entry deliberately does not adopt. Single-platform, single-source data (one Pinterest report) with no corroborating editorial, retail, or designer-origin sightings collected yet, so this stays low confidence rather than being upgraded on the strength of the large percentage figures alone -- a large percentage jump can still be a small base number, and Pinterest doesn't publish absolute search volume. A human editor should re-check after the tournament ends: persistence of jersey-as-daily-top interest past the news-event window would indicate a genuine style shift, while an immediate collapse would mean this was event-driven search noise rather than a fashion trend.",
+      "source_corroboration_count": 1,
+      "signal_id": "off-duty-varsity-sports-luxe-summer-uniform",
+      "human_editor_note": "This reads less like an organic styling movement and more like search behavior tracking a live external event (the 2026 World Cup) -- people searching for jersey-outfit inspiration during the tournament window isn't the same claim as a durable sports-luxe aesthetic shift. Pinterest's own framing ('comfort with bite') leans promotional/forecast-branding language, which this entry deliberately does not adopt. Single-platform, single-source data (one Pinterest report) with no corroborating editorial, retail, or designer-origin sightings collected yet, so this stays low confidence rather than being upgraded on the strength of the large percentage figures alone -- a large percentage jump can still be a small base number, and Pinterest doesn't publish absolute search volume. A human editor should re-check after the tournament ends: persistence of jersey-as-daily-top interest past the news-event window would indicate a genuine style shift, while an immediate collapse would mean this was event-driven search noise rather than a fashion trend."
     }
   ],
   "repeated_keywords": [
@@ -113,17 +151,56 @@
     "coastal cowgirl",
     "textured layering"
   ],
-  "garments": ["baggy suit", "western shirt", "layered top", "sandal", "denim"],
-  "silhouettes": ["loose tailoring", "oversized suiting", "undone layering"],
-  "materials": ["sheer linen", "fur", "denim", "cashmere"],
-  "colors": ["olive", "stone", "tobacco", "oatmeal", "faded navy"],
-  "aesthetic_terms": ["quiet luxury", "maximalism", "boho revival", "aspirational realism", "coastal cowgirl"],
-  "cultural_references": ["1970s boho", "1990s sitcom style", "eighties luxury"],
+  "garments": [
+    "baggy suit",
+    "western shirt",
+    "layered top",
+    "sandal",
+    "denim"
+  ],
+  "silhouettes": [
+    "loose tailoring",
+    "oversized suiting",
+    "undone layering"
+  ],
+  "materials": [
+    "sheer linen",
+    "fur",
+    "denim",
+    "cashmere"
+  ],
+  "colors": [
+    "olive",
+    "stone",
+    "tobacco",
+    "oatmeal",
+    "faded navy"
+  ],
+  "aesthetic_terms": [
+    "quiet luxury",
+    "maximalism",
+    "boho revival",
+    "aspirational realism",
+    "coastal cowgirl"
+  ],
+  "cultural_references": [
+    "1970s boho",
+    "1990s sitcom style",
+    "eighties luxury"
+  ],
   "limitations": [
     "This collection window was assembled via targeted web search rather than a live automated crawl; source material reflects search-result summaries and secondary references in several cases, not always primary documents (e.g. Pinterest Predicts data cited secondhand through independent-criticism pieces).",
     "Social-sector sampling relied on descriptions of platform discourse found through search rather than direct platform API access or approved dataset sampling, and should be treated as indicative rather than representative of social volume.",
     "Several signals (boho revival, coastal-cowgirl evolution) may reflect recycled seasonal language rather than genuinely new discourse; human review is required before treating them as newly emerging per the notes on each signal.",
     "Sample size (34 items across 17 sources) remains small relative to the full scope of public style discourse and should not be read as statistically representative."
   ],
-  "archive_tags": ["quiet-luxury-backlash", "maximalist-pivot", "boho-revival", "resale-growth", "aspirational-realism", "2026-q3"]
+  "archive_tags": [
+    "quiet-luxury-backlash",
+    "maximalist-pivot",
+    "boho-revival",
+    "resale-growth",
+    "aspirational-realism",
+    "2026-q3"
+  ],
+  "content_hash": "294b7b31431233de0e7e6867a80978c1794f3cee19b0f7d9116e0b8f24c8e6a3"
 }
