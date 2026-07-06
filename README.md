@@ -201,6 +201,19 @@ An LLM layer (Claude) then extracts, clusters, and summarizes the raw
 material into a structured, source-aware report rather than a hyped list
 of "must-haves."
 
+### API key setup
+
+`summarize.py` calls the Claude API and needs `ANTHROPIC_API_KEY` set. Copy the
+example env file, then fill in a real key:
+
+```bash
+cp .env.example .env
+# edit .env and set ANTHROPIC_API_KEY=<your real key>
+```
+
+`.env` is git-ignored and never committed. `summarize.py` loads it automatically
+via `python-dotenv` (`load_dotenv()`), so no manual `export` is required.
+
 ### How to run it
 
 `run.sh` and the pipeline scripts assume you're running from inside `src/`, not the
