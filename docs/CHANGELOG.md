@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-09 ~22:50 PDT — [Loop run 74](changelog-entries/run-74.md)** — 67th
+  report distinguishes single-sector confirmation from real cross-sector
+  corroboration; Colombia's Inexmoda added as a verified institutional source; 50
+  missing glossary definitions added, closing a persistent build-warning source;
+  nav/build sweep documented a non-reproducing Turbopack flake; periodic audit
+  caught and corrected its own false-negative API-key check.
+
 - **2026-07-09 ~21:45 PDT — [Loop run 73](changelog-entries/run-73.md)** — closes
   run 72's daemon-thread leak (crawler process now exits cleanly after a timeout,
   independently re-verified); 66th report distinguishes retail adoption from

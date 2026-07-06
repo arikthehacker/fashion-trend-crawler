@@ -1511,16 +1511,35 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       clean wipe; periodic audit confirmed confidence discipline correct on both
       failure modes (inflation and suppression) and found no anomalies.
 
-## Next up (run 74 candidates)
+## Run 74 — done
+- [x] Added `data/reports/2027-10-11.json`, a 67th report — correctly distinguished
+      strong single-sector confirmation (retail-buy continuation, held at "medium")
+      from genuine cross-sector corroboration (critical-reception signal, kept
+      "high").
+- [x] Confirmed the SPFW gap stays closed for a good reason (event/PR content, not
+      a governing body) and found a genuine alternative: added Inexmoda
+      (inexmoda.org.co, Colombia) as a verified `institutional` source.
+- [x] Closed a real content gap: added 50 missing glossary definitions, eliminating
+      the persistent benign "no DEFINITIONS entry" build warnings from runs 72/73.
+- [x] Nav/build regression sweep documented a non-reproducing Turbopack build
+      flake (one clean build dropped a page nondeterministically; three reruns and
+      two independent coordinator rebuilds all produced the correct 67/67).
+- [x] Periodic audit caught its own false-negative API-key check (reported absent,
+      was actually present) — coordinator independently verified with
+      `load_dotenv()` and corrected the record. Signal-reuse checker's new 5th
+      warning (2027-10-11) confirmed as the same known false-positive pattern, not
+      a new bug.
+
+## Next up (run 75 candidates)
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both the hang fix (run 72) and the daemon-thread fix (run 73) are
       implemented and locally proven, but the standing "no autonomous execution"
       rule remains in force regardless.
-- [ ] A discrete, verifiable SPFW (São Paulo Fashion Week) institutional domain
-      wasn't found — SPFW appears event-management-run, not a standalone
-      governing-body site like CFDA/FHCM. Worth another look if one surfaces.
 - [ ] A genuine Middle East regional source (distinct from scmp.com, which is
       Hong Kong/East Asia) remains an open geographic gap.
+- [ ] The Turbopack build non-determinism (one page occasionally dropped on a
+      clean build, self-resolves on rerun) is documented but not root-caused —
+      worth watching for recurrence; not currently blocking since reruns fix it.
 - [ ] The manual-sampling cadence has no enforcement mechanism beyond documentation —
       worth a periodic spot-check to catch future lapses earlier.
 - [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
