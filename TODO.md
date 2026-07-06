@@ -1376,12 +1376,29 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [x] Periodic audit — clean. 65 confidence mismatches, only the documented override
       non-conservative; signal-reuse checker unchanged at 4 known false positives.
 
-## Next up (run 65 candidates)
-- [ ] Now that the API key is confirmed available, consider actually attempting a
-      full crawl→summarize→save cycle end-to-end for a future report, rather than
-      the crawl-only verification done so far.
-- [ ] Add a `.env.example` and setup documentation for the `.env` mechanism — the
-      real remaining gap, distinct from the (resolved) key-availability question.
+## Run 65 — done
+- [x] Added `.env.example` and setup docs — closes run 64's flagged gap. Confirmed
+      `.env` is genuinely git-ignored (verified, not assumed); grepped for real-key
+      patterns before finishing, none found.
+- [x] Added a 58th report (`2027-08-09.json`) — real confidence discipline, manually
+      held at "medium" against `derive_confidence()`'s inflated "high" rather than
+      rewarding a source-map gap as if it were genuine cross-sector corroboration.
+- [x] Source-domain freshness spot-check — clean, all 33 newly-cited domains since
+      run 49 verified live or recognizable/bot-blocked, no typos or dead domains.
+- [x] Periodic audit — clean. 65 confidence mismatches, only the documented override
+      non-conservative; signal-reuse checker unchanged at 4 known false positives.
+- [ ] **Not completed, second attempt**: the first genuine real-pipeline
+      (crawl→summarize→save) attempt stalled a second time (after run 62's stall)
+      despite an explicit synchronous-only instruction. No secret exposure occurred
+      — checked and confirmed explicitly. A different approach (splitting crawl and
+      summarize into two separate dispatches) is needed for the next attempt rather
+      than a third identical retry.
+
+## Next up (run 66 candidates)
+- [ ] Retry the real end-to-end pipeline with crawl and summarize split into two
+      separate, smaller dispatches — two consecutive stalls on the combined task
+      suggest the combined scope itself is the problem, not just background-process
+      handling.
 - [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
       correctness — still awaiting a human decision (run 50).
 - [ ] The underlying human-in-the-loop process gap flagged in run 50 remains open.

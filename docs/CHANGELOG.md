@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-09 ~11:45 PDT — [Loop run 65](changelog-entries/run-65.md)** — `.env.example`
+  and setup docs added, closing run 64's flagged gap; 58th report shows real
+  confidence discipline against an inflated derived score; source-domain freshness
+  spot-check clean. The first genuine real-pipeline (crawl→summarize→save) attempt
+  stalled a second time despite tightened instructions — no secret exposure occurred,
+  confirmed explicitly, but a different approach is needed for the next attempt.
+
 - **2026-07-09 ~10:30 PDT — [Loop run 64](changelog-entries/run-64.md)** —
   Significant correction to run 63: the "missing API key" blocker on real-pipeline
   reports was wrong — a working key exists in a git-ignored `.env`, verified live
