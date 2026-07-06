@@ -167,6 +167,7 @@ const DEFINITIONS: Record<string, string> = {
   "puffer-shell skirt": "A voluminous, quilted skirt built with exaggerated, rounded volume at the hip and hem, using puffer-jacket-style quilted construction on a bottom garment rather than an outerwear piece.",
   "quilted puffer-shell silhouette": "A rounded, exaggerated-volume garment shape produced by puffer-jacket-style quilted construction, distinct from the tapered cocoon silhouette in that its volume is evenly quilted rather than smoothly sculpted.",
   "shawl-collar overcoat": "An overcoat with a rounded, seamless collar that curves continuously from the back of the neck to the front closure, without a notch, observed as an exaggerated, oversized construction choice in Fall/Winter 2028 menswear runway coverage.",
+  "dropped-shoulder overcoat": "An overcoat cut with the shoulder seam extended past the wearer's natural shoulder line, producing a broader, more structured shoulder line than a set-in sleeve construction, observed in Fall/Winter 2028 menswear runway coverage as a distinct construction choice from the shawl-collar overcoat's rounded-collar treatment.",
 };
 
 function normalize(term: string): string {

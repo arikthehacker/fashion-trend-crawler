@@ -1,0 +1,74 @@
+{
+  "report_date": "2028-01-24",
+  "collection_window": {
+    "start": "2028-01-18",
+    "end": "2028-01-24"
+  },
+  "sources_scanned": 10,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "designer_origin": 1,
+    "editorial": 1
+  },
+  "executive_summary": "Collection window January 18-24, 2028: Paris's Fall/Winter 2028 menswear shows opened within this window, as forecast in the 2028-01-17 report. Louis Vuitton's own site published the house's runway lookbook for its Fall/Winter 2028 menswear show in Paris, and vogue.com independently reviewed the same show, both identifying a dropped-shoulder tailored overcoat -- with the shoulder seam extended past the natural shoulder line, producing a broader silhouette than a set-in sleeve -- as a recurring construction choice across multiple looks. This is treated as genuine cross-sector corroboration: one designer_origin source (the house's own lookbook, describing its own runway as designer intent) and one editorial source doing independent runway-review reporting, not a restatement of the house's own materials. Per derive_confidence(), corroboration_count=2 spanning two distinct sectors yields 'high'; this is adopted as computed. This is a different fact pattern from the 2028-01-17 Gucci shawl-collar-overcoat signal, where both corroborating sources resolved to the single sector 'editorial' and confidence was held at 'medium' under precedent 2 in the confidence-discipline precedents doc -- the discipline that capped that signal at medium is the same discipline that allows this one to reach 'high', since the sector diversity here is genuine rather than mechanical. This remains designer intent (a specific construction shown on one house's runway) reported through one designer-origin channel and one independent editorial review; it is not yet a claim of editorial-consensus interpretation across other houses, retail adoption, or social amplification, none of which have occurred yet within this window. No retail, social, resale, independent-criticism, or institutional source introduced a development distinct from this runway coverage this window. Paris's Haute Couture Spring/Summer 2028 shows had not yet begun within this collection window (couture week customarily follows menswear fashion month by roughly a week and was not scheduled to open until after January 24); any couture coverage is expected in a subsequent window, not retroactively folded into this one. The resort 2028 puffer-shell skirt thread, the resale-demand signal on structured waist-tailoring, the obi-sash cocoon coat thread, and the opera-glove/'restraint dressing' thread all produced no new development this window and are not carried forward again absent fresh movement. The Margiela raw-edge thread remains closed out as of 2027-10-18. Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention.",
+  "top_signals": [
+    {
+      "name": "Louis Vuitton Fall/Winter 2028 menswear runway: dropped-shoulder tailored overcoat",
+      "type": "silhouette",
+      "source_sectors": [
+        "designer_origin",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "Louis Vuitton published its own runway lookbook for its Fall/Winter 2028 menswear show at Paris Fashion Week Men's, and vogue.com independently reviewed the same show, both identifying an overcoat cut with the shoulder seam extended past the wearer's natural shoulder line -- a broader, more structured shoulder line than a set-in sleeve construction -- repeated across multiple looks. The lookbook is the house's own first-party statement of the collection; vogue.com's review adds independent critical framing rather than restating the lookbook's own copy.",
+      "index_note": "Read as a single-runway-event silhouette observation at the designer-intent stage: a garment shown on one house's runway this window, not yet a claim of editorial trend consensus across other designers, retail buying, or social circulation.",
+      "human_editor_note": "derive_confidence() computes 'high' here (corroboration_count=2, two distinct sectors: designer_origin, editorial), and this report adopts that result rather than overriding it. This is worth contrasting explicitly with the immediately prior window's Gucci shawl-collar-overcoat signal (2028-01-17), which also had corroboration_count=2 but both sources resolved to the single sector 'editorial' and was held at 'medium' per precedent 2 (republication/independent coverage within one sector does not cross into 'high' on volume alone). Here the second source is a genuinely distinct sector -- the house's own first-party lookbook (designer_origin) plus an independent editorial review, not two outlets in the same sector -- so the sector diversity is real, not a taxonomy artifact (precedent 3) or a mislabeled single underlying source (precedent 7): the lookbook is the house's own official channel describing its own show, and vogue.com's coverage is separately reported, not a restatement of the lookbook's copy. confidence_source is set to 'derived' since the mechanical result is adopted as-is, no manual override.",
+      "source_corroboration_count": 2,
+      "signal_id": "lv-fw28-menswear-dropped-shoulder-overcoat",
+      "confidence_source": "derived",
+      "source_domains": [
+        "louisvuitton.com",
+        "vogue.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "dropped-shoulder overcoat",
+    "Louis Vuitton menswear",
+    "Paris Fashion Week Men's"
+  ],
+  "garments": [
+    "dropped-shoulder overcoat"
+  ],
+  "silhouettes": [
+    "dropped-shoulder overcoat"
+  ],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [
+    "dropped-shoulder overcoat"
+  ],
+  "cultural_references": [
+    "Paris Fashion Week"
+  ],
+  "limitations": [
+    "Only one runway-derived signal cleared this report's corroboration bar this window; confidence reached 'high' on genuine cross-sector corroboration (designer_origin, editorial), contrasted directly against the 2028-01-17 Gucci signal, which was held at 'medium' under the same discipline because both of its sources resolved to a single sector -- see this signal's human_editor_note.",
+    "This signal reflects designer intent observed on a single runway this window, reported through one first-party channel and one independent editorial review; it does not represent editorial-consensus interpretation across other houses, retail adoption, or social amplification, none of which have occurred yet within this window.",
+    "No new development occurred on the resort 2028 puffer-shell skirt, resale-demand, obi-sash cocoon coat, or opera-glove/'restraint dressing' threads this window; per standing convention, none are carried forward again absent fresh movement.",
+    "Paris's Haute Couture Spring/Summer 2028 shows had not yet begun within this collection window (Jan 18-24); coverage of that leg of the season is expected in a subsequent window, not retroactively folded into this one."
+  ],
+  "archive_tags": [
+    "margiela-raw-edge-editorial-close-out",
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "review_status": "reviewed",
+  "reviewed_by": "ari3lla-index-loop-improvements agent",
+  "revision_history": []
+}
