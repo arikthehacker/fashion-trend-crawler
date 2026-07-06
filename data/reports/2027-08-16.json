@@ -1,0 +1,74 @@
+{
+  "report_date": "2027-08-16",
+  "collection_window": {
+    "start": "2027-08-10",
+    "end": "2027-08-16"
+  },
+  "sources_scanned": 7,
+  "items_collected": 6,
+  "source_sector_breakdown": {
+    "editorial": 1,
+    "unclear": 4
+  },
+  "executive_summary": "Collection window August 10-16, 2027. The notable item this week is not a garment or aesthetic trend but a corporate/heritage-preservation move: Chanel has acquired Charvet, the Place Vendome shirtmaker founded in 1838, including its six-floor building on the square. Coverage frames it as consolidation of an atelier relationship rather than a new design direction -- the deal reportedly grew out of Matthieu Blazy's use of Charvet shirting in his debut Chanel collection. Met Gala 2027, Wales Bonner, and CFDA remain untracked going forward per standing convention and are not re-litigated in this report.",
+  "top_signals": [
+    {
+      "name": "Chanel acquires Charvet",
+      "type": "industry_pattern",
+      "source_sectors": [
+        "editorial",
+        "unclear"
+      ],
+      "confidence": "medium",
+      "volatility": "stable",
+      "origin_classification": "designer_originated",
+      "evidence": "Chanel acquired Charvet, the 1838-founded Place Vendome shirtmaker whose clientele has included Winston Churchill, JFK, and Gabrielle Chanel herself, along with Charvet's six-floor building on the square. Financial terms were not disclosed. Multiple outlets report the acquisition followed Matthieu Blazy's collaboration with Charvet on his debut Spring/Summer 2026 collection for Chanel, which sparked internal discussion of a longer-term partnership. Chanel has stated Charvet will keep creative independence.",
+      "index_note": "This is a heritage-preservation/consolidation story, not a runway or aesthetic signal: no new silhouette, garment, or color direction is being claimed here, only a change in ownership structure tied to an existing creative collaboration. Framed by coverage as one of the rare cases of Chanel acquiring an established outside house rather than growing a category internally.",
+      "source_corroboration_count": 5,
+      "signal_id": "chanel-acquires-charvet",
+      "confidence_source": "manual",
+      "human_editor_note": "Held at medium rather than derive_confidence()'s literal high: only one of five corroborating domains (wwd.com) lands inside taxonomy.py's DOMAIN_SECTOR_MAP as a named sector, and the rest classify unclear -- the same pattern flagged in the 2027-08-09 report, where counting 'unclear' as a genuine second sector would reward a gap in the domain map rather than real cross-sector confirmation. Separately, this is a business/ownership story, not a style signal, and shouldn't be read as evidence of an upcoming aesthetic shift at either house -- it belongs in the report as an industry-structure data point, not a trend forecast.",
+      "source_domains": [
+        "wwd.com",
+        "robbreport.com",
+        "pursuitist.com",
+        "clashmusic.com",
+        "parisselectbook.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "heritage acquisition",
+    "shirtmaker",
+    "Place Vendome",
+    "savoir-faire"
+  ],
+  "garments": [
+    "bespoke shirting"
+  ],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [
+    "Charvet",
+    "Matthieu Blazy",
+    "Place Vendome"
+  ],
+  "limitations": [
+    "No first-party financial disclosure; deal terms are undisclosed by both houses.",
+    "Four of five corroborating domains fall outside taxonomy.py's DOMAIN_SECTOR_MAP and classify as 'unclear', limiting genuine cross-sector confirmation.",
+    "This is a business/ownership story adjacent to fashion discourse, not a garment or aesthetic signal, and is reported here as such rather than upgraded into a style trend."
+  ],
+  "archive_tags": [
+    "met-gala-2027-coverage-gap (untracked going forward pending new information)",
+    "wales-bonner (untracked going forward pending new information)",
+    "cfda (untracked going forward pending new information)"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "review_status": "reviewed",
+  "reviewed_by": "",
+  "revision_history": [],
+  "content_hash": "5cf41499d48199f00083c812f07c84b403566add2ebb4b7f41f47d4fb717c461"
+}
