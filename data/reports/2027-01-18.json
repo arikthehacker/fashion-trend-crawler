@@ -25,7 +25,7 @@
       "evidence": "Grace Wales Bonner was named creative director of Hermes menswear in 2025, succeeding Veronique Nichanian, fashion's longest-serving creative director after a 37-year run; Nichanian presented her final Hermes collection in January 2026. Wales Bonner's own debut collection is scheduled for the January 19-24, 2027 Paris menswear week -- inside the week immediately following this collection window. Trade press (WWD) reports she has hired longtime Lanvin designer John-Gabriel Harrison to her creative team ahead of the show, and multiple outlets independently frame the debut as among the most closely watched designer transitions of the season, given her label's established blend of European tailoring with Afro-Atlantic references and archival research.",
       "index_note": "New signal_id this window. Logged as confirmed pre-show anticipation -- appointment, succession, and schedule facts corroborated across editorial and reference sources -- not as observed runway content, since the show itself falls after this window closes. A future report covering Jan 19-24 should follow up with the actual debut collection's garment/silhouette/material content once shown, and should treat this entry as the anticipation-stage precursor to that later signal rather than a duplicate.",
       "source_corroboration_count": 2,
-      "signal_id": "wales-bonner-hermes-menswear-debut-2027",
+      "signal_id": "wales-bonner-hermes-debut",
       "confidence_source": "manual",
       "human_editor_note": "Editorial judgment call: this is treated as medium confidence because the appointment, succession timeline, and schedule are corroborated across independent editorial/trade coverage (not a single outlet), but the collection content itself does not exist yet -- so no silhouette, material, or aesthetic claims are attached. This keeps the entry honest about being anticipation, not observation.",
       "source_domains": [
@@ -44,7 +44,7 @@
       "evidence": "Federation de la Haute Couture et de la Mode (FHCM) calendar confirms Paris Fashion Week Menswear Fall/Winter 2027-2028 runs January 19-24, 2027, followed by Haute Couture Spring/Summer 2027 on January 25-28, 2027. Both dates are consistent with the prior two reports' calendar checks and fall immediately after this window (Jan 12-18) closes.",
       "index_note": "Carried-forward calendar fact, restated because this window is the last full week before both events begin. No new schedule change found. Future reports covering Jan 19-28 should replace this entry with actual observed runway/collection signals rather than continuing to restate the calendar.",
       "source_corroboration_count": 1,
-      "signal_id": "paris-menswear-couture-fw27-calendar",
+      "signal_id": "paris-couture-fw27-calendar",
       "confidence_source": "manual",
       "human_editor_note": "Kept at medium rather than low because this is a fixed, officially published federation calendar fact with low volatility risk, not a single unverified claim -- consistent with how docs/EDITORIAL_CALENDAR.md treats known recurring fashion-month windows.",
       "source_domains": [
@@ -88,6 +88,12 @@
   "thin_week_note": "Fewer than 3 distinct, independently verifiable style-discourse signals were found this window. Discourse consists of confirmed pre-show anticipation (Wales Bonner's Hermes debut) and a restated calendar fact, not observed runway content, since Paris menswear and couture both begin after this window closes. No new CFDA resolution surfaced.",
   "review_status": "reviewed",
   "reviewed_by": "loop-consolidation",
-  "revision_history": [],
-  "content_hash": "232428d4384bf5a659c06305de2ca0bd575195c1ffbea7e7a5d5c0c336c1ca3d"
+  "revision_history": [
+    {
+      "previous_content_hash": "232428d4384bf5a659c06305de2ca0bd575195c1ffbea7e7a5d5c0c336c1ca3d",
+      "corrected_at": "2026-07-06",
+      "reason": "Slug quality audit (run 44): renamed over-length signal_id(s) and fixed stale prose references for: wales-bonner-hermes-menswear-debut-2027, paris-menswear-couture-fw27-calendar"
+    }
+  ],
+  "content_hash": "9c6fab3f0664d000a7e6c3957956593e05775994a31986d8eade7a8e4eb7d1e7"
 }
