@@ -677,10 +677,35 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       violate the workflow's own human-judgment principle. Softened the workflow doc's
       "weekly" wording to "opportunistically" to match actual/correct practice.
 
-## Next up (run 33 candidates)
+## Run 33 — done
+- [x] Added `data/reports/2026-12-21.json`, a 26th report — **the CFDA Fashion Awards
+      question crossed the prolonged-silence threshold for the first time**
+      (`is_prolonged_silence()` now returns `True`), confirming the tool works exactly as
+      designed on real, organically-arrived-at data.
+- [x] Doc-sync verification found and fixed real drift: 3 recently-added tool scripts
+      (`check_field_coverage.py`, `check_heading_patterns.py`, `audit_confidence.py`)
+      were missing from README/PROJECT_STRUCTURE.md's listings, and `docs/agent-logs/`
+      had grown to 166+ files while the doc still named only ~15 — replaced with a
+      count+pointer. Also fixed stale "exercised twice" manual-sampling claims (now 3
+      times, opportunistic not scheduled).
+- [x] Source-protection research: no real current risk (no per-article URLs published,
+      no small-outlet pile-on vector) but found `source_links` is TS-only dead typing
+      with no backend dataclass field at all — a different, minor drift class than the
+      "populated but unrendered" bug, flagged for cleanup.
+- [x] **Found and fixed a 4th instance of the "populated but unrendered" bug**:
+      `human_editor_note` (the editorial close-out reasoning) was never shown on the
+      per-signal history page (`/signals/[slug]`), even though it's the whole point of a
+      close-out note. Fixed with real heading semantics.
+- [ ] Editorial calendar research/maintenance pass was still running when this run was
+      consolidated (unusually long WebSearch) — its output will land as its own commit
+      whenever it completes, separate from this run's batch.
+
+## Next up (run 34 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
-- [ ] Continue monitoring both CFDA questions as their tracked histories grow.
-- [ ] Year-end review threshold still not met — re-check after a few more reports land,
-      per the research's recommendation.
+- [ ] `source_links` exists as TS-only dead typing with no backend field — either give it
+      a real backend implementation or remove the unused TS type, per run 33's finding.
+- [ ] Both CFDA questions have now crossed or are approaching the prolonged-silence
+      threshold — consider what "resolution" looks like if neither ever gets confirmed
+      coverage (permanent open status vs. an eventual archival close-out).

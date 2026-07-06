@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-07 ~18:45 PDT — [Loop run 33](changelog-entries/run-33.md)** — CFDA Fashion
+  Awards crosses the prolonged-silence threshold for real, validating the run-29 tool;
+  doc-sync finds and fixes real drift (missing tool scripts, stale sample-count claims);
+  source-protection research finds no real risk but flags dead TS typing; a 4th instance
+  of the populated-but-unrendered bug found and fixed on the signal history page.
+
 - **2026-07-07 ~17:00 PDT — [Loop run 32](changelog-entries/run-32.md)** — 25th report
   avoids conflating two similarly-named award shows; periodic audit closes out 2 more
   overdue dormant signals; year-end review research correctly declines an unsupported
