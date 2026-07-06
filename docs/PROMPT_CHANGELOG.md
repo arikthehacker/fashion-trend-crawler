@@ -158,3 +158,79 @@ gate to `independent_criticism` — it is a curated, named-author sector (per
 and its current exclusion looks like an oversight rather than a deliberate call.
 `street_ugc`/`social`/`resale` remaining excluded from the single-mention gate is
 reasonable and should stay as-is.
+
+## Second bias-audit pass (run 18)
+**2026-07-06** — no code changed; see `docs/agent-logs/bias-audit-run18.md` for the
+coordinator summary. Continues the periodic-review practice TODO.md called for after
+run 16. Scope this time deliberately excludes run 16's angles (source-list skew,
+`HIGH_RELIABILITY_SECTORS` gate consistency) and instead covers: `taxonomy.py`
+vocabulary value-loading, in-practice confidence patterns across the 10 real reports in
+`data/reports/`, and platform balance in the manual-sampling workflow.
+
+**(a) `VOLATILITY_LABELS`/`ORIGIN_CLASSIFICATIONS` vocabulary — no substantive issue
+found.** Neither list ranks its members; `archive_revival` sits alongside
+`designer_originated`, `editorial_amplified`, `retail_adopted`, `social_amplified`,
+`platform_native`, and `unclear` in `ORIGIN_CLASSIFICATIONS` (`taxonomy.py` lines
+63-71) with no ordering or scoring semantics, and nothing in `build_prompt()`
+(`summarize.py`) or `report_schema.py` treats `archive_revival` as lower-legitimacy —
+it isn't referenced in `HIGH_RELIABILITY_SECTORS`, `derive_confidence()`, or any
+prompt instruction at all. Origin classification and confidence are orthogonal fields
+in the schema; an `archive_revival` signal from `institutional` sourcing can reach
+`high`/`archival` confidence exactly like a `designer_originated` one. Conclusion:
+value-loading risk here is more about future authoring habits than the current code —
+worth a one-line callout on `taxonomy/page.tsx` noting origin classification describes
+*how a signal reached visibility*, not how legitimate or original it is, so a future
+editor doesn't start reading the list as a hierarchy. No code change made.
+
+**(b) Sector-level confidence pattern across real reports — real finding.** Aggregated
+`confidence` vs. `source_corroboration_count` vs. `source_sectors` across all 10 files
+in `data/reports/` (not just mismatches against `derive_confidence()`, which
+`audit_confidence.py` already checks per-signal — this pass grouped by sector instead).
+At equal corroboration count, `independent_criticism` signals land at `low` confidence
+far more often than `editorial` or `retail` signals with the same corroboration count:
+at `source_corroboration_count == 2`, `independent_criticism` is `low` in 3 of 4
+occurrences (75%) versus `editorial` `low` in 4 of 10 (40%) and `retail` `low` in 0 of 5
+(0%) at the same corroboration count. This is the same pattern run 16 finding (c)
+identified in the `HIGH_RELIABILITY_SECTORS` code (`independent_criticism` excluded from
+the single-mention medium floor while `editorial`/`designer_origin`/`institutional` are
+included) — but confirmed here as a pattern that actually shows up in the assigned data,
+not just a theoretical gap in the formula. This corroborates, rather than duplicates, run
+16's recommendation: extending the single-mention medium gate (or at minimum the
+two-mention floor) to `independent_criticism` would fix a bias that is visibly present
+in the 10 real reports, not just latent in the code. No code changed this pass per
+instructions — flagging as the top candidate for the next run that does touch
+`report_schema.py`.
+
+**(c) Manual-sampling platform balance — real finding, different shape than expected.**
+Doc §31 and both `docs/manual-sampling-template.md` and
+`docs/manual-sampling-workflow.md` consistently frame the compliant path as
+"TikTok/Pinterest," and `taxonomy.py`'s `DOMAIN_SECTOR_MAP` treats `tiktok.com`,
+`instagram.com`, `youtube.com`, `reddit.com`, and `pinterest.com` as equally-weighted
+members of the `social` sector — no code or vocabulary favors one platform. In
+practice, though, both real exercises of the workflow to date
+(`docs/agent-logs/manual-sample-exercised.md`,
+`docs/agent-logs/manual-sample-exercised-2.md` — "Off-Duty Varsity" and "Poetcore")
+sampled exclusively from Pinterest, specifically from Pinterest's own official
+"trend report" / "Pinterest Predicts" pages, and zero TikTok signals have ever been
+logged. `docs/manual-sampling-workflow.md`'s own research note explains why: TikTok's
+Research API is academic-institution-gated (effectively blocked for this project)
+while Pinterest publishes an easy, citable, public "trend report" page — so the
+*compliance friction*, not editorial judgment, is what has driven 100% of real social
+signals toward one platform. That is a narrower, more concrete bias than "the taxonomy
+favors TikTok/Pinterest over other platforms" (it doesn't — `youtube.com`/`reddit.com`
+are equally under-sampled, just not named in doc §31's framing). The sharper issue: a
+Pinterest "official trend report" page is platform self-promotion / marketing content
+about its own predicted trends, not organic user-generated style discourse, yet it gets
+the same `source_sectors: ["social"]` / `origin_classification: "platform_native"`
+tagging as an organic TikTok post would. `taxonomy.py` has no vocabulary distinction
+between "platform-published marketing/forecast content" and "organic user posts"
+within the `social` sector, so the two real logged signals read, schema-wise, as
+equivalent to grassroots UGC even though both editors' own `human_editor_note` fields
+flag them as closer to promotional/forecast-branding language than organic discourse.
+Recommendation: consider a documentation-level note (not necessarily a new controlled
+vocabulary value, to avoid over-engineering a 2-signal sample) in
+`manual-sampling-template.md` distinguishing "platform-published trend report/press
+content" from "directly observed user posts," and flag in the workflow doc that the
+current 2-for-2 Pinterest-only, official-report-only sample is itself a reflection of
+which platform has the lowest compliance friction, not a signal that Pinterest is where
+the interesting fashion discourse is happening. No code changed this pass.
