@@ -788,14 +788,27 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       fields were shortened, which would have silently broken
       `get_signal_status_history()` lookups. Fixed via `revision_history`.
 
-## Next up (run 38 candidates)
+## Run 38 — done
+- [x] Dedicated slug-reference audit across all prose fields (not just `signal_id`) found
+      17 additional stale long-form slug mentions run 37 missed, across 6 slugs/17 files —
+      fixed via `revision_history`. The grep-for-old-references pass TODO.md flagged is
+      now complete for run 36's rename batch.
+- [x] Added `data/reports/2027-01-25.json`, a 31st report — re-checked the Wales Bonner/
+      Hermès debut for post-show coverage, found none, correctly made no false correction.
+- [x] Added a build-time `console.warn()` in `web/app/glossary/page.tsx` for terms with no
+      curated `DEFINITIONS` entry — verified genuinely reachable (~130 real hits currently,
+      mostly long narrative strings rather than true glossary vocabulary).
+- [x] `docs/EDITORIAL_CALENDAR.md` gains a January menswear + haute couture section,
+      confirmed via WebSearch.
+- [x] `source_domains` extended to `/signals/[slug]` (natural fit, same per-occurrence
+      detail level as the report page); homepage/timeline/search correctly left untouched.
+
+## Next up (run 39 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
-- [ ] After the run-36 slug rename caused a stale-reference regression, consider whether
-      future slug renames need a dedicated grep-for-old-name pass across ALL prose fields
-      (not just `signal_id` values) before being considered complete.
-- [ ] Watch newly-added glossary terms going forward — the "silently dropped if
-      undefined" failure mode is now known; consider whether the glossary page should log
-      a build-time warning for terms with no curated definition, rather than relying on
-      periodic manual checks to catch it.
+- [ ] Run 38's glossary build-warning surfaced ~130 undefined terms that are really long
+      narrative signal strings, not short glossary vocabulary — consider whether glossary
+      extraction should filter by length/form before term-matching.
+- [ ] Consider normalizing/curating a handful of the most-recurring undefined terms now
+      visible in build output, rather than leaving all ~130 as warnings indefinitely.

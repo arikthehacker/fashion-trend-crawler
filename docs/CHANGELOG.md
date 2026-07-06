@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-08 ~01:30 PDT — [Loop run 38](changelog-entries/run-38.md)** — Dedicated
+  slug-reference audit finds 17 more stale prose mentions run 37 missed; 31st report
+  re-checks and correctly does not force a correction; build-time warning added for
+  undefined glossary terms; editorial calendar gains a January menswear/couture window;
+  `source_domains` extended to the per-signal history page.
+
 - **2026-07-08 ~00:15 PDT — [Loop run 37](changelog-entries/run-37.md)** — `source_domains`
   fully wired end-to-end; 30th report catches a false lead; the report-page
   dateModified fix extended to RSS; a new glossary failure mode found (undefined terms
