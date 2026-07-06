@@ -44,6 +44,10 @@ FASHION_SOURCES = [
     "https://www.vogue.mx",
     "https://tribune.com.pk/fashion",
     "https://www.savoirflair.com",
+    # added run 20 -- first genuinely crawlable Southeast Asian source found
+    # after run 19 left the region open (vogue.ph blocked by a Cloudflare JS
+    # challenge); see docs/agent-logs/southeast-asia-source-attempt.md
+    "https://www.dewimagazine.com",
 ]
 
 # default cache output path, pulled out as a named constant so future callers

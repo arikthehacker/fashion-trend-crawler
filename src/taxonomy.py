@@ -113,6 +113,12 @@ DOMAIN_SECTOR_MAP = {
     "tribune.com.pk": "editorial",
     "savoirflair.com": "editorial",
 
+    # added run 20 -- Southeast Asia, home-grown Indonesian fashion/lifestyle
+    # title (Bahasa Indonesia editorial, not a Western edition), the first
+    # genuinely crawlable candidate found for this region; see
+    # docs/agent-logs/southeast-asia-source-attempt.md
+    "dewimagazine.com": "editorial",
+
     # retail / commerce sources
     "whowhatwear.com": "retail",
     "net-a-porter.com": "retail",
