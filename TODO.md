@@ -1255,10 +1255,33 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       non-conservative.
 
 ## Next up (run 59 candidates)
-- [ ] `met-gala-2027-coverage-gap` now has 2 occurrences in its cross-report history
-      (threshold is 4) — watch for it to continue reappearing.
 - [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
       correctness — still awaiting a human decision (run 50).
 - [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
       run 50 remain open.
 - [ ] `gh` CLI/CI-status check next due at run 60.
+
+## Run 59 — done
+- [x] Added `data/reports/2027-06-21.json`, a 52nd report — the Met Gala signal-reuse
+      fix from run 58 verified holding correctly: reused `met-gala-2027-coverage-gap`
+      confirmed present in `top_signals` before finishing, independently re-confirmed
+      by the periodic audit and by `get_signal_status_history()` (now 3 occurrences).
+- [x] Dark mode verified against real built CSS output (survives minification) and all
+      435 inline `style={{}}` uses of `var(--...)` tokens across 15 files — clean.
+- [x] Robots.txt/sitemap indexability re-checked against real spec requirements —
+      clean, unchanged since run 5.
+- [x] Doc-sync check fixed a real gap: README's setup command hardcoded a stale
+      pip-install list missing `brotli`, undocumented since `requirements.txt` was
+      added in run 55. Also added skip-link/dark-mode notes to file maps.
+- [x] Periodic audit — clean. 58 confidence mismatches, only the documented override
+      non-conservative.
+
+## Next up (run 60 candidates)
+- [ ] `met-gala-2027-coverage-gap` now has 3 occurrences in its cross-report history
+      (threshold is 4) — one more recurrence would let `is_prolonged_silence()` fire
+      on it for the first time.
+- [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
+      correctness — still awaiting a human decision (run 50).
+- [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
+      run 50 remain open.
+- [ ] `gh` CLI/CI-status check due THIS run (run 60, every-10th-run cadence from run 53).

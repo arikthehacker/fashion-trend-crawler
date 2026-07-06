@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-09 ~04:15 PDT — [Loop run 59](changelog-entries/run-59.md)** — Run 58's
+  Met Gala signal-reuse bug did not recur, confirmed independently by two agents;
+  dark mode verified against real built CSS and 435 inline style usages; robots.txt/
+  sitemap indexability confirmed clean since run 5; doc-sync fixes a stale
+  `requirements.txt`-less install command and adds missing skip-link/dark-mode notes.
+
 - **2026-07-09 ~03:00 PDT — [Loop run 58](changelog-entries/run-58.md)** — Found two
   real problems with the new Met Gala signal-reuse mechanism run 57 just built: the new
   report claimed to reuse the signal_id but actually minted a different tag, and run
