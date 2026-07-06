@@ -83,6 +83,8 @@ If a headline is in a language other than English, do not silently translate and
 
 If the source material yields only a small number of genuinely distinct, well-supported signals, do not stretch, duplicate, or manufacture additional signals to appear more comprehensive. Instead, set "collection_status" to "thin" and use "thin_week_note" to state plainly that this reporting period had limited signal volume, so the report reflects the actual state of coverage rather than an inflated one. Use "collection_status": "normal" and leave "thin_week_note" empty when signal volume is adequate.
 
+For each signal, populate "source_domains" with the bare homepage domain(s) (the same domain form shown in each headline's [domain | source_sector] tag, e.g. "vogue.com" — never a full article URL or path) of the sources supporting that signal. List each distinct domain once.
+
 Each headline below is tagged as [domain | source_sector]. Valid source sectors are: {", ".join(SOURCE_SECTORS)}.
 Valid confidence levels are: {", ".join(CONFIDENCE_LEVELS)}.
 Valid volatility labels are: {", ".join(VOLATILITY_LABELS)}.
@@ -101,6 +103,7 @@ Return your response as JSON with exactly this structure (no markdown, no backti
       "name": "signal name",
       "type": "garment | silhouette | color | material | styling_behavior | cultural_term",
       "source_sectors": ["editorial", "retail"],
+      "source_domains": ["vogue.com", "whowhatwear.com"],
       "confidence": "low | medium | high | archival",
       "volatility": "stable | emerging | seasonal | volatile | flash | microtrend | recurring | revival | long_tail | saturated | declining",
       "origin_classification": "designer_originated | editorial_amplified | retail_adopted | social_amplified | platform_native | archive_revival | unclear",

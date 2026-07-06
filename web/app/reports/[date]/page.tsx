@@ -263,6 +263,9 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
                   {(signal.source_corroboration_count ?? 1) > 1 && (
                     <span>Corroborated by {signal.source_corroboration_count} sources</span>
                   )}
+                  {signal.source_domains && signal.source_domains.length > 0 && (
+                    <span>Sources: {signal.source_domains.join(", ")}</span>
+                  )}
                 </div>
                 <p style={{
                   fontFamily: "var(--font-franklin)",

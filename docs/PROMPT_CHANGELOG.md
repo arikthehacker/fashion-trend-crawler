@@ -310,3 +310,42 @@ with doc section 2's "uncertainty is allowed and should be stated plainly." Only
 `src/crawler.py`'s headline extraction itself has no English-specific logic (h1/h2/h3
 extraction + a `len(text) > 20` length filter, both script-agnostic), so no crawler
 change was needed. Verified with `python -m py_compile src/*.py`.
+
+### Run 37 — wire up `source_domains` population (schema/data-layer added run 36, left unpopulated)
+
+Run 36 added `Signal.source_domains` (bare homepage domains, schema-enforced against
+full URLs/paths) but deliberately deferred both population and rendering. This run
+closes the population half.
+
+Added to `build_prompt()`, immediately before the existing "Each headline below is
+tagged as [domain | source_sector]" line:
+
+> "For each signal, populate 'source_domains' with the bare homepage domain(s) (the
+> same domain form shown in each headline's [domain | source_sector] tag, e.g.
+> 'vogue.com' — never a full article URL or path) of the sources supporting that
+> signal. List each distinct domain once."
+
+Also added a `"source_domains": ["vogue.com", "whowhatwear.com"]` example line to the
+JSON structure shown in the prompt, next to the existing `source_sectors` example, so
+the model sees the expected shape alongside the sibling field it's modeled on.
+
+Why phrased this way: reuses the exact domain-extraction convention already in the
+prompt (`domain = page["url"].split("/")[2].replace("www.", "")` in `build_prompt()`,
+same string the `[domain | source_sector]` tag is built from) rather than introducing
+a second, competing definition of "domain." Explicitly restates "never a full article
+URL or path" inline as a second line of defense on top of `validate_report()`'s
+schema-level rejection of `/`-containing or `http(s):`-prefixed entries (run 36) —
+belt-and-suspenders, not a substitute for the schema check.
+
+Rendering: `web/app/reports/[date]/page.tsx` now shows `Sources: <domain, domain>` as
+an additional `<span>` in the existing sector/confidence/corroboration metadata row,
+only when `source_domains` is non-empty. No new heading added — this is a one-line
+addition to an existing metadata line, not a new section, so doc-workflow-item-3's
+heading-semantics concern doesn't apply here.
+
+Not done: no backfill of `source_domains` into existing archived reports (only new
+reports generated after this change will have it populated); no archival/link-rot
+follow-up (still tracked separately, run 36/35).
+
+Verified with `python -m py_compile src/*.py` and `cd web && npx tsc --noEmit && npx
+next build`.
