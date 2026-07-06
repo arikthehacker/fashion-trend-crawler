@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-08 ~11:30 PDT — [Loop run 46](changelog-entries/run-46.md)** — 39th report
+  correctly separates retrospective trend-roundup commentary from new in-window
+  reporting; Feb-March RTW fashion month added to the editorial calendar; a CC BY 4.0
+  license added for the new public JSON download; the download route hardened against
+  `next build` vs `npm run build` invocation differences; periodic audit clean.
+
 - **2026-07-08 ~10:15 PDT — [Loop run 45](changelog-entries/run-45.md)** — 38th report
   finds a previously-undocumented Feb-March RTW fashion month underway; a public
   raw-JSON download route closes run 44's flagged Dataset-schema gap; a methodology

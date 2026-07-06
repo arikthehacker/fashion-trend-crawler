@@ -943,7 +943,26 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
-- [ ] Add the Feb-March RTW fashion month found in run 45 to
-      `docs/EDITORIAL_CALENDAR.md` as its own recurring entry.
-- [ ] Any future CI/deploy wiring must call `npm run build`, not a bare `next build`, or
-      the raw-JSON download route will silently be missing from the output.
+
+## Run 46 — done
+- [x] Added `data/reports/2027-03-22.json`, a 39th report — correctly distinguished
+      editorial post-season trend-confirmation roundups (retrospective commentary) from
+      new in-window reporting, rather than conflating the two.
+- [x] Added the Feb-March RTW fashion month to `docs/EDITORIAL_CALENDAR.md` as its own
+      recurring entry, confirmed via real 2026-27 cycle dates.
+- [x] Added a CC BY 4.0 license to the Dataset JSON-LD and a visible license line next
+      to the raw-JSON download link — scoped only to the site's own classification/
+      summary metadata, not underlying source articles.
+- [x] Hardened the raw-JSON download route: moved the copy logic inline into
+      `next.config.ts` (evaluated on every build invocation) so it no longer silently
+      breaks under a bare `next build`. `copy-reports.mjs` and the inline copy now
+      duplicate the same logic — keep both in sync if it ever changes.
+- [x] Periodic audit — clean. 46 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (12th+ consecutive check).
+
+## Next up (run 47 candidates)
+- [ ] The run-19 confidence-gate fix remains untested — revisit once
+      `independent_criticism` sources reappear.
+- [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
+      Note: CI's `lint-web` job doesn't actually run a Next.js build today, so the
+      `next build` vs `npm run build` distinction is currently moot there.
