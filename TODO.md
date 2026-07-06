@@ -445,15 +445,33 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       homepage's new index module and signal cards, plus added proper `<dl>`/`<dt>`/`<dd>`
       semantics to the glossary.
 
-## Next up (run 22 candidates)
+## Run 22 — done
+- [x] Investigated automating the heading-hierarchy check — **honest conclusion: ESLint/
+      jsx-a11y cannot catch it** (it only checks tag semantics, not computed visual
+      styling). Added `eslint-plugin-jsx-a11y` and a `lint-web` CI job anyway (real value
+      for other a11y issues), but the actual mitigation is a documented manual-review
+      step, now added to the skill doc's verification checklist.
+- [x] Added a reciprocal cross-link between `/glossary` and `/taxonomy`.
+- [x] Added `data/reports/2026-10-05.json`, a 15th report — closes out fashion month
+      (PFW week). Resolved 2 continuing signals with fresh evidence, correctly noted that
+      volume should return to the lower runs-19–22 baseline afterward, not read as a
+      regression.
+- [x] Made a real design decision on "THIS WEEK'S INDEX" placement (not just another
+      proposal): it stays homepage-only, since doc §27 frames it as a live "check it now"
+      snapshot, which would misrepresent `/archive`'s "preserved as issued" historical
+      framing if duplicated there. Added a one-line navigational pointer from `/archive`
+      to the homepage instead.
+- [x] Cross-report consistency audit of all 5 fashion-month reports found the sequence
+      held together well overall (signal_id renaming was intentional/documented, no
+      contradictions, consistent voice) but found and fixed one real gap: a signal
+      disappeared from `2026-09-14.json` without the close-out acknowledgment every other
+      retired signal in the sequence got.
+
+## Next up (run 23 candidates)
 - [ ] Southeast Asian source coverage remains open (vogue.ph blocked by Cloudflare JS
       challenge — would need a headless-browser approach, likely out of scope).
-- [ ] Consider whether "THIS WEEK'S INDEX" should also appear on `/archive` or per-report
-      pages, or if homepage-only is the right scope.
-- [ ] The recurring heading-hierarchy bug pattern (now fixed 3 times across different
-      pages/runs) suggests a lint rule or pre-commit check might be worth adding so new
-      pages don't reintroduce it — consider automating this check instead of relying on
-      periodic manual audits.
-- [ ] `/glossary` deliberately excludes "recurring classifications" (volatility/confidence
-      tiers) per doc §24, deferring to `/taxonomy` — but there's no direct cross-link
-      between the two pages. Consider adding one.
+- [ ] Fashion month is now closed out in the archive (15 reports) — watch whether report
+      volume genuinely drops back to the pre-fashion-month baseline as expected, or
+      whether the source list expansions from runs 17-19 keep volume elevated.
+- [ ] The heading-hierarchy checklist item was just added to the skill doc — worth
+      confirming in a future run that it's actually being followed, not just documented.

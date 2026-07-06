@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-07 ~03:10 PDT — [Loop run 22](changelog-entries/run-22.md)** — Investigated
+  automating the heading-hierarchy check (honestly concluded ESLint can't catch it,
+  documented a manual checklist instead); added glossary/taxonomy cross-link; 15th report
+  closes out fashion month; made a real placement decision keeping the index module
+  homepage-only; cross-report audit of all 5 fashion-month reports found and fixed one
+  real gap.
+
 - **2026-07-07 ~01:50 PDT — [Loop run 21](changelog-entries/run-21.md)** — Formalized the
   garment-terminology practice; a third doc re-read found `human_editor_note` was never
   rendered anywhere despite substantive data — fixed; 14th report caught a real
