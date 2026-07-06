@@ -1,0 +1,72 @@
+{
+  "report_date": "2027-04-19",
+  "collection_window": {
+    "start": "2027-04-13",
+    "end": "2027-04-19"
+  },
+  "sources_scanned": 18,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "editorial": 6,
+    "social": 1
+  },
+  "executive_summary": "This collection window (April 13-19, 2027) is the forty-third archived window. FW27-28 women's ready-to-wear and Haute Couture SS27 remain without reachable post-show coverage, unchanged from the prior eleven windows. Two items are logged. First, a genuinely new designer-origin development: Moschino's creative director transition (Loris Messina and Simone Rizzo, the former Sunnei founders, named co-creative directors following Adrian Appiolaza's departure) is well-corroborated across multiple high-reliability editorial outlets and is logged as a new signal, not a status update. Second, 'Glamoratti' (glamoratti-revival, archived 2027-04-05) was checked again: no outlets beyond those already logged in the prior two windows surfaced anything substantively new, so it is not repeated as a top signal this window and is instead noted in limitations as continuing at its prior saturated/medium status with no fresh evidence to report. Per SKILL.md workflow note 10, Wales Bonner/Hermes and the CFDA Fashion Fund/Awards questions were checked briefly and not re-litigated: no coverage beyond what is already archived was found. collection_status is set to 'normal' this window given the genuinely new, independently corroborated Moschino signal, distinguishing it from the prior several 'thin' windows.",
+  "top_signals": [
+    {
+      "name": "Moschino creative director transition: Messina/Rizzo (ex-Sunnei) named co-creative directors",
+      "type": "designer_signal",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "flash",
+      "origin_classification": "designer_originated",
+      "evidence": "Moschino announced June 21, 2026 that Loris Messina and Simone Rizzo -- who co-founded and exited Sunnei in 2024 -- are its new co-creative directors, effective immediately, two days after Adrian Appiolaza's departure. Reported independently by WWD, W Magazine, and FashionUnited (among others), all citing a designer statement that the pair intend to carry forward Franco Moschino's 'cultural house' approach; their debut collection is scheduled for Milan Fashion Week in September 2026.",
+      "index_note": "New signal_id (moschino-messina-rizzo-appointment); checked all existing signal_ids across all 42 prior reports before writing, no collision. Distinct from the already-tracked armani-founder-transition and versace-mulier-debut-unconfirmed executive-change signals -- separate house, separate event.",
+      "source_corroboration_count": 3,
+      "signal_id": "moschino-messina-rizzo-appointment",
+      "confidence_source": "manual",
+      "human_editor_note": "Classified as 'flash' volatility rather than 'emerging' or 'stable': an executive appointment is a discrete, dated event, not a gradually building aesthetic shift, so the volatility label describes how the story broke (a single dense burst of near-simultaneous editorial coverage around the announcement date) rather than a trend gaining momentum over time. Confidence held at 'medium' rather than 'high' because all corroborating sources sit in the same source_sectors bucket (editorial) -- per derive_confidence(), 'high' requires corroboration across at least two distinct sectors, and no designer_origin (Moschino's own site) or institutional confirmation was found in this search pass, only third-party editorial reporting of the designers' quoted statement. Worth watching whether the September 2026 Milan debut produces runway-sector coverage that would change that.",
+      "source_domains": [
+        "wwd.com",
+        "wmagazine.com",
+        "fashionunited.uk"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "Moschino creative director change",
+    "Sunnei founders",
+    "Glamoratti no new coverage",
+    "Haute Couture SS27 coverage gap",
+    "CFDA Fashion Fund untracked"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [],
+  "limitations": [
+    "'Glamoratti' (glamoratti-revival) was checked again this window: no outlets beyond those already logged in the 2027-04-05 and 2027-04-12 reports surfaced anything new, so it is not repeated as a top_signals entry this window to avoid manufacturing a weekly restatement of an unchanged status. Its last recorded status (confidence: medium, volatility: saturated) stands unchanged.",
+    "The Wales Bonner/Hermes debut signal was not re-litigated this window per the 2027-03-08 transition to 'untracked going forward pending new information'; search surfaced only already-known appointment coverage.",
+    "The CFDA Fashion Fund winner and CFDA Fashion Awards questions remain untracked pending new information; no coverage beyond what prior reports already logged (including the 2025-cycle Ashlynn Park distinction noted 2027-04-12) was found this window.",
+    "Haute Couture Spring/Summer 2027 again has no reachable post-show coverage this window -- unchanged from the prior eleven windows, tracked under paris-post-show-coverage-gap.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "fw27-28-fashion-month-closed",
+    "moschino-messina-rizzo-appointment",
+    "glamoratti-revival-no-new-coverage",
+    "wales-bonner-untracked-pending-new-information",
+    "cfda-signals-untracked-pending-new-information",
+    "couture-ss27-coverage-gap-continued",
+    "2027-q2"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "review_status": "reviewed",
+  "reviewed_by": "loop-consolidation",
+  "revision_history": [],
+  "content_hash": "fc06a75407bdf7b27b773bc8ee940f7fd1b813159a09954239df1d42b73c431b"
+}
