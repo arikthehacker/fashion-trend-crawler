@@ -213,6 +213,8 @@ export default function Glossary() {
                 color: "var(--black)",
                 textDecoration: "underline",
                 textUnderlineOffset: "3px",
+                display: "inline-block",
+                padding: "0.65rem 0",
               }}
             >
               {item.label}
