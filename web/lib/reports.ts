@@ -65,17 +65,30 @@ function reportsDir(): string {
   return path.join(process.cwd(), "..", "data", "reports");
 }
 
+// Module-level cache: every helper below calls getAllReports(), and a single
+// page render can call several of those helpers (e.g. the homepage calls
+// getLatestReport() and getThisWeeksIndex(); the archive page calls
+// getAllReports(), getConsecutiveThinWeekCount(), and getThisWeeksIndex()).
+// Without caching, one page load re-reads and re-parses every report file on
+// disk once per helper call. Report files are static build-time input (this
+// is a Next.js static export, not a long-running server watching for writes),
+// so caching for the lifetime of the process is safe.
+let allReportsCache: Report[] | null = null;
+
 /** Returns all reports, newest report_date first. */
 export function getAllReports(): Report[] {
+  if (allReportsCache) return allReportsCache;
+
   const dir = reportsDir();
-  if (!fs.existsSync(dir)) return [];
+  if (!fs.existsSync(dir)) return (allReportsCache = []);
 
   const files = fs.readdirSync(dir).filter((f) => f.endsWith(".json"));
   const reports = files.map((f) =>
     JSON.parse(fs.readFileSync(path.join(dir, f), "utf-8")) as Report
   );
 
-  return reports.sort((a, b) => (a.report_date < b.report_date ? 1 : -1));
+  allReportsCache = reports.sort((a, b) => (a.report_date < b.report_date ? 1 : -1));
+  return allReportsCache;
 }
 
 /** Returns the most recently dated report, or null if the archive is empty. */
