@@ -1,0 +1,99 @@
+{
+  "report_date": "2027-02-22",
+  "collection_window": {
+    "start": "2027-02-16",
+    "end": "2027-02-22"
+  },
+  "sources_scanned": 15,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "editorial": 4,
+    "institutional": 1
+  },
+  "executive_summary": "This collection window (February 16-22, 2027) is the thirty-fifth archived window. Per SKILL.md workflow note 10, the CFDA Fashion Fund and CFDA Fashion Awards questions were checked briefly rather than re-litigated; both remain untracked pending new information. This window's central question -- whether Grace Wales Bonner's Hermes menswear debut now has real dated post-show coverage -- was checked again with fresh searches. It still does not: reachable coverage continues to describe the appointment, subsequent design-team hiring, and expectation framing for a debut collection reported as scheduled for January 2027, not an observed show. This is now the sixth consecutive window this signal has appeared without resolving into observed content -- two windows past is_prolonged_silence()'s default four-window threshold, which first crossed at the 2027-02-08 report. Per the project's convention (SKILL.md note 10 / report_schema.py's is_prolonged_silence() docstring), the 'untracked going forward' language is reserved for roughly three windows past the initial crossing, not two, so this remains an honest judgment call to keep the signal under normal active tracking this window, with the planned revisit at 2027-03-08 (per the prior report's note) still one window away. A parallel check for Haute Couture Spring/Summer 2027 post-show coverage again found only forward-looking trend-forecast content rather than dated garment coverage of specific January 2027 shows, so that signal also remains unresolved.",
+  "top_signals": [
+    {
+      "name": "Wales Bonner's Hermes menswear debut remains pre-show anticipation; sixth consecutive window without dated coverage",
+      "type": "designer_signal",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "Grace Wales Bonner's debut as Hermes menswear creative director, succeeding Veronique Nichanian, has been widely reported as scheduled for January 2027. A dedicated search this window for dated post-show coverage (reviews, garments, silhouettes, critical reaction) again found none. Reachable coverage (Vogue Scandinavia and WWD's reporting on the appointment and a design-team hire, Istituto Marangoni's educational retrospective, Bricks Magazine and Highsnobiety commentary on the appointment's reception, and House of Solo's profile of her path to the house) remains appointment, team-building, and expectation framing, not an observed collection. This keeps the same signal_id as the five prior reports' anticipation-stage entry rather than opening a duplicate.",
+      "index_note": "Continuation of the same signal_id across six consecutive reports (2027-01-18, 2027-01-25, 2027-02-01, 2027-02-08, 2027-02-15, 2027-02-22). is_prolonged_silence()'s default threshold (4) first crossed at 2027-02-08; this window is two windows past that crossing, still short of the ~3-windows-past mark the project's convention (SKILL.md note 10) treats as the point to switch to 'untracked going forward pending new information' language. Judgment call made this window: keep active tracking, flag the recurrence count explicitly, and hold the planned revisit at 2027-03-08 (the point that would be three windows past the crossing) rather than transition early. A future report should replace this entry with the actual debut collection's garment/silhouette content once reachable.",
+      "source_corroboration_count": 6,
+      "signal_id": "wales-bonner-hermes-menswear-debut-2027",
+      "confidence_source": "manual",
+      "human_editor_note": "Held at medium, unchanged across six reports: multiple independent editorial outlets corroborate the appointment/team-building facts, but confidence does not move to high because all corroboration remains within a single source_sector (editorial) and no institutional or designer_origin corroboration of an observed show exists. This is two windows past the point is_prolonged_silence() first returned True for this signal_id. Per SKILL.md note 10, that alone is not sufficient to mark it 'untracked going forward' -- the convention reserves that for roughly three windows past the initial crossing (i.e. around the 2027-03-08 report if still unresolved then). This report makes the deliberate, honest call to hold at normal active tracking for now rather than force an early transition, while explicitly noting the recurrence count so the next agent doesn't have to re-derive it.",
+      "source_domains": [
+        "voguescandinavia.com",
+        "wwd.com",
+        "istitutomarangoni.com",
+        "bricksmagazine.co.uk",
+        "highsnobiety.com"
+      ]
+    },
+    {
+      "name": "Haute Couture Spring/Summer 2027 and Paris menswear FW27-28 remain without reachable post-show coverage",
+      "type": "institutional_policy",
+      "source_sectors": [
+        "institutional"
+      ],
+      "confidence": "medium",
+      "volatility": "seasonal",
+      "origin_classification": "unclear",
+      "evidence": "FHCM's calendar confirms Haute Couture Spring/Summer 2027 ran January 25-28, 2027 in Paris, immediately following Paris menswear FW27-28 (Jan 19-24). Both weeks concluded well before this window's search-assembly point. A dedicated search for post-show garment/runway coverage of either week again found none reachable -- results surfaced forward-looking trend-forecast pieces (silhouette/color forecasting for the SS27 season generally, e.g. Trendalytics and Edelkoort's forecast content) and FHCM's own scheduling/calendar pages rather than dated coverage of the specific January 2027 shows.",
+      "index_note": "Same signal_id as the prior three windows' status checks (2027-02-01, 2027-02-08, 2027-02-15), continued rather than replaced, since the underlying absence-of-coverage finding is unchanged. A future report covering these dates once post-show coverage exists should report garment/silhouette content per-house rather than repeat this absence-of-coverage note.",
+      "source_corroboration_count": 1,
+      "signal_id": "paris-january-2027-weeks-post-show-coverage-gap",
+      "confidence_source": "manual",
+      "human_editor_note": "Kept at medium rather than low because this reflects a fixed, checkable institutional calendar fact (the weeks did run, per FHCM) even though the corroborating absence-of-coverage finding is a single search pass. This is not a claim the shows didn't happen -- it is a claim that dated post-show garment coverage is not reachable via this report's sourcing method as of assembly time, for the fourth consecutive window.",
+      "source_domains": [
+        "fhcm.paris"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "Grace Wales Bonner",
+    "Hermes menswear debut",
+    "Haute Couture Spring/Summer 2027",
+    "Paris menswear FW27-28",
+    "pre-show anticipation",
+    "post-show coverage gap",
+    "prolonged silence threshold",
+    "two windows past crossing"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [
+    "Grace Wales Bonner as first woman of Black heritage to lead design at a major luxury house (Hermes menswear)"
+  ],
+  "limitations": [
+    "items_collected (2) and sources_scanned (15) remain below the fashion-month baseline; this window falls after live Paris menswear FW27-28 and Haute Couture SS27 both concluded, but no dated post-show runway/garment coverage was reachable for either -- this reflects the boundary of reachable, indexed coverage at assembly time, not a claim that the shows did not happen.",
+    "The Wales Bonner/Hermes debut was specifically re-checked for resolution into observed show coverage; it remains pre-show/appointment framing. This is two windows past is_prolonged_silence()'s default 4-window threshold crossing (first crossed 2027-02-08). Per SKILL.md note 10 the 'untracked going forward' language is reserved for ~3 windows past that crossing, not two -- this report holds at active tracking, with the planned revisit at 2027-03-08.",
+    "The CFDA Fashion Fund winner and CFDA Fashion Awards questions were checked briefly this window per SKILL.md workflow note 10 but not re-litigated as top signals; both remain untracked pending new information.",
+    "This report was assembled via targeted web search rather than a live automated crawl timed to the actual show days or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach.",
+    "No speculative or fabricated collection content (looks, silhouettes, materials) was introduced for the Wales Bonner debut or Haute Couture SS27 ahead of verified post-show coverage."
+  ],
+  "archive_tags": [
+    "paris-menswear-fw27-concluded",
+    "couture-ss27-concluded",
+    "wales-bonner-hermes",
+    "post-show-coverage-gap",
+    "prolonged-silence-two-windows-past-crossing",
+    "cfda-signals-untracked-pending-new-information",
+    "thin-week",
+    "2027-q1"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "Fewer than 3 distinct, independently verifiable style-discourse signals were found this window even though it falls after live Paris menswear FW27-28 and Haute Couture SS27 both concluded. A dedicated check for whether the Wales Bonner/Hermes debut had produced dated post-show coverage found none; a parallel check for Haute Couture SS27 post-show coverage found only forward-looking trend-forecast content, not dated garment coverage. No new CFDA resolution surfaced.",
+  "review_status": "reviewed",
+  "reviewed_by": "loop-consolidation",
+  "revision_history": [],
+  "content_hash": "fc439e7824ca37c40f9f9dc60f86d6c62a11fa80ccff537868538c5325b666bb"
+}
