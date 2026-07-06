@@ -2,7 +2,7 @@
 // lists all dated ARI3LLA INDEX reports as a historical record
 
 import Link from "next/link";
-import { getAllReports, getConsecutiveThinWeekCount } from "../../lib/reports";
+import { getAllReports, getConsecutiveThinWeekCount, getThisWeeksIndex } from "../../lib/reports";
 
 export const metadata = {
   title: "Archive — ARI3LLA INDEX",
@@ -12,6 +12,7 @@ export const metadata = {
 export default function Archive() {
   const reports = getAllReports();
   const thinStreak = getConsecutiveThinWeekCount();
+  const thisWeek = getThisWeeksIndex();
 
   return (
     <main style={{
@@ -89,6 +90,28 @@ export default function Archive() {
           </p>
         )}
       </header>
+
+      {/* pointer to the live current-week snapshot, not a duplicate of it —
+          this page is the frozen historical record; THIS WEEK'S INDEX is a
+          live "check it now" module and belongs on the homepage only */}
+      {thisWeek && (
+        <p style={{
+          fontFamily: "var(--font-franklin)",
+          fontSize: "0.8rem",
+          letterSpacing: "0.02em",
+          color: "var(--gray)",
+          textAlign: "center",
+          maxWidth: "560px",
+          padding: "1.5rem 2rem 0",
+        }}>
+          Looking for the current snapshot rather than the historical record?
+          See{" "}
+          <Link href="/" style={{ color: "var(--black)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+            THIS WEEK&apos;S INDEX
+          </Link>{" "}
+          on the homepage.
+        </p>
+      )}
 
       {/* report list */}
       <section
