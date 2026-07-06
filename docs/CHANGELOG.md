@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-07 ~01:50 PDT — [Loop run 21](changelog-entries/run-21.md)** — Formalized the
+  garment-terminology practice; a third doc re-read found `human_editor_note` was never
+  rendered anywhere despite substantive data — fixed; 14th report caught a real
+  sourcing-integrity issue; index module stress-tested clean; accessibility audit found
+  the run-5 heading bug recurring in brand-new pages — fixed again.
+
 - **2026-07-07 ~00:30 PDT — [Loop run 20](changelog-entries/run-20.md)** — Shipped the
   two doc-central gaps run 19 found: "THIS WEEK'S INDEX" (real derived metrics on the
   homepage) and `/glossary` (terms extracted from the actual archive). Also fixed real

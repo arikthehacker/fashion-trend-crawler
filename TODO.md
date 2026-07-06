@@ -425,14 +425,35 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       established discipline of not re-asserting unverified prior signals without fresh
       evidence.
 
-## Next up (run 21 candidates)
-- [ ] Interim garment-terminology practice from the Costume Core research (append-only
-      terms per carried-forward `signal_id` unless a note documents a change) — not yet
-      formally adopted as a stated convention anywhere.
-- [ ] Now that "THIS WEEK'S INDEX" and `/glossary` are both built, do a fresh full-doc
-      re-read style check to see if any other doc-central features were missed alongside
-      these two — worth confirming there isn't a third.
+## Run 21 — done
+- [x] Formalized the garment-terminology practice in `summarize.py`'s prompt: continued
+      signals should keep consistent garment/material terminology unless a change is
+      genuine and explicitly noted.
+- [x] Third full doc re-read: no whole missing pages found this time (a good sign the
+      doc is largely covered), but found a real granular gap — **`human_editor_note` was
+      typed and substantively populated in the data but never rendered anywhere on the
+      site**, despite being the most concrete evidence of the human-in-the-loop review
+      process the project's transparency claims describe. **Fixed** — added to the
+      `TopSignal` type and rendered per-signal on report pages.
+- [x] Added `data/reports/2026-09-28.json`, a 14th report (MFW week) — caught a genuine
+      sourcing-integrity issue (conflicting MFW dates across sources) and logged it as its
+      own signal rather than silently picking one.
+- [x] Stress-tested "THIS WEEK'S INDEX" against thin-week data — held up with graceful
+      fallbacks on every field, no bug found.
+- [x] Accessibility audit of the two new-in-run-20 surfaces found the exact run-5 heading-
+      hierarchy bug pattern recurring (styled `<p>` acting as headings) — fixed on the
+      homepage's new index module and signal cards, plus added proper `<dl>`/`<dt>`/`<dd>`
+      semantics to the glossary.
+
+## Next up (run 22 candidates)
 - [ ] Southeast Asian source coverage remains open (vogue.ph blocked by Cloudflare JS
       challenge — would need a headless-browser approach, likely out of scope).
 - [ ] Consider whether "THIS WEEK'S INDEX" should also appear on `/archive` or per-report
       pages, or if homepage-only is the right scope.
+- [ ] The recurring heading-hierarchy bug pattern (now fixed 3 times across different
+      pages/runs) suggests a lint rule or pre-commit check might be worth adding so new
+      pages don't reintroduce it — consider automating this check instead of relying on
+      periodic manual audits.
+- [ ] `/glossary` deliberately excludes "recurring classifications" (volatility/confidence
+      tiers) per doc §24, deferring to `/taxonomy` — but there's no direct cross-link
+      between the two pages. Consider adding one.
