@@ -18,6 +18,14 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-10 ~06:50 PDT — [Loop run 81](changelog-entries/run-81.md)** — 74th
+  report continues a synthesis-signal discipline; the signal-reuse checker's
+  5-item false-positive baseline eliminated via a conservative, recall-
+  preserving fix (independently verified with a standalone recall test);
+  taxonomy/sources pages get two real staleness fixes (missing recent
+  sources, missing Origin Classification dimension); nav/build clean;
+  periodic audit confirms the API-key fix holds.
+
 - **2026-07-10 ~05:40 PDT — [Loop run 80](changelog-entries/run-80.md)** — 73rd
   report keeps a thread honestly un-padded and a new one correctly un-merged;
   gh/CI check hits its official run-80 checkpoint (9th consecutive match,

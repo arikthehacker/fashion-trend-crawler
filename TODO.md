@@ -1623,7 +1623,25 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       single combined invocation works correctly — independently reproduced
       by the coordinator.
 
-## Next up (run 81 candidates)
+## Run 81 — done
+- [x] Added `data/reports/2027-11-29.json`, a 74th report — a synthesis signal
+      held at "low" for zero new primary sourcing, same discipline as the
+      Bogotá thread's earlier precedent.
+- [x] Eliminated the signal-reuse checker's 5-item false-positive baseline with
+      a conservative, literal-phrase exclusion — independently verified by the
+      coordinator via a standalone recall test (a simulated genuine bug is
+      still correctly caught).
+- [x] Fixed two real staleness gaps: Sources page was missing 13 currently-
+      crawled outlets (including all three recent additions); Taxonomy page
+      was missing the entire Origin Classification dimension.
+- [x] Nav/build regression sweep clean. Periodic audit confirmed the run-80
+      API-key fix holds on first re-use (single-invocation method correctly
+      returns `True`).
+
+## Next up (run 82 candidates)
+- [ ] The signal-reuse checker's known false-positive baseline is now 0
+      (previously 5) — treat any new warning as worth reading carefully, the
+      safety net is now more sensitive with less known noise to filter.
 - [ ] Manual-sampling cadence next due ~run 87.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven
