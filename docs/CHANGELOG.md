@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-09 ~01:30 PDT — [Loop run 57](changelog-entries/run-57.md)** — 50th report;
+  Met Gala 2027 finally given a real tracked signal (with an honest caveat about what
+  it does and doesn't fix); a second, independently-found dormancy gap closed in the
+  same file; skip-link and heading-hierarchy checks both verified clean against real
+  built output; a stuck build traced to leftover server processes from a prior agent's
+  verification step, cleared and rebuilt.
+
 - **2026-07-09 ~00:15 PDT — [Loop run 56](changelog-entries/run-56.md)** — 49th report's
   drafted Met Gala reasoning contradicted the archive's own established finding about
   the event's date; caught and corrected before committing. Two domains classified,

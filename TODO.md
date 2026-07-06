@@ -1217,10 +1217,28 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       non-conservative. Found Met Gala 2027 has no real tracked `signal_id` (prose-only),
       so dormancy tooling structurally can't see it.
 
-## Next up (run 57 candidates)
-- [ ] Consider giving Met Gala 2027 a real tracked `signal_id` so
-      `is_prolonged_silence()`/dormancy tooling can actually see it — same fix pattern
-      as CFDA Fashion Awards (run 30).
+## Run 57 — done (50th report reached)
+- [x] Added `data/reports/2027-06-07.json`, a 50th report — two real corroborated
+      signals, both held at "medium" confidence with documented reasoning. Met Gala
+      2027 checked a 6th time, framed consistently with run 56's correction.
+- [x] Gave Met Gala 2027 a real tracked `signal_id` (`met-gala-2027-coverage-gap`),
+      matching the CFDA Fashion Awards precedent (run 30). Honest caveat documented:
+      this makes the signal trackable going forward, not retroactively detectable —
+      `is_prolonged_silence()` needs it to reappear in future reports before it can
+      actually fire.
+- [x] Fixed a second, independently-found dormancy gap in the same file:
+      `paris-post-show-coverage-gap` had silently vanished from reports 12 windows
+      past its threshold with no close-out note — closed out properly.
+- [x] Skip-link and document-level heading-hierarchy checks both verified clean
+      against real built HTML/CSS output (117 pages, 0 failures) and real JSX
+      inspection (16 route files) respectively.
+- [x] **Consolidation catch**: build failed twice with `EBUSY` on `web/out`, traced to
+      4 leftover `npx serve out` processes left running by a subagent's unfinished
+      live-server check — terminated and rebuilt cleanly.
+
+## Next up (run 58 candidates)
+- [ ] `met-gala-2027-coverage-gap` has only 1 report's worth of history — watch for it
+      to reappear in future reports so `is_prolonged_silence()` can actually detect it.
 - [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
       correctness — still awaiting a human decision (run 50).
 - [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
