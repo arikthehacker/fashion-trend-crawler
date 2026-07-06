@@ -33,6 +33,11 @@ wrong for this project, full stop — rewrite it in report/wire-service voice.
 ## Architecture / file map
 
 ```
+requirements.txt      # Python deps (run 55) for crawler.py/summarize.py/server.py/
+                       # manual_sample.py: requests, beautifulsoup4, anthropic, brotli
+                       # (brotli needed for hosts serving Brotli-compressed responses —
+                       # see agent-logs/dieworkwear-crawl-verification-run55.md); `mcp`
+                       # (for server.py) is installed separately, not listed here
 src/
   crawler.py         # BFS crawler, robots.txt-respecting, extracts headlines — UNCHANGED core logic
   taxonomy.py         # source sector / confidence / volatility / origin-classification vocab + classify_source(url); domain coverage expanded run 12 for 4 previously-thin sectors (designer_origin, visual_archive, independent_criticism, institutional)
@@ -71,7 +76,8 @@ web/                   # Next.js app
     about/page.tsx        # doc sections 37/38
     glossary/page.tsx     # ~29 terms from aesthetic_terms/cultural_references/top_signals[].name across all reports, deduped, wire-service definitions (shipped run 20)
     case-study/page.tsx   # doc section 33, portfolio framing
-    layout.tsx           # site-wide <title>/description metadata — keep in sync with rebrand, this has gone stale before
+    layout.tsx           # site-wide <title>/description metadata — keep in sync with rebrand, this has gone stale before; also renders a site-wide skip-to-content link (`<a href="#main-content">`, `#main-content` on <main>) verified across all 117 generated pages, agent-logs/skip-link-verification-run57.md
+    globals.css          # includes a `prefers-color-scheme: dark` block for automatic dark-mode styling (OS-preference-driven, no manual toggle)
     sitemap.ts, robots.ts  # added run 5
     icon.tsx              # route-segment metadata file (run 53) — Next auto-generates the
       favicon via ImageResponse, no binary asset; needs `dynamic = "force-static"` for

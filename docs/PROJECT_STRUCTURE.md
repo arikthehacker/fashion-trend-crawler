@@ -16,6 +16,13 @@ fashion-trend-crawler/
 ├── TODO.md                     existing — working task list
 ├── .env                        existing — local secrets, gitignored
 ├── .codex/config.toml          existing — codex CLI config
+├── requirements.txt             existing (added run 55) — Python deps for
+│                               src/crawler.py|summarize.py|server.py|manual_sample.py
+│                               (requests, beautifulsoup4, anthropic, brotli — brotli
+│                               needed for hosts serving Brotli-compressed responses,
+│                               see agent-logs/dieworkwear-crawl-verification-run55.md);
+│                               `mcp` (for server.py) is still installed separately, not
+│                               in this file
 ├── .claude/
 │   ├── settings.local.json     existing
 │   ├── scheduled_tasks.lock    existing
@@ -105,8 +112,12 @@ fashion-trend-crawler/
     │                              a heading — see workflow convention #3 in the skill doc
     ├── app/
     │   ├── page.tsx              existing — homepage (hero/tagline/footer, section 2/25 voice)
-    │   ├── layout.tsx            existing — site-wide title/description metadata
-    │   ├── globals.css           existing
+    │   ├── layout.tsx            existing — site-wide title/description metadata; also
+    │   │                          renders a skip-to-content link (`#main-content` on
+    │   │                          <main>), verified across all 117 generated pages
+    │   │                          (agent-logs/skip-link-verification-run57.md)
+    │   ├── globals.css           existing — includes `prefers-color-scheme: dark` rules
+    │   │                          for automatic OS-driven dark mode (no manual toggle)
     │   ├── favicon.ico           existing — static fallback; icon.tsx (below) is what Next
     │   │                          actually auto-serves as the favicon route
     │   ├── icon.tsx               existing (run 53) — route-segment metadata file, Next

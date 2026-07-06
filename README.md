@@ -207,8 +207,10 @@ of "must-haves."
 repo root (they call `python crawler.py`/`python summarize.py` with no `src/` prefix).
 
 ```bash
-# install dependencies
-pip install requests beautifulsoup4 mcp anthropic
+# install dependencies (requirements.txt covers crawler/summarize/server/manual_sample;
+# includes brotli, required for hosts that serve Brotli-compressed responses — see
+# docs/agent-logs/dieworkwear-crawl-verification-run55.md)
+pip install -r requirements.txt mcp
 
 cd src
 
@@ -318,6 +320,8 @@ scraper into something closer to a research index.
 
 ```
 fashion-trend-crawler/
+  requirements.txt             # Python deps for the crawler/summarize/server pipeline
+                                #   (requests, beautifulsoup4, anthropic, brotli)
   src/
     crawler.py                # core crawler — bfs, robots.txt, headline extraction
     server.py                  # mcp server, five tools (crawl/cache/search/list/get)
