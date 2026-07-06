@@ -75,6 +75,14 @@ const sections: { title: string; body: string[] }[] = [
     ],
   },
   {
+    title: "How Low-Volatility Windows Are Reported",
+    body: [
+      "Some collection windows return a `collection_status` of \"thin,\" meaning fewer signals met the recurrence and source-diversity thresholds than in a typical reporting period.",
+      "A thin status is not treated as a gap to be filled. Where possible it is checked against raw source volume for that window; when source volume was itself low, the reduced signal count reflects observed style discourse rather than a collection failure.",
+      "Reports do not manufacture signals to normalize a thin window to a target count. A verified low-volatility period is recorded as a data point in the archive, the same as any other classification.",
+    ],
+  },
+  {
     title: "Corrections",
     body: [
       "When a signal classification or a stated fact is found to be wrong, the affected report is not silently edited. A dated correction note is appended to the report, stating what was wrong and what changed.",
