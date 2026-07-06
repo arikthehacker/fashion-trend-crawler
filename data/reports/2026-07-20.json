@@ -125,7 +125,7 @@
       "origin_classification": "platform_native",
       "evidence": "First logged July 13, 2026 from a single Pinterest trend report, this signal was flagged as possibly event-driven search behavior tied to the 2026 FIFA World Cup (June 11-July 19). This collection window covers the tournament's final days; editorial coverage this period (Who What Wear's 'How to Style a Soccer Jersey for the World Cup,' The Zoe Report's jersey-styling piece) still frames jersey styling explicitly around the tournament window rather than as a standalone wardrobe habit, and one industry piece (mondoexpat.com, on World Cup memorabilia) notes rising interest specifically in vintage/archive jerseys and merchandising tied to the event itself, not a general jersey-as-daily-top claim.",
       "index_note": "Volatility reclassified from 'flash' to 'declining' this window: with the tournament ending July 19 (inside this collection window) and no editorial or retail framing found that separates jersey styling from the World Cup occasion itself, the event-driven-noise reading from the prior report looks more likely than a durable aesthetic shift. Confidence held at low pending a post-tournament check.",
-      "human_editor_note": "This is the follow-up review flagged in the July 13 report. A human editor should do one more check in the next collection window (post-tournament, no active World Cup news cycle) to see whether jersey-as-daily-top coverage or search interest persists or drops off; a drop-off would confirm this was tournament-driven search noise rather than a fashion trend, consistent with the original caution against upgrading confidence on the strength of large percentage figures with an unknown base.",
+      "human_editor_note": "This is the follow-up review flagged in the July 13 report. A human editor should do one more check in the next collection window (post-tournament, no active World Cup news cycle) to see whether jersey-as-daily-top coverage or search interest persists or drops off; a drop-off would confirm this was tournament-driven search noise rather than a fashion trend, consistent with the original caution against upgrading confidence on the strength of large percentage figures with an unknown base. EDITORIAL CLOSE-OUT (2026-08-10): this signal is considered resolved/closed as of this review. It was explicitly World-Cup-driven, the tournament ended July 19, 2026, and it has produced no fresh corroborating evidence across three subsequent collection windows (2026-07-27, 2026-08-03, 2026-08-10) -- see get_signal_status_history('off-duty-varsity', ...) for the full trend. No further re-checks are needed; future reports should not re-flag this signal_id absent genuinely new evidence.",
       "source_corroboration_count": 1,
       "signal_id": "off-duty-varsity"
     },
@@ -209,12 +209,17 @@
     "off-duty-varsity-followup",
     "2026-q3"
   ],
-  "content_hash": "7df04941152aaa8cd5e66761286ed33553217e8813d79fb7cfb4b9eaff1b08f4",
+  "content_hash": "0132f3cc90147dc7385692acbdcd30481f891ab5a79acbce07dc7035325971bb",
   "revision_history": [
     {
       "previous_content_hash": "87e7782686feee93cd46c303462b83b4b7270ead8ba895f3e27d23fe8e53eaae",
       "corrected_at": "2026-07-06",
       "reason": "Added second manually-sampled social signal (poetcore, Pinterest Predicts 2026) per manual-sampling workflow repeatability check"
+    },
+    {
+      "previous_content_hash": "7df04941152aaa8cd5e66761286ed33553217e8813d79fb7cfb4b9eaff1b08f4",
+      "corrected_at": "2026-08-10",
+      "reason": "Editorial close-out of off-duty-varsity signal: World-Cup-driven signal quiet across 3 subsequent windows (07-27, 08-03, 08-10) per get_signal_status_history; marking resolved so future reports stop re-flagging it."
     }
   ]
 }
