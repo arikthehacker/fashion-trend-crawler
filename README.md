@@ -195,28 +195,42 @@ of "must-haves."
 
 ### How to run it
 
+`run.sh` and the pipeline scripts assume you're running from inside `src/`, not the
+repo root (they call `python crawler.py`/`python summarize.py` with no `src/` prefix).
+
 ```bash
 # install dependencies
 pip install requests beautifulsoup4 mcp anthropic
 
-# run the full pipeline
+cd src
+
+# run the full pipeline: crawl -> classify -> summarize -> save a dated report
 bash run.sh
 
 # or run pieces individually
-python src/crawler.py          # just the crawler
-python test_tools.py           # just the tests
-python src/server.py           # just the mcp server
+python crawler.py          # just the crawler, writes trends_raw.json
+python summarize.py        # classify + summarize + save (requires ANTHROPIC_API_KEY)
+python test_tools.py       # just the tests
+python server.py           # just the mcp server
+```
+
+**Re-running `summarize.py` against a date that already has an archived report**
+(e.g. correcting today's report after already running it once) requires an explicit
+correction reason — it will not silently overwrite:
+
+```bash
+python summarize.py --revision-reason "why this changed" --corrected-at "2026-07-07"
 ```
 
 ### default sources currently in use
 
-- vogue.com/fashion
-- whowhatwear.com
-- hypebeast.com/fashion
+See `src/crawler.py`'s `FASHION_SOURCES` list for the current, up-to-date set (it has
+grown well past the original 3 — check the file directly rather than a list here, since
+it changes as source-diversity work continues).
 
-You can point it anywhere though:
+You can point the crawler at different sources for a one-off run:
 ```bash
-python src/crawler.py https://www.elle.com https://www.harpersbazaar.com
+python crawler.py https://www.elle.com https://www.harpersbazaar.com
 ```
 
 ## Ethical AI Statement
