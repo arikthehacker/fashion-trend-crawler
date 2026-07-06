@@ -1,0 +1,198 @@
+{
+  "report_date": "2026-07-20",
+  "collection_window": {
+    "start": "2026-07-14",
+    "end": "2026-07-20"
+  },
+  "sources_scanned": 16,
+  "items_collected": 30,
+  "source_sector_breakdown": {
+    "editorial": 11,
+    "retail": 6,
+    "social": 6,
+    "designer_origin": 3,
+    "independent_criticism": 2,
+    "institutional": 2
+  },
+  "executive_summary": "This report identifies recurring style signals across 30 collected items from 16 public web sources dated between July 14 and July 20, 2026. The period's most concrete, verifiable item is a corporate one: Chanel's acquisition of heritage Parisian shirtmaker Charvet, announced July 2 and still generating trade-press follow-up coverage through this window, tying directly to Matthieu Blazy's use of Charvet-made shirting in Chanel's October 2025 runway debut. On the aesthetic side, a saturated purple color signal and an uneven/handkerchief-hem silhouette both show cross-sector presence (editorial and retail) consistent with a genuine seasonal push rather than a single-outlet story. Two signals first logged in the July 13 report continue into this window: layered-tops styling remains social-sector-dominant, and the 'Off-Duty Varsity' jersey-outfit signal is now checked against the close of the 2026 FIFA World Cup (June 11-July 19), which fell inside this collection window -- an important test of whether that signal was durable style or event-driven search noise. Oversized eyewear and utility-detailed belts round out this period's accessory coverage.",
+  "top_signals": [
+    {
+      "name": "Chanel acquires Charvet (heritage shirtmaker consolidation)",
+      "type": "market_behavior",
+      "source_sectors": [
+        "designer_origin",
+        "editorial",
+        "institutional"
+      ],
+      "confidence": "high",
+      "volatility": "stable",
+      "origin_classification": "designer_originated",
+      "evidence": "Chanel announced on July 2, 2026 that it had acquired Charvet, the Place Vendome shirtmaker operating since 1838, with continued trade coverage through this window from Business of Fashion ('Why Chanel Is Acquiring Charvet'), WWD ('Chanel Acquires Historic French Shirtmaker Charvet'), and Bloomberg ('Chanel Buys Charvet, Maker of $750 Shirts Favored by Churchill', July 2, 2026). Coverage ties the deal to creative director Matthieu Blazy's use of Charvet-made shirting, including a chain-hemmed white shirt retailing above $4,000, in Chanel's October 2025 debut collection.",
+      "index_note": "High confidence reflects independent corroboration across trade press (BoF, WWD, Bloomberg) plus the underlying corporate filing itself; classified stable rather than emerging because this is a completed acquisition, not a speculative or cyclical style claim.",
+      "human_editor_note": "Low review burden on the fact of the acquisition itself, which is well-documented and multiply sourced. What needs human judgment is the downstream styling claim -- whether Charvet-made shirting becomes a recurring editorial reference point beyond this one collection, or stays a single-season 'it' item tied to Blazy's debut. Recommend holding that follow-on question for a future window rather than asserting it now.",
+      "source_corroboration_count": 4,
+      "signal_id": "chanel-charvet-acquisition"
+    },
+    {
+      "name": "Saturated purple as a dominant summer color",
+      "type": "color",
+      "source_sectors": [
+        "editorial",
+        "retail"
+      ],
+      "confidence": "medium",
+      "volatility": "seasonal",
+      "origin_classification": "editorial_amplified",
+      "evidence": "Multiple Who What Wear pieces (including 'Not Blue, Not Red: This Is the Unexpected Color It Girls Are Gravitating to This Summer' and '8 Summer 2026 Color Trends Dominating Among the Fashion Set') and The Everygirl's 'Purple Color Trend' coverage describe a deep, saturated purple (distinct from the softer lavender/violet of prior seasons) appearing across Prada, Celine, and Khaite summer 2026 collections, with 'color drenching' (single-hue head-to-toe dressing) named as the dominant styling method.",
+      "index_note": "Medium confidence reflects consistent naming and cross-sector presence (multiple editorial outlets plus designer-collection references) but no retail-sales or search-volume data collected this period to confirm consumer adoption beyond editorial framing.",
+      "human_editor_note": "Requires human review: several outlets used near-identical framing ('unexpected,' 'regal') which may indicate shared PR messaging rather than independently observed discourse. A human editor should check whether this differs materially from prior 'jewel tone' seasonal color pushes before treating it as a distinct signal in the archive.",
+      "source_corroboration_count": 2,
+      "signal_id": "purple-color-drenching"
+    },
+    {
+      "name": "Uneven and handkerchief-hem silhouettes",
+      "type": "silhouette",
+      "source_sectors": [
+        "editorial",
+        "retail"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "editorial_amplified",
+      "evidence": "Grazia USA ('These Are the 5 Summer 2026 Trends...') and other style-editor roundups describe handkerchief-hem skirts and godet-style uneven hemlines as a summer 2026 staple, framed as moving 'from runway novelty to everyday wardrobe staple' after several prior seasons of designer experimentation with asymmetric hems.",
+      "index_note": "Classified emerging rather than seasonal because this crawl window is the first to log the specific 'handkerchief hem' terminology at this frequency; prior reports referenced other silhouette shifts (soft tailoring) but not asymmetric hemlines.",
+      "human_editor_note": "Flagged for review: one cited claim (a specific percentage reduction in perceived hip width attributed to 'London College of Fashion research') could not be traced to a primary study during this collection pass and reads as possibly fabricated or misattributed editorial copy. Do not repeat that statistic in published copy without a human editor locating the underlying research.",
+      "source_corroboration_count": 2,
+      "signal_id": "handkerchief-hem-revival"
+    },
+    {
+      "name": "Oversized 'bug-eye' sunglasses",
+      "type": "aesthetic_term",
+      "source_sectors": [
+        "editorial",
+        "retail"
+      ],
+      "confidence": "medium",
+      "volatility": "seasonal",
+      "origin_classification": "designer_originated",
+      "evidence": "WWD ('Oversized, Bug-eye Sunglasses Are Trending for 2026') and multiple Who What Wear pieces trace oversized rounded and rectangular sunglass frames to spring 2026 runway styling, naming Celine's exaggerated round frames specifically, with a cited Global Eyewear Report 2025 figure of 12% year-over-year sunglasses market growth (18% in the 'fashion luxury' segment).",
+      "index_note": "Designer-originated per direct runway attribution (Celine), with editorial and retail pickup; seasonal volatility assigned since oversized eyewear has recurred across several recent seasons rather than appearing newly this window.",
+      "human_editor_note": "Standard review: the market-growth figures come from a third-party industry report cited secondhand through editorial copy, not the primary Global Eyewear Report itself. A human editor should pull the primary report before citing the 12%/18% figures in published material.",
+      "source_corroboration_count": 2,
+      "signal_id": "oversized-sunglasses-trend"
+    },
+    {
+      "name": "Utility-detailed belts",
+      "type": "aesthetic_term",
+      "source_sectors": [
+        "editorial",
+        "retail"
+      ],
+      "confidence": "low",
+      "volatility": "microtrend",
+      "origin_classification": "retail_adopted",
+      "evidence": "Who What Wear's 'Most-Wanted Accessories Trends For 2026' and related coverage describe belts with added utility features (clips, keychains, phone holders, AirPod cases) alongside high-impact buckle styles referencing Celine and Dior, framed as a 2026 accessory rebrand.",
+      "index_note": "Low confidence and microtrend volatility assigned given narrow sourcing (a single outlet's accessories roundup format) and no designer-origin or social corroboration collected this period.",
+      "human_editor_note": "Requires human judgment: this reads close to product-marketing copy for specific accessory launches rather than observed discourse, and should be weighed against the project's rule that editorial is not a neutral authority. Hold for corroboration before upgrading confidence.",
+      "source_corroboration_count": 1,
+      "signal_id": "utility-belt-accessorizing"
+    },
+    {
+      "name": "Layered tops styling (social, continuing)",
+      "type": "styling_behavior",
+      "source_sectors": [
+        "social",
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "volatile",
+      "origin_classification": "social_amplified",
+      "evidence": "This signal was first logged in the July 13, 2026 report as social-only. This window, Who What Wear's TikTok trend roundup ('The 7 Biggest TikTok Fashion Trends of 2026') continues to describe multi-layered-top styling (creator content building on the 1990s sitcom/Rachel Green reference) as ongoing into July, now also naming a 'more-is-more maximalism' framing, but still without designer-origin or retail-catalog corroboration collected this period.",
+      "index_note": "Confidence remains low and volatility remains volatile per project convention for social-dominant signals; light editorial pickup this window is not treated as independent corroboration since it restates the same creator-content framing rather than adding a new sector's material.",
+      "human_editor_note": "Continuing hold per the July 13 note: this is now in its second consecutive logged window without non-social/non-restating corroboration. Recommend a human editor decide next window whether persistence alone justifies an upgrade, or whether this stays capped at low/volatile indefinitely absent retail or designer-origin sightings.",
+      "source_corroboration_count": 1,
+      "signal_id": "layered-tops-styling"
+    },
+    {
+      "name": "\"Off-Duty Varsity\" jersey styling, checked at World Cup close",
+      "type": "styling_behavior",
+      "source_sectors": [
+        "social",
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "declining",
+      "origin_classification": "platform_native",
+      "evidence": "First logged July 13, 2026 from a single Pinterest trend report, this signal was flagged as possibly event-driven search behavior tied to the 2026 FIFA World Cup (June 11-July 19). This collection window covers the tournament's final days; editorial coverage this period (Who What Wear's 'How to Style a Soccer Jersey for the World Cup,' The Zoe Report's jersey-styling piece) still frames jersey styling explicitly around the tournament window rather than as a standalone wardrobe habit, and one industry piece (mondoexpat.com, on World Cup memorabilia) notes rising interest specifically in vintage/archive jerseys and merchandising tied to the event itself, not a general jersey-as-daily-top claim.",
+      "index_note": "Volatility reclassified from 'flash' to 'declining' this window: with the tournament ending July 19 (inside this collection window) and no editorial or retail framing found that separates jersey styling from the World Cup occasion itself, the event-driven-noise reading from the prior report looks more likely than a durable aesthetic shift. Confidence held at low pending a post-tournament check.",
+      "human_editor_note": "This is the follow-up review flagged in the July 13 report. A human editor should do one more check in the next collection window (post-tournament, no active World Cup news cycle) to see whether jersey-as-daily-top coverage or search interest persists or drops off; a drop-off would confirm this was tournament-driven search noise rather than a fashion trend, consistent with the original caution against upgrading confidence on the strength of large percentage figures with an unknown base.",
+      "source_corroboration_count": 1,
+      "signal_id": "off-duty-varsity"
+    }
+  ],
+  "repeated_keywords": [
+    "Charvet",
+    "shirtmaker",
+    "purple",
+    "color drenching",
+    "handkerchief hem",
+    "uneven hemline",
+    "bug-eye sunglasses",
+    "oversized sunglasses",
+    "utility belt",
+    "layered tops",
+    "jersey styling",
+    "World Cup"
+  ],
+  "garments": [
+    "shirt",
+    "handkerchief-hem skirt",
+    "godet skirt",
+    "belt",
+    "soccer jersey",
+    "layered top"
+  ],
+  "silhouettes": [
+    "asymmetric hem",
+    "godet skirt",
+    "relaxed suiting"
+  ],
+  "materials": [
+    "cotton shirting",
+    "linen",
+    "acetate (eyewear)",
+    "leather (belts)"
+  ],
+  "colors": [
+    "deep purple",
+    "orchid",
+    "plum",
+    "lavender"
+  ],
+  "aesthetic_terms": [
+    "color drenching",
+    "bug-eye sunglasses",
+    "utility belt",
+    "off-duty varsity"
+  ],
+  "cultural_references": [
+    "Charvet / Place Vendome heritage tailoring",
+    "1990s sitcom style",
+    "2026 FIFA World Cup"
+  ],
+  "limitations": [
+    "This collection window was assembled via targeted web search rather than a live automated crawl; source material reflects search-result summaries in most cases, not always primary documents (e.g. the Global Eyewear Report figures and a London College of Fashion statistic cited secondhand through editorial copy could not be verified against a primary source during this pass).",
+    "Two signals (layered-tops styling, Off-Duty Varsity jersey styling) are carried over from the July 13, 2026 report for recurrence tracking rather than freshly discovered this window; their evidence should be read as a continuation check, not a new finding.",
+    "Social-sector sampling relied on descriptions of platform discourse found through search rather than direct platform API access or approved dataset sampling, consistent with prior reports' compliant manual-sampling approach.",
+    "Sample size (30 items across 16 sources) remains small relative to the full scope of public style discourse and should not be read as statistically representative."
+  ],
+  "archive_tags": [
+    "chanel-charvet-acquisition",
+    "purple-color-trend",
+    "handkerchief-hem-revival",
+    "oversized-sunglasses",
+    "off-duty-varsity-followup",
+    "2026-q3"
+  ],
+  "content_hash": "87e7782686feee93cd46c303462b83b4b7270ead8ba895f3e27d23fe8e53eaae"
+}
