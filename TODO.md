@@ -238,14 +238,45 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       lack of fresh corroboration (sheer-layering, soft-tailoring), consistent with
       `derive_confidence()`.
 
-## Next up (run 12 candidates)
-- [ ] **Needs a decision:** retire `web/lib/trends.ts` and rebuild the homepage off
-      `reports.ts` (per the run-11 proposal), then delete the 4 legacy JSON files to
-      finally close out the migration. This is the last real blocker on a 5-run-old plan.
-- [ ] Build the search/discoverability feature (Pagefind + facet filtering) as its own
-      dedicated run, per `docs/agent-logs/search-discoverability-design.md`.
-- [ ] Continue tracking signal dormancy — `off-duty-varsity` has now been flagged quiet
-      twice (2026-07-27, 2026-08-03) without being formally marked "declining"/retired in
-      its own record; consider what "retiring" a signal_id should look like in the schema.
-- [ ] Keep the nav-consistency check in mind for any future new page — it drifted silently
-      across at least 3 runs before this audit caught it.
+## Run 12 — done
+- [x] Built `/search` with client-side facet filtering (source sector, confidence,
+      volatility) over a flattened `getSearchIndex()` in `reports.ts`. Full-text search
+      (Pagefind) deliberately deferred as a heavier follow-up, not needed for the current
+      corpus size.
+- [x] Signal dormancy: after checking `taxonomy.py`'s existing `declining` volatility
+      label, decided a parallel `signal_status` field would be redundant. Built
+      `get_signal_status_history(signal_id, all_reports)` instead — a helper that surfaces
+      a signal's actual volatility/confidence trend across reports, which is what an editor
+      actually needs to judge dormancy, rather than a static label that would itself go
+      stale.
+- [x] Expanded `taxonomy.py`'s domain coverage for 4 previously-thin sectors
+      (designer_origin, visual_archive, independent_criticism, institutional).
+- [x] Added `data/reports/2026-08-10.json`, a 7th report — Copenhagen Fashion Week SS27
+      fell in-window but no dated post-show coverage was retrievable; logged one signal at
+      deliberately low confidence rather than treating a pre-show forecast as confirmed.
+      Did NOT repeat the sheer-layering/soft-tailoring dormancy check a third consecutive
+      time (would have been padding) — noted in limitations instead.
+- [x] **12-run health check** (`docs/agent-logs/health-check-run12.md`) — a genuinely
+      useful outside-the-loop look: found `off-duty-varsity`'s dormancy flag has now gone
+      3 reports without a resolution mechanism (real, if minor, neglect); confirmed
+      `web/lib/trends.ts` is correctly "blocked on you" rather than neglected; found three
+      consecutive thin/near-thin reports read differently to a reader than three isolated
+      ones and recommended surfacing that pattern explicitly rather than each report
+      restating "quiet period" fresh. **This run's report agent independently addressed
+      the cadence concern** by giving 2026-08-10 a distinct, honestly-argued thin-status
+      reason instead of repeating prior boilerplate.
+
+## Next up (run 13 candidates, from the health check)
+- [ ] **Still pending your sign-off:** retire `web/lib/trends.ts`, rebuild the homepage off
+      `reports.ts` (proposal in `docs/agent-logs/trends-ts-fate-proposal.md`, run 11).
+      2 runs old now — flagging again since it's genuinely blocked, not forgotten.
+- [ ] Resolve `off-duty-varsity`'s dormancy — 3 reports have now flagged it quiet without
+      a resolution. `get_signal_status_history()` now exists to check its actual trend;
+      use it to make a final call (declining vs. genuinely ended) rather than flagging a
+      4th time.
+- [ ] Consider whether to explicitly surface "N consecutive thin/low-signal weeks" as its
+      own noted pattern on the site (e.g. in the archive or methodology page) rather than
+      leaving each thin report to read as an isolated event — per the health check's
+      reader-experience observation.
+- [ ] Consider prioritizing qualitative fixes (the above) over mechanically adding an 8th
+      report every run, per the health check's explicit recommendation.
