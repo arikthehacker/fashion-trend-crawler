@@ -13,8 +13,10 @@ than raw automated pulls.
 
 ## The workflow
 
-1. **Observe.** Periodically (weekly, alongside the regular crawl/report cycle) a human
-   notices a recurring hashtag, trend name, or aesthetic pattern on TikTok, Pinterest, or
+1. **Observe.** Opportunistically, not on a fixed schedule (per doc §31 this is a
+   compliant substitute for scraping used "when needed," not a weekly quota — see
+   `docs/agent-logs/manual-sampling-cadence-check-run32.md`), a human notices a recurring
+   hashtag, trend name, or aesthetic pattern on TikTok, Pinterest, or
    another social platform, using only publicly visible pages — no login-walled scraping,
    no automated pulls.
 2. **Log it.** For each observed signal, fill out one block of
