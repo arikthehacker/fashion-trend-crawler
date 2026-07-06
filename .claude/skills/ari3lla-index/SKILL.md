@@ -39,8 +39,10 @@ src/
   report_schema.py    # Report/Signal/CollectionWindow dataclasses, validate_report(), save/load/list by date
   summarize.py        # calls Claude to produce a report; prompt MUST follow doc section 21's objective tone
   server.py           # MCP tools: crawl_fashion_trends, get_cached_trends, search_trends, list_reports, get_report
-  run.sh               # KNOWN STALE — runs crawler->test_tools->server, never calls summarize.py. Needs a follow-up pass.
-  test_tools.py       # tests the OLD raw-cache pipeline, unrelated to report_schema — leave alone unless doing the run.sh follow-up
+  run.sh               # runs the full pipeline: crawler.py -> summarize.py (classify+summarize+save dated report). Fixed in run 1 — no longer stale.
+  test_tools.py       # tests the OLD raw-cache pipeline, unrelated to report_schema — leave alone unless migrating it
+  manual_sample.py    # helper for the manual TikTok/Pinterest sampling workflow; enforces non-empty human_editor_note
+  validate_all_reports.py  # CI check — runs validate_report() against every file in data/reports/, see .github/workflows/validate-reports.yml
 data/
   reports/<YYYY-MM-DD>.json   # one archived report per collection window, schema in report_schema.py
 web/                   # Next.js app
@@ -48,12 +50,15 @@ web/                   # Next.js app
     page.tsx            # homepage — hero/tagline/footer must match section 2 voice + section 25 copy
     archive/page.tsx     # lists all dated reports
     reports/[date]/page.tsx  # renders one report, module order per doc section 20/36
+    timeline/page.tsx     # reverse-chronological index across all reports (built run 3)
+    signals/[slug]/page.tsx  # longitudinal view per signal_id, tracks recurrence across reports (shipped run 4)
     methodology/page.tsx  # doc section 22
     taxonomy/page.tsx     # doc sections 11/14/15/16
     sources/page.tsx      # doc section 11's outlet lists
     about/page.tsx        # doc sections 37/38
     case-study/page.tsx   # doc section 33, portfolio framing
     layout.tsx           # site-wide <title>/description metadata — keep in sync with rebrand, this has gone stale before
+    sitemap.ts, robots.ts  # added run 5
   lib/
     trends.ts           # ORIGINAL data layer for the live/current-crawl view — don't repurpose for archive reads
     reports.ts           # archive data layer, reads data/reports/*.json — separate from trends.ts on purpose
@@ -62,6 +67,8 @@ docs/
   CHANGELOG.md           # master reconciled log of what changed and why, chronological, PDT/PST timestamps
   PROJECT_STRUCTURE.md   # intended end-state tree with per-entry notes
   agent-logs/*.md        # per-agent working logs from the overnight build — provenance detail, not the master log
+.github/
+  workflows/validate-reports.yml  # CI: runs validate_all_reports.py on push/PR (added run 4)
 ```
 
 ## Workflow conventions for this project
@@ -88,14 +95,15 @@ docs/
    sampling — never aggressive/ToS-violating scraping (doc section 31). If asked to add
    social scraping, push back and ask about the compliant path first.
 
-## Common next steps (see `docs/CHANGELOG.md` "Known gaps" for the current list)
+## Common next steps
 
-- Wire `summarize.py` into `run.sh` so the full pipeline (crawl → classify → summarize →
-  save dated report) runs as one command instead of two disconnected halves.
-- Run a real crawl + summarize pass to replace the hand-authored example reports in
-  `data/reports/` with a genuine first archived report.
-- Once the new pipeline is confirmed working end-to-end, remove the four legacy
-  `trends_raw.json`/`trends_summary.json` files (root + `src/`).
-- Consider a `/signals/[slug]` longitudinal page and `/timeline` once there are enough
-  dated reports to make recurrence tracking meaningful (doc section 24 "optional later
-  pages").
+See `TODO.md` at repo root for the current authoritative, per-run list (updated every loop
+run) — don't duplicate it here. As of run 6, the highest-priority open items are:
+
+- Still no report from an actual live crawl — all dated reports so far are hand-authored or
+  WebSearch-researched, not produced by `run.sh` end-to-end.
+- No corrections/transparency policy on-site (methodology/about pages have no mention of
+  corrections, editorial independence, or AI-involvement disclosure).
+- Legacy `trends_raw.json`/`trends_summary.json` migration is a real, sequenced plan
+  (`docs/agent-logs/legacy-migration-plan.md`) — execute one step at a time, not in one pass;
+  these files are still load-bearing until the migration completes.
