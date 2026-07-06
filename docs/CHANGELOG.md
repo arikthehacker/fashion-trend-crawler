@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-07 ~09:50 PDT — [Loop run 27](changelog-entries/run-27.md)** — Closed out
+  layered-tops-styling's 13-window dormancy; 20th report correctly avoids conflating a
+  similarly-named UK award with the still-open CFDA question; added non-English source
+  translation-transparency to the prompt; archive-milestone research correctly declined
+  an unnecessary feature; signal-link integrity fully verified clean.
+
 - **2026-07-07 ~08:30 PDT — [Loop run 26](changelog-entries/run-26.md)** — Resolved
   review_status/reviewed_by (rendered, real data); 19th report; periodic audit flags
   layered-tops-styling as 13-windows dormant; genuine Southeast Asian source progress

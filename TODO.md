@@ -552,13 +552,34 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       report pages (the actual reader entry point). **Fixed**: added a "Corrections & AI
       use" link to report page footers.
 
-## Next up (run 27 candidates)
-- [ ] **`layered-tops-styling` needs a dormancy decision** — 13 silent windows is well
-      past the close-out threshold used for every other dormant signal; make the call
-      next run using `get_signal_status_history()`.
+## Run 27 — done
+- [x] Closed out `layered-tops-styling` after 13 silent windows — same EDITORIAL
+      CLOSE-OUT pattern as prior dormant signals, via `revision_history`.
+- [x] Added `data/reports/2026-11-09.json`, a 20th report. CFDA/Vogue Fashion Fund
+      winner remains open (3 windows now); correctly distinguished a similarly-named UK
+      award result (Bianca Saunders, BFC/Vogue Designer Fashion Fund) from the CFDA
+      question rather than conflating them.
+- [x] Assessed non-English source handling — `crawler.py`'s extraction is already
+      script-agnostic, but `summarize.py`'s prompt said nothing about non-English content
+      now that `dewimagazine.com` (Bahasa Indonesia) is live. **Fixed**: added an
+      instruction requiring Claude to flag non-English source material and note that any
+      description is a translation, not a direct quote.
+- [x] Archive-milestone research correctly declined to build a 20-report/6-month
+      milestone feature — the real newsletter-industry threshold is ~100 issues or a
+      year, and self-congratulatory framing would clash with the site's no-hype voice
+      rules anyway. Confirmed `/about`/`/methodology` have no stale report-count claims
+      (a distinct area from the run-24 README/PROJECT_STRUCTURE fix).
+- [x] Signal-link integrity verification — all 37 signal_ids across 19 reports (pre-run)
+      have matching static routes, and recurring signals show full history, not just the
+      latest occurrence. Clean, nothing to fix.
+
+## Next up (run 28 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
-- [ ] Consider whether `dewimagazine.com`'s Bahasa Indonesia content needs any
-      translation/handling consideration in `summarize.py`'s prompt, since it's the
-      first non-English source in the crawler's list.
+- [ ] CFDA Fashion Awards (expected early November per 2025 precedent) still has no
+      confirmed 2026 date or coverage as of the 2026-11-09 report — worth another check
+      next run.
+- [ ] Consider whether other non-Western/non-English sources should get the same
+      translation-transparency treatment just added for `dewimagazine.com`, as source
+      diversity continues to expand.
