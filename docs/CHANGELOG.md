@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-08 ~05:15 PDT — [Loop run 41](changelog-entries/run-41.md)** — 34th report
+  carefully judges the Wales Bonner prolonged-silence question rather than forcing a
+  state transition; `thenationalnews.com` removed after a real decision (client-side
+  rendered, no fix worth the complexity); byline-level AI disclosure added per
+  Trusting News/AP research; manual-sampling check returns an honest negative;
+  periodic audit clean.
+
 - **2026-07-08 ~04:00 PDT — [Loop run 40](changelog-entries/run-40.md)** — 33rd report
   crosses the prolonged-silence threshold for the Wales Bonner/Hermès debut for the
   first time; glossary build warnings curated down to zero; a real crawl-path test finds

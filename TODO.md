@@ -838,16 +838,30 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [x] Full-archive coherence review — clean. No orphaned signal_ids, docs still accurate,
       voice spot-check clean.
 
-## Next up (run 41 candidates)
+## Run 41 — done
+- [x] Added `data/reports/2027-02-15.json`, a 34th report — Wales Bonner/Hermès debut now
+      5 consecutive windows unresolved; correctly kept under active tracking rather than
+      forcing an early transition to "untracked going forward," with a flagged revisit
+      date (2027-03-08) for the next agent.
+- [x] Resolved the `thenationalnews.com` question directly: removed from
+      `FASHION_SOURCES`/`DOMAIN_SECTOR_MAP` since its content is client-side rendered and
+      the project deliberately keeps `crawler.py` static-HTML-only. Historical report
+      data referencing the domain left untouched.
+- [x] Added byline-level AI disclosure to report pages, per Trusting News/AP/BBC
+      disclosure research — surfaces AI-assisted/human-reviewed status right in the
+      header, not just on the general `/methodology` policy page.
+- [x] Manual-sampling check — honest negative result, no current social signal cleared
+      the independent-corroboration bar. Correctly declined to force a low-quality entry.
+- [x] Periodic audit — clean. 44 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (8th consecutive check), no neglected
+      dormant signals found.
+
+## Next up (run 42 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
-- [ ] Decide whether to drop `thenationalnews.com` from `FASHION_SOURCES` (yields 0
-      headlines via the real static-HTML crawl path since its content is client-side
-      rendered) or extend the crawler to handle JS-rendered sources.
-- [ ] Watch the Wales Bonner/Hermès debut signal — now past the prolonged-silence
-      threshold; consider transitioning to "untracked going forward" if a 5th window
-      also comes up empty.
+- [ ] Watch the Wales Bonner/Hermès debut signal — revisit around 2027-03-08 for whether
+      it should transition to "untracked going forward."
 - [ ] Consider periodic Wayback "Save Page Now" snapshotting of the site's own
       `/reports/[date]` pages as a smaller future self-archival improvement (distinct
       from per-article source citations, which are deliberately not permalinked).
