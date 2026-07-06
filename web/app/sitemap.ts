@@ -18,6 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/case-study",
     "/timeline",
+    "/glossary",
+    "/search",
   ].map((route) => ({
     url: `${SITE_URL}${route}`,
     changeFrequency: route === "" || route === "/archive" || route === "/timeline"
