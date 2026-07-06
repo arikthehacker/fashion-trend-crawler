@@ -186,7 +186,13 @@ export default function Glossary() {
           Definitions for style and aesthetic terms that have recurred across the archive.
           This page defines the terms themselves; the Taxonomy page defines the
           classification system used to sort them. Entries are drawn only from terms that
-          have appeared in an archived report.
+          have appeared in an archived report. This glossary does not cover source sectors
+          or confidence/volatility labels (e.g. flash, microtrend, revival) — for that
+          vocabulary, see{" "}
+          <Link href="/taxonomy" style={{ color: "var(--black)", textDecoration: "underline" }}>
+            Taxonomy
+          </Link>
+          .
         </p>
 
         <dl style={{ display: "flex", flexDirection: "column", margin: 0 }}>

@@ -174,8 +174,12 @@ export default function Taxonomy() {
           }}
         >
           Signals are classified along four dimensions: signal type, source sector, volatility, and
-          confidence. Definitions below are applied consistently across reports. For definitions of
-          the aesthetic terms themselves, see the Glossary.
+          confidence. Definitions below are applied consistently across reports. This page does not
+          define style or aesthetic terminology (e.g. quiet luxury, Y2K nostalgia) — for that, see{" "}
+          <Link href="/glossary" style={{ color: "var(--black)", textDecoration: "underline" }}>
+            Glossary
+          </Link>
+          .
         </p>
 
         <div style={{ marginBottom: "3.5rem" }}>
