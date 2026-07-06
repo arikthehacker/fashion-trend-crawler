@@ -7,10 +7,11 @@
 // docs/agent-logs/trends-ts-fate-proposal.md and docs/agent-logs/homepage-rewrite.md.
 
 import Link from "next/link";
-import { getLatestReport } from "../lib/reports";
+import { getLatestReport, getThisWeeksIndex } from "../lib/reports";
 
 export default function Home() {
   const latest = getLatestReport();
+  const index = getThisWeeksIndex();
 
   return (
     <main style={{
@@ -113,6 +114,87 @@ export default function Home() {
         </nav>
 
       </header>
+
+      {/* this week's index — condensed metrics module, doc section 27/28 */}
+      {index && (
+        <section
+          aria-label="This week's index"
+          style={{
+            width: "100%",
+            maxWidth: "800px",
+            padding: "2.5rem 2rem",
+            borderBottom: "1px solid var(--border)",
+          }}
+        >
+          <p style={{
+            fontFamily: "var(--font-franklin)",
+            fontSize: "0.7rem",
+            letterSpacing: "0.15em",
+            textTransform: "uppercase",
+            color: "var(--black)",
+            marginBottom: "1.25rem",
+            textAlign: "center",
+          }}>
+            This Week&rsquo;s Index — {index.reportDate}
+          </p>
+
+          <dl style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: "1.25rem 2rem",
+            margin: 0,
+          }}>
+            {[
+              { label: "Sources scanned", value: String(index.sourcesScanned) },
+              { label: "Items collected", value: String(index.itemsCollected) },
+              { label: "Top signal", value: index.topSignal ?? "None logged this window" },
+              {
+                label: "Rising term (new since last report)",
+                value: index.risingTerm ?? "No new term this window",
+              },
+              {
+                label: "Recurring material",
+                value: index.recurringMaterial ?? "No material recurring across recent reports",
+              },
+              {
+                label: "Dominant mood",
+                value: index.dominantMood
+                  ? index.dominantMoodSourceDate
+                    ? `${index.dominantMood} (carried from ${index.dominantMoodSourceDate}; none logged this window)`
+                    : index.dominantMood
+                  : "None logged this window",
+              },
+              {
+                label: "Highest-volatility sector",
+                value: index.highestVolatilitySector ?? "No sector showing elevated volatility this window",
+              },
+              { label: "Overall confidence", value: index.overallConfidence ?? "Not enough signals to score" },
+            ].map((row) => (
+              <div key={row.label}>
+                <dt style={{
+                  fontFamily: "var(--font-franklin)",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: "var(--gray)",
+                  marginBottom: "0.35rem",
+                }}>
+                  {row.label}
+                </dt>
+                <dd style={{
+                  fontFamily: "var(--font-franklin)",
+                  fontSize: "0.9rem",
+                  lineHeight: "1.5",
+                  color: "var(--black)",
+                  margin: 0,
+                }}>
+                  {row.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      )}
 
       {/* latest report teaser */}
       {latest && (
