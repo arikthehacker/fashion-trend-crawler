@@ -346,8 +346,17 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
         <section aria-label="Observed signals" style={sectionStyle}>
           <h2 style={labelStyle}>Observed Signals</h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-            {report.top_signals.map((signal, i) => (
-              <div key={i} style={{ borderTop: "1px solid var(--border)", paddingTop: "1.5rem" }}>
+            {report.top_signals.map((signal, i) => {
+              // per-signal deep-link anchor (run 63) — a signal's own permanent home is
+              // /signals/[slug], but a reader citing "this report's third finding" had no
+              // way to link to that finding's position within THIS dated report, only to
+              // the whole page. Anchor ids give that a real target; scroll-margin-top in
+              // globals.css keeps the anchored signal clear of the sticky-free layout.
+              // See docs/agent-logs/journalism-standards-check-run63.md
+              const anchorId = `signal-${signal.signal_id || i}`;
+              return (
+              <div key={i} id={anchorId} style={{ borderTop: "1px solid var(--border)", paddingTop: "1.5rem" }}>
+                <div style={{ display: "flex", alignItems: "baseline", gap: "0.6rem", flexWrap: "wrap" }}>
                 {signal.signal_id ? (
                   <Link
                     href={`/signals/${signal.signal_id}`}
@@ -372,6 +381,20 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
                     {i + 1}. {signal.name}
                   </h3>
                 )}
+                <a
+                  href={`#${anchorId}`}
+                  aria-label={`Permalink to signal: ${signal.name}`}
+                  style={{
+                    fontFamily: "var(--font-franklin)",
+                    fontSize: "0.85rem",
+                    color: "var(--gray)",
+                    textDecoration: "none",
+                    marginBottom: "0.75rem",
+                  }}
+                >
+                  #
+                </a>
+                </div>
                 <div style={{
                   display: "flex",
                   flexWrap: "wrap",
@@ -431,7 +454,8 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
                   </p>
                 )}
               </div>
-            ))}
+              );
+            })}
           </div>
         </section>
       )}

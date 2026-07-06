@@ -61,6 +61,14 @@ h1, h2, h3 {
   font-family: var(--font-reenie);
 }
 
+/* Per-signal anchor targets on report pages (run 63) — gives the "how do I
+   cite one signal within this dated report, not just the whole page" gap a
+   real answer (id="signal-<signal_id>"). scroll-margin-top just keeps the
+   anchored element from landing flush against the viewport top. */
+[id^="signal-"] {
+  scroll-margin-top: 1.5rem;
+}
+
 /* Print stylesheet — report pages are meant to be citable/archivable, and a
    researcher printing or "Save as PDF"-ing a report page for a citation
    should get the report text itself, not the site's interactive chrome.
