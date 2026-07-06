@@ -565,6 +565,17 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
         {report.content_hash ? ` (checksum ${report.content_hash.slice(0, 12)})` : ""}
       </p>
 
+      {/* formatted citation string, for readers who want a copy-pasteable reference */}
+      <p style={{
+        fontFamily: "monospace",
+        fontSize: "0.65rem",
+        color: "var(--gray)",
+        padding: "0 2rem 2rem",
+        textAlign: "center",
+      }}>
+        {SITE_NAME}. ({report.report_date}). Weekly style signal report. Retrieved from {SITE_URL}/reports/{report.report_date}
+      </p>
+
     </main>
   );
 }
