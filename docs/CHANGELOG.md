@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-07 ~20:15 PDT — [Loop run 34](changelog-entries/run-34.md)** — 27th report;
+  editorial calendar addition retried successfully after last run's stall; `source_links`
+  removed with real reasoning; a genuinely new honest "untracked going forward" state
+  designed for factual questions that never resolve; homepage index-module concern
+  verified as a non-issue.
+
 - **2026-07-07 ~18:45 PDT — [Loop run 33](changelog-entries/run-33.md)** — CFDA Fashion
   Awards crosses the prolonged-silence threshold for real, validating the run-29 tool;
   doc-sync finds and fixes real drift (missing tool scripts, stale sample-count claims);

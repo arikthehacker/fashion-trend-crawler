@@ -700,12 +700,36 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       consolidated (unusually long WebSearch) — its output will land as its own commit
       whenever it completes, separate from this run's batch.
 
-## Next up (run 34 candidates)
+## Run 34 — done
+- [x] Added `data/reports/2026-12-28.json`, a 27th report — CFDA Fashion Fund winner now
+      10 windows open, Fashion Awards now 5. Checked for genuine year-end "best of 2026"
+      content and correctly found none in-window (only evergreen or wrong-year material).
+- [x] Editorial calendar updated with Met Gala (first Monday in May, confirmed 2026
+      edition date) — this time tightly scoped after last run's version stalled for 600s
+      and timed out; the retry succeeded quickly.
+- [x] **Resolved `source_links`**: removed entirely rather than implementing. Genuinely
+      traced to the original concept doc (not pure drift), but the site's shipped design
+      already deliberately diverged from that brainstorm (no per-article URLs anywhere),
+      and reviving it would reopen the exact small-outlet pile-on risk run 33 flagged as
+      dormant, without ever designing the recommended mitigation. Cleaned the one stray
+      data key via `revision_history`, not hand-editing.
+- [x] **Designed a third honest state for permanently-unresolved factual questions** —
+      distinct from both "actively tracked" and "resolved/closed": after several windows
+      past the prolonged-silence threshold, a report may mark a signal_id "untracked
+      going forward pending new information" in prose, without fabricating an answer or
+      misusing the dormant-signal close-out pattern (which implies resolution, not
+      absence of an answer). Documented as workflow convention #10, no schema change.
+- [x] Verified the homepage index module's thin-streak concern was not actually a bug —
+      the report content itself already self-discloses carry-forward status (incrementing
+      window counts, threshold-crossing notes), so the module reads as an evolving status
+      line, not stale data.
+
+## Next up (run 35 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
-- [ ] `source_links` exists as TS-only dead typing with no backend field — either give it
-      a real backend implementation or remove the unused TS type, per run 33's finding.
-- [ ] Both CFDA questions have now crossed or are approaching the prolonged-silence
-      threshold — consider what "resolution" looks like if neither ever gets confirmed
-      coverage (permanent open status vs. an eventual archival close-out).
+- [ ] Watch for either CFDA question to actually need the new "untracked going forward"
+      treatment once enough further windows pass with no resolution.
+- [ ] Note for future dispatches: keep single-topic research/maintenance tasks tightly
+      scoped (2-3 searches, one concrete addition) after this run's stall — broad
+      "do a full pass" framings risk open-ended agent runtime.
