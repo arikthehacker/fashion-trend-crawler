@@ -5,7 +5,9 @@ mapping the doc's `app/` onto this repo's `web/app/`. Some paths already existed
 the reorg work; others were built by parallel agents. Status noted per entry. Last synced
 against the actual file tree on 2026-07-06 (run 23 doc-sync pass updated the report
 count/date range, added `/glossary`, and confirmed the `lint-web` CI job / jsx-a11y
-lint config below without re-walking the whole tree).
+lint config below without re-walking the whole tree). Run 24: removed the specific
+report count/date-range claims below (they had already gone stale twice, runs 18 and
+23) — see `data/reports/` or the live `/archive` page for the current count instead.
 
 ```
 fashion-trend-crawler/
@@ -20,22 +22,16 @@ fashion-trend-crawler/
 │   └── skills/ari3lla-index/SKILL.md   existing — working skill / project context doc
 ├── data/
 │   └── reports/                existing — dated JSON trend reports (schema-driven);
-│       │                       15 reports as of run 23 (2026-05-07 through 2026-10-05)
+│       │                       see `ls data/reports/` or the live `/archive` page for
+│       │                       the current count/date range (deliberately not
+│       │                       enumerated here — this list went stale twice, runs
+│       │                       18 and 23, see docs/agent-logs/report-count-destaling-run24.md)
 │       ├── 2026-05-07.json     existing — first report under new schema
-│       ├── 2026-07-06.json     existing — dated report
 │       ├── 2026-07-13.json     existing — dated report (see agent-logs/real-report-2026-07-13.md)
-│       ├── 2026-07-20.json     existing — dated report
 │       ├── 2026-07-27.json     existing — dated report (thin/low-volatility stretch begins)
-│       ├── 2026-08-03.json     existing — dated report
-│       ├── 2026-08-10.json     existing — dated report
-│       ├── 2026-08-17.json     existing — dated report
 │       ├── 2026-08-24.json     existing — dated report (thin/low-volatility stretch ends)
-│       ├── 2026-08-31.json     existing — dated report
 │       ├── 2026-09-07.json     existing — dated report (fashion month window begins)
-│       ├── 2026-09-14.json     existing — dated report
-│       ├── 2026-09-21.json     existing — dated report
-│       ├── 2026-09-28.json     existing — dated report
-│       └── 2026-10-05.json     existing — dated report
+│       └── ...                 existing — additional dated reports (see note above)
 ├── docs/
 │   ├── ARI3LLA INDEX.txt       existing — the reorg/spec doc driving this work, read-only
 │   ├── CHANGELOG.md            existing — master reconciled log

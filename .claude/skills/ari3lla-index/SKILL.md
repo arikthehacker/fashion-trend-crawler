@@ -119,6 +119,16 @@ docs/
    the original agents' logged specs. Caught only because the coordinator diffed actual
    working-tree state against each agent's described changes before committing.
 
+8. **Avoid hardcoded counts/date-ranges in docs that will go stale.** README/
+   PROJECT_STRUCTURE's report-count and dated-file-list claims went stale twice
+   (doc-sync runs 18 and 23) because they're manually maintained numbers that drift
+   every time a new report is added. Run 24 replaced them with pointers to the live
+   `/archive` page or `data/reports/` instead of a specific number/list. When editing
+   docs going forward, prefer phrasing that doesn't need updating (point at the live
+   source of truth) over a hardcoded count/date-range; if a specific number is
+   genuinely useful, tag it with "(count as of <date>, verify against
+   data/reports/ for current total)" so it reads as a snapshot, not a guarantee.
+
 ## Institutional knowledge worth knowing before you start
 
 **Fashion-week calendar context (run 16 research,

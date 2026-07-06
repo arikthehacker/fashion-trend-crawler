@@ -268,7 +268,10 @@ about limitations.
 - signal classification depends on human/editorial review, which does not
   yet run on a fixed cadence
 - historical continuity claims are limited until the archive accumulates
-  more than a few reporting periods (15 dated reports as of this writing)
+  more than a few reporting periods — see the live archive at
+  [ari3lla.com/archive](https://ari3lla.com/archive) or `data/reports/` for
+  the current count rather than a number stated here (this has gone stale
+  twice already; see `docs/agent-logs/doc-sync-run18.md` and `-run23.md`)
 - confidence can be derived deterministically (`derive_confidence()`) but
   is not yet auto-applied — it currently runs as a non-blocking warning
   in CI, flagging mismatches for human review rather than overwriting them
@@ -303,10 +306,10 @@ fashion-trend-crawler/
     manual_sample.py           # compliant manual social-signal sampling helper
     validate_all_reports.py    # CI check against every file in data/reports/
   data/
-    reports/                   # dated JSON reports (15 as of this writing:
-                                #   2026-05-07, -07-06, -07-13, -07-20, -07-27,
-                                #   -08-03, -08-10, -08-17, -08-24, -08-31,
-                                #   -09-07, -09-14, -09-21, -09-28, -10-05)
+    reports/                   # dated JSON reports — see /archive on the
+                                #   live site or `ls data/reports/` for the
+                                #   current count/date range (deliberately
+                                #   not enumerated here, see run 24 log)
   web/                          # next.js editorial site
     app/
       page.tsx                  # homepage — reads off reports.ts (trends.ts retired);
