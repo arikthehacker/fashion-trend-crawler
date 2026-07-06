@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-09 ~18:00 PDT — [Loop run 70](changelog-entries/run-70.md)** — `gh`/CI
+  check re-confirmed unchanged, cadence extended to run 80; two new domains
+  classified (`fhcm.paris`, `laforma.club`); 63rd report continues the honest
+  absence-of-evidence discipline established last run, this time for NYFW SS28's
+  still-unannounced schedule; nav/build regression and periodic audit both clean.
+
 - **2026-07-09 ~16:45 PDT — [Loop run 69](changelog-entries/run-69.md)** — 62nd report
   carefully distinguishes scheduling logistics from a real style signal; a
   colors/aesthetic_terms vocabulary audit comes back genuinely clean (unlike run 67's

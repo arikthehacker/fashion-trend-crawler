@@ -1446,10 +1446,24 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       valid per the workflow's own rules) and reset the cadence clock.
 - [x] Nav/build regression sweep and periodic audit both clean.
 
-## Next up (run 70 candidates)
-- [ ] `gh` CLI/CI-status check due THIS run (run 70, every-10th-run cadence from run 53).
-- [ ] Add `fhcm.paris` to `taxonomy.py`'s `DOMAIN_SECTOR_MAP` as `institutional` —
-      flagged by run 69's report agent.
+## Run 70 — done
+- [x] `gh` CLI/CI-status check re-confirmed unchanged from run 60 — `gh` CLI still
+      absent, repo still 404s on the public API. Cadence extended to next check at
+      run 80.
+- [x] Added `fhcm.paris` (`institutional`) and `laforma.club` (`editorial`) to
+      `taxonomy.py`'s `DOMAIN_SECTOR_MAP`, verified via WebSearch. Confirmed
+      forward-only precedent: `data/reports/2027-09-06.json`'s existing `unclear`
+      classification for these domains was deliberately NOT retroactively updated.
+- [x] Added `data/reports/2027-09-13.json`, a 63rd report — NYFW SS28's schedule
+      still unannounced a week after Paris confirmed its own, confidence
+      deliberately held "low" as an absence-of-evidence claim.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Next up (run 71 candidates)
+- [ ] `data/reports/2027-09-06.json` still cites `fhcm.paris`/`laforma.club` as
+      `unclear` in its confidence reasoning even though the taxonomy fix landed this
+      run — small optional follow-up if a retroactive confidence recompute is
+      desired.
 - [ ] The manual-sampling cadence has no enforcement mechanism beyond documentation —
       worth a periodic spot-check to catch future lapses earlier.
 - [ ] `crawler.py`'s underlying hang is diagnosed but not fixed at the root — still
@@ -1457,3 +1471,4 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
       correctness — still awaiting a human decision (run 50).
 - [ ] The underlying human-in-the-loop process gap flagged in run 50 remains open.
+- [ ] `gh` CLI/CI-status check next due at run 80.
