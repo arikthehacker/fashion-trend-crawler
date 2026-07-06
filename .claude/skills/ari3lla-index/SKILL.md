@@ -37,12 +37,12 @@ src/
   crawler.py         # BFS crawler, robots.txt-respecting, extracts headlines — UNCHANGED core logic
   taxonomy.py         # source sector / confidence / volatility / origin-classification vocab + classify_source(url)
   report_schema.py    # Report/Signal/CollectionWindow dataclasses, validate_report(), save/load/list by date
-  summarize.py        # calls Claude to produce a report; prompt MUST follow doc section 21's objective tone
-  server.py           # MCP tools: crawl_fashion_trends, get_cached_trends, search_trends, list_reports, get_report
+  summarize.py        # calls Claude to produce a report; prompt MUST follow doc section 21's objective tone; max_tokens=4000 (fixed run 8, was 2000 and truncated real API output)
+  server.py           # MCP tools: crawl_fashion_trends, get_cached_trends, search_trends, list_reports, get_report — now uses shared DEFAULT_OUTPUT_FILE constant (run 8)
   run.sh               # runs the full pipeline: crawler.py -> summarize.py (classify+summarize+save dated report). Fixed in run 1 — no longer stale.
   test_tools.py       # tests the OLD raw-cache pipeline, unrelated to report_schema — leave alone unless migrating it
   manual_sample.py    # helper for the manual TikTok/Pinterest sampling workflow; enforces non-empty human_editor_note
-  validate_all_reports.py  # CI check — runs validate_report() against every file in data/reports/, see .github/workflows/validate-reports.yml
+  validate_all_reports.py  # CI check — runs validate_report() against every file in data/reports/, see .github/workflows/validate-reports.yml; also runs derive_confidence() as a non-blocking warning (run 8)
 data/
   reports/<YYYY-MM-DD>.json   # one archived report per collection window, schema in report_schema.py
 web/                   # Next.js app
@@ -67,6 +67,7 @@ docs/
   CHANGELOG.md           # master reconciled log of what changed and why, chronological, PDT/PST timestamps
   PROJECT_STRUCTURE.md   # intended end-state tree with per-entry notes
   agent-logs/*.md        # per-agent working logs from the overnight build — provenance detail, not the master log
+  agent-logs/live-crawl-2026-07-06-real-output.json  # real crawler.py+summarize.py output (run 8), saved for reference, not merged into data/reports/ (collided with existing curated date)
 .github/
   workflows/validate-reports.yml  # CI: runs validate_all_reports.py on push/PR (added run 4)
 ```
@@ -94,16 +95,33 @@ docs/
 6. **TikTok/Pinterest ingestion** should use official APIs, approved datasets, or manual
    sampling — never aggressive/ToS-violating scraping (doc section 31). If asked to add
    social scraping, push back and ask about the compliant path first.
+7. **When multiple subagents work concurrently on the same branch/working tree, scope any
+   git revert to the exact files you personally touched.** If you need to undo your own
+   exploratory changes, use `git checkout -- <exact-file-path>` or `git restore
+   <exact-file-path>` per file — never a bare `git checkout .` / `git restore .` / `git
+   clean`, which can silently wipe out other agents' concurrent uncommitted work in the
+   same tree. This happened for real in run 8: an agent's broad cleanup of its own
+   `summarize.py`/`trends_raw.json` exploration also erased two other agents'
+   unrelated-file edits (`server.py`, `validate_all_reports.py`); both had to be redone from
+   the original agents' logged specs. Caught only because the coordinator diffed actual
+   working-tree state against each agent's described changes before committing.
 
 ## Common next steps
 
 See `TODO.md` at repo root for the current authoritative, per-run list (updated every loop
-run) — don't duplicate it here. As of run 6, the highest-priority open items are:
+run) — don't duplicate it here. As of run 9, the highest-priority open items are:
 
-- Still no report from an actual live crawl — all dated reports so far are hand-authored or
-  WebSearch-researched, not produced by `run.sh` end-to-end.
-- No corrections/transparency policy on-site (methodology/about pages have no mention of
-  corrections, editorial independence, or AI-involvement disclosure).
-- Legacy `trends_raw.json`/`trends_summary.json` migration is a real, sequenced plan
-  (`docs/agent-logs/legacy-migration-plan.md`) — execute one step at a time, not in one pass;
-  these files are still load-bearing until the migration completes.
+- `save_report()` now has a `revision_history` mechanism (run 9) that requires a
+  `revision_reason`/`corrected_at` when overwriting a differing report for an existing
+  date. A live `crawler.py` + `summarize.py` run succeeded (run 8) but its output for
+  today's date predates this mechanism and still hasn't been merged — see
+  `docs/agent-logs/pipeline-rerun-design.md` for the recommended approach (use
+  `revision_history`, not a silent overwrite or a `--force` flag).
+- Corrections/transparency/AI-disclosure sections shipped on methodology/about pages
+  (run 7) — this item is closed.
+- Legacy `trends_raw.json`/`trends_summary.json` migration: 4 of 5 steps done (crawler.py,
+  summarize.py, server.py, test_tools.py all now reference one shared
+  `DEFAULT_OUTPUT_FILE` constant). Step 5 (final deletion) is unblocked pending one last
+  verification pass that nothing else references the old literal filename.
+- Manual-sampling workflow has now been exercised twice (runs 8 and 9) — established as
+  repeatable.
