@@ -13,6 +13,7 @@
 
 from mcp.server.fastmcp import FastMCP
 from crawler import crawl_all_sources, FASHION_SOURCES
+from report_schema import load_report, list_report_dates
 import json
 import os
 import sys
@@ -76,6 +77,30 @@ def search_trends(keyword: str) -> str:
         "found_in": f"{count} {label}",
         "results": matches
     }, indent=2)
+
+@mcp.tool()
+def list_reports() -> str:
+    """
+    lists dates (YYYY-MM-DD) of all archived ARI3LLA INDEX style
+    signal reports available in data/reports/, most recent last.
+    """
+    dates = list_report_dates()
+    return json.dumps({"count": len(dates), "report_dates": dates}, indent=2)
+
+@mcp.tool()
+def get_report(report_date: str) -> str:
+    """
+    returns the archived ARI3LLA INDEX style signal report for the
+    given date (format YYYY-MM-DD) from data/reports/.
+    """
+    try:
+        report = load_report(report_date)
+        return json.dumps(report, indent=2)
+    except FileNotFoundError:
+        return json.dumps({
+            "error": f"no report found for {report_date}",
+            "available_dates": list_report_dates(),
+        })
 
 if __name__ == "__main__":
     mcp.run()
