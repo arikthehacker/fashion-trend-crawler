@@ -35,8 +35,8 @@ wrong for this project, full stop — rewrite it in report/wire-service voice.
 ```
 src/
   crawler.py         # BFS crawler, robots.txt-respecting, extracts headlines — UNCHANGED core logic
-  taxonomy.py         # source sector / confidence / volatility / origin-classification vocab + classify_source(url)
-  report_schema.py    # Report/Signal/CollectionWindow dataclasses, validate_report(), save/load/list by date
+  taxonomy.py         # source sector / confidence / volatility / origin-classification vocab + classify_source(url); domain coverage expanded run 12 for 4 previously-thin sectors (designer_origin, visual_archive, independent_criticism, institutional)
+  report_schema.py    # Report/Signal/CollectionWindow dataclasses, validate_report(), save/load/list by date; get_signal_status_history(signal_id, all_reports) (run 12) surfaces a signal's volatility/confidence trend across reports instead of a static dormancy label
   summarize.py        # calls Claude to produce a report; prompt MUST follow doc section 21's objective tone; max_tokens=4000 (fixed run 8, was 2000 and truncated real API output)
   server.py           # MCP tools: crawl_fashion_trends, get_cached_trends, search_trends, list_reports, get_report — now uses shared DEFAULT_OUTPUT_FILE constant (run 8)
   run.sh               # runs the full pipeline: crawler.py -> summarize.py (classify+summarize+save dated report). Fixed in run 1 — no longer stale.
@@ -55,16 +55,20 @@ web/                   # Next.js app
     methodology/page.tsx  # doc section 22
     taxonomy/page.tsx     # doc sections 11/14/15/16
     sources/page.tsx      # doc section 11's outlet lists
+    search/page.tsx, search/SearchClient.tsx  # client-side facet filter (source sector,
+      confidence, volatility) over getSearchIndex() in reports.ts (run 12); full-text
+      search (Pagefind) deliberately deferred
     about/page.tsx        # doc sections 37/38
     case-study/page.tsx   # doc section 33, portfolio framing
     layout.tsx           # site-wide <title>/description metadata — keep in sync with rebrand, this has gone stale before
     sitemap.ts, robots.ts  # added run 5
   lib/
     trends.ts           # ORIGINAL data layer for the live/current-crawl view — don't repurpose for archive reads
-    reports.ts           # archive data layer, reads data/reports/*.json — separate from trends.ts on purpose
+    reports.ts           # archive data layer, reads data/reports/*.json — separate from trends.ts on purpose; now also exposes getSearchIndex() (run 12) for the /search facet filter
 docs/
   ARI3LLA INDEX.txt      # source concept doc, read-only reference, don't edit
-  CHANGELOG.md           # master reconciled log of what changed and why, chronological, PDT/PST timestamps
+  CHANGELOG.md           # master INDEX — one paragraph + link per run, chronological, PDT/PST timestamps
+  changelog-entries/*.md # full per-run changelog detail (run-00-branch-setup.md, run-01.md .. run-12.md), linked from CHANGELOG.md
   PROJECT_STRUCTURE.md   # intended end-state tree with per-entry notes
   agent-logs/*.md        # per-agent working logs from the overnight build — provenance detail, not the master log
   agent-logs/live-crawl-2026-07-06-real-output.json  # real crawler.py+summarize.py output (run 8), saved for reference, not merged into data/reports/ (collided with existing curated date)
@@ -109,19 +113,20 @@ docs/
 ## Common next steps
 
 See `TODO.md` at repo root for the current authoritative, per-run list (updated every loop
-run) — don't duplicate it here. As of run 9, the highest-priority open items are:
+run) — don't duplicate it here. As of run 12, the highest-priority open items are:
 
-- `save_report()` now has a `revision_history` mechanism (run 9) that requires a
-  `revision_reason`/`corrected_at` when overwriting a differing report for an existing
-  date. A live `crawler.py` + `summarize.py` run succeeded (run 8) but its output for
-  today's date predates this mechanism and still hasn't been merged — see
-  `docs/agent-logs/pipeline-rerun-design.md` for the recommended approach (use
-  `revision_history`, not a silent overwrite or a `--force` flag).
-- Corrections/transparency/AI-disclosure sections shipped on methodology/about pages
-  (run 7) — this item is closed.
-- Legacy `trends_raw.json`/`trends_summary.json` migration: 4 of 5 steps done (crawler.py,
-  summarize.py, server.py, test_tools.py all now reference one shared
-  `DEFAULT_OUTPUT_FILE` constant). Step 5 (final deletion) is unblocked pending one last
-  verification pass that nothing else references the old literal filename.
-- Manual-sampling workflow has now been exercised twice (runs 8 and 9) — established as
-  repeatable.
+- **Still pending your sign-off:** retire `web/lib/trends.ts` (the stale, un-versioned
+  live-crawl loader the homepage currently reads) and rebuild the homepage off
+  `reports.ts` instead — proposal in `docs/agent-logs/trends-ts-fate-proposal.md` (run 11).
+  This is genuinely blocked on a human decision, not neglected, since it changes the
+  homepage's data source.
+- `off-duty-varsity`'s dormancy flag — flagged quiet for 3 consecutive reports as of the
+  run 12 health check — was resolved this run via `revision_history` on
+  `data/reports/2026-07-20.json` (editorial close-out, using
+  `get_signal_status_history()` to confirm the trend before closing). Check
+  `data/reports/2026-07-20.json`'s `revision_history` before re-raising this.
+- Consider explicitly surfacing "N consecutive thin/low-signal weeks" as its own noted
+  pattern (e.g. archive or methodology page) rather than letting each thin report read as
+  an isolated event — per the run 12 health check's reader-experience observation. The
+  health check also recommends prioritizing this kind of qualitative fix over mechanically
+  adding another report every run.
