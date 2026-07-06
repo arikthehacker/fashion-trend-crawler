@@ -803,12 +803,33 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [x] `source_domains` extended to `/signals/[slug]` (natural fit, same per-occurrence
       detail level as the report page); homepage/timeline/search correctly left untouched.
 
-## Next up (run 39 candidates)
+## Run 39 — done
+- [x] Added `data/reports/2027-02-01.json`, a 32nd report — honestly reported that both
+      the Wales Bonner/Hermès debut and Haute Couture SS27 still have no reachable
+      post-show coverage, rather than fabricating runway content.
+- [x] Added `isPlausibleGlossaryTerm()` filter to `web/app/glossary/page.tsx` — cut run
+      38's build-time undefined-term warnings from ~130 to 19 genuinely curatable short
+      phrases, with no real curated term filtered out.
+- [x] Added South China Morning Post (Hong Kong) and The National (UAE) to
+      `FASHION_SOURCES`/`DOMAIN_SECTOR_MAP` — genuine geographic diversification,
+      WebFetch-verified reachable. One candidate (fashionnetwork.com/africa) honestly
+      rejected (403).
+- [x] Closed the run-35 archival/link-rot question for good: domain-level citation is a
+      permanent design choice (no permalink exists to rot), documented in a new "How
+      Citations Work" methodology section. Flagged a smaller, distinct future item:
+      periodic self-archival snapshotting of the site's own report pages.
+- [x] Periodic audit — clean. 44 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (7th consecutive check), 3-report spot-check
+      consistent.
+
+## Next up (run 40 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
-- [ ] Run 38's glossary build-warning surfaced ~130 undefined terms that are really long
-      narrative signal strings, not short glossary vocabulary — consider whether glossary
-      extraction should filter by length/form before term-matching.
-- [ ] Consider normalizing/curating a handful of the most-recurring undefined terms now
-      visible in build output, rather than leaving all ~130 as warnings indefinitely.
+- [ ] 19 real glossary terms still lack curated definitions (down from ~130 after run
+      39's filter) — small enough now to curate a batch directly.
+- [ ] New sources (SCMP, The National) verified only via WebFetch, not the project's own
+      `requests`+`get_robots_parser()` crawl path — re-check on the next real crawl run.
+- [ ] Consider periodic Wayback "Save Page Now" snapshotting of the site's own
+      `/reports/[date]` pages as a smaller future self-archival improvement (distinct
+      from per-article source citations, which are deliberately not permalinked).
