@@ -22,8 +22,20 @@ function toRfc822(dateStr: string): string {
   return date.toUTCString();
 }
 
+// RSS is a recent-updates feed, not an archive-replacement mechanism (per
+// run 78 research: RSS 0.91 capped feeds at 15 items; RSS 2.0/rssboard lifted
+// the hard limit but real news feeds still commonly cap at ~20-50 recent
+// items to keep the feed lightweight -- the full archive already lives at
+// /archive and per-date report pages, so the feed doesn't need to duplicate
+// it). Without a cap this feed was unbounded and had grown to 70+ items with
+// the archive still growing weekly. Podcast feeds are the documented
+// exception to this convention (listeners expect to browse the full back
+// catalog via the feed itself) -- this is a text report feed, so the
+// recent-window convention applies.
+const MAX_FEED_ITEMS = 50;
+
 export async function GET() {
-  const reports = getAllReports(); // newest first
+  const reports = getAllReports().slice(0, MAX_FEED_ITEMS); // newest first
 
   const items = reports
     .map((report) => {
