@@ -358,20 +358,21 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
               <div key={i} id={anchorId} style={{ borderTop: "1px solid var(--border)", paddingTop: "1.5rem" }}>
                 <div style={{ display: "flex", alignItems: "baseline", gap: "0.6rem", flexWrap: "wrap" }}>
                 {signal.signal_id ? (
-                  <Link
-                    href={`/signals/${signal.signal_id}`}
-                    style={{
-                      fontFamily: "var(--font-instrument)",
-                      fontSize: "1.4rem",
-                      marginBottom: "0.75rem",
-                      display: "block",
-                      color: "var(--black)",
-                      textDecoration: "underline",
-                      textUnderlineOffset: "4px",
-                    }}
-                  >
-                    {i + 1}. {signal.name}
-                  </Link>
+                  <h3 style={{ margin: 0, marginBottom: "0.75rem" }}>
+                    <Link
+                      href={`/signals/${signal.signal_id}`}
+                      style={{
+                        fontFamily: "var(--font-instrument)",
+                        fontSize: "1.4rem",
+                        display: "block",
+                        color: "var(--black)",
+                        textDecoration: "underline",
+                        textUnderlineOffset: "4px",
+                      }}
+                    >
+                      {i + 1}. {signal.name}
+                    </Link>
+                  </h3>
                 ) : (
                   <h3 style={{
                     fontFamily: "var(--font-instrument)",
