@@ -74,16 +74,34 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [x] Surfaced `source_corroboration_count` and `content_hash` in the report UI (small,
       unobtrusive — corroboration count only shown when >1, checksum truncated in footer).
 
-## Next up (run 5 candidates)
-- [ ] Accessibility/SEO audit found real gaps (`docs/agent-logs/accessibility-seo-research.md`):
-      report page section labels are styled `<p>` not `<h2>`/`<h3>` (breaks WCAG heading
-      hierarchy), no `sitemap.xml`/`robots.txt`, no JSON-LD structured data (Article/
-      NewsArticle schema), no canonical/OG metadata. Concrete file-level fixes documented,
+## Run 5 — done
+- [x] Fixed WCAG heading hierarchy: report/signal/timeline page section labels converted
+      from styled `<p>` to real `<h2>`/`<h3>`.
+- [x] Added `web/app/sitemap.ts`, `web/app/robots.ts`, and `NewsArticle` JSON-LD on report
+      pages.
+- [x] Added a "Cite as" citation block to report page footers (site name, date, canonical
+      path, checksum reference) — kept site-relative since no absolute domain exists yet
+      anywhere in the codebase (don't invent one; add real domain when one is chosen).
+- [x] Legacy `trends_raw.json` migration plan written (`docs/agent-logs/legacy-migration-plan.md`) —
+      detailed, sequenced, verifiable steps. **Not executed** — deliberately scoped as
+      planning only since `server.py`'s MCP tools are a real external contract
+      (registered in `.codex/config.toml`), and rewiring them unattended is too risky for
+      one loop run. Execute deliberately, one step at a time, with verification between
+      each.
+- [x] Confidence-scoring research (`docs/agent-logs/confidence-scoring-research.md`):
+      ICD 203/Words-of-Estimative-Probability and CTI-analyst practice both support
+      deriving `confidence` deterministically from `source_corroboration_count` +
+      source-sector diversity rather than an LLM judgment call. Concrete formula proposed,
       not yet implemented.
-- [ ] Add a stable per-report citation line (date + archive URL + checksum) for archival
-      permanence, per the same research's Library of Congress-derived recommendation.
-- [ ] Run `validate_all_reports.py` locally as a pre-commit habit until the GitHub Actions
-      workflow actually runs on a real push (untested against live CI, only run locally).
-- [ ] Consider whether `/signals/[slug]`'s long auto-slugified IDs (e.g.
-      "off-duty-varsity-sports-luxe-summer-uniform") should be shortened/curated by a human
-      editor rather than mechanically generated from the full signal name.
+
+## Next up (run 6 candidates)
+- [ ] Implement the confidence-scoring formula in `report_schema.py` or as a
+      post-processing step after `summarize.py`'s LLM call (high requires >=2 corroboration
+      across >=2 distinct sectors; medium for same-sector corroboration or high-reliability
+      single source; low for uncorroborated/social-only; archival stays manual-only).
+- [ ] Execute step 1 of the legacy-migration plan (parameterize `crawler.py`'s cache path)
+      — do NOT do all 5 steps in one run per the plan's own caution; verify each step.
+- [ ] Consider whether `/signals/[slug]`'s long auto-slugified IDs should be
+      shortened/curated by a human editor rather than mechanically generated.
+- [ ] Add a real canonical domain to `web/lib/site.ts` once one is chosen, so
+      sitemap/robots/JSON-LD/citation lines stop being site-relative-only.
