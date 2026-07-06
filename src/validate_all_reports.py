@@ -15,10 +15,33 @@ import sys
 
 from report_schema import (
     SchemaValidationError,
+    derive_confidence,
     list_report_dates,
     load_report,
     validate_report,
 )
+
+
+def find_high_confidence_warnings(report_date, data):
+    """Non-blocking check: flag signals assigned 'high' confidence that
+    derive_confidence() would only support at 'medium' or 'low', per
+    docs/agent-logs/confidence-audit.md. Never affects exit code."""
+    warnings = []
+    for signal in data.get("top_signals", []):
+        assigned = signal.get("confidence")
+        if assigned != "high":
+            continue
+        derived = derive_confidence(signal)
+        if derived in ("medium", "low"):
+            warnings.append(
+                f"{report_date}.json: {signal.get('name')!r} assigned "
+                f"'high' confidence but derive_confidence() supports only "
+                f"'{derived}' (corroboration_count="
+                f"{signal.get('source_corroboration_count', 1)}, "
+                f"source_sectors={signal.get('source_sectors', [])}) — "
+                f"consider editor re-review."
+            )
+    return warnings
 
 
 def main() -> int:
@@ -29,6 +52,7 @@ def main() -> int:
         return 0
 
     failures = []
+    warnings = []
 
     for report_date in dates:
         try:
@@ -41,6 +65,9 @@ def main() -> int:
             validate_report(data)
         except SchemaValidationError as exc:
             failures.append((report_date, str(exc)))
+            continue
+
+        warnings.extend(find_high_confidence_warnings(report_date, data))
 
     if failures:
         print(f"FAILED: {len(failures)} of {len(dates)} report(s) failed schema validation:\n")
@@ -49,6 +76,12 @@ def main() -> int:
         return 1
 
     print(f"OK: all {len(dates)} report(s) in data/reports/ passed schema validation.")
+
+    if warnings:
+        print(f"\n{len(warnings)} non-blocking confidence WARNING(s) — editor review suggested, not a failure:")
+        for w in warnings:
+            print(f"  WARNING: {w}")
+
     return 0
 
 

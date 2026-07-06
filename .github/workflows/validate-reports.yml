@@ -17,5 +17,5 @@ jobs:
       - name: Compile check
         run: python -m py_compile src/*.py
 
-      - name: Validate all archived reports against report_schema.py
+      - name: Validate archived reports (schema + non-blocking confidence warnings)
         run: python src/validate_all_reports.py
