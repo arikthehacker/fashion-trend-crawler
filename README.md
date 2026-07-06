@@ -174,7 +174,8 @@ workflow (`src/manual_sample.py`, `docs/manual-sampling-template.md`)
 lets a human add a social-origin signal sourced from an official
 platform trend report or API, with a required `human_editor_note`
 explaining why it is or isn't likely to be durable. This workflow has
-been exercised twice against real reports, not just designed.
+been exercised against real reports (Pinterest and TikTok sources so
+far) opportunistically, not on a fixed schedule, not just designed.
 
 ## MCP / LLM Layer
 
@@ -257,7 +258,7 @@ about limitations.
 - [x] methodology page (`/methodology`) and taxonomy page (`/taxonomy`)
 - [x] CI validation of the report archive on every push/PR
 - [x] compliant handling of social/platform signals — manual sampling,
-  exercised twice, not automated ingestion
+  exercised against real reports, not automated ingestion
 - [x] signal timelines and longitudinal tracking per signal (`/timeline`,
   `/signals/[slug]`)
 - [x] homepage rebuilt off `reports.ts`; legacy `web/lib/trends.ts` retired
@@ -319,6 +320,9 @@ fashion-trend-crawler/
     taxonomy.py                 # signal/source taxonomy definitions + classify_source(url)
     manual_sample.py           # compliant manual social-signal sampling helper
     validate_all_reports.py    # CI check against every file in data/reports/
+    audit_confidence.py        # periodic confidence/dormancy review script, not wired into CI
+    check_field_coverage.py    # flags schema fields not typed/rendered in web/ (not wired into CI)
+    check_heading_patterns.py  # heuristic scan for styled-<p>-as-heading bug (not wired into CI)
   data/
     reports/                   # dated JSON reports — see /archive on the
                                 #   live site or `ls data/reports/` for the

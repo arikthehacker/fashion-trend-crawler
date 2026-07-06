@@ -40,22 +40,11 @@ fashion-trend-crawler/
 │   ├── EDITORIAL_CALENDAR.md   existing — known recurring high-volatility windows
 │   │                           (fashion month Sept-Oct 2026), so a volatility shift
 │   │                           isn't mistaken for a crawl/sourcing anomaly
-│   └── agent-logs/             existing — per-agent hygiene/status/provenance logs
-│       ├── data-pipeline.md
-│       ├── frontend-archive.md
-│       ├── frontend-static-pages.md
-│       ├── hygiene-scan.md
-│       ├── journalism-research.md
-│       ├── legacy-file-cleanup.md
-│       ├── pipeline-wiring.md
-│       ├── readme-casestudy.md
-│       ├── real-report-2026-07-13.md
-│       ├── repo-hygiene.md
-│       ├── schema-fixity-fields.md
-│       ├── signals-timeline-design.md
-│       ├── social-ingestion-research.md
-│       ├── static-pages-audit-2.md
-│       └── voice-audit.md
+│   └── agent-logs/             existing — per-agent hygiene/status/provenance logs;
+│                               166+ files as of this sync and growing every run
+│                               (deliberately not enumerated here — see `ls
+│                               docs/agent-logs/` for the current list; this is the same
+│                               drift pattern as the report-count issue above)
 ├── src/
 │   ├── .gitignore              existing — covers __pycache__/*.pyc already
 │   ├── crawler.py              existing — BFS crawler, robots.txt-respecting, UNCHANGED core logic
@@ -65,6 +54,18 @@ fashion-trend-crawler/
 │   ├── taxonomy.py             existing — source sector / confidence / volatility / origin vocab + classify_source(url)
 │   ├── test_tools.py           existing — tests the old raw-cache pipeline; unrelated to
 │   │                           report_schema.py, left alone unless migrating it
+│   ├── validate_all_reports.py existing — CI check (run 4), validates every file in
+│   │                           data/reports/ against the schema; also runs
+│   │                           derive_confidence() as a non-blocking warning (run 8)
+│   ├── audit_confidence.py     existing (run 7) — reusable script comparing assigned
+│   │                           confidence vs. derive_confidence() across all reports;
+│   │                           periodic review tool, not wired into CI
+│   ├── check_field_coverage.py existing (run 25) — enumerates every Report/Signal schema
+│   │                           field and flags any not typed in reports.ts or referenced
+│   │                           in a .tsx file; non-blocking, not wired into CI
+│   ├── check_heading_patterns.py  existing (run 22, revisited run 29) — heuristic scanner
+│   │                           for the recurring styled-`<p>`-as-heading bug that ESLint/
+│   │                           jsx-a11y cannot catch; not wired into CI, manual/heuristic
 │   └── run.sh                  existing — fixed run 1 (no longer stale): runs
 │                               crawler.py -> summarize.py (classify+summarize+save dated report)
 ├── .github/
