@@ -18,6 +18,14 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-10 ~17:10 PDT — [Loop run 89](changelog-entries/run-89.md)** — an
+  82nd report applies precedent 2 in both directions and respects the real
+  fashion calendar (couture excluded as premature); a real structural gap
+  closed — confidence discipline is now embedded directly in `summarize.py`'s
+  LLM prompt, so it reaches the future automated pipeline, not just human/
+  agent report-writers; gh/CI check confirmed unchanged a run early; nav/
+  build and periodic audits both clean.
+
 - **2026-07-10 ~15:50 PDT — [Loop run 88](changelog-entries/run-88.md)** — an
   81st report correctly applies precedent 2; precedent 14 (forecast/
   speculative-content exclusion) formalized after real scrutiny of a genuine

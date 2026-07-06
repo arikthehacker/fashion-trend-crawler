@@ -1757,7 +1757,26 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       added a lightweight agent-log directory hygiene check (441 files, no
       empty/truncated entries).
 
-## Next up (run 89 candidates)
+## Run 89 — done
+- [x] Added `data/reports/2028-01-24.json`, an 82nd report — Louis Vuitton
+      menswear signal earned "high" via genuine cross-sector corroboration;
+      couture SS28 deliberately excluded since it opens after menswear month
+      ends, not forced into this window.
+- [x] Closed a real structural gap: `src/summarize.py`'s LLM prompt now
+      embeds the 5 most recurrence-prone confidence-discipline precedents
+      directly, so the future automated pipeline will apply them even after
+      autonomous report-writing agents stop being the ones doing it by hand.
+- [x] `gh`/CI check confirmed unchanged a run early as a courtesy for run 90
+      (10th consecutive matching check).
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Next up (run 90 candidates)
+- [ ] `gh` CLI/CI-status check officially due this run (run 90) — already
+      confirmed unchanged one run early (run 89), so this can just confirm
+      rather than re-verify. Next full check after that at run 100.
+- [ ] The 9 narrower confidence precedents not included in `summarize.py`'s
+      condensed in-prompt summary remain accessible only via the full doc —
+      worth revisiting if any recur often once the automated pipeline resumes.
 - [ ] Manual-sampling cadence next due ~run 97.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven
@@ -1765,4 +1784,3 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [ ] `SITE_URL` remains a placeholder domain — correctly confirmed as needing only
       a human-supplied real domain, no further autonomous work possible here.
 - [ ] The underlying human-in-the-loop process gap flagged in run 50 remains open.
-- [ ] `gh` CLI/CI-status check next due at run 90.
