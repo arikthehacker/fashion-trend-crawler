@@ -106,6 +106,22 @@ class Signal:
     # field was added to the dataclass instead of remaining an ad hoc extra
     # key some reports had and others didn't.
     human_editor_note: str = ""
+    # outlet homepage domains this signal was corroborated from (e.g.
+    # "vogue.com", "dewimagazine.com") -- NOT per-article URLs. See
+    # docs/agent-logs/source-citation-resolution-run36.md: run 33 flagged
+    # per-article links to small/independent outlets as a "hug of death"/
+    # pile-on risk (a direct permalink to a specific small site's specific
+    # article, published on a report page, inviting traffic surges); run 35
+    # separately found no citable link exists at all, which blocks future
+    # link-rot/archival work. This field resolves both at once by citing at
+    # the outlet-homepage level only -- the same level of granularity
+    # web/app/sources/page.tsx already uses for its outlet listing, so it
+    # carries no incremental pile-on risk over what's already public.
+    # Deliberately NOT a full source_url/source_links list of article
+    # permalinks -- see the resolution log for why that was rejected.
+    # Optional/backward compatible: empty list until summarize.py populates
+    # it from the crawler's already-fetched URLs.
+    source_domains: list = field(default_factory=list)
 
 
 CONFIDENCE_SOURCE_VALUES = ["manual", "derived"]
@@ -429,6 +445,31 @@ def validate_report(data: dict) -> None:
                 f"top_signals[{i}].confidence_source '{confidence_source}' "
                 f"not in {CONFIDENCE_SOURCE_VALUES}"
             )
+
+        # optional field: default to [] if absent so old reports (predating
+        # source_domains) remain valid. must be a list of bare homepage
+        # domains (no scheme, no path) -- deliberately rejects anything that
+        # looks like a full article URL, since a per-article permalink to a
+        # small outlet is the exact pile-on risk this field was designed to
+        # avoid (see docs/agent-logs/source-citation-resolution-run36.md).
+        source_domains = signal.get("source_domains", [])
+        if not isinstance(source_domains, list):
+            raise SchemaValidationError(
+                f"top_signals[{i}].source_domains must be a list, got {source_domains!r}"
+            )
+        for domain in source_domains:
+            if not isinstance(domain, str) or not domain:
+                raise SchemaValidationError(
+                    f"top_signals[{i}].source_domains entries must be non-empty strings, "
+                    f"got {domain!r}"
+                )
+            if "/" in domain or domain.startswith("http:") or domain.startswith("https:"):
+                raise SchemaValidationError(
+                    f"top_signals[{i}].source_domains entries must be bare homepage "
+                    f"domains (e.g. 'vogue.com'), not full URLs/paths -- got {domain!r}. "
+                    f"Per-article links are a known pile-on risk for small outlets, see "
+                    f"docs/agent-logs/source-citation-resolution-run36.md."
+                )
 
     # optional field: default to "normal" if absent so old reports (predating
     # the thin-week fallback) remain valid.
