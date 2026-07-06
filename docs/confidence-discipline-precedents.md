@@ -301,6 +301,61 @@ license rewriting a past prose judgment call).
 
 ---
 
+### 13. Resale-platform sourcing reflects supply/discard behavior, not demand, and a platform's own "trending" framing does not become genuine demand corroboration just because corroboration count rises
+
+**First established:** `data/reports/2027-12-20.json` (run 84), signal
+`bogota-waist-tailoring-resale-holiday-demand`, flagged as an open candidate in that
+report's `limitations` field; formalized here at run 85 after dedicated research
+(`docs/agent-logs/resale-platform-precedent-research-run85.md`).
+
+**Rule:** `resale` (`therealreal.com`, `vestiairecollective.com`, `depop.com`,
+`grailed.com`, `poshmark.com` in `taxonomy.py`'s `DOMAIN_SECTOR_MAP`) is deliberately
+**not** in `HIGH_RELIABILITY_SECTORS`, and this precedent affirms that placement rather
+than overriding it. Two independent reasons compound, both grounded in how resale
+platforms are actually used in trade coverage rather than in trend forecasting proper:
+
+1. **Resale listing/sell-through volume is a supply-side/discard signal, not a
+   demand signal.** What appears on a resale platform reflects what current owners
+   are choosing to part with, which correlates with novelty-seeking and rapid
+   turnover as much as with rising demand for a look. Treating "items in category X
+   are being resold at volume" as equivalent to "category X is newly desired"
+   conflates the two.
+2. **A resale platform's own "trending"/demand-signal framing (a marketing page,
+   press-cited internal trend report, or self-reported search/sell-through spike) is
+   self-promotional in the same way Pinterest's own Trends/Predicts reports are
+   (`docs/manual-sampling-workflow.md`'s "platform marketing is not organic signal"
+   rule) — it is the platform's own commercial interest describing its own inventory,
+   not a neutral third party measuring demand.
+
+Because of this, `resale`-sector corroboration should be held at the mechanically
+correct tier or lower, and should **not** be manually upgraded even in a future case
+where a resale-sector signal happens to reach `count >= 2` from a single sector
+(mechanically "medium" under the formula) — that is two supply-side listings/reports,
+not demand evidence, and the same discount applies at that tier too. A resale signal
+should only be treated as confirming genuine demand once corroborated by a
+demand-side source (search/interest data, a non-resale retailer's sell-through or
+waitlist figures, or editorial/independent-criticism coverage of the demand itself),
+consistent with how other single/thin-sector cases here require genuine independent
+corroboration rather than volume within one sector (precedents 2, 8).
+
+**Reasoning:** research conducted for this precedent
+(`docs/agent-logs/resale-platform-precedent-research-run85.md`) found the trade
+literature genuinely split: some resale-analytics vendors market resale listing data
+as a *leading* indicator of upcoming primary-market trends, while separate consumer-
+behavior research found secondhand purchasing supplements rather than substitutes for
+new purchasing, and that frequent secondhand buyers discard items faster in pursuit of
+novelty — i.e., a resale spike can just as plausibly reflect people discarding a look
+as it can reflect people newly wanting it. Given that split evidence, holding the
+mechanical low/medium tier rather than inventing an upward override is the correct
+conservative call, not a decided fact that resale data is worthless.
+
+**Worked example:** `bogota-waist-tailoring-resale-holiday-demand`
+(`data/reports/2027-12-20.json`, run 84): `therealreal.com`, `corroboration_count=1`,
+`confidence=low`, `confidence_source=derived`. Left as computed; the mechanical "low"
+was correct and no exception was invented, per the reasoning above.
+
+---
+
 ## Related, non-override background (for context, not confidence exceptions themselves)
 
 - **`independent_criticism` added to `HIGH_RELIABILITY_SECTORS`** — proposed
