@@ -1323,10 +1323,27 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       correctly present in real built output.
 
 ## Next up (run 62 candidates)
+## Run 62 — done
+- [x] `check_signal_reuse_claims.py --all` made a standing periodic-audit step
+      (SKILL.md convention #12) — cross-confirmed by 3 independent agents this run,
+      4 known false positives, 0 real mismatches.
+- [x] Reading-level accessibility quantified (Flesch-Kincaid grade 10.7-17.1) and
+      correctly documented as a deliberate voice-rule tradeoff against WCAG AAA 3.1.5,
+      not an oversight — the site makes no AAA conformance claim.
+- [x] Added `data/reports/2027-07-12.json`, a 55th report — honest mixed critical
+      reception reported across three couture debuts, not smoothed into one verdict.
+- [x] Periodic audit — clean. 65 confidence mismatches, only the documented override
+      non-conservative.
+- [ ] **Not completed**: a subagent attempting a real crawler-pipeline-grounded report
+      stalled without producing output (started a background crawl, never returned to
+      check results) — same failure shape as run 33. Not re-dispatched mid-
+      consolidation; needs a future, more tightly time-boxed attempt.
+
+## Next up (run 63 candidates)
+- [ ] Retry the real-crawler-pipeline-grounded report attempt with a tight time-box
+      (per the run-33/34 lesson), since run 62's open-ended attempt stalled without
+      producing anything.
 - [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
       correctness — still awaiting a human decision (run 50).
-- [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
-      run 50 remain open.
+- [ ] The underlying human-in-the-loop process gap flagged in run 50 remains open.
 - [ ] `gh` CLI/CI-status check next due at run 70.
-- [ ] Consider periodically running `check_signal_reuse_claims.py --all` (not just the
-      latest report) as part of the periodic-audit routine, now that it exists.

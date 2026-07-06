@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-09 ~08:00 PDT — [Loop run 62](changelog-entries/run-62.md)** —
+  `check_signal_reuse_claims.py` made a standing periodic-audit step after
+  cross-confirmation by 3 independent agents; reading-level accessibility quantified
+  and correctly accepted as a deliberate voice-rule tradeoff; 55th report honestly
+  reports mixed couture reception. One subagent stalled attempting a real
+  crawler-pipeline report — noted honestly rather than re-dispatched mid-consolidation.
+
 - **2026-07-09 ~06:45 PDT — [Loop run 61](changelog-entries/run-61.md)** — Direct
   response to run 60's flagged self-report reliability gap: a real checker script
   built and honestly verified for the exact signal-reuse bug pattern seen twice;
