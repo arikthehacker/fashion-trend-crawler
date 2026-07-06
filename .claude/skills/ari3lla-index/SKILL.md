@@ -171,6 +171,19 @@ docs/
     `docs/agent-logs/permanent-open-signal-design.md` for full reasoning. No new schema
     enum was added for this — it's expressed as prose in existing free-text fields.
 
+11. **`gh` CLI / CI-status check cadence: every 10th run, not every run.** Runs 26-52
+    (20 consecutive checks) all confirmed `gh` unavailable on PATH with zero new
+    information. Run 53 also tried an unauthenticated GitHub public-API alternative
+    (`https://api.github.com/repos/arikthehacker/fashion-trend-crawler`) as a `gh`-free
+    path to real CI status — it 404s on the repo's own root endpoint, meaning the repo
+    is private, so this hits the same no-auth wall `gh` does, not a different one. There
+    is no read-only way to confirm real GitHub Actions pass/fail status from this
+    environment. Going forward: check `gh`/API access only every 10th periodic-audit run
+    (next due run 60), and treat 9 skipped runs in between as "no new information, see
+    last check" rather than silently dropping the topic. If the environment ever changes
+    (repo made public, `gh` installed, a token becomes available), resume checking every
+    run until confirmed stable. See `docs/agent-logs/ci-verification-approach-run53.md`.
+
 ## Institutional knowledge worth knowing before you start
 
 **Fashion-week calendar context (run 16 research,
