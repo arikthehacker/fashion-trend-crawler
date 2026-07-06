@@ -624,6 +624,26 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
               }}>
                 <strong style={{ color: "var(--black)" }}>Corrected {revision.corrected_at}: </strong>
                 {revision.reason}
+                {revision.changed_signals && (
+                  (revision.changed_signals.added?.length ||
+                    revision.changed_signals.removed?.length ||
+                    Object.keys(revision.changed_signals.modified ?? {}).length) ? (
+                    <div style={{ marginTop: "0.4rem", fontSize: "0.85rem" }}>
+                      {revision.changed_signals.added && revision.changed_signals.added.length > 0 && (
+                        <div>Added: {revision.changed_signals.added.join(", ")}</div>
+                      )}
+                      {revision.changed_signals.removed && revision.changed_signals.removed.length > 0 && (
+                        <div>Removed: {revision.changed_signals.removed.join(", ")}</div>
+                      )}
+                      {revision.changed_signals.modified &&
+                        Object.entries(revision.changed_signals.modified).map(([sid, fields]) => (
+                          <div key={sid}>
+                            Modified {sid}: {fields.join(", ")}
+                          </div>
+                        ))}
+                    </div>
+                  ) : null
+                )}
               </li>
             ))}
           </ul>

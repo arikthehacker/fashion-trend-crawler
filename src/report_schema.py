@@ -335,9 +335,15 @@ class Report:
     # audit trail of corrections made to this report after initial save.
     # each entry: {"previous_content_hash": str, "corrected_at": str (ISO
     # date string, caller-supplied for determinism/testability), "reason":
-    # str (non-empty, required)}. populated by save_report() itself when it
-    # detects it's overwriting an existing report file for this date with
-    # differing content — see docs/agent-logs/retention-versioning-design.md.
+    # str (non-empty, required), "changed_signals": dict (optional —
+    # {"added": [signal_id...], "removed": [signal_id...], "modified":
+    # {signal_id: [field_name...]}}, auto-computed by save_report() via
+    # diff_signal_changes() so a reader can reconstruct exactly WHAT
+    # changed, not just that a correction happened — see
+    # docs/agent-logs/archival-standards-audit-run82.md)}. populated by
+    # save_report() itself when it detects it's overwriting an existing
+    # report file for this date with differing content — see
+    # docs/agent-logs/retention-versioning-design.md.
     # optional/backward compatible: old reports without it default to [].
     revision_history: list = field(default_factory=list)
     # "draft" or "reviewed" (default). marks whether this report has been
@@ -375,6 +381,40 @@ def compute_content_hash(data: dict) -> str:
     signals = data.get("top_signals", [])
     canonical = json.dumps(signals, sort_keys=True, ensure_ascii=False)
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
+def diff_signal_changes(old_signals: list, new_signals: list) -> dict:
+    """
+    compare two top_signals lists (by signal_id) and return which
+    signal_ids were added, removed, or had at least one field change,
+    plus which specific field names changed on each modified signal.
+
+    this exists so a revision_history entry can record WHAT changed,
+    not just THAT something changed (a bare content_hash proves
+    tamper-evidence but is not human-reconstructable) — see
+    docs/agent-logs/archival-standards-audit-run82.md.
+
+    returns {"added": [signal_id, ...], "removed": [signal_id, ...],
+    "modified": {signal_id: [field_name, ...], ...}}. signals missing
+    a signal_id are ignored (can't be tracked by identity), which
+    mirrors validate_report's own signal_id requirement.
+    """
+    old_by_id = {s["signal_id"]: s for s in old_signals if isinstance(s, dict) and s.get("signal_id")}
+    new_by_id = {s["signal_id"]: s for s in new_signals if isinstance(s, dict) and s.get("signal_id")}
+
+    added = sorted(set(new_by_id) - set(old_by_id))
+    removed = sorted(set(old_by_id) - set(new_by_id))
+
+    modified = {}
+    for sid in sorted(set(old_by_id) & set(new_by_id)):
+        old_sig, new_sig = old_by_id[sid], new_by_id[sid]
+        changed_fields = sorted(
+            k for k in set(old_sig) | set(new_sig) if old_sig.get(k) != new_sig.get(k)
+        )
+        if changed_fields:
+            modified[sid] = changed_fields
+
+    return {"added": added, "removed": removed, "modified": modified}
 
 
 def validate_report(data: dict) -> None:
@@ -515,6 +555,26 @@ def validate_report(data: dict) -> None:
             raise SchemaValidationError(
                 f"revision_history[{i}].reason must be a non-empty string"
             )
+        # optional field: "changed_signals" — {"added": [...], "removed":
+        # [...], "modified": {signal_id: [field, ...]}} as produced by
+        # diff_signal_changes(). only type-checked when present so
+        # revision entries predating this field (or hand-authored ones
+        # without a prior on-disk version to diff against) remain valid.
+        if "changed_signals" in entry:
+            changed = entry["changed_signals"]
+            if not isinstance(changed, dict):
+                raise SchemaValidationError(
+                    f"revision_history[{i}].changed_signals must be a dict"
+                )
+            for key in ("added", "removed"):
+                if key in changed and not isinstance(changed[key], list):
+                    raise SchemaValidationError(
+                        f"revision_history[{i}].changed_signals.{key} must be a list"
+                    )
+            if "modified" in changed and not isinstance(changed["modified"], dict):
+                raise SchemaValidationError(
+                    f"revision_history[{i}].changed_signals.modified must be a dict"
+                )
 
     # optional field: default to "reviewed" if absent so old reports
     # (predating this field) remain valid.
@@ -599,6 +659,9 @@ def save_report(
                 "previous_content_hash": old_hash,
                 "corrected_at": corrected_at,
                 "reason": revision_reason,
+                "changed_signals": diff_signal_changes(
+                    existing_data.get("top_signals", []), data.get("top_signals", [])
+                ),
             })
             data["revision_history"] = revision_history
         elif "revision_history" not in data:

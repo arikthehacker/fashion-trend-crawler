@@ -97,6 +97,7 @@ const sections: { title: string; body: string[] }[] = [
     body: [
       "When a signal classification or a stated fact is found to be wrong, the affected report is not silently edited. A dated correction note is appended to the report, stating what was wrong and what changed.",
       "The original entry is preserved alongside the correction so the archive reflects what was published at the time, not a retroactively cleaned-up version of it.",
+      "Each correction records, in addition to a prose explanation, which signal identifiers were added, removed, or modified and which specific fields changed on a modified signal — so a reader can reconstruct exactly what changed, not only that a change occurred. A cryptographic hash of the prior signal content is also kept, so the archive can prove content changed even if a correction note were ever incomplete.",
     ],
   },
   {

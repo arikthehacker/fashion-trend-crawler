@@ -65,6 +65,16 @@ export interface RevisionEntry {
   previous_content_hash: string;
   corrected_at: string;
   reason: string;
+  // optional: which signal_ids were added/removed/modified by this
+  // correction, and which specific fields changed on modified signals
+  // (auto-computed by save_report()'s diff_signal_changes() in
+  // src/report_schema.py). absent on revisions recorded before this
+  // field existed. see docs/agent-logs/archival-standards-audit-run82.md.
+  changed_signals?: {
+    added?: string[];
+    removed?: string[];
+    modified?: Record<string, string[]>;
+  };
 }
 
 function reportsDir(): string {
