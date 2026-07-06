@@ -139,6 +139,10 @@ public weekly report
   evaluated, the full source-sector and confidence/volatility taxonomy,
   and the outlet lists behind it
 - `/case-study` — project write-up
+- `/search` — full-text search over report prose (Pagefind, indexed at
+  build time via a `postbuild` step against the static export) alongside
+  client-side facet filters (source sector, confidence, volatility)
+- `/rss.xml` — RSS feed over the report archive
 - report pages carry `NewsArticle` JSON-LD, a stable "Cite as" line, and a
   sitemap/robots setup for discoverability; heading structure follows
   WCAG hierarchy rather than styled paragraphs standing in for headings
@@ -254,7 +258,7 @@ about limitations.
 - signal classification depends on human/editorial review, which does not
   yet run on a fixed cadence
 - historical continuity claims are limited until the archive accumulates
-  more than a few reporting periods (7 dated reports as of this writing)
+  more than a few reporting periods (10 dated reports as of this writing)
 - confidence can be derived deterministically (`derive_confidence()`) but
   is not yet auto-applied — it currently runs as a non-blocking warning
   in CI, flagging mismatches for human review rather than overwriting them
@@ -289,7 +293,9 @@ fashion-trend-crawler/
     manual_sample.py           # compliant manual social-signal sampling helper
     validate_all_reports.py    # CI check against every file in data/reports/
   data/
-    reports/                   # dated JSON reports (2026-05-07, -07-06, -07-13, -07-20)
+    reports/                   # dated JSON reports (10 as of this writing:
+                                #   2026-05-07, -07-06, -07-13, -07-20, -07-27,
+                                #   -08-03, -08-10, -08-17, -08-24, -08-31)
   web/                          # next.js editorial site
     app/
       page.tsx                  # homepage — reads off reports.ts (trends.ts retired)
@@ -297,7 +303,7 @@ fashion-trend-crawler/
       reports/[date]/           # per-date report render
       timeline/                 # reverse-chronological signal index
       signals/[slug]/           # per-signal longitudinal view
-      search/                   # client-side facet search over the archive
+      search/                   # Pagefind full-text search + client-side facet filters
       methodology/, taxonomy/, sources/, about/  # static reference pages
       case-study/                # portfolio case study
       sitemap.ts, robots.ts, rss.xml/  # SEO / syndication

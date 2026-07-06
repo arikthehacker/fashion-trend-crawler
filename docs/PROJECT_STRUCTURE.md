@@ -3,7 +3,8 @@
 This reflects the intended structure per `docs/ARI3LLA INDEX.txt` (sections 23 & 40),
 mapping the doc's `app/` onto this repo's `web/app/`. Some paths already existed before
 the reorg work; others were built by parallel agents. Status noted per entry. Last synced
-against the actual file tree on 2026-07-06.
+against the actual file tree on 2026-07-06 (run 18 doc-sync pass updated the report
+count/date range and search/docs entries below without re-walking the whole tree).
 
 ```
 fashion-trend-crawler/
@@ -18,14 +19,25 @@ fashion-trend-crawler/
 │   └── skills/ari3lla-index/SKILL.md   existing — working skill / project context doc
 ├── data/
 │   └── reports/                existing — dated JSON trend reports (schema-driven);
-│       │                       7 reports as of run 13 (2026-05-07 through 2026-08-10)
+│       │                       10 reports as of run 18 (2026-05-07 through 2026-08-31)
 │       ├── 2026-05-07.json     existing — first report under new schema
 │       ├── 2026-07-06.json     existing — dated report
-│       └── 2026-07-13.json     existing — dated report (see agent-logs/real-report-2026-07-13.md)
+│       ├── 2026-07-13.json     existing — dated report (see agent-logs/real-report-2026-07-13.md)
+│       ├── 2026-07-20.json     existing — dated report
+│       ├── 2026-07-27.json     existing — dated report (thin/low-volatility stretch begins)
+│       ├── 2026-08-03.json     existing — dated report
+│       ├── 2026-08-10.json     existing — dated report
+│       ├── 2026-08-17.json     existing — dated report
+│       ├── 2026-08-24.json     existing — dated report (thin/low-volatility stretch ends)
+│       └── 2026-08-31.json     existing — dated report
 ├── docs/
 │   ├── ARI3LLA INDEX.txt       existing — the reorg/spec doc driving this work, read-only
 │   ├── CHANGELOG.md            existing — master reconciled log
 │   ├── PROJECT_STRUCTURE.md    existing — this file
+│   ├── PROMPT_CHANGELOG.md     existing — review trail for summarize.py's build_prompt()
+│   ├── EDITORIAL_CALENDAR.md   existing — known recurring high-volatility windows
+│   │                           (fashion month Sept-Oct 2026), so a volatility shift
+│   │                           isn't mistaken for a crawl/sourcing anomaly
 │   └── agent-logs/             existing — per-agent hygiene/status/provenance logs
 │       ├── data-pipeline.md
 │       ├── frontend-archive.md
@@ -55,8 +67,11 @@ fashion-trend-crawler/
 │                               crawler.py -> summarize.py (classify+summarize+save dated report)
 └── web/
     ├── .gitignore               existing — covers node_modules/.next already
-    ├── package.json / package-lock.json   existing — Next.js app config
-    ├── next.config.ts           existing
+    ├── package.json / package-lock.json   existing — Next.js app config; `pagefind`
+    │                              devDependency + `postbuild` script
+    │                              (`pagefind --site out --output-subdir _pagefind`)
+    ├── next.config.ts           existing — `output: "export"` set (required for Pagefind
+    │                              to index the static `out/` build)
     ├── next-env.d.ts            existing
     ├── tsconfig.json / tsconfig.tsbuildinfo   existing
     ├── postcss.config.mjs       existing
@@ -78,7 +93,12 @@ fashion-trend-crawler/
     │   ├── signals/[slug]/page.tsx   existing — shipped run 4; doc section 24, per-signal
     │   │                                history page across reports
     │   ├── search/page.tsx, search/SearchClient.tsx   existing — added run 12; client-side
-    │   │                          facet filter (source sector, confidence, volatility)
+    │   │                          facet filter (source sector, confidence, volatility),
+    │   │                          plus Pagefind full-text search over report prose
+    │   │                          (added later run, see agent-logs/pagefind-integration.md;
+    │   │                          confirmed working end-to-end via a real
+    │   │                          `npm install && npm run build` in
+    │   │                          agent-logs/pagefind-verification-run15.md)
     │   └── rss.xml/route.ts      existing — RSS feed over the report archive
     ├── lib/
     │   ├── reports.ts            existing — archive data layer, reads data/reports/*.json;
