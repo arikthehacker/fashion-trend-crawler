@@ -18,9 +18,9 @@ const sections: { title: string; body: string[] }[] = [
     ],
   },
   {
-    title: "My Role",
+    title: "Scope",
     body: [
-      "Designed and built the crawler, MCP workflow, report structure, style taxonomy, frontend interface, and editorial/product direction.",
+      "Covers the crawler, MCP workflow, report structure, style taxonomy, frontend interface, and editorial/product direction.",
     ],
   },
   {
