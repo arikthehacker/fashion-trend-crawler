@@ -23,7 +23,7 @@ from taxonomy import (
     ORIGIN_CLASSIFICATIONS,
     classify_source,
 )
-from report_schema import save_report
+from report_schema import save_report, report_path, SchemaValidationError
 
 client = Anthropic()
 
@@ -123,7 +123,7 @@ Headlines:
 Return only valid JSON. No markdown, no backticks, no preamble."""
 
 
-def summarize(pages=None):
+def summarize(pages=None, revision_reason=None, corrected_at=None):
     if pages is None:
         print("loading trends...")
         pages = load_trends()
@@ -149,11 +149,40 @@ def summarize(pages=None):
     report = json.loads(raw)
     report["source_sector_breakdown"] = compute_sector_breakdown(pages)
 
-    path = save_report(report)
+    try:
+        path = save_report(
+            report, revision_reason=revision_reason, corrected_at=corrected_at
+        )
+    except SchemaValidationError as e:
+        if os.path.exists(report_path(report_date)) and not revision_reason:
+            print(
+                f"a report for {report_date} already exists with different content.\n"
+                "refusing to overwrite it silently. re-run with an explicit "
+                "correction reason, e.g.:\n"
+                "    python src/summarize.py --revision-reason \"<why this changed>\" "
+                "--corrected-at YYYY-MM-DD"
+            )
+            return
+        raise
 
     print(f"saved report to {path}")
     print(f"\nexecutive summary: {report['executive_summary']}")
 
 
 if __name__ == "__main__":
-    summarize()
+    import argparse
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--revision-reason",
+        default=None,
+        help="required if today's report already exists with different content",
+    )
+    parser.add_argument(
+        "--corrected-at",
+        default=None,
+        help="ISO date string for the correction (required alongside --revision-reason)",
+    )
+    args = parser.parse_args()
+
+    summarize(revision_reason=args.revision_reason, corrected_at=args.corrected_at)
