@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-06 ~19:00 PDT — [Loop run 15](changelog-entries/run-15.md)** — Ran a real
+  crawl to test whether the 4-thin-week streak was a WebSearch artifact — confirmed it's a
+  genuine quiet period. Added soft review-status metadata; created `PROMPT_CHANGELOG.md`;
+  verified Pagefind search fully works end-to-end via a real `npm install`/build;
+  confidence/dormancy review found nothing new.
+
 - **2026-07-06 ~17:45 PDT — [Loop run 14](changelog-entries/run-14.md)** — Fixed static
   export properly (real `out/` output confirmed); added `/rss.xml`; added an 8th report,
   now the 4th consecutive thin week, explicitly flagged as a streak; fixed stale

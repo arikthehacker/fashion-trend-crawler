@@ -305,15 +305,32 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       isn't an auditable per-report sign-off record, no prompt-versioning/review cadence,
       no stated bias-audit practice, no explicit draft-vs-published gate.
 
-## Next up (run 15 candidates)
-- [ ] **Worth investigating directly, not just noting:** 4 consecutive thin reports raises
-      a real question — is this genuinely a quiet news cycle, or is WebSearch-based
-      research hitting a coverage ceiling that a real `crawler.py` run wouldn't? Consider
-      whether it's time to prioritize getting a genuine live crawl merged into the archive
-      over adding more WebSearch-researched reports.
-- [ ] Verify Pagefind indexing end-to-end with a real `npm install && npm run build`
-      locally (needs your machine, not verifiable in the current environment).
-- [ ] Consider the AI-journalism-standards gaps: a structured per-report review record,
-      prompt change tracking, a periodic bias-check note, and a draft/published status
-      distinction — none implemented yet, all flagged as real gaps against actual
-      newsroom AI-use standards (AP/Poynter/Reuters).
+## Run 15 — done
+- [x] **Investigated the 4-thin-week question directly:** ran a real `crawler.py` crawl
+      (119 headlines, 106 unique). Only ~8-12 were genuine style-discourse candidates, none
+      providing new corroboration for tracked signals. **Conclusion: the streak is a real
+      quiet period, not a WebSearch under-finding artifact** — higher raw crawl volume
+      doesn't translate into higher usable signal volume. See
+      `docs/agent-logs/live-crawl-vs-websearch-run15.md`.
+- [x] Added `review_status`/`reviewed_by` fields to `Report` (soft metadata, not a hard
+      gate — `human_editor_note` remains the substantive review record).
+- [x] Created `docs/PROMPT_CHANGELOG.md`, a dedicated review trail for `summarize.py`'s
+      prompt instructions, reconstructed retroactively from git history.
+- [x] **Verified Pagefind end-to-end for real** (`npm install && npm run build`) — full
+      search index built (39 pages/1750 words), all expected static assets confirmed
+      served correctly. Search feature is now fully functional, not just wired.
+- [x] Confidence/dormancy review — no new concerning cases; `sheer-layering`/
+      `soft-tailoring` are one quiet window short of the close-out threshold, flagged for
+      next review rather than closed prematurely.
+
+## Next up (run 16 candidates)
+- [ ] `sheer-layering`/`soft-tailoring` are 2 quiet windows in as of this run — if still
+      quiet next report, close both out via `revision_history` the same way
+      `off-duty-varsity` was closed in run 13.
+- [ ] Given the thin-week streak is confirmed genuine (not a research-method gap), the
+      product question shifts: is more frequent reporting cadence even the right model for
+      genuinely quiet periods, or should the site's own framing lean into "this is what
+      honest low-volatility reporting looks like" as a feature, not an apology?
+- [ ] Still open: bias-audit practice and a periodic prompt-review cadence, per the
+      AI-journalism-standards research (`docs/PROMPT_CHANGELOG.md` now exists as the
+      substrate for that review, but no actual review has happened yet).
