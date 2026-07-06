@@ -1638,11 +1638,27 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       API-key fix holds on first re-use (single-invocation method correctly
       returns `True`).
 
-## Next up (run 82 candidates)
-- [ ] The signal-reuse checker's known false-positive baseline is now 0
-      (previously 5) — treat any new warning as worth reading carefully, the
-      safety net is now more sensitive with less known noise to filter.
-- [ ] Manual-sampling cadence next due ~run 87.
+## Run 82 — done
+- [x] Added `data/reports/2027-12-06.json`, a 75th report — a Chanel resort
+      signal earned "high" via genuine cross-sector corroboration; a holiday-
+      social signal correctly held at "low"; same-week timing between them
+      explicitly noted as coincidental, not corroboration.
+- [x] Dormancy/prolonged-silence convention audit — genuinely clean, all 5
+      signals that crossed the threshold were already correctly transitioned.
+- [x] Closed a real provenance gap: `revision_history` now auto-computes and
+      records exactly which signals were added/removed/modified on every
+      correction, not just that a correction happened — backward-compatible,
+      independently reviewed and confirmed working on old entries.
+- [x] Nav/build regression sweep clean, run 81's Sources/Taxonomy content
+      confirmed present.
+- [x] Fixed a real doc-tracking gap: `docs/manual-sampling-workflow.md` itself
+      never recorded its own cadence reset/next-due date — added a "Cadence
+      tracking" section directly to the doc so it can't silently drift out of
+      sync with TODO.md again.
+
+## Next up (run 83 candidates)
+- [ ] Manual-sampling cadence next due ~run 87 (now tracked directly in
+      `docs/manual-sampling-workflow.md` — update it in place when re-run).
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven
       only.

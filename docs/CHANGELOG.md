@@ -18,6 +18,14 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-10 ~08:10 PDT — [Loop run 82](changelog-entries/run-82.md)** — 75th
+  report keeps two independently-sourced signals correctly un-merged; a
+  dormancy/prolonged-silence convention audit comes back genuinely clean; a
+  real provenance gap closed (revision_history now auto-records exactly which
+  signals changed, not just that something did); nav/build clean; periodic
+  audit finds and fixes a real doc-tracking gap in the manual-sampling
+  cadence's own source-of-truth file.
+
 - **2026-07-10 ~06:50 PDT — [Loop run 81](changelog-entries/run-81.md)** — 74th
   report continues a synthesis-signal discipline; the signal-reuse checker's
   5-item false-positive baseline eliminated via a conservative, recall-
