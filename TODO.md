@@ -1530,19 +1530,34 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       warning (2027-10-11) confirmed as the same known false-positive pattern, not
       a new bug.
 
-## Next up (run 75 candidates)
+## Run 75 — done
+- [x] Added `data/reports/2027-10-18.json`, a 68th report — honestly closed the
+      5-week Margiela raw-edge thread via editorial close-out; opened a genuinely
+      new signal (Bogotá resort 2028 tailoring) with the first real Inexmoda
+      corroboration, kept "high" as earned cross-sector confirmation.
+- [x] Closed the Middle East source gap — added Vogue Arabia (voguearabia.com,
+      Dubai-based Condé Nast edition) as `editorial` after Arab News and
+      The National both failed JS-rendering/Cloudflare checks.
+- [x] Confirmed `SITE_URL` is already correctly centralized in `web/lib/site.ts`
+      (no scattering to fix) — the remaining item is purely a human-supplied real
+      domain, correctly left deferred.
+- [x] Nav/build regression sweep ran two independent clean builds; run 74's
+      Turbopack flake did not recur.
+- [x] Periodic audit correctly used `load_dotenv()` before its API-key check,
+      applying last run's lesson; all other checks clean.
+
+## Next up (run 76 candidates)
+- [ ] The newest report (2027-10-18) introduced fresh vocabulary not yet in the
+      glossary's `DEFINITIONS` map (5 new warnings on this run's build) — same
+      benign pattern as runs 72-74, not yet closed for this report specifically.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
-      sources — both the hang fix (run 72) and the daemon-thread fix (run 73) are
-      implemented and locally proven, but the standing "no autonomous execution"
-      rule remains in force regardless.
-- [ ] A genuine Middle East regional source (distinct from scmp.com, which is
-      Hong Kong/East Asia) remains an open geographic gap.
-- [ ] The Turbopack build non-determinism (one page occasionally dropped on a
-      clean build, self-resolves on rerun) is documented but not root-caused —
-      worth watching for recurrence; not currently blocking since reruns fix it.
+      sources — both fixes (runs 72, 73) remain implemented and locally proven
+      only.
+- [ ] The Turbopack build non-determinism from run 74 didn't recur this run, but
+      remains unexplained — worth continued watching, not currently blocking.
 - [ ] The manual-sampling cadence has no enforcement mechanism beyond documentation —
       worth a periodic spot-check to catch future lapses earlier.
-- [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
-      correctness — still awaiting a human decision (run 50).
+- [ ] `SITE_URL` remains a placeholder domain — correctly confirmed as needing only
+      a human-supplied real domain, no further autonomous work possible here.
 - [ ] The underlying human-in-the-loop process gap flagged in run 50 remains open.
 - [ ] `gh` CLI/CI-status check next due at run 80.

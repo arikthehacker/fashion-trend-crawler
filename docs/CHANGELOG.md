@@ -18,6 +18,14 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-09 ~23:55 PDT — [Loop run 75](changelog-entries/run-75.md)** — 68th
+  report honestly closes the 5-week Margiela thread and opens a genuinely new one
+  (first real Inexmoda corroboration); Middle East source gap closed with a
+  verified Vogue Arabia addition; SITE_URL audit confirms it's already correctly
+  centralized, needing only a human-supplied domain; nav/build sweep found the
+  prior Turbopack flake did not recur; periodic audit correctly applied last run's
+  API-key-check lesson.
+
 - **2026-07-09 ~22:50 PDT — [Loop run 74](changelog-entries/run-74.md)** — 67th
   report distinguishes single-sector confirmation from real cross-sector
   corroboration; Colombia's Inexmoda added as a verified institutional source; 50
