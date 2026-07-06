@@ -156,6 +156,7 @@ const DEFINITIONS: Record<string, string> = {
   "opera gloves": "Long gloves extending past the elbow, traditionally worn with formal eveningwear, cited when current styling or retail coverage revives them as an occasion-dressing element.",
   "awards season dressing": "Style coverage tied to the period surrounding televised or industry award ceremonies, tracked as occasion-specific rather than everyday styling.",
   "british fashion awards": "An annual British Fashion Council ceremony recognizing designers and industry figures, cited as a source event for pre-ceremony occasion-dressing style coverage.",
+  "restraint dressing": "A critical framing describing covered-hand, high-neckline eveningwear as a deliberate counterpoint to overtly skin-baring red-carpet styling, proposed in independent-criticism commentary rather than by a designer or retailer.",
 };
 
 function normalize(term: string): string {

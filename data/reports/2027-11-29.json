@@ -1,0 +1,77 @@
+{
+  "report_date": "2027-11-29",
+  "collection_window": {
+    "start": "2027-11-23",
+    "end": "2027-11-29"
+  },
+  "sources_scanned": 8,
+  "items_collected": 1,
+  "source_sector_breakdown": {
+    "independent_criticism": 1
+  },
+  "executive_summary": "Collection window November 23-29, 2027. The opera-glove awards-season thread produced one new development: dieworkwear.com published a critical essay this window that names and synthesizes the two signals logged in the prior window -- vogue.com's opera-glove awards-season styling feature (opera-gloves-awards-season-editorial) and net-a-porter.com's evening-glove stock increase (opera-gloves-awards-season-retail-buy) -- and frames both under a proposed aesthetic label, 'restraint dressing,' describing covered-hand, high-neckline eveningwear as a deliberate counterpoint to overtly skin-baring red-carpet styling. The essay cites no new primary sourcing of its own: no new designer statement, retailer, or second editorial outlet is introduced, and its evidentiary basis is entirely the two previously logged items. It is logged as its own signal_id (opera-gloves-awards-season-independent-criticism-synthesis) rather than folded into either prior entry, since a critical/interpretive synthesis of existing signals is a different claim type than either the original editorial framing or the original retail stocking data -- consistent with this archive's practice, established in the 2027-11-08 Dieworkwear entry on the Bogota/Sao Paulo thread, of logging synthesis separately from primary reporting. No designer has stated intent behind the opera-glove element at any point in this thread; it remains tracked as editorial interpretation, retail adoption, and now independent critical interpretation, not designer intent. The Bogota/Sao Paulo waist-tailoring thread produced no new development this window and is not carried forward again absent fresh movement. The Margiela raw-edge thread remains closed out as of 2027-10-18. Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention.",
+  "top_signals": [
+    {
+      "name": "Dieworkwear essay synthesizes opera-glove editorial and retail signals under proposed 'restraint dressing' framing",
+      "type": "critical_synthesis",
+      "source_sectors": [
+        "independent_criticism"
+      ],
+      "confidence": "low",
+      "volatility": "emerging",
+      "origin_classification": "editorial_amplified",
+      "evidence": "dieworkwear.com published a critical essay this window explicitly citing vogue.com's opera-glove awards-season styling feature (2027-11-22) and net-a-porter.com's concurrent evening-glove stock increase (2027-11-22), proposing the label 'restraint dressing' for covered-hand, high-neckline eveningwear read as a counterpoint to skin-baring red-carpet styling. The essay introduces no new primary sourcing -- no designer statement, no additional retailer, no second editorial outlet -- and draws its entire evidentiary basis from the two previously logged items.",
+      "index_note": "Logged as a new signal_id (opera-gloves-awards-season-independent-criticism-synthesis), distinct from opera-gloves-awards-season-editorial and opera-gloves-awards-season-retail-buy: a critical/interpretive synthesis naming and combining two prior signals is a different claim type than either original item, not a corroboration of either one individually. Origin classification is editorial_amplified because the underlying garment signal remains editorially/retail driven; the essay is commentary on existing coverage, not a new origin claim, and no designer has been identified as originating the opera-glove element at any point in this thread. This keeps designer intent, editorial interpretation, retail adoption, and now independent critical interpretation as four distinct tracked strands rather than merging them.",
+      "source_corroboration_count": 1,
+      "signal_id": "opera-gloves-awards-season-independent-criticism-synthesis",
+      "confidence_source": "manual",
+      "human_editor_note": "derive_confidence() computes 'medium' for this signal: source_corroboration_count=1 from 'independent_criticism', which is in HIGH_RELIABILITY_SECTORS, so the single-source medium exception applies mechanically. This is manually overridden down to 'low' with confidence_source left as 'manual' rather than adopting the derived value, for the same reason the 2027-11-08 Dieworkwear entry on the Bogota thread was held below its derived tier: the essay is a citation-only synthesis of two already-logged signals, not independent reporting with its own new sourcing -- no new designer, retailer, or outlet is introduced. Separately, per standing discipline, the fact that the two underlying signals happened to occur in the same prior calendar window is not being treated as cross-sector corroboration between them; this synthesis signal's own confidence is scored on its own (lack of) new sourcing, not inherited from the two items it cites. If a second independent-criticism or editorial outlet independently proposes a similar framing without citing Dieworkwear, that would be genuine corroboration and would warrant revisiting this tier.",
+      "source_domains": [
+        "dieworkwear.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "opera gloves",
+    "long evening gloves",
+    "awards season dressing",
+    "British Fashion Awards",
+    "restraint dressing",
+    "covered eveningwear"
+  ],
+  "garments": [
+    "opera gloves"
+  ],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [
+    "awards season dressing",
+    "restraint dressing"
+  ],
+  "cultural_references": [
+    "Vogue",
+    "Net-a-Porter",
+    "Dieworkwear",
+    "British Fashion Awards"
+  ],
+  "limitations": [
+    "The independent-criticism signal is a synthesis of two previously logged single-source signals and introduces no new primary sourcing of its own; it should not be read as a third independent report of the underlying garment trend.",
+    "This report does not treat the prior week's same-window co-occurrence of the editorial and retail signals as cross-sector corroboration of either one; that discipline is unchanged by this window's synthesis, which itself is scored independently on its own lack of new sourcing.",
+    "No designer or house has been identified as originating or crediting the opera-glove element at any point in this thread; it remains tracked as editorial interpretation, retail adoption, and independent critical interpretation only.",
+    "No new development occurred on the Bogota/Sao Paulo waist-tailoring thread this window; per standing convention, it is not carried forward again absent fresh movement."
+  ],
+  "archive_tags": [
+    "margiela-raw-edge-editorial-close-out",
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "Only one genuinely new development was identified this window (a critical synthesis of two prior signals, itself introducing no new primary sourcing); report reflects limited coverage rather than manufactured trends.",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": "ari3lla-index-loop-improvements agent",
+  "content_hash": "af92544042b4739d3fc4911a33cc1e4f74e96e62096ea7b8f7f47a11ba5c1fc6"
+}
