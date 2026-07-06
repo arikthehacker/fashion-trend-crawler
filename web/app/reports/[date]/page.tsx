@@ -72,12 +72,19 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
     ? headlineSource.slice(0, 110)
     : `Weekly style signal report — ${report.report_date}`;
 
+  // IPTC/schema.org distinguish datePublished (original issue) from dateModified
+  // (last correction) — a corrected report should not claim it was never touched.
+  // Sourced from the last revision_history entry when one exists, per doc's
+  // correction-history model (src/report_schema.py corrected_at).
+  const lastRevision = report.revision_history?.[report.revision_history.length - 1];
+  const dateModified = lastRevision?.corrected_at || report.report_date;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
     headline,
     datePublished: report.report_date,
-    dateModified: report.report_date,
+    dateModified,
     url: `${SITE_URL}/reports/${report.report_date}`,
     mainEntityOfPage: `${SITE_URL}/reports/${report.report_date}`,
     description: report.executive_summary,
@@ -104,7 +111,6 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
       {/* structured data for search engines — Article/NewsArticle JSON-LD */}
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
