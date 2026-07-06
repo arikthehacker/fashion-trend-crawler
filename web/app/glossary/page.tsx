@@ -151,6 +151,7 @@ const DEFINITIONS: Record<string, string> = {
   "silhouette echo": "A term describing the independent, apparently uncoordinated appearance of the same garment silhouette across separate designers or market weeks, without one citing or responding to the other -- distinct from a trend that spreads by direct citation or retail adoption.",
   "ffw": "FFW (ffw.com.br), an independent Brazilian fashion and culture editorial platform, cited as an editorial-sector source for South American runway and market coverage.",
   "sao paulo fashion week": "Sao Paulo's market-week fashion showcase, cited as a source event for South American runway and resort-collection coverage.",
+  "dieworkwear": "Dieworkwear.com, an independent menswear and tailoring criticism site, cited as an independent-criticism-sector source.",
 };
 
 function normalize(term: string): string {
