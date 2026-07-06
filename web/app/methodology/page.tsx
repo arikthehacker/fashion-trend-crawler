@@ -23,6 +23,7 @@ const sections: { title: string; body: string[] }[] = [
     body: [
       "Sources are grouped into sectors: designer-origin, runway/editorial, retail/commerce, social/platform, visual archive and search, independent criticism, institutional/historical, street/user-generated, and resale/secondhand.",
       "Each sector carries a different incentive structure, and reports note which sectors a signal is drawn from. A full breakdown is available on the Sources page.",
+      "A domain that has not yet been mapped to a sector is classified unclear rather than guessed into an existing sector. An unclear classification is not treated as a distinct sector for confidence purposes, and it is not evidence against a signal — it reflects a gap in source coverage, not a judgment about the source itself.",
     ],
   },
   {
@@ -36,6 +37,7 @@ const sections: { title: string; body: string[] }[] = [
     title: "How Confidence Is Assigned",
     body: [
       "Confidence reflects how many distinct source sectors report a signal and how consistent the language is across them. Low confidence indicates a signal drawn from one noisy source type; high confidence requires recurrence across multiple distinct sectors.",
+      "A computed baseline is checked against the underlying evidence rather than applied automatically. Two sources carrying different sector labels are not treated as independent corroboration if one is a downstream reprint of the other's own announcement rather than separate reporting. A single source from a high-reliability sector (designer-origin, editorial, institutional, or independent criticism) can lift a signal above the lone-source floor, but only when that source did independent reporting of its own; a citation-free rehash of signals already in the archive does not receive the same credit, even from a high-reliability sector.",
       "Full confidence definitions are listed on the Taxonomy page.",
     ],
   },
@@ -81,6 +83,13 @@ const sections: { title: string; body: string[] }[] = [
       "Some collection windows return a `collection_status` of \"thin,\" meaning fewer signals met the recurrence and source-diversity thresholds than in a typical reporting period.",
       "A thin status is not treated as a gap to be filled. Where possible it is checked against raw source volume for that window; when source volume was itself low, the reduced signal count reflects observed style discourse rather than a collection failure.",
       "Reports do not manufacture signals to normalize a thin window to a target count. A verified low-volatility period is recorded as a data point in the archive, the same as any other classification.",
+    ],
+  },
+  {
+    title: "How Signal Recurrence Is Tracked",
+    body: [
+      "Each signal is assigned a persistent identifier that carries across reports. A dedicated page for that identifier lists every dated report in which it appeared, in chronological order, and states plainly whether it appeared in the most recently published report or how many reports have passed since it last did.",
+      "A signal that stops recurring is not automatically marked resolved. A style signal whose discourse volume has genuinely dropped can be noted as closed. A tracked factual question that goes unanswered across multiple consecutive reports is not closed the same way — its absence from new coverage is evidence the crawler has not found an answer, not evidence the question has been settled. After a sustained stretch of unresolved carry-forward, such a signal may be marked untracked pending new information rather than repeated as open indefinitely; tracking resumes if new coverage appears.",
     ],
   },
   {
