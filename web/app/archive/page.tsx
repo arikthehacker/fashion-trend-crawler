@@ -2,7 +2,7 @@
 // lists all dated ARI3LLA INDEX reports as a historical record
 
 import Link from "next/link";
-import { getAllReports } from "../../lib/reports";
+import { getAllReports, getConsecutiveThinWeekCount } from "../../lib/reports";
 
 export const metadata = {
   title: "Archive — ARI3LLA INDEX",
@@ -11,6 +11,7 @@ export const metadata = {
 
 export default function Archive() {
   const reports = getAllReports();
+  const thinStreak = getConsecutiveThinWeekCount();
 
   return (
     <main style={{
@@ -71,6 +72,22 @@ export default function Archive() {
         }}>
           {reports.length} report{reports.length === 1 ? "" : "s"} on file
         </p>
+        {thinStreak >= 2 && (
+          <p style={{
+            fontFamily: "var(--font-franklin)",
+            fontSize: "0.85rem",
+            lineHeight: "1.6",
+            color: "var(--gray)",
+            maxWidth: "560px",
+            margin: "1.5rem auto 0",
+            borderTop: "1px solid var(--border)",
+            paddingTop: "1.5rem",
+          }}>
+            The archive&apos;s {thinStreak} most recent reporting windows were
+            classified thin, reflecting limited genuine signal volume rather
+            than a change in collection method.
+          </p>
+        )}
       </header>
 
       {/* report list */}

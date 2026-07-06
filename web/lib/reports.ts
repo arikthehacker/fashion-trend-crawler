@@ -184,6 +184,27 @@ export function getSearchIndex(): SearchableSignal[] {
   return index;
 }
 
+/**
+ * Counts how many of the most recent consecutive reports (by report_date,
+ * newest first) have collection_status === "thin". Stops at the first
+ * non-thin report. Used to surface a repeated-thin-week pattern explicitly
+ * rather than letting each report restate "quiet period" in isolation.
+ */
+export function getConsecutiveThinWeekCount(): number {
+  const reports = getAllReports(); // newest first
+  let count = 0;
+
+  for (const report of reports) {
+    if ((report as { collection_status?: string }).collection_status === "thin") {
+      count++;
+    } else {
+      break;
+    }
+  }
+
+  return count;
+}
+
 /** Returns all distinct non-empty signal_id values across all reports. */
 export function getAllSignalSlugs(): string[] {
   const reports = getAllReports();
