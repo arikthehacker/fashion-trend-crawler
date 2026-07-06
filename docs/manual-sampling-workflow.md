@@ -47,6 +47,16 @@ than raw automated pulls.
 - **Corroboration is explicit.** `source_corroboration_count` defaults to 1 (matching the
   schema's existing single-source default) and only rises if the observer actually saw
   the signal independently in multiple places.
+- **Platform marketing is not organic signal.** A platform's own official "trend report,"
+  newsroom post, or PR page (e.g. Pinterest's published trend reports) is self-promotional
+  content, not a neutral measurement of organic user activity, and should not be logged
+  the same way as directly observed posts/hashtag activity without saying so. When a
+  signal's evidentiary basis is a platform's own marketing/trend-report page rather than
+  organic posts you personally observed, the observer must state that explicitly in
+  `human_editor_note` (e.g. "sourced from Pinterest's official trend report, not organic
+  post volume") — see the template's Observer notes guidance and the worked example dated
+  2026-07-06. This is a documentation/practice convention, not a new schema field or
+  enforced check.
 
 ## What this does not do
 
