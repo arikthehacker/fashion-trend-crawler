@@ -93,6 +93,11 @@ docs/
 3. **Always verify before committing**: `cd web && npx tsc --noEmit && npx next build` for
    the frontend, `python -m py_compile src/*.py` for the backend. Don't trust an agent's
    self-report of "verified" without re-running it if you're the one consolidating.
+   **When adding new page copy/sections, manually check for the styled-`<p>`-as-heading
+   bug** (a `<p>` with heading-scale styling instead of a real `<h1>`-`<h6>`) — this has
+   recurred 3+ times across runs and jsx-a11y/ESLint cannot detect it (confirmed run 22:
+   it only checks tag semantics, not computed visual styling), so it needs an actual
+   visual/structural read, not just a lint pass.
 4. **Never let voice slip** — if new copy sounds like a blog post or an ad, it's a bug, not
    a style choice. Check against doc section 2 before shipping any new page copy.
 5. **The designer-eye / interpretive classification work (which signals cluster together,
