@@ -83,11 +83,14 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
   // structured dataset (each report is a dated JSON record of classified signals) —
   // schema.org recommends Dataset markup on a dataset's canonical/landing page so it
   // surfaces in dataset-aware search tooling, not just Article-style news search.
-  // No public raw-JSON download route exists yet (data/reports/*.json is repo-only,
-  // not served over the web), so `distribution`/contentUrl is intentionally omitted
-  // rather than pointing at a URL that doesn't resolve — see docs/agent-logs for the
-  // follow-up note to add one.
+  //
+  // Raw JSON download route (run 45): scripts/copy-reports.mjs copies
+  // data/reports/*.json into public/data/reports/ as a prebuild step, and the
+  // static export (output: "export") serves the copy as-is at
+  // /data/reports/<date>.json — a real, resolving URL, so `distribution`/
+  // `contentUrl` below is no longer a placeholder.
   const reportUrl = `${SITE_URL}/reports/${report.report_date}`;
+  const rawDataUrl = `${SITE_URL}/data/reports/${report.report_date}.json`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -126,6 +129,13 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
         temporalCoverage: report.report_date,
         variableMeasured: Object.keys(report.source_sector_breakdown || {}),
         isBasedOn: reportUrl,
+        distribution: [
+          {
+            "@type": "DataDownload",
+            encodingFormat: "application/json",
+            contentUrl: rawDataUrl,
+          },
+        ],
       },
     ],
   };
@@ -173,42 +183,63 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
           {report.report_date}
         </h1>
 
+        {/* compact "how this report was compiled" box — Pew Research Center /
+            FiveThirtyEight convention: a short, visually distinct box near the top of a
+            data-driven article stating source/collection facts and linking to the
+            full-length methodology page, kept separate from that long-form page itself.
+            See docs/agent-logs/journalism-standards-check-run45.md */}
         <div style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          gap: "0.5rem 2rem",
-          marginTop: "2rem",
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.75rem",
-          letterSpacing: "0.05em",
-          color: "var(--gray)",
+          maxWidth: "640px",
+          margin: "2rem auto 0",
+          padding: "1rem 1.5rem",
+          border: "1px solid var(--border)",
+          textAlign: "left",
         }}>
-          <span>Collection window: {report.collection_window?.start}–{report.collection_window?.end}</span>
-          <span>Sources scanned: {report.sources_scanned}</span>
-          <span>Items collected: {report.items_collected}</span>
+          <p style={{
+            fontFamily: "var(--font-franklin)",
+            fontSize: "0.7rem",
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            color: "var(--black)",
+            marginBottom: "0.6rem",
+          }}>
+            How This Report Was Compiled
+          </p>
+          <div style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "0.4rem 1.75rem",
+            fontFamily: "var(--font-franklin)",
+            fontSize: "0.75rem",
+            letterSpacing: "0.03em",
+            color: "var(--gray)",
+            marginBottom: "0.75rem",
+          }}>
+            <span>Collection window: {report.collection_window?.start}–{report.collection_window?.end}</span>
+            <span>Sources scanned: {report.sources_scanned}</span>
+            <span>Items collected: {report.items_collected}</span>
+          </div>
+          {/* byline-level AI disclosure — per-report, not just the general /about policy page.
+              Research convention (Trusting News byline template; AP/BBC studies on disclosure
+              credibility) recommends surfacing AI involvement at the byline, immediately next to
+              authorship, rather than only in a general site-wide policy a reader may never visit.
+              See docs/agent-logs/journalism-standards-check-run41.md */}
+          <p style={{
+            fontFamily: "var(--font-franklin)",
+            fontSize: "0.7rem",
+            letterSpacing: "0.03em",
+            color: "var(--gray)",
+            margin: 0,
+          }}>
+            AI-assisted collection, extraction, and drafting for this report;{" "}
+            {report.reviewed_by
+              ? `human-reviewed by ${report.reviewed_by}`
+              : "human-reviewed classification"}
+            . <Link href="/methodology" style={{ color: "var(--gray)", textDecoration: "underline" }}>
+              Full methodology
+            </Link>
+          </p>
         </div>
-
-        {/* byline-level AI disclosure — per-report, not just the general /about policy page.
-            Research convention (Trusting News byline template; AP/BBC studies on disclosure
-            credibility) recommends surfacing AI involvement at the byline, immediately next to
-            authorship, rather than only in a general site-wide policy a reader may never visit.
-            See docs/agent-logs/journalism-standards-check-run41.md */}
-        <p style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.7rem",
-          letterSpacing: "0.03em",
-          color: "var(--gray)",
-          marginTop: "1.25rem",
-        }}>
-          AI-assisted collection, extraction, and drafting for this report;{" "}
-          {report.reviewed_by
-            ? `human-reviewed by ${report.reviewed_by}`
-            : "human-reviewed classification"}
-          . <Link href="/methodology" style={{ color: "var(--gray)", textDecoration: "underline" }}>
-            AI use &amp; corrections policy
-          </Link>
-        </p>
       </header>
 
       {/* pinned correction notice — corrections policy convention (AP/NYT/Reuters):
@@ -637,6 +668,21 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
           Archive checksum: {report.content_hash.slice(0, 12)}
         </p>
       )}
+
+      {/* raw data download — human-visible counterpart to the Dataset JSON-LD's
+          distribution/contentUrl above; the file itself is a plain copy of
+          data/reports/<date>.json served via public/data/reports/ (run 45) */}
+      <p style={{
+        fontFamily: "monospace",
+        fontSize: "0.65rem",
+        color: "var(--gray)",
+        padding: "0 2rem 0.5rem",
+        textAlign: "center",
+      }}>
+        <a href={`/data/reports/${report.report_date}.json`} download style={{ color: "var(--gray)", textDecoration: "underline" }}>
+          Download raw data (JSON)
+        </a>
+      </p>
 
       {/* citation line */}
       <p style={{
