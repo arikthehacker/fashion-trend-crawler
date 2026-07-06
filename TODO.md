@@ -1012,7 +1012,31 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [x] Periodic audit — clean. 48 confidence mismatches all editor-conservative, 0 field
       coverage warnings, `gh` CLI unavailable (15th+ consecutive check).
 
-## Next up (run 49 candidates)
+## Run 49 — done
+- [x] Added `data/reports/2027-04-12.json`, a 42nd report — caught a real
+      false-resolution trap (a 2025-cycle CFDA winner announcement mistaken for the
+      tracked, still-unconfirmed 2026 question), and honestly revised
+      `glamoratti-revival`'s volatility to "saturated" rather than inflating confidence
+      from raw SEO-reprint outlet count.
+- [x] Verified all 27 unique `source_domains` values across the archive resolve to
+      real, live domains (4 needed a browser UA to pass bot-blocking) — clean, no
+      typos or dead domains found.
+- [x] Found and fixed a real `human_editor_note` process gap: 2 exact verbatim
+      duplicates of `index_note` traced to `summarize.py`'s prompt never mentioning the
+      field at all. Fixed at the prompt level going forward; deliberately did not
+      rewrite the 2 existing duplicates (would fabricate retroactive editorial
+      judgment).
+- [x] Added a `@media print` stylesheet — report pages previously had zero print
+      styling, so a researcher printing/PDF-saving one for citation would get full
+      interactive nav baked in and silently lose outbound source URLs.
+- [x] Periodic audit — clean. 49 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (16th+ consecutive check), confirmed run
+      48's `styleOnly` recurrence filter behaves correctly.
+
+## Next up (run 50 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
+- [ ] Two pre-existing `human_editor_note` values (2026-07-13, 2026-11-09) remain
+      verbatim duplicates of `index_note` — deliberately left as-is; the prompt fix
+      prevents new occurrences.

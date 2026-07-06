@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-08 ~15:30 PDT — [Loop run 49](changelog-entries/run-49.md)** — 42nd report
+  catches a real false-resolution trap (a 2025-cycle CFDA announcement mistaken for the
+  tracked 2026 question) and honestly revises a saturated signal's volatility; all 27
+  source domains verified live; a genuine `human_editor_note` copy-paste gap found and
+  fixed at the prompt level; a print stylesheet added for archival citation use;
+  periodic audit clean.
+
 - **2026-07-08 ~14:15 PDT — [Loop run 48](changelog-entries/run-48.md)** — 41st report
   avoids a false recurrence claim; the run-47-flagged recurrence threshold gets a real
   `styleOnly` filter instead of another deferral; the external correction-request
