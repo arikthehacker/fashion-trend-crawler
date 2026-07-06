@@ -20,6 +20,8 @@ export interface TopSignal {
   origin_classification: string;
   evidence: string;
   index_note: string;
+  signal_id?: string;
+  source_corroboration_count?: number;
 }
 
 export interface Report {
@@ -44,6 +46,7 @@ export interface Report {
   volatility_notes?: string;
   incentive_notes?: string;
   human_editor_note?: string;
+  content_hash?: string;
 }
 
 function reportsDir(): string {
@@ -77,6 +80,7 @@ export interface TimelineEntry {
   type: string;
   source_sectors: string[];
   confidence: string;
+  signal_id?: string;
 }
 
 /**
@@ -97,6 +101,7 @@ export function getTimelineEntries(): TimelineEntry[] {
         type: signal.type,
         source_sectors: signal.source_sectors,
         confidence: signal.confidence,
+        signal_id: signal.signal_id,
       });
     }
   }
@@ -112,4 +117,42 @@ export function getAllReportDates(): string[] {
     .readdirSync(dir)
     .filter((f) => f.endsWith(".json"))
     .map((f) => f.replace(/\.json$/, ""));
+}
+
+export interface SignalOccurrence {
+  report_date: string;
+  signal: TopSignal;
+}
+
+/**
+ * Returns every occurrence of a given signal_id across all reports,
+ * oldest first (chronological), for the /signals/[slug] history page.
+ */
+export function getSignalHistory(slug: string): SignalOccurrence[] {
+  const reports = getAllReports();
+  const occurrences: SignalOccurrence[] = [];
+
+  for (const report of reports) {
+    for (const signal of report.top_signals ?? []) {
+      if (signal.signal_id === slug) {
+        occurrences.push({ report_date: report.report_date, signal });
+      }
+    }
+  }
+
+  return occurrences.sort((a, b) => (a.report_date < b.report_date ? -1 : 1));
+}
+
+/** Returns all distinct non-empty signal_id values across all reports. */
+export function getAllSignalSlugs(): string[] {
+  const reports = getAllReports();
+  const slugs = new Set<string>();
+
+  for (const report of reports) {
+    for (const signal of report.top_signals ?? []) {
+      if (signal.signal_id) slugs.add(signal.signal_id);
+    }
+  }
+
+  return Array.from(slugs);
 }

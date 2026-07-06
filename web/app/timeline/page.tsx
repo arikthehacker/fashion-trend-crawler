@@ -135,14 +135,30 @@ export default function Timeline() {
                       borderBottom: "1px solid var(--border)",
                     }}
                   >
-                    <p style={{
-                      fontFamily: "var(--font-franklin)",
-                      fontSize: "0.95rem",
-                      lineHeight: "1.5",
-                      color: "var(--black)",
-                    }}>
-                      {entry.signal_name}
-                    </p>
+                    {entry.signal_id ? (
+                      <Link
+                        href={`/signals/${entry.signal_id}`}
+                        style={{
+                          fontFamily: "var(--font-franklin)",
+                          fontSize: "0.95rem",
+                          lineHeight: "1.5",
+                          color: "var(--black)",
+                          textDecoration: "underline",
+                          textUnderlineOffset: "3px",
+                        }}
+                      >
+                        {entry.signal_name}
+                      </Link>
+                    ) : (
+                      <p style={{
+                        fontFamily: "var(--font-franklin)",
+                        fontSize: "0.95rem",
+                        lineHeight: "1.5",
+                        color: "var(--black)",
+                      }}>
+                        {entry.signal_name}
+                      </p>
+                    )}
                     <p style={{
                       fontFamily: "var(--font-franklin)",
                       fontSize: "0.7rem",

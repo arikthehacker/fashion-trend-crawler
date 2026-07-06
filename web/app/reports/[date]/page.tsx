@@ -179,13 +179,30 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
           <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
             {report.top_signals.map((signal, i) => (
               <div key={i} style={{ borderTop: "1px solid var(--border)", paddingTop: "1.5rem" }}>
-                <p style={{
-                  fontFamily: "var(--font-instrument)",
-                  fontSize: "1.4rem",
-                  marginBottom: "0.75rem",
-                }}>
-                  {i + 1}. {signal.name}
-                </p>
+                {signal.signal_id ? (
+                  <Link
+                    href={`/signals/${signal.signal_id}`}
+                    style={{
+                      fontFamily: "var(--font-instrument)",
+                      fontSize: "1.4rem",
+                      marginBottom: "0.75rem",
+                      display: "block",
+                      color: "var(--black)",
+                      textDecoration: "underline",
+                      textUnderlineOffset: "4px",
+                    }}
+                  >
+                    {i + 1}. {signal.name}
+                  </Link>
+                ) : (
+                  <p style={{
+                    fontFamily: "var(--font-instrument)",
+                    fontSize: "1.4rem",
+                    marginBottom: "0.75rem",
+                  }}>
+                    {i + 1}. {signal.name}
+                  </p>
+                )}
                 <div style={{
                   display: "flex",
                   flexWrap: "wrap",
@@ -203,6 +220,9 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
                   <span>Origin: {signal.origin_classification}</span>
                   {signal.source_sectors?.length > 0 && (
                     <span>Sectors: {signal.source_sectors.join(", ")}</span>
+                  )}
+                  {(signal.source_corroboration_count ?? 1) > 1 && (
+                    <span>Corroborated by {signal.source_corroboration_count} sources</span>
                   )}
                 </div>
                 <p style={{
@@ -407,6 +427,18 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
           Current report
         </Link>
       </footer>
+
+      {report.content_hash && (
+        <p style={{
+          fontFamily: "monospace",
+          fontSize: "0.65rem",
+          color: "var(--gray)",
+          padding: "0 2rem 1.5rem",
+          textAlign: "center",
+        }}>
+          Archive checksum: {report.content_hash.slice(0, 12)}
+        </p>
+      )}
 
     </main>
   );
