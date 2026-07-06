@@ -1,0 +1,46 @@
+{
+  "report_date": "2027-05-31",
+  "collection_window": {
+    "start": "2027-05-25",
+    "end": "2027-05-31"
+  },
+  "sources_scanned": 11,
+  "items_collected": 0,
+  "source_sector_breakdown": {
+    "editorial": 3,
+    "retail": 2
+  },
+  "executive_summary": "This collection window (May 25-31, 2027) is the forty-ninth archived window. The Cannes Film Festival red carpet cycle, which generated this index's one corroborated signal last window, had already concluded before this window opened; searches this week surfaced only retrospective best-dressed listicles recapping the same cycle rather than new discourse, so no new signal is logged for it here. Scattered single-brand items surfaced (a Versace campaign, a Givenchy bag launch, a Louis Vuitton ambassador announcement, a Victoria's Secret/Agua Bendita capsule, Armani's Superyacht Regatta running May 26-30) but none cleared this index's cross-source corroboration bar -- each is single-outlet or single-brand promotional coverage, not a converging editorial pattern. Met Gala 2027 was checked a fifth consecutive time: still no theme, co-chair, or red-carpet coverage exists anywhere, under that name. Given the real-world Met Gala calendar places the event in early May and this index has now found zero coverage across five consecutive weekly windows spanning early May through the following month, this window's editorial judgment is that the annual event corresponding to this index's collection year has most plausibly not yet occurred on the calendar this index is tracking against, making continued weekly rechecking unlikely to produce new information. Wales Bonner/Hermes and the CFDA Fashion Fund/Awards were not re-litigated this window.",
+  "top_signals": [],
+  "repeated_keywords": [
+    "Cannes 2027 red carpet retrospective listicles",
+    "single-brand product launches, no cross-source convergence",
+    "Met Gala 2027 fifth window no coverage"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [],
+  "limitations": [
+    "No signal cleared this index's cross-source corroboration threshold this window: the Cannes red-carpet cycle already covered last window produced only retrospective recap coverage of the same event rather than new discourse, and several single-brand items (Versace, Givenchy, Louis Vuitton, Victoria's Secret x Agua Bendita, Armani's Superyacht Regatta) were each covered by a single outlet or the brand's own channel only, not by independent converging coverage. Logged as a thin week rather than forcing a weak signal to fill a quota, per this index's thin-week convention.",
+    "Met Gala 2027 was checked a fifth consecutive window (following 2027-05-03, 2027-05-10, 2027-05-17, and 2027-05-24). None found. The event's date is not in question -- the Editorial Calendar's first-Monday-in-May rule places it on May 3, 2027, and prior reports in this archive have consistently and correctly treated that date as past since the following window. Five consecutive windows of zero reachable coverage for an event that normally generates same-day reporting remains a genuine, unresolved coverage absence, not a calendar mismatch. Weekly rechecking is being scaled back given the length of the gap, consistent with this index's prolonged-silence convention, without declaring the question resolved.",
+    "Wales Bonner/Hermes and the CFDA Fashion Fund/Awards questions were not re-litigated this window; both remain 'untracked going forward pending new information' with no new coverage found.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "cannes-2027-retrospective-no-new-signal",
+    "met-gala-2027-calendar-mismatch-hypothesis-fifth-window",
+    "wales-bonner-untracked-pending-new-information",
+    "cfda-signals-untracked-pending-new-information",
+    "2027-q2",
+    "thin-week"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "No candidate signal reached this index's cross-source corroboration bar this window. The one signal-worthy event in recent weeks (Cannes 2027 red carpet) had already concluded and was already logged last window; this week's search only turned up recap/listicle coverage of the same cycle, which is not a new signal, and a handful of single-brand promotional items that did not converge across independent sources. top_signals is intentionally empty rather than padded.",
+  "review_status": "reviewed",
+  "reviewed_by": "",
+  "revision_history": [],
+  "content_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+}
