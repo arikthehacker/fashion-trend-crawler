@@ -12,7 +12,14 @@ import hashlib
 import json
 import os
 
-from taxonomy import CONFIDENCE_LEVELS, VOLATILITY_LABELS, ORIGIN_CLASSIFICATIONS
+from taxonomy import CONFIDENCE_LEVELS, VOLATILITY_LABELS, ORIGIN_CLASSIFICATIONS, SOURCE_SECTORS
+
+# sectors treated as "high-reliability" for the medium-confidence single-source
+# gate in derive_confidence() (see docs/agent-logs/confidence-scoring-research.md).
+# only includes names that actually exist in taxonomy.SOURCE_SECTORS.
+HIGH_RELIABILITY_SECTORS = [
+    s for s in ("editorial", "designer_origin", "institutional") if s in SOURCE_SECTORS
+]
 
 REPORTS_DIR = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "reports"
@@ -78,6 +85,68 @@ class Signal:
     # backward compatible: empty string until assigned; old reports without
     # it still validate.
     signal_id: str = ""
+    # whether `confidence` was hand-set by the LLM/editor ("manual", default)
+    # or computed by derive_confidence() ("derived"). optional/backward
+    # compatible: old reports without it are treated as "manual" since they
+    # predate the derivation formula — see
+    # docs/agent-logs/confidence-derivation-impl.md.
+    confidence_source: str = "manual"
+
+
+CONFIDENCE_SOURCE_VALUES = ["manual", "derived"]
+
+
+def derive_confidence(signal) -> str:
+    """
+    compute a confidence tier from a signal's corroboration count and
+    source-sector diversity, per the formula researched in
+    docs/agent-logs/confidence-scoring-research.md (ICD 203 / CTI /
+    commercial-forecasting convergence: cross-sector corroboration, not
+    raw mention count, is the real confidence signal).
+
+    accepts either a Signal instance or a plain dict with the same keys
+    (source_corroboration_count, source_sectors, confidence).
+
+    - "archival" is never derived: if the signal's existing confidence is
+      already "archival" (a manually-flagged tier), it is returned
+      unchanged.
+    - "high": corroboration_count >= 2 AND >= 2 distinct source_sectors.
+    - "medium": corroboration_count >= 2 from a single sector, OR
+      corroboration_count == 1 from a high-reliability sector
+      (HIGH_RELIABILITY_SECTORS).
+    - "low": everything else (typically count == 1, non-high-reliability
+      sector, e.g. a lone social mention).
+
+    this is a standalone helper — it does not mutate the signal or get
+    called automatically by save_report()/validate_report(). summarize.py
+    or a human editor can call it to cross-check or override the LLM's
+    confidence assignment, setting confidence_source="derived" if they
+    adopt the result.
+    """
+    if isinstance(signal, dict):
+        existing_confidence = signal.get("confidence", "")
+        corroboration_count = signal.get("source_corroboration_count", 1)
+        source_sectors = signal.get("source_sectors", []) or []
+    else:
+        existing_confidence = getattr(signal, "confidence", "")
+        corroboration_count = getattr(signal, "source_corroboration_count", 1)
+        source_sectors = getattr(signal, "source_sectors", []) or []
+
+    if existing_confidence == "archival":
+        return "archival"
+
+    distinct_sectors = set(source_sectors)
+
+    if corroboration_count >= 2 and len(distinct_sectors) >= 2:
+        return "high"
+
+    if corroboration_count >= 2 and len(distinct_sectors) == 1:
+        return "medium"
+
+    if corroboration_count == 1 and distinct_sectors & set(HIGH_RELIABILITY_SECTORS):
+        return "medium"
+
+    return "low"
 
 
 @dataclass
@@ -188,6 +257,15 @@ def validate_report(data: dict) -> None:
                     f"top_signals[{i}].signal_id must be a lowercase "
                     f"alphanumeric-with-hyphens slug, got {signal_id!r}"
                 )
+
+        # optional field: default to "manual" if absent so old reports
+        # (predating derive_confidence()) remain valid.
+        confidence_source = signal.get("confidence_source", "manual")
+        if confidence_source not in CONFIDENCE_SOURCE_VALUES:
+            raise SchemaValidationError(
+                f"top_signals[{i}].confidence_source '{confidence_source}' "
+                f"not in {CONFIDENCE_SOURCE_VALUES}"
+            )
 
     # optional field: only checked if present, so old reports without a
     # content_hash still validate.
