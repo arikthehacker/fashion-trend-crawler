@@ -341,15 +341,32 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [x] Fashion week calendar research confirms NYFW/LFW/MFW/PFW run ~Sept 8 – Oct 6, 2026 —
       the low-volatility stretch should end structurally around then, not before.
 
-## Next up (run 17 candidates)
-- [ ] Don't force "normal" collection_status before ~Sept 8, 2026 (NYFW start) — the
-      quiet stretch is expected to run until fashion month per the calendar research.
-- [ ] Source-list diversity is a real, documented gap (English/Western-only editorial
-      sources) — consider expanding `FASHION_SOURCES` to include non-Western fashion
-      discourse outlets as a future crawl-coverage improvement.
-- [ ] Product framing question from run 15 (should low-volatility reporting be framed as a
-      feature) — partially addressed via the new methodology section; consider whether the
-      homepage/archive pages need similar framing.
-- [ ] Bias-audit practice now has one real exercise on record — consider making this a
-      periodic (not one-off) review per the original AI-journalism-standards
-      recommendation.
+## Run 17 — done
+- [x] Expanded `FASHION_SOURCES`/`taxonomy.py` with 4 non-Western-oriented outlets
+      (nataal.com, okayafrica.com, fashionunited.in, tokyofashion.com) — partial fix,
+      honestly caveated: BFS from these seeds still can't guarantee balanced coverage, and
+      most remain English-language/diaspora-facing rather than local-for-local.
+- [x] Added homepage thin-week framing — a conditional note under the latest-report
+      teaser when `collection_status === "thin"`, linking to methodology.
+- [x] **Added `data/reports/2026-08-31.json`, a 10th report — ends the 5-week thin
+      streak with a genuinely earned "normal" status.** Caught a real editorial red flag:
+      a Pantone/movie-tie-in signal where the causal claim ("movie inspired the report")
+      is likely reversed since the report predates the film's public imagery — flagged
+      low confidence with the concern noted explicitly.
+- [x] Refreshed skill doc for runs 13-16, added an "institutional knowledge" section on
+      the fashion-week calendar so the thin-week streak isn't mistaken for a bug.
+- [x] Created `docs/EDITORIAL_CALENDAR.md` — a reusable reference for recurring
+      high-volatility windows, so future report-writing agents don't re-research fashion
+      week dates from scratch each time.
+
+## Next up (run 18 candidates)
+- [ ] Source diversity is still only partially addressed — most new outlets are
+      English-language/diaspora-facing, not local-for-local. Worth a deeper pass if
+      genuinely diverse coverage matters to the project's credibility.
+- [ ] Bias-audit practice now has one real exercise on record — make it periodic per the
+      original AI-journalism-standards recommendation, not one-off.
+- [ ] Keep `docs/EDITORIAL_CALENDAR.md` updated as new recurring events are identified
+      (Met Gala, trade fairs, etc. — currently only has fashion week).
+- [ ] With fashion month approaching (~Sept 8), expect report volume/complexity to
+      increase — may be worth reviewing whether the schema/prompt handle a genuinely busy
+      week as well as they've handled thin ones.

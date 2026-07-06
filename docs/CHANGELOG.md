@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-06 ~21:30 PDT — [Loop run 17](changelog-entries/run-17.md)** — Expanded
+  source diversity (partial fix, honestly caveated); added homepage thin-week framing;
+  10th report ends the 5-week thin streak with an earned "normal" status and catches a
+  likely reversed-causality claim; refreshed docs, added a reusable editorial-calendar
+  reference.
+
 - **2026-07-06 ~20:15 PDT — [Loop run 16](changelog-entries/run-16.md)** — Added a 9th
   report (5th consecutive thin week); closed out 3 dormant signals; added low-volatility
   methodology framing; first real bias audit found and fixed an inconsistent confidence
