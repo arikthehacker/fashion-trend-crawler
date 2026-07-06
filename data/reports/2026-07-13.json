@@ -59,10 +59,11 @@
       "confidence": "high",
       "volatility": "stable",
       "origin_classification": "retail_adopted",
-      "evidence": "Business of Fashion's State of Fashion 2026 coverage and multiple retail-market reports (including ThredUp's published resale/consumer trend data) describe secondhand apparel growing several multiples faster than primary retail, with U.S. secondhand sales cited around $55.5 billion in 2025 and projected toward $78-80 billion by 2030.",
-      "index_note": "High confidence reflects multi-source, multi-sector corroboration (retail, editorial, institutional market research) of a multi-year pattern rather than a single-period spike.",
-      "human_editor_note": "Low review burden: this is corroborated by multiple independent market-research sources rather than a single outlet, and is a continuation of an already-tracked multi-year pattern rather than a new claim. Human editor should still verify the specific dollar figures against primary BoF/ThredUp reports before quoting them in published copy, since this crawl relied on search-result summaries rather than the source documents directly.",
-      "signal_id": "resale-growth"
+      "evidence": "Business of Fashion's State of Fashion 2026 coverage (produced with McKinsey) and ThredUp's published 2026 Resale Report (data compiled by GlobalData) describe secondhand apparel growing several multiples faster than primary retail, with U.S. secondhand sales cited around $55.5 billion in 2025 and projected toward $78-80 billion by 2030. Independently, GlobalData's own market analysis (published directly via GlobalData, not routed through ThredUp) separately estimates the global apparel resale market growing 85.5% from 2022-2026 to $338.4 billion -- a distinct data source from a distinct market-research firm, corroborating the growth trend rather than merely restating the same commissioned report.",
+      "index_note": "High confidence reflects two independently sourced datasets (BoF/McKinsey State of Fashion coverage, and GlobalData's own published market analysis distinct from the ThredUp-commissioned report) rather than a single aggregated source, per confidence-audit.md re-review.",
+      "human_editor_note": "Re-reviewed per docs/agent-logs/confidence-audit.md: the original single source_corroboration_count=1 with three source_sectors reflected one aggregated source spanning sectors, not independent corroboration, which the audit correctly flagged as not supporting \"high\" confidence. A follow-up search located a genuinely independent second source -- GlobalData's own published market analysis (globaldata.com), separate from the ThredUp-commissioned report BoF cited -- corroborating the same growth trend with different figures. source_corroboration_count updated to 2 and confidence retained at \"high\" on that basis. Editor should still verify both sets of dollar figures against primary documents before quoting them in published copy.",
+      "signal_id": "resale-growth",
+      "source_corroboration_count": 2
     },
     {
       "name": "Menswear 'aspirational realism' (loose, soft, muted tailoring)",
@@ -202,5 +203,5 @@
     "aspirational-realism",
     "2026-q3"
   ],
-  "content_hash": "294b7b31431233de0e7e6867a80978c1794f3cee19b0f7d9116e0b8f24c8e6a3"
+  "content_hash": "ebe3c076f92628d2702323b01481db45aed78573e1190f5fba3cc120b01b56a3"
 }
