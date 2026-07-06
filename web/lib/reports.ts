@@ -187,7 +187,34 @@ export interface RecurringSignal {
   first_seen: string;
   last_seen: string;
   origin_classification: string;
+  is_style_aesthetic: boolean;
 }
+
+/**
+ * `Signal.type` values observed across the archive that describe a genuine
+ * style-aesthetic thread (a look, silhouette, material, or cultural mood
+ * that could plausibly be "trending") rather than a factual/administrative
+ * tracking item (an award outcome, a debut timeline, a policy, a retail-
+ * calendar event, a coverage gap). Added run 48 -- see
+ * docs/agent-logs/recurrence-threshold-revision-run48.md. Everything not in
+ * this list (institutional_policy, designer_signal, market_behavior,
+ * industry_recognition, media_integrity, industry_event,
+ * retail_calendar_event, and any future/unrecognized type) is treated as
+ * non-style for the retrospective-trigger threshold, since run 47 found
+ * those are exactly the items recurring mechanically via carry-forward
+ * rather than genuine re-emergence. Includes the two known data typos
+ * ("styling behavior", "aesthetic") rather than requiring a backfill.
+ */
+const STYLE_AESTHETIC_TYPES = new Set([
+  "styling_behavior",
+  "styling behavior",
+  "silhouette",
+  "aesthetic_term",
+  "aesthetic",
+  "cultural_term",
+  "color",
+  "social_observation",
+]);
 
 /**
  * Returns signal_ids that appear in `minOccurrences` or more distinct
@@ -199,8 +226,23 @@ export interface RecurringSignal {
  * docs/agent-logs/recurrence-milestone-review-run47.md for the run that
  * added this and why a full quarterly/year-in-review page is still not
  * warranted.
+ *
+ * `options.styleOnly` (added run 48) restricts the count to signals whose
+ * most recent `type` is a genuine style-aesthetic type (see
+ * STYLE_AESTHETIC_TYPES above). Run 47 found the raw/unfiltered count meets
+ * the "4-5 signals recurring 4+ times" retrospective-trigger threshold only
+ * because factual/institutional-tracking items (CFDA fund/awards, a
+ * designer-debut timeline, a coverage gap) recur mechanically via
+ * carry-forward, not because a style trend is re-emerging. **The
+ * retrospective trigger must be evaluated with `{ styleOnly: true }`
+ * going forward** -- the raw (unfiltered) count remains available and
+ * correct for the archive page's honest factual/administrative surface,
+ * which is a legitimately different use of the same underlying data.
  */
-export function getRecurringSignals(minOccurrences = 4): RecurringSignal[] {
+export function getRecurringSignals(
+  minOccurrences = 4,
+  options: { styleOnly?: boolean } = {},
+): RecurringSignal[] {
   const reports = getAllReports(); // newest first
   const byId = new Map<string, SignalOccurrence[]>();
 
@@ -217,6 +259,9 @@ export function getRecurringSignals(minOccurrences = 4): RecurringSignal[] {
   for (const [signal_id, occurrences] of byId) {
     if (occurrences.length < minOccurrences) continue;
     const dates = occurrences.map((o) => o.report_date).sort();
+    const mostRecentType = occurrences[occurrences.length - 1].signal.type;
+    const isStyleAesthetic = STYLE_AESTHETIC_TYPES.has(mostRecentType);
+    if (options.styleOnly && !isStyleAesthetic) continue;
     result.push({
       signal_id,
       name: occurrences[0].signal.name,
@@ -224,6 +269,7 @@ export function getRecurringSignals(minOccurrences = 4): RecurringSignal[] {
       first_seen: dates[0],
       last_seen: dates[dates.length - 1],
       origin_classification: occurrences[0].signal.origin_classification,
+      is_style_aesthetic: isStyleAesthetic,
     });
   }
 
