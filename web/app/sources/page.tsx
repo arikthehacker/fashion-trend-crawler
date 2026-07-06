@@ -15,10 +15,13 @@ const sectors: { name: string; def: string; items: string[] }[] = [
   },
   {
     name: "Runway / Editorial",
-    def: "Style publications reporting on collections, shows, and seasonal direction. Treated as one source sector, not as final authority.",
+    def: "Style publications reporting on collections, shows, and seasonal direction. Treated as one source sector, not as final authority. Coverage has expanded past English-language Western titles to reduce a bias flagged in an early audit of this list.",
     items: [
       "Vogue Runway", "WWD", "Business of Fashion", "GQ Style", "Harper's Bazaar", "Elle",
       "i-D", "Dazed", "Highsnobiety", "Hypebeast", "The Cut", "New York Times Style",
+      "Nataal", "OkayAfrica", "FashionUnited India", "Tokyo Fashion", "Vogue Mexico",
+      "The Express Tribune (Pakistan)", "Savoir Flair", "Dewi Magazine", "SCMP Lifestyle",
+      "RUNWAY Magazine", "Style Rave", "FFW (Brazil)", "Vogue Arabia",
     ],
   },
   {
@@ -54,10 +57,11 @@ const sectors: { name: string; def: string; items: string[] }[] = [
   },
   {
     name: "Institutional / Historical",
-    def: "Archival and academic material used to establish historical continuity for a signal.",
+    def: "Archival and academic material used to establish historical continuity for a signal, plus the governing bodies and trade institutes that coordinate fashion weeks and publish industry research.",
     items: [
       "FIT resources", "Museum collections", "Fashion archives", "Costume history databases",
       "Academic papers", "Old runway archives", "Library collections",
+      "Fashion week governing bodies", "National fashion trade/export institutes",
     ],
   },
   {
