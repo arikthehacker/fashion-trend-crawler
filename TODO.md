@@ -1424,7 +1424,18 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       separating the two categories going forward.
 - [x] Nav/build regression sweep and periodic audit both clean.
 
-## Next up (run 68 candidates)
+## Run 68 — done
+- [x] Made the actual decision on the historical godet-skirt controlled-vocabulary
+      overlap: removed from `silhouettes`, kept in `garments`, applied via
+      `save_report(revision_reason=..., corrected_at=...)` — reasoned that structured
+      taxonomy fields warrant retroactive correction, unlike editorial narrative.
+- [x] Added `data/reports/2027-08-30.json`, a 61st report — Demna's Gucci debut
+      logged with confidence discipline continuing across 4 consecutive reports.
+- [x] Verified CHANGELOG's run-13 index/detail-file split still holds up cleanly at
+      67 runs — no navigability drift.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Next up (run 69 candidates)
 - [ ] `crawler.py`'s underlying hang is diagnosed but not fixed at the root — the
       incremental-flush change is a mitigation, not a cure. A real fix (streamed
       reads with a monotonic deadline, or a per-source watchdog thread) needs a human-

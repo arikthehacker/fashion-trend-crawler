@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-09 ~15:30 PDT — [Loop run 68](changelog-entries/run-68.md)** — The
+  historical godet-skirt vocabulary overlap gets a real, decisive fix (controlled
+  taxonomy fields warrant retroactive correction, unlike editorial narrative); 61st
+  report continues confidence discipline; CHANGELOG's run-13 index/detail split
+  verified still holding up cleanly at 67 runs; nav/build regression and periodic
+  audit both clean.
+
 - **2026-07-09 ~14:15 PDT — [Loop run 67](changelog-entries/run-67.md)** — Made real
   progress diagnosing the crawler hang via pure static code review (no execution): a
   plausible per-read-vs-total-transfer-time timeout mismatch, corroborated by a
