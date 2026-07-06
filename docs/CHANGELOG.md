@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-09 ~20:30 PDT — [Loop run 72](changelog-entries/run-72.md)** — crawler
+  hang fix implemented and locally proven (localhost-only test), but a real
+  non-daemon-thread leak found on independent re-verification means it's still not
+  clean for autonomous execution; 65th report; a retroactive-confidence review
+  correctly declined an unearned edit; nav/build sweep caught and fixed a stale-
+  build artifact; periodic audit added a CHANGELOG-integrity check.
+
 - **2026-07-09 ~19:15 PDT — [Loop run 71](changelog-entries/run-71.md)** — 64th
   report resolves the NYFW SS28 scheduling thread and continues confidence
   discipline on a Margiela signal; crawler hang gets a refined diagnosis and a

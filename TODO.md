@@ -1472,16 +1472,33 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       conventions — clean, no gap found.
 - [x] Nav/build regression sweep and periodic audit both clean.
 
-## Next up (run 72 candidates)
-- [ ] Apply and human-test the drafted `ThreadPoolExecutor` hard-deadline fix for
-      `crawler.py`'s hang — draft is in
-      `docs/agent-logs/crawler-hang-research-run71.md`, still needs a human-
-      supervised live test before it can be considered safe to execute
-      autonomously.
-- [ ] `data/reports/2027-09-06.json` still cites `fhcm.paris`/`laforma.club` as
-      `unclear` in its confidence reasoning even though the taxonomy fix landed run
-      70 — small optional follow-up if a retroactive confidence recompute is
-      desired.
+## Run 72 — done
+- [x] Implemented the drafted `ThreadPoolExecutor` hard-deadline fix in
+      `src/crawler.py`, corrected a flaw in the original draft
+      (`shutdown(wait=False)` instead of a context manager), and proved it works
+      with a new, safe, localhost-only unit test — independently re-run by the
+      coordinator, passed. Real finding: leaked worker threads are non-daemon and
+      can prevent clean process exit — a likely root cause of prior stray-process
+      incidents (runs 55, 66). `crawler.py` remains off-limits for autonomous
+      execution pending a human-supervised live test.
+- [x] Added `data/reports/2027-09-27.json`, a 65th report — Paris SS28 opens;
+      confidence correctly adopted at the derived "high" as-is since no
+      unclear-sector inflation applied this time.
+- [x] Reviewed `data/reports/2027-09-06.json`'s confidence in light of run 70's
+      taxonomy fix — correctly left unchanged; the report's underlying fact pattern
+      (aggregator reprint, not independent corroboration) still holds regardless of
+      correct sector labels.
+- [x] Nav/build regression sweep found and fixed a real build-hygiene issue (stale
+      `web/out` missing the newest report page); periodic audit added a new
+      CHANGELOG-integrity check (index links match existing files, no gaps/dupes).
+
+## Next up (run 73 candidates)
+- [ ] `crawler.py`'s leaked worker threads are non-daemon and can prevent clean
+      process exit after any single-source timeout — worth a small follow-up
+      (daemon threads or an explicit exit) before a human live-tests the crawler.
+- [ ] Still awaiting a human-supervised live test of `crawler.py` against real
+      sources — the fix is implemented and locally proven, but the standing
+      "no autonomous execution" rule remains in force regardless.
 - [ ] The manual-sampling cadence has no enforcement mechanism beyond documentation —
       worth a periodic spot-check to catch future lapses earlier.
 - [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
