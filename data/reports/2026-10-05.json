@@ -38,7 +38,7 @@
       "volatility": "declining",
       "origin_classification": "designer_originated",
       "evidence": "Multiple trade and fashion outlets (Hypebeast, FashionUnited, RUSSH) report that Versace and Prada Group have confirmed Pieter Mulier's first collection as creative director will not premiere until early 2027, despite his appointment taking formal effect July 1, 2026. The brand's stated rationale is to give Mulier additional time for 'analysis and development' rooted in the house's archive rather than debuting within the compressed September-to-show turnaround.",
-      "index_note": "Same signal_id as the September 28 report (versace-mulier-debut-timing-unconfirmed), carried forward with a resolved status: the open question (does a Mulier-directed Versace show occur inside fashion month 2026) is now answered -- no, it does not. Volatility moved from emerging to declining to reflect that the story is settling into a confirmed timeline rather than remaining speculative. Confidence held at medium (single-sector, editorial trade coverage) despite three-source corroboration, since all three outlets appear to be reporting the same underlying brand statement rather than independently verifying it.",
+      "index_note": "Same signal_id as the September 28 report (versace-mulier-debut-unconfirmed), carried forward with a resolved status: the open question (does a Mulier-directed Versace show occur inside fashion month 2026) is now answered -- no, it does not. Volatility moved from emerging to declining to reflect that the story is settling into a confirmed timeline rather than remaining speculative. Confidence held at medium (single-sector, editorial trade coverage) despite three-source corroboration, since all three outlets appear to be reporting the same underlying brand statement rather than independently verifying it.",
       "human_editor_note": "This closes the open question from the prior two reports. Do not expect a Versace show entry in this or upcoming fashion-month windows this year; the next relevant signal for this signal_id would be a confirmed early-2027 show date, which is out of this archive's current season scope.",
       "source_corroboration_count": 3,
       "signal_id": "versace-mulier-debut-unconfirmed",
@@ -54,7 +54,7 @@
       "volatility": "stable",
       "origin_classification": "designer_originated",
       "evidence": "WWD reports a confirmed Giorgio Armani mainline show at 7pm CET on September 28, 2026 at the Brera Pinacoteca courtyard, continuing the house's tradition of closing Milan's calendar, with two Emporio Armani shows staged the preceding day (September 27) at Armani Teatro. Both dates fall on or before September 28 -- just outside this report's September 29-October 5 window and outside the September 28 report's own sourcing cutoff.",
-      "index_note": "Same signal_id as the September 28 report (armani-post-founder-transition-continues), carried forward as a retrospective resolution: the pending show-date question is now answered by a single dated, sourced confirmation (WWD), but the event itself occurred just before this window opened, so it is logged as closing prior uncertainty rather than as an in-window occurrence.",
+      "index_note": "Same signal_id as the September 28 report (armani-founder-transition), carried forward as a retrospective resolution: the pending show-date question is now answered by a single dated, sourced confirmation (WWD), but the event itself occurred just before this window opened, so it is logged as closing prior uncertainty rather than as an in-window occurrence.",
       "human_editor_note": "This is a scheduling/occurrence confirmation, not a show review -- no content, silhouette, or reception detail is asserted here, consistent with this archive's standing practice of not backfilling show content from adjacent-window reporting.",
       "source_corroboration_count": 1,
       "signal_id": "armani-founder-transition",
@@ -106,7 +106,12 @@
       "previous_content_hash": "6666d634094a2caa3cfd6e91bff50fd740a7ee43df703f7d17787410d72ba2bf",
       "corrected_at": "2026-07-06",
       "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    },
+    {
+      "previous_content_hash": "67d900def3db7c37c9d9efa5768be813eab2ef854bf3256bdc58f3051b7b1fe8",
+      "corrected_at": "2026-07-06",
+      "reason": "run 37 periodic audit: index_note prose for versace-mulier-debut-unconfirmed and armani-founder-transition self-referenced the pre-run-36-shortening long-form signal_id text instead of the actual (already-shortened) signal_id field, creating a mismatch that propagated into the 2026-12-07 close-out note"
     }
   ],
-  "content_hash": "67d900def3db7c37c9d9efa5768be813eab2ef854bf3256bdc58f3051b7b1fe8"
+  "content_hash": "b4ef5709a596ef7eb1327be6c75924b7c4af1c92dc8e78135472434ed7ce1585"
 }
