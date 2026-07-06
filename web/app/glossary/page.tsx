@@ -64,6 +64,24 @@ function normalize(term: string): string {
     .trim();
 }
 
+// A genuine glossary term is short vocabulary (e.g. "peplum", "quiet luxury"),
+// not a narrative sentence tracking a signal's status. This filters out
+// long/sentence-like candidates before they're ever checked against
+// DEFINITIONS, so build-time warnings only surface real curatable terms.
+// See docs/agent-logs/glossary-build-warning-run38.md for the ~130-hit
+// warning list this was written to reduce.
+function isPlausibleGlossaryTerm(term: string): boolean {
+  if (term.length > 40) return false;
+  if (term.split(/\s+/).length > 5) return false;
+  // Sentence-like punctuation: parenthetical explanations, commas joining
+  // clauses, dashes used as asides, or terminal punctuation.
+  if (/[()]/.test(term)) return false;
+  if (/[,;:]/.test(term)) return false;
+  if (/--|—|–/.test(term)) return false;
+  if (/[.!?]\s*$/.test(term)) return false;
+  return true;
+}
+
 function loadGlossaryTerms(): { term: string; def: string }[] {
   const dir = path.join(process.cwd(), "..", "data", "reports");
   const found = new Map<string, string>(); // lowercase key -> display term
@@ -84,6 +102,7 @@ function loadGlossaryTerms(): { term: string; def: string }[] {
       for (const raw of candidates) {
         const cleaned = normalize(raw);
         if (!cleaned) continue;
+        if (!isPlausibleGlossaryTerm(cleaned)) continue;
         const key = cleaned.toLowerCase();
         if (DEFINITIONS[key]) {
           if (!found.has(key)) {
