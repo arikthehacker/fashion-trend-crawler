@@ -83,9 +83,19 @@ function loadGlossaryTerms(): { term: string; def: string }[] {
 
       for (const raw of candidates) {
         const cleaned = normalize(raw);
+        if (!cleaned) continue;
         const key = cleaned.toLowerCase();
-        if (DEFINITIONS[key] && !found.has(key)) {
-          found.set(key, cleaned);
+        if (DEFINITIONS[key]) {
+          if (!found.has(key)) {
+            found.set(key, cleaned);
+          }
+        } else {
+          // Non-blocking build-time warning: surfaces terms observed in the
+          // archive that have no curated definition, so they don't silently
+          // drop off /glossary. See docs/agent-logs/glossary-freshness-check-run37.md.
+          console.warn(
+            `[glossary] no DEFINITIONS entry for term "${cleaned}" (from ${file}) — term will not be shown on /glossary`
+          );
         }
       }
     }
