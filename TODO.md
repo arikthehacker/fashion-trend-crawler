@@ -1546,17 +1546,31 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [x] Periodic audit correctly used `load_dotenv()` before its API-key check,
       applying last run's lesson; all other checks clean.
 
-## Next up (run 76 candidates)
-- [ ] The newest report (2027-10-18) introduced fresh vocabulary not yet in the
-      glossary's `DEFINITIONS` map (5 new warnings on this run's build) — same
-      benign pattern as runs 72-74, not yet closed for this report specifically.
+## Run 76 — done
+- [x] Added `data/reports/2027-10-25.json`, a 69th report — Bogotá thread
+      continued on genuine new movement, correctly held at "medium" for
+      same-sector-only retail corroboration; closed run 75's carried-forward
+      glossary gap plus added this report's own 10 new terms.
+- [x] Fixed a real accessibility bug: most signal titles rendered with no heading
+      element at all (invisible to screen-reader navigation) — wrapped in a real
+      `<h3>`, no visual change, independently confirmed in built output.
+- [x] Added a quick status-read header to `/signals/[slug]` (last-seen date +
+      reports-since, purely computed) without crossing the project's standing
+      editorial-judgment boundary for dormant/resolved verdicts.
+- [x] Nav/build regression sweep and periodic audit both clean; periodic audit
+      flagged the manual-sampling cadence (7/10 runs since reset) as due for a
+      proactive run soon.
+
+## Next up (run 77 candidates)
+- [ ] The manual-sampling cadence is 7 runs into its ~10-run window — due for a
+      proactive run soon per this run's periodic audit recommendation, rather
+      than waiting for it to lapse again.
+- [ ] One benign glossary gap remains: "Vogue" (a publication name) has no
+      `DEFINITIONS` entry — likely shouldn't need one at all; small follow-up to
+      either add a minimal entry or exclude known publication names from the scan.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven
       only.
-- [ ] The Turbopack build non-determinism from run 74 didn't recur this run, but
-      remains unexplained — worth continued watching, not currently blocking.
-- [ ] The manual-sampling cadence has no enforcement mechanism beyond documentation —
-      worth a periodic spot-check to catch future lapses earlier.
 - [ ] `SITE_URL` remains a placeholder domain — correctly confirmed as needing only
       a human-supplied real domain, no further autonomous work possible here.
 - [ ] The underlying human-in-the-loop process gap flagged in run 50 remains open.

@@ -18,6 +18,15 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-10 ~01:05 PDT — [Loop run 76](changelog-entries/run-76.md)** — 69th
+  report continues the Bogotá thread on genuine new movement; a real
+  accessibility bug fixed (most signal titles had no heading element at all,
+  invisible to screen readers) and independently confirmed in built output; a
+  quick status-read header added to `/signals/[slug]` without crossing the
+  project's editorial-judgment boundary; nav/build and periodic audits both
+  clean, with the manual-sampling cadence flagged as due for a proactive run
+  soon.
+
 - **2026-07-09 ~23:55 PDT — [Loop run 75](changelog-entries/run-75.md)** — 68th
   report honestly closes the 5-week Margiela thread and opens a genuinely new one
   (first real Inexmoda corroboration); Middle East source gap closed with a
