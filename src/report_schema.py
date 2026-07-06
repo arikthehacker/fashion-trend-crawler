@@ -101,6 +101,12 @@ CONFIDENCE_SOURCE_VALUES = ["manual", "derived"]
 # instead of inflating weak signals to fill a quota every week).
 COLLECTION_STATUS_VALUES = ["normal", "thin"]
 
+# valid values for Report.review_status — see
+# docs/agent-logs/review-status-field.md. soft metadata distinguishing
+# draft reports from ones that have been through editorial review; not a
+# hard gate like human_editor_note.
+REVIEW_STATUS_VALUES = ["draft", "reviewed"]
+
 
 def derive_confidence(signal) -> str:
     """
@@ -238,6 +244,18 @@ class Report:
     # differing content — see docs/agent-logs/retention-versioning-design.md.
     # optional/backward compatible: old reports without it default to [].
     revision_history: list = field(default_factory=list)
+    # "draft" or "reviewed" (default). marks whether this report has been
+    # through editorial review. defaults to "reviewed" because reports
+    # created before this field existed already went through the loop's
+    # consolidation process — see docs/agent-logs/review-status-field.md.
+    # optional/backward compatible: old reports without it default to
+    # "reviewed". this is a soft provenance field, not a hard gate like
+    # human_editor_note.
+    review_status: str = "reviewed"
+    # free-text attribution for who/what performed the review, e.g.
+    # "loop-consolidation" or a human name. optional metadata, not enforced
+    # non-empty — see docs/agent-logs/review-status-field.md.
+    reviewed_by: str = ""
 
     def to_dict(self) -> dict:
         d = asdict(self)
@@ -376,6 +394,22 @@ def validate_report(data: dict) -> None:
             raise SchemaValidationError(
                 f"revision_history[{i}].reason must be a non-empty string"
             )
+
+    # optional field: default to "reviewed" if absent so old reports
+    # (predating this field) remain valid.
+    review_status = data.get("review_status", "reviewed")
+    if review_status not in REVIEW_STATUS_VALUES:
+        raise SchemaValidationError(
+            f"review_status '{review_status}' not in {REVIEW_STATUS_VALUES}"
+        )
+
+    # optional field: free-text provenance, not enforced non-empty. only
+    # type-checked when present.
+    reviewed_by = data.get("reviewed_by", "")
+    if not isinstance(reviewed_by, str):
+        raise SchemaValidationError(
+            f"reviewed_by must be a string, got {reviewed_by!r}"
+        )
 
     content_hash = data.get("content_hash", "")
     if content_hash:
