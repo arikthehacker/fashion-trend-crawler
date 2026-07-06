@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-07 ~13:50 PDT — [Loop run 30](changelog-entries/run-30.md)** — Built a
+  heading-bug heuristic (honest negative result); 23rd report finds a real signal that
+  was only ever tracked in prose, never as a real `signal_id`; conservative prompt audit
+  correctly declines a rewrite; citation format improved; manual-sampling check finds
+  `human_editor_note` was never actually a schema field — fixed properly.
+
 - **2026-07-07 ~12:30 PDT — [Loop run 29](changelog-entries/run-29.md)** — Resolved
   prolonged-silence handling with a minimal helper, not a new field; 22nd report adds a
   genuine Black Friday signal; skill doc codifies the "documented ≠ working" lesson;

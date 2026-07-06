@@ -616,14 +616,36 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       Confirmed no image/alt-text issues (text-only site), color contrast passes WCAG AA,
       and all interactive elements are properly labeled.
 
-## Next up (run 30 candidates)
+## Run 30 — done
+- [x] Built a custom heuristic scanner for the heading bug — honest result: it can't
+      structurally distinguish the real bug from legitimate kickers/labels (same score),
+      so it's a candidate-list generator for review, not a reliable pass/fail signal.
+      Doesn't replace the manual visual check, but is a new tool in the toolkit.
+- [x] Added `data/reports/2026-11-30.json`, a 23rd report. **Found that CFDA Fashion
+      Awards had only ever been tracked in prose across 5 reports, never as a real
+      `signal_id`** — so `is_prolonged_silence()` couldn't see its history. Fixed by
+      giving it a real tracked signal entry. Also refused to present stale 2025 Black
+      Friday data mislabeled as 2026 results.
+- [x] Prompt consistency audit — conservative, correct conclusion: no redundancy/
+      contradiction found across 20+ accumulated instructions; didn't force a rewrite of
+      a working, tested prompt for cosmetic reasons.
+- [x] Citation format research added a copy-pasteable formatted citation line to report
+      pages, closing a gap noted (but blocked on missing SITE_URL) back in run 5.
+- [x] **Manual-sampling quality check found the real root cause of a `human_editor_note`
+      inconsistency**: it was never an actual `Signal` schema field, just an ad hoc key
+      some signals happened to have. Fixed properly at the schema level, backfilled
+      missing data on 2 of 3 manually-sampled signals, and closed out one now-dormant
+      signal (`poetcore-aesthetic`, silent 18 windows).
+
+## Next up (run 31 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
-- [ ] The `soft-tailoring` stable→declining miss from the forecast-calibration check is
-      exploratory, not actionable yet given sample size — but worth tracking whether
-      similar miscalibrations recur as more signals get multiple appearances.
-- [ ] The heading-hierarchy bug has now recurred 4 times (runs 5, 20/21, 29) despite a
-      documented manual-checklist item — consider whether the checklist itself needs to
-      be more prominent/harder to skip, since documentation alone hasn't fully stopped
-      recurrence.
+- [ ] The heading-hierarchy bug has recurred 4 times despite documentation and a new
+      heuristic tool that can't reliably distinguish it — the realistic mitigation
+      remains the manual visual check in SKILL.md, not automation.
+- [ ] Given `human_editor_note` just turned out to be a schema gap hiding in plain sight
+      (looked handled because most reports had it, but it was never actually validated/
+      enforced as a real field), worth a broader check: are there other fields that
+      "look" consistently populated by convention alone, with no schema enforcement
+      behind them?
