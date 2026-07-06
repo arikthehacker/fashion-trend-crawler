@@ -1,0 +1,83 @@
+{
+  "report_date": "2027-10-18",
+  "collection_window": {
+    "start": "2027-10-12",
+    "end": "2027-10-18"
+  },
+  "sources_scanned": 8,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "institutional": 1,
+    "editorial": 1
+  },
+  "executive_summary": "Collection window October 12-18, 2027. The Margiela raw-edge tailoring thread, tracked continuously since the Spring/Summer 2028 Paris runway show (2027-09-20 through 2027-10-11, five consecutive reports), produced no new editorial, retail, or social development this window: no further critical reception, no additional retailer buys beyond the two already logged, and no follow-up on the unverified wider Antwerp-lineage claim. Per standing convention for dormant style signals, this is logged as an editorial close-out rather than carried forward again -- discourse volume genuinely dropped, which is an observable fact, distinct from the CFDA-style prolonged-silence cases where silence does not resolve an open factual question. Separately, and unrelated to the Margiela thread, Inexmoda's Bogota market-week coverage and a vogue.com follow-up piece independently identified structured, waist-focused tailoring as a recurring silhouette across multiple Latin American resort 2028 collections -- a new, cross-sector-corroborated signal logged this window. Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention.",
+  "top_signals": [
+    {
+      "name": "Structured, waist-focused tailoring emerges as a resort 2028 theme at Bogota fashion week, per Inexmoda",
+      "type": "aesthetic_shift",
+      "source_sectors": [
+        "institutional",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "Inexmoda (inexmoda.org.co), Colombia's textile/fashion institute, published a market-week roundup of Bogota's resort 2028 runway program noting that several Colombian and regional Latin American designers presented structured, waist-focused tailoring -- boned or corseted waistbands worn over otherwise soft jersey or shirting -- as a recurring silhouette across multiple independent collections, not a single house's signature. The institutional report names the designers and collections directly, reflecting what was shown on the runway rather than commentary about it. The following day, vogue.com published an editorial piece situating the Bogota showcase within a broader 'return to structure' narrative it has been tracking across resort collections, citing the Bogota event by name as one data point.",
+      "index_note": "origin_classification is designer_originated, not editorial_amplified, because the primary and first-reporting source (inexmoda.org.co) is institutional coverage of what designers actually presented on the runway, not derivative commentary. vogue.com's follow-up is genuine editorial interpretation layered on top a day later, which is why editorial is included in source_sectors and named explicitly in evidence, but it does not change what generated the signal. This is a new signal_id, unrelated to the Margiela raw-edge thread: different garment mechanic (structure/corsetry at the waist vs. exposed/raw seaming), different geography and designer set, and no shared source or claim with the Margiela signals.",
+      "source_corroboration_count": 2,
+      "signal_id": "bogota-waist-tailoring-resort28-institutional",
+      "confidence_source": "derived",
+      "human_editor_note": "derive_confidence() adopted as-is (high): source_corroboration_count=2, source_sectors institutional (inexmoda.org.co) and editorial (vogue.com) are both real, distinct sectors mapped in taxonomy.py's DOMAIN_SECTOR_MAP -- neither is 'unclear', and this is genuine cross-sector corroboration (an institutional trade body reporting the runway directly, plus an independent editorial outlet's follow-up), not two outlets in the same sector. institutional is a HIGH_RELIABILITY_SECTOR per the run-16 bias audit. Per the run-74 discipline, confidence is not reflexively held down here: the corroboration is solid and genuinely cross-sector, so high is the accurate tier, not an inflated one.",
+      "source_domains": [
+        "inexmoda.org.co",
+        "vogue.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "waist-focused tailoring",
+    "corseted waistband",
+    "resort 2028",
+    "Bogota market week",
+    "structured silhouette"
+  ],
+  "garments": [
+    "corseted waistband",
+    "shirting"
+  ],
+  "silhouettes": [
+    "structured waist"
+  ],
+  "materials": [
+    "boning",
+    "jersey"
+  ],
+  "colors": [],
+  "aesthetic_terms": [
+    "return to structure",
+    "waist definition"
+  ],
+  "cultural_references": [
+    "Inexmoda",
+    "Bogota fashion week",
+    "Vogue"
+  ],
+  "limitations": [
+    "The Margiela raw-edge thread (signal_ids margiela-raw-edge-critical-reception, margiela-raw-edge-retail-buy, antwerp-lineage-raw-edge-wider-claim) is closed out this window on genuinely dropped discourse volume, not on silence about an unresolved factual question -- these are not equivalent closes, per standing project convention.",
+    "The new Bogota waist-tailoring signal names Latin American designers collectively via one institutional source; it does not yet identify which individual houses' pieces have reached retail, so origin_classification reflects the runway/designer moment only, not market adoption.",
+    "No U.S. or European editorial outlet beyond vogue.com has independently corroborated the Bogota showcase as of this window; corroboration is real and cross-sector but currently limited to two outlets."
+  ],
+  "archive_tags": [
+    "margiela-raw-edge-editorial-close-out",
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked"
+  ],
+  "content_hash": "0c7f921d6c8130a9c89799fa98352c324826633bfed9983ebd5782b9a1312d41",
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": "ari3lla-index-loop-improvements agent"
+}
