@@ -1,0 +1,84 @@
+{
+  "report_date": "2027-04-12",
+  "collection_window": {
+    "start": "2027-04-06",
+    "end": "2027-04-12"
+  },
+  "sources_scanned": 15,
+  "items_collected": 1,
+  "source_sector_breakdown": {
+    "editorial": 4,
+    "social": 1
+  },
+  "executive_summary": "This collection window (April 6-12, 2027) is the forty-second archived window. The FW27-28 women's ready-to-wear fashion month remains closed and Haute Couture Spring/Summer 2027 remains unconfirmed as having occurred, consistent with the prior ten windows; FHCM's published calendar places it in late January 2027 but no reachable post-show coverage exists yet in search results. The one item carried forward this window is 'Glamoratti,' the 1980s power-dressing revival first logged 2027-04-05 from Pinterest's Predicts trend report. Search this window found the term reproduced across a much wider set of outlets (roughly a dozen, up from four), but nearly all of the new outlets are secondary lifestyle/SEO content sites restating the same original Pinterest data point rather than independently reporting new corroborating evidence -- so this is logged as continued, broadening amplification rather than an upgraded-confidence new development, and volatility is revised from 'emerging' to 'saturated' to reflect that the term is now being widely reproduced with no substantive new content. Per SKILL.md workflow note 10, the Wales Bonner/Hermes debut and CFDA Fashion Fund/Awards questions were checked again and not re-litigated: search surfaced only already-known appointment coverage and a real 2025-cycle CFDA/Vogue Fashion Fund winner announcement (Ashlynn Park) that does not answer the specific 2026-cycle question this archive has tracked as unconfirmed since 2026-10-26 -- so it is noted but not treated as resolution. Both remain untracked pending new information. collection_status is set to 'thin' again: fashion month remains closed and the only in-window discourse is continued coverage of a single already-archived signal.",
+  "top_signals": [
+    {
+      "name": "'Glamoratti' 80s power-dressing revival: continued, broadening but non-independent amplification",
+      "type": "aesthetic_term",
+      "source_sectors": [
+        "social",
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "saturated",
+      "origin_classification": "social_amplified",
+      "evidence": "The 'Glamoratti' term logged last window (glamoratti-revival, 2027-04-05) from Pinterest's Predicts trend report now appears on roughly a dozen additional outlets found this window (e.g. outfittrends.com, amorella.in, foxylabny.com, chicstylecollective.com, loveowe.com, firstlook.fashion, runwaylive.com), beyond the four original editorial pickups. Content on the new outlets restates the same Pinterest self-reported search-volume figures and styling description already logged last window, without independent reporting, new designer/runway coverage, or updated data -- this reads as content-farm/SEO republishing of a single source rather than additional independent corroboration.",
+      "index_note": "Same signal_id as 2027-04-05 (glamoratti-revival) -- this is a status update on an already-archived signal, not a new one. Checked all existing signal_ids before writing this entry; no collision.",
+      "source_corroboration_count": 2,
+      "signal_id": "glamoratti-revival",
+      "confidence_source": "manual",
+      "human_editor_note": "Deliberately not upgraded to 'high' despite the much wider outlet count: derive_confidence()'s cross-sector-corroboration logic assumes each additional source is an independent observation, but the new outlets here are downstream SEO/content-marketing sites re-describing the same Pinterest Predicts data point found last window, not new reporting or new evidence. Counting republication as corroboration would inflate confidence on volume alone, which is exactly the failure mode this archive's confidence formula was designed to avoid (see docs/agent-logs/confidence-scoring-research.md). source_corroboration_count is kept at 2 (the two genuinely distinct source types: Pinterest's own data product, and independent editorial framing/critique of it) rather than the raw outlet count. Volatility revised from 'emerging' to 'saturated' since the term is now reproduced widely with no new substantive development -- an honest observation about the shape of the coverage, not a claim that the underlying style shift itself has faded.",
+      "source_domains": [
+        "pinterest.com",
+        "marieclaire.com",
+        "graziadaily.co.uk",
+        "outfittrends.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "Glamoratti",
+    "80s power dressing revival",
+    "content republishing",
+    "Haute Couture SS27 coverage gap",
+    "CFDA Fashion Fund untracked"
+  ],
+  "garments": [
+    "funnel-neck jacket",
+    "sculpted-shoulder suit"
+  ],
+  "silhouettes": [
+    "sculpted shoulder"
+  ],
+  "materials": [
+    "metallic fabric"
+  ],
+  "colors": [],
+  "aesthetic_terms": [
+    "Glamoratti"
+  ],
+  "cultural_references": [
+    "Pinterest Predicts annual trend report"
+  ],
+  "limitations": [
+    "The Wales Bonner/Hermes debut signal was not re-litigated this window per the 2027-03-08 transition to 'untracked going forward pending new information'; search surfaced only already-known appointment coverage.",
+    "The CFDA Fashion Fund winner and CFDA Fashion Awards questions remain untracked pending new information. A search this window did surface a real CFDA/Vogue Fashion Fund winner announcement (Ashlynn Park), but it is reporting on the 2025 award cycle, not the 2026 cycle this archive has specifically tracked as unconfirmed since 2026-10-26 -- so it is noted here but not logged as resolution of the tracked question.",
+    "Haute Couture Spring/Summer 2027 again has no reachable post-show coverage this window -- unchanged from the prior ten windows, tracked under paris-post-show-coverage-gap.",
+    "This window's only content is continued, broadening but non-independent republication of a single already-archived signal (glamoratti-revival); no new runway, designer-origin, or retail-adoption discourse independently verifiable to this specific window was found.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "fw27-28-fashion-month-closed",
+    "glamoratti-revival",
+    "wales-bonner-untracked-pending-new-information",
+    "cfda-signals-untracked-pending-new-information",
+    "couture-ss27-coverage-gap-continued",
+    "2027-q2"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "The FW27-28 women's ready-to-wear fashion month remains closed and Haute Couture SS27 remains unconfirmed as having occurred. The only reachable in-window content is continued, broadening republication of last window's 'Glamoratti' signal; no new runway, designer-origin, or retail signal was found.",
+  "review_status": "reviewed",
+  "reviewed_by": "loop-consolidation",
+  "revision_history": [],
+  "content_hash": "bd1f0a447d39f19e8a430e287fcc35406733d55c6935b53181e8b109b0b332ed"
+}
