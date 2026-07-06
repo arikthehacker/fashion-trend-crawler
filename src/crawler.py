@@ -225,9 +225,16 @@ def crawl_all_sources(sources, output_file=DEFAULT_OUTPUT_FILE):
         results = crawl(source, max_depth=1, max_pages=10)
         all_results.extend(results)
 
-    # dump everything to json for tools to pick up later
-    with open(output_file, "w") as f:
-        json.dump(all_results, f, indent=2)
+        # flush after every source, not just at the very end -- if a slow/
+        # unresponsive host later in the list stalls or the process gets
+        # killed (found run 62/65/66: crawler.py can hang indefinitely on a
+        # host that trickles bytes slowly enough that no single read ever
+        # exceeds the per-request timeout), progress from sources already
+        # crawled is preserved on disk instead of discarded. See
+        # docs/agent-logs/real-pipeline-e2e-attempt-run65.md and
+        # docs/agent-logs/crawler-hang-investigation-run67.md.
+        with open(output_file, "w") as f:
+            json.dump(all_results, f, indent=2)
 
     print(f"\nDone. {len(all_results)} pages crawled. Saved to {output_file}")
     return all_results
