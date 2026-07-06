@@ -637,15 +637,33 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       missing data on 2 of 3 manually-sampled signals, and closed out one now-dormant
       signal (`poetcore-aesthetic`, silent 18 windows).
 
-## Next up (run 31 candidates)
+## Run 31 — done
+- [x] Systematic audit for other by-convention-only fields — **confirmed `human_editor_note`
+      was the one genuine instance** of this bug pattern; no others found across all 23
+      reports checked against the real dataclass field lists.
+- [x] Added `data/reports/2026-12-07.json`, a 24th report — CFDA Fashion Fund winner now
+      7 windows open; CFDA Fashion Awards correctly still shows `False` on the silence
+      check since its tracked history is short even though the question is informally
+      older (the tool works as designed, distinguishing tracked-history length from
+      informal question age). Genuine new signal: BoF VOICES 2026 industry gathering.
+- [x] Added resort/cruise collection calendar research to `docs/EDITORIAL_CALENDAR.md` —
+      genuinely useful since the archive is now in a December window where cruise retail
+      arrivals traditionally appear.
+- [x] Full-year archive coherence review (all 23 reports at the time) — clean throughout:
+      no signal_id naming collisions, no cross-report contradictions, all tooling
+      (`validate_all_reports.py`, `check_field_coverage.py`, `audit_confidence.py`) still
+      passes cleanly at this scale.
+- [x] Performance check found a genuine (if currently minor) redundancy — `getAllReports()`
+      was being called 2-3x per page render — and fixed it with a simple module-level
+      cache, no behavior change. Build time measured at ~9s for 80 pages/23 reports,
+      confirmed not currently a bottleneck.
+
+## Next up (run 32 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
-- [ ] The heading-hierarchy bug has recurred 4 times despite documentation and a new
-      heuristic tool that can't reliably distinguish it — the realistic mitigation
-      remains the manual visual check in SKILL.md, not automation.
-- [ ] Given `human_editor_note` just turned out to be a schema gap hiding in plain sight
-      (looked handled because most reports had it, but it was never actually validated/
-      enforced as a real field), worth a broader check: are there other fields that
-      "look" consistently populated by convention alone, with no schema enforcement
-      behind them?
+- [ ] Re-measure build performance once the archive crosses ~100 reports — page count,
+      not `getAllReports()` cost, will likely dominate by then.
+- [ ] Continue monitoring both CFDA questions; consider whether the Fashion Awards
+      question (informally old but newly tracked) needs any special handling once it also
+      crosses the prolonged-silence threshold on its own tracked history.

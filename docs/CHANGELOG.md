@@ -18,6 +18,11 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-07 ~15:30 PDT — [Loop run 31](changelog-entries/run-31.md)** — Confirms
+  `human_editor_note` was the one real "populated by convention, not schema-enforced"
+  gap; 24th report; resort/cruise calendar research added; full-year coherence review
+  clean across 23 reports; performance check fixes a real redundant-call issue.
+
 - **2026-07-07 ~13:50 PDT — [Loop run 30](changelog-entries/run-30.md)** — Built a
   heading-bug heuristic (honest negative result); 23rd report finds a real signal that
   was only ever tracked in prose, never as a real `signal_id`; conservative prompt audit
