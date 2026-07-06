@@ -1,0 +1,3 @@
+[mcp_servers.fashion-trend-crawler]
+args = ["C:UsersUserDesktopfashion-trend-crawlersrcserver.py"]
+command = "python"
