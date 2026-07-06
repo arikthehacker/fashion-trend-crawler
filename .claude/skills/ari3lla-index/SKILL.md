@@ -44,6 +44,7 @@ src/
   manual_sample.py    # helper for the manual TikTok/Pinterest sampling workflow; enforces non-empty human_editor_note
   validate_all_reports.py  # CI check — runs validate_report() against every file in data/reports/, see .github/workflows/validate-reports.yml; also runs derive_confidence() as a non-blocking warning (run 8)
   audit_confidence.py # reusable script (run 7) comparing assigned confidence vs. derive_confidence() across all reports; used for periodic confidence/dormancy review, not wired into CI
+  check_field_coverage.py # reusable script (run 25) enumerating every Report/Signal schema field and flagging any that's neither typed in reports.ts nor referenced in a .tsx file — the structural fix for the "claimed but not shown" bug pattern (human_editor_note/thin_week_note/revision_history all shipped in data before they were ever rendered); non-blocking, not wired into CI
 data/
   reports/<YYYY-MM-DD>.json   # one archived report per collection window, schema in report_schema.py
 web/                   # Next.js app
@@ -60,6 +61,7 @@ web/                   # Next.js app
       confidence, volatility) over getSearchIndex() in reports.ts (run 12); full-text
       search (Pagefind) deliberately deferred
     about/page.tsx        # doc sections 37/38
+    glossary/page.tsx     # ~29 terms from aesthetic_terms/cultural_references/top_signals[].name across all reports, deduped, wire-service definitions (shipped run 20)
     case-study/page.tsx   # doc section 33, portfolio framing
     layout.tsx           # site-wide <title>/description metadata — keep in sync with rebrand, this has gone stale before
     sitemap.ts, robots.ts  # added run 5
@@ -129,6 +131,18 @@ docs/
    genuinely useful, tag it with "(count as of <date>, verify against
    data/reports/ for current total)" so it reads as a snapshot, not a guarantee.
 
+9. **A schema field being populated with real data is not the same as it being visible
+   to a reader, and a documented instruction is not the same as it actually working.**
+   Three separate runs (21, 23, 24) found fields (`human_editor_note`,
+   `revision_history`, `thin_week_note`) that were typed, populated, and referenced in
+   the site's own transparency claims — but never actually rendered anywhere, making
+   those claims false in practice. Run 25's `check_field_coverage.py` is the structural
+   fix for this specific pattern. Separately, run 28 found README's own run instructions
+   (`bash run.sh`) didn't work from the documented starting point. When a doc or schema
+   field makes a claim about what the project does, verify it end-to-end (grep for the
+   render site, or actually run the command) rather than trusting that "it's in the
+   data/doc" means "it's true of the live site."
+
 ## Institutional knowledge worth knowing before you start
 
 **Fashion-week calendar context (run 16 research,
@@ -143,17 +157,17 @@ called out here explicitly.
 ## Common next steps
 
 See `TODO.md` at repo root for the current authoritative, per-run list (updated every loop
-run) — don't duplicate it here. As of run 16, the highest-priority open items ("run 17
+run) — don't duplicate it here. As of run 28, the highest-priority open items ("run 29
 candidates" in `TODO.md`) are:
 
-- Don't force `collection_status: "normal"` before ~Sept 8, 2026 (NYFW start) — see the
-  fashion-week-calendar note above.
-- Source-list diversity is a real, documented gap: `crawler.py`'s `FASHION_SOURCES` are
-  English-language/Western-editorial only (found in run 16's bias-audit pass). Consider
-  expanding to non-Western fashion discourse outlets.
-- Run-15's product-framing question (should low-volatility reporting be framed as a
-  feature, not a gap) is partially addressed via the new methodology section (run 16);
-  consider whether homepage/archive pages need similar framing.
-- Bias-audit practice has one real exercise on record (run 16, fixed an inconsistent
-  `HIGH_RELIABILITY_SECTORS` gate) — consider making it periodic rather than one-off, per
-  the original AI-journalism-standards recommendation.
+- The run-19 confidence-gate fix (`independent_criticism` added to
+  `HIGH_RELIABILITY_SECTORS`) remains untested in practice — revisit once
+  `independent_criticism` sources reappear in a report.
+- `gh` CLI is unavailable in this environment; CI's real GitHub Actions pass/fail status
+  remains genuinely unconfirmed (manual YAML read-throughs only).
+- CFDA Fashion Fund winner and CFDA Fashion Awards have both stayed unconfirmed across
+  multiple windows — consider whether prolonged silence eventually warrants an explicit
+  "awaiting resolution" status rather than repeated carry-forward.
+- README's operational instructions are now fixed (run 28) — periodically re-verify them
+  against actual pipeline behavior as `summarize.py`/`run.sh` evolve, since this is the
+  second time a doc-accuracy sweep found a real, previously-unknown gap.
