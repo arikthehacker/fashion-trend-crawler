@@ -356,6 +356,65 @@ was correct and no exception was invented, per the reasoning above.
 
 ---
 
+### 14. A forecast/prediction about a future season is not evidence of a present signal, unless independently-converging forecasting activity itself becomes the (narrowly framed) event
+
+**First established:** implicitly at `data/reports/2026-12-28.json` (year-end
+window, forward-looking "2026 trends" listicles excluded from a "best of
+2026" retrospective search); flagged as a candidate precedent at
+`data/reports/2028-01-03.json`/`docs/agent-logs/real-report-2028-01-03.md`
+(run 86, WWD/Vogue 2028 year-ahead forecast pieces); formalized here at run 88
+after dedicated review (`docs/agent-logs/forecast-exclusion-precedent-run88.md`).
+
+**Rule:** a trend-forecast or prediction piece about a *future* season is not,
+by itself, evidence of designer intent, editorial interpretation of existing
+work, retail adoption, or social amplification that has actually occurred —
+it is a claim about the future, not an observation about the present, and
+must not be folded into `top_signals` as if it were an observed trend. None
+of `taxonomy.py`'s `origin_classification` values (`designer_originated`,
+`editorial_amplified`, `retail_adopted`, `social_amplified`,
+`platform_native`, `archive_revival`) fit a pure forecast piece either — all
+six presuppose an aesthetic that has already manifested somewhere and is
+being amplified/adapted from that point; a forecast has no such antecedent
+event to amplify, so this is a genuine taxonomy gap, not a case of failing to
+look hard enough for the right label.
+
+A narrower carve-out exists but has never yet been triggered: if multiple
+genuinely independent trade outlets converge on the *same specific*
+prediction in the same window (not one wire/PR feed reaching multiple
+outlets — precedent 4's downstream-republication logic applies), the
+convergence itself is a present-tense discourse event (outlets responding to
+this week's signals and reaching the same read) distinct from the
+speculative content of the prediction. Logging that would require framing it
+explicitly as coverage of the forecasting activity itself ("N outlets
+forecast X this week," a fact about now), never as though the forecast's
+content were an observed trend, and it still could not carry a
+garment/silhouette/aesthetic `top_signals` entry implying present adoption.
+No new `origin_classification` enum value has been added for this
+hypothetical case — inventing one is not warranted until it actually occurs.
+
+**Reasoning:** `docs/agent-logs/forecast-exclusion-precedent-run88.md`: two
+independent agents a year apart (`2026-12-28.json`, `2028-01-03.json`)
+reached the identical exclusion without coordination, which is itself
+evidence the underlying judgment is sound and durable rather than
+inconsistent improvisation — exactly the "flagged once, formalized after
+review" shape precedent 13 also followed.
+
+**Worked example:** `data/reports/2028-01-03.json` (run 86): two outlets
+(wwd.com, vogue.com) each ran separate 2028 year-ahead forecast pieces the
+same window. Recorded as collected (`items_collected: 2`,
+`source_sector_breakdown: {"editorial": 2}`) but excluded from
+`top_signals`, with `top_signals: []` and `collection_status: "thin"`. This
+is exactly two outlets, not independently-converging-on-the-same-specific-
+prediction, so the narrower carve-out above does not apply — plain exclusion
+was the correct call. `data/reports/2026-12-28.json` (run in the archive's
+first year): explicitly searched for genuine dated year-end retrospective
+coverage, found only "generic forward-looking '2026 trends' pieces with no
+publication date tying them to this window or framing them as a retrospective
+of the year just ending," and excluded them on the same reasoning, a year
+before run 86's case.
+
+---
+
 ## Related, non-override background (for context, not confidence exceptions themselves)
 
 - **`independent_criticism` added to `HIGH_RELIABILITY_SECTORS`** — proposed
