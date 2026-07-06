@@ -12,7 +12,7 @@
 #############################################################
 
 from mcp.server.fastmcp import FastMCP
-from crawler import crawl_all_sources, FASHION_SOURCES
+from crawler import crawl_all_sources, FASHION_SOURCES, DEFAULT_OUTPUT_FILE
 from report_schema import load_report, list_report_dates
 import json
 import os
@@ -33,7 +33,7 @@ def crawl_fashion_trends(urls: list[str] = None) -> str:
     if no urls provided, uses default fashion sources.
     """
     sources = urls if urls else FASHION_SOURCES
-    results = crawl_all_sources(sources, output_file="trends_raw.json")
+    results = crawl_all_sources(sources, output_file=DEFAULT_OUTPUT_FILE)
     return json.dumps(results, indent=2)
 
 @mcp.tool()
@@ -42,10 +42,10 @@ def get_cached_trends() -> str:
     returns the last crawled trends from the json file
     without re-crawling anything. fast if you already ran the crawler.
     """
-    if not os.path.exists("trends_raw.json"):
+    if not os.path.exists(DEFAULT_OUTPUT_FILE):
         return json.dumps({"error": "no cached trends found. are you in the right folder? run crawler.py first, then try again."})
 
-    with open("trends_raw.json", "r") as f:
+    with open(DEFAULT_OUTPUT_FILE, "r") as f:
         return f.read()
 
 @mcp.tool()
@@ -54,10 +54,10 @@ def search_trends(keyword: str) -> str:
     searches cached trends for a specific keyword.
     returns all headlines that contain the keyword.
     """
-    if not os.path.exists("trends_raw.json"):
+    if not os.path.exists(DEFAULT_OUTPUT_FILE):
         return json.dumps({"error": "no cached trends found. are you in the right folder? run crawler.py first, then try again."})
 
-    with open("trends_raw.json", "r") as f:
+    with open(DEFAULT_OUTPUT_FILE, "r") as f:
         data = json.load(f)
 
     matches = []
