@@ -148,6 +148,28 @@ export default function Home() {
             {latest.executive_summary}
           </p>
 
+          {(latest as unknown as { collection_status?: string }).collection_status === "thin" && (
+            <p style={{
+              fontFamily: "var(--font-franklin)",
+              fontSize: "0.75rem",
+              lineHeight: "1.7",
+              color: "var(--gray)",
+              maxWidth: "650px",
+              margin: "-2.5rem auto 4rem",
+              borderTop: "1px solid var(--border)",
+              paddingTop: "1.5rem",
+            }}>
+              This window is classified thin. Low-volatility periods are recorded as a
+              verified data point rather than filled to a target count — see{" "}
+              <Link
+                href="/methodology"
+                style={{ color: "var(--gray)", textDecoration: "underline", textUnderlineOffset: "3px" }}
+              >
+                methodology
+              </Link>.
+            </p>
+          )}
+
           {/* top signal cards */}
           <div style={{
             display: "flex",
