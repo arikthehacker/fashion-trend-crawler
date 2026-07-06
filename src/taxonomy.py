@@ -180,6 +180,19 @@ DOMAIN_SECTOR_MAP = {
     "cfda.com": "institutional",
     "kci.or.jp": "institutional",
     "britishfashioncouncil.co.uk": "institutional",
+
+    # added run 70 -- verified via WebSearch before classifying (see
+    # docs/agent-logs/domain-classification-run70.md): fhcm.paris is the
+    # Fédération de la Haute Couture et de la Mode, the official governing
+    # body that coordinates Paris Fashion Week and Haute Couture Week
+    # (confirmed official site, mirrors cfda.com/britishfashioncouncil.co.uk)
+    "fhcm.paris": "institutional",
+
+    # added run 70 -- laforma.club is an independent fashion-calendar/
+    # editorial outlet (fashion week schedules, designer/bag guides,
+    # documentary lists), not a governing body -- same editorial-plus-content
+    # pattern as okayafrica.com/stylerave.com, not institutional
+    "laforma.club": "editorial",
 }
 
 
