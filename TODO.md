@@ -467,11 +467,31 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       disappeared from `2026-09-14.json` without the close-out acknowledgment every other
       retired signal in the sequence got.
 
-## Next up (run 23 candidates)
+## Run 23 — done
+- [x] Added `data/reports/2026-10-12.json`, a 16th report — **confirmed the expected
+      post-fashion-month volume drop for real** (a genuine search turned up almost
+      nothing verifiable, items_collected=3, not an assumed thin status).
+- [x] Broad frontend health sweep found and fixed real nav gaps: `/search` was orphaned
+      from primary header nav on 7 pages (only linked from footers), and `Glossary` was
+      missing from the homepage nav.
+- [x] **Tested the corrections/transparency claim end-to-end and found it was false**:
+      3 reports have real `revision_history` entries, but nothing on the site ever
+      displayed them — the methodology page's claim about correction transparency wasn't
+      actually true of the live site. Fixed: added a "Correction History" section to
+      report pages. Same category of gap as run 21's `human_editor_note` finding.
+- [x] Periodic confidence/dormancy review — clean. No new concerning cases; all
+      previously-flagged dormant signals confirmed closed and not reappearing.
+- [x] Doc-sync check fixed README/PROJECT_STRUCTURE staleness again (4 runs behind,
+      undercounting reports) and verified 3 spot-checked claims against actual code —
+      all held up.
+
+## Next up (run 24 candidates)
 - [ ] Southeast Asian source coverage remains open (vogue.ph blocked by Cloudflare JS
       challenge — would need a headless-browser approach, likely out of scope).
-- [ ] Fashion month is now closed out in the archive (15 reports) — watch whether report
-      volume genuinely drops back to the pre-fashion-month baseline as expected, or
-      whether the source list expansions from runs 17-19 keep volume elevated.
-- [ ] The heading-hierarchy checklist item was just added to the skill doc — worth
-      confirming in a future run that it's actually being followed, not just documented.
+- [ ] Two real "claimed but not shown" transparency gaps have now been found and fixed
+      (`human_editor_note` run 21, `revision_history` run 23) — worth one more sweep to
+      check if any OTHER schema field with a transparency/trust claim is similarly unused
+      in the actual UI.
+- [ ] README/PROJECT_STRUCTURE have now gone stale 2 times (runs 18, 23) — consider
+      whether report-count/feature-list sections should be generated automatically at
+      build time instead of manually maintained, to stop this recurring.

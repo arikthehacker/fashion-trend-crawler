@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-07 ~04:30 PDT — [Loop run 23](changelog-entries/run-23.md)** — 16th report
+  genuinely confirms the post-fashion-month volume drop (not assumed); fixed real nav
+  gaps (`/search`/`Glossary` missing from primary nav); found and fixed the corrections-
+  transparency claim was actually false on the live site; confidence/dormancy review
+  clean; doc-sync fixed README/PROJECT_STRUCTURE staleness again.
+
 - **2026-07-07 ~03:10 PDT — [Loop run 22](changelog-entries/run-22.md)** — Investigated
   automating the heading-hierarchy check (honestly concluded ESLint can't catch it,
   documented a manual checklist instead); added glossary/taxonomy cross-link; 15th report
