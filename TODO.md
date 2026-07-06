@@ -1172,3 +1172,32 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
       run 50 remain open.
 - [ ] `gh` CLI/CI-status check next due at run 60.
+
+## Run 55 — done
+- [x] Found and fixed a real gap in run 54's fix: `dieworkwear.com` was silently
+      broken under the actual crawl path (Brotli compression, no decoder installed) —
+      `crawl()` returned 0 headlines with no error. Tried restricting
+      `Accept-Encoding` first; the server ignored it. Fixed properly by installing and
+      pinning `brotli` as a real dependency, verified with 10 real headlines returned.
+      Created `requirements.txt`, which didn't exist anywhere in the repo before.
+- [x] Added a real custom 404 page (`web/app/not-found.tsx`) — unmatched routes
+      previously fell back to Next.js's generic unstyled default.
+- [x] Doc-sync check fixed a real gap: `web/app/icon.tsx` (run 53's favicon) was
+      missing from README/PROJECT_STRUCTURE/SKILL.md's file maps.
+- [x] Added `data/reports/2027-05-24.json`, a 48th report — logged a real Cannes
+      red-carpet signal but deliberately did not override confidence upward despite 5
+      sources, since 2 domains aren't yet in `DOMAIN_SECTOR_MAP` (working-as-designed
+      "unclear" fallback, not a bug). Met Gala 2027 hit its 4th consecutive
+      zero-coverage window — the absence itself named as the notable fact.
+- [x] Periodic audit — clean. 51 confidence mismatches, only the documented Dior
+      Cruise override not editor-conservative (correctly reasoned), 0 field coverage
+      warnings.
+
+## Next up (run 56 candidates)
+- [ ] `runwaylive.com`/`stylerave.com` aren't yet in `DOMAIN_SECTOR_MAP` — minor,
+      non-urgent follow-up.
+- [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
+      correctness — still awaiting a human decision (run 50).
+- [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
+      run 50 remain open.
+- [ ] `gh` CLI/CI-status check next due at run 60.

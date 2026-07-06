@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-08 ~23:00 PDT — [Loop run 55](changelog-entries/run-55.md)** — Run 54's
+  independent-criticism source fix was actually broken under the real crawl path
+  (Brotli decoding); found via real-pipeline testing and fixed by adding `brotli` as
+  a genuine dependency plus the repo's first `requirements.txt`, verified with 10 real
+  headlines returned; a real 404 page added; doc-sync fixes a missing favicon
+  reference; 48th report shows careful confidence discipline; periodic audit clean.
+
 - **2026-07-08 ~21:45 PDT — [Loop run 54](changelog-entries/run-54.md)** — Solves a
   30+ run mystery: the run-19 confidence-gate fix was untested because the
   `independent_criticism` sector was structurally unreachable (no source in
