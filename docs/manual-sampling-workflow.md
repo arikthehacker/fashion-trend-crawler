@@ -1,5 +1,17 @@
 # Manual social-signal sampling workflow
 
+## Cadence tracking
+
+This is opportunistic, not scheduled (see "The workflow" below), but agent-run
+loop cycles have found it easiest to actually happen if re-checked on a rough
+~10-run cadence rather than left purely to chance — a real 17-run silent lapse
+happened once (flagged run 69) because nothing outside per-run TODO.md notes
+tracked when it was last done. Recording it here, in the source doc itself,
+is the fix: **last run: run 77** (`docs/agent-logs/manual-sampling-check-run77.md`).
+**Next due: ~run 87.** Update this line whenever the check is re-run so the
+cadence survives even if a given run's TODO.md/CHANGELOG entries aren't
+consulted.
+
 ## Why this exists
 
 Doc §31 rules out aggressive/ToS-violating scraping of TikTok and Pinterest. The
