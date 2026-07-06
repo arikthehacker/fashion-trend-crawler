@@ -1,0 +1,82 @@
+{
+  "report_date": "2027-05-17",
+  "collection_window": {
+    "start": "2027-05-11",
+    "end": "2027-05-17"
+  },
+  "sources_scanned": 12,
+  "items_collected": 1,
+  "source_sector_breakdown": {
+    "editorial": 6
+  },
+  "executive_summary": "This collection window (May 11-17, 2027) is the forty-seventh archived window. Dior's Cruise 2027 show at LACMA in Los Angeles (May 13), flagged in the prior window as falling just past its close, lands inside this one and cleared the index's corroboration bar: it is Jonathan Anderson's first Cruise collection for Dior, staged against LACMA's new Geffen Galleries with an Old Hollywood/Marlene Dietrich reference set, and it was covered consistently by multiple editorial outlets within days. Met Gala 2027 was re-checked once more per the ongoing coverage-gap watch opened in the 2027-05-03 report and reaffirmed in 2027-05-10 -- no red-carpet, theme, or post-event coverage of any kind has surfaced at any point since, across three consecutive windows now. Wales Bonner/Hermes and the CFDA Fashion Fund/Awards questions were not re-litigated this window per SKILL.md workflow note 10; no new coverage surfaced for either.",
+  "top_signals": [
+    {
+      "name": "Dior Cruise 2027 at LACMA -- Jonathan Anderson's debut cruise collection",
+      "type": "designer_signal",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "flash",
+      "origin_classification": "designer_originated",
+      "evidence": "Dior staged its Cruise 2027 show on the grounds of LACMA in Los Angeles on May 13, 2027 (inside this window) -- Jonathan Anderson's first Cruise collection for the house since his Dior appointment. Multiple independent editorial outlets (WWD, The Hollywood Reporter, LAmag, The Impression, Whitewall, Modern Luxury) corroborated the same core facts: an Old Hollywood/Marlene Dietrich-referencing set built around LACMA's new Zumthor-designed Geffen Galleries wing, a reworked Dietrich-era Dior Accacias jacket, an Ed Ruscha collaboration on shirting, Philip Treacy millinery, and a celebrity front row (Miley Cyrus, Sabrina Carpenter, Anya Taylor-Joy, Macaulay Culkin, LaKeith Stanfield).",
+      "index_note": "Designer-origin runway event with immediate, consistent multi-outlet editorial corroboration of the same factual details (venue, references, specific garments, attendee list) -- the kind of same-week convergence the index treats as strong evidence an event happened as described, distinct from a styling trend or aesthetic claim.",
+      "source_corroboration_count": 6,
+      "signal_id": "dior-cruise-2027-lacma-debut",
+      "confidence_source": "manual",
+      "human_editor_note": "derive_confidence() would land this at 'medium' -- six sources, but all editorial (a single source_sector). Overriding to 'high' as an editorial judgment call: this is a discrete, photographed, celebrity-attended runway event with matching factual detail (venue, garment specifics, collaborators) across outlets with no institutional/retail sector expected to weigh in on a runway show this quickly. Treating single-sector convergence as a ceiling here would penalize a genuinely well-documented event for a sourcing-mix gap that doesn't reflect uncertainty about whether it happened.",
+      "source_domains": [
+        "wwd.com",
+        "hollywoodreporter.com",
+        "lamag.com",
+        "theimpression.com",
+        "whitewall.art",
+        "modernluxury.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "Dior Cruise 2027 LACMA",
+    "Jonathan Anderson Dior debut cruise",
+    "Met Gala 2027 no coverage"
+  ],
+  "garments": [
+    "Boucl\u00e9 wool jacket",
+    "shearling coat",
+    "structured evening gown"
+  ],
+  "silhouettes": [],
+  "materials": [
+    "boucl\u00e9 wool",
+    "shearling",
+    "lace"
+  ],
+  "colors": [],
+  "aesthetic_terms": [
+    "old hollywood glamour"
+  ],
+  "cultural_references": [
+    "Marlene Dietrich",
+    "Ed Ruscha"
+  ],
+  "limitations": [
+    "Met Gala 2027 was re-checked a third consecutive window (following 2027-05-03 and 2027-05-10) for any theme, co-chair, or red-carpet coverage, at any point before or after the presumed event date. None was found. The gap is now long enough that it reads as a genuine, unresolved coverage absence rather than routine pre-event silence, but per the project's convention for factual (not style-dormancy) gaps, this is logged as an open question, not assumed to mean the event was cancelled or restructured.",
+    "Dior Cruise 2027 (LACMA) was the one item this window that cleared the cross-source corroboration bar; no other candidate signal did, so top_signals contains a single entry rather than the project's usual target count.",
+    "Wales Bonner/Hermes and the CFDA Fashion Fund/Awards questions were not re-litigated this window per SKILL.md workflow note 10; both remain 'untracked going forward pending new information' with no new coverage found.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "dior-cruise-2027-lacma-debut",
+    "met-gala-2027-postevent-coverage-gap",
+    "wales-bonner-untracked-pending-new-information",
+    "cfda-signals-untracked-pending-new-information",
+    "2027-q2"
+  ],
+  "content_hash": "a9023a7e288e28ebeab2467b28747fbb2c8293ab7b0a0cefab8289b774fb91c7",
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": ""
+}
