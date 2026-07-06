@@ -1,0 +1,110 @@
+{
+  "report_date": "2027-07-05",
+  "collection_window": {
+    "start": "2027-06-29",
+    "end": "2027-07-05"
+  },
+  "sources_scanned": 16,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "editorial": 2,
+    "unclear": 3
+  },
+  "executive_summary": "This collection window (June 29 - July 5, 2027) is the fifty-fourth archived window. One new signal cleared the corroboration bar: pre-show anticipation coverage of three creative-director-level debuts landing in the same Paris Haute Couture Week slot just past this window's close -- Pierpaolo Piccioli's first Balenciaga couture collection, Duran Lantink's first Jean Paul Gaultier couture collection, and Olivier Theyskens's new label Boloria. Met Gala 2027 was checked a tenth consecutive window with still no theme, co-chair, or red-carpet coverage for an event this index's own calendar research places on May 3, 2027, already past; this is the fifth consecutive occurrence of the same signal_id, one window past where the prolonged-silence threshold was first met, and this report makes the call to transition it to 'untracked going forward pending new information' rather than repeat the same open-question note again. Wales Bonner/Hermes and CFDA Fashion Fund/Awards were not re-litigated this window per SKILL.md workflow note 10; no new resolving coverage surfaced for either.",
+  "top_signals": [
+    {
+      "name": "Paris Haute Couture Week FW27 designer debuts (Piccioli/Balenciaga, Lantink/Jean Paul Gaultier, Theyskens/Boloria)",
+      "type": "designer_signal",
+      "source_sectors": [
+        "editorial",
+        "unclear"
+      ],
+      "confidence": "medium",
+      "volatility": "flash",
+      "origin_classification": "designer_originated",
+      "evidence": "Pre-show coverage confirms Pierpaolo Piccioli's first haute couture collection for Balenciaga and Duran Lantink's first haute couture collection for Jean Paul Gaultier both show July 8, 2027, alongside Olivier Theyskens (formerly Rochas/Nina Ricci/Theory) debuting his new label Boloria during the same Paris Haute Couture Week (July 6-9, 2027), which falls just after this window's close.",
+      "index_note": "Classified designer_originated: these are first-collection creative-director debuts at existing houses (Balenciaga, Jean Paul Gaultier) plus one genuinely new label launch (Boloria), not an editorial trend synthesis. Coverage this window is pre-show anticipation -- the shows themselves land just past the window close (July 8-9) -- matching the pattern already used for Wales Bonner's Hermes debut in January.",
+      "source_corroboration_count": 5,
+      "signal_id": "couture-fw27-designer-debuts",
+      "confidence_source": "manual",
+      "human_editor_note": "Held at 'medium' rather than 'high' despite five corroborating outlets: only runwaylive.com and wwd.com are in DOMAIN_SECTOR_MAP as editorial; wallpaper.com, coveteur.com, and fashionista.com are established fashion trade/consumer press by any reasonable read but aren't yet in the taxonomy, so they classify 'unclear' -- the same coverage-gap caveat applied to Wimbledon and other recent signals. Worth flagging as three creative-director-level events landing in the same three-day window is unusually dense even for couture season, and the actual shows (not just previews) should be re-checked next window for confirmed reception.",
+      "source_domains": [
+        "runwaylive.com",
+        "wwd.com",
+        "wallpaper.com",
+        "coveteur.com",
+        "fashionista.com"
+      ]
+    },
+    {
+      "name": "Met Gala 2027 coverage gap",
+      "type": "factual_question",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "declining",
+      "origin_classification": "editorial_amplified",
+      "evidence": "Targeted search across ten consecutive weekly collection windows (2027-05-03 through 2027-07-05) found zero reachable coverage of a Met Gala 2027 theme, co-chairs, or red-carpet under that name, despite the event historically generating same-day saturation coverage and next-year co-chair speculation within weeks of the prior gala.",
+      "index_note": "Reuses the signal_id introduced on 2027-05-31 (and carried on 2027-06-14, 2027-06-21, 2027-06-28) so cross-report history keeps accumulating for this index's dormancy tooling. The event's date is not in question -- the Editorial Calendar places it on May 3, 2027, already past. This is the fifth consecutive occurrence of the exact signal_id, one window past where is_prolonged_silence()'s threshold was first met (2027-06-28).",
+      "source_corroboration_count": 1,
+      "signal_id": "met-gala-2027-coverage-gap",
+      "confidence_source": "manual",
+      "human_editor_note": "Per SKILL.md workflow note 10, once is_prolonged_silence() has held True for several consecutive windows past the initial crossing, a report may transition the signal to 'untracked going forward pending new information' rather than keep repeating 'still open.' The initial crossing was last window (2027-06-28, 4th occurrence); this is the 5th. Making that call now: this signal moves to untracked-going-forward status starting this report. This is not a claim the event didn't happen or that the question is resolved -- it is identical in kind to the Wales Bonner and CFDA untracked calls: the archive is deprioritizing weekly re-litigation of an unanswerable-from-silence question, not declaring it closed. Any future agent finding real Met Gala 2027 coverage should resume normal tracking immediately.",
+      "source_domains": []
+    }
+  ],
+  "repeated_keywords": [
+    "Paris Haute Couture Week designer debuts",
+    "Met Gala 2027 no coverage tenth window"
+  ],
+  "garments": [
+    "couture gown",
+    "tailored blazer",
+    "pleated tennis skirt",
+    "wide-leg trouser"
+  ],
+  "silhouettes": [
+    "tailored",
+    "sculptural",
+    "spectator"
+  ],
+  "materials": [
+    "silk",
+    "boucle",
+    "cotton pique"
+  ],
+  "colors": [
+    "cornflower blue",
+    "white",
+    "coral"
+  ],
+  "aesthetic_terms": [
+    "tenniscore",
+    "quiet luxury"
+  ],
+  "cultural_references": [
+    "Paris Haute Couture Week",
+    "Wimbledon 2027"
+  ],
+  "limitations": [
+    "Met Gala 2027 was checked a tenth consecutive window (following 2027-05-03 through 2027-06-28). No theme, co-chair, or red-carpet coverage has ever surfaced across any of the ten windows checked, for an event this index's own calendar research places on May 3, 2027. This is the fifth consecutive-report occurrence of the signal, one window past where is_prolonged_silence() first held True; this report transitions it to 'untracked going forward pending new information' per SKILL.md workflow note 10, rather than carrying it forward as an open question indefinitely.",
+    "The couture-debuts signal is built from pre-show anticipation coverage, not the shows themselves -- Paris Haute Couture Week FW27 runs July 6-9, 2027, just past this window's close, so confirmed reception/reviews should be re-checked next window.",
+    "3 of 5 couture-debuts source domains (wallpaper.com, coveteur.com, fashionista.com) are not yet present in taxonomy.py's DOMAIN_SECTOR_MAP and classify as 'unclear' sector rather than a verified one -- a taxonomy coverage gap, not a claim those outlets are unreliable.",
+    "Wales Bonner/Hermes and CFDA Fashion Fund/Awards were not re-litigated this window per SKILL.md workflow note 10; incidental checks surfaced no new resolving coverage for either. Both remain 'untracked going forward pending new information.'",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "couture-fw27-designer-debuts",
+    "wales-bonner-untracked-pending-new-information",
+    "cfda-signals-untracked-pending-new-information",
+    "met-gala-2027-untracked-pending-new-information",
+    "2027-q3"
+  ],
+  "content_hash": "253a3b2a042b3d21a234820871005ea2597f48060e986fd65fd8fe0aa06ffbc2",
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": ""
+}
