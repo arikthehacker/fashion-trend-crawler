@@ -162,6 +162,10 @@ const DEFINITIONS: Record<string, string> = {
   "obi-sash cocoon coat": "A rounded, sculpted cocoon-shaped coat closed with a wide obi-style sash tied at the waist, observed across resort 2028 previews from multiple houses.",
   "cocoon silhouette": "A rounded, voluminous garment shape that tapers inward at the hem, named for its resemblance to a cocoon rather than a fitted or A-line cut.",
   "elle": "A fashion and lifestyle magazine title, cited as an editorial-sector source when its coverage is tracked.",
+  "dior": "A Paris-based luxury fashion house, cited as a designer-origin source when its runway, resort, or retail output is tracked.",
+  "the realreal": "An online resale and consignment marketplace for luxury goods, cited as a resale-sector source when its search-demand or listing data is tracked.",
+  "puffer-shell skirt": "A voluminous, quilted skirt built with exaggerated, rounded volume at the hip and hem, using puffer-jacket-style quilted construction on a bottom garment rather than an outerwear piece.",
+  "quilted puffer-shell silhouette": "A rounded, exaggerated-volume garment shape produced by puffer-jacket-style quilted construction, distinct from the tapered cocoon silhouette in that its volume is evenly quilted rather than smoothly sculpted.",
 };
 
 function normalize(term: string): string {

@@ -1,0 +1,100 @@
+{
+  "report_date": "2027-12-20",
+  "collection_window": {
+    "start": "2027-12-14",
+    "end": "2027-12-20"
+  },
+  "sources_scanned": 10,
+  "items_collected": 3,
+  "source_sector_breakdown": {
+    "designer_origin": 1,
+    "editorial": 1,
+    "resale": 1
+  },
+  "executive_summary": "Collection window December 14-20, 2027, the final full week of resort 2028 preview coverage before the holiday retail peak. One new cross-sector silhouette signal emerged: dior.com published resort 2028 lookbook imagery featuring a voluminous, quilted puffer-shell skirt, and vogue.com's independently reported resort 2028 season-wrap roundup -- published the same window, not citing Dior -- described the same quilted, exaggerated-volume skirt shape recurring across several houses' resort deliveries. Because neither source cites the other and both describe the same specific garment feature, this is logged as one signal spanning designer_origin and editorial sectors, meeting derive_confidence()'s high-confidence bar on its own merits. Separately, therealreal.com reported a single-source search-demand spike for structured, corseted waist-tailoring pieces on its resale platform this week, framed in its own reporting as holiday-gifting-driven interest in the archive's already-logged Bogota/Sao Paulo 'return to structure' pattern; this is logged as a new signal_id (a resale-demand claim is a distinct claim type from designer intent, editorial interpretation, or first-hand retail buying) rather than folded into the existing Bogota/Sao Paulo thread, and is held at low confidence since it is single-source and resale is not a high-reliability sector under derive_confidence(). The obi-sash cocoon coat thread, the opera-glove/'restraint dressing' thread, and further year-end retrospective coverage produced no new development this window and are not carried forward again absent fresh movement -- continuing to track them on pure repetition would misrepresent silence as signal. The Margiela raw-edge thread remains closed out as of 2027-10-18. Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention.",
+  "top_signals": [
+    {
+      "name": "Resort 2028 previews from Dior and Vogue's season-wrap roundup converge on a quilted puffer-shell skirt silhouette",
+      "type": "silhouette",
+      "source_sectors": [
+        "designer_origin",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "dior.com published resort 2028 lookbook imagery this window featuring a voluminous, quilted puffer-shell skirt with exaggerated, rounded volume at the hip and hem. Independently, vogue.com's resort 2028 season-wrap roundup -- published the same window and not citing Dior specifically -- described the same quilted, exaggerated-volume skirt shape recurring across several houses' resort deliveries as a season-closing silhouette observation.",
+      "index_note": "Logged as a new signal_id (resort-2028-puffer-shell-skirt), distinct from resort-2028-obi-sash-cocoon-coat (2027-12-06) and the Bogota/Sao Paulo structured-waist thread: this is a different garment category (a bottom, not a coat) and a different construction logic (quilted volume rather than sash-tied cocoon shaping or boned waist definition), so it is tracked as its own strand rather than merged into either existing resort 2028 thread. This signal's corroboration is treated as genuinely cross-sector, following the same reasoning applied to the 2027-12-06 obi-sash coat signal: designer_origin (Dior's own lookbook) and editorial (Vogue's independently reported cross-house observation) are two independently sourced accounts of the same specific garment feature, not two sources merely publishing in the same week on unrelated topics. No retail adoption data exists yet for this silhouette; it remains tracked as designer intent plus editorial interpretation only.",
+      "source_corroboration_count": 2,
+      "signal_id": "resort-2028-puffer-shell-skirt",
+      "confidence_source": "derived",
+      "human_editor_note": "derive_confidence() computes 'high': source_corroboration_count=2 and source_sectors spans two distinct sectors (designer_origin, editorial). Adopted as-is, not overridden. Checked against all documented override conditions: the sectors are not 'unclear' (precedent 3 -- both chanel.com-style designer_origin and vogue.com editorial are mapped, high-reliability sectors in DOMAIN_SECTOR_MAP); this is not single-sector corroboration inflated by a mislabeled tag (precedent 7 -- Dior's lookbook is a first-party designer statement, not editorial description of a runway show secondhand); Vogue's account is not a citation-free rehash of Dior's lookbook (precedent 4/5 -- it independently frames the silhouette as a cross-house season-wrap pattern rather than reporting on Dior specifically); and this is not same-week coincidental co-occurrence between two unrelated signals (precedent 6 -- both sources describe the identical garment feature, not two separate signals that happen to share a window). None of the twelve documented exceptions apply in the downgrading direction, so the mechanical 'high' output is adopted, consistent with how the structurally identical 2027-12-06 obi-sash cocoon coat signal was handled.",
+      "source_domains": [
+        "dior.com",
+        "vogue.com"
+      ]
+    },
+    {
+      "name": "TheRealReal reports resale search-demand spike for structured waist-tailoring pieces during holiday gifting season",
+      "type": "critical_synthesis",
+      "source_sectors": [
+        "resale"
+      ],
+      "confidence": "low",
+      "volatility": "seasonal",
+      "origin_classification": "retail_adopted",
+      "evidence": "therealreal.com reported this window that search terms for structured, corseted, and boned-waist tailoring pieces rose on its resale platform, framing the increase as holiday-gifting-driven interest in the Bogota/Sao Paulo 'return to structure' pattern (tracked since 2027-10-18) rather than as a new independent development of its own. No other retailer, editorial outlet, or designer source corroborated the specific search-demand claim this window.",
+      "index_note": "Logged as a new signal_id (bogota-waist-tailoring-resale-holiday-demand) rather than folded into any existing Bogota/Sao Paulo signal_id: a resale-platform search-demand observation is a distinct claim type from designer intent, editorial interpretation, or first-hand retail stocking (the retail-buy signal type already established for the obi-sash coat thread), consistent with this archive's standing practice of keeping each claim shape in a thread as its own signal_id. Origin classification is retail_adopted because this reflects secondary-market consumer search behavior responding to an already-documented pattern, not new designer or editorial framing.",
+      "source_corroboration_count": 1,
+      "signal_id": "bogota-waist-tailoring-resale-holiday-demand",
+      "confidence_source": "derived",
+      "human_editor_note": "derive_confidence() computes 'low': source_corroboration_count=1, source_sectors = {'resale'}, and 'resale' is not in HIGH_RELIABILITY_SECTORS (editorial, designer_origin, institutional, independent_criticism), so neither the cross-sector-high nor single-source-medium exceptions apply. Held at 'low' as derived; this is a mechanical, non-borderline case -- a single-source resale-platform claim citing the archive's own prior reporting rather than introducing independent primary sourcing. No documented precedent supports an upgrade here (precedent 5's high-reliability-sector exception is specific to editorial/designer_origin/institutional/independent_criticism and does not extend to resale by analogy), and no new exception is being invented for it; per standing instruction, the mechanical output is trusted rather than an undocumented override applied.",
+      "source_domains": [
+        "therealreal.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "resort 2028",
+    "puffer-shell skirt",
+    "quilted volume",
+    "season-wrap roundup",
+    "holiday gifting",
+    "resale demand",
+    "return to structure",
+    "waist tailoring",
+    "holiday retail peak"
+  ],
+  "garments": [
+    "puffer-shell skirt"
+  ],
+  "silhouettes": [
+    "quilted puffer-shell silhouette"
+  ],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [
+    "Dior",
+    "Vogue",
+    "The RealReal"
+  ],
+  "limitations": [
+    "The puffer-shell skirt signal has no retail adoption data yet; it is tracked as designer intent plus editorial interpretation only, not confirmed retail pickup.",
+    "The resale search-demand signal is single-source and resale-sector-only, and cites the archive's own prior Bogota/Sao Paulo reporting rather than introducing new primary sourcing; it should not be read as independent confirmation of that thread's durability.",
+    "No new development occurred on the obi-sash cocoon coat, opera-glove/'restraint dressing', or year-end retrospective threads this window; per standing convention, none are carried forward again absent fresh movement.",
+    "This report's single resale-sector signal is a candidate for future review of whether 'resale' should ever qualify for a HIGH_RELIABILITY_SECTORS-style exception; no such exception has been established, and none is applied here -- flagged as an open question for the confidence-discipline precedents doc rather than resolved unilaterally."
+  ],
+  "archive_tags": [
+    "margiela-raw-edge-editorial-close-out",
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "review_status": "reviewed",
+  "reviewed_by": "ari3lla-index-loop-improvements agent",
+  "revision_history": []
+}
