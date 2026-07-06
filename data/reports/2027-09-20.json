@@ -1,0 +1,108 @@
+{
+  "report_date": "2027-09-20",
+  "collection_window": {
+    "start": "2027-09-14",
+    "end": "2027-09-20"
+  },
+  "sources_scanned": 8,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "institutional": 1,
+    "editorial": 4,
+    "unclear": 2
+  },
+  "executive_summary": "Collection window September 14-20, 2027. New York's Spring/Summer 2028 schedule gap, tracked across the prior two reports, closed this window: CFDA confirmed September 20-24, 2027 dates, roughly a week before Paris's already-announced September 27-October 5 window -- a notably short lead time relative to Paris's, reported here as a scheduling fact rather than editorialized as a shakeup. Separately, pre-season editorial coverage began circulating around Glenn Martens' Maison Margiela ahead of its Paris slot, keyed off house-released atelier imagery of raw-edge, unfinished-seam tailoring; this is tracked as a designer-originated signal with editorial interpretation layered on top, and explicitly not yet corroborated by any retail or social amplification. Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention and are not re-litigated in this report.",
+  "top_signals": [
+    {
+      "name": "New York confirms SS28 schedule, unusually close to season start",
+      "type": "market_behavior",
+      "source_sectors": [
+        "institutional",
+        "editorial",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "stable",
+      "origin_classification": "unclear",
+      "evidence": "CFDA published an official New York Spring/Summer 2028 preliminary schedule this window, setting the New York leg for September 20-24, 2027 -- roughly a week before Paris's already-confirmed September 27-October 5 dates (signal_id pfw-ss28-calendar-confirmed, 2027-09-06 report). Independently reported by WWD and Business of Fashion, both of which note the unusually short lead time between announcement and show start relative to Paris's roughly three-week runway. This resolves the gap tracked across the prior two reports (signal_id nyfw-ss28-schedule-still-unannounced, 2027-09-06 and 2027-09-13).",
+      "index_note": "Logged as a logistics/calendar resolution, not a style signal -- no garment, silhouette, or aesthetic claim is made here. The short lead time itself is noted as a scheduling fact, not editorialized as a crisis or a deliberate strategy shift, since this report has no evidence for CFDA's reasoning.",
+      "source_corroboration_count": 3,
+      "signal_id": "nyfw-ss28-schedule-confirmed",
+      "confidence_source": "derived",
+      "human_editor_note": "derive_confidence() is adopted as-is here (source_corroboration_count=3, source_sectors institutional/editorial/editorial -> 2 distinct real sectors, both in HIGH_RELIABILITY_SECTORS) -- unlike the 2027-09-06 and 2027-08-30 reports, none of the three corroborating domains (cfda.com, wwd.com, businessoffashion.com) fall outside taxonomy.py's DOMAIN_SECTOR_MAP, so there is no unclear-sector inflation to correct for. This is also a genuine positive confirmation (a schedule now exists and was independently reported), not an absence-of-evidence claim like last week's low-held confidence for the same underlying question -- so unlike that report, there is no reason to hold this one below the derived tier.",
+      "source_domains": [
+        "cfda.com",
+        "wwd.com",
+        "businessoffashion.com"
+      ]
+    },
+    {
+      "name": "Glenn Martens-era Margiela: raw-edge tailoring gets pre-season editorial attention",
+      "type": "aesthetic_shift",
+      "source_sectors": [
+        "editorial",
+        "editorial",
+        "unclear",
+        "unclear"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "Ahead of Paris's SS28 runway calendar (September 27-October 5), Dazed and Highsnobiety both ran pieces previewing Glenn Martens' direction at Maison Margiela, keying off house-released atelier imagery showing raw, unfinished seam edges and exposed tailoring canvas on jacket fronts -- described by both outlets as a continuation of the Artisanal-adjacent 'deconstructed' vocabulary associated with the house rather than a new visual language Martens is importing. Also picked up by Paper and The Fashion Law in shorter aggregation posts with no independent reporting beyond restating the same house imagery.",
+      "index_note": "Origin classification is designer_originated: the imagery originates from the house's own atelier release, and editorial coverage is interpreting that release rather than reporting on independent retail or social uptake. No retail buying or social amplification of this specific detail has been observed yet this window -- kept explicitly separate from the designer-intent claim rather than folded into a single 'trending' statement.",
+      "source_corroboration_count": 4,
+      "signal_id": "margiela-raw-edge-tailoring-preview",
+      "confidence_source": "manual",
+      "human_editor_note": "Held at medium rather than derive_confidence()'s literal high: only two of four corroborating domains (dazeddigital.com, highsnobiety.com) land inside taxonomy.py's DOMAIN_SECTOR_MAP as a named sector, and both map to the same sector (editorial) -- the other two (papermag.com, thefashionlaw.com) classify 'unclear'. Counting those two 'unclear' entries as genuine second/third-sector corroboration would reward a domain-map gap rather than real cross-sector confirmation -- the same call made for the 2027-08-30 Demna/Gucci signal and the 2027-09-06 Paris-calendar signal. A single high-reliability sector (editorial) with corroboration_count >= 2 already earns medium on its own under derive_confidence()'s rules, which is the tier this report adopts.",
+      "source_domains": [
+        "dazeddigital.com",
+        "highsnobiety.com",
+        "papermag.com",
+        "thefashionlaw.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "fashion week calendar",
+    "SS28",
+    "deconstructed tailoring",
+    "raw-edge seam"
+  ],
+  "garments": [
+    "tailored jacket"
+  ],
+  "silhouettes": [],
+  "materials": [
+    "exposed canvas",
+    "raw-edge fabric"
+  ],
+  "colors": [],
+  "aesthetic_terms": [
+    "deconstructed tailoring",
+    "raw-edge finishing"
+  ],
+  "cultural_references": [
+    "Glenn Martens",
+    "Maison Margiela",
+    "CFDA",
+    "New York Fashion Week",
+    "FHCM"
+  ],
+  "limitations": [
+    "The New York SS28 schedule announcement is reported as a logistics fact; this report does not speculate on CFDA's reasons for the short lead time relative to Paris.",
+    "Two of the four domains corroborating the Margiela signal (papermag.com, thefashionlaw.com) fall outside taxonomy.py's DOMAIN_SECTOR_MAP and classify as 'unclear', limiting genuine cross-sector confirmation to a single sector (editorial); confidence is held at medium accordingly.",
+    "No retail adoption or social amplification of the Margiela raw-edge tailoring detail has been observed yet this window; only designer-originated imagery and editorial interpretation are tracked here."
+  ],
+  "archive_tags": [
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked"
+  ],
+  "content_hash": "f935a3fdd3ee90988b92fffaa9c530de8c639fdda0b8e2893febe1809fc2eed6",
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": ""
+}
