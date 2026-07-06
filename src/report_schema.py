@@ -155,6 +155,47 @@ def derive_confidence(signal) -> str:
     return "low"
 
 
+def get_signal_status_history(signal_id: str, all_reports: list) -> list:
+    """
+    walk `all_reports` (a list of report dicts, e.g. loaded via
+    load_report()/list_report_dates()) and return the volatility/confidence
+    trend for a given signal_id over time.
+
+    see docs/agent-logs/signal-dormancy-mechanism.md for why this exists
+    instead of a static `signal_status` field on Signal: "dormant" isn't a
+    property of a single signal entry, it's an observation about a gap in
+    recurrence across reports, so it belongs to the cross-report history,
+    not the schema of one report's signal. VOLATILITY_LABELS already
+    includes "declining", and adding a parallel "dormant"/"retired" status
+    field would just be a second, easily-desynced way of saying the same
+    thing derive_confidence()-style logic can read off history directly.
+
+    returns a list of entries sorted by report_date ascending, each:
+      {
+        "report_date": str,
+        "volatility": str,
+        "confidence": str,
+        "confidence_source": str,
+      }
+    for every report in which a top_signals entry has this signal_id.
+    empty list if signal_id never appears (e.g. flagged dormant with no
+    corroborating recurrence, or the id is unrecognized).
+    """
+    history = []
+    for report in all_reports:
+        report_date = report.get("report_date", "")
+        for signal in report.get("top_signals", []):
+            if signal.get("signal_id", "") == signal_id:
+                history.append({
+                    "report_date": report_date,
+                    "volatility": signal.get("volatility", ""),
+                    "confidence": signal.get("confidence", ""),
+                    "confidence_source": signal.get("confidence_source", "manual"),
+                })
+    history.sort(key=lambda entry: entry["report_date"])
+    return history
+
+
 @dataclass
 class Report:
     report_date: str = ""
