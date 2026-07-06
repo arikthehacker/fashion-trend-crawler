@@ -20,8 +20,8 @@ const reenieBeanie = Reenie_Beanie({
 });
 
 export const metadata: Metadata = {
-  title: "RUNWAY: Fashion Trend Intelligence",
-  description: "Weekly fashion trend analysis for the busy woman who still wants to know.",
+  title: "ARI3LLA INDEX: Weekly Style Signal Report",
+  description: "A source-linked index tracking recurring style language, silhouettes, materials, aesthetics, and cultural signals across the web.",
 };
 
 export default function RootLayout({

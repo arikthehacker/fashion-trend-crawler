@@ -1,7 +1,8 @@
 // page.tsx
-// last edited: 05/04/2026
-// homepage for editorial fashion trend display
+// last edited: 07/06/2026
+// homepage for ARI3LLA INDEX — weekly style signal report
 
+import Link from "next/link";
 import { getTrends } from "../lib/trends";
 
 export default function Home() {
@@ -41,47 +42,76 @@ export default function Home() {
           textTransform: "uppercase",
           color: "var(--black)",
         }}>
-          Current<br />Fashion<br />Trends
+          ARI3LLA<br />Index
         </h1>
+
+        <p style={{
+          fontFamily: "var(--font-franklin)",
+          fontSize: "0.85rem",
+          letterSpacing: "0.15em",
+          textTransform: "uppercase",
+          color: "var(--black)",
+          marginTop: "1.5rem",
+        }}>
+          Weekly Style Signal Report
+        </p>
+
+        <p style={{
+          fontFamily: "var(--font-franklin)",
+          fontSize: "1rem",
+          lineHeight: "1.7",
+          color: "var(--gray)",
+          maxWidth: "560px",
+          margin: "1.5rem auto 0",
+        }}>
+          A source-linked index tracking recurring style language, silhouettes, materials, aesthetics, and cultural signals across the web.
+        </p>
 
         <p style={{
           fontFamily: "var(--font-franklin)",
           fontSize: "0.7rem",
           color: "var(--gray)",
-          marginTop: "2rem",
+          marginTop: "2.5rem",
           letterSpacing: "0.15em",
           textTransform: "uppercase",
         }}>
-          Last updated {lastUpdated} &nbsp;·&nbsp; {totalHeadlines} headlines across {pages.length} pages
+          Report issued {lastUpdated} &nbsp;·&nbsp; {totalHeadlines} items collected across {pages.length} sources
         </p>
 
-        {/* byline */}
-        <p
+        {/* nav */}
+        <nav
+          aria-label="Site sections"
           style={{
-            fontFamily: "var(--font-franklin)",
-            fontSize: "0.7rem",
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            color: "var(--gray)",
-            marginTop: "0.5rem",
+            display: "flex",
+            justifyContent: "center",
+            gap: "1.5rem",
+            marginTop: "1.25rem",
           }}
         >
-          {"crawled & curated by "}
-          <a
-            href="https://ariellamarchuk.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              color: "var(--black)",
-              textDecoration: "underline",
-              textUnderlineOffset: "3px",
-            }}
-          >
-            Ariella Marchuk
-          </a>
-          {". summarized by Claude."}
-        </p>
-        
+          {[
+            { href: "/methodology", label: "Methodology" },
+            { href: "/taxonomy", label: "Taxonomy" },
+            { href: "/sources", label: "Sources" },
+            { href: "/about", label: "About" },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              style={{
+                fontFamily: "var(--font-franklin)",
+                fontSize: "0.7rem",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                color: "var(--black)",
+                textDecoration: "underline",
+                textUnderlineOffset: "3px",
+              }}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
         {/* right now — in header */}
         {summary && (
           <div style={{ marginTop: "3rem" }}>
@@ -93,7 +123,7 @@ export default function Home() {
               color: "var(--red)",
               marginBottom: "1rem",
             }}>
-              Right Now
+              Observed Signals
             </p>
             <h2 style={{
               fontFamily: "var(--font-instrument)",
@@ -194,7 +224,7 @@ export default function Home() {
             marginBottom: "2rem",
             textAlign: "center",
           }}>
-            What Each Source Is Saying
+            Source Notes
           </p>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
@@ -253,7 +283,7 @@ export default function Home() {
           marginBottom: "3rem",
           textAlign: "center",
         }}>
-          Headlines
+          Collected Items
         </p>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "3rem" }}>
@@ -301,21 +331,23 @@ export default function Home() {
         textAlign: "center",
       }}>
         <p style={{
-          fontFamily: "var(--font-reenie)",
-          fontSize: "1.3rem",
+          fontFamily: "var(--font-franklin)",
+          fontSize: "0.85rem",
+          lineHeight: "1.7",
           color: "var(--gray)",
-          marginBottom: "0.75rem",
+          maxWidth: "560px",
+          margin: "0 auto 0.75rem",
         }}>
-          built for the busy girl who misses vogue
+          ARI3LLA INDEX is an independent style signal archive. Reports are generated from public source material and structured for historical reference. No purchasing recommendation is implied.
         </p>
         <p style={{
           fontFamily: "var(--font-franklin)",
-          fontSize: "1.1rem",
-          letterSpacing: "0.1em",
+          fontSize: "0.7rem",
+          letterSpacing: "0.15em",
           textTransform: "uppercase",
           color: "var(--gray)",
         }}>
-          updated weekly.
+          Issued weekly
         </p>
       </footer>
 
