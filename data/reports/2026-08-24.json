@@ -1,0 +1,74 @@
+{
+  "report_date": "2026-08-24",
+  "collection_window": {
+    "start": "2026-08-18",
+    "end": "2026-08-24"
+  },
+  "sources_scanned": 14,
+  "items_collected": 3,
+  "source_sector_breakdown": {
+    "editorial": 2,
+    "institutional": 1
+  },
+  "executive_summary": "No dated fashion-calendar event fell inside this collection window (August 18-24, 2026): Oslo Runway does not open until August 31 and the CFDA's official September 2026 NYFW schedule (now finalized, running September 10-15) both sit outside it on the far side, same as the prior two windows. Targeted search again returned no dated post-Copenhagen recap specific to that show's actual lineup -- only the same recirculated March Paris Fashion Week fall/winter 2026 coverage of basque-waist and peplum silhouettes (Jacquemus, Saint Laurent, Alaia, Dior) that has surfaced in every window since this signal was first logged. Per the August 17 report's own stated threshold, this is now the third consecutive window in which the peplum/exaggerated-waistline signal (peplum-waist-revival) has turned up nothing dated to the Copenhagen show itself; per that report's recommendation, this is treated as a methods-limitation finding rather than continuing to recheck indefinitely -- logged below with a closing index_note rather than left open a fourth time. Separately, per docs/agent-logs/confidence-dormancy-review-run15.md, the sheer-layering and soft-tailoring dormancy checks (last logged 2026-08-03, both 'declining') were rechecked via get_signal_status_history() and remain quiet for a third consecutive window: search surfaced only the same undated, generic '2026 trend guide' content already cited on 2026-08-03, with no fresh dated corroboration in any source sector. That meets this project's 3-window no-corroboration threshold (the same bar used to close out off-duty-varsity in the July 20 report), so both are closed out this run via a revision to 2026-08-03.json rather than re-logged here -- see that file's revision_history and docs/agent-logs/real-report-2026-08-24.md. This is the fifth consecutive thin report (July 27, August 3, August 10, August 17, August 24); see limitations and archive_tags.",
+  "top_signals": [
+    {
+      "name": "Peplum / exaggerated-waistline revival, third and final recheck",
+      "type": "silhouette",
+      "source_sectors": [
+        "editorial",
+        "independent_criticism"
+      ],
+      "confidence": "low",
+      "volatility": "declining",
+      "origin_classification": "unclear",
+      "evidence": "Third consecutive rechecking window: search again surfaced only the March 2026 Paris Fashion Week fall/winter coverage (Jacquemus, Saint Laurent, Alaia basque waist; Dior, Alexander McQueen, Stella McCartney peplum) already cited in the August 10 and August 17 reports, plus generic recirculated 'fall 2026 trends' listicles. No source dated to Copenhagen Fashion Week SS27 (closed August 7) or to this window specifically was found in any sector searched.",
+      "index_note": "The August 17 report set an explicit threshold: if a third consecutive window turned up nothing, treat the gap as a methods limitation rather than keep rechecking. That threshold is now met. This entry closes active rechecking of peplum-waist-revival under current search-based tooling -- the underlying trend (documented at Paris Fashion Week in March) is not in question, only whether this project's method can ever surface Copenhagen-specific confirmation, and three windows of identical results say it cannot.",
+      "human_editor_note": "CLOSE-OUT (2026-08-24): retiring peplum-waist-revival from active per-window rechecking. This is a methods-reach limitation, not evidence the trend didn't happen at Copenhagen -- the Paris-dated coverage of the same silhouette family remains solid, dated, multi-designer confirmation from earlier in the season. Recommend documenting the search-tooling gap on the methodology page (see TODO.md) rather than continuing to spend a report slot on this question.",
+      "source_corroboration_count": 2,
+      "signal_id": "peplum-waist-revival",
+      "confidence_source": "manual"
+    }
+  ],
+  "repeated_keywords": [
+    "basque waist",
+    "peplum",
+    "waist emphasis"
+  ],
+  "garments": [
+    "peplum jacket",
+    "structured blazer"
+  ],
+  "silhouettes": [
+    "basque waist",
+    "exaggerated waistline"
+  ],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [
+    "Paris Fashion Week Fall/Winter 2026 (March 2026, out-of-window source for the peplum/basque-waist signal)",
+    "Oslo Runway 2026 (opens August 31, outside this window)",
+    "CFDA September 2026 NYFW schedule (September 10-15, outside this window)"
+  ],
+  "limitations": [
+    "No dated fashion-calendar event fell inside August 18-24, 2026. Oslo Runway opens August 31 and the CFDA's finalized September 2026 NYFW schedule runs September 10-15 -- both checked and excluded as out-of-window rather than silently omitted.",
+    "The peplum/exaggerated-waistline signal (signal_id peplum-waist-revival) has now gone three consecutive collection windows (August 10, 17, 24) without any source dated specifically to Copenhagen Fashion Week SS27. Per the August 17 report's own stated threshold, this window's entry closes active rechecking and reframes the gap as a limitation of this project's search-based source reach rather than an open question to keep re-asking.",
+    "The sheer-layering (signal_id sheer-layering) and soft-tailoring (signal_id soft-tailoring) dormancy checks, last logged 2026-08-03 at 'declining' volatility, were rechecked per docs/agent-logs/confidence-dormancy-review-run15.md and again returned only undated, generic trend-guide content -- a third consecutive quiet window for both. Per the same 3-window no-corroboration threshold used to close off-duty-varsity in the July 20 report, both are closed out this run via a revision to 2026-08-03.json (see that file's revision_history) rather than re-logged as top_signals here.",
+    "This is the fifth consecutive thin report (July 27, August 3, August 10, August 17, August 24). Per the July 20 health check's recommendation, this pattern continues to be named explicitly here; a reader-facing surfacing of the streak (archive or methodology note) remains an open TODO item.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach.",
+    "Per project convention (see docs/agent-logs/thin-week-fallback.md), this report is marked collection_status: thin rather than manufacturing additional signals to match the signal count of earlier weekly reports."
+  ],
+  "archive_tags": [
+    "thin-week",
+    "fifth-consecutive-thin-week",
+    "dormancy-closeout",
+    "2026-q3"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "No in-window fashion-calendar event and no new corroborating discourse this week. The peplum/exaggerated-waistline signal completes its third uncorroborated recheck and is closed out as a methods-reach limitation rather than continued indefinitely. sheer-layering and soft-tailoring, quiet for a third consecutive window since their 2026-08-03 dormancy check, are closed out this run via a revision to that file, using the same 3-window threshold applied to off-duty-varsity's July 20 close-out. This is the fifth consecutive thin report.",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": "loop-consolidation",
+  "content_hash": "c10960e6886317795fc3affaeea34ed916f20648c95a625c462d23fda199e075"
+}
