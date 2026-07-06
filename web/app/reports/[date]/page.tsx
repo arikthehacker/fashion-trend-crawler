@@ -79,24 +79,55 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
   const lastRevision = report.revision_history?.[report.revision_history.length - 1];
   const dateModified = lastRevision?.corrected_at || report.report_date;
 
+  // this page is both a written report (NewsArticle) and the read surface of a
+  // structured dataset (each report is a dated JSON record of classified signals) —
+  // schema.org recommends Dataset markup on a dataset's canonical/landing page so it
+  // surfaces in dataset-aware search tooling, not just Article-style news search.
+  // No public raw-JSON download route exists yet (data/reports/*.json is repo-only,
+  // not served over the web), so `distribution`/contentUrl is intentionally omitted
+  // rather than pointing at a URL that doesn't resolve — see docs/agent-logs for the
+  // follow-up note to add one.
+  const reportUrl = `${SITE_URL}/reports/${report.report_date}`;
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "NewsArticle",
-    headline,
-    datePublished: report.report_date,
-    dateModified,
-    url: `${SITE_URL}/reports/${report.report_date}`,
-    mainEntityOfPage: `${SITE_URL}/reports/${report.report_date}`,
-    description: report.executive_summary,
-    author: {
-      "@type": "Organization",
-      name: SITE_NAME,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: SITE_NAME,
-    },
-    keywords: report.archive_tags?.join(", "),
+    "@graph": [
+      {
+        "@type": "NewsArticle",
+        "@id": `${reportUrl}#article`,
+        headline,
+        datePublished: report.report_date,
+        dateModified,
+        url: reportUrl,
+        mainEntityOfPage: reportUrl,
+        description: report.executive_summary,
+        author: {
+          "@type": "Organization",
+          name: SITE_NAME,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: SITE_NAME,
+        },
+        keywords: report.archive_tags?.join(", "),
+        about: { "@id": `${reportUrl}#dataset` },
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${reportUrl}#dataset`,
+        name: `ARI3LLA INDEX style signal report — ${report.report_date}`,
+        description: report.executive_summary,
+        url: reportUrl,
+        creator: {
+          "@type": "Organization",
+          name: SITE_NAME,
+        },
+        datePublished: report.report_date,
+        dateModified,
+        temporalCoverage: report.report_date,
+        variableMeasured: Object.keys(report.source_sector_breakdown || {}),
+        isBasedOn: reportUrl,
+      },
+    ],
   };
 
   return (
