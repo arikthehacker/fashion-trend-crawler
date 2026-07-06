@@ -44,9 +44,15 @@
 #     slower and noisier, since older reports' prose predates ids that
 #     didn't exist yet -- default is scoped to what a single agent run
 #     would want to self-check before finishing).
-#   - Does not understand negation ("no longer reusing", "was NOT
-#     reused") -- a human still reviews warnings before acting on them,
-#     same spirit as check_field_coverage.py/audit_confidence.py.
+#   - Understands only a short, literal list of negation/precedent phrases
+#     (see NEGATION_EXCLUSION_PHRASES), checked within a proximity window
+#     around each named signal_id mention -- not general negation
+#     detection. Added in run 81 after 5 confirmed false positives all
+#     followed this exact pattern (naming a prior signal_id to explain why
+#     it is NOT being carried forward, or as precedent for an unrelated
+#     classification/confidence decision). A human still reviews warnings
+#     before acting on them, same spirit as
+#     check_field_coverage.py/audit_confidence.py.
 #
 # Exit code is always 0 -- informational only, not a CI gate. Not wired
 # into CI or run.sh this run; can be run standalone.
@@ -64,6 +70,32 @@ REUSE_CLAIM_PATTERN = re.compile(
     r"\b(reuse[sd]?|reusing|continu(?:e[sd]?|ing|ation)|same signal_id)\b",
     re.IGNORECASE,
 )
+
+# Negation/precedent phrases that, when found close to a named signal_id,
+# indicate the prose is explaining why that signal_id is NOT being carried
+# forward / reused (or is being cited as precedent for an unrelated
+# decision) rather than actually claiming reuse of it. Confirmed against 5
+# known false positives (2026-09-14, 2026-09-28, 2026-10-05, 2027-06-28,
+# 2027-10-11 -- see docs/agent-logs/signal-reuse-checker-improvement-run81.md).
+# Deliberately a short, literal, high-precision list rather than general
+# negation detection -- if a named signal_id is NOT near one of these exact
+# phrases, the mismatch is still flagged, erring toward false positives
+# over risking a masked real bug.
+NEGATION_EXCLUSION_PHRASES = (
+    "not carried forward",
+    "not re-asserted",
+    "not reused",
+    "not being reused",
+    "precedent set for",
+    "rather than merged into",
+    "not merged into",
+)
+
+# how many characters before/after a named signal_id mention to scan for one
+# of the negation/precedent phrases above. Sized to comfortably span the
+# single sentence/clause the signal_id appears in, per the 5 known false
+# positives (largest observed distance was ~180 chars).
+NEGATION_PROXIMITY_WINDOW = 220
 
 
 def collect_signal_id_counts(all_reports: dict) -> dict:
@@ -113,12 +145,20 @@ def check_report(report_date: str, data: dict, known_signal_ids: set) -> list:
         if not REUSE_CLAIM_PATTERN.search(text):
             continue
         for sid in known_signal_ids:
-            if sid in text and sid not in own_signal_ids:
-                warnings.append(
-                    f"{report_date}: {source_label} claims reuse/continuation and "
-                    f"names signal_id '{sid}', but '{sid}' does not appear in this "
-                    f"report's own top_signals list. Text: {text[:200]!r}"
-                )
+            if sid not in text or sid in own_signal_ids:
+                continue
+            idx = text.find(sid)
+            window = text[max(0, idx - NEGATION_PROXIMITY_WINDOW):idx + len(sid) + NEGATION_PROXIMITY_WINDOW]
+            window_lower = window.lower()
+            if any(phrase in window_lower for phrase in NEGATION_EXCLUSION_PHRASES):
+                # named for precedent / explicitly-not-carried-forward reasons,
+                # not an actual reuse claim -- skip.
+                continue
+            warnings.append(
+                f"{report_date}: {source_label} claims reuse/continuation and "
+                f"names signal_id '{sid}', but '{sid}' does not appear in this "
+                f"report's own top_signals list. Text: {text[:200]!r}"
+            )
     return warnings
 
 
