@@ -4,11 +4,12 @@
     "start": "2026-11-03",
     "end": "2026-11-09"
   },
-  "sources_scanned": 11,
-  "items_collected": 1,
+  "sources_scanned": 12,
+  "items_collected": 2,
   "source_sector_breakdown": {
     "institutional": 1,
-    "editorial": 1
+    "editorial": 1,
+    "social": 1
   },
   "executive_summary": "This collection window (November 3 - 9, 2026) is the fifth full week after fashion month's close and the twentieth archived window overall. The CFDA/Vogue Fashion Fund's 2026 winner, scheduled for an October 20 gala and open/unresolved across the prior two windows (2026-10-26, 2026-11-02), was re-checked with fresh search rather than assumed resolved. As of search time, still no dated, sourced coverage naming an actual winner has surfaced from CFDA, Vogue, WWD, Business of Fashion, or Fashionista -- available coverage remains limited to the June finalist announcement and the October 20 gala date. This is now the third consecutive window in which the signal remains open; per this archive's standing rule, no new reporting means no closure is warranted, so it is carried forward rather than fabricated or force-closed. Search this window did surface a real, dated, verifiable Fashion Fund result -- but for a distinct program: the British Fashion Council's BFC/Vogue Designer Fashion Fund named Bianca Saunders its 2026 winner. That announcement, however, dates to mid-June 2026 (well before this window and before the CFDA program's own finalist announcement), is a separate institution from CFDA, and does not corroborate or resolve the CFDA/Vogue Fashion Fund signal -- it is logged only as cultural context, not treated as an answer to the open US question. Separately, the annual CFDA Fashion Awards (distinct from the Fashion Fund) was flagged in the prior window as expected in early November 2026 per 2025's November 3 precedent; this window's close (November 9) is now past that expected date, and fresh search still found no confirmed 2026 CFDA Fashion Awards date, nominee list, or coverage of the event having occurred. No new, independently verifiable in-window garment, silhouette, or aesthetic discourse was found. On balance this window's honest read is thin, continuing the post-fashion-month quiet stretch, with two now-persistent unresolved institutional questions rather than one.",
   "top_signals": [
@@ -27,6 +28,21 @@
       "human_editor_note": "Three consecutive windows (2026-10-26, 2026-11-02, 2026-11-09) with no coverage of an actual CFDA/Vogue Fashion Fund winner is now well past what reads as ordinary reporting lag. Plausible explanations still include a quieter-than-usual gala with limited trade pickup, or a search-tool recency gap specific to this query -- but three misses raises the possibility that the gala's outcome simply isn't indexed yet in generally searchable coverage at time of writing. Do not backfill a winner name from memory, inference, or analogy to the BFC program. If dated coverage appears in a future window, reconcile and close this signal_id there; do not edit this or prior reports retroactively without new evidence.",
       "source_corroboration_count": 1,
       "signal_id": "cfda-vogue-fashion-fund-2026-winner",
+      "confidence_source": "manual"
+    },
+    {
+      "name": "\"funmaxxing\" maximalist-play aesthetic (icy blue/candy pink, 80s sportswear, tassels)",
+      "type": "social_observation",
+      "source_sectors": [
+        "social"
+      ],
+      "confidence": "low",
+      "volatility": "emerging",
+      "origin_classification": "platform_native",
+      "evidence": "Public TikTok hashtag page: https://www.tiktok.com/tag/maxxing (observed 2026-07-06; view/post counts not reliably readable without an approved dataset/API, logged as unknown per the manual-sampling template rather than guessed). Secondary editorial description/dating: nss magazine, \"Funmaxxing is taking over fashion, marketing and TikTok\" (https://www.nssmag.com/en/fashion/44857/funmaxxing-fashion-marketing-trend-2026).",
+      "index_note": "Diversification attempt: tried to source this window's manual signal from TikTok rather than Pinterest again (per doc section 31, TikTok's own Research API remains gated to verified academic/non-profit institutions with an ethics-review requirement -- re-confirmed this run via developers.tiktok.com/doc/research-api-faq, same conclusion as run 8's original research, no change). Landed on TikTok's public, non-login-walled hashtag page (#maxxing) as the compliant observation point, rather than scraping individual videos or using a private/authenticated feed. This is a real difference from the two prior manual-sample exercises (both were Pinterest official trend-report pages): here the primary artifact is a public platform hashtag page, and nss magazine's editorial writeup is being used only as secondary description/dating, not as the evidentiary basis. Substantive judgment call: 'funmaxxing' is being marketed (including by nss magazine itself) as a sweeping generational-mood thesis ('a comprehensive picture of the historical moment'), which reads as classic trend-piece overreach -- this project should log the narrower, checkable claim (a maximalist aesthetic cluster: icy blue/candy pink palettes, tassels/fringe, 80s technical sportswear circulating under #maxxing) and explicitly decline the broader sociological framing. Also flagging a real limitation: without an approved TikTok dataset, this project cannot see view/post counts on the hashtag page as reliably as Pinterest's own published search-index figures, so volume is 'unknown' rather than estimated, and this stays single-platform, single-observation, low confidence pending a corroborating sighting on another platform or in retail/editorial adoption beyond this one trend piece.",
+      "source_corroboration_count": 1,
+      "signal_id": "funmaxxing-maximalist-play-aesthetic",
       "confidence_source": "manual"
     }
   ],
@@ -65,6 +81,12 @@
   "thin_week_note": "Fewer than 3 distinct, independently verifiable in-window signals were found despite an active, non-assumed search effort. The one carried-forward item (the Fashion Fund winner) remains unresolved rather than newly reported this window, and a second institutional question (CFDA Fashion Awards timing) is now also open.",
   "review_status": "reviewed",
   "reviewed_by": "loop-consolidation",
-  "revision_history": [],
-  "content_hash": "82c0503f8d012507f7166bd433d021f9fa1edfdc18e6f6a637b5801120a3cb24"
+  "revision_history": [
+    {
+      "previous_content_hash": "82c0503f8d012507f7166bd433d021f9fa1edfdc18e6f6a637b5801120a3cb24",
+      "corrected_at": "2026-07-06",
+      "reason": "Adding a manually-sampled social signal (compliant TikTok hashtag-page observation, doc section 31) -- this report had no social-sector signal yet; third exercise of the manual-sampling workflow (docs/manual-sampling-workflow.md), first attempt to diversify beyond Pinterest."
+    }
+  ],
+  "content_hash": "dfa9932506ca03adad98cb42c741bd7f48edc4d53f2a3f4dc20527d8624e03e7"
 }
