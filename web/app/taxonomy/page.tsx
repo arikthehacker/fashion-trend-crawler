@@ -18,6 +18,8 @@ const sourceSectors = [
   { name: "Visual archive/search", def: "Visual search and reference platforms used to observe recurring imagery rather than public commentary." },
   { name: "Independent criticism", def: "Substack fashion writers, independent newsletters, long-form blogs, and cultural commentary outside institutional media." },
   { name: "Institutional/historical", def: "Museum collections, costume history databases, academic papers, and archival runway records." },
+  { name: "Street/user-generated", def: "Street style photography and public outfit documentation, distinct from platform-native captions and comments." },
+  { name: "Resale/secondhand", def: "Secondhand marketplace listings and descriptions — a separate signal channel from primary retail." },
 ];
 
 const volatility = [

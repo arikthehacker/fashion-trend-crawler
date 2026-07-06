@@ -21,7 +21,7 @@ const sections: { title: string; body: string[] }[] = [
   {
     title: "Source Sectors",
     body: [
-      "Sources are grouped into sectors: designer-origin, runway/editorial, retail/commerce, social/platform, visual archive and search, independent criticism, and institutional/historical.",
+      "Sources are grouped into sectors: designer-origin, runway/editorial, retail/commerce, social/platform, visual archive and search, independent criticism, institutional/historical, street/user-generated, and resale/secondhand.",
       "Each sector carries a different incentive structure, and reports note which sectors a signal is drawn from. A full breakdown is available on the Sources page.",
     ],
   },
