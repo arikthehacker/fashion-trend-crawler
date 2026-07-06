@@ -66,6 +66,11 @@ fashion-trend-crawler/
 │   ├── check_heading_patterns.py  existing (run 22, revisited run 29) — heuristic scanner
 │   │                           for the recurring styled-`<p>`-as-heading bug that ESLint/
 │   │                           jsx-a11y cannot catch; not wired into CI, manual/heuristic
+│   ├── generate_archive_manifest.py  existing (run 43) — produces a JSON manifest of this
+│   │                           site's own /reports/[date] URLs + content hashes for a human
+│   │                           operator to feed into archive.org's Save Page Now, once a real
+│   │                           deployed SITE_URL exists; does not call any Wayback API itself,
+│   │                           not wired into CI
 │   └── run.sh                  existing — fixed run 1 (no longer stale): runs
 │                               crawler.py -> summarize.py (classify+summarize+save dated report)
 ├── .github/
@@ -78,7 +83,18 @@ fashion-trend-crawler/
     │                              devDependency + `postbuild` script
     │                              (`pagefind --site out --output-subdir _pagefind`)
     ├── next.config.ts           existing — `output: "export"` set (required for Pagefind
-    │                              to index the static `out/` build)
+    │                              to index the static `out/` build); also invokes
+    │                              `scripts/copy-reports.mjs`'s `copyReports()` directly
+    │                              at config-eval time (run 46), so the JSON copy happens
+    │                              on any build invocation, not just via the npm
+    │                              "prebuild" lifecycle hook
+    ├── scripts/
+    │   └── copy-reports.mjs     existing (run 45, hardened run 46) — copies
+    │                              data/reports/*.json into public/data/reports/ so the
+    │                              static export serves each raw report at
+    │                              /data/reports/<date>.json; backs the Dataset JSON-LD's
+    │                              DataDownload and the visible "download raw data" link
+    │                              on /reports/[date]
     ├── next-env.d.ts            existing
     ├── tsconfig.json / tsconfig.tsbuildinfo   existing
     ├── postcss.config.mjs       existing
@@ -93,7 +109,11 @@ fashion-trend-crawler/
     │   ├── globals.css           existing
     │   ├── favicon.ico           existing
     │   ├── archive/page.tsx      existing — lists all dated reports
-    │   ├── reports/[date]/page.tsx   existing — renders one report (module order, section 20/36)
+    │   ├── reports/[date]/page.tsx   existing — renders one report (module order, section 20/36);
+    │   │                          carries NewsArticle + Dataset JSON-LD (run 46: Dataset
+    │   │                          includes a CC BY 4.0 `license` URL and a `DataDownload`
+    │   │                          distribution pointing at /data/reports/<date>.json), plus a
+    │   │                          human-visible "download raw data" link to the same file
     │   ├── methodology/page.tsx  existing — doc section 22
     │   ├── taxonomy/page.tsx     existing — doc sections 11/14/15/16
     │   ├── sources/page.tsx      existing — doc section 11's outlet lists

@@ -46,9 +46,15 @@ src/
   audit_confidence.py # reusable script (run 7) comparing assigned confidence vs. derive_confidence() across all reports; used for periodic confidence/dormancy review, not wired into CI
   check_field_coverage.py # reusable script (run 25) enumerating every Report/Signal schema field and flagging any that's neither typed in reports.ts nor referenced in a .tsx file — the structural fix for the "claimed but not shown" bug pattern (human_editor_note/thin_week_note/revision_history all shipped in data before they were ever rendered); non-blocking, not wired into CI
   check_heading_patterns.py # reusable script (run 22, revisited run 29) — heuristic scan for the recurring styled-<p>-as-heading bug that ESLint/jsx-a11y cannot catch; not wired into CI, manual/heuristic
+  generate_archive_manifest.py # reusable script (run 43) — manifest of /reports/[date] URLs + content hashes for a human operator to feed into archive.org's Save Page Now once a real SITE_URL exists; does not call any Wayback API itself, not wired into CI
 data/
   reports/<YYYY-MM-DD>.json   # one archived report per collection window, schema in report_schema.py
 web/                   # Next.js app
+  scripts/
+    copy-reports.mjs    # copies data/reports/*.json into public/data/reports/ (run 45,
+      hardened run 46 to also run directly from next.config.ts, not just the npm
+      "prebuild" lifecycle hook); backs the Dataset JSON-LD DataDownload + visible
+      "download raw data" link on reports/[date]/page.tsx
   app/
     page.tsx            # homepage — hero/tagline/footer must match section 2 voice + section 25 copy
     archive/page.tsx     # lists all dated reports
@@ -59,8 +65,9 @@ web/                   # Next.js app
     taxonomy/page.tsx     # doc sections 11/14/15/16
     sources/page.tsx      # doc section 11's outlet lists
     search/page.tsx, search/SearchClient.tsx  # client-side facet filter (source sector,
-      confidence, volatility) over getSearchIndex() in reports.ts (run 12); full-text
-      search (Pagefind) deliberately deferred
+      confidence, volatility) over getSearchIndex() in reports.ts (run 12), plus Pagefind
+      full-text search over report prose (added a later run, see
+      agent-logs/pagefind-integration.md — no longer deferred)
     about/page.tsx        # doc sections 37/38
     glossary/page.tsx     # ~29 terms from aesthetic_terms/cultural_references/top_signals[].name across all reports, deduped, wire-service definitions (shipped run 20)
     case-study/page.tsx   # doc section 33, portfolio framing

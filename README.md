@@ -153,9 +153,16 @@ public weekly report
 - the homepage includes a "This Week's Index" module — a condensed
   metrics summary of the latest report (doc section 27/28), distinct from
   the full per-date report render at `/reports/[date]`
-- report pages carry `NewsArticle` JSON-LD, a stable "Cite as" line, and a
-  sitemap/robots setup for discoverability; heading structure follows
-  WCAG hierarchy rather than styled paragraphs standing in for headings
+- report pages carry `NewsArticle` + `Dataset` JSON-LD (the latter with a
+  CC BY 4.0 license URL and a `DataDownload` pointing at the report's raw
+  JSON), a stable "Cite as" line, and a sitemap/robots setup for
+  discoverability; heading structure follows WCAG hierarchy rather than
+  styled paragraphs standing in for headings
+- each report page also has a human-visible "download raw data" link to
+  `/data/reports/<date>.json` — a static copy of that date's report JSON,
+  placed in `web/public/data/reports/` at build time by
+  `web/scripts/copy-reports.mjs` (invoked from `next.config.ts` on every
+  build, plus redundantly via the `prebuild` npm script)
 
 ## Transparency & Editorial Disclosures
 
@@ -323,6 +330,9 @@ fashion-trend-crawler/
     audit_confidence.py        # periodic confidence/dormancy review script, not wired into CI
     check_field_coverage.py    # flags schema fields not typed/rendered in web/ (not wired into CI)
     check_heading_patterns.py  # heuristic scan for styled-<p>-as-heading bug (not wired into CI)
+    generate_archive_manifest.py  # produces a manifest of report-page URLs/hashes for a
+                                #   human operator to feed into archive.org Save Page Now,
+                                #   once a real SITE_URL exists; not wired into CI
   data/
     reports/                   # dated JSON reports — see /archive on the
                                 #   live site or `ls data/reports/` for the
@@ -341,6 +351,9 @@ fashion-trend-crawler/
       methodology/, taxonomy/, sources/, about/  # static reference pages
       case-study/                # portfolio case study
       sitemap.ts, robots.ts, rss.xml/  # SEO / syndication
+    scripts/
+      copy-reports.mjs           # copies data/reports/*.json into public/data/reports/
+                                #   for the static export's raw-data download links
     lib/
       reports.ts                 # archive data layer, reads data/reports/*.json
       site.ts                     # shared SITE_URL/SITE_NAME constants
