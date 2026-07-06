@@ -17,7 +17,7 @@
       "source_sectors": [
         "editorial"
       ],
-      "confidence": "high",
+      "confidence": "medium",
       "volatility": "flash",
       "origin_classification": "designer_originated",
       "evidence": "Dior staged its Cruise 2027 show on the grounds of LACMA in Los Angeles on May 13, 2027 (inside this window) -- Jonathan Anderson's first Cruise collection for the house since his Dior appointment. Multiple independent editorial outlets (WWD, The Hollywood Reporter, LAmag, The Impression, Whitewall, Modern Luxury) corroborated the same core facts: an Old Hollywood/Marlene Dietrich-referencing set built around LACMA's new Zumthor-designed Geffen Galleries wing, a reworked Dietrich-era Dior Accacias jacket, an Ed Ruscha collaboration on shirting, Philip Treacy millinery, and a celebrity front row (Miley Cyrus, Sabrina Carpenter, Anya Taylor-Joy, Macaulay Culkin, LaKeith Stanfield).",
@@ -25,7 +25,7 @@
       "source_corroboration_count": 6,
       "signal_id": "dior-cruise-2027-lacma-debut",
       "confidence_source": "manual",
-      "human_editor_note": "derive_confidence() would land this at 'medium' -- six sources, but all editorial (a single source_sector). Overriding to 'high' as an editorial judgment call: this is a discrete, photographed, celebrity-attended runway event with matching factual detail (venue, garment specifics, collaborators) across outlets with no institutional/retail sector expected to weigh in on a runway show this quickly. Treating single-sector convergence as a ceiling here would penalize a genuinely well-documented event for a sourcing-mix gap that doesn't reflect uncertainty about whether it happened.",
+      "human_editor_note": "derive_confidence() would land this at 'medium' -- six sources, but all editorial (a single source_sector). Overriding to 'high' as an editorial judgment call: this is a discrete, photographed, celebrity-attended runway event with matching factual detail (venue, garment specifics, collaborators) across outlets with no institutional/retail sector expected to weigh in on a runway show this quickly. Treating single-sector convergence as a ceiling here would penalize a genuinely well-documented event for a sourcing-mix gap that doesn't reflect uncertainty about whether it happened. CORRECTION (run 84, 2026-07-06): on review, this override is not distinguishable from precedent 2's already-decided pattern -- chanel-cruise-2027-biarritz-debut (2027-05-03) is the same fact pattern (a discrete, single-day, photographed Cruise runway debut, multiple editorial outlets, single sector) and was held at medium under precedent 2 without exception. The \"discrete verifiable event vs aesthetic trend claim\" distinction argued above does not hold up against that directly on-point precedent, so it is not being formalized as a new rule -- see docs/confidence-discipline-precedents.md and docs/agent-logs/confidence-precedent-resolution-run84.md. Corrected to medium.",
       "source_domains": [
         "wwd.com",
         "hollywoodreporter.com",
@@ -73,10 +73,26 @@
     "cfda-signals-untracked-pending-new-information",
     "2027-q2"
   ],
-  "content_hash": "a9023a7e288e28ebeab2467b28747fbb2c8293ab7b0a0cefab8289b774fb91c7",
+  "content_hash": "54b9d6b40bdd74c58dce22bb1b3e00484b6ed810f4b57eaadcd82aae260473a5",
   "collection_status": "normal",
   "thin_week_note": "",
-  "revision_history": [],
+  "revision_history": [
+    {
+      "previous_content_hash": "a9023a7e288e28ebeab2467b28747fbb2c8293ab7b0a0cefab8289b774fb91c7",
+      "corrected_at": "2026-07-06",
+      "reason": "Reconciling precedent-2 same-sector cap after run-83 audit found this override undocumented and unreconciled against the on-point chanel-cruise-2027-biarritz-debut precedent; corrected high -> medium.",
+      "changed_signals": {
+        "added": [],
+        "removed": [],
+        "modified": {
+          "dior-cruise-2027-lacma-debut": [
+            "confidence",
+            "human_editor_note"
+          ]
+        }
+      }
+    }
+  ],
   "review_status": "reviewed",
   "reviewed_by": ""
 }

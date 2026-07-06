@@ -19,7 +19,7 @@
         "editorial",
         "unclear"
       ],
-      "confidence": "high",
+      "confidence": "medium",
       "volatility": "flash",
       "origin_classification": "designer_originated",
       "evidence": "All three debuts previewed in the 2027-07-05 report have now shown during Paris Haute Couture Week (July 6-9, 2027) and generated substantive post-show critical coverage. Piccioli's Balenciaga debut is covered as reverent toward Cristobal Balenciaga's archive (neo gazar volumes, cocoon and balloon silhouettes) while opening a distinct new chapter from the prior era, with coverage explicitly noting a divided audience response. Lantink's Jean Paul Gaultier debut is covered as deliberately provocative, drawing reactions from 'worthy heir' framing to explicit criticism calling it a 'cheap imitation' of the house's subversive-but-chic codes. Theyskens's Boloria debut is covered as a tailoring-forward, melancholic collection ('The Row meets Rimbaud') with mixed reviews -- praised for dressmaking craft, criticized by some as emotionally distant.",
@@ -27,7 +27,7 @@
       "source_corroboration_count": 6,
       "signal_id": "couture-fw27-debuts-reception",
       "confidence_source": "manual",
-      "human_editor_note": "The editorial judgment call here is what NOT to do: it would be easy to round three genuinely split critical receptions into a tidy 'couture week was a triumph' or 'couture week disappointed' narrative for a cleaner report. The actual coverage doesn't support either -- each of the three debuts reads as contested on its own terms (Piccioli: reverent vs. a departure from Demna's era; Lantink: inventive heir vs. cheap imitation; Theyskens: refined craft vs. soulless), and treating three different arguments as one aggregate trend would be the exact kind of flattening this index exists to avoid. Also worth flagging: wallpaper.com, nssmag.com, and theimpression.com are established fashion trade press by any reasonable read but remain outside DOMAIN_SECTOR_MAP, so a chunk of this signal's real corroboration still classifies as 'unclear' sector -- the same taxonomy-coverage gap noted last window, not yet closed.",
+      "human_editor_note": "The editorial judgment call here is what NOT to do: it would be easy to round three genuinely split critical receptions into a tidy 'couture week was a triumph' or 'couture week disappointed' narrative for a cleaner report. The actual coverage doesn't support either -- each of the three debuts reads as contested on its own terms (Piccioli: reverent vs. a departure from Demna's era; Lantink: inventive heir vs. cheap imitation; Theyskens: refined craft vs. soulless), and treating three different arguments as one aggregate trend would be the exact kind of flattening this index exists to avoid. Also worth flagging: wallpaper.com, nssmag.com, and theimpression.com are established fashion trade press by any reasonable read but remain outside DOMAIN_SECTOR_MAP, so a chunk of this signal's real corroboration still classifies as 'unclear' sector -- the same taxonomy-coverage gap noted last window, not yet closed. CORRECTION (run 84, 2026-07-06): on review, the backward-looking/forward-looking distinction argued above does not address precedent 3's actual mechanism -- the unclear-domain-taxonomy gap this note itself names (wallpaper.com, nssmag.com, theimpression.com) is unchanged by whether the underlying claim is anticipation or confirmed reception; the sources are exactly as unmapped in either case. This is also inconsistent with the immediately preceding window (2027-07-05), which held the identical sector mix at medium. Not formalizing a new precedent; corrected to medium. See docs/confidence-discipline-precedents.md and docs/agent-logs/confidence-precedent-resolution-run84.md.",
       "source_domains": [
         "wwd.com",
         "dazeddigital.com",
@@ -88,8 +88,24 @@
   ],
   "collection_status": "normal",
   "thin_week_note": "",
-  "revision_history": [],
+  "revision_history": [
+    {
+      "previous_content_hash": "cf96ba0fb4de3dbc81ebedb11e94f8d610d845602064b58bd24c4eaa49d3fb95",
+      "corrected_at": "2026-07-06",
+      "reason": "Reconciling precedent-3 unclear-domain-gap cap after run-83 audit found this override unreconciled against precedent 3 and inconsistent with 2027-07-05's identical treatment; corrected high -> medium.",
+      "changed_signals": {
+        "added": [],
+        "removed": [],
+        "modified": {
+          "couture-fw27-debuts-reception": [
+            "confidence",
+            "human_editor_note"
+          ]
+        }
+      }
+    }
+  ],
   "review_status": "reviewed",
   "reviewed_by": "",
-  "content_hash": "cf96ba0fb4de3dbc81ebedb11e94f8d610d845602064b58bd24c4eaa49d3fb95"
+  "content_hash": "b990fdec6ba6db5768651a6a8d315737a15dc5779a730dffff2e05846a765b00"
 }
