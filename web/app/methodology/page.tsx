@@ -72,7 +72,7 @@ const sections: { title: string; body: string[] }[] = [
     body: [
       "Coverage is bounded by the sources scanned in a given collection window and is not a representative sample of all style discourse. Reports may under-represent sources without accessible public text, or that require API access not yet integrated.",
       "Signal classification involves human judgment applied to machine-extracted data, and reports may reflect that interpretive layer as much as the underlying source material.",
-      "There is currently no reader-facing channel for flagging a suspected error in a published report. Corrections are appended when an error is found through internal review; the Index does not yet have a mechanism for external correction requests.",
+      "A suspected error in a published report can be flagged by opening an issue on the project's public repository (github.com/arikthehacker/fashion-trend-crawler/issues). This is not a staffed inbox — response time is not guaranteed — but it is a real, monitored channel, not a placeholder. Corrections are appended to the affected report once verified; see the About page for the correction process itself.",
     ],
   },
   {

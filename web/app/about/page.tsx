@@ -224,7 +224,16 @@ export default function About() {
             <Link href="/methodology" style={{ color: "var(--black)", textDecoration: "underline" }}>
               Methodology
             </Link>{" "}
-            page.
+            page. A suspected error can be reported by{" "}
+            <a
+              href="https://github.com/arikthehacker/fashion-trend-crawler/issues"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "var(--black)", textDecoration: "underline" }}
+            >
+              opening an issue on the project&apos;s public repository
+            </a>
+            . This is not a staffed inbox, but it is a real channel, not a placeholder.
           </p>
         </div>
 
