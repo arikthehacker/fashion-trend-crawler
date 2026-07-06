@@ -856,12 +856,28 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       coverage warnings, `gh` CLI unavailable (8th consecutive check), no neglected
       dormant signals found.
 
-## Next up (run 42 candidates)
+## Run 42 — done
+- [x] Added `data/reports/2027-02-22.json`, a 35th report — Wales Bonner/Hermès debut now
+      6 consecutive windows unresolved; held the revisit plan rather than transitioning
+      early (checkpoint remains 2027-03-08).
+- [x] Fixed a real WCAG 2.2 Target Size Minimum (2.5.8) violation — site-section nav
+      links across 5 pages had ~13-16px clickable targets, under the 24px minimum; added
+      padding to bring them into compliance.
+- [x] Found and fixed a genuine `summarize.py` prompt-drift bug 11 runs after the last
+      clean audit: a stale hand-written sector list (with a non-existent `"commerce"`
+      sector, missing 4 real ones) duplicated the prompt's own authoritative list. Fixed
+      by pointing at the live list instead of a second hardcoded copy.
+- [x] RSS/sitemap/Pagefind freshness check — clean, all reports present, correct pubDate
+      sourcing, monotonic search-index growth.
+- [x] Doc-sync/nav audit fixed two real gaps: `check_heading_patterns.py` missing from
+      the skill doc's file map, and `/case-study` had no site nav at all — both fixed.
+
+## Next up (run 43 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
-- [ ] Watch the Wales Bonner/Hermès debut signal — revisit around 2027-03-08 for whether
-      it should transition to "untracked going forward."
+- [ ] Watch the Wales Bonner/Hermès debut signal — the 2027-03-08 report is the planned
+      checkpoint for whether it transitions to "untracked going forward."
 - [ ] Consider periodic Wayback "Save Page Now" snapshotting of the site's own
       `/reports/[date]` pages as a smaller future self-archival improvement (distinct
       from per-article source citations, which are deliberately not permalinked).
