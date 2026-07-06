@@ -103,3 +103,58 @@ distortion, even without any single false claim.
   API output — a generation-limit fix, not an instruction change.
 - Commit `5d14b69`: wired `revision_history` through the pipeline — data plumbing, no
   prompt text touched.
+
+---
+
+## First bias-audit pass (run 16)
+**2026-07-06** — no code changed; see `docs/agent-logs/bias-audit-run16.md` for the
+coordinator summary. Prompted by the "no stated bias-audit practice" gap flagged in
+`docs/agent-logs/ai-journalism-standards-research.md`. Scope: seed source list
+(`crawler.py FASHION_SOURCES`), classification vocabulary (`taxonomy.py`), and the
+`derive_confidence()` formula (`report_schema.py`, introduced run 6/8).
+
+**(a) Source list skew — real finding.** `FASHION_SOURCES` currently has only three
+seeds: `vogue.com/fashion`, `whowhatwear.com`, `hypebeast.com/fashion`. All three are
+English-language, US/UK-headquartered, editorial-or-retail in incentive (hypebeast
+leans streetwear but is still a Western trade outlet). There is no seed representing
+non-Western regional fashion discourse (e.g. no Japanese, South Asian, African,
+Latin American editorial or independent-criticism sources), despite `taxonomy.py`
+already having sector slots (`independent_criticism`, `street_ugc`) that such sources
+would fit into. The crawler's BFS depth-2 traversal from these seeds can only ever
+surface what these three sites link to, so the skew compounds rather than
+self-corrects. Recommendation: when sources are next expanded (as in run 12's
+domain-coverage work for taxonomy.py), explicitly add at least one non-Western,
+non-English-language-market source per sector where one exists, and note in
+`docs/methodology` that the source list's current geographic scope is a known
+limitation, not an implied claim of global coverage.
+
+**(b) Classification vocabulary — no substantive issue found.** `SOURCE_SECTORS`
+names (`designer_origin`, `editorial`, `retail`, `social`, `street_ugc`, etc.) are
+descriptive of incentive structure, not ranked by an implied legitimacy order in the
+vocabulary itself or in `classify_source()`. The prompt in `build_prompt()` actively
+works against gatekeeping here: "Do not treat editorial sources as neutral
+confirmation. Classify each source by incentive context..." (line 70) and the
+TikTok/social high-noise-by-default instruction (line 68) are explicit anti-hierarchy
+instructions, not hierarchy-reinforcing ones. Conclusion: the vocabulary/prompt layer
+already handles this reasonably; no change recommended here.
+
+**(c) `derive_confidence()` — real finding, concrete recommendation.**
+`HIGH_RELIABILITY_SECTORS` in `report_schema.py` (`editorial`, `designer_origin`,
+`institutional`) grants a single-mention signal from those sectors a "medium"
+confidence floor. A signal appearing exactly once in `street_ugc`,
+`independent_criticism`, `social`, `resale`, or `visual_archive` cannot reach
+"medium" without a second corroborating mention — it is capped at "low" regardless of
+how substantive that one mention is. This reproduces the exact "designer/editorial
+as inherently more legitimate" hierarchy the prompt's own instructions (finding b)
+try to avoid, just moved into the confidence math instead of the prompt text. It is a
+defensible starting heuristic (institutional archives and designer first-party
+statements are lower-noise per mention than a single TikTok post), but as written it
+hard-codes source *type* as a proxy for reliability rather than something more
+falsifiable. Recommendation: either (1) rename/reframe `HIGH_RELIABILITY_SECTORS` in
+comments/docs as "low-noise-per-mention sectors" so it's understood as a noise-rate
+heuristic and not a legitimacy ranking, and/or (2) extend the single-mention medium
+gate to `independent_criticism` — it is a curated, named-author sector (per
+`docs/ARI3LLA INDEX.txt` section 11) with a comparable noise profile to editorial,
+and its current exclusion looks like an oversight rather than a deliberate call.
+`street_ugc`/`social`/`resale` remaining excluded from the single-mention gate is
+reasonable and should stay as-is.

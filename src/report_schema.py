@@ -14,11 +14,16 @@ import os
 
 from taxonomy import CONFIDENCE_LEVELS, VOLATILITY_LABELS, ORIGIN_CLASSIFICATIONS, SOURCE_SECTORS
 
-# sectors treated as "high-reliability" for the medium-confidence single-source
-# gate in derive_confidence() (see docs/agent-logs/confidence-scoring-research.md).
-# only includes names that actually exist in taxonomy.SOURCE_SECTORS.
+# sectors treated as low-noise for the medium-confidence single-source gate in
+# derive_confidence() (see docs/agent-logs/confidence-scoring-research.md) --
+# this is a noise-rate heuristic, not a legitimacy ranking. independent_criticism
+# added run 16 after a bias audit found its exclusion looked like an oversight:
+# it's curated, named-author commentary with a noise profile comparable to
+# editorial, not raw social/UGC volume. only includes names that actually exist
+# in taxonomy.SOURCE_SECTORS.
 HIGH_RELIABILITY_SECTORS = [
-    s for s in ("editorial", "designer_origin", "institutional") if s in SOURCE_SECTORS
+    s for s in ("editorial", "designer_origin", "institutional", "independent_criticism")
+    if s in SOURCE_SECTORS
 ]
 
 REPORTS_DIR = os.path.join(
