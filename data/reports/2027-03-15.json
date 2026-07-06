@@ -1,0 +1,104 @@
+{
+  "report_date": "2027-03-15",
+  "collection_window": {
+    "start": "2027-03-09",
+    "end": "2027-03-15"
+  },
+  "sources_scanned": 17,
+  "items_collected": 3,
+  "source_sector_breakdown": {
+    "editorial": 6,
+    "designer_origin": 2,
+    "institutional": 1
+  },
+  "executive_summary": "This collection window (March 9-15, 2027) is the thirty-eighth archived window. Per SKILL.md workflow note 10, the Wales Bonner/Hermes debut question was not re-litigated this window -- it was transitioned to 'untracked going forward pending new information' at the 2027-03-08 checkpoint and a brief check found no new coverage, so it is not reopened here. The CFDA Fashion Fund/Awards questions remain untracked per the same convention and were not re-litigated. This window's genuinely new development is the Fall/Winter 2027-28 women's ready-to-wear fashion month, which is not yet represented in this archive's editorial calendar: New York, London, Milan and Paris shows ran through the window, with Paris's leg concluding March 10. Reachable editorial coverage clusters around a maximalist, 'messy chic' aesthetic direction succeeding several seasons of quiet-luxury minimalism, an 1980s-referencing power-shoulder tailoring silhouette, and early designer-origin signals from named houses (Dior under Jonathan Anderson, Chloe under Chemena Kamali) plus reported lab-grown bio-textile pieces at Loewe and Schiaparelli. A parallel check for Haute Couture Spring/Summer 2027 post-show coverage again found none -- same absence-of-coverage pattern as the prior six windows, continued rather than re-derived.",
+  "top_signals": [
+    {
+      "name": "Fall/Winter 2027-28 women's ready-to-wear fashion month opens",
+      "type": "industry_event",
+      "source_sectors": [
+        "editorial",
+        "designer_origin"
+      ],
+      "confidence": "medium",
+      "volatility": "seasonal",
+      "origin_classification": "designer_originated",
+      "evidence": "New York, London, Milan and Paris ready-to-wear shows for Fall/Winter 2027-28 ran across this window and the immediately preceding one, with Paris's leg (organized by the Federation de la Haute Couture et de la Mode) concluding March 10. This is a recurring annual ready-to-wear cycle distinct from the September-October collection debuts and the January menswear/couture cluster already logged in docs/EDITORIAL_CALENDAR.md; that calendar does not yet have an entry for this February-March women's ready-to-wear window, which this report flags as a gap worth adding. Reachable coverage names specific designer-origin content: Dior under Jonathan Anderson presented a collection framed around Parisian gardens; Chloe under Chemena Kamali continued a folkloric, artisanal-craft direction; Loewe and Schiaparelli were both reported to include lab-grown bio-textile pieces alongside dedicated sustainable-materials exhibition space.",
+      "index_note": "New signal_id, first appearance in the archive. Flags a genuine gap in docs/EDITORIAL_CALENDAR.md, which documents the Sept-Oct fashion month and the Jan menswear/couture cluster but not this Feb-March women's ready-to-wear window -- a future doc-maintenance pass should add it as a fourth recurring entry.",
+      "source_corroboration_count": 5,
+      "signal_id": "fw27-28-rtw-fashion-month",
+      "confidence_source": "manual",
+      "human_editor_note": "Confidence set to medium on first appearance: corroboration spans multiple independent editorial outlets plus designer-origin framing language attributed to specific houses, but no institutional-sector (FHCM schedule/press-office) source was independently reachable this pass to corroborate the specific per-house creative direction claims, only the overall calendar dates. Treat house-level attributions (Anderson's Dior theme, Kamali's Chloe direction) as editorial paraphrase pending a first-party or institutional source.",
+      "source_domains": [
+        "fhcm.paris",
+        "cafedelhomme.com",
+        "modernluxury.com",
+        "stylearcade.com",
+        "whowhatwear.com"
+      ]
+    },
+    {
+      "name": "Messy chic and 1980s power-shoulder tailoring supersede quiet-luxury minimalism",
+      "type": "aesthetic_term",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "emerging",
+      "origin_classification": "editorial_amplified",
+      "evidence": "Multiple editorial trend roundups covering the Fall/Winter 2027-28 shows describe a shift away from the clean-girl/quiet-luxury minimalism that has dominated recent seasons toward a more maximalist direction -- statement jewelry, archival-couture referencing, and structured wool coats with exaggerated, 1980s-referencing shoulders. Separately, long suede gloves were reported as a recurring accessory across multiple houses (cited at Max Mara, Sportmax, Balenciaga and Ralph Lauren), and a gothic/vampiric register (velvet, lace, curve-hugging silk) was reported as a New York-originating throughline running into the European legs.",
+      "index_note": "New signal_id. Editorial-sector-only corroboration at this stage -- no retail, social, or designer-origin corroboration yet, and the terminology ('messy chic') itself is an editorial framing rather than a term any house has used first-party, so this is kept at low confidence and flagged as amplified rather than designer-originated pending further corroboration.",
+      "source_corroboration_count": 3,
+      "signal_id": "messy-chic-power-shoulder-tailoring",
+      "confidence_source": "manual",
+      "human_editor_note": "Kept at low rather than medium because this is a single collection window's worth of editorial trend-roundup coverage for a just-concluded fashion month; per this project's convention on TikTok/editorial hype (SKILL.md voice rules), a single season's editorial framing should not be upgraded to medium confidence until it either recurs in a subsequent window or is corroborated by a source outside the editorial sector (retail adoption, designer-origin restatement, or independent criticism)."
+    }
+  ],
+  "repeated_keywords": [
+    "Fall/Winter 2027-28 ready-to-wear",
+    "Paris Fashion Week close",
+    "messy chic",
+    "power-shoulder tailoring",
+    "quiet luxury supersession",
+    "Wales Bonner untracked",
+    "Haute Couture SS27 coverage gap"
+  ],
+  "garments": [
+    "structured wool coat",
+    "exaggerated-shoulder trench"
+  ],
+  "silhouettes": [
+    "1980s power dressing"
+  ],
+  "materials": [
+    "lab-grown bio-textile",
+    "suede (long gloves)"
+  ],
+  "colors": [],
+  "aesthetic_terms": [
+    "messy chic"
+  ],
+  "cultural_references": [],
+  "limitations": [
+    "The Wales Bonner/Hermes debut signal was not re-litigated this window per the 2027-03-08 transition to 'untracked going forward pending new information.' A brief check found no new coverage; this is consistent with the transition decision, not a new finding.",
+    "The CFDA Fashion Fund winner and CFDA Fashion Awards questions remain untracked pending new information per SKILL.md workflow note 10 and were not re-litigated as top signals.",
+    "Haute Couture Spring/Summer 2027 was checked again for post-show coverage and again found none reachable -- unchanged from the prior six windows' finding, kept under normal tracking per the same signal_id.",
+    "The new Fall/Winter 2027-28 ready-to-wear signal is corroborated only by editorial-sector and calendar sources at this early stage; per-house creative-direction claims (Dior's garden theme, Chloe's folkloric direction) are editorial paraphrase, not yet independently verified against institutional or designer-origin first-party statements.",
+    "This report was assembled via targeted web search rather than a live automated crawl timed to the actual show days or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "fw27-28-fashion-month",
+    "paris-fashion-week-close",
+    "messy-chic",
+    "wales-bonner-untracked-pending-new-information",
+    "cfda-signals-untracked-pending-new-information",
+    "couture-ss27-coverage-gap-continued",
+    "editorial-calendar-gap-flagged",
+    "2027-q1"
+  ],
+  "collection_status": "normal",
+  "review_status": "reviewed",
+  "reviewed_by": "loop-consolidation",
+  "revision_history": [],
+  "content_hash": "718e34a925b965db141bcfad2ecfe79034f225ed6e338b62835755cf623dca5d"
+}
