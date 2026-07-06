@@ -111,6 +111,13 @@ const sections: { title: string; body: string[] }[] = [
     ],
   },
   {
+    title: "How Citations Work",
+    body: [
+      "Signals cite the outlet-level domain they were drawn from (for example, a homepage domain), not a link to the specific article or post. This is a deliberate, permanent design choice, not a placeholder for per-article links added later.",
+      "Linking directly to a single small or independent outlet's specific article can expose that outlet to a disproportionate traffic spike from this Index. Domain-level citation preserves accountability for where a signal came from without creating that exposure.",
+    ],
+  },
+  {
     title: "Human Review Process",
     body: [
       "Raw extraction identifies repeated language and clusters related terms. Human review interprets whether those terms belong together, assigns classification and origin, downgrades hype, and connects signals to historical context where relevant.",
