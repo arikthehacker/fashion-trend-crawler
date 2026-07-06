@@ -1,0 +1,77 @@
+{
+  "report_date": "2027-08-30",
+  "collection_window": {
+    "start": "2027-08-24",
+    "end": "2027-08-30"
+  },
+  "sources_scanned": 7,
+  "items_collected": 5,
+  "source_sector_breakdown": {
+    "editorial": 2,
+    "unclear": 3
+  },
+  "executive_summary": "Collection window August 24-30, 2027. The notable item this week is critical reception of Demna's debut collection for Gucci, his first outing as creative director following his move from Balenciaga. Coverage across editorial and independent-leaning outlets converges on a specific read: the collection is described as a deliberate exploration of the house's 'family' storytelling and retro sexiness rather than a clean break from or a nostalgic restoration of prior Gucci codes. Reception in the coverage itself is explicitly mixed -- praised for tailoring and narrative ambition, criticized for footwear, accessories, and venue choices -- not a consensus verdict either way. Met Gala 2027, Wales Bonner, and CFDA remain untracked going forward per standing convention and are not re-litigated in this report.",
+  "top_signals": [
+    {
+      "name": "Demna's Gucci debut reception",
+      "type": "designer_transition",
+      "source_sectors": [
+        "editorial",
+        "unclear"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "Demna's debut collection for Gucci was covered by WWD, Business of Fashion, AnOther, Interview Magazine, and I'm Firenze Digest. Coverage describes the collection as an exploration of a Gucci 'family' narrative filtered through Demna's established storytelling approach, with critics singling out tailoring and jackets/trousers as the strongest elements. Multiple outlets explicitly describe reception as mixed rather than a clear triumph: WWD cites an industry scorecard placing the debut ahead of Sabato De Sarno's 2023 Gucci debut but behind Jonathan Anderson's Dior and Matthieu Blazy's Chanel debuts, and coverage separately flags criticism of the shoes, handbags, and venue.",
+      "index_note": "Framed by coverage as a continuity-of-authorship story: the signal is that Demna carried his existing narrative/storytelling method into a new house rather than resetting to Gucci's prior visual codes, independent of whether the reception was positive.",
+      "source_corroboration_count": 5,
+      "signal_id": "gucci-demna-debut-reception",
+      "confidence_source": "manual",
+      "human_editor_note": "Held at medium rather than derive_confidence()'s literal high: only two of five corroborating domains (wwd.com, businessoffashion.com) land inside taxonomy.py's DOMAIN_SECTOR_MAP as a named sector, and both map to the same sector (editorial) -- the other three (anothermag.com, interviewmagazine.com, imfirenzedigest.com) classify 'unclear'. Counting 'unclear' as a genuine second sector would reward a domain-map gap rather than real cross-sector confirmation, the same call made for the 08-09/08-16/08-23 reports. Worth flagging separately: WWD's own framing explicitly ranks this debut against three peer designer debuts on a numeric scorecard, which reads as an industry-reaction data point rather than a settled critical consensus -- this report tracks that the debut happened and how it was narratively framed, not that it was a hit.",
+      "source_domains": [
+        "wwd.com",
+        "businessoffashion.com",
+        "anothermag.com",
+        "interviewmagazine.com",
+        "imfirenzedigest.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "debut collection",
+    "family narrative",
+    "tailoring",
+    "creative director transition"
+  ],
+  "garments": [
+    "tailored jacket",
+    "trouser"
+  ],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [
+    "retro sexiness"
+  ],
+  "cultural_references": [
+    "Demna",
+    "Gucci",
+    "Balenciaga"
+  ],
+  "limitations": [
+    "Three of five corroborating domains fall outside taxonomy.py's DOMAIN_SECTOR_MAP and classify as 'unclear', limiting genuine cross-sector confirmation.",
+    "Coverage itself reports a mixed reception, including an explicit numeric industry scorecard rather than uniform critical consensus; this report does not treat that mix as resolved.",
+    "This is a single designer-transition event, not a cross-house pattern; no attempt is made here to generalize it into a broader aesthetic trend."
+  ],
+  "archive_tags": [
+    "met-gala-2027-coverage-gap (untracked going forward pending new information)",
+    "wales-bonner (untracked going forward pending new information)",
+    "cfda (untracked going forward pending new information)"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "review_status": "reviewed",
+  "reviewed_by": "",
+  "revision_history": [],
+  "content_hash": "b5625a5f57f5458b4cb9cb0ac469deb4a1a8d5e713efb3ac9d0845fcd8b3db2f"
+}
