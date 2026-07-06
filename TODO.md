@@ -133,16 +133,54 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       audit's own recommendation not to auto-adopt formula output) — flagged for human
       review below.
 
-## Next up (run 8 candidates)
-- [ ] **Human review needed:** `data/reports/2026-07-13.json`'s "Resale/secondhand retail
-      growth" signal is rated "high" confidence on a single source — either find a second
-      corroborating source, or downgrade to "medium"/"low" to match its actual evidence.
-      See `docs/agent-logs/confidence-audit.md`.
-- [ ] Wire `derive_confidence()` in as a non-blocking validation warning (flag
-      assigned="high" vs. derived<="medium" for editor re-review) rather than full auto-
-      adoption, per the audit's recommendation.
-- [ ] Continue legacy migration: step 3 of 5 (`server.py`'s cache reads).
-- [ ] Still no report from an actual live crawl — all 4 dated reports are hand-authored or
-      WebSearch-researched.
-- [ ] Manual TikTok/Pinterest sampling has only been exercised once — not yet proven as a
-      repeatable weekly habit.
+## Run 8 — done
+- [x] Resolved the flagged "Resale/secondhand retail growth" signal — found genuine second
+      independent corroboration (GlobalData's own published resale analysis, distinct from
+      the BoF/ThredUp source already cited) rather than downgrading. "High" confidence now
+      legitimately earned; confirmed by re-running `audit_confidence.py`.
+- [x] Wired `derive_confidence()` into `validate_all_reports.py` as a non-blocking
+      confidence warning (flags assigned="high" vs. derived in medium/low), also wired into
+      the CI workflow. Reuses the existing formula, doesn't duplicate logic, never fails
+      the build.
+- [x] Migration step 3/5: `server.py`'s three MCP tool functions now reference the shared
+      `DEFAULT_OUTPUT_FILE` constant instead of hardcoded string literals — zero behavior
+      change, function signatures/names untouched (real external MCP contract, verified
+      registered in `.codex/config.toml`).
+- [x] **Major finding: ran the real pipeline end-to-end for the first time.**
+      `crawler.py` successfully crawled real pages (Vogue, WhoWhatWear, Hypebeast — 119
+      real headlines), and `summarize.py` made a real Anthropic API call using the
+      pre-existing `.env` credentials. **Found and fixed a genuine bug**: `max_tokens=2000`
+      in `summarize.py` was too small and truncated Claude's JSON response mid-string,
+      crashing the pipeline — fixed to `max_tokens=4000`. The live output collided with the
+      existing hand-authored `2026-07-06.json` (today's date) and was correctly NOT used to
+      overwrite curated data; saved instead to
+      `docs/agent-logs/live-crawl-2026-07-06-real-output.json` for reference. See
+      `docs/agent-logs/live-crawl-attempt.md`.
+- [x] Retention/versioning research (`docs/agent-logs/retention-versioning-design.md`):
+      found that `save_report()` silently overwrites `content_hash` with no change history,
+      which undercuts the site's own Corrections-section claim that originals are preserved
+      alongside corrections. Concrete `revision_history` field proposed, not implemented.
+- [x] **Coordination bug found and fixed during consolidation:** one agent's cleanup
+      (`git checkout` while reverting its own exploration files) silently wiped out two
+      other concurrently-running agents' uncommitted work (the migration-step-3 edit to
+      `server.py` and the confidence-warning wiring in `validate_all_reports.py`). Caught
+      by re-checking `git diff` against each agent's described changes before committing;
+      both pieces of work were redone directly by the coordinator from the agents' logged
+      specs. **Process note for future runs:** agents that explore/revert should scope
+      `git checkout`/`git restore` to the exact files they touched, never a bare
+      `git checkout .`, since concurrent agents' uncommitted changes share the same
+      working tree.
+
+## Next up (run 9 candidates)
+- [ ] Decide how to formally save a genuine live-crawled report — today's date collided
+      with existing curated data; either add a manual override path in `run.sh`/
+      `summarize.py` for re-running on an already-used date, or wait for a future date with
+      no existing report and run the (now-fixed) pipeline fresh.
+- [ ] Implement the proposed `revision_history` field on `Report` so corrections actually
+      preserve prior state, matching what the methodology page already claims.
+- [ ] Continue legacy migration: step 4 of 5 (`test_tools.py` — not yet stale, may not need
+      changes; verify).
+- [ ] Manual TikTok/Pinterest sampling still only exercised once.
+- [ ] Add a lightweight convention/guardrail so agents doing exploratory reverts don't
+      accidentally clobber concurrent agents' uncommitted work (e.g. explicit instruction
+      in every prompt to scope git revert commands to named files only).
