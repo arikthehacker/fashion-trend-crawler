@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-06 ~23:50 PDT — [Loop run 19](changelog-entries/run-19.md)** — Tuned the
+  confidence-conservatism prompt; added manual-sampling marketing-vs-organic guidance; a
+  12th report proved the busy-week fixes hold under real fashion-week volume; source
+  diversity narrowed further; a full re-read of the original doc found two genuine
+  18-run-old gaps: an unbuilt glossary page and the "THIS WEEK'S INDEX" metrics module.
+
 - **2026-07-06 ~22:45 PDT — [Loop run 18](changelog-entries/run-18.md)** — Found and fixed
   a real crawler bug (Cloudflare 403 on robots.txt false-blocking a source); proactively
   raised `max_tokens` ahead of fashion month; added an 11th report; second bias-audit pass

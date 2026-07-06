@@ -385,16 +385,36 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [x] Doc-sync check found a real staleness bug: README/PROJECT_STRUCTURE claimed only
       7 reports (and listed even fewer) when 10 actually existed. Fixed to 11.
 
-## Next up (run 19 candidates)
-- [ ] If the LLM's conservative confidence assignment on `independent_criticism` signals
-      persists, consider a targeted prompt adjustment (not another schema change — the
-      formula side is already fixed).
-- [ ] Add a documentation-level distinction for platform-marketing vs. organic social
-      content in `docs/manual-sampling-template.md` (schema change not needed, just
-      guidance for the human doing the sampling).
-- [ ] Source diversity still only partially addressed (English-language/diaspora-facing,
-      not local-for-local) — worth a deeper pass if it matters to the project's
-      credibility claims.
-- [ ] Fashion month starts ~Sept 8 — watch the next few reports for whether the
-      `max_tokens=8000` increase was sufficient, and whether `validate_report()`'s lack of
-      a signal-count cap holds up under genuinely high volume.
+## Run 19 — done
+- [x] Tuned `summarize.py`'s prompt to remove the default confidence penalty on
+      `independent_criticism` at equal corroboration counts vs. `editorial`.
+- [x] Added platform-marketing-vs-organic guidance to the manual-sampling template/workflow
+      docs (documentation-level, no schema change).
+- [x] Added `data/reports/2026-09-14.json`, a 12th report — the first genuinely
+      high-volatility window (NYFW SS27 week 1). **Busy-week fixes held up**: 5 signals,
+      no truncation, no validation issues. Correctly recognized the harness's real current
+      date (2026-07-06) predates the actual show and stuck to verifiable pre-show facts
+      rather than fabricating runway reviews.
+- [x] Deeper source-diversity pass: added 3 more verified local-for-local outlets
+      (vogue.mx, tribune.com.pk, savoirflair.com). Honestly narrowed, not closed — still
+      English/Spanish-only, Southeast Asia remains open (vogue.ph blocked by a Cloudflare
+      JS-challenge, a different failure mode than run 18's UA fix).
+- [x] **Full re-read of the original concept doc found two real, 18-run-old gaps**: an
+      unbuilt `/glossary` page (doc §24) and the "THIS WEEK'S INDEX" condensed metrics
+      module (doc §27/28 — an AQI/stock-index-style glanceable summary, central to the
+      original "index people check daily" thesis, never built). Also brought a fresh
+      external citation: Getty AAT/ICOM Costume Core controlled-vocabulary standards,
+      relevant to `taxonomy.py`'s garment/material vocab as the archive scales.
+
+## Next up (run 20 candidates)
+- [ ] **Build the "THIS WEEK'S INDEX" condensed metrics module** — a real, doc-central
+      feature missed for 18 runs. Needs design (what metrics: dominant mood, rising term,
+      noise level, highest-volatility sector) before implementation.
+- [ ] **Build `/glossary`** — style/aesthetic terms glossary, doc §24, listed as an
+      optional page but never built while other optional pages exist.
+- [ ] Consider Costume Core/Getty AAT as a reference standard for `taxonomy.py`'s garment
+      vocabulary as the archive grows.
+- [ ] Southeast Asian source coverage remains open; vogue.ph specifically is blocked by a
+      Cloudflare JS challenge that `requests` can't pass — would need a different
+      crawling approach (headless browser) if pursued, likely out of scope for the
+      current lightweight crawler design.
