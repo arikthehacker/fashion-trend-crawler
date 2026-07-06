@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-09 ~13:00 PDT — [Loop run 66](changelog-entries/run-66.md)** — Root cause
+  of three consecutive crawler-pipeline stalls (runs 62, 65, 66) finally found: not
+  agent scoping, but `crawler.py` itself hanging indefinitely — two real hung
+  processes found and killed during consolidation. Flagged directly for the user;
+  recommend no further autonomous crawler-pipeline attempts until debugged. 59th
+  report and a real RSS spec gap both shipped cleanly alongside.
+
 - **2026-07-09 ~11:45 PDT — [Loop run 65](changelog-entries/run-65.md)** — `.env.example`
   and setup docs added, closing run 64's flagged gap; 58th report shows real
   confidence discipline against an inflated derived score; source-domain freshness

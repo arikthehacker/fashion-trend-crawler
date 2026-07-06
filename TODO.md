@@ -1394,11 +1394,25 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       summarize into two separate dispatches) is needed for the next attempt rather
       than a third identical retry.
 
-## Next up (run 66 candidates)
-- [ ] Retry the real end-to-end pipeline with crawl and summarize split into two
-      separate, smaller dispatches — two consecutive stalls on the combined task
-      suggest the combined scope itself is the problem, not just background-process
-      handling.
+## Run 66 — done
+- [x] **Root cause of 3 consecutive crawler-pipeline stalls (runs 62, 65, 66) found**:
+      not agent task design — `crawler.py` itself hangs indefinitely in this
+      environment. Found and killed 2 real hung `python crawler.py` processes during
+      consolidation (one over an hour old). Flagged directly for the user; see
+      changelog run-66's "Flagged for the user" section. Recommend no further
+      autonomous crawler-pipeline attempts until debugged directly.
+- [x] Added `data/reports/2027-08-16.json`, a 59th report — Chanel/Charvet
+      acquisition logged with the same confidence discipline as run 65 (manually held
+      below `derive_confidence()`'s inflated score).
+- [x] Fixed a real RSS spec gap: added the required `atom:link rel="self"` element
+      and `xmlns:atom` namespace, flagged by both the W3C Feed Validator and
+      rssboard's Best Practices Profile.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Next up (run 67 candidates)
+- [ ] Do NOT attempt the real crawler pipeline again until `crawler.py`'s hang is
+      directly debugged (likely a missing timeout on a `requests.get()` call in the
+      BFS loop) — three autonomous attempts have all stalled for this same reason.
 - [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
       correctness — still awaiting a human decision (run 50).
 - [ ] The underlying human-in-the-loop process gap flagged in run 50 remains open.
