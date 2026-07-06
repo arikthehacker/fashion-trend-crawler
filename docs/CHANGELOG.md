@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-07 ~12:30 PDT — [Loop run 29](changelog-entries/run-29.md)** — Resolved
+  prolonged-silence handling with a minimal helper, not a new field; 22nd report adds a
+  genuine Black Friday signal; skill doc codifies the "documented ≠ working" lesson;
+  forecast-calibration check honestly finds one concerning miscalibration; accessibility
+  audit fixes a 4th instance of the recurring heading bug.
+
 - **2026-07-07 ~11:10 PDT — [Loop run 28](changelog-entries/run-28.md)** — 21st report
   handles a 4th-window open question with a named explanation instead of repetition;
   manual sampling diversified beyond Pinterest for the first time (TikTok, compliant);

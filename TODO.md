@@ -594,15 +594,36 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       completely missing from `sitemap.xml` (never added to the route list). RSS feed
       itself was already correct — 20 reports, well-formed XML, proper escaping.
 
-## Next up (run 29 candidates)
+## Run 29 — done
+- [x] Resolved the prolonged-silence question with a minimal, correctly-scoped decision:
+      no new schema field — added `is_prolonged_silence(signal_id, all_reports,
+      threshold=4)` as a thin wrapper over `get_signal_status_history()`. Verified live
+      against the real CFDA signal (returns `True`).
+- [x] Added `data/reports/2026-11-23.json`, a 22nd report — both CFDA questions remain
+      open (5th and 4th windows respectively), plus a genuine new Black Friday/holiday
+      retail-calendar signal.
+- [x] Full skill doc refresh — codified the "populated ≠ rendered, documented ≠ working"
+      lesson (runs 21/23/24/28) as a formal workflow convention, not just something
+      caught reactively each time.
+- [x] Forecast-calibration research: a real, methodologically honest retrospective check
+      against this project's own data. Found labels mostly held (volatile/low-confidence
+      signals faded as predicted) but caught one concerning miss — `soft-tailoring` was
+      called "stable/high" then collapsed to "declining" the very next window. Correctly
+      caveated the small sample size rather than overreaching; recommended a periodic
+      re-check as the archive grows.
+- [x] Full accessibility audit found a 4th instance of the recurring heading-hierarchy
+      bug (case-study page's numbered section titles were styled `<p>` tags) — fixed.
+      Confirmed no image/alt-text issues (text-only site), color contrast passes WCAG AA,
+      and all interactive elements are properly labeled.
+
+## Next up (run 30 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
-- [ ] CFDA Fashion Fund winner and CFDA Fashion Awards both remain unconfirmed after
-      multiple windows — worth considering whether prolonged silence itself eventually
-      warrants a different treatment (e.g. an explicit "awaiting resolution" status)
-      rather than repeated carry-forward.
-- [ ] README's operational instructions are now fixed and accurate — worth periodically
-      re-verifying against actual pipeline behavior as `summarize.py`/`run.sh` evolve,
-      given this was the second time a doc-accuracy sweep found a real, previously-unknown
-      gap (first was the run-count staleness, this is the "does it actually work" kind).
+- [ ] The `soft-tailoring` stable→declining miss from the forecast-calibration check is
+      exploratory, not actionable yet given sample size — but worth tracking whether
+      similar miscalibrations recur as more signals get multiple appearances.
+- [ ] The heading-hierarchy bug has now recurred 4 times (runs 5, 20/21, 29) despite a
+      documented manual-checklist item — consider whether the checklist itself needs to
+      be more prominent/harder to skip, since documentation alone hasn't fully stopped
+      recurrence.
