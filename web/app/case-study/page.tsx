@@ -176,18 +176,20 @@ export default function CaseStudy() {
                 alignItems: "start",
               }}
             >
-              <p
+              <h2
                 style={{
                   fontFamily: "var(--font-franklin)",
                   fontSize: "0.75rem",
+                  fontWeight: "400",
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
                   color: "var(--black)",
                   paddingTop: "0.2rem",
+                  margin: 0,
                 }}
               >
                 {String(i + 1).padStart(2, "0")}&nbsp;&nbsp;{s.title}
-              </p>
+              </h2>
               <div>
                 {s.body.map((p, j) => (
                   <p
