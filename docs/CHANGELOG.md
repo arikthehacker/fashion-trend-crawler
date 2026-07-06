@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-06 ~20:15 PDT — [Loop run 16](changelog-entries/run-16.md)** — Added a 9th
+  report (5th consecutive thin week); closed out 3 dormant signals; added low-volatility
+  methodology framing; first real bias audit found and fixed an inconsistent confidence
+  gate; backfilled meaningful `reviewed_by` provenance; confirmed fashion month
+  (~Sept 8 – Oct 6, 2026) should end the quiet stretch structurally.
+
 - **2026-07-06 ~19:00 PDT — [Loop run 15](changelog-entries/run-15.md)** — Ran a real
   crawl to test whether the 4-thin-week streak was a WebSearch artifact — confirmed it's a
   genuine quiet period. Added soft review-status metadata; created `PROMPT_CHANGELOG.md`;

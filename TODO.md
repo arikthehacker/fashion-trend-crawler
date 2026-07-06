@@ -323,14 +323,33 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       `soft-tailoring` are one quiet window short of the close-out threshold, flagged for
       next review rather than closed prematurely.
 
-## Next up (run 16 candidates)
-- [ ] `sheer-layering`/`soft-tailoring` are 2 quiet windows in as of this run — if still
-      quiet next report, close both out via `revision_history` the same way
-      `off-duty-varsity` was closed in run 13.
-- [ ] Given the thin-week streak is confirmed genuine (not a research-method gap), the
-      product question shifts: is more frequent reporting cadence even the right model for
-      genuinely quiet periods, or should the site's own framing lean into "this is what
-      honest low-volatility reporting looks like" as a feature, not an apology?
-- [ ] Still open: bias-audit practice and a periodic prompt-review cadence, per the
-      AI-journalism-standards research (`docs/PROMPT_CHANGELOG.md` now exists as the
-      substrate for that review, but no actual review has happened yet).
+## Run 16 — done
+- [x] Added `data/reports/2026-08-24.json`, a 9th report — 5th consecutive thin week.
+- [x] Closed out `sheer-layering`/`soft-tailoring` (3 quiet windows confirmed) and
+      `peplum-waist-revival` (also hit its own stated 3-window threshold), same
+      `revision_history` close-out pattern as `off-duty-varsity`.
+- [x] Added low-volatility framing to the methodology page — thin weeks are now
+      explicitly described as a verified data point, not a gap.
+- [x] **First real bias-audit pass** (logged in `docs/PROMPT_CHANGELOG.md` and
+      `docs/agent-logs/bias-audit-run16.md`): found `crawler.py`'s source list is
+      English-language/Western-editorial only (real, documented scope limitation, not
+      fixed this run); found `derive_confidence()`'s `HIGH_RELIABILITY_SECTORS`
+      inconsistently excluded `independent_criticism` despite comparable noise profile to
+      editorial — **fixed** by adding it to the gate.
+- [x] Backfilled meaningful `reviewed_by` provenance on 7 reports (e.g.
+      "websearch-run-thin-week", "hand-authored-example-run1") instead of leaving it blank.
+- [x] Fashion week calendar research confirms NYFW/LFW/MFW/PFW run ~Sept 8 – Oct 6, 2026 —
+      the low-volatility stretch should end structurally around then, not before.
+
+## Next up (run 17 candidates)
+- [ ] Don't force "normal" collection_status before ~Sept 8, 2026 (NYFW start) — the
+      quiet stretch is expected to run until fashion month per the calendar research.
+- [ ] Source-list diversity is a real, documented gap (English/Western-only editorial
+      sources) — consider expanding `FASHION_SOURCES` to include non-Western fashion
+      discourse outlets as a future crawl-coverage improvement.
+- [ ] Product framing question from run 15 (should low-volatility reporting be framed as a
+      feature) — partially addressed via the new methodology section; consider whether the
+      homepage/archive pages need similar framing.
+- [ ] Bias-audit practice now has one real exercise on record — consider making this a
+      periodic (not one-off) review per the original AI-journalism-standards
+      recommendation.
