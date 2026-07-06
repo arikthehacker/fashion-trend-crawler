@@ -152,6 +152,7 @@ const DEFINITIONS: Record<string, string> = {
   "ffw": "FFW (ffw.com.br), an independent Brazilian fashion and culture editorial platform, cited as an editorial-sector source for South American runway and market coverage.",
   "sao paulo fashion week": "Sao Paulo's market-week fashion showcase, cited as a source event for South American runway and resort-collection coverage.",
   "dieworkwear": "Dieworkwear.com, an independent menswear and tailoring criticism site, cited as an independent-criticism-sector source.",
+  "business of fashion": "Business of Fashion (businessoffashion.com), a trade and industry-news editorial title, cited as an editorial-sector source.",
 };
 
 function normalize(term: string): string {
