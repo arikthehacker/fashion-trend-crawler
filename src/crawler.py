@@ -68,7 +68,23 @@ def get_robots_parser(base_url):
     parser.set_url(robots_url)
 
     try:
-        parser.read()
+        # use requests with our identifying HEADERS instead of RobotFileParser's
+        # built-in read() (bare urllib, default "Python-urllib/x.x" user-agent).
+        # found run 17: some hosts (e.g. tokyofashion.com, behind Cloudflare)
+        # 403 that default UA on /robots.txt specifically, and RobotFileParser
+        # treats a 403 as "disallow everything" -- even though the real
+        # robots.txt (confirmed via curl/requests with our own UA) allows
+        # crawling. Fetching robots.txt with the same headers we use for
+        # every other request avoids that false "blocked" result.
+        resp = requests.get(robots_url, headers=HEADERS, timeout=8)
+        if resp.status_code == 200:
+            parser.parse(resp.text.splitlines())
+        elif resp.status_code in (401, 403):
+            parser.disallow_all = True
+        else:
+            # missing/other error -> assume allowed, matching RobotFileParser's
+            # own default behavior for non-401/403 errors
+            parser.allow_all = True
     except Exception:
         # if we cant read it just assume we're allowed
         pass
