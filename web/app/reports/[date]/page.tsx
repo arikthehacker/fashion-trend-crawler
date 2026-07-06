@@ -129,6 +129,14 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
         temporalCoverage: report.report_date,
         variableMeasured: Object.keys(report.source_sector_breakdown || {}),
         isBasedOn: reportUrl,
+        // schema.org/license expects a URL identifying a specific license version
+        // (SPDX is the recommended canonical source) rather than bare text like
+        // "CC BY 4.0" — added run 46 alongside the visible license line near the
+        // download link below. Covers the report's own classification/metadata
+        // output only; it does not relicense the underlying source articles,
+        // which remain the property of their original publishers (see
+        // methodology's existing note on storing metadata/links, not full text).
+        license: "https://creativecommons.org/licenses/by/4.0/",
         distribution: [
           {
             "@type": "DataDownload",
@@ -682,6 +690,11 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
         <a href={`/data/reports/${report.report_date}.json`} download style={{ color: "var(--gray)", textDecoration: "underline" }}>
           Download raw data (JSON)
         </a>
+        {" — classification and summary metadata licensed "}
+        <a href="https://creativecommons.org/licenses/by/4.0/" style={{ color: "var(--gray)", textDecoration: "underline" }}>
+          CC BY 4.0
+        </a>
+        {"; underlying source articles remain the property of their original publishers"}
       </p>
 
       {/* citation line */}
