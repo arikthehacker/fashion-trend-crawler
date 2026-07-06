@@ -71,6 +71,39 @@ export function getReportByDate(date: string): Report | null {
   return JSON.parse(fs.readFileSync(filePath, "utf-8")) as Report;
 }
 
+export interface TimelineEntry {
+  report_date: string;
+  signal_name: string;
+  type: string;
+  source_sectors: string[];
+  confidence: string;
+}
+
+/**
+ * Flattens top_signals from every report into a single reverse-chronological
+ * list for the /timeline page. Keys on signal name + date only — there is no
+ * signal_id/slug field yet, so no cross-report identity matching is attempted
+ * here.
+ */
+export function getTimelineEntries(): TimelineEntry[] {
+  const reports = getAllReports();
+  const entries: TimelineEntry[] = [];
+
+  for (const report of reports) {
+    for (const signal of report.top_signals ?? []) {
+      entries.push({
+        report_date: report.report_date,
+        signal_name: signal.name,
+        type: signal.type,
+        source_sectors: signal.source_sectors,
+        confidence: signal.confidence,
+      });
+    }
+  }
+
+  return entries;
+}
+
 /** Returns all report_date strings, for static params generation. */
 export function getAllReportDates(): string[] {
   const dir = reportsDir();

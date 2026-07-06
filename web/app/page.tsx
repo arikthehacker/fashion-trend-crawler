@@ -92,6 +92,7 @@ export default function Home() {
             { href: "/methodology", label: "Methodology" },
             { href: "/taxonomy", label: "Taxonomy" },
             { href: "/sources", label: "Sources" },
+            { href: "/timeline", label: "Timeline" },
             { href: "/about", label: "About" },
           ].map((item) => (
             <Link

@@ -154,7 +154,21 @@ export default function Archive() {
         borderTop: "1px solid var(--border)",
         padding: "2rem",
         textAlign: "center",
+        display: "flex",
+        justifyContent: "center",
+        gap: "2rem",
       }}>
+        <p style={{
+          fontFamily: "var(--font-franklin)",
+          fontSize: "0.75rem",
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          color: "var(--gray)",
+        }}>
+          <Link href="/timeline" style={{ color: "var(--black)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+            Timeline
+          </Link>
+        </p>
         <p style={{
           fontFamily: "var(--font-franklin)",
           fontSize: "0.75rem",
