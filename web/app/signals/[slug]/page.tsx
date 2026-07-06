@@ -145,6 +145,28 @@ export default async function SignalPage({ params }: { params: Promise<{ slug: s
                   Index note: {signal.index_note}
                 </p>
               )}
+              {signal.human_editor_note && (
+                <div style={{ marginTop: "1rem" }}>
+                  <h4 style={{
+                    fontFamily: "var(--font-franklin)",
+                    fontSize: "0.7rem",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: "var(--red)",
+                    marginBottom: "0.4rem",
+                  }}>
+                    Editorial Close-Out
+                  </h4>
+                  <p style={{
+                    fontFamily: "var(--font-franklin)",
+                    fontSize: "0.85rem",
+                    lineHeight: "1.6",
+                    color: "var(--black)",
+                  }}>
+                    {signal.human_editor_note}
+                  </p>
+                </div>
+              )}
             </div>
           ))}
         </div>
