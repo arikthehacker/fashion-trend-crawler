@@ -189,7 +189,7 @@ export default function Glossary() {
           have appeared in an archived report.
         </p>
 
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <dl style={{ display: "flex", flexDirection: "column", margin: 0 }}>
           {terms.map((t) => (
             <div
               key={t.term}
@@ -202,7 +202,7 @@ export default function Glossary() {
                 alignItems: "start",
               }}
             >
-              <p
+              <dt
                 style={{
                   fontFamily: "var(--font-franklin)",
                   fontSize: "0.85rem",
@@ -213,20 +213,21 @@ export default function Glossary() {
                 }}
               >
                 {t.term}
-              </p>
-              <p
+              </dt>
+              <dd
                 style={{
                   fontFamily: "var(--font-franklin)",
                   fontSize: "0.95rem",
                   lineHeight: "1.6",
                   color: "var(--gray)",
+                  margin: 0,
                 }}
               >
                 {t.def}
-              </p>
+              </dd>
             </div>
           ))}
-        </div>
+        </dl>
       </section>
 
       <footer

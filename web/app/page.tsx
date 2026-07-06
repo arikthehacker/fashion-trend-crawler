@@ -126,7 +126,7 @@ export default function Home() {
             borderBottom: "1px solid var(--border)",
           }}
         >
-          <p style={{
+          <h2 style={{
             fontFamily: "var(--font-franklin)",
             fontSize: "0.7rem",
             letterSpacing: "0.15em",
@@ -136,7 +136,7 @@ export default function Home() {
             textAlign: "center",
           }}>
             This Week&rsquo;s Index — {index.reportDate}
-          </p>
+          </h2>
 
           <dl style={{
             display: "grid",
@@ -208,7 +208,7 @@ export default function Home() {
             borderBottom: "1px solid var(--border)",
           }}
         >
-          <p style={{
+          <h2 style={{
             fontFamily: "var(--font-franklin)",
             fontSize: "0.7rem",
             letterSpacing: "0.15em",
@@ -217,7 +217,7 @@ export default function Home() {
             marginBottom: "1rem",
           }}>
             Latest Report — {latest.report_date}
-          </p>
+          </h2>
 
           <p style={{
             fontFamily: "var(--font-franklin)",
@@ -272,13 +272,15 @@ export default function Home() {
                   alignItems: "start",
                 }}
               >
-                <p style={{
+                <h3 style={{
                   fontFamily: "var(--font-instrument)",
                   fontSize: "1.2rem",
+                  fontWeight: "400",
                   lineHeight: "1.3",
+                  margin: 0,
                 }}>
                   {s.name}
-                </p>
+                </h3>
                 <p style={{
                   fontFamily: "var(--font-franklin)",
                   fontSize: "0.9rem",
