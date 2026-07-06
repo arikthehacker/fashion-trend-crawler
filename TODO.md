@@ -359,14 +359,42 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       high-volatility windows, so future report-writing agents don't re-research fashion
       week dates from scratch each time.
 
-## Next up (run 18 candidates)
-- [ ] Source diversity is still only partially addressed — most new outlets are
-      English-language/diaspora-facing, not local-for-local. Worth a deeper pass if
-      genuinely diverse coverage matters to the project's credibility.
-- [ ] Bias-audit practice now has one real exercise on record — make it periodic per the
-      original AI-journalism-standards recommendation, not one-off.
-- [ ] Keep `docs/EDITORIAL_CALENDAR.md` updated as new recurring events are identified
-      (Met Gala, trade fairs, etc. — currently only has fashion week).
-- [ ] With fashion month approaching (~Sept 8), expect report volume/complexity to
-      increase — may be worth reviewing whether the schema/prompt handle a genuinely busy
-      week as well as they've handled thin ones.
+## Run 18 — done
+- [x] Verified all 4 run-17 source additions are actually crawlable. Found and fixed a
+      real crawler bug: `tokyofashion.com` (Cloudflare-fronted) was falsely blocked
+      because `get_robots_parser()` used Python's default urllib user-agent, which
+      Cloudflare 403s on `/robots.txt` — the parser then treated that 403 as "disallow
+      all." Fixed to fetch robots.txt with the crawler's own real user-agent. General
+      robustness fix, not source-specific.
+- [x] Busy-week readiness check: the largest report was already close to the 4000-token
+      ceiling; raised `max_tokens` to 8000 in `summarize.py` proactively, before fashion
+      month causes a real truncation (same failure mode as run 8's bug, just avoided this
+      time instead of hit).
+- [x] Added `data/reports/2026-09-07.json`, an 11th report (pre-NYFW week) — correctly
+      did NOT force-continue the prior week's Pantone/movie-tie-in signal once its news
+      hook was exhausted.
+- [x] Second bias-audit pass, appended to `docs/PROMPT_CHANGELOG.md`. Confirmed with real
+      production data (not just code analysis) that `independent_criticism` signals get
+      "low" confidence far more often than `editorial` at equal corroboration counts.
+      **Clarification during consolidation:** this pattern is now driven by the LLM's own
+      conservative confidence assignment, not the formula gate — run 16 already added
+      `independent_criticism` to `HIGH_RELIABILITY_SECTORS`, so the residual gap is a
+      prompt-tuning question, not an unfixed code bug. Also flagged: Pinterest's own
+      self-promotional "trend report" pages get tagged identically to organic social
+      content, with no schema-level way to distinguish platform marketing from UGC.
+- [x] Doc-sync check found a real staleness bug: README/PROJECT_STRUCTURE claimed only
+      7 reports (and listed even fewer) when 10 actually existed. Fixed to 11.
+
+## Next up (run 19 candidates)
+- [ ] If the LLM's conservative confidence assignment on `independent_criticism` signals
+      persists, consider a targeted prompt adjustment (not another schema change — the
+      formula side is already fixed).
+- [ ] Add a documentation-level distinction for platform-marketing vs. organic social
+      content in `docs/manual-sampling-template.md` (schema change not needed, just
+      guidance for the human doing the sampling).
+- [ ] Source diversity still only partially addressed (English-language/diaspora-facing,
+      not local-for-local) — worth a deeper pass if it matters to the project's
+      credibility claims.
+- [ ] Fashion month starts ~Sept 8 — watch the next few reports for whether the
+      `max_tokens=8000` increase was sufficient, and whether `validate_report()`'s lack of
+      a signal-count cap holds up under genuinely high volume.

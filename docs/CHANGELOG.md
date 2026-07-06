@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-06 ~22:45 PDT — [Loop run 18](changelog-entries/run-18.md)** — Found and fixed
+  a real crawler bug (Cloudflare 403 on robots.txt false-blocking a source); proactively
+  raised `max_tokens` ahead of fashion month; added an 11th report; second bias-audit pass
+  confirmed a real confidence-conservatism pattern with production data; doc-sync found
+  README/PROJECT_STRUCTURE undercounting reports by more than half.
+
 - **2026-07-06 ~21:30 PDT — [Loop run 17](changelog-entries/run-17.md)** — Expanded
   source diversity (partial fix, honestly caveated); added homepage thin-week framing;
   10th report ends the 5-week thin streak with an earned "normal" status and catches a
