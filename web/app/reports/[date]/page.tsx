@@ -278,6 +278,19 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
                     Index note: {signal.index_note}
                   </p>
                 )}
+                {signal.human_editor_note && (
+                  <p style={{
+                    fontFamily: "var(--font-franklin)",
+                    fontSize: "0.8rem",
+                    lineHeight: "1.6",
+                    color: "var(--gray)",
+                    marginTop: "0.5rem",
+                    paddingTop: "0.5rem",
+                    borderTop: "1px solid var(--border)",
+                  }}>
+                    Editor review: {signal.human_editor_note}
+                  </p>
+                )}
               </div>
             ))}
           </div>

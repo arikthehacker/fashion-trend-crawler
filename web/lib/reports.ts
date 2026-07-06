@@ -22,6 +22,7 @@ export interface TopSignal {
   index_note: string;
   signal_id?: string;
   source_corroboration_count?: number;
+  human_editor_note?: string;
 }
 
 export interface Report {
