@@ -95,6 +95,12 @@ class Signal:
 
 CONFIDENCE_SOURCE_VALUES = ["manual", "derived"]
 
+# valid values for Report.collection_status — see
+# docs/agent-logs/thin-week-fallback.md and gap-analysis-run6.md #4 (Nieman
+# Lab burnout research: an honest low-signal report state should exist
+# instead of inflating weak signals to fill a quota every week).
+COLLECTION_STATUS_VALUES = ["normal", "thin"]
+
 
 def derive_confidence(signal) -> str:
     """
@@ -173,6 +179,16 @@ class Report:
     # empty string until save_report() populates it; optional/backward
     # compatible with reports saved before this field existed.
     content_hash: str = ""
+    # "normal" (default) or "thin" — marks a collection window where too few
+    # genuinely distinct signals were found to responsibly fill the usual
+    # signal quota. optional/backward compatible: old reports without it are
+    # treated as "normal". see docs/agent-logs/thin-week-fallback.md.
+    collection_status: str = "normal"
+    # human/LLM-authored explanation used when collection_status == "thin",
+    # e.g. "Fewer than 3 sources returned signals this window; report
+    # reflects limited coverage rather than manufactured trends." optional/
+    # backward compatible: empty string when not thin.
+    thin_week_note: str = ""
 
     def to_dict(self) -> dict:
         d = asdict(self)
@@ -266,6 +282,14 @@ def validate_report(data: dict) -> None:
                 f"top_signals[{i}].confidence_source '{confidence_source}' "
                 f"not in {CONFIDENCE_SOURCE_VALUES}"
             )
+
+    # optional field: default to "normal" if absent so old reports (predating
+    # the thin-week fallback) remain valid.
+    collection_status = data.get("collection_status", "normal")
+    if collection_status not in COLLECTION_STATUS_VALUES:
+        raise SchemaValidationError(
+            f"collection_status '{collection_status}' not in {COLLECTION_STATUS_VALUES}"
+        )
 
     # optional field: only checked if present, so old reports without a
     # content_hash still validate.
