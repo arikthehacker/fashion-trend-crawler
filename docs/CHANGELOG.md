@@ -18,6 +18,15 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-10 ~04:30 PDT — [Loop run 79](changelog-entries/run-79.md)** — 72nd
+  report adds the Bogotá thread's first designer-sourced intent statement;
+  gh/CI check confirmed unchanged a run early as a courtesy for run 80;
+  methodology page updated with three real fixes reflecting the confidence
+  and longitudinal-tracking discipline actually in force since runs 71-78;
+  nav/build clean; periodic audit flags its own API-key check as now
+  unreliable across two consecutive runs, to be independently re-verified
+  going forward.
+
 - **2026-07-10 ~03:20 PDT — [Loop run 78](changelog-entries/run-78.md)** — 71st
   report reasons through a mechanical-vs-intent confidence override in detail;
   a real RSS bug fixed (unbounded feed growth, now capped at 50 items per
