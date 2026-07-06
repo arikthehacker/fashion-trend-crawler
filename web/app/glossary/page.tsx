@@ -166,6 +166,7 @@ const DEFINITIONS: Record<string, string> = {
   "the realreal": "An online resale and consignment marketplace for luxury goods, cited as a resale-sector source when its search-demand or listing data is tracked.",
   "puffer-shell skirt": "A voluminous, quilted skirt built with exaggerated, rounded volume at the hip and hem, using puffer-jacket-style quilted construction on a bottom garment rather than an outerwear piece.",
   "quilted puffer-shell silhouette": "A rounded, exaggerated-volume garment shape produced by puffer-jacket-style quilted construction, distinct from the tapered cocoon silhouette in that its volume is evenly quilted rather than smoothly sculpted.",
+  "shawl-collar overcoat": "An overcoat with a rounded, seamless collar that curves continuously from the back of the neck to the front closure, without a notch, observed as an exaggerated, oversized construction choice in Fall/Winter 2028 menswear runway coverage.",
 };
 
 function normalize(term: string): string {
