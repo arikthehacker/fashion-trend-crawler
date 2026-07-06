@@ -770,12 +770,32 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       unconfirmed. Also cleaned up a stale `eslint-disable` comment flagged in 2
       consecutive runs.
 
-## Next up (run 37 candidates)
+## Run 37 — done
+- [x] **`source_domains` fully wired end-to-end**: `summarize.py`'s prompt now populates
+      it (reusing the existing domain-extraction convention), and report pages render it
+      per-signal. `check_field_coverage.py` confirms typed+referenced, 0 warnings.
+- [x] Added `data/reports/2027-01-18.json`, a 30th report — caught and excluded a false
+      lead (previously-occurred designer debuts mislabeled as upcoming Jan 2027 news).
+- [x] Found and fixed the same `dateModified`-staleness bug pattern a second place: the
+      RSS feed's `<pubDate>` had the identical gap just fixed on report pages (run 36) —
+      now also sourced from `revision_history` when present.
+- [x] Glossary freshness check found a genuinely new failure mode: undefined terms were
+      silently dropped rather than shown at all (distinct from the "populated but
+      unrendered" bug — this was "present but invisible due to missing curation"). Fixed
+      with a real definition for the missing term.
+- [x] Periodic audit caught a real regression from run 36's slug renaming: 2 stale
+      long-form signal_id references survived in report prose after the actual `signal_id`
+      fields were shortened, which would have silently broken
+      `get_signal_status_history()` lookups. Fixed via `revision_history`.
+
+## Next up (run 38 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
-- [ ] `source_domains` exists in the schema now but isn't populated by `summarize.py` or
-      rendered anywhere — decide whether/when to wire it through, as a deliberately
-      separate, smaller follow-up (not bundled into the schema decision).
-- [ ] Consider whether `summarize.py`'s prompt should be updated to actually populate
-      `source_domains` for new signals going forward, now that the field exists.
+- [ ] After the run-36 slug rename caused a stale-reference regression, consider whether
+      future slug renames need a dedicated grep-for-old-name pass across ALL prose fields
+      (not just `signal_id` values) before being considered complete.
+- [ ] Watch newly-added glossary terms going forward — the "silently dropped if
+      undefined" failure mode is now known; consider whether the glossary page should log
+      a build-time warning for terms with no curated definition, rather than relying on
+      periodic manual checks to catch it.

@@ -18,6 +18,12 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-08 ~00:15 PDT — [Loop run 37](changelog-entries/run-37.md)** — `source_domains`
+  fully wired end-to-end; 30th report catches a false lead; the report-page
+  dateModified fix extended to RSS; a new glossary failure mode found (undefined terms
+  silently dropped); periodic audit catches a real regression from last run's slug
+  rename.
+
 - **2026-07-07 ~23:00 PDT — [Loop run 36](changelog-entries/run-36.md)** — Resolves the
   source-citation tension with a real decision (`source_domains`, homepage-only,
   schema-enforced); completes the dedicated slug-curation pass (12 renames); IPTC check
