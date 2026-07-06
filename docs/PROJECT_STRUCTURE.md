@@ -78,6 +78,10 @@ fashion-trend-crawler/
 │   │                           operator to feed into archive.org's Save Page Now, once a real
 │   │                           deployed SITE_URL exists; does not call any Wayback API itself,
 │   │                           not wired into CI
+│   ├── check_signal_reuse_claims.py  existing (run 61) — flags a report's own reuse/
+│   │                           continuation prose naming a signal_id not present in that
+│   │                           report's own top_signals; not wired into CI, made a standing
+│   │                           periodic-audit step (run 62)
 │   └── run.sh                  existing — fixed run 1 (no longer stale): runs
 │                               crawler.py -> summarize.py (classify+summarize+save dated report)
 ├── .github/

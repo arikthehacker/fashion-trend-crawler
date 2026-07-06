@@ -337,6 +337,9 @@ fashion-trend-crawler/
     generate_archive_manifest.py  # produces a manifest of report-page URLs/hashes for a
                                 #   human operator to feed into archive.org Save Page Now,
                                 #   once a real SITE_URL exists; not wired into CI
+    check_signal_reuse_claims.py  # flags a report's own reuse/continuation prose naming a
+                                #   signal_id not present in that report's own top_signals
+                                #   (run 61); not wired into CI, standing periodic-audit step (run 62)
   data/
     reports/                   # dated JSON reports — see /archive on the
                                 #   live site or `ls data/reports/` for the
