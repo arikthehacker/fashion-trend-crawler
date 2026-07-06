@@ -1236,9 +1236,27 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       4 leftover `npx serve out` processes left running by a subagent's unfinished
       live-server check — terminated and rebuilt cleanly.
 
-## Next up (run 58 candidates)
-- [ ] `met-gala-2027-coverage-gap` has only 1 report's worth of history — watch for it
-      to reappear in future reports so `is_prolonged_silence()` can actually detect it.
+## Run 58 — done
+- [x] Added `data/reports/2027-06-14.json`, a 51st report. **Consolidation fix**: the
+      agent's summary claimed it reused `met-gala-2027-coverage-gap`, but it actually
+      minted a different `archive_tag` instead — corrected to a real `top_signals`
+      entry reusing the established signal_id; verified `get_signal_status_history()`
+      now sees 2 occurrences.
+- [x] **Consolidation fix**: run 57's Met Gala Signal object had reintroduced the
+      exact incorrect "hasn't occurred yet" hypothesis run 56 already fixed elsewhere
+      in the same report — an internal contradiction. Aligned the Signal text with the
+      corrected framing (event occurred May 3, absence is genuine and unresolved).
+- [x] Glossary fully curated — 18 new definitions, warning count from 20 to 0.
+- [x] Added dark mode (`prefers-color-scheme`) support with real WCAG contrast-ratio
+      verification (~7.9:1, exceeds AA) — the site previously had none.
+- [x] Nav/build regression sweep — clean, all links resolve, skip-link intact across
+      all 121 pages (verified via direct file inspection, no live server used).
+- [x] Periodic audit — clean. 55 confidence mismatches, only the documented override
+      non-conservative.
+
+## Next up (run 59 candidates)
+- [ ] `met-gala-2027-coverage-gap` now has 2 occurrences in its cross-report history
+      (threshold is 4) — watch for it to continue reappearing.
 - [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
       correctness — still awaiting a human decision (run 50).
 - [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in

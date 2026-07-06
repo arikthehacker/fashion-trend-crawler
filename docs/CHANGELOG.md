@@ -18,6 +18,15 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-09 ~03:00 PDT — [Loop run 58](changelog-entries/run-58.md)** — Found two
+  real problems with the new Met Gala signal-reuse mechanism run 57 just built: the new
+  report claimed to reuse the signal_id but actually minted a different tag, and run
+  57's own new Signal object had reintroduced the exact incorrect "hasn't occurred yet"
+  hypothesis run 56 fixed elsewhere in the same report — both caught and corrected
+  before committing, with the accumulating history verified working afterward.
+  Glossary warnings cleared to zero; dark mode added with real contrast-ratio
+  verification; nav/build regression sweep clean.
+
 - **2026-07-09 ~01:30 PDT — [Loop run 57](changelog-entries/run-57.md)** — 50th report;
   Met Gala 2027 finally given a real tracked signal (with an honest caveat about what
   it does and doesn't fix); a second, independently-found dormancy gap closed in the
