@@ -1656,8 +1656,36 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       tracking" section directly to the doc so it can't silently drift out of
       sync with TODO.md again.
 
-## Next up (run 83 candidates)
-- [ ] Manual-sampling cadence next due ~run 87 (now tracked directly in
+## Run 83 — done
+- [x] Added `data/reports/2027-12-13.json`, a 76th report — correctly trusted
+      the mechanical `derive_confidence()` output where no override trigger
+      applied, rather than second-guessing an already-correct formula result.
+- [x] Fixed a real, proportionate archive UX gap: added year-grouping headers
+      to the archive listing at 75+ items; explicitly declined to build
+      pagination/tag-filtering the archive doesn't yet need.
+- [x] Consolidated 12 confidence-override precedents into a permanent,
+      cited reference (`docs/confidence-discipline-precedents.md`) — ends the
+      pattern of each report-writing agent rediscovering precedent from
+      scratch. The consolidation audit also surfaced two genuine unreconciled
+      precedent departures (below) — a real finding, not a silent bug.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Human decision needed
+- [ ] **Two flagged confidence-precedent inconsistencies**: `data/reports/2027-05-17.json`
+      (Dior Cruise, bumped to "high" on single-sector corroboration, contradicting
+      precedent 2) and `data/reports/2027-07-12.json` (Couture FW27 reception,
+      upgraded to "high" despite an acknowledged domain-taxonomy gap, contradicting
+      precedent 3 and inconsistent with the prior week's handling of the identical
+      pattern). Both are reasoned departures already recorded in the report's own
+      `human_editor_note`, not oversights — full detail in
+      `docs/agent-logs/confidence-precedents-consolidation-run83.md`. Needs a human
+      call: formalize a narrower sub-exception in the precedents doc, or correct
+      the confidence field via `save_report()`.
+
+## Next up (run 84 candidates)
+- [ ] `archive_tags` remains unsurfaced as a filter on the archive page — future
+      scope if the archive grows enough to need it, not a current gap.
+- [ ] Manual-sampling cadence next due ~run 87 (tracked directly in
       `docs/manual-sampling-workflow.md` — update it in place when re-run).
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven

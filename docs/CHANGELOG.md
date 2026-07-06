@@ -18,6 +18,14 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-10 ~09:50 PDT — [Loop run 83](changelog-entries/run-83.md)** — 76th
+  report correctly trusts the mechanical formula where no override applies;
+  archive page gets a proportionate year-grouping fix (not over-built); a
+  landmark 12-precedent confidence-discipline reference is consolidated,
+  surfacing two genuine unreconciled precedent departures flagged for human
+  judgment rather than auto-corrected; nav/build and periodic audits both
+  clean.
+
 - **2026-07-10 ~08:10 PDT — [Loop run 82](changelog-entries/run-82.md)** — 75th
   report keeps two independently-sourced signals correctly un-merged; a
   dormancy/prolonged-silence convention audit comes back genuinely clean; a
