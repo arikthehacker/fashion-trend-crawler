@@ -93,12 +93,12 @@ export default async function SignalPage({ params }: { params: Promise<{ slug: s
 
       {/* occurrence list */}
       <section aria-label="Occurrences" style={sectionStyle}>
-        <p style={labelStyle}>Recorded Occurrences</p>
+        <h2 style={labelStyle}>Recorded Occurrences</h2>
         <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
           {occurrences.map(({ report_date, signal }) => (
             <div key={report_date} style={{ borderTop: "1px solid var(--border)", paddingTop: "1.5rem" }}>
               <Link href={`/reports/${report_date}`} style={{ textDecoration: "none", color: "inherit" }}>
-                <p style={{
+                <h3 style={{
                   fontFamily: "var(--font-instrument)",
                   fontSize: "1.2rem",
                   marginBottom: "0.75rem",
@@ -106,7 +106,7 @@ export default async function SignalPage({ params }: { params: Promise<{ slug: s
                   textUnderlineOffset: "3px",
                 }}>
                   {report_date}
-                </p>
+                </h3>
               </Link>
               <div style={{
                 display: "flex",

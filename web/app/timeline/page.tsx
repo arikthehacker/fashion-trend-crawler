@@ -109,7 +109,7 @@ export default function Timeline() {
                 href={`/reports/${date}`}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
-                <p style={{
+                <h2 style={{
                   fontFamily: "var(--font-franklin)",
                   fontSize: "0.75rem",
                   letterSpacing: "0.1em",
@@ -120,7 +120,7 @@ export default function Timeline() {
                   marginBottom: "0.5rem",
                 }}>
                   {date}
-                </p>
+                </h2>
               </Link>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 {(byDate.get(date) ?? []).map((entry, i) => (
