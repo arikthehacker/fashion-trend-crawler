@@ -966,3 +966,33 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
       Note: CI's `lint-web` job doesn't actually run a Next.js build today, so the
       `next build` vs `npm run build` distinction is currently moot there.
+
+## Run 47 — done
+- [x] Added `data/reports/2027-03-29.json`, a 40th report — logged a new forward-looking
+      SS27 trend-forecast signal, kept distinct from the prior report's backward-looking
+      retrospective signal.
+- [x] Re-ran the run-24/32 recurrence analysis: 4 signals now recur 4+ times, meeting
+      the threshold for the first time — but all 4 are unresolved factual/institutional
+      questions, not style trends. Built a minimal honest "Recurring across the archive"
+      section on `/archive` rather than the previously-declined narrative retrospective
+      feature, which would have misrepresented open questions as trending.
+- [x] Trust Project 8-indicators audit found a real gap: no reader-facing
+      correction-request channel exists. Honestly disclosed on the methodology page
+      rather than fabricating a fake contact mechanism.
+- [x] Full-archive coherence review at the 40-report milestone fixed real doc gaps:
+      `generate_archive_manifest.py`, `copy-reports.mjs`, and the Dataset/download route
+      were shipped but undocumented in README/PROJECT_STRUCTURE/SKILL.md. Also corrected
+      a stale SKILL.md claim that Pagefind was still "deferred" (implemented since run 14/15).
+- [x] Periodic audit — clean. 47 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (13th+ consecutive check).
+
+## Next up (run 48 candidates)
+- [ ] The run-19 confidence-gate fix remains untested — revisit once
+      `independent_criticism` sources reappear.
+- [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
+- [ ] Consider revising the run-24 recurrence threshold to exclude factual/
+      administrative carry-forward signals from counting toward a retrospective-feature
+      trigger, since genuine style-trend recurrence has never exceeded 3 consecutive
+      reports while unresolved-question signals now recur far more.
+- [ ] No external correction-request channel exists — honestly disclosed for now;
+      consider adding a real one (e.g. a monitored contact address) in the future.

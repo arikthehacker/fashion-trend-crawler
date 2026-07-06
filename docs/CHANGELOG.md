@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-08 ~13:00 PDT — [Loop run 47](changelog-entries/run-47.md)** — Archive
+  crosses 40 reports. The run-24 recurrence threshold is finally met, but composed of
+  unresolved-question signals, not style trends — built a minimal honest addition
+  instead of the previously-declined narrative retrospective; Trust Project audit finds
+  and honestly discloses a real corrections-channel gap; full-archive coherence review
+  fixes real doc gaps at the milestone; periodic audit clean.
+
 - **2026-07-08 ~11:30 PDT — [Loop run 46](changelog-entries/run-46.md)** — 39th report
   correctly separates retrospective trend-roundup commentary from new in-window
   reporting; Feb-March RTW fashion month added to the editorial calendar; a CC BY 4.0
