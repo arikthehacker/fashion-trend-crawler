@@ -123,7 +123,6 @@ DOMAIN_SECTOR_MAP = {
     # press, both English-language but genuine geographic diversity; see
     # docs/agent-logs/source-diversity-run39.md
     "scmp.com": "editorial",
-    "thenationalnews.com": "editorial",
 
     # retail / commerce sources
     "whowhatwear.com": "retail",

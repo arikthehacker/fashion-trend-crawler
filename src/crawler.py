@@ -53,7 +53,12 @@ FASHION_SOURCES = [
     # docs/agent-logs/source-diversity-run39.md. Still English-language --
     # geographic, not linguistic, diversification.
     "https://www.scmp.com/lifestyle/fashion-beauty",
-    "https://www.thenationalnews.com/lifestyle/fashion",
+    # thenationalnews.com added run 39, removed run 41: fetches fine and
+    # passes robots.txt, but its fashion section is client-side rendered --
+    # 0 headlines via static-HTML scraping across repeated checks (see
+    # docs/agent-logs/new-source-crawl-verification-run40.md and
+    # docs/agent-logs/thenationalnews-decision-run41.md). Not worth adding
+    # JS-rendering complexity for one source; crawler.py stays static-HTML.
 ]
 
 # default cache output path, pulled out as a named constant so future callers
