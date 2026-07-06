@@ -166,7 +166,9 @@ export default function Home() {
                   ? index.dominantMoodSourceDate
                     ? `${index.dominantMood} (carried from ${index.dominantMoodSourceDate}; none logged this window)`
                     : index.dominantMood
-                  : "None logged this window",
+                  : index.dominantMoodTooStale
+                    ? "No distinct mood signal in recent weeks"
+                    : "None logged this window",
               },
               {
                 label: "Highest-volatility sector",

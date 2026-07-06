@@ -255,9 +255,22 @@ export interface ThisWeeksIndex {
    *  logistics-heavy window) — surfaced so the UI can be transparent about it
    *  rather than presenting a stale mood as current. */
   dominantMoodSourceDate?: string;
+  /** Set when a mood term exists somewhere in the archive but only past the
+   *  staleness cutoff (MOOD_STALENESS_CUTOFF_DAYS) — the UI should show an
+   *  explicit "no distinct mood signal in recent weeks" state instead of
+   *  silently carrying forward an arbitrarily old term indefinitely. */
+  dominantMoodTooStale?: boolean;
   highestVolatilitySector: string | null;
   overallConfidence: string | null;
 }
+
+// Beyond this many days, a carried-forward dominant mood is no longer
+// disclosed as a (very old) current value — it's treated as "no distinct
+// signal in recent weeks" instead. ~12 weeks, per run 43's flagged
+// observation that a 24-week-old carry-forward reads as meaningless even
+// though it's honestly disclosed. Chosen to match the site's existing
+// "thin week" honesty conventions rather than hiding the gap silently.
+const MOOD_STALENESS_CUTOFF_DAYS = 84;
 
 /**
  * Derives the "THIS WEEK'S INDEX" glanceable metrics module (doc §27/§28) from
@@ -325,10 +338,20 @@ export function getThisWeeksIndex(): ThisWeeksIndex | null {
   // recent earlier report that has one (disclosed via dominantMoodSourceDate).
   let dominantMood: string | null = null;
   let dominantMoodSourceDate: string | undefined;
+  let dominantMoodTooStale = false;
   for (const r of reports) {
     if (r.aesthetic_terms && r.aesthetic_terms.length > 0) {
+      const isCarryForward = r.report_date !== latest.report_date;
+      if (isCarryForward) {
+        const daysOld =
+          (Date.parse(latest.report_date) - Date.parse(r.report_date)) / 86_400_000;
+        if (daysOld > MOOD_STALENESS_CUTOFF_DAYS) {
+          dominantMoodTooStale = true;
+          break;
+        }
+      }
       dominantMood = r.aesthetic_terms[0].replace(/\s*\(carryover\)\s*/i, "").trim();
-      dominantMoodSourceDate = r.report_date === latest.report_date ? undefined : r.report_date;
+      dominantMoodSourceDate = isCarryForward ? r.report_date : undefined;
       break;
     }
   }
@@ -383,6 +406,7 @@ export function getThisWeeksIndex(): ThisWeeksIndex | null {
     recurringMaterial,
     dominantMood,
     dominantMoodSourceDate,
+    dominantMoodTooStale,
     highestVolatilitySector,
     overallConfidence,
   };
