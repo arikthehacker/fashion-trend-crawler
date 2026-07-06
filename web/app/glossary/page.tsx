@@ -96,6 +96,7 @@ const DEFINITIONS: Record<string, string> = {
   "tiktok": "A short-form video social media platform, cited as a social-amplification source sector when style content circulating there is tracked.",
   "fhcm": "The Fédération de la Haute Couture et de la Mode, the organizing body that publishes the official Paris fashion week and haute couture show calendars, cited as an institutional-sector source.",
   "who what wear": "An online fashion and style publication, cited as an editorial-sector source when its coverage is tracked.",
+  "vogue": "A Conde Nast fashion and lifestyle publication, cited as an editorial-sector source when its coverage is tracked; distinct from the CFDA/Vogue Fashion Fund, a separate jointly run award program.",
   "cfda": "The Council of Fashion Designers of America, a nonprofit trade association of American fashion designers, cited as an institutional-sector source.",
   "new york fashion week": "The New York leg of the international ready-to-wear fashion week circuit, cited as a designer-origin source event when collections shown there are tracked.",
   "retro sexiness": "A styling framing describing overtly body-conscious, revealing garment choices presented as a deliberate historical throwback rather than a new development.",
@@ -147,6 +148,9 @@ const DEFINITIONS: Record<string, string> = {
   "shirting": "Lightweight woven fabric traditionally used for dress shirts, cited as a material when it appears in a garment or silhouette outside its conventional shirt context.",
   "structured waist": "A silhouette built around a defined, shaped waistline -- through boning, corsetry, or structured tailoring -- rather than a loose or undefined torso line.",
   "boning": "Rigid or semi-rigid strips inserted into a garment, traditionally into corsetry, to hold and shape its structure, cited as a material/construction element when used to create a defined silhouette.",
+  "silhouette echo": "A term describing the independent, apparently uncoordinated appearance of the same garment silhouette across separate designers or market weeks, without one citing or responding to the other -- distinct from a trend that spreads by direct citation or retail adoption.",
+  "ffw": "FFW (ffw.com.br), an independent Brazilian fashion and culture editorial platform, cited as an editorial-sector source for South American runway and market coverage.",
+  "sao paulo fashion week": "Sao Paulo's market-week fashion showcase, cited as a source event for South American runway and resort-collection coverage.",
 };
 
 function normalize(term: string): string {
