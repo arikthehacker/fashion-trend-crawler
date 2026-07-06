@@ -18,6 +18,17 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-06 ~17:45 PDT — [Loop run 14](changelog-entries/run-14.md)** — Fixed static
+  export properly (real `out/` output confirmed); added `/rss.xml`; added an 8th report,
+  now the 4th consecutive thin week, explicitly flagged as a streak; fixed stale
+  README/PROJECT_STRUCTURE/skill-doc references; AI-journalism-standards research found
+  real gaps (auditable review records, prompt versioning, bias audits).
+
+- **2026-07-06 ~16:45 PDT — Loop run 13 homepage rewrite (approved)** — User approved
+  retiring `web/lib/trends.ts`; homepage rebuilt as a masthead + latest-report teaser via
+  `getLatestReport()`; deleted the 4 legacy `trends_raw.json`/`trends_summary.json` files —
+  **migration step 5/5 complete**, closing the 6-run-old legacy-migration plan.
+
 - **2026-07-06 ~16:30 PDT — [Loop run 12](changelog-entries/run-12.md)** — Shipped `/search`
   with client-side facet filtering; built a signal-dormancy history helper instead of a
   static status field; expanded taxonomy outlet coverage; added a 7th report (Copenhagen

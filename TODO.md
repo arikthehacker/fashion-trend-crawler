@@ -288,11 +288,32 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       `trends_raw.json`/`trends_summary.json` files (root + `src/`). **Migration step 5/5
       complete** — the 6-run-old legacy-migration plan is finally closed out.
 
-## Next up (run 14 candidates)
-- [ ] Fix `sitemap.ts`/`robots.ts` for static-export compatibility (`dynamic =
-      "force-static"`), then restore `output: "export"` in `next.config.ts` so Pagefind's
-      postbuild indexing actually works.
-- [ ] Verify Pagefind end-to-end locally once static export is restored (`npm install &&
-      npm run build`) — not verified in this environment.
-- [ ] Continue prioritizing qualitative fixes over mechanically adding reports, per the
-      run-12 health check.
+## Run 14 — done
+- [x] Fixed static export properly: `force-static` on `sitemap.ts`/`robots.ts`,
+      `output: "export"` restored, confirmed real `out/` directory produced. Pagefind's
+      postbuild step still needs a local `npm install` to actually verify indexing.
+- [x] Added `/rss.xml` — standard RSS 2.0 feed of all reports, plus a `<link rel="alternate">`
+      tag in `layout.tsx` metadata.
+- [x] Added `data/reports/2026-08-17.json`, an 8th report — **now the 4th consecutive
+      thin report** (07-27, 08-03, 08-10, 08-17). Explicitly named as a streak in the
+      report's own limitations/tags, per the run-12 health check's recommendation.
+- [x] Doc consistency pass — README/PROJECT_STRUCTURE/skill doc had several stale
+      references (legacy trend files, wrong report count, `run.sh` still marked broken)
+      fixed to match actual current state.
+- [x] AI-journalism-standards research (`docs/agent-logs/ai-journalism-standards-research.md`):
+      compared against AP/Poynter/Reuters guidelines. Found real gaps: `human_editor_note`
+      isn't an auditable per-report sign-off record, no prompt-versioning/review cadence,
+      no stated bias-audit practice, no explicit draft-vs-published gate.
+
+## Next up (run 15 candidates)
+- [ ] **Worth investigating directly, not just noting:** 4 consecutive thin reports raises
+      a real question — is this genuinely a quiet news cycle, or is WebSearch-based
+      research hitting a coverage ceiling that a real `crawler.py` run wouldn't? Consider
+      whether it's time to prioritize getting a genuine live crawl merged into the archive
+      over adding more WebSearch-researched reports.
+- [ ] Verify Pagefind indexing end-to-end with a real `npm install && npm run build`
+      locally (needs your machine, not verifiable in the current environment).
+- [ ] Consider the AI-journalism-standards gaps: a structured per-report review record,
+      prompt change tracking, a periodic bias-check note, and a draft/published status
+      distinction — none implemented yet, all flagged as real gaps against actual
+      newsroom AI-use standards (AP/Poynter/Reuters).
