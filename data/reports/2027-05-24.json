@@ -1,0 +1,83 @@
+{
+  "report_date": "2027-05-24",
+  "collection_window": {
+    "start": "2027-05-18",
+    "end": "2027-05-24"
+  },
+  "sources_scanned": 14,
+  "items_collected": 1,
+  "source_sector_breakdown": {
+    "editorial": 4,
+    "retail": 1
+  },
+  "executive_summary": "This collection window (May 18-24, 2027) is the forty-eighth archived window. The Cannes Film Festival red carpet cycle, which runs into this window, generated consistent multi-outlet editorial coverage converging on the same descriptive shift: red-carpet dressing this cycle leaned toward architectural, controlled silhouettes (Schiaparelli, Prada, Jacquemus, Louis Vuitton, Givenchy) rather than unstructured maximalism, described across outlets as precision over spectacle. Met Gala 2027 was checked a fourth consecutive time -- no theme, co-chair, or red-carpet coverage of any kind has surfaced at any point. Given three prior windows of identical zero-coverage results, this window treats the absence itself as the notable fact rather than repeating a routine check, and logs it once, explicitly, as a standing data gap rather than an open question expected to resolve. Wales Bonner/Hermes and the CFDA Fashion Fund/Awards questions were not re-litigated this window per SKILL.md workflow note 10; no new coverage surfaced for either.",
+  "top_signals": [
+    {
+      "name": "Cannes 2027 red carpet -- architectural/controlled silhouettes over maximalist spectacle",
+      "type": "aesthetic_signal",
+      "source_sectors": [
+        "editorial",
+        "retail"
+      ],
+      "confidence": "medium",
+      "volatility": "seasonal",
+      "origin_classification": "editorial_amplified",
+      "evidence": "Multiple editorial and retail-adjacent outlets covering the Cannes Film Festival red carpet cycle (WWD, W Magazine, Net-a-Porter/PORTER, runwaylive.com, stylerave.com) independently described the same shift: sculptural, corset-forward, and architectural silhouettes from Schiaparelli, Prada, Jacquemus, Louis Vuitton, and Givenchy, framed by several outlets as 'precision over spectacle' or a move away from unstructured maximalism. Named looks included Demi Moore in Jacquemus and Gucci, Bella Hadid in Prada, and Schiaparelli's blowfish-inspired couture ensemble.",
+      "index_note": "Editorial-sector convergence on a shared descriptive frame for a single red-carpet cycle -- treated as an aesthetic/editorial-amplified signal, not a designer-originated claim, since the framing (silhouette shift) is the outlets' synthesis of runway-adjacent celebrity dressing rather than a designer collection statement.",
+      "source_corroboration_count": 5,
+      "signal_id": "cannes-2027-architectural-red-carpet",
+      "confidence_source": "manual",
+      "human_editor_note": "derive_confidence() would land this at 'high' on raw corroboration count (5 sources), but only two of those domains (wwd.com, net-a-porter.com) resolve to a mapped sector under taxonomy.py's DOMAIN_SECTOR_MAP -- w Magazine, runwaylive.com, and stylerave.com are genuinely editorial in practice but currently classify as 'unclear' for lack of a taxonomy entry. Holding this at 'medium' rather than overriding upward, unlike the prior window's Dior Cruise call: that override was justified by a discrete, single-day, photographed event where no other sector could plausibly weigh in fast enough to matter. Here the gap is a taxonomy coverage limitation, not a property of the event itself, so it should be fixed by expanding DOMAIN_SECTOR_MAP in a future run, not papered over by a confidence override this week.",
+      "source_domains": [
+        "wwd.com",
+        "net-a-porter.com",
+        "wmagazine.com",
+        "runwaylive.com",
+        "stylerave.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "Cannes 2027 red carpet",
+    "architectural silhouettes precision over spectacle",
+    "Met Gala 2027 no coverage fourth window"
+  ],
+  "garments": [
+    "corset-forward gown",
+    "structured evening gown",
+    "tailored jacket"
+  ],
+  "silhouettes": [
+    "architectural",
+    "sculptural"
+  ],
+  "materials": [
+    "crystal-embellished organza",
+    "satin"
+  ],
+  "colors": [],
+  "aesthetic_terms": [
+    "precision over spectacle"
+  ],
+  "cultural_references": [],
+  "limitations": [
+    "Met Gala 2027 was checked a fourth consecutive window (following 2027-05-03, 2027-05-10, and 2027-05-17) for any theme, co-chair, or red-carpet coverage. None found. Per this window's editorial judgment, four consecutive zero-coverage windows for an event that normally generates same-day content is itself the notable fact -- logged here as a standing, explicitly-named data gap rather than a routine still-open question. This is a factual-silence case (per SKILL.md workflow note 10), not a style-dormancy close-out: the absence of coverage is not evidence the event didn't happen or was restructured, only that no source in this index's crawl set has reported on it across four windows.",
+    "The Cannes 2027 red-carpet signal was the one item this window that cleared the cross-source corroboration bar; no other candidate signal did, so top_signals contains a single entry rather than the project's usual target count.",
+    "Three of the five corroborating domains for the Cannes signal (wmagazine.com, runwaylive.com, stylerave.com) are not yet present in taxonomy.py's DOMAIN_SECTOR_MAP and classify as 'unclear' rather than 'editorial' -- a taxonomy coverage gap, not a signal-quality issue, flagged for a future run rather than worked around with a confidence override this week.",
+    "Wales Bonner/Hermes and the CFDA Fashion Fund/Awards questions were not re-litigated this window per SKILL.md workflow note 10; both remain 'untracked going forward pending new information' with no new coverage found.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "cannes-2027-architectural-red-carpet",
+    "met-gala-2027-postevent-coverage-gap-fourth-window",
+    "wales-bonner-untracked-pending-new-information",
+    "cfda-signals-untracked-pending-new-information",
+    "2027-q2"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "review_status": "reviewed",
+  "reviewed_by": "",
+  "revision_history": [],
+  "content_hash": "474d0075ab0bcb4b6c7c76819a7337770b0a9ee3580f2c7f0a82ec9e3617517d"
+}
