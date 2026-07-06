@@ -12,6 +12,476 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ---
 
+## 2026-07-06 ~16:30 PDT — loop run 12, branch `ari3lla-index-loop-improvements`
+
+5 more subagents, disjoint scopes, no lost work. Homepage/`web/lib/trends.ts` still
+deliberately untouched pending human sign-off from run 11.
+
+- **Search** (`docs/agent-logs/facet-filter-impl.md`): shipped `/search` with client-side
+  facet filtering over source sector/confidence/volatility, per run 11's design.
+  Full-text search (Pagefind) deliberately deferred — not needed yet for a 7-report corpus.
+- **Signal dormancy** (`docs/agent-logs/signal-dormancy-mechanism.md`): considered a
+  static `signal_status` field, rejected it as redundant with the existing `declining`
+  volatility label, built `get_signal_status_history()` instead — a trend-surfacing
+  helper rather than a label that would itself go stale.
+- **Taxonomy** (`docs/agent-logs/taxonomy-outlet-expansion.md`): expanded domain coverage
+  for 4 thin sectors (designer_origin, visual_archive, independent_criticism,
+  institutional).
+- **New report** (`docs/agent-logs/real-report-2026-08-10.md`): added a 7th report.
+  Copenhagen Fashion Week SS27 genuinely fell in-window but no dated post-show coverage
+  existed; correctly logged a pre-show forecast at low confidence rather than treating it
+  as confirmed, and did not repeat the sheer-layering/soft-tailoring dormancy check a
+  third time.
+- **12-run health check** (`docs/agent-logs/health-check-run12.md`): a genuinely valuable
+  step-back audit. Found `off-duty-varsity`'s dormancy flag has gone 3 reports without
+  resolution (real minor neglect), confirmed `trends.ts` is correctly blocked-on-human
+  rather than forgotten, and flagged that 3 consecutive thin/near-thin reports read
+  differently to an actual reader than 3 isolated ones — each individually honest, but the
+  pattern itself is worth surfacing. Notably, this run's own report-writing agent
+  independently addressed that exact concern before the health check's findings even
+  reached it, by giving 2026-08-10 a distinct thin-status reason instead of repeating
+  boilerplate.
+- Coordinator re-ran `python -m py_compile src/*.py`, `python src/validate_all_reports.py`
+  (7/7 valid), `npx tsc --noEmit`, `npx next build` — all clean, `/search` live.
+
+### Known gaps carried forward
+- `web/lib/trends.ts` retirement still pending sign-off — 2 runs old now, genuinely
+  blocked rather than neglected.
+- `off-duty-varsity` dormancy unresolved after 3 flags — `get_signal_status_history()` now
+  exists to make the actual call.
+- Consider whether mechanically adding a report every run is still the right cadence vs.
+  prioritizing qualitative fixes, per the health check's explicit recommendation.
+
+## 2026-07-06 ~15:15 PDT — loop run 11, branch `ari3lla-index-loop-improvements`
+
+5 more subagents, disjoint scopes, no lost work.
+
+- **Design proposal, needs sign-off** (`docs/agent-logs/trends-ts-fate-proposal.md`):
+  `web/lib/trends.ts`'s `getTrends()` is used specifically by the homepage, which is
+  currently rendering a stale, un-versioned crawl snapshot left over from run 8's
+  live-crawl test — a real, user-visible product inconsistency, not just dead code.
+  Recommendation: retire it, rebuild the homepage off `reports.ts` as a masthead + latest-
+  report teaser, then delete the 4 legacy JSON files. Flagged as needing explicit sign-off
+  since it changes what the homepage actually shows.
+- **Confidence review** (`docs/agent-logs/confidence-review-run11.md`): checked both
+  reports added since the last review (runs 9-10) — no new concerning cases.
+- **Nav audit** (`docs/agent-logs/nav-link-audit.md`): found real coherence drift —
+  `/case-study` had zero inbound links from anywhere on the site, and 4 pages
+  (methodology/taxonomy/sources/about) had fallen behind the homepage's nav set as newer
+  pages shipped in later runs. Unified nav across 5 pages.
+- **Search design, not implemented** (`docs/agent-logs/search-discoverability-design.md`):
+  recommends Pagefind for static full-text search plus client-side facet filtering over
+  the existing taxonomy fields, scoped as a future dedicated build.
+- **New report** (`docs/agent-logs/real-report-2026-08-03.md`): added a 6th report,
+  honestly thin again, with two recurring signals correctly downgraded on dormancy rather
+  than kept artificially high.
+- Coordinator re-ran `python -m py_compile src/*.py`, `python src/validate_all_reports.py`
+  (6/6 valid, 0 warnings), `npx tsc --noEmit`, `npx next build` — all clean.
+
+### Known gaps carried forward
+- `web/lib/trends.ts` decision pending explicit sign-off before execution.
+- Search/discoverability feature designed, not built.
+- No formal "retire a signal_id" mechanism exists yet — `off-duty-varsity` has been
+  flagged dormant twice without a structured way to mark it closed.
+
+## 2026-07-06 ~14:00 PDT — loop run 10, branch `ari3lla-index-loop-improvements`
+
+5 more subagents, disjoint scopes, no lost work (git-safety guardrail from run 9 holding).
+
+- **Pipeline** (`docs/agent-logs/summarize-revision-wiring.md`): `summarize.py` now
+  threads `revision_reason`/`corrected_at` through to `save_report()`'s
+  `revision_history` mechanism, with CLI flags and a clear block-and-explain message on
+  an unreasoned overwrite instead of a crash.
+- **Migration — real blocker found** (`docs/agent-logs/migration-step5-final.md`): the
+  agent doing final-deletion verification grepped beyond `src/*.py` for the first time
+  and found `web/lib/trends.ts` — the frontend's live-crawl data loader — still reads the
+  legacy `trends_raw.json`/`trends_summary.json` files directly. Every prior migration
+  step (1-4) only touched backend Python files; nobody had checked the frontend. Legacy
+  files correctly NOT deleted. This is now a real, scoped follow-up: migrate or retire
+  `trends_raw.json` usage.
+- **Voice** (`docs/agent-logs/voice-audit-2.md`): first full re-audit since run 1, given
+  how much copy has accumulated. Found one tonal outlier — manifesto-style aphorisms on
+  the about page that read as "stylist voice" without tripping a literal banned word.
+  Fixed. Everything else already compliant.
+- **New report, real thin-week test** (`docs/agent-logs/real-report-2026-07-27.md`):
+  added a 5th report. Genuinely found too few distinct in-window signals and correctly
+  used `collection_status: "thin"` with an honest note rather than padding — the first
+  real-world proof that run 7's honesty-over-filler schema work actually holds up when an
+  agent is under implicit pressure to produce "enough" content.
+- **Docs** (`docs/agent-logs/readme-case-study-refresh.md`): README and case-study page
+  had drifted well behind 9 runs of actual shipped work; refreshed to match reality,
+  including honest limitations (migration incomplete, no live crawl merged into archive).
+- Coordinator re-ran `python -m py_compile src/*.py`, `python src/validate_all_reports.py`
+  (5/5 reports valid), `npx tsc --noEmit`, `npx next build` — all clean, 5 dated reports,
+  19 signal-slug routes.
+
+### Known gaps carried forward
+- `web/lib/trends.ts` still depends on legacy cache files — needs a deliberate migration
+  or retirement decision before step 5 can complete.
+- Confidence-warning count needs periodic review as reports accumulate.
+
+## 2026-07-06 ~12:45 PDT — loop run 9, branch `ari3lla-index-loop-improvements`
+
+5 more subagents, disjoint scopes. Every agent prompt this run included an explicit
+git-safety instruction (scope reverts to exact files, never `git checkout .`) after run
+8's coordination bug — no work was lost this time, all 5 agents' changes landed intact.
+
+- **Schema** (`docs/agent-logs/revision-history-impl.md`): implemented the
+  `revision_history` mechanism proposed last run — `save_report()` now requires
+  `revision_reason` and `corrected_at` when overwriting a differing report for an existing
+  date, appending the prior `content_hash` before writing. Backward compatible.
+- **Design, not implemented** (`docs/agent-logs/pipeline-rerun-design.md`): a concurrently
+  running agent proposed the exact same mechanism independently — good convergent
+  validation. Recommends `summarize.py` route its save call through `revision_history`
+  rather than silently overwriting or adding a `--force` flag, tied to the project's own
+  fixity/transparency principles.
+- **Migration step 4/5** (`docs/agent-logs/migration-step4.md`): `test_tools.py` now
+  references the shared `DEFAULT_OUTPUT_FILE` constant. All 4 files touching the legacy
+  cache filename (`crawler.py`, `summarize.py`, `server.py`, `test_tools.py`) now share one
+  source of truth. Step 5 (final deletion) is unblocked pending a last verification pass.
+- **Manual sampling, second exercise** (`docs/agent-logs/manual-sample-exercised-2.md`):
+  added a "Poetcore" signal from Pinterest Predicts 2026, corroborated by WWD, to
+  `2026-07-20.json` — establishes the workflow as repeatable, not a one-off. This agent
+  also handled a concurrent `save_report()` signature change gracefully (adapted its call
+  site rather than fighting the other agent's edit).
+- **Process fix** (`docs/agent-logs/git-safety-guardrail.md`): added an explicit
+  git-safety convention to the project skill doc documenting run 8's coordination bug and
+  its fix. Also refreshed the skill doc's "Common next steps," though its revision_history
+  note was itself immediately stale on landing since another agent shipped that mechanism
+  in the same run — fixed during consolidation.
+- Coordinator re-ran `python -m py_compile src/*.py`, `python src/validate_all_reports.py`,
+  `python src/audit_confidence.py` (14 mismatches, all previously reviewed as
+  non-concerning), `npx tsc --noEmit`, `npx next build` — all clean.
+
+### Known gaps carried forward
+- `revision_history` exists but `summarize.py`'s save call doesn't route through it yet —
+  today's pipeline re-run collision is still unresolved in practice, only in design.
+- Migration step 5 (final legacy-file deletion) unblocked but not yet executed.
+- Confidence-warning count will need periodic review as new reports are added.
+
+## 2026-07-06 ~11:30 PDT — loop run 8, branch `ari3lla-index-loop-improvements`
+
+5 more subagents, disjoint scopes. This run surfaced both a genuine pipeline bug and a
+genuine coordination bug — documenting both in full since they're the most valuable
+findings so far.
+
+- **Confidence resolution** (`docs/agent-logs/confidence-resolution.md`): the
+  "Resale/secondhand retail growth" signal flagged last run was resolved by finding real
+  independent corroboration (GlobalData's own resale analysis) rather than downgrading —
+  its "high" confidence is now legitimately earned.
+- **CI** (redone by coordinator, see below): `derive_confidence()` wired into
+  `validate_all_reports.py` as a non-blocking warning.
+- **Migration step 3/5** (redone by coordinator, see below): `server.py`'s MCP tools now
+  reference the shared `DEFAULT_OUTPUT_FILE` constant.
+- **Major finding — live pipeline works** (`docs/agent-logs/live-crawl-attempt.md`): an
+  agent actually ran `crawler.py` (real network, 119 real headlines from Vogue/
+  WhoWhatWear/Hypebeast) and `summarize.py` (real Anthropic API call using the
+  pre-existing `.env` key). Found `max_tokens=2000` in `summarize.py` was too small and
+  truncated Claude's response mid-JSON, crashing the run. **Fixed to `max_tokens=4000`
+  during consolidation** — this is the first confirmed-real bug in the actual pipeline
+  code (as opposed to hand-authored data) found across 8 runs. The live output collided
+  with today's existing hand-authored report; correctly not used to overwrite curated
+  data, saved instead for reference at `docs/agent-logs/live-crawl-2026-07-06-real-output.json`.
+- **Retention design research** (`docs/agent-logs/retention-versioning-design.md`): found
+  `save_report()` silently overwrites `content_hash` with no history, contradicting the
+  site's own Corrections-section claim that originals are preserved. Schema proposal
+  written, not implemented.
+- **Coordination bug found during consolidation:** the live-crawl agent's own cleanup
+  (reverting its exploratory changes to `summarize.py`/`trends_raw.json`) used a git
+  revert broad enough to also wipe out two OTHER agents' concurrent uncommitted work —
+  the migration-step-3 edit to `server.py` and the confidence-warning wiring in
+  `validate_all_reports.py` both vanished silently. Caught by diffing actual file state
+  against each agent's described changes before committing (a habit worth keeping — agent
+  self-reports describe intent, not always the final working-tree state). Both pieces of
+  lost work were redone directly by the coordinator from the original agents' logged specs.
+- Coordinator re-ran `python -m py_compile src/*.py`, `python src/validate_all_reports.py`
+  (now shows 0 warnings on top of 4/4 valid), `python src/audit_confidence.py` (13
+  mismatches, down from 14, all now non-concerning), `npx tsc --noEmit` — all clean.
+
+### Known gaps carried forward
+- Live-crawled output for today's date exists but wasn't merged into `data/reports/` due
+  to a naming collision with existing curated data — needs a deliberate decision on how to
+  handle re-running the pipeline on an already-used date.
+- `revision_history` schema addition proposed, not implemented.
+- 2 of 5 migration steps remain (test_tools.py, final legacy-file deletion).
+- **Process gap:** no explicit guardrail yet against agents' cleanup/revert commands
+  clobbering concurrent agents' uncommitted work — flagged as a run 9 candidate.
+
+## 2026-07-06 ~10:10 PDT — loop run 7, branch `ari3lla-index-loop-improvements`
+
+5 more subagents, disjoint scopes, coordinator verified and consolidated.
+
+- **Transparency** (`docs/agent-logs/transparency-disclosure.md`): added Corrections,
+  Editorial Independence, and AI Involvement sections to methodology/about pages —
+  directly closes run 6's gap analysis top finding.
+- **Migration** (`docs/agent-logs/migration-step2.md`): step 2 of 5 — parameterized
+  `summarize.py`'s `load_trends()`/`summarize()`, default behavior unchanged, confirmed
+  `server.py` unaffected (it never imports from summarize.py).
+- **Schema** (`docs/agent-logs/thin-week-fallback.md`): added `collection_status`/
+  `thin_week_note` fields and a prompt instruction so a genuinely low-signal week gets
+  reported honestly instead of padded with manufactured signals, per Nieman Lab-style
+  guidance from run 6's research.
+- **Docs** (`docs/agent-logs/skill-doc-refresh.md`): corrected the project skill doc —
+  removed a stale "run.sh KNOWN STALE" note that was itself stale since run 1, added
+  missing file-map entries for everything built across runs 1-6, replaced an outdated
+  "Common next steps" list with a pointer to `TODO.md`.
+- **Audit** (`docs/agent-logs/confidence-audit.md`): cross-checked all 22 signals across 4
+  reports against `derive_confidence()`. Found one genuinely concerning case —
+  "Resale/secondhand retail growth" in 2026-07-13.json is rated "high" confidence on a
+  single uncorroborated source, exactly the failure mode the formula was built to catch.
+  Not auto-corrected; flagged for human review rather than silently changed, since
+  confidence assignment is meant to stay editorially reviewable, not mechanically
+  overwritten.
+- Coordinator re-ran `python -m py_compile src/*.py`, `python src/validate_all_reports.py`,
+  `python src/audit_confidence.py`, `npx tsc --noEmit`, `npx next build` — all clean.
+
+### Known gaps carried forward
+- One signal ("Resale/secondhand retail growth") has confidence overstated relative to its
+  corroboration — needs a human decision, not fixed automatically this run.
+- `derive_confidence()` still not wired into the pipeline as even a soft warning.
+- 3 of 5 legacy-migration steps remain (server.py, test_tools.py, final deletion).
+- No report yet produced by an actual live crawl.
+- Manual sampling still exercised only once.
+
+## 2026-07-06 ~09:00 PDT — loop run 6, branch `ari3lla-index-loop-improvements`
+
+5 more subagents, disjoint scopes, coordinator verified and consolidated.
+
+- **Schema** (`docs/agent-logs/confidence-derivation-impl.md`): implemented
+  `derive_confidence()` in `report_schema.py` per run 5's research — an opt-in helper
+  (high: corroboration>=2 across >=2 sectors; medium: same-sector corroboration or a
+  single high-reliability-sector source; low: uncorroborated social-only; archival passed
+  through unchanged). Added `Signal.confidence_source` ("derived"/"manual") to track
+  provenance. Not auto-applied to `save_report()` yet — deliberately opt-in.
+- **Migration** (`docs/agent-logs/migration-step1.md`): executed step 1 of 5 from the
+  prior run's migration plan — parameterized `crawler.py`'s cache path behind a named
+  constant, zero behavior change. 4 steps remain, to be done one at a time in future runs.
+- **Data curation** (`docs/agent-logs/slug-curation.md`): shortened 6 overly long
+  `signal_id` slugs in `2026-07-13.json` to 2-3 words.
+- **New report** (`docs/agent-logs/real-report-2026-07-20.md`): added
+  `data/reports/2026-07-20.json`, a 4th weekly window, WebSearch-researched, including a
+  recurrence check that correctly flagged "off-duty-varsity" as `declining` now that its
+  driving event (World Cup) has ended.
+- **Cross-run consistency bug found and fixed during consolidation:** the new-report agent
+  and the slug-curation agent ran concurrently; the new report referenced the
+  pre-curation long slugs for its two recurring signals, silently breaking cross-report
+  recurrence tracking on `/signals/[slug]`. Fixed both references to match the curated
+  slugs; all 4 reports now validate and cross-reference correctly.
+- **Gap analysis** (`docs/agent-logs/gap-analysis-run6.md`): re-checked the original doc's
+  §40 priority list against 6 runs of actual work (verified against the codebase directly,
+  not just prior changelog claims). Confirmed genuine progress but found a real, unaddressed
+  gap: no corrections/transparency/editorial-independence disclosure anywhere on-site,
+  which Trust Project/Trusting News research flags as important for a small, new
+  publication's credibility.
+- Coordinator re-ran `python -m py_compile src/*.py`, `python src/validate_all_reports.py`,
+  `npx tsc --noEmit`, `npx next build` after fixing the slug-consistency bug — all clean,
+  4 reports, 18 signal-slug routes.
+
+### Known gaps carried forward
+- No corrections/transparency policy on-site — new finding, top priority for run 7.
+- 4 of 5 legacy-migration steps remain.
+- No report yet produced by an actual live crawl.
+- No "thin week" fallback state for honest low-signal reporting periods.
+- `derive_confidence()` exists but isn't wired into the actual pipeline yet.
+
+## 2026-07-06 ~07:50 PDT — loop run 5, branch `ari3lla-index-loop-improvements`
+
+5 more subagents, disjoint scopes, coordinator verified and consolidated. Three agents
+concurrently edited `web/app/reports/[date]/page.tsx` (heading hierarchy, JSON-LD,
+citation line) — one hit a mid-write collision and re-read/retried, all three merged
+cleanly, confirmed by a fresh build with no restructuring conflicts.
+
+- **Accessibility** (`docs/agent-logs/heading-hierarchy-fix.md`): fixed WCAG heading
+  hierarchy on report/signal/timeline pages — section labels were styled `<p>` tags,
+  now real `<h2>`/`<h3>` with identical visual styling preserved.
+- **SEO** (`docs/agent-logs/sitemap-robots-jsonld.md`): added `web/app/sitemap.ts`,
+  `web/app/robots.ts`, and `NewsArticle` JSON-LD structured data on report pages, plus
+  `web/lib/site.ts` for shared site constants.
+- **Archival citation** (`docs/agent-logs/citation-line.md`): added a "Cite as" block to
+  report page footers per Library-of-Congress-derived digital-preservation practice —
+  kept site-relative (no absolute domain exists in the codebase yet; deliberately not
+  invented).
+- **Migration planning, not executed** (`docs/agent-logs/legacy-migration-plan.md`): a
+  detailed, sequenced plan to retire `trends_raw.json`/`trends_summary.json` safely.
+  Notably found that `.codex/config.toml` registers `server.py` as a real MCP server, so
+  its 5 tool functions are an external contract — migration must preserve function
+  signatures, only rewire internals. Deliberately scoped as planning-only; too risky to
+  execute unattended in one run.
+- **Research, not implemented** (`docs/agent-logs/confidence-scoring-research.md`):
+  intelligence-community confidence frameworks (ICD 203 / Words of Estimative
+  Probability) and CTI-analyst practice both support deriving `confidence`
+  deterministically from `source_corroboration_count` + source-sector diversity instead
+  of an LLM judgment call. Concrete formula proposed for run 6.
+- Coordinator re-ran `python -m py_compile src/*.py`, `python src/validate_all_reports.py`,
+  `npx tsc --noEmit`, and `npx next build` after consolidating three concurrent edits to
+  the same file — all clean, `/sitemap.xml` and `/robots.txt` confirmed in the route table.
+
+### Known gaps carried forward
+- Confidence-scoring formula researched, not implemented.
+- Legacy-file migration planned in detail, not executed — do one step at a time in a
+  future run, verifying between each, per the plan's own caution.
+- No absolute canonical domain yet; sitemap/robots/JSON-LD/citation are site-relative only.
+- Real live-crawl replacement of WebSearch-sourced report data still open.
+
+## 2026-07-06 ~06:40 PDT — loop run 4, branch `ari3lla-index-loop-improvements`
+
+5 more subagents, disjoint scopes, coordinator verified and consolidated. This run had 3
+agents concurrently touching adjacent frontend/data files (`/signals/[slug]` build, fixity
+UI display, manual-sample data addition) — all merged cleanly, confirmed by a fresh build.
+
+- **CI** (`docs/agent-logs/ci-validation-check.md`): added `src/validate_all_reports.py`
+  (validates every report in `data/reports/`, exits non-zero with a clear per-file error on
+  failure) and `.github/workflows/validate-reports.yml` to run it on push/PR. Actually
+  tested the failure path by corrupting a scratch copy of a report, not just the happy path
+  — directly closes the gap flagged at the end of run 3.
+- **Data** (`docs/agent-logs/manual-sample-exercised.md`): exercised `manual_sample.py` for
+  the first time — added a real signal ("Off-Duty Varsity") to `2026-07-13.json`, sourced
+  from Pinterest's official Summer 2026 Trend Report (a compliant platform trend-report
+  page, not a scrape), with a human_editor_note arguing it's likely World-Cup-driven search
+  noise rather than a durable shift.
+- **Frontend** (`docs/agent-logs/signals-slug-page.md`, `docs/agent-logs/fixity-ui-display.md`):
+  shipped `/signals/[slug]` (chronological per-signal history page, linked from timeline and
+  report pages when `signal_id` is present) and surfaced `source_corroboration_count`/
+  `content_hash` in the report UI, small and unobtrusive.
+- **Research, not implemented** (`docs/agent-logs/accessibility-seo-research.md`): audited
+  against WCAG heading-hierarchy guidance, Google's Article/NewsArticle JSON-LD
+  conventions, and Library of Congress digital-preservation practices. Found real gaps:
+  report page section labels are styled `<p>` not real headings, no sitemap/robots/JSON-LD,
+  no canonical/OG metadata. Concrete fixes documented for run 5.
+- Coordinator re-ran `python -m py_compile src/*.py`, `python src/validate_all_reports.py`
+  (new script, passes), `npx tsc --noEmit`, and `npx next build` after consolidating —
+  all clean, `/signals/[slug]` confirmed generating 13 signal-slug routes including the new
+  Pinterest-sourced signal.
+
+### Known gaps carried forward
+- Accessibility/SEO fixes (headings, sitemap, robots, JSON-LD, OG metadata) — researched,
+  not implemented.
+- No stable per-report citation line yet for archival permanence.
+- New CI workflow untested against a live GitHub Actions run (only run locally so far).
+- Legacy `trends_raw.json` migration and real live-crawl replacement of WebSearch-sourced
+  data both still open from earlier runs.
+
+## 2026-07-06 ~05:30 PDT — loop run 3, branch `ari3lla-index-loop-improvements`
+
+5 more subagents, disjoint scopes, coordinator verified and consolidated.
+
+- **Schema** (`docs/agent-logs/signal-id-backfill.md`): added `Signal.signal_id` slug
+  field to `report_schema.py` (optional, backward-compatible, validated as lowercase-
+  alphanumeric-with-hyphens when present). Backfilled slugs onto all 3 reports, reusing
+  the same slug for verbatim-recurring signals ("sheer-layering", "soft-tailoring").
+  Backfilled `source_corroboration_count`/`content_hash` onto the two pre-existing example
+  reports, which previously only had schema defaults.
+- **Bug found and fixed during consolidation:** `data/reports/2026-05-07.json` failed
+  `validate_report()` — several hand-authored field values never matched
+  `taxonomy.py`'s controlled vocab (`volatility: "seasonal/recurring"`, `"stable/seasonal"`,
+  `"medium"`; `origin_classification: "editorial"`, `"designer_origin"`,
+  `"independent_criticism"`; `confidence: "low-medium"`). This had been silently broken
+  since the file was first hand-authored, before this branch existed. Fixed all values to
+  valid enum members; all 3 reports now pass validation. Added a TODO item recommending a
+  CI check against `validate_report()` so this can't recur silently.
+- **Frontend** (`docs/agent-logs/timeline-page.md`): built `/timeline`, a plain reverse-
+  chronological signal index (not a graph, per run 2's design research), plus
+  `getTimelineEntries()` in `web/lib/reports.ts` and nav links from homepage/archive/report
+  pages.
+- **Prompt tightening** (`docs/agent-logs/prompt-style-crosscheck.md`): closed two gaps in
+  `summarize.py`'s prompt against Reuters Handbook attribution norms — banned evaluative
+  verbs ("declared," "proves") in favor of attribution-anchored ones, and added explicit
+  instructions against ubiquity language ("everyone is wearing") per doc §2.
+- **Manual sampling** (`docs/agent-logs/manual-sampling-workflow.md`): designed (not yet
+  exercised) a compliant workflow for social-sector signals —
+  `docs/manual-sampling-template.md` for a human to fill out weekly, `src/manual_sample.py`
+  helper that builds a valid `Signal` and enforces a non-empty `human_editor_note`.
+- **Docs sync** (`docs/agent-logs/structure-taxonomy-sync.md`): `docs/PROJECT_STRUCTURE.md`
+  brought in line with the actual tree; `taxonomy.py`'s outlet list cross-checked against
+  doc §11 and found already complete, no changes needed.
+- Coordinator re-ran `python -m py_compile src/*.py`, a full load+validate pass over all 3
+  reports, `npx tsc --noEmit`, and `npx next build` after consolidating and fixing the
+  2026-05-07 validation bug — all clean, `/timeline` confirmed in the route table.
+
+### Known gaps carried forward
+- `manual_sample.py` designed but not yet exercised to produce a real signal.
+- `/signals/[slug]` still held pending more dated reports.
+- No CI check yet enforcing `validate_report()` against `data/reports/*.json`.
+- Legacy `trends_raw.json` migration still open (see run 2).
+- Real live crawl still hasn't replaced the WebSearch-researched 2026-07-13 report.
+
+## 2026-07-06 ~04:20 PDT — loop run 2, branch `ari3lla-index-loop-improvements`
+
+5 more subagents, disjoint scopes, coordinator verified and consolidated.
+
+- **Schema** (`docs/agent-logs/schema-fixity-fields.md`): added
+  `Signal.source_corroboration_count` (default 1, AP/Reuters-style single-vs-corroborated
+  distinction) and `Report.content_hash` (sha256 fixity check per DPC/NDSA guidance) to
+  `report_schema.py`. Both optional/backward-compatible — existing example reports still
+  validate without modification.
+- **Frontend audit** (`docs/agent-logs/static-pages-audit-2.md`): `taxonomy/page.tsx` and
+  `sources/page.tsx` were silently missing 2-3 of the 10 source sectors defined in
+  `taxonomy.py` (street/user-generated, resale/secondhand, visual archive/search) — fixed.
+  Build verified clean.
+- **Correction to run 1's plan** (`docs/agent-logs/legacy-file-cleanup.md`): `trends_raw.json`
+  is NOT dead legacy data — it's the live default output of `crawler.py`, read/written by
+  `summarize.py`, `server.py`'s MCP tools, and `test_tools.py`. TODO.md's removal plan was
+  wrong and has been corrected; removal now correctly requires a real migration (repoint
+  those 3 files at the new report schema) rather than a straight deletion.
+- **Design research, not implemented** (`docs/agent-logs/signals-timeline-design.md`):
+  only 2 signal names recur verbatim across the 3 existing dated reports — not enough to
+  justify `/signals/[slug]` yet, and it needs a `signal_id` field first. `/timeline` is
+  lower-risk and could ship sooner.
+- **Sourcing research, not implemented** (`docs/agent-logs/social-ingestion-research.md`):
+  TikTok Research API is academic-only (commercial use prohibited, ruled out). Pinterest
+  Trends API is usable but has no historical backfill. Recommendation: manual sampling
+  first, matching doc §31's compliant-ingestion requirement.
+- Coordinator re-ran `python -m py_compile src/*.py`, `npx tsc --noEmit`, `npx next build`
+  after consolidating — all clean.
+
+### Known gaps carried forward
+- Manual-sampling workflow for social signals not yet implemented.
+- `/timeline` and `/signals/[slug]` not yet built (latter intentionally held).
+- `signal_id` field not yet added to `report_schema.py`.
+- Legacy `trends_raw.json` migration (repointing crawler/summarize/server at the new
+  schema) not yet done — this is real refactor work, not cleanup.
+- Wire-service style cross-check against `summarize.py`'s prompt still open.
+
+## 2026-07-06 ~03:15 PDT — loop run 1, branch `ari3lla-index-loop-improvements`
+
+5 subagents ran in parallel on disjoint scopes, coordinator verified and consolidated.
+
+- Added `TODO.md` at repo root: living punch list across pipeline, frontend, sourcing, and
+  docs/process, seeded from `docs/CHANGELOG.md` "Known gaps" plus journalism/archival
+  research below.
+- **Pipeline** (`docs/agent-logs/pipeline-wiring.md`): fixed `src/run.sh` so it runs
+  crawl -> summarize as one command instead of the old crawl -> test_tools -> server
+  sequence, which never produced a saved report. `summarize.py` already had a usable
+  `__main__` entry point.
+- **Data** (`docs/agent-logs/real-report-2026-07-13.md`): added
+  `data/reports/2026-07-13.json`, a 7-signal report built from WebSearch research (not a
+  live crawler run — that gap in "Known gaps" below is *not* closed by this). Each signal
+  carries a `human_editor_note` per doc §18/19's human-in-the-loop requirement. Validated
+  against `report_schema.validate_report()`.
+- **Frontend** (`docs/agent-logs/voice-audit.md`): fixed a first-person slip in
+  `web/app/case-study/page.tsx` ("Designed and built..." -> "Scope: ..."). Confirmed
+  `layout.tsx` branding and all other pages already voice-compliant. `tsc --noEmit` and
+  `next build` clean.
+- **Research** (`docs/agent-logs/journalism-research.md`): sourced 5 recommendations from
+  AP Stylebook attribution guidance, the Reuters Handbook of Journalism, and the DPC/NDSA
+  digital-preservation fixity guidance — folded into `TODO.md`'s new "Research inputs"
+  section (source-corroboration count on signals, fixity/checksum fields on report files).
+- **Hygiene** (`docs/agent-logs/hygiene-scan.md`): no sensitive data found in tracked or
+  untracked files; `.gitignore` already sufficient; legacy `trends_raw.json`/
+  `trends_summary.json` still present, still correctly left alone pending a confirmed
+  end-to-end `run.sh` run.
+- Coordinator re-ran `python -m py_compile src/*.py`, `npx tsc --noEmit`, and
+  `npx next build` after consolidating all agent output — all clean, 13 routes build
+  including the new 2026-07-13 report page.
+
+### Known gaps carried forward
+- `run.sh`'s crawl->summarize wiring has not yet been exercised end-to-end against live
+  network access — needs a real run before legacy `trends_raw`/`trends_summary.json` files
+  can be safely removed.
+- The 2026-07-13 report is WebSearch-researched, not scraped by `crawler.py` — the "run a
+  real crawl" gap remains open until a live crawl replaces this.
+- TikTok/Pinterest compliant ingestion (doc §31) still unaddressed.
+
 ## 2026-07-06 02:04 PDT — branch setup and repo hygiene (done directly, not by a subagent)
 
 - Created branch `ari3lla-index-rebuild` off `master`.

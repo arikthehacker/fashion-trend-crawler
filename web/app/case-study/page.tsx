@@ -18,39 +18,51 @@ const sections: { title: string; body: string[] }[] = [
     ],
   },
   {
-    title: "My Role",
+    title: "Scope",
     body: [
-      "Designed and built the crawler, MCP workflow, report structure, style taxonomy, frontend interface, and editorial/product direction.",
+      "Covers the crawler, MCP workflow, report schema and validation, confidence derivation, manual social sampling, archive and timeline interfaces, transparency disclosures, and editorial/product direction.",
     ],
   },
   {
     title: "Technical System",
     body: [
-      "A crawler collects public source material. MCP tools expose extracted data. Language models summarize and structure recurring signals. Reports are saved as dated JSON files and rendered in a Next.js frontend.",
+      "A crawler collects public source material. MCP tools expose extracted data. Language models summarize and structure recurring signals. Reports are validated against a controlled schema, saved as dated JSON files with a revision history for corrections, and rendered across an archive, a per-date report view, a reverse-chronological timeline, and a per-signal longitudinal view in a Next.js frontend. A CI workflow re-validates the archive on every push.",
     ],
   },
   {
     title: "Design System",
     body: [
-      "The interface uses an editorial/reporting tone, restrained typography, clear hierarchy, source transparency, and index-like structure.",
+      "The interface uses an editorial/reporting tone, restrained typography, clear hierarchy, source transparency, and index-like structure. Report pages carry structured data, a stable citation line, and heading markup built for accessibility rather than visual-only hierarchy.",
     ],
   },
   {
     title: "Methodology",
     body: [
-      "Signals are evaluated by recurrence, source diversity, source type, incentive context, visual coherence, volatility, and historical continuity.",
+      "Signals are evaluated by recurrence, source diversity, source type, incentive context, visual coherence, volatility, and historical continuity. Confidence can additionally be derived deterministically from corroboration count and source-sector diversity, tracked separately from editorially assigned confidence so the two are never conflated.",
     ],
   },
   {
     title: "Ethical AI Stance",
     body: [
-      "AI is used for extraction and organization, not taste authority. Human interpretation and source transparency remain central.",
+      "AI is used for extraction and organization, not taste authority. Human interpretation and source transparency remain central. Corrections, editorial-independence, and AI-involvement disclosures are published on the methodology and about pages, and a genuinely low-signal reporting period is disclosed as such rather than padded with manufactured signals.",
+    ],
+  },
+  {
+    title: "Compliant Social Sampling",
+    body: [
+      "TikTok and Pinterest signals are added through a manual sampling workflow sourced from official platform trend reports or APIs, each carrying a required editor note, rather than through scraping. The workflow has been exercised against real reports, not only designed.",
+    ],
+  },
+  {
+    title: "Current Limitations",
+    body: [
+      "Every report in the archive is hand-authored or research-assembled rather than produced by a live crawl merged into the archive; a real crawl-and-summarize run has succeeded once but its output was not merged, pending a deliberate resolution of a same-date collision. Migration off the legacy cache-file pipeline is nearly, not fully, complete.",
     ],
   },
   {
     title: "Future Work",
     body: [
-      "Archive, signal timelines, source-sector comparison, volatility scoring, Pinterest/manual visual signal tracking, a TikTok/compliant social signal layer, and a historical style glossary.",
+      "Scheduled live crawls merged into the archive, source-sector-aware crawling, source-sector comparison views, and completion of the legacy pipeline migration.",
     ],
   },
 ];

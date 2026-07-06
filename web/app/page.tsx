@@ -92,7 +92,10 @@ export default function Home() {
             { href: "/methodology", label: "Methodology" },
             { href: "/taxonomy", label: "Taxonomy" },
             { href: "/sources", label: "Sources" },
+            { href: "/timeline", label: "Timeline" },
+            { href: "/archive", label: "Archive" },
             { href: "/about", label: "About" },
+            { href: "/case-study", label: "Case Study" },
           ].map((item) => (
             <Link
               key={item.href}

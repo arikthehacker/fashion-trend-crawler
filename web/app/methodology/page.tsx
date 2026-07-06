@@ -21,7 +21,7 @@ const sections: { title: string; body: string[] }[] = [
   {
     title: "Source Sectors",
     body: [
-      "Sources are grouped into sectors: designer-origin, runway/editorial, retail/commerce, social/platform, visual archive and search, independent criticism, and institutional/historical.",
+      "Sources are grouped into sectors: designer-origin, runway/editorial, retail/commerce, social/platform, visual archive and search, independent criticism, institutional/historical, street/user-generated, and resale/secondhand.",
       "Each sector carries a different incentive structure, and reports note which sectors a signal is drawn from. A full breakdown is available on the Sources page.",
     ],
   },
@@ -72,6 +72,27 @@ const sections: { title: string; body: string[] }[] = [
     body: [
       "Coverage is bounded by the sources scanned in a given collection window and is not a representative sample of all style discourse. Reports may under-represent sources without accessible public text, or that require API access not yet integrated.",
       "Signal classification involves human judgment applied to machine-extracted data, and reports may reflect that interpretive layer as much as the underlying source material.",
+    ],
+  },
+  {
+    title: "Corrections",
+    body: [
+      "When a signal classification or a stated fact is found to be wrong, the affected report is not silently edited. A dated correction note is appended to the report, stating what was wrong and what changed.",
+      "The original entry is preserved alongside the correction so the archive reflects what was published at the time, not a retroactively cleaned-up version of it.",
+    ],
+  },
+  {
+    title: "Editorial Independence",
+    body: [
+      "ARI3LLA INDEX is an independent research project. It is not sponsored by, affiliated with, or produced on behalf of any brand, publication, retailer, or platform referenced in its reports.",
+      "Editorial sources are cited as a source sector, not treated as neutral. Editorial coverage can be shaped by advertising relationships, affiliate commerce, and access to designers and PR — reports account for that incentive structure rather than assuming editorial framing is disinterested.",
+    ],
+  },
+  {
+    title: "AI Involvement",
+    body: [
+      "AI assists with crawling source material, extracting recurring language, clustering related terms, and drafting summaries. It does not make final classification decisions.",
+      "A human reviews AI-assisted output before publication, deciding what a cluster of terms means culturally, assigning taxonomy and origin classification, and recording judgment calls in a human-editor note attached to the report data.",
     ],
   },
   {
@@ -142,7 +163,10 @@ export default function Methodology() {
             { href: "/", label: "Report" },
             { href: "/taxonomy", label: "Taxonomy" },
             { href: "/sources", label: "Sources" },
+            { href: "/timeline", label: "Timeline" },
+            { href: "/archive", label: "Archive" },
             { href: "/about", label: "About" },
+            { href: "/case-study", label: "Case Study" },
           ].map((item) => (
             <Link
               key={item.href}

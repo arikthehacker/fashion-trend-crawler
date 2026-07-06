@@ -40,6 +40,11 @@ const sectors: { name: string; def: string; items: string[] }[] = [
     ],
   },
   {
+    name: "Visual Archive / Search",
+    def: "Visual search and reference platforms used to observe recurring imagery rather than public commentary.",
+    items: ["Reverse image and visual search platforms", "Runway/lookbook archive sites"],
+  },
+  {
     name: "Independent Criticism",
     def: "Commentary produced outside institutional media incentives.",
     items: [
@@ -54,6 +59,16 @@ const sectors: { name: string; def: string; items: string[] }[] = [
       "FIT resources", "Museum collections", "Fashion archives", "Costume history databases",
       "Academic papers", "Old runway archives", "Library collections",
     ],
+  },
+  {
+    name: "Street / User-Generated",
+    def: "Street style photography and public outfit documentation, tracked separately from platform captions and comments.",
+    items: ["Street style photography", "Public outfit documentation"],
+  },
+  {
+    name: "Resale / Secondhand",
+    def: "Secondhand marketplace listings, tracked as a distinct sector from primary retail because pricing and description language reflect a different market.",
+    items: ["Resale marketplace listings", "Secondhand item descriptions"],
   },
 ];
 
@@ -109,7 +124,10 @@ export default function Sources() {
             { href: "/", label: "Report" },
             { href: "/methodology", label: "Methodology" },
             { href: "/taxonomy", label: "Taxonomy" },
+            { href: "/timeline", label: "Timeline" },
+            { href: "/archive", label: "Archive" },
             { href: "/about", label: "About" },
+            { href: "/case-study", label: "Case Study" },
           ].map((item) => (
             <Link
               key={item.href}

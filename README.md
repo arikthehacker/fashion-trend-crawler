@@ -114,6 +114,53 @@ public weekly report
 - saves everything to JSON for analysis
 - dated reports are archived so the project accumulates a historical
   record over time, rather than only showing the current week
+- each report is validated against a controlled schema
+  (`src/report_schema.py`) before it can be considered part of the
+  archive, and CI (`.github/workflows/validate-reports.yml`) re-runs that
+  validation on every push/PR against everything in `data/reports/`
+- confidence can be derived deterministically from source-corroboration
+  count and source-sector diversity (`derive_confidence()`), tracked
+  against a manual "confidence_source" so editorial judgment calls stay
+  distinguishable from mechanically derived ones — this is opt-in and not
+  yet auto-applied on save
+- overwriting an existing dated report requires a `revision_history`
+  entry (reason + timestamp) rather than a silent overwrite, so the
+  archive can't quietly rewrite its own past
+
+## Archive & Reporting Surfaces
+
+- `/archive` — chronological list of all dated reports
+- `/reports/[date]` — full report render, one page per collection window
+- `/timeline` — reverse-chronological index of every signal across all
+  reports
+- `/signals/[slug]` — longitudinal view of a single signal's recurrence,
+  volatility, and confidence across reporting periods
+- `/methodology`, `/taxonomy`, `/sources`, `/about` — how signals are
+  evaluated, the full source-sector and confidence/volatility taxonomy,
+  and the outlet lists behind it
+- `/case-study` — project write-up
+- report pages carry `NewsArticle` JSON-LD, a stable "Cite as" line, and a
+  sitemap/robots setup for discoverability; heading structure follows
+  WCAG hierarchy rather than styled paragraphs standing in for headings
+
+## Transparency & Editorial Disclosures
+
+Methodology and About pages carry explicit Corrections, Editorial
+Independence, and AI-Involvement sections — what gets corrected and how,
+that editorial judgment (not an advertiser or platform) decides what
+signals matter, and where AI is and isn't used in the pipeline. A
+"thin week" fallback state exists in the schema so a genuinely low-signal
+reporting period is disclosed as such rather than padded with
+manufactured signals.
+
+## Manual / Compliant Social Sampling
+
+TikTok and Pinterest signals are never scraped. A manual-sampling
+workflow (`src/manual_sample.py`, `docs/manual-sampling-template.md`)
+lets a human add a social-origin signal sourced from an official
+platform trend report or API, with a required `human_editor_note`
+explaining why it is or isn't likely to be durable. This workflow has
+been exercised twice against real reports, not just designed.
 
 ## MCP / LLM Layer
 
@@ -125,6 +172,8 @@ directly:
 | `crawl_fashion_trends` | crawls all sources and saves fresh headlines |
 | `get_cached_trends` | returns the last crawl without hitting the web again |
 | `search_trends` | searches cached headlines by keyword |
+| `list_reports` | lists all archived dated reports |
+| `get_report` | returns one archived report by date |
 
 An LLM layer (Claude) then extracts, clusters, and summarizes the raw
 material into a structured, source-aware report rather than a hyped list
@@ -174,23 +223,45 @@ about limitations.
 
 - [x] landing page for weekly reports — live at [ari3lla.com](https://ari3lla.com)
 - [x] Claude integration for AI-assisted trend extraction
-- [ ] structured JSON report schema saved by date
-- [ ] archive page (`/archive`, `/reports/[date]`) — a historical record,
+- [x] structured JSON report schema saved by date
+- [x] archive page (`/archive`, `/reports/[date]`) — a historical record,
   not just a current snapshot
-- [ ] methodology page (`/methodology`) and taxonomy page (`/taxonomy`)
+- [x] methodology page (`/methodology`) and taxonomy page (`/taxonomy`)
+- [x] CI validation of the report archive on every push/PR
+- [x] compliant handling of social/platform signals — manual sampling,
+  exercised twice, not automated ingestion
+- [x] signal timelines and longitudinal tracking per signal (`/timeline`,
+  `/signals/[slug]`)
 - [ ] source-sector-aware crawling (more nuance beyond editorial/retail)
-- [ ] compliant handling of social/platform signals (TikTok, Pinterest)
 - [ ] scheduled crawls so the archive stays fresh automatically
-- [ ] signal timelines and longitudinal tracking per signal
+- [ ] a live `crawler.py` + `summarize.py` run merged into the archive
+  (one has succeeded against real sources — see Limitations)
+- [ ] final step of the legacy cache-file migration (safe deletion once
+  nothing references the old literal filename)
 
 ## Limitations
 
+- every report currently in `data/reports/` is hand-authored or
+  WebSearch-researched, not produced by a live `crawler.py` run merged
+  into the archive. A real crawl + summarize pass against live sources
+  has succeeded once (119 headlines from Vogue/WhoWhatWear/Hypebeast,
+  summarized via the Claude API), but its output collided with an
+  existing dated report and was deliberately not merged — it's saved for
+  reference at `docs/agent-logs/live-crawl-2026-07-06-real-output.json`.
+  A `revision_history` mechanism now exists in the schema to resolve this
+  kind of collision, but the pipeline doesn't route through it yet.
 - source coverage is currently weighted toward editorial and retail; social
   and designer-origin sources are underrepresented
 - signal classification depends on human/editorial review, which does not
   yet run on a fixed cadence
 - historical continuity claims are limited until the archive accumulates
-  more than a few reporting periods
+  more than a few reporting periods (4 dated reports as of this writing)
+- confidence can be derived deterministically (`derive_confidence()`) but
+  is not yet auto-applied — it currently runs as a non-blocking warning
+  in CI, flagging mismatches for human review rather than overwriting them
+- migration off the legacy `trends_raw.json`/`trends_summary.json` cache
+  files is 4 of 5 steps complete; final deletion is unblocked but not
+  yet done
 - this project does not use paid trend-data feeds; everything is derived
   from public, crawlable, or API-accessible sources
 
@@ -210,31 +281,35 @@ scraper into something closer to a research index.
 
 ## Project Structure
 
-Approximate layout — some paths (report schema, taxonomy module, archive
-and methodology routes) are actively evolving as the archive/methodology
-features are built out.
-
 ```
 fashion-trend-crawler/
   src/
-    crawler.py        # core crawler — bfs, robots.txt, headline extraction
-    server.py          # mcp server with three tools
-    summarize.py       # calls claude api to generate trend summary
-    report_schema.py   # structured report schema (in progress)
-    taxonomy.py         # signal/source taxonomy definitions (in progress)
+    crawler.py                # core crawler — bfs, robots.txt, headline extraction
+    server.py                  # mcp server, five tools (crawl/cache/search/list/get)
+    summarize.py               # calls claude api to generate trend summary
+    report_schema.py           # Report/Signal/CollectionWindow schema, validate/save/load,
+                                #   derive_confidence(), revision_history
+    taxonomy.py                 # signal/source taxonomy definitions + classify_source(url)
+    manual_sample.py           # compliant manual social-signal sampling helper
+    validate_all_reports.py    # CI check against every file in data/reports/
   data/
-    reports/           # dated JSON reports, e.g. 2026-05-07.json (in progress)
-  web/                 # next.js editorial site
+    reports/                   # 4 dated JSON reports (2026-05-07, -07-06, -07-13, -07-20)
+  web/                          # next.js editorial site
     app/
-      page.tsx          # homepage — current report
-      case-study/        # portfolio case study
-      archive/           # historical reports (in progress)
-      methodology/       # methodology page (in progress)
+      page.tsx                  # homepage — current report
+      archive/                  # historical report list
+      reports/[date]/           # per-date report render
+      timeline/                 # reverse-chronological signal index
+      signals/[slug]/           # per-signal longitudinal view
+      methodology/, taxonomy/, sources/, about/  # static reference pages
+      case-study/                # portfolio case study
+      sitemap.ts, robots.ts      # SEO
     lib/
-      trends.ts          # data layer
-  trends_raw.json     # cached crawl output
-  trends_summary.json # ai-generated summary
-  run.sh              # full pipeline runner
+      trends.ts                  # live/current-crawl data layer (separate on purpose)
+      reports.ts                 # archive data layer, reads data/reports/*.json
+  .github/workflows/validate-reports.yml  # CI: validates the archive on push/PR
+  trends_raw.json / trends_summary.json  # legacy cache files, migration 4/5 steps complete
+  run.sh                        # full pipeline runner
 ```
 
 ---

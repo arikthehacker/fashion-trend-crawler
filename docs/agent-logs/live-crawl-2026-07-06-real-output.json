@@ -1,0 +1,220 @@
+{
+  "report_date": "2026-07-06",
+  "collection_window": {
+    "start": "2026-06-30",
+    "end": "2026-07-06"
+  },
+  "sources_scanned": 30,
+  "items_collected": 119,
+  "source_sector_breakdown": {
+    "editorial": 20,
+    "retail": 10
+  },
+  "executive_summary": "This reporting period is dominated by two editorial sources\u2014Vogue and Hypebeast\u2014with supplementary retail coverage from Who What Wear, yielding a narrow source-sector spread that limits cross-sector confirmation. Vogue's coverage centers on Spring 2027 menswear season recaps, celebrity event dressing (Wimbledon, Serpentine Summer Party), and summer styling, while Hypebeast's items skew heavily toward footwear releases, anime and music culture, and lifestyle rather than apparel signals. Who What Wear contributes a cluster of retail-facing summer item pairings. The material produces a small number of distinguishable style signals; most are weakly supported by single-sector evidence or are editorial amplification of designer runway output. No social, street UGC, resale, or independent criticism sources are present in this batch, which substantially constrains confidence and cross-sector validation.",
+  "top_signals": [
+    {
+      "name": "Spring 2027 Menswear Season Visibility",
+      "type": "cultural_term",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "seasonal",
+      "origin_classification": "designer_originated",
+      "evidence": "Multiple Vogue editorial items reference Spring 2027 menswear shows, street style from those shows, breakout male models, and a podcast recap naming Celine, Dior, and Vuitton, indicating active seasonal runway coverage in the collection window.",
+      "index_note": "Confidence is medium rather than high because all evidence originates from a single editorial source sector; no retail adoption, resale, or street UGC data is present to indicate broader uptake."
+    },
+    {
+      "name": "Earthy Texture Footwear (Adidas / Pharrell VIRGINIA Adistar Jellyfish 'Timber')",
+      "type": "material",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "microtrend",
+      "origin_classification": "designer_originated",
+      "evidence": "Hypebeast referenced the Pharrell x Adidas VIRGINIA Adistar Jellyfish in a colorway described as 'earthy textures' and 'Timber' twice within the same collection window, suggesting editorial push around natural, muted material finishes in footwear.",
+      "index_note": "Low confidence assigned because the signal appears only on one editorial platform, is anchored to a single product release, and lacks cross-sector corroboration; duplication within one source does not constitute independent confirmation."
+    },
+    {
+      "name": "Summer Pareo / Sarong Styling",
+      "type": "garment",
+      "source_sectors": [
+        "retail"
+      ],
+      "confidence": "low",
+      "volatility": "seasonal",
+      "origin_classification": "retail_adopted",
+      "evidence": "Who What Wear listed the pareo as a recommended summer trend item within a zodiac-themed editorial commerce feature, pairing it alongside crochet, poplin dresses, and knee-length skirts.",
+      "index_note": "Low confidence assigned because the signal appears only in the retail sector via a commerce-incentivized format; no editorial, runway, or social corroboration is present in this dataset."
+    },
+    {
+      "name": "Crochet and Knee-Length Skirts as Summer Pairing",
+      "type": "styling_behavior",
+      "source_sectors": [
+        "retail"
+      ],
+      "confidence": "low",
+      "volatility": "recurring",
+      "origin_classification": "retail_adopted",
+      "evidence": "Who What Wear named crochet alongside knee-length skirts as a summer styling pairing in a dedicated item cluster, consistent with crochet's multi-season presence in retail-facing fashion media.",
+      "index_note": "Recurring volatility reflects crochet's documented seasonal reappearance across prior periods, but this dataset provides only single-sector retail evidence, limiting confidence to low."
+    },
+    {
+      "name": "Silk Pants and Maxi Skirts as Elevated Summer Separates Pairing",
+      "type": "silhouette",
+      "source_sectors": [
+        "retail"
+      ],
+      "confidence": "low",
+      "volatility": "emerging",
+      "origin_classification": "editorial_amplified",
+      "evidence": "Who What Wear described an 'understated summer top' worn with silk pants and maxi skirts as a styling behavior observed among 'fashion people,' framing it as a quietly circulating practice rather than a named trend.",
+      "index_note": "Low confidence assigned due to single-source, single-sector evidence; the framing as something fashion insiders are doing rather than a market instruction may indicate an early-stage or niche signal."
+    },
+    {
+      "name": "Leopard-Print Scarf as Summer Accessory",
+      "type": "garment",
+      "source_sectors": [
+        "retail"
+      ],
+      "confidence": "low",
+      "volatility": "volatile",
+      "origin_classification": "retail_adopted",
+      "evidence": "Who What Wear featured a leopard-print scarf as a shoppable summer trend item within a zodiac-themed commerce feature, without further editorial or runway corroboration in this dataset.",
+      "index_note": "Volatile classification reflects the item's appearance in a high-incentive commerce format without cross-sector support; zodiac-anchored trend framing is a known retail content device and should not be treated as evidence of organic adoption."
+    },
+    {
+      "name": "Oversize Button-Down as Summer Layering Piece",
+      "type": "garment",
+      "source_sectors": [
+        "retail"
+      ],
+      "confidence": "low",
+      "volatility": "recurring",
+      "origin_classification": "retail_adopted",
+      "evidence": "Who What Wear listed oversize button-downs as a summer trend item in its zodiac-themed retail feature, a garment type that has appeared consistently across multiple prior retail and editorial reporting periods.",
+      "index_note": "Recurring volatility assigned based on the garment's long presence in summer retail coverage across seasons; single-sector sourcing keeps confidence at low for this specific window."
+    },
+    {
+      "name": "Goddess and Antiquity References in Celebrity Dressing",
+      "type": "cultural_term",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "emerging",
+      "origin_classification": "editorial_amplified",
+      "evidence": "Vogue's coverage described Anne Hathaway as bridging 'boho and ancient Greece' and characterized Zendaya's custom Jacquemus look as 'pure goddess mode,' suggesting editorial use of classical antiquity and goddess-adjacent language to frame celebrity style choices.",
+      "index_note": "Low confidence assigned because the signal is entirely editorial in origin, concentrated in celebrity coverage, and involves two individual styling instances rather than a documented pattern across garments, silhouettes, or materials."
+    }
+  ],
+  "repeated_keywords": [
+    "summer",
+    "street style",
+    "menswear",
+    "Spring 2027",
+    "celebrity",
+    "editorial",
+    "trend",
+    "earthy",
+    "crochet",
+    "silk",
+    "maxi",
+    "pareo",
+    "goddess",
+    "oversize",
+    "leopard",
+    "couture",
+    "Fall 2016",
+    "Wimbledon",
+    "beach",
+    "poplin"
+  ],
+  "garments": [
+    "pareo",
+    "oversize button-down",
+    "maxi skirt",
+    "knee-length skirt",
+    "poplin dress",
+    "crochet skirt",
+    "silk pants",
+    "leopard-print scarf",
+    "thong sandal",
+    "jelly shoe"
+  ],
+  "silhouettes": [
+    "maxi length",
+    "oversize top",
+    "knee-length skirt"
+  ],
+  "materials": [
+    "silk",
+    "crochet",
+    "poplin",
+    "earthy texture (footwear)",
+    "felt (art installation context, not apparel)"
+  ],
+  "colors": [
+    "timber (earthy brown, footwear)",
+    "silver moss (footwear)",
+    "coastal blue (footwear)",
+    "all-white (footwear)",
+    "pool blue (watch)",
+    "dual tones"
+  ],
+  "aesthetic_terms": [
+    "goddess mode",
+    "ancient Greece",
+    "boho",
+    "summer whimsy",
+    "beach vibes",
+    "timeless culture",
+    "understated",
+    "serene",
+    "chic workwear",
+    "color-forward"
+  ],
+  "cultural_references": [
+    "Wimbledon 2026",
+    "Serpentine Summer Party",
+    "Fall 2016 Couture (flashback)",
+    "Spring 2027 menswear season",
+    "Madonna fashion legacy",
+    "Comme des Gar\u00e7ons Homme Plus",
+    "Dolce and Gabbana menswear",
+    "Thom Browne menswear",
+    "Giorgio Armani menswear",
+    "Celine menswear",
+    "Dior menswear",
+    "Louis Vuitton menswear",
+    "Jacquemus celebrity dressing",
+    "The Row summer 2026",
+    "BAPE FW26",
+    "Pharrell x Adidas VIRGINIA",
+    "New Balance 2000",
+    "Jordan Pointe",
+    "Nike SB Blazer Mid",
+    "Vans Premium Authentic Ease",
+    "Hassan Hajjaj London show",
+    "Gustaf Westman x Selfridges"
+  ],
+  "limitations": [
+    "Source sectors are limited to editorial (Vogue, Hypebeast) and retail (Who What Wear); no social, street UGC, resale, runway review, or independent criticism sources are present.",
+    "Hypebeast items in this batch are predominantly footwear releases, anime and music news, automotive, and lifestyle content rather than apparel or styling signals.",
+    "A significant portion of Vogue items are navigational, promotional, wellness, or celebrity gossip in nature and yield no actionable style signal data.",
+    "Who What Wear signals are embedded in zodiac-themed commerce features, a high-incentive editorial format that should not be treated as evidence of organic trend adoption.",
+    "All color signals this week originate from footwear product releases on a single platform, not from apparel or cross-sector coverage.",
+    "No cross-reporting-period comparison is possible from this dataset alone; recurrence claims cannot be verified without prior period data.",
+    "Fall 2016 couture flashback content from Vogue reflects archival republication, not current style practice.",
+    "Single reporting period; volatility and recurrence classifications are provisional."
+  ],
+  "archive_tags": [
+    "Fall 2016 Couture",
+    "Madonna fashion archive",
+    "Princess Diana 1990s manicure"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "The majority of collected items from the three active sources are navigational UI elements, celebrity gossip, wellness content, footwear product releases, and anime or music news rather than apparel style signals, resulting in a small number of genuinely distinct, cross-supported style observations.",
+  "content_hash": "e94c87563f30b8075af098ebbb380ae410905a098e4d8ba21cc9fd81abec9d34"
+}

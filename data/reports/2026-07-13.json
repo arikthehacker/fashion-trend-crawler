@@ -1,0 +1,207 @@
+{
+  "report_date": "2026-07-13",
+  "collection_window": {
+    "start": "2026-07-07",
+    "end": "2026-07-13"
+  },
+  "sources_scanned": 17,
+  "items_collected": 34,
+  "source_sector_breakdown": {
+    "editorial": 10,
+    "retail": 5,
+    "social": 8,
+    "designer_origin": 4,
+    "independent_criticism": 5,
+    "institutional": 2
+  },
+  "executive_summary": "This report identifies recurring style signals across 34 collected items from 17 public web sources dated between July 7 and July 13, 2026. The dominant cluster this period is a documented pivot away from restraint-coded 'quiet luxury' toward more maximalist and decorative runway statements, corroborated by independent criticism, editorial coverage, and designer-origin runway material from recent Chanel and Gucci collections. A second, separate cluster concerns 1970s-referencing 'boho' styling gaining traction across social and editorial sources simultaneously. Resale/secondhand retail adoption continues as a stable, well-corroborated signal rather than an emerging one. Several social-origin signals (layered tops, coastal-cowgirl styling) remain confidence-limited due to lack of designer or retail corroboration this period.",
+  "top_signals": [
+    {
+      "name": "Quiet luxury aesthetic backlash / maximalist pivot",
+      "type": "cultural_term",
+      "source_sectors": [
+        "independent_criticism",
+        "editorial",
+        "designer_origin"
+      ],
+      "confidence": "medium",
+      "volatility": "declining",
+      "origin_classification": "editorial_amplified",
+      "evidence": "Independent-criticism newsletters (e.g. Substack essays on 'quiet luxury' fatigue) describe the restraint aesthetic as having become a populist, aspirational-middle default rather than a wealth marker, citing Matthieu Blazy's October 2025 Chanel debut and Demna's February 2026 Gucci debut as openly maximalist runway statements. Pinterest's published 2026 Predicts data (cited secondhand via these pieces, not independently verified by this crawl) reported search-term surges for 'eighties luxury' and 'baggy suit.'",
+      "index_note": "Classified as editorial_amplified with declining volatility on the restraint aesthetic itself; corroboration spans independent criticism, editorial, and designer-origin runway material, but the underlying market-research figures were only captured secondhand.",
+      "human_editor_note": "Flagged for human review: this reads as a genuine critical narrative rather than a single viral moment, but the crawl only captured secondary references to Pinterest's search data, not the primary report. Recommend a human editor confirm the Pinterest figures directly before treating them as corroborating evidence, and assess whether 'declining' volatility for quiet luxury is premature given retail assortments have not visibly shifted yet.",
+      "signal_id": "quiet-luxury-backlash"
+    },
+    {
+      "name": "1970s 'boho' revival styling",
+      "type": "aesthetic_term",
+      "source_sectors": [
+        "social",
+        "editorial",
+        "retail"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "social_amplified",
+      "evidence": "Multiple outlets (editorial trend roundups and retail-adjacent style coverage) describe a coming boho/undone '70s-referencing wardrobe direction for the next several months, echoed by TikTok creator content using similar terminology.",
+      "index_note": "Medium confidence reflects cross-sector presence (social, editorial, retail), but classified emerging rather than seasonal pending confirmation this isn't a recurring cyclical label.",
+      "human_editor_note": "Requires human review: 'boho revival' recurs roughly every 3-5 years in this discourse and may be pattern-matched language rather than a genuinely new signal. A human editor familiar with the prior cycle (last flagged in the archive circa early 2020s per institutional sourcing) should confirm this isn't a recycled headline before archive-tagging it as emerging.",
+      "signal_id": "boho-revival"
+    },
+    {
+      "name": "Resale/secondhand retail growth",
+      "type": "market_behavior",
+      "source_sectors": [
+        "retail",
+        "editorial",
+        "institutional"
+      ],
+      "confidence": "high",
+      "volatility": "stable",
+      "origin_classification": "retail_adopted",
+      "evidence": "Business of Fashion's State of Fashion 2026 coverage (produced with McKinsey) and ThredUp's published 2026 Resale Report (data compiled by GlobalData) describe secondhand apparel growing several multiples faster than primary retail, with U.S. secondhand sales cited around $55.5 billion in 2025 and projected toward $78-80 billion by 2030. Independently, GlobalData's own market analysis (published directly via GlobalData, not routed through ThredUp) separately estimates the global apparel resale market growing 85.5% from 2022-2026 to $338.4 billion -- a distinct data source from a distinct market-research firm, corroborating the growth trend rather than merely restating the same commissioned report.",
+      "index_note": "High confidence reflects two independently sourced datasets (BoF/McKinsey State of Fashion coverage, and GlobalData's own published market analysis distinct from the ThredUp-commissioned report) rather than a single aggregated source, per confidence-audit.md re-review.",
+      "human_editor_note": "Re-reviewed per docs/agent-logs/confidence-audit.md: the original single source_corroboration_count=1 with three source_sectors reflected one aggregated source spanning sectors, not independent corroboration, which the audit correctly flagged as not supporting \"high\" confidence. A follow-up search located a genuinely independent second source -- GlobalData's own published market analysis (globaldata.com), separate from the ThredUp-commissioned report BoF cited -- corroborating the same growth trend with different figures. source_corroboration_count updated to 2 and confidence retained at \"high\" on that basis. Editor should still verify both sets of dollar figures against primary documents before quoting them in published copy.",
+      "signal_id": "resale-growth",
+      "source_corroboration_count": 2
+    },
+    {
+      "name": "Menswear 'aspirational realism' (loose, soft, muted tailoring)",
+      "type": "silhouette",
+      "source_sectors": [
+        "designer_origin",
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "seasonal",
+      "origin_classification": "designer_originated",
+      "evidence": "Coverage of recent Paris menswear presentations (Lemaire, Louis Vuitton, Herm\u00e8s, Dries Van Noten) describes a loose, soft, unglossy silhouette in muted tones (olive, stone, tobacco, oatmeal, faded navy), alongside a notable open-toe sandal styling choice across several houses.",
+      "index_note": "Designer-originated per presence across multiple houses at a single fashion week, with editorial pickup; seasonal volatility assigned since this ties to a specific collection cycle.",
+      "human_editor_note": "Flagged for review: editorial framing ('aspirational realism') is a coined term from a single piece of coverage and may be over-fitted branding rather than an industry-wide descriptor. A human editor should check whether other outlets use comparable language before adopting the term into the taxonomy's aesthetic_terms list.",
+      "signal_id": "menswear-aspirational-realism"
+    },
+    {
+      "name": "Layered tops styling (social)",
+      "type": "styling_behavior",
+      "source_sectors": [
+        "social"
+      ],
+      "confidence": "low",
+      "volatility": "volatile",
+      "origin_classification": "social_amplified",
+      "evidence": "Social/creator content describes a multi-layered-tops styling approach referencing 1990s sitcom style (attributed in coverage to Rachel Green/Friends), with no corroborating retail or designer-origin material collected this period.",
+      "index_note": "Classified volatile per default handling of social-only signals absent non-social corroboration.",
+      "human_editor_note": "Standard default handling: single-sector (social-only) signal classified as volatile per project convention. Human editor should hold this for at least one more collection window before any upgrade in confidence.",
+      "signal_id": "layered-tops-styling"
+    },
+    {
+      "name": "Coastal-cowgirl styling evolution",
+      "type": "styling_behavior",
+      "source_sectors": [
+        "social",
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "microtrend",
+      "origin_classification": "social_amplified",
+      "evidence": "Coverage describes an evolved 'coastal cowgirl' summer styling mix (denim with sheer linen, oversized western shirts styled over swimwear), amplified across social captions with light editorial pickup.",
+      "index_note": "Low confidence, microtrend volatility assigned given narrow sector spread (social plus light editorial) and a naming pattern that overlaps prior seasonal micro-aesthetics.",
+      "human_editor_note": "Requires human judgment: this is a variant naming of an aesthetic that has appeared in prior seasons under different labels ('coastal grandmother,' 'western revival'). A human editor should decide whether this is a genuinely distinct micro-aesthetic or a relabeling exercise before it is archive-tagged separately.",
+      "signal_id": "coastal-cowgirl"
+    },
+    {
+      "name": "Textured maximalist layering (fur/sheer/denim/sheer combinations)",
+      "type": "styling_behavior",
+      "source_sectors": [
+        "social",
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "emerging",
+      "origin_classification": "unclear",
+      "evidence": "Trend coverage describes maximalist stylists mixing textures rather than colors or prints (fur with sheer, denim with sheer, embellishment with fringe), attributed loosely to both social creator content and editorial trend forecasting.",
+      "index_note": "Origin classification left unclear because the crawl could not trace this language back to a single originating sector; flagged emerging pending firmer sourcing.",
+      "human_editor_note": "Flagged for review: origin is genuinely unclear from the sources collected this crawl \u2014 it is not evident whether this originated in designer collections, editorial forecasting copy, or social styling independently. A human editor with runway-season knowledge should trace this back before assigning a firmer origin classification.",
+      "signal_id": "textured-maximalist-layering"
+    },
+    {
+      "name": "\"Off-Duty Varsity\" sports-luxe summer uniform (jerseys + cargo bottoms)",
+      "type": "styling_behavior",
+      "source_sectors": [
+        "social"
+      ],
+      "confidence": "low",
+      "volatility": "flash",
+      "origin_classification": "platform_native",
+      "evidence": "Pinterest Newsroom, 'Summer 2026 Trend Report' (https://newsroom.pinterest.com/news/summer-trend-report-2026/), dated May 26, 2026 and framed as covering Summer 2026 (the season currently underway). Pinterest names the trend 'Off-Duty Varsity': oversized/layered/cropped jerseys as hero tops with cargo bottoms. Cited year-on-year search-index growth: 'World Cup jerseys' +840%, 'cargo jeans' +366%, 'cargo pants for women' +363%, 'denim jorts outfit' +330%, 'Brazil jersey outfits' +302%, 'bedazzled jorts' +212%. Figures are Pinterest's own aggregate search-index percentages (600M+ monthly active users cited by Pinterest), not independently verified by this project, and not a proxy for TikTok video volume -- observed via Pinterest's official trend-report page, not scraped platform content, per the compliant manual-sampling path (doc section 31).",
+      "index_note": "This reads less like an organic styling movement and more like search behavior tracking a live external event (the 2026 World Cup) -- people searching for jersey-outfit inspiration during the tournament window isn't the same claim as a durable sports-luxe aesthetic shift. Pinterest's own framing ('comfort with bite') leans promotional/forecast-branding language, which this entry deliberately does not adopt. Single-platform, single-source data (one Pinterest report) with no corroborating editorial, retail, or designer-origin sightings collected yet, so this stays low confidence rather than being upgraded on the strength of the large percentage figures alone -- a large percentage jump can still be a small base number, and Pinterest doesn't publish absolute search volume. A human editor should re-check after the tournament ends: persistence of jersey-as-daily-top interest past the news-event window would indicate a genuine style shift, while an immediate collapse would mean this was event-driven search noise rather than a fashion trend.",
+      "source_corroboration_count": 1,
+      "signal_id": "off-duty-varsity",
+      "human_editor_note": "This reads less like an organic styling movement and more like search behavior tracking a live external event (the 2026 World Cup) -- people searching for jersey-outfit inspiration during the tournament window isn't the same claim as a durable sports-luxe aesthetic shift. Pinterest's own framing ('comfort with bite') leans promotional/forecast-branding language, which this entry deliberately does not adopt. Single-platform, single-source data (one Pinterest report) with no corroborating editorial, retail, or designer-origin sightings collected yet, so this stays low confidence rather than being upgraded on the strength of the large percentage figures alone -- a large percentage jump can still be a small base number, and Pinterest doesn't publish absolute search volume. A human editor should re-check after the tournament ends: persistence of jersey-as-daily-top interest past the news-event window would indicate a genuine style shift, while an immediate collapse would mean this was event-driven search noise rather than a fashion trend."
+    }
+  ],
+  "repeated_keywords": [
+    "quiet luxury backlash",
+    "maximalism",
+    "boho",
+    "undone",
+    "resale",
+    "secondhand",
+    "aspirational realism",
+    "layered tops",
+    "coastal cowgirl",
+    "textured layering"
+  ],
+  "garments": [
+    "baggy suit",
+    "western shirt",
+    "layered top",
+    "sandal",
+    "denim"
+  ],
+  "silhouettes": [
+    "loose tailoring",
+    "oversized suiting",
+    "undone layering"
+  ],
+  "materials": [
+    "sheer linen",
+    "fur",
+    "denim",
+    "cashmere"
+  ],
+  "colors": [
+    "olive",
+    "stone",
+    "tobacco",
+    "oatmeal",
+    "faded navy"
+  ],
+  "aesthetic_terms": [
+    "quiet luxury",
+    "maximalism",
+    "boho revival",
+    "aspirational realism",
+    "coastal cowgirl"
+  ],
+  "cultural_references": [
+    "1970s boho",
+    "1990s sitcom style",
+    "eighties luxury"
+  ],
+  "limitations": [
+    "This collection window was assembled via targeted web search rather than a live automated crawl; source material reflects search-result summaries and secondary references in several cases, not always primary documents (e.g. Pinterest Predicts data cited secondhand through independent-criticism pieces).",
+    "Social-sector sampling relied on descriptions of platform discourse found through search rather than direct platform API access or approved dataset sampling, and should be treated as indicative rather than representative of social volume.",
+    "Several signals (boho revival, coastal-cowgirl evolution) may reflect recycled seasonal language rather than genuinely new discourse; human review is required before treating them as newly emerging per the notes on each signal.",
+    "Sample size (34 items across 17 sources) remains small relative to the full scope of public style discourse and should not be read as statistically representative."
+  ],
+  "archive_tags": [
+    "quiet-luxury-backlash",
+    "maximalist-pivot",
+    "boho-revival",
+    "resale-growth",
+    "aspirational-realism",
+    "2026-q3"
+  ],
+  "content_hash": "ebe3c076f92628d2702323b01481db45aed78573e1190f5fba3cc120b01b56a3"
+}

@@ -23,14 +23,14 @@ from taxonomy import (
     ORIGIN_CLASSIFICATIONS,
     classify_source,
 )
-from report_schema import save_report
+from report_schema import save_report, report_path, SchemaValidationError
 
 client = Anthropic()
 
 
-def load_trends():
+def load_trends(path="trends_raw.json"):
     # load the raw crawled data
-    with open("trends_raw.json", "r", encoding="utf-8") as f:
+    with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -71,6 +71,12 @@ Do not treat editorial sources as neutral confirmation. Classify each source by 
 
 Distinguish between style as lived practice and trend as market instruction. Do not recommend adoption. Do not describe signals as must-have, essential, or the next big thing.
 
+Do not use evaluative or editorializing verbs such as "declared," "revealed," or "proves." Use measured, attribution-anchored verbs instead, such as "said," "reported," "noted," or "showed."
+
+Avoid vague, unsupported claims of ubiquity such as "everyone is wearing" or "everywhere right now." If evidence is thin, limited to one source sector, or contradictory, state that plainly in the evidence or index_note field rather than smoothing it over or omitting it.
+
+If the source material yields only a small number of genuinely distinct, well-supported signals, do not stretch, duplicate, or manufacture additional signals to appear more comprehensive. Instead, set "collection_status" to "thin" and use "thin_week_note" to state plainly that this reporting period had limited signal volume, so the report reflects the actual state of coverage rather than an inflated one. Use "collection_status": "normal" and leave "thin_week_note" empty when signal volume is adequate.
+
 Each headline below is tagged as [domain | source_sector]. Valid source sectors are: {", ".join(SOURCE_SECTORS)}.
 Valid confidence levels are: {", ".join(CONFIDENCE_LEVELS)}.
 Valid volatility labels are: {", ".join(VOLATILITY_LABELS)}.
@@ -104,7 +110,9 @@ Return your response as JSON with exactly this structure (no markdown, no backti
   "aesthetic_terms": [],
   "cultural_references": [],
   "limitations": ["note any gaps, e.g. limited source sectors, small sample size, single reporting period"],
-  "archive_tags": []
+  "archive_tags": [],
+  "collection_status": "normal | thin",
+  "thin_week_note": "if collection_status is 'thin', explain why in one sentence; otherwise leave empty"
 }}
 
 Leave source_sector_breakdown as an empty object; it is computed separately from the raw data.
@@ -115,9 +123,10 @@ Headlines:
 Return only valid JSON. No markdown, no backticks, no preamble."""
 
 
-def summarize():
-    print("loading trends...")
-    pages = load_trends()
+def summarize(pages=None, revision_reason=None, corrected_at=None):
+    if pages is None:
+        print("loading trends...")
+        pages = load_trends()
 
     today = date.today()
     report_date = today.isoformat()
@@ -129,7 +138,7 @@ def summarize():
 
     response = client.messages.create(
         model="claude-sonnet-4-6",
-        max_tokens=2000,
+        max_tokens=4000,
         messages=[{"role": "user", "content": prompt}],
     )
 
@@ -140,11 +149,40 @@ def summarize():
     report = json.loads(raw)
     report["source_sector_breakdown"] = compute_sector_breakdown(pages)
 
-    path = save_report(report)
+    try:
+        path = save_report(
+            report, revision_reason=revision_reason, corrected_at=corrected_at
+        )
+    except SchemaValidationError as e:
+        if os.path.exists(report_path(report_date)) and not revision_reason:
+            print(
+                f"a report for {report_date} already exists with different content.\n"
+                "refusing to overwrite it silently. re-run with an explicit "
+                "correction reason, e.g.:\n"
+                "    python src/summarize.py --revision-reason \"<why this changed>\" "
+                "--corrected-at YYYY-MM-DD"
+            )
+            return
+        raise
 
     print(f"saved report to {path}")
     print(f"\nexecutive summary: {report['executive_summary']}")
 
 
 if __name__ == "__main__":
-    summarize()
+    import argparse
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--revision-reason",
+        default=None,
+        help="required if today's report already exists with different content",
+    )
+    parser.add_argument(
+        "--corrected-at",
+        default=None,
+        help="ISO date string for the correction (required alongside --revision-reason)",
+    )
+    args = parser.parse_args()
+
+    summarize(revision_reason=args.revision_reason, corrected_at=args.corrected_at)

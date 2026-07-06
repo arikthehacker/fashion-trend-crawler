@@ -18,50 +18,107 @@
     {
       "name": "Sheer layering",
       "type": "styling behavior",
-      "source_sectors": ["editorial", "retail"],
+      "source_sectors": [
+        "editorial",
+        "retail"
+      ],
       "confidence": "medium",
-      "volatility": "seasonal/recurring",
-      "origin_classification": "editorial",
+      "volatility": "recurring",
+      "origin_classification": "editorial_amplified",
       "evidence": "Repeated references to transparent fabrics, mesh, organza, and layered styling across editorial sources.",
-      "index_note": "Signal appears strongest in eveningwear and transitional styling contexts."
+      "index_note": "Signal appears strongest in eveningwear and transitional styling contexts.",
+      "source_corroboration_count": 2,
+      "signal_id": "sheer-layering"
     },
     {
       "name": "Soft tailoring",
       "type": "silhouette",
-      "source_sectors": ["editorial", "retail", "designer_origin"],
+      "source_sectors": [
+        "editorial",
+        "retail",
+        "designer_origin"
+      ],
       "confidence": "medium",
-      "volatility": "stable/seasonal",
-      "origin_classification": "designer_origin",
+      "volatility": "seasonal",
+      "origin_classification": "designer_originated",
       "evidence": "Recurring mentions of relaxed suiting, oversized blazers, and structured silhouettes with softened proportions.",
-      "index_note": "Signal overlaps with officewear and minimal luxury language."
+      "index_note": "Signal overlaps with officewear and minimal luxury language.",
+      "source_corroboration_count": 3,
+      "signal_id": "soft-tailoring"
     },
     {
       "name": "Archival romanticism",
       "type": "aesthetic",
-      "source_sectors": ["editorial", "independent_criticism"],
-      "confidence": "low-medium",
-      "volatility": "medium",
-      "origin_classification": "independent_criticism",
+      "source_sectors": [
+        "editorial",
+        "independent_criticism"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "unclear",
       "evidence": "References to lace, bows, vintage femininity, and historical styling cues appeared across multiple sources.",
-      "index_note": "Signal requires further tracking before classification as sustained."
+      "index_note": "Signal requires further tracking before classification as sustained.",
+      "source_corroboration_count": 2,
+      "signal_id": "archival-romanticism"
     }
   ],
-  "repeated_keywords": ["sheer", "soft tailoring", "lace", "archival", "romanticism", "mesh", "oversized blazer"],
-  "garments": ["blazer", "slip dress", "trench coat", "cardigan"],
-  "silhouettes": ["relaxed suiting", "dropped shoulder", "column dress"],
-  "materials": ["mesh", "organza", "lace", "wool crepe"],
-  "colors": ["ecru", "black", "dusty rose", "chocolate brown"],
-  "aesthetic_terms": ["quiet luxury", "archival romanticism", "soft minimalism"],
-  "cultural_references": ["1990s minimalism", "Victorian undergarments", "office siren"],
+  "repeated_keywords": [
+    "sheer",
+    "soft tailoring",
+    "lace",
+    "archival",
+    "romanticism",
+    "mesh",
+    "oversized blazer"
+  ],
+  "garments": [
+    "blazer",
+    "slip dress",
+    "trench coat",
+    "cardigan"
+  ],
+  "silhouettes": [
+    "relaxed suiting",
+    "dropped shoulder",
+    "column dress"
+  ],
+  "materials": [
+    "mesh",
+    "organza",
+    "lace",
+    "wool crepe"
+  ],
+  "colors": [
+    "ecru",
+    "black",
+    "dusty rose",
+    "chocolate brown"
+  ],
+  "aesthetic_terms": [
+    "quiet luxury",
+    "archival romanticism",
+    "soft minimalism"
+  ],
+  "cultural_references": [
+    "1990s minimalism",
+    "Victorian undergarments",
+    "office siren"
+  ],
   "limitations": [
     "Coverage is skewed toward editorial sources and may not reflect retail sales data.",
     "Social platform signals are limited in this collection window and classified as high-noise.",
     "Sample size is small relative to the full scope of public style discourse."
   ],
-  "archive_tags": ["sheer-layering", "soft-tailoring", "archival-romanticism", "2026-q2"],
+  "archive_tags": [
+    "sheer-layering",
+    "soft-tailoring",
+    "archival-romanticism",
+    "2026-q2"
+  ],
   "source_links": [],
   "confidence_notes": "Confidence reflects recurrence and source diversity, not popularity or sales data.",
   "volatility_notes": "Social-origin signals are treated as volatile by default unless corroborated by non-social sources across multiple reporting periods.",
   "incentive_notes": "Editorial sources are not treated as neutral; coverage may be shaped by commerce and PR incentives.",
-  "human_editor_note": "Placeholder example report used to scaffold the archive and report page templates."
+  "human_editor_note": "Placeholder example report used to scaffold the archive and report page templates.",
+  "content_hash": "5f0918e9d9f4dd8afb8d09b2144f3caf7c057153d36e71b4b5296047fe768ada"
 }

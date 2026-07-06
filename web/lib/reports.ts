@@ -20,6 +20,8 @@ export interface TopSignal {
   origin_classification: string;
   evidence: string;
   index_note: string;
+  signal_id?: string;
+  source_corroboration_count?: number;
 }
 
 export interface Report {
@@ -44,6 +46,7 @@ export interface Report {
   volatility_notes?: string;
   incentive_notes?: string;
   human_editor_note?: string;
+  content_hash?: string;
 }
 
 function reportsDir(): string {
@@ -71,6 +74,41 @@ export function getReportByDate(date: string): Report | null {
   return JSON.parse(fs.readFileSync(filePath, "utf-8")) as Report;
 }
 
+export interface TimelineEntry {
+  report_date: string;
+  signal_name: string;
+  type: string;
+  source_sectors: string[];
+  confidence: string;
+  signal_id?: string;
+}
+
+/**
+ * Flattens top_signals from every report into a single reverse-chronological
+ * list for the /timeline page. Keys on signal name + date only — there is no
+ * signal_id/slug field yet, so no cross-report identity matching is attempted
+ * here.
+ */
+export function getTimelineEntries(): TimelineEntry[] {
+  const reports = getAllReports();
+  const entries: TimelineEntry[] = [];
+
+  for (const report of reports) {
+    for (const signal of report.top_signals ?? []) {
+      entries.push({
+        report_date: report.report_date,
+        signal_name: signal.name,
+        type: signal.type,
+        source_sectors: signal.source_sectors,
+        confidence: signal.confidence,
+        signal_id: signal.signal_id,
+      });
+    }
+  }
+
+  return entries;
+}
+
 /** Returns all report_date strings, for static params generation. */
 export function getAllReportDates(): string[] {
   const dir = reportsDir();
@@ -79,4 +117,83 @@ export function getAllReportDates(): string[] {
     .readdirSync(dir)
     .filter((f) => f.endsWith(".json"))
     .map((f) => f.replace(/\.json$/, ""));
+}
+
+export interface SignalOccurrence {
+  report_date: string;
+  signal: TopSignal;
+}
+
+/**
+ * Returns every occurrence of a given signal_id across all reports,
+ * oldest first (chronological), for the /signals/[slug] history page.
+ */
+export function getSignalHistory(slug: string): SignalOccurrence[] {
+  const reports = getAllReports();
+  const occurrences: SignalOccurrence[] = [];
+
+  for (const report of reports) {
+    for (const signal of report.top_signals ?? []) {
+      if (signal.signal_id === slug) {
+        occurrences.push({ report_date: report.report_date, signal });
+      }
+    }
+  }
+
+  return occurrences.sort((a, b) => (a.report_date < b.report_date ? -1 : 1));
+}
+
+export interface SearchableSignal {
+  name: string;
+  signal_id?: string;
+  report_date: string;
+  source_sectors: string[];
+  confidence: string;
+  volatility: string;
+  origin_classification: string;
+  evidence: string;
+  index_note: string;
+}
+
+/**
+ * Flattens every signal across all reports into a single searchable/filterable
+ * array for the /search page's client-side facet filters. One entry per
+ * signal occurrence (not deduped by signal_id) — a signal recurring across
+ * weeks is meaningful history, per /signals/[slug]'s existing model.
+ */
+export function getSearchIndex(): SearchableSignal[] {
+  const reports = getAllReports();
+  const index: SearchableSignal[] = [];
+
+  for (const report of reports) {
+    for (const signal of report.top_signals ?? []) {
+      index.push({
+        name: signal.name,
+        signal_id: signal.signal_id,
+        report_date: report.report_date,
+        source_sectors: signal.source_sectors,
+        confidence: signal.confidence,
+        volatility: signal.volatility,
+        origin_classification: signal.origin_classification,
+        evidence: signal.evidence,
+        index_note: signal.index_note,
+      });
+    }
+  }
+
+  return index;
+}
+
+/** Returns all distinct non-empty signal_id values across all reports. */
+export function getAllSignalSlugs(): string[] {
+  const reports = getAllReports();
+  const slugs = new Set<string>();
+
+  for (const report of reports) {
+    for (const signal of report.top_signals ?? []) {
+      if (signal.signal_id) slugs.add(signal.signal_id);
+    }
+  }
+
+  return Array.from(slugs);
 }

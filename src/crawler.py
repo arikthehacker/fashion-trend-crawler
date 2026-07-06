@@ -33,6 +33,13 @@ FASHION_SOURCES = [
     "https://hypebeast.com/fashion",
 ]
 
+# default cache output path, pulled out as a named constant so future callers
+# (summarize.py, server.py, etc.) can reference/override it consistently
+# instead of each hardcoding the "trends_raw.json" string. Behavior/default
+# unchanged: crawl_all_sources() still writes here unless a caller passes
+# a different output_file explicitly.
+DEFAULT_OUTPUT_FILE = "trends_raw.json"
+
 # identifying ourselves honestly instead of pretending to be a browser
 HEADERS = {
     "User-Agent": "fashion-trend-crawler/1.0 (educational project)"
@@ -141,7 +148,7 @@ def crawl(start_url, max_depth=2, max_pages=20):
 
     return results
 
-def crawl_all_sources(sources, output_file="trends_raw.json"):
+def crawl_all_sources(sources, output_file=DEFAULT_OUTPUT_FILE):
     # run the crawler against every source in the list
     all_results = []
     for source in sources:

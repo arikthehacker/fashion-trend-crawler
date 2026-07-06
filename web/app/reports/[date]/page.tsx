@@ -4,6 +4,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllReportDates, getReportByDate } from "../../../lib/reports";
+import { SITE_URL, SITE_NAME } from "../../../lib/site";
 
 export function generateStaticParams() {
   return getAllReportDates().map((date) => ({ date }));
@@ -66,6 +67,31 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
     0
   );
 
+  const headlineSource = report.executive_summary?.split(/(?<=[.!?])\s+/)[0];
+  const headline = headlineSource
+    ? headlineSource.slice(0, 110)
+    : `Weekly style signal report — ${report.report_date}`;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline,
+    datePublished: report.report_date,
+    dateModified: report.report_date,
+    url: `${SITE_URL}/reports/${report.report_date}`,
+    mainEntityOfPage: `${SITE_URL}/reports/${report.report_date}`,
+    description: report.executive_summary,
+    author: {
+      "@type": "Organization",
+      name: SITE_NAME,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+    },
+    keywords: report.archive_tags?.join(", "),
+  };
+
   return (
     <main style={{
       minHeight: "100vh",
@@ -74,6 +100,13 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
       flexDirection: "column",
       alignItems: "center",
     }}>
+
+      {/* structured data for search engines — Article/NewsArticle JSON-LD */}
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       {/* report header */}
       <header style={{
@@ -122,7 +155,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
 
       {/* executive summary */}
       <section aria-label="Executive summary" style={sectionStyle}>
-        <p style={labelStyle}>Executive Summary</p>
+        <h2 style={labelStyle}>Executive Summary</h2>
         <p style={{
           fontFamily: "var(--font-franklin)",
           fontSize: "1.05rem",
@@ -136,7 +169,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
       {/* source sector breakdown */}
       {totalSources > 0 && (
         <section aria-label="Source sector breakdown" style={sectionStyle}>
-          <p style={labelStyle}>Source Sectors</p>
+          <h2 style={labelStyle}>Source Sectors</h2>
           <div style={{ display: "flex", flexDirection: "column" }}>
             {Object.entries(report.source_sector_breakdown).map(([sector, count]) => (
               <div
@@ -175,17 +208,34 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
       {/* observed signals */}
       {report.top_signals?.length > 0 && (
         <section aria-label="Observed signals" style={sectionStyle}>
-          <p style={labelStyle}>Observed Signals</p>
+          <h2 style={labelStyle}>Observed Signals</h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
             {report.top_signals.map((signal, i) => (
               <div key={i} style={{ borderTop: "1px solid var(--border)", paddingTop: "1.5rem" }}>
-                <p style={{
-                  fontFamily: "var(--font-instrument)",
-                  fontSize: "1.4rem",
-                  marginBottom: "0.75rem",
-                }}>
-                  {i + 1}. {signal.name}
-                </p>
+                {signal.signal_id ? (
+                  <Link
+                    href={`/signals/${signal.signal_id}`}
+                    style={{
+                      fontFamily: "var(--font-instrument)",
+                      fontSize: "1.4rem",
+                      marginBottom: "0.75rem",
+                      display: "block",
+                      color: "var(--black)",
+                      textDecoration: "underline",
+                      textUnderlineOffset: "4px",
+                    }}
+                  >
+                    {i + 1}. {signal.name}
+                  </Link>
+                ) : (
+                  <h3 style={{
+                    fontFamily: "var(--font-instrument)",
+                    fontSize: "1.4rem",
+                    marginBottom: "0.75rem",
+                  }}>
+                    {i + 1}. {signal.name}
+                  </h3>
+                )}
                 <div style={{
                   display: "flex",
                   flexWrap: "wrap",
@@ -203,6 +253,9 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
                   <span>Origin: {signal.origin_classification}</span>
                   {signal.source_sectors?.length > 0 && (
                     <span>Sectors: {signal.source_sectors.join(", ")}</span>
+                  )}
+                  {(signal.source_corroboration_count ?? 1) > 1 && (
+                    <span>Corroborated by {signal.source_corroboration_count} sources</span>
                   )}
                 </div>
                 <p style={{
@@ -234,14 +287,14 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
       {/* repeated keywords */}
       {report.repeated_keywords?.length > 0 && (
         <section aria-label="Repeated keywords" style={sectionStyle}>
-          <p style={labelStyle}>Repeated Keywords</p>
+          <h2 style={labelStyle}>Repeated Keywords</h2>
           <TagList items={report.repeated_keywords} />
         </section>
       )}
 
       {/* garments / silhouettes / materials / colors */}
       <section aria-label="Garments, silhouettes, materials, colors" style={sectionStyle}>
-        <p style={labelStyle}>Garments, Silhouettes, Materials, Colors</p>
+        <h2 style={labelStyle}>Garments, Silhouettes, Materials, Colors</h2>
         <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem" }}>
           {[
             ["Garments", report.garments],
@@ -251,7 +304,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
           ].map(([title, items]) => (
             (items as string[])?.length > 0 && (
               <div key={title as string}>
-                <p style={{
+                <h3 style={{
                   fontFamily: "var(--font-franklin)",
                   fontSize: "0.7rem",
                   letterSpacing: "0.1em",
@@ -260,7 +313,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
                   marginBottom: "0.75rem",
                 }}>
                   {title}
-                </p>
+                </h3>
                 <TagList items={items as string[]} />
               </div>
             )
@@ -271,11 +324,11 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
       {/* aesthetic / cultural references */}
       {(report.aesthetic_terms?.length > 0 || report.cultural_references?.length > 0) && (
         <section aria-label="Aesthetic and cultural references" style={sectionStyle}>
-          <p style={labelStyle}>Aesthetic &amp; Cultural References</p>
+          <h2 style={labelStyle}>Aesthetic &amp; Cultural References</h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem" }}>
             {report.aesthetic_terms?.length > 0 && (
               <div>
-                <p style={{
+                <h3 style={{
                   fontFamily: "var(--font-franklin)",
                   fontSize: "0.7rem",
                   letterSpacing: "0.1em",
@@ -284,13 +337,13 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
                   marginBottom: "0.75rem",
                 }}>
                   Aesthetic Terms
-                </p>
+                </h3>
                 <TagList items={report.aesthetic_terms} />
               </div>
             )}
             {report.cultural_references?.length > 0 && (
               <div>
-                <p style={{
+                <h3 style={{
                   fontFamily: "var(--font-franklin)",
                   fontSize: "0.7rem",
                   letterSpacing: "0.1em",
@@ -299,7 +352,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
                   marginBottom: "0.75rem",
                 }}>
                   Cultural References
-                </p>
+                </h3>
                 <TagList items={report.cultural_references} />
               </div>
             )}
@@ -310,7 +363,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
       {/* volatility / incentive / confidence notes */}
       {(report.volatility_notes || report.incentive_notes || report.confidence_notes) && (
         <section aria-label="Methodology notes" style={sectionStyle}>
-          <p style={labelStyle}>Notes</p>
+          <h2 style={labelStyle}>Notes</h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
             {report.confidence_notes && (
               <p style={{ fontFamily: "var(--font-franklin)", fontSize: "0.9rem", lineHeight: "1.7", color: "var(--gray)" }}>
@@ -337,7 +390,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
       {/* limitations */}
       {report.limitations?.length > 0 && (
         <section aria-label="Limitations" style={sectionStyle}>
-          <p style={labelStyle}>Limitations</p>
+          <h2 style={labelStyle}>Limitations</h2>
           <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
             {report.limitations.map((item, i) => (
               <li key={i} style={{
@@ -358,7 +411,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
       {/* archive tags */}
       {report.archive_tags?.length > 0 && (
         <section aria-label="Archive tags" style={{ ...sectionStyle, borderBottom: "none" }}>
-          <p style={labelStyle}>Archive Tags</p>
+          <h2 style={labelStyle}>Archive Tags</h2>
           <TagList items={report.archive_tags} />
         </section>
       )}
@@ -384,6 +437,17 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
         }}>
           Full archive
         </Link>
+        <Link href="/timeline" style={{
+          fontFamily: "var(--font-franklin)",
+          fontSize: "0.75rem",
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          color: "var(--black)",
+          textDecoration: "underline",
+          textUnderlineOffset: "3px",
+        }}>
+          Timeline
+        </Link>
         <Link href="/" style={{
           fontFamily: "var(--font-franklin)",
           fontSize: "0.75rem",
@@ -396,6 +460,30 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
           Current report
         </Link>
       </footer>
+
+      {report.content_hash && (
+        <p style={{
+          fontFamily: "monospace",
+          fontSize: "0.65rem",
+          color: "var(--gray)",
+          padding: "0 2rem 1.5rem",
+          textAlign: "center",
+        }}>
+          Archive checksum: {report.content_hash.slice(0, 12)}
+        </p>
+      )}
+
+      {/* citation line */}
+      <p style={{
+        fontFamily: "monospace",
+        fontSize: "0.65rem",
+        color: "var(--gray)",
+        padding: "0 2rem 2rem",
+        textAlign: "center",
+      }}>
+        Cite as: ARI3LLA INDEX, {report.report_date}, /reports/{report.report_date}
+        {report.content_hash ? ` (checksum ${report.content_hash.slice(0, 12)})` : ""}
+      </p>
 
     </main>
   );
