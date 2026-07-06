@@ -509,17 +509,38 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       pass/fail status remains genuinely unverified — documented honestly rather than
       assumed. Manual YAML read-through found no obvious defects.
 
-## Next up (run 25 candidates)
+## Run 25 — done
+- [x] **Built the structural fix for the recurring "claimed but not shown" bug**:
+      `src/check_field_coverage.py`, a non-blocking script enumerating every schema field
+      and checking if it's typed in `reports.ts` and referenced in any `.tsx` file.
+      Verified it correctly doesn't re-flag `revision_history`/`thin_week_note` (already
+      fixed) or `confidence_source`/`content_hash` (legitimately backend-only). Currently
+      0 warnings. Flagged `review_status`/`reviewed_by` as worth a manual look (neither
+      typed nor referenced) — not auto-fixed, left for human/future-run judgment.
+- [x] Added `data/reports/2026-10-26.json`, an 18th report — CFDA/Vogue Fashion Fund
+      winner is now in-window by date but no dated coverage exists yet; logged as an
+      honest open/unresolved signal rather than fabricated or backfilled.
+- [x] **First full voice audit since run 10 (14 runs of additions) found zero
+      violations** — glossary, THIS WEEK'S INDEX, search, RSS, and correction-history
+      copy all checked clean, and no styled-`<p>`-as-heading bug anywhere. Confirms the
+      voice discipline and the new checklist item are both actually holding.
+- [x] Fashion archive standards research (Met Costume Institute, FIT Special
+      Collections) confirms the schema's confidence/origin_classification/revision_history
+      design already aligns with real institutional provenance practice — no new fields
+      needed, a validating result rather than a new gap.
+- [x] Verified the run-19 confidence-gate fix — honest negative result: no
+      `independent_criticism` signals have appeared since the fix shipped, so it remains
+      genuinely untested in practice, neither confirmed working nor failing.
+
+## Next up (run 26 candidates)
 - [ ] Southeast Asian source coverage remains open (vogue.ph blocked by Cloudflare JS
       challenge — would need a headless-browser approach, likely out of scope).
-- [ ] If you have `gh` CLI access locally, run `gh run list --workflow=validate-reports.yml`
-      to get a real answer on whether CI has ever actually passed on GitHub's
-      infrastructure — this has been assumed but never confirmed across runs 4/14/22/24.
-- [ ] Revisit the quarterly-retrospective feature once 4-5 signal_ids each recur across
-      4+ non-adjacent reports (not yet met) — scope the first one to the Sept 8–Oct 6
-      fashion-month window specifically, per the research's recommendation.
-- [ ] This is now the THIRD run to find the same "claimed but not shown" bug pattern
-      (human_editor_note run 21, revision_history run 23, thin_week_note run 24) — worth
-      considering whether new schema fields should have a rendering check baked into
-      their own PR/commit going forward, rather than relying on periodic sweeps to catch
-      the gap after the fact.
+- [ ] `review_status`/`reviewed_by` flagged by the new coverage tool as neither typed nor
+      referenced — decide whether they belong in the backend-only suppression set or
+      represent a real gap (unlike the other 3 fields, this wasn't force-fixed this run).
+- [ ] Run `python src/check_field_coverage.py` periodically (like `audit_confidence.py`)
+      as new schema fields get added, rather than waiting for another dedicated sweep run.
+- [ ] The run-19 confidence-gate fix remains untested — revisit once
+      `independent_criticism` sources reappear in a report.
+- [ ] `gh` CLI still unavailable in this environment — CI's real pass/fail status on
+      GitHub remains unconfirmed across 4+ runs now.

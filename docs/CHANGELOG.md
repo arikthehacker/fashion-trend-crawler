@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-07 ~07:10 PDT — [Loop run 25](changelog-entries/run-25.md)** — Built a
+  structural fix (`check_field_coverage.py`) for the 3-times-recurring unrendered-field
+  bug; 18th report honestly logs an unresolved signal instead of fabricating; first full
+  voice audit since run 10 finds nothing wrong across 14 runs of additions; fashion
+  archive research validates current schema design; confidence-gate fix verification is
+  an honest "still untested" result.
+
 - **2026-07-07 ~05:50 PDT — [Loop run 24](changelog-entries/run-24.md)** — Systematic
   transparency sweep finds a third instance of the "claimed but not shown" bug pattern
   (`thin_week_note`) — fixed; de-staled README/PROJECT_STRUCTURE's report-count claims
