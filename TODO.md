@@ -1720,16 +1720,28 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       domains are classified in `taxonomy.py` but not seeded in `crawler.py`'s
       `FASHION_SOURCES` — independently confirmed by the coordinator.
 
-## Next up (run 87 candidates)
-- [ ] Precedent 13's resale-platform domains (therealreal.com,
-      vestiairecollective.com, depop.com, grailed.com, poshmark.com) are
-      classified but not seeded in `FASHION_SOURCES` — close this properly
-      rather than relying on `summarize.py`'s WebSearch step to surface them
-      incidentally.
-- [ ] A candidate 14th precedent (forecast/speculative-content exclusion) was
-      flagged by run 86's report agent but not formalized — worth attention if
-      the pattern recurs.
-- [ ] Manual-sampling cadence next due ~run 87 — due this run or next.
+## Run 87 — done
+- [x] Added `data/reports/2028-01-10.json`, an 80th report — a menswear
+      calendar signal correctly earned "high" (WWD added genuinely new detail,
+      not a reprint), a clean application of precedent 4 on its non-triggering
+      side.
+- [x] Closed the resale-platform source-seeding gap with a rigorous "none
+      pass" verdict — all 5 candidate domains confirmed JS-rendered/blocked and
+      unreachable by this crawler's static-HTML extraction; a settled
+      limitation, not left open.
+- [x] Ran the manual-sampling cadence check on its due date — same honest
+      negative as every prior check. Cadence tracking updated in place, next
+      due ~run 97.
+- [x] Nav/build regression sweep explicitly re-confirmed run 86's year-boundary
+      fix under a truly clean, fully-completed build this time.
+- [x] Periodic audit clean; a flagged "cadence doc not updated" finding was a
+      simple same-run timing race, confirmed correctly updated at
+      consolidation.
+
+## Next up (run 88 candidates)
+- [ ] A candidate 14th precedent (forecast/speculative-content exclusion,
+      flagged run 86) remains open — worth attention if the pattern recurs.
+- [ ] Manual-sampling cadence next due ~run 97.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven
       only.

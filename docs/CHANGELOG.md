@@ -18,6 +18,14 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-10 ~14:40 PDT — [Loop run 87](changelog-entries/run-87.md)** — an
+  80th report correctly applies precedent 4 on its earning side; the run-86
+  resale-source-seeding gap closed with a rigorous, honest "none pass" verdict
+  (all 5 candidate domains confirmed JS-rendered and unreachable); the manual-
+  sampling cadence ran on its due date with the same honest negative as every
+  prior check; nav/build sweep explicitly re-confirms run 86's year-boundary
+  fix under a truly clean build this time; periodic audit clean.
+
 - **2026-07-10 ~13:30 PDT — [Loop run 86](changelog-entries/run-86.md)** — a
   79th report crosses into 2028 for the first time, with a careful exclusion
   of speculative forecast content; year-boundary archive rendering confirmed
