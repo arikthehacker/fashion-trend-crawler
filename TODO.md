@@ -113,20 +113,36 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [x] Gap analysis against the original doc's §40 priority list after 6 runs — see
       `docs/agent-logs/gap-analysis-run6.md`.
 
-## Next up (run 7 candidates, from gap analysis)
-- [ ] No corrections/transparency policy on-site — methodology/about pages have zero
-      mention of corrections, editorial independence, funding, or AI-involvement
-      disclosure. Trust Project / Trusting News research flags this as a real trust gap
-      for a small, new publication with limited track record.
-- [ ] Continue the legacy-migration plan one step at a time (step 2: `summarize.py`'s
-      `load_trends()`).
+## Run 7 — done
+- [x] Added Corrections, Editorial Independence, and AI Involvement disclosure sections to
+      `methodology/page.tsx` and `about/page.tsx` — closes the top gap-analysis finding.
+- [x] Migration step 2/5: parameterized `summarize.py`'s `load_trends()`/`summarize()` to
+      optionally accept an explicit path/in-memory data, default behavior unchanged.
+- [x] Added `collection_status`/`thin_week_note` fields to `report_schema.py` and a prompt
+      instruction in `summarize.py` for honest low-signal weeks instead of manufactured
+      signals.
+- [x] Refreshed `.claude/skills/ari3lla-index/SKILL.md` — removed the stale "run.sh KNOWN
+      STALE" note (fixed in run 1), added missing file-map entries, replaced the outdated
+      "Common next steps" list with a pointer to this file's top items.
+- [x] Audited all 22 signals across 4 reports against `derive_confidence()`
+      (`src/audit_confidence.py`, new reusable script) — 14 mismatches, mostly the formula
+      scoring conservatively-assigned signals higher (not concerning). **One genuinely
+      concerning case found:** `Resale/secondhand retail growth` (2026-07-13) was assigned
+      "high" confidence with `source_corroboration_count=1` — a single-source signal
+      promoted past what its corroboration actually supports. Not auto-corrected (per
+      audit's own recommendation not to auto-adopt formula output) — flagged for human
+      review below.
+
+## Next up (run 8 candidates)
+- [ ] **Human review needed:** `data/reports/2026-07-13.json`'s "Resale/secondhand retail
+      growth" signal is rated "high" confidence on a single source — either find a second
+      corroborating source, or downgrade to "medium"/"low" to match its actual evidence.
+      See `docs/agent-logs/confidence-audit.md`.
+- [ ] Wire `derive_confidence()` in as a non-blocking validation warning (flag
+      assigned="high" vs. derived<="medium" for editor re-review) rather than full auto-
+      adoption, per the audit's recommendation.
+- [ ] Continue legacy migration: step 3 of 5 (`server.py`'s cache reads).
 - [ ] Still no report from an actual live crawl — all 4 dated reports are hand-authored or
       WebSearch-researched.
-- [ ] No "thin week" fallback state in the schema/prompt for honest low-signal weeks
-      (Nieman Lab-style guidance: prefer an honest thin report over filler).
 - [ ] Manual TikTok/Pinterest sampling has only been exercised once — not yet proven as a
       repeatable weekly habit.
-- [ ] Consider whether to actually wire `derive_confidence()` into the pipeline now that
-      it exists, or keep it manual-override-only.
-- [ ] `.claude/skills/ari3lla-index/SKILL.md`'s file-map note that `run.sh` is "KNOWN
-      STALE" is itself now stale — run.sh was fixed in run 1. Worth a skill-doc refresh.
