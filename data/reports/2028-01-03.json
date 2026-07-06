@@ -1,0 +1,38 @@
+{
+  "report_date": "2028-01-03",
+  "collection_window": {
+    "start": "2027-12-28",
+    "end": "2028-01-03"
+  },
+  "sources_scanned": 10,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "editorial": 2
+  },
+  "executive_summary": "Collection window December 28, 2027-January 3, 2028, New Year's week and the archive's first window dated into 2028. No genuinely new style signal was identified: wwd.com and vogue.com each published a year-ahead trend-outlook piece this window (WWD's 'what to watch in 2028' roundup and Vogue's own 2028 style-forecast column), both predicting directions for the coming year -- continued exaggerated-volume silhouettes, a possible cooling of quiet-luxury minimalism -- rather than reporting on a garment, silhouette, or aesthetic that any designer, retailer, or wearer has actually produced or adopted this window. These two items are logged in source_sector_breakdown as collected but deliberately excluded from top_signals: a prediction of what might trend in the year ahead is not, itself, evidence of designer intent, editorial interpretation of existing work, retail adoption, or social amplification -- the four categories this archive tracks -- and folding forecast op-eds into a style signal would misrepresent industry speculation as observed discourse. This is a categorization judgment in the same spirit as the 2027-08-09 ragebait-casting call (precedent 11 in the confidence-discipline precedents doc), though it does not cleanly match that or any other documented precedent, since it concerns whether a claim counts as a trackable signal at all rather than what confidence tier it should receive; it is flagged in this report's limitations as a candidate for future precedent-doc formalization rather than resolved unilaterally. No retailer, designer_origin, or independent-criticism source introduced a development distinct from material already logged in prior windows. The resort 2028 puffer-shell skirt thread, the resale-demand signal on structured waist-tailoring, the obi-sash cocoon coat thread, and the opera-glove/'restraint dressing' thread all produced no new development this window and are not carried forward again absent fresh movement. The Margiela raw-edge thread remains closed out as of 2027-10-18. Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention.",
+  "top_signals": [],
+  "repeated_keywords": [],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [],
+  "limitations": [
+    "No new signal was identified this window; this report intentionally carries zero top_signals rather than manufacturing a development to fill the usual quota.",
+    "wwd.com and vogue.com each published a 2028 year-ahead trend-forecast piece this window (source_sector_breakdown reflects them as collected items). Both were judged to be predictions of the coming year rather than observations of realized designer intent, editorial interpretation of existing work, retail adoption, or social amplification, and were excluded from top_signals on that categorization basis. This does not cleanly match an existing confidence-discipline precedent -- it is a threshold question of whether a claim is trackable at all, not a confidence-tier question -- and is flagged here as a candidate for future precedent-doc consideration rather than resolved as a new standing rule.",
+    "No new development occurred on the resort 2028 puffer-shell skirt, resale-demand, obi-sash cocoon coat, or opera-glove/'restraint dressing' threads this window; per standing convention, none are carried forward again absent fresh movement."
+  ],
+  "archive_tags": [
+    "margiela-raw-edge-editorial-close-out",
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "New Year's week (December 28, 2027-January 3, 2028) sits between the winter holiday trade-press lull and the start of Spring 2028 fashion month; the only new editorial activity this window was two outlets' year-ahead trend-forecast pieces, which this report treats as speculation about the coming year rather than evidence of a realized style signal (see limitations). Zero new signals is the honest outcome for this window; this report does not manufacture a signal to fill the usual quota.",
+  "review_status": "reviewed",
+  "reviewed_by": "ari3lla-index-loop-improvements agent",
+  "revision_history": []
+}
