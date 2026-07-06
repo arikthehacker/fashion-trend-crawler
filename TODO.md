@@ -94,14 +94,39 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       source-sector diversity rather than an LLM judgment call. Concrete formula proposed,
       not yet implemented.
 
-## Next up (run 6 candidates)
-- [ ] Implement the confidence-scoring formula in `report_schema.py` or as a
-      post-processing step after `summarize.py`'s LLM call (high requires >=2 corroboration
-      across >=2 distinct sectors; medium for same-sector corroboration or high-reliability
-      single source; low for uncorroborated/social-only; archival stays manual-only).
-- [ ] Execute step 1 of the legacy-migration plan (parameterize `crawler.py`'s cache path)
-      — do NOT do all 5 steps in one run per the plan's own caution; verify each step.
-- [ ] Consider whether `/signals/[slug]`'s long auto-slugified IDs should be
-      shortened/curated by a human editor rather than mechanically generated.
-- [ ] Add a real canonical domain to `web/lib/site.ts` once one is chosen, so
-      sitemap/robots/JSON-LD/citation lines stop being site-relative-only.
+## Run 6 — done
+- [x] Implemented `derive_confidence()` in `report_schema.py` as an opt-in helper (not
+      auto-applied to `save_report()` yet) plus a `confidence_source` field to track
+      derived vs. manual. See `docs/agent-logs/confidence-derivation-impl.md`.
+- [x] Executed migration-plan step 1 only: parameterized `crawler.py`'s cache path behind
+      a named constant, zero behavior change, verified nothing downstream breaks. 4 steps
+      remain in `docs/agent-logs/legacy-migration-plan.md` — do one at a time.
+- [x] Curated 6 overly long `signal_id` slugs down to 2-3 words in 2026-07-13.json.
+- [x] Added `data/reports/2026-07-20.json`, a 4th report (WebSearch-researched), including
+      2 recurrence checks against 2026-07-13's signals (one flagged `declining` now that
+      the World Cup, which drove it, has ended).
+- [x] **Cross-run consistency fix (run 6 consolidation):** the new-report agent and the
+      slug-curation agent ran concurrently and produced a slug mismatch — 2026-07-20.json
+      referenced the pre-curation long slugs for its two recurring signals. Fixed to match
+      the curated short slugs so recurrence tracking on `/signals/[slug]` actually works
+      across both files. All 4 reports now pass `validate_all_reports.py`.
+- [x] Gap analysis against the original doc's §40 priority list after 6 runs — see
+      `docs/agent-logs/gap-analysis-run6.md`.
+
+## Next up (run 7 candidates, from gap analysis)
+- [ ] No corrections/transparency policy on-site — methodology/about pages have zero
+      mention of corrections, editorial independence, funding, or AI-involvement
+      disclosure. Trust Project / Trusting News research flags this as a real trust gap
+      for a small, new publication with limited track record.
+- [ ] Continue the legacy-migration plan one step at a time (step 2: `summarize.py`'s
+      `load_trends()`).
+- [ ] Still no report from an actual live crawl — all 4 dated reports are hand-authored or
+      WebSearch-researched.
+- [ ] No "thin week" fallback state in the schema/prompt for honest low-signal weeks
+      (Nieman Lab-style guidance: prefer an honest thin report over filler).
+- [ ] Manual TikTok/Pinterest sampling has only been exercised once — not yet proven as a
+      repeatable weekly habit.
+- [ ] Consider whether to actually wire `derive_confidence()` into the pipeline now that
+      it exists, or keep it manual-override-only.
+- [ ] `.claude/skills/ari3lla-index/SKILL.md`'s file-map note that `run.sh` is "KNOWN
+      STALE" is itself now stale — run.sh was fixed in run 1. Worth a skill-doc refresh.
