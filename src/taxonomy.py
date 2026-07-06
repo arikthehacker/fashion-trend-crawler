@@ -75,6 +75,13 @@ ORIGIN_CLASSIFICATIONS = [
 # add to this as new sources are crawled
 # ---------------------------------------------------------------
 DOMAIN_SECTOR_MAP = {
+    # designer origin sources (brand-owned sites, first-party collection drops)
+    "chanel.com": "designer_origin",
+    "dior.com": "designer_origin",
+    "gucci.com": "designer_origin",
+    "louisvuitton.com": "designer_origin",
+    "prada.com": "designer_origin",
+
     # runway / editorial / magazine sources
     "vogue.com": "editorial",
     "wwd.com": "editorial",
@@ -116,14 +123,24 @@ DOMAIN_SECTOR_MAP = {
     # visual archive / search sources
     "google.com": "visual_archive",
     "worn-on.com": "visual_archive",
+    "firstview.com": "visual_archive",
+    "nowfashion.com": "visual_archive",
+    "gettyimages.com": "visual_archive",
+    "fashionanthology.com": "visual_archive",
 
     # independent criticism
     "substack.com": "independent_criticism",
+    "blackbirdspyplane.com": "independent_criticism",
+    "dieworkwear.com": "independent_criticism",
+    "throwingfits.com": "independent_criticism",
 
     # institutional / historical sources
     "fitnyc.edu": "institutional",
     "metmuseum.org": "institutional",
     "vam.ac.uk": "institutional",
+    "cfda.com": "institutional",
+    "kci.or.jp": "institutional",
+    "britishfashioncouncil.co.uk": "institutional",
 }
 
 
