@@ -124,6 +124,17 @@ DOMAIN_SECTOR_MAP = {
     # docs/agent-logs/source-diversity-run39.md
     "scmp.com": "editorial",
 
+    # added run 56 -- verified via WebSearch/WebFetch before classifying (see
+    # docs/agent-logs/domain-classification-run56.md): runwaylive.com is
+    # RUNWAY Magazine, a CFDA-accredited US fashion/beauty/lifestyle
+    # publication est. 1989; stylerave.com is Style Rave NG LLC, a
+    # Nigeria-based fashion/lifestyle editorial title with staff bylines and
+    # an affiliate shopping section (same pattern as okayafrica.com/
+    # nataal.com -- editorial content plus a commerce layer, not a pure
+    # retailer or content farm)
+    "runwaylive.com": "editorial",
+    "stylerave.com": "editorial",
+
     # retail / commerce sources
     "whowhatwear.com": "retail",
     "net-a-porter.com": "retail",
