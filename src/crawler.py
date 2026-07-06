@@ -38,6 +38,12 @@ FASHION_SOURCES = [
     "https://www.okayafrica.com",
     "https://fashionunited.in",
     "https://tokyofashion.com",
+    # added run 19 -- filling the local-for-local gap flagged in run 17/18
+    # (nataal/okayafrica/fashionunited.in are still diaspora- or Western-
+    # audience-adjacent) -- see docs/agent-logs/source-diversity-expansion-2.md
+    "https://www.vogue.mx",
+    "https://tribune.com.pk/fashion",
+    "https://www.savoirflair.com",
 ]
 
 # default cache output path, pulled out as a named constant so future callers

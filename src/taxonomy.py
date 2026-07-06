@@ -104,6 +104,15 @@ DOMAIN_SECTOR_MAP = {
     "fashionunited.in": "editorial",
     "tokyofashion.com": "editorial",
 
+    # added run 19 -- local-for-local outlets (published primarily for a
+    # local/regional audience, not diaspora or Western-expat-facing) filling
+    # the Latin American / South Asian / Southeast Asian / Middle Eastern
+    # gap flagged in run 17's log; see
+    # docs/agent-logs/source-diversity-expansion-2.md
+    "vogue.mx": "editorial",
+    "tribune.com.pk": "editorial",
+    "savoirflair.com": "editorial",
+
     # retail / commerce sources
     "whowhatwear.com": "retail",
     "net-a-porter.com": "retail",
