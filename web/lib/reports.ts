@@ -180,6 +180,56 @@ export function getSignalHistory(slug: string): SignalOccurrence[] {
   return occurrences.sort((a, b) => (a.report_date < b.report_date ? -1 : 1));
 }
 
+export interface RecurringSignal {
+  signal_id: string;
+  name: string;
+  occurrence_count: number;
+  first_seen: string;
+  last_seen: string;
+  origin_classification: string;
+}
+
+/**
+ * Returns signal_ids that appear in `minOccurrences` or more distinct
+ * reports (default 4, matching the revisit threshold set in run 24's
+ * retrospective-format research and re-confirmed at run 32). Used by the
+ * archive page's "recurring across the archive" note -- a small, honest
+ * surface of the same underlying data /signals/[slug] already tracks in
+ * full, not a new retrospective/analysis feature. See
+ * docs/agent-logs/recurrence-milestone-review-run47.md for the run that
+ * added this and why a full quarterly/year-in-review page is still not
+ * warranted.
+ */
+export function getRecurringSignals(minOccurrences = 4): RecurringSignal[] {
+  const reports = getAllReports(); // newest first
+  const byId = new Map<string, SignalOccurrence[]>();
+
+  for (const report of reports) {
+    for (const signal of report.top_signals ?? []) {
+      if (!signal.signal_id) continue;
+      const list = byId.get(signal.signal_id) ?? [];
+      list.push({ report_date: report.report_date, signal });
+      byId.set(signal.signal_id, list);
+    }
+  }
+
+  const result: RecurringSignal[] = [];
+  for (const [signal_id, occurrences] of byId) {
+    if (occurrences.length < minOccurrences) continue;
+    const dates = occurrences.map((o) => o.report_date).sort();
+    result.push({
+      signal_id,
+      name: occurrences[0].signal.name,
+      occurrence_count: occurrences.length,
+      first_seen: dates[0],
+      last_seen: dates[dates.length - 1],
+      origin_classification: occurrences[0].signal.origin_classification,
+    });
+  }
+
+  return result.sort((a, b) => b.occurrence_count - a.occurrence_count);
+}
+
 export interface SearchableSignal {
   name: string;
   signal_id?: string;

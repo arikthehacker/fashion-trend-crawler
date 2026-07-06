@@ -2,7 +2,7 @@
 // lists all dated ARI3LLA INDEX reports as a historical record
 
 import Link from "next/link";
-import { getAllReports, getConsecutiveThinWeekCount, getThisWeeksIndex } from "../../lib/reports";
+import { getAllReports, getConsecutiveThinWeekCount, getThisWeeksIndex, getRecurringSignals } from "../../lib/reports";
 
 export const metadata = {
   title: "Archive — ARI3LLA INDEX",
@@ -13,6 +13,7 @@ export default function Archive() {
   const reports = getAllReports();
   const thinStreak = getConsecutiveThinWeekCount();
   const thisWeek = getThisWeeksIndex();
+  const recurringSignals = getRecurringSignals(4);
 
   return (
     <main style={{
@@ -187,6 +188,90 @@ export default function Archive() {
           </div>
         )}
       </section>
+
+      {/* recurring-across-the-archive note -- deliberately small. Run 24 set a
+          revisit threshold of 4-5 signals recurring 4+ times before building
+          any retrospective/year-in-review feature; run 32 re-checked and it
+          still wasn't met. Run 47 found it numerically met (4 signals) but
+          all four are unresolved factual/administrative tracking items
+          (award-winner status, a coverage gap), not recurring style
+          aesthetics -- the kind of recurrence the threshold assumed. That's
+          a reason to surface it plainly, not a reason to build a narrative
+          retrospective page. See docs/agent-logs/recurrence-milestone-review-run47.md */}
+      {recurringSignals.length > 0 && (
+        <section
+          aria-label="Recurring across the archive"
+          style={{
+            width: "100%",
+            maxWidth: "800px",
+            padding: "0 2rem 3rem",
+          }}
+        >
+          <h2 style={{
+            fontFamily: "var(--font-franklin)",
+            fontSize: "0.7rem",
+            letterSpacing: "0.15em",
+            textTransform: "uppercase",
+            color: "var(--gray)",
+            borderTop: "1px solid var(--border)",
+            paddingTop: "2rem",
+            marginBottom: "1rem",
+          }}>
+            Recurring across the archive
+          </h2>
+          <p style={{
+            fontFamily: "var(--font-franklin)",
+            fontSize: "0.85rem",
+            lineHeight: "1.6",
+            color: "var(--gray)",
+            marginBottom: "1.25rem",
+          }}>
+            Signals appearing in four or more separate reporting windows.
+            All entries currently in this list are unresolved factual or
+            institutional tracking items rather than recurring style
+            aesthetics -- a distinction the archive continues to track
+            separately rather than treat as equivalent.
+          </p>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            {recurringSignals.map((s) => (
+              <Link
+                key={s.signal_id}
+                href={`/signals/${s.signal_id}`}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr auto",
+                    gap: "1rem",
+                    alignItems: "baseline",
+                    padding: "0.85rem 0",
+                    borderBottom: "1px solid var(--border)",
+                  }}
+                >
+                  <p style={{
+                    fontFamily: "var(--font-franklin)",
+                    fontSize: "0.9rem",
+                    color: "var(--black)",
+                  }}>
+                    {s.name}
+                  </p>
+                  <p style={{
+                    fontFamily: "var(--font-franklin)",
+                    fontSize: "0.7rem",
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    color: "var(--gray)",
+                    whiteSpace: "nowrap",
+                  }}>
+                    {s.occurrence_count} reports &middot; {s.first_seen} &ndash; {s.last_seen}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* footer */}
       <footer style={{
