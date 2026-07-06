@@ -1492,13 +1492,35 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       `web/out` missing the newest report page); periodic audit added a new
       CHANGELOG-integrity check (index links match existing files, no gaps/dupes).
 
-## Next up (run 73 candidates)
-- [ ] `crawler.py`'s leaked worker threads are non-daemon and can prevent clean
-      process exit after any single-source timeout — worth a small follow-up
-      (daemon threads or an explicit exit) before a human live-tests the crawler.
+## Run 73 — done
+- [x] Fixed the leaked non-daemon worker thread in `crawler.py`'s
+      `get_with_hard_deadline()` — replaced `ThreadPoolExecutor` with a manually
+      spawned `threading.Thread(daemon=True)` + `queue.Queue`. Independently
+      re-verified by the coordinator: process now exits cleanly (exit 0) after a
+      timeout instead of hanging.
+- [x] Added `data/reports/2027-10-04.json`, a 66th report — Margiela raw-edge
+      tailoring's runway/social signal correctly kept at derived "high"; a new,
+      separate retail-adoption signal (Ssense buy) manually held at "medium" for
+      an unclear-sector domain.
+- [x] Closed the South America source gap — added and verified `ffw.com.br`
+      (independent Brazilian fashion editorial platform) to `FASHION_SOURCES` and
+      `DOMAIN_SECTOR_MAP` as `editorial`. Two other candidates (a discrete SPFW
+      domain, a genuine Middle East source) honestly left open — no viable
+      candidate found for either.
+- [x] Nav/build regression sweep confirmed run 72's stale-build fix holds with a
+      clean wipe; periodic audit confirmed confidence discipline correct on both
+      failure modes (inflation and suppression) and found no anomalies.
+
+## Next up (run 74 candidates)
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
-      sources — the fix is implemented and locally proven, but the standing
-      "no autonomous execution" rule remains in force regardless.
+      sources — both the hang fix (run 72) and the daemon-thread fix (run 73) are
+      implemented and locally proven, but the standing "no autonomous execution"
+      rule remains in force regardless.
+- [ ] A discrete, verifiable SPFW (São Paulo Fashion Week) institutional domain
+      wasn't found — SPFW appears event-management-run, not a standalone
+      governing-body site like CFDA/FHCM. Worth another look if one surfaces.
+- [ ] A genuine Middle East regional source (distinct from scmp.com, which is
+      Hong Kong/East Asia) remains an open geographic gap.
 - [ ] The manual-sampling cadence has no enforcement mechanism beyond documentation —
       worth a periodic spot-check to catch future lapses earlier.
 - [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation

@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-09 ~21:45 PDT — [Loop run 73](changelog-entries/run-73.md)** — closes
+  run 72's daemon-thread leak (crawler process now exits cleanly after a timeout,
+  independently re-verified); 66th report distinguishes retail adoption from
+  runway/social amplification; South America source gap closed with a verified
+  Brazilian editorial source (`ffw.com.br`); nav/build regression and periodic
+  audit both clean.
+
 - **2026-07-09 ~20:30 PDT — [Loop run 72](changelog-entries/run-72.md)** — crawler
   hang fix implemented and locally proven (localhost-only test), but a real
   non-daemon-thread leak found on independent re-verification means it's still not
