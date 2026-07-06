@@ -157,6 +157,31 @@ FASHION_SOURCES = [
     # cfda.com/fhcm.paris/britishfashioncouncil.co.uk. See
     # docs/agent-logs/spfw-institutional-recheck-run74.md.
     "https://inexmoda.org.co",
+    # added run 75 -- genuine Middle East gap: scmp.com (run 39) is Hong Kong,
+    # mislabeled as Middle East coverage in an earlier task brief, and
+    # thenationalnews.com was tried run 39/re-checked run 75, still 0
+    # headlines via static-HTML scraping (client-side rendered -- re-fetch
+    # of /lifestyle/fashion-beauty/ returned 0 real <h1>/<h2>/<h3> article
+    # headlines in raw HTML, only icon/UI element titles; run 41's rejection
+    # stands). Arab News (arabnews.com) rejected: /robots.txt and
+    # /lifestyle both return an active Cloudflare "Just a moment..." JS
+    # challenge page (HTTP 403) to this project's own User-Agent, so it's
+    # not fetchable without JS execution. Arab Fashion Council
+    # (arabfashioncouncil.com) not pursued further once a clean pass was
+    # found. Vogue Arabia (voguearabia.com, canonical domain -- en.vogue.me
+    # redirects here) verified: robots.txt only disallows query-string
+    # variants, /auth/, /account/, /user/, /preview/, /search, /product/,
+    # /cdn-cgi/ -- root and article paths fully permissive. Homepage fetch
+    # with this project's own User-Agent returns HTTP 200 (served via
+    # CloudFront, not Cloudflare -- no JS challenge) with real static-HTML
+    # <h2>/<h3> article headlines directly in the markup (e.g. "Elyanna is
+    # Redefining Global Arab Pop", "The Most Dazzling Shows from Paris
+    # Couture Week"), no JS rendering required. Condé Nast-owned, Dubai-
+    # based Vogue edition covering Arab pop culture/fashion/celebrity for a
+    # Middle East audience -- same regional-edition pattern as vogue.mx
+    # (run 19), not a PR/sponsored-content mill. See
+    # docs/agent-logs/middle-east-source-research-run75.md.
+    "https://www.voguearabia.com",
 ]
 
 # default cache output path, pulled out as a named constant so future callers

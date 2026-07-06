@@ -206,6 +206,13 @@ DOMAIN_SECTOR_MAP = {
     # fashion/culture editorial platform, the first South American source
     # in FASHION_SOURCES; see docs/agent-logs/source-diversity-research-run73.md
     "ffw.com.br": "editorial",
+
+    # added run 75 -- voguearabia.com (Vogue Arabia) is a Condé Nast-owned,
+    # Dubai-based regional Vogue edition covering Arab fashion/pop culture,
+    # the first genuine Middle East source in FASHION_SOURCES (scmp.com,
+    # run 39, is Hong Kong/East Asia, not Middle East); see
+    # docs/agent-logs/middle-east-source-research-run75.md
+    "voguearabia.com": "editorial",
 }
 
 
