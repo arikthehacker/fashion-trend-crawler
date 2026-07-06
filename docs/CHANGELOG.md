@@ -18,6 +18,14 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-10 ~13:30 PDT — [Loop run 86](changelog-entries/run-86.md)** — a
+  79th report crosses into 2028 for the first time, with a careful exclusion
+  of speculative forecast content; year-boundary archive rendering confirmed
+  working after the coordinator caught and disproved a false-alarm regression
+  report from a stale concurrent-build artifact; robots/crawl-budget audit
+  confirms run 78's findings still hold; periodic audit finds a real
+  structural gap (resale domains classified but not seeded as sources).
+
 - **2026-07-10 ~12:15 PDT — [Loop run 85](changelog-entries/run-85.md)** — a
   78th report honestly logs a thin Christmas week with zero manufactured
   signals; a 13th confidence precedent formalized after real research

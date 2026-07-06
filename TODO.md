@@ -1705,11 +1705,31 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       documented for revisiting later.
 - [x] Nav/build regression sweep and periodic audit both clean.
 
-## Next up (run 86 candidates)
-- [ ] The archive_tags filter has concrete, documented prerequisites (consistent
-      quarter/thin-week tagging as a real facet) before it's worth building —
-      not a current gap.
-- [ ] Manual-sampling cadence next due ~run 87 — getting close.
+## Run 86 — done
+- [x] Added `data/reports/2028-01-03.json`, a 79th report — first report dated
+      in 2028; a second consecutive honest thin week, deliberately excluding
+      speculative year-ahead forecast content as not evidence of realized
+      discourse.
+- [x] Confirmed the archive's year-grouping logic is genuinely general and
+      handles the 2028 boundary correctly — coordinator caught and disproved a
+      false-alarm regression report (stale build artifact from a concurrent
+      build-lock collision, not a real bug).
+- [x] Robots/crawl-budget audit confirmed run 78's findings still hold at
+      ~191 routes (~0.4% of the sitemap threshold).
+- [x] Periodic audit found a real structural gap: precedent 13's resale
+      domains are classified in `taxonomy.py` but not seeded in `crawler.py`'s
+      `FASHION_SOURCES` — independently confirmed by the coordinator.
+
+## Next up (run 87 candidates)
+- [ ] Precedent 13's resale-platform domains (therealreal.com,
+      vestiairecollective.com, depop.com, grailed.com, poshmark.com) are
+      classified but not seeded in `FASHION_SOURCES` — close this properly
+      rather than relying on `summarize.py`'s WebSearch step to surface them
+      incidentally.
+- [ ] A candidate 14th precedent (forecast/speculative-content exclusion) was
+      flagged by run 86's report agent but not formalized — worth attention if
+      the pattern recurs.
+- [ ] Manual-sampling cadence next due ~run 87 — due this run or next.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven
       only.
