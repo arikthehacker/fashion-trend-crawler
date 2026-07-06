@@ -96,6 +96,14 @@ DOMAIN_SECTOR_MAP = {
     "thecut.com": "editorial",
     "nytimes.com": "editorial",
 
+    # added run 17 -- non-Western/geographically-broadening editorial sources
+    # (bias-audit run 16 finding: prior seeds were all English-language Western
+    # editorial/retail; see docs/agent-logs/source-diversity-expansion.md)
+    "nataal.com": "editorial",
+    "okayafrica.com": "editorial",
+    "fashionunited.in": "editorial",
+    "tokyofashion.com": "editorial",
+
     # retail / commerce sources
     "whowhatwear.com": "retail",
     "net-a-porter.com": "retail",

@@ -31,6 +31,13 @@ FASHION_SOURCES = [
     "https://www.vogue.com/fashion",
     "https://www.whowhatwear.com",
     "https://hypebeast.com/fashion",
+    # added run 17 (bias-audit run 16 follow-up) to broaden geographic/cultural
+    # coverage beyond English-language Western editorial/retail -- see
+    # docs/agent-logs/source-diversity-expansion.md
+    "https://nataal.com",
+    "https://www.okayafrica.com",
+    "https://fashionunited.in",
+    "https://tokyofashion.com",
 ]
 
 # default cache output path, pulled out as a named constant so future callers
