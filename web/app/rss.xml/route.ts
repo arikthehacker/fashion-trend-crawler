@@ -29,11 +29,18 @@ export async function GET() {
     .map((report) => {
       const url = `${SITE_URL}/reports/${report.report_date}`;
       const description = report.executive_summary?.trim() ?? "";
+      // Mirror the report-page JSON-LD fix (run 36): if a report has been
+      // corrected since publication, reflect that instead of always using
+      // the original report_date, so subscribers see corrections surface.
+      const lastRevision = report.revision_history?.length
+        ? report.revision_history[report.revision_history.length - 1]
+        : undefined;
+      const lastUpdated = lastRevision?.corrected_at ?? report.report_date;
       return `    <item>
       <title>${escapeXml(report.report_date)}</title>
       <link>${escapeXml(url)}</link>
       <guid isPermaLink="true">${escapeXml(url)}</guid>
-      <pubDate>${toRfc822(report.report_date)}</pubDate>
+      <pubDate>${toRfc822(lastUpdated)}</pubDate>
       <description>${escapeXml(description)}</description>
     </item>`;
     })
