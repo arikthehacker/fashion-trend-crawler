@@ -872,12 +872,34 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [x] Doc-sync/nav audit fixed two real gaps: `check_heading_patterns.py` missing from
       the skill doc's file map, and `/case-study` had no site nav at all — both fixed.
 
-## Next up (run 43 candidates)
+## Run 43 — done
+- [x] Added `data/reports/2027-03-01.json`, a 36th report — Wales Bonner/Hermès debut now
+      7 consecutive windows unresolved; correctly excluded an unrelated interim Hermès
+      collection and a concurrent real-world Haute Couture week from the tracked signals.
+- [x] **Self-archival decided:** built `src/generate_archive_manifest.py`, a local,
+      non-networked script producing a manifest (url/report_date/content_hash) of every
+      `/reports/[date]` page. Deliberately does NOT call the Wayback API —
+      `SITE_URL` is still `web/lib/site.ts`'s placeholder domain, so an automated
+      Save-Page-Now integration would snapshot a non-resolving URL. See
+      `docs/agent-logs/self-archival-decision-run43.md` for the real trigger condition
+      (set a real `SITE_URL`, then wire this manifest into a scheduled Save-Page-Now
+      job) — not a perpetual carry-forward item anymore.
+- [x] Improved RSS item quality per RSS 2.0 best practices — item titles now lead with
+      the date plus up to 3 top signal names, and per-item `<category>` tags added from
+      unique source sectors.
+- [x] Verified the homepage "This Week's Index" module against 15+ new reports since its
+      run-21 stress test — all 8 metrics render correctly. Flagged one non-bug finding:
+      dominant mood is honestly carried forward from a report ~24 weeks stale.
+- [x] Periodic audit — clean. 44 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (9th+ consecutive check), all silent
+      signals already carry correct close-out/deferred-transition notes.
+
+## Next up (run 44 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
 - [ ] Watch the Wales Bonner/Hermès debut signal — the 2027-03-08 report is the planned
       checkpoint for whether it transitions to "untracked going forward."
-- [ ] Consider periodic Wayback "Save Page Now" snapshotting of the site's own
-      `/reports/[date]` pages as a smaller future self-archival improvement (distinct
-      from per-article source citations, which are deliberately not permalinked).
+- [ ] Consider a staleness cutoff for the homepage index module's "dominant mood" metric
+      — currently carried forward from a report ~24 weeks stale (honestly disclosed, but
+      worth a design decision).

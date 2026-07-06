@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-08 ~07:45 PDT — [Loop run 43](changelog-entries/run-43.md)** — 36th report
+  carefully avoids conflating tracked signals with unrelated real-world events; the
+  long-carried self-archival question finally resolved with a concrete manifest tool
+  and trigger condition instead of another deferral; RSS item titles/categories
+  improved per RSS 2.0 best practices; homepage index module verified fresh against
+  15+ new reports; periodic audit clean.
+
 - **2026-07-08 ~06:30 PDT — [Loop run 42](changelog-entries/run-42.md)** — 35th report
   holds the revisit plan on the Wales Bonner prolonged-silence question; a real WCAG 2.2
   target-size violation found and fixed across 5 nav instances; a genuine prompt-drift
