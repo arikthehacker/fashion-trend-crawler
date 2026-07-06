@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-07 ~11:10 PDT — [Loop run 28](changelog-entries/run-28.md)** — 21st report
+  handles a 4th-window open question with a named explanation instead of repetition;
+  manual sampling diversified beyond Pinterest for the first time (TikTok, compliant);
+  a documented-but-never-fixed garment drift finally corrected; continuity research
+  found README's run instructions were actually broken and fixed them; RSS/sitemap
+  verification found and fixed a real missing-routes bug.
+
 - **2026-07-07 ~09:50 PDT — [Loop run 27](changelog-entries/run-27.md)** — Closed out
   layered-tops-styling's 13-window dormancy; 20th report correctly avoids conflating a
   similarly-named UK award with the still-open CFDA question; added non-English source

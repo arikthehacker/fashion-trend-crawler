@@ -573,13 +573,36 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       have matching static routes, and recurring signals show full history, not just the
       latest occurrence. Clean, nothing to fix.
 
-## Next up (run 28 candidates)
+## Run 28 — done
+- [x] Added `data/reports/2026-11-16.json`, a 21st report. CFDA Fashion Fund winner open
+      a 4th window — instead of repeating the same caveat, explicitly named the unusual
+      duration and offered two live, non-asserted explanations.
+- [x] Third manual-sampling exercise, first real diversification beyond Pinterest: used
+      TikTok's public hashtag page directly (compliant, not scraped) with independent
+      editorial coverage as corroboration.
+- [x] **Found and fixed a real, previously-undone drift**: `peplum-waist-revival`'s
+      garment terminology drift (documented in run 19 but never actually corrected) was
+      finally fixed via `revision_history` — the run-20 prompt fix has no NEW drift to
+      report but also hasn't been genuinely exercised since (post-fashion-month reports
+      have all been scheduling/governance signals, not garment-description ones).
+- [x] **Continuity/succession research found README's operational instructions were
+      actually broken** — `bash run.sh` would fail from repo root since the pipeline
+      scripts assume running from inside `src/`, and the doc never mentioned the
+      `--revision-reason`/`--corrected-at` flags required to re-run against an existing
+      date. Fixed: corrected the run instructions and documented the correction flags.
+- [x] RSS/sitemap verification found and fixed a real bug: `/glossary` and `/search` were
+      completely missing from `sitemap.xml` (never added to the route list). RSS feed
+      itself was already correct — 20 reports, well-formed XML, proper escaping.
+
+## Next up (run 29 candidates)
 - [ ] The run-19 confidence-gate fix remains untested — revisit once
       `independent_criticism` sources reappear.
 - [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
-- [ ] CFDA Fashion Awards (expected early November per 2025 precedent) still has no
-      confirmed 2026 date or coverage as of the 2026-11-09 report — worth another check
-      next run.
-- [ ] Consider whether other non-Western/non-English sources should get the same
-      translation-transparency treatment just added for `dewimagazine.com`, as source
-      diversity continues to expand.
+- [ ] CFDA Fashion Fund winner and CFDA Fashion Awards both remain unconfirmed after
+      multiple windows — worth considering whether prolonged silence itself eventually
+      warrants a different treatment (e.g. an explicit "awaiting resolution" status)
+      rather than repeated carry-forward.
+- [ ] README's operational instructions are now fixed and accurate — worth periodically
+      re-verifying against actual pipeline behavior as `summarize.py`/`run.sh` evolve,
+      given this was the second time a doc-accuracy sweep found a real, previously-unknown
+      gap (first was the run-count staleness, this is the "does it actually work" kind).
