@@ -119,6 +119,12 @@ DOMAIN_SECTOR_MAP = {
     # docs/agent-logs/southeast-asia-source-attempt.md
     "dewimagazine.com": "editorial",
 
+    # added run 39 -- East Asian (Hong Kong) and Middle Eastern (UAE) fashion
+    # press, both English-language but genuine geographic diversity; see
+    # docs/agent-logs/source-diversity-run39.md
+    "scmp.com": "editorial",
+    "thenationalnews.com": "editorial",
+
     # retail / commerce sources
     "whowhatwear.com": "retail",
     "net-a-porter.com": "retail",

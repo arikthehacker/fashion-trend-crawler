@@ -48,6 +48,12 @@ FASHION_SOURCES = [
     # after run 19 left the region open (vogue.ph blocked by a Cloudflare JS
     # challenge); see docs/agent-logs/southeast-asia-source-attempt.md
     "https://www.dewimagazine.com",
+    # added run 39 -- East Asia and Middle East were still uncovered gaps;
+    # both verified reachable (no Cloudflare block); see
+    # docs/agent-logs/source-diversity-run39.md. Still English-language --
+    # geographic, not linguistic, diversification.
+    "https://www.scmp.com/lifestyle/fashion-beauty",
+    "https://www.thenationalnews.com/lifestyle/fashion",
 ]
 
 # default cache output path, pulled out as a named constant so future callers
