@@ -202,6 +202,9 @@ export default function Timeline() {
         <Link href="/archive" style={{ fontFamily: "var(--font-franklin)", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--black)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
           Full archive
         </Link>
+        <Link href="/search" style={{ fontFamily: "var(--font-franklin)", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--black)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+          Search
+        </Link>
         <Link href="/" style={{ fontFamily: "var(--font-franklin)", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--black)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
           Current report
         </Link>

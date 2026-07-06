@@ -143,6 +143,47 @@ export function getSignalHistory(slug: string): SignalOccurrence[] {
   return occurrences.sort((a, b) => (a.report_date < b.report_date ? -1 : 1));
 }
 
+export interface SearchableSignal {
+  name: string;
+  signal_id?: string;
+  report_date: string;
+  source_sectors: string[];
+  confidence: string;
+  volatility: string;
+  origin_classification: string;
+  evidence: string;
+  index_note: string;
+}
+
+/**
+ * Flattens every signal across all reports into a single searchable/filterable
+ * array for the /search page's client-side facet filters. One entry per
+ * signal occurrence (not deduped by signal_id) — a signal recurring across
+ * weeks is meaningful history, per /signals/[slug]'s existing model.
+ */
+export function getSearchIndex(): SearchableSignal[] {
+  const reports = getAllReports();
+  const index: SearchableSignal[] = [];
+
+  for (const report of reports) {
+    for (const signal of report.top_signals ?? []) {
+      index.push({
+        name: signal.name,
+        signal_id: signal.signal_id,
+        report_date: report.report_date,
+        source_sectors: signal.source_sectors,
+        confidence: signal.confidence,
+        volatility: signal.volatility,
+        origin_classification: signal.origin_classification,
+        evidence: signal.evidence,
+        index_note: signal.index_note,
+      });
+    }
+  }
+
+  return index;
+}
+
 /** Returns all distinct non-empty signal_id values across all reports. */
 export function getAllSignalSlugs(): string[] {
   const reports = getAllReports();

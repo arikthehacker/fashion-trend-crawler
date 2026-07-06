@@ -176,6 +176,17 @@ export default function Archive() {
           textTransform: "uppercase",
           color: "var(--gray)",
         }}>
+          <Link href="/search" style={{ color: "var(--black)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+            Search
+          </Link>
+        </p>
+        <p style={{
+          fontFamily: "var(--font-franklin)",
+          fontSize: "0.75rem",
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          color: "var(--gray)",
+        }}>
           <Link href="/" style={{ color: "var(--black)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
             Current report
           </Link>
