@@ -319,6 +319,57 @@ DOMAIN_SECTOR_MAP = {
     "thefashionlaw.com": "editorial",
     "theimpression.com": "editorial",
     "hellobeautiful.com": "editorial",
+
+    # added run 98 -- continuing to close run 93/94/96's gap backlog
+    # (docs/agent-logs/taxonomy-gap-fix-run98.md), each verified via
+    # WebSearch before classifying: artnews.com is ARTnews, a staffed
+    # visual-arts trade/editorial publication tracking art since 1902
+    # (fashion-adjacent art-world coverage); asiae.co.kr is The Asia
+    # Business Daily, a staffed South Korean economic newspaper (est.
+    # 1988, listed KOSDAQ) -- general business press, geographic-
+    # diversity editorial in the same vein as scmp.com/tribune.com.pk;
+    # bricksmagazine.co.uk is BRICKS Magazine, an independent UK
+    # publication (10+ years, named team/masthead) covering fashion,
+    # music, and culture; clashmusic.com is Clash, a UK music magazine
+    # (launched 2004/web 2008) whose coverage explicitly spans fashion
+    # alongside music; complex.com is Complex, a staffed digital media
+    # outlet (founded 2002, corporate-owned, editorial masthead) with a
+    # long-running style/style-history vertical, same bucket as
+    # hypebeast.com/highsnobiety.com; essence.com is ESSENCE, the
+    # historic (est. 1970) staffed lifestyle/fashion/beauty magazine for
+    # Black women, Black-owned since 2018; hellomagazine.com is HELLO!,
+    # a staffed UK celebrity/royal/fashion weekly (launched 1988, web
+    # 2001); hollywoodreporter.com is The Hollywood Reporter, a staffed
+    # entertainment trade publication (founded 1930, Penske Media) whose
+    # coverage includes red-carpet/fashion business reporting;
+    # interviewmagazine.com is Interview, the staffed culture/fashion
+    # magazine founded 1969 (Andy Warhol/John Wilcock); papermag.com is
+    # PAPER, a staffed independent NYC fashion/culture magazine founded
+    # 1984, still operating with a named editor-in-chief.
+    #
+    # Skipped (not added), all researched but not clearing the bar:
+    # cafedelhomme.com -- WebSearch shows this is the website for Café
+    # de l'Homme, a Paris restaurant near the Trocadero; its "fashion"
+    # content is incidental Fashion Week dining coverage, not a fashion
+    # editorial source. chicstylecollective.com -- a single-editor-run
+    # affordable-luxury lifestyle blog (fashion/beauty/horoscopes mixed
+    # together, "must-have"/shopping-guide framing); ambiguous enough
+    # (like modernluxury.com in run 96) that it doesn't clearly clear
+    # the bar for a staffed editorial title, left for a closer look.
+    # ecostylia.com -- a small independently-funded French/English
+    # magazine mixing fashion with astrology/horoscopes and general
+    # culture; genuine editorial standard unclear, left unclassified
+    # rather than forced, same caution as modernluxury.com.
+    "artnews.com": "editorial",
+    "asiae.co.kr": "editorial",
+    "bricksmagazine.co.uk": "editorial",
+    "clashmusic.com": "editorial",
+    "complex.com": "editorial",
+    "essence.com": "editorial",
+    "hellomagazine.com": "editorial",
+    "hollywoodreporter.com": "editorial",
+    "interviewmagazine.com": "editorial",
+    "papermag.com": "editorial",
 }
 
 
