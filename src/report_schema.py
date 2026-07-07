@@ -300,6 +300,15 @@ def is_prolonged_silence(signal_id: str, all_reports: list, threshold: int = 4) 
 
 @dataclass
 class Report:
+    # date this report was filed, in the archive's dated-filename convention
+    # (data/reports/<report_date>.json). CONVENTION (previously undocumented
+    # -- see docs/agent-logs/report-date-convention-audit-run92.md): this
+    # MUST equal collection_window.end, not collection_window.start. The
+    # archive files/labels a report by the END of the window it summarizes,
+    # not the start. Run 91 caught a report filed under the window's start
+    # date instead; validate_report() below emits a non-fatal warning if
+    # this convention is violated, to catch a recurrence before it reaches
+    # consolidation.
     report_date: str = ""
     collection_window: CollectionWindow = field(default_factory=CollectionWindow)
     sources_scanned: int = 0
@@ -430,6 +439,29 @@ def validate_report(data: dict) -> None:
     window = data.get("collection_window", {})
     if not isinstance(window, dict) or "start" not in window or "end" not in window:
         raise SchemaValidationError("collection_window must have 'start' and 'end'")
+
+    # heuristic, non-fatal check (run 92): the archive's established
+    # convention is report_date == collection_window.end (the report is
+    # filed/dated by the END of the window it summarizes, not the start).
+    # this was never written down explicitly before run 92 and run 91 caught
+    # a real violation of it, so we warn here rather than hard-fail --
+    # consistent with this project's other heuristic checkers
+    # (check_field_coverage.py, check_signal_reuse_claims.py), which warn
+    # instead of raising so an unanticipated legitimate edge case doesn't
+    # block saving a report. see
+    # docs/agent-logs/report-date-convention-audit-run92.md.
+    report_date = data.get("report_date", "")
+    window_end = window.get("end", "") if isinstance(window, dict) else ""
+    if report_date and window_end and report_date != window_end:
+        import sys
+        print(
+            f"WARNING: report_date ({report_date!r}) does not match "
+            f"collection_window.end ({window_end!r}) -- the archive convention "
+            f"is that a report is dated/filed by the END of its collection "
+            f"window, not the start. Double-check this report was filed under "
+            f"the correct date before consolidating.",
+            file=sys.stderr,
+        )
 
     for i, signal in enumerate(data.get("top_signals", [])):
         missing_signal_keys = [k for k in REQUIRED_SIGNAL_KEYS if k not in signal]
