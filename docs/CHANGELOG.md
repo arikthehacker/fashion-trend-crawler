@@ -18,6 +18,15 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-11 ~02:55 PDT — [Loop run 97](changelog-entries/run-97.md)** — a
+  genuinely fabricated source (an unrelated music blog) traced and removed
+  from two historical reports with proper revision tracking; a cross-house
+  aesthetic cluster review honestly closes as a non-issue; a 90th report
+  introduces a coherent new development that doesn't actually contradict the
+  same-run cluster review's conclusion; nav/build and periodic audits both
+  clean, the latter independently confirming the historical corrections were
+  properly tracked, not silent edits.
+
 - **2026-07-11 ~01:45 PDT — [Loop run 96](changelog-entries/run-96.md)** — an
   89th report honestly flags a possible cross-house aesthetic echo instead
   of forcing a merge; 8 more taxonomy gaps closed, catching a genuine data-

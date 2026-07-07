@@ -1867,14 +1867,29 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       real programmatic queries, not just a successful build.
 - [x] Nav/build regression sweep and periodic audit both clean.
 
-## Next up (run 97 candidates)
+## Run 97 — done
+- [x] Traced and fixed a genuine fabricated source (`uraniumwaves.com`, an
+      unrelated music blog) cited on the `wales-bonner-hermes-debut` signal
+      in two historical reports — corrected via `save_report()` with proper
+      revision tracking since it was load-bearing (inflated corroboration
+      count, fed the confidence/transition reasoning).
+- [x] Cross-house aesthetic cluster review honestly closed as a non-issue —
+      Margiela and Miu Miu raw-edge signals are unrelated (5 months apart,
+      different techniques, never independently covered together).
+- [x] Added `data/reports/2028-03-20.json`, a 90th report — a new,
+      independently-arising editorial synthesis signal that coherently
+      doesn't contradict the same-run cluster review (new week's discourse,
+      not a retroactive claim); flagged as a candidate 15th precedent.
+- [x] Nav/build regression sweep and periodic audit both clean; periodic
+      audit independently confirmed the historical corrections were properly
+      tracked, not silent edits.
+
+## Next up (run 98 candidates)
+- [ ] A candidate 15th precedent (editorial synthesis of prior signals into a
+      new cross-house claim) was flagged by run 97's report agent but not
+      formalized — worth attention if the pattern recurs.
 - [ ] 42 lower-citation-count domains remain in the taxonomy backlog — full
       list in `docs/agent-logs/taxonomy-gap-fix-run96.md`.
-- [ ] `uraniumwaves.com` appearing in `source_domains` data is worth tracing
-      separately — likely a one-off data artifact, not yet investigated.
-- [ ] A possible cross-house "unfinished edge" aesthetic cluster (Margiela
-      raw-edge, Miu Miu raw-hem) was flagged for future review, not yet
-      formalized.
 - [ ] Manual-sampling cadence next due ~run 105.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven
