@@ -18,6 +18,14 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-10 ~22:15 PDT — [Loop run 93](changelog-entries/run-93.md)** — an
+  86th report cleanly applies two established precedent shapes; the run-92
+  flagged taxonomy gap closed with real verification, plus a useful survey of
+  58 remaining editorial-domain gaps for a future run; about/case-study
+  freshness re-checked 12+ runs later and remains accurate; nav/build sweep
+  clean; a transient Pagefind filesystem race diagnosed and resolved without
+  any code change.
+
 - **2026-07-10 ~21:00 PDT — [Loop run 92](changelog-entries/run-92.md)** — a
   real root-cause fix for run 91's filename/date bug (the convention was
   never documented anywhere; now has an explicit docstring and a non-fatal

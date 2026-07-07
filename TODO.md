@@ -1814,10 +1814,27 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       prose onto the Taxonomy page.
 - [x] Nav/build regression sweep and periodic audit both clean.
 
-## Next up (run 93 candidates)
-- [ ] `proenzaschouler.com` isn't yet classified in `taxonomy.py`'s
-      `DOMAIN_SECTOR_MAP` — flagged by run 92's report agent, small follow-up.
-- [ ] Manual-sampling cadence next due ~run 97.
+## Run 93 — done
+- [x] Added `data/reports/2028-02-21.json`, an 86th report — Khaite NYFW
+      FW28 and LFW calendar-confirmation signals both matched existing
+      precedent shapes exactly, including explicit precedent-6 application
+      for their same-week co-occurrence.
+- [x] Closed the flagged `proenzaschouler.com` taxonomy gap with real
+      verification (genuine designer-origin site); surveyed the full archive
+      and found 58 more unmapped domains, all editorial/media/retail —
+      listed by citation frequency for a future dedicated run rather than
+      fixed piecemeal.
+- [x] About/case-study freshness re-checked 12+ runs later — still accurate.
+- [x] Nav/build regression sweep and periodic audit both clean. Diagnosed and
+      resolved a transient Pagefind filesystem race on the first build
+      attempt (Next.js itself compiled fine; not a real regression).
+
+## Next up (run 94 candidates)
+- [ ] 58 editorial/media/retail/institute domains cited in `source_domains`
+      remain unclassified in `DOMAIN_SECTOR_MAP` — full list by citation
+      frequency in `docs/agent-logs/taxonomy-gap-fix-run93.md`, worth a
+      dedicated future run.
+- [ ] Manual-sampling cadence next due ~run 97 — close.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven
       only; README now accurately reflects this off-limits status.
