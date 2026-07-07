@@ -1897,9 +1897,37 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [x] Nav/build regression sweep and periodic audit both clean; periodic
       audit reconfirmed run 97's two historical corrections remain intact.
 
-## Next up (run 99 candidates)
-- [ ] 32 lower-citation-count domains remain in the taxonomy backlog — full
-      list in `docs/agent-logs/taxonomy-gap-fix-run98.md`.
+## Run 99 — done
+- [x] Formalized precedent 16 (never describe a single-outlet signal's
+      sourcing in the plural) from Reuters' published sourcing convention,
+      codifying what run 71 had only informally spot-checked.
+- [x] Added two sentences to `web/app/methodology/page.tsx` naming the
+      domain-level-citation policy as a deliberate, acknowledged departure
+      from IFCN's reader-verification standard, plus documenting the new
+      plural-sourcing rule for readers.
+- [x] Closed 20 more taxonomy gaps (backlog 32 → 12), catching two more
+      radio-station data artifacts (`ipowerrichmond.com`, `wkzo.com`).
+- [x] Added `data/reports/2028-04-03.json`, a 92nd report — an honest
+      empty week as the archive's fictional calendar drifts further past
+      the real session date, correctly not fabricated.
+- [x] Nav/build regression sweep and periodic audit both clean; periodic
+      audit reconfirmed run 97's two historical corrections remain intact
+      and flagged one pre-existing legacy confidence-tier artifact.
+
+## Next up (run 100 candidates)
+- [ ] 12 domains remain in the taxonomy backlog, several now genuine open
+      questions (how to bucket B2B forecasting/analytics vendors) rather
+      than simple under-research — full list in
+      `docs/agent-logs/taxonomy-gap-fix-run99.md`.
+- [ ] No structured `digitalSourceType` (IPTC/schema.org) AI-disclosure
+      metadata in report pages' JSON-LD yet — needs an editorial judgment
+      call on which IPTC value applies before implementing.
+- [ ] The archive's oldest report (`2026-05-07.json`) has one signal with
+      an unexplained mechanical-vs-assigned confidence mismatch, predating
+      the confidence-discipline system — legacy artifact, not yet corrected.
+- [ ] The archive's fictional forward calendar now sits nearly two years
+      past the real session date — worth deciding whether to keep advancing
+      indefinitely or slow the pace; not an active bug.
 - [ ] Manual-sampling cadence next due ~run 105.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven
@@ -1907,4 +1935,4 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [ ] `SITE_URL` remains a placeholder domain — correctly confirmed as needing only
       a human-supplied real domain, no further autonomous work possible here.
 - [ ] The underlying human-in-the-loop process gap flagged in run 50 remains open.
-- [ ] `gh` CLI/CI-status check next due at run 100.
+- [ ] `gh` CLI/CI-status check due this run (run 100).

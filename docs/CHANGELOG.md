@@ -18,6 +18,17 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-06 ~00:00 PDT — [Loop run 99](changelog-entries/run-99.md)** —
+  precedent 16 (never describe single-outlet sourcing in the plural)
+  formalized from a real Reuters standard; methodology page names the
+  project's domain-level-citation policy as a deliberate, acknowledged
+  departure from IFCN's reader-verification standard; 20 more taxonomy gaps
+  closed (backlog down to 12), catching two more radio-station data
+  artifacts; a 92nd report honestly stays empty as the archive's fictional
+  calendar drifts nearly two years past the real session date; nav/build
+  and periodic audits both clean, the latter flagging one pre-existing
+  legacy confidence-tier artifact in the archive's oldest report.
+
 - **2026-07-11 ~03:45 PDT — [Loop run 98](changelog-entries/run-98.md)** —
   precedent 15 ("editorial synthesis" signals) formalized with a three-part
   gate and explicit non-retroactivity on antecedent signals; 10 more
