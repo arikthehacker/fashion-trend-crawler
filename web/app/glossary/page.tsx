@@ -170,6 +170,8 @@ const DEFINITIONS: Record<string, string> = {
   "dropped-shoulder overcoat": "An overcoat cut with the shoulder seam extended past the wearer's natural shoulder line, producing a broader, more structured shoulder line than a set-in sleeve construction, observed in Fall/Winter 2028 menswear runway coverage as a distinct construction choice from the shawl-collar overcoat's rounded-collar treatment.",
   "bias-cut column dress": "A column dress cut on the fabric's diagonal (bias) grain rather than the straight grain, producing a close, fluid drape against the body, observed in Haute Couture Spring/Summer 2028 runway coverage.",
   "spiral-seam wrap coat": "A wrap coat constructed with a single seam that spirals diagonally around the torso rather than running vertically down the front or side, producing an asymmetric front closure line, observed in Fall/Winter 2028 New York Fashion Week runway coverage.",
+  "cantilevered-shoulder blazer": "A tailored blazer built with an internal structural framework that extends the shoulder line beyond the wearer's natural silhouette in a rigid, unsupported-looking projection, observed in Fall/Winter 2028 New York Fashion Week runway coverage.",
+  "london fashion week": "The London leg of the international ready-to-wear fashion week circuit, organized by the British Fashion Council, cited as an institutional-sector source event when its published calendar or participating collections are tracked.",
 };
 
 function normalize(term: string): string {
