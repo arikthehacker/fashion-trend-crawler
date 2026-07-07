@@ -18,6 +18,14 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-11 ~01:45 PDT — [Loop run 96](changelog-entries/run-96.md)** — an
+  89th report honestly flags a possible cross-house aesthetic echo instead
+  of forcing a merge; 8 more taxonomy gaps closed, catching a genuine data-
+  quality artifact (an unrelated music blog cited as a source domain) along
+  the way; a rigorous, evidence-based search-quality check confirms Pagefind
+  actually ranks and links results correctly via real WASM query execution,
+  not just a successful build; nav/build and periodic audits both clean.
+
 - **2026-07-11 ~00:35 PDT — [Loop run 95](changelog-entries/run-95.md)** — an
   88th report correctly handles a leap-year date boundary and fashion-month
   sequencing; the manual-sampling cadence run proactively before its due

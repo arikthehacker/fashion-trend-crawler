@@ -1854,9 +1854,27 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [x] Nav/build regression sweep and periodic audit both clean; periodic
       audit caught and discarded its own www-prefix false positive.
 
-## Next up (run 96 candidates)
-- [ ] ~50 lower-citation-count domains from the taxonomy survey remain
-      unclassified — full list in `docs/agent-logs/taxonomy-gap-fix-run94.md`.
+## Run 96 — done
+- [x] Added `data/reports/2028-03-13.json`, an 89th report — Miu Miu and
+      Loewe FW28 signals both earned "high" cleanly; correctly declined to
+      merge a possible cross-house "unfinished edge" echo with the closed-out
+      Margiela raw-edge thread, flagging it for future review instead.
+- [x] Closed 8 more taxonomy gaps (backlog 50→42); caught a genuine data-
+      quality artifact (`uraniumwaves.com`, an unrelated music blog cited as
+      a source domain) rather than force-classifying it.
+- [x] Rigorous, evidence-based search-quality verification — confirmed
+      Pagefind's actual WASM search ranks and links results correctly via
+      real programmatic queries, not just a successful build.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Next up (run 97 candidates)
+- [ ] 42 lower-citation-count domains remain in the taxonomy backlog — full
+      list in `docs/agent-logs/taxonomy-gap-fix-run96.md`.
+- [ ] `uraniumwaves.com` appearing in `source_domains` data is worth tracing
+      separately — likely a one-off data artifact, not yet investigated.
+- [ ] A possible cross-house "unfinished edge" aesthetic cluster (Margiela
+      raw-edge, Miu Miu raw-hem) was flagged for future review, not yet
+      formalized.
 - [ ] Manual-sampling cadence next due ~run 105.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven
