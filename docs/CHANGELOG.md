@@ -18,6 +18,17 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-06 ~00:35 PDT — [Loop run 100](changelog-entries/run-100.md)** —
+  a new `trade_intelligence` taxonomy sector closes the domain backlog to
+  zero, correctly separating B2B trend-forecasting vendors' commercial
+  incentive from editorial/institutional/retail; the gh CLI/CI-status
+  check corrects a stale multi-run claim (CI has actually existed since
+  the original build); a 93rd report honestly stays empty on a calendar
+  now over two years past the real session date; nav/build clean; periodic
+  audit flags a genuine candidate 17th precedent (an undocumented
+  confidence mismatch in a live, non-placeholder report) rather than
+  force-fixing it.
+
 - **2026-07-06 ~00:00 PDT — [Loop run 99](changelog-entries/run-99.md)** —
   precedent 16 (never describe single-outlet sourcing in the plural)
   formalized from a real Reuters standard; methodology page names the

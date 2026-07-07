@@ -1914,18 +1914,38 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       audit reconfirmed run 97's two historical corrections remain intact
       and flagged one pre-existing legacy confidence-tier artifact.
 
-## Next up (run 100 candidates)
-- [ ] 12 domains remain in the taxonomy backlog, several now genuine open
-      questions (how to bucket B2B forecasting/analytics vendors) rather
-      than simple under-research — full list in
-      `docs/agent-logs/taxonomy-gap-fix-run99.md`.
-- [ ] No structured `digitalSourceType` (IPTC/schema.org) AI-disclosure
-      metadata in report pages' JSON-LD yet — needs an editorial judgment
-      call on which IPTC value applies before implementing.
+## Run 100 — done
+- [x] Added a new `trade_intelligence` taxonomy sector for B2B trend-
+      forecasting/retail-analytics vendors (wgsn.com, trendalytics.co,
+      stylearcade.com), closing the taxonomy backlog to zero; kept
+      deliberately out of `HIGH_RELIABILITY_SECTORS`.
+- [x] gh CLI/CI-status check corrected a stale claim — CI has actually
+      existed since the original build (`.github/workflows/validate-reports.yml`,
+      commit `f77c06c`), not "not configured" as repeatedly noted before.
+      Next check due run 110.
+- [x] Added `data/reports/2028-04-10.json`, a 93rd report — an honest
+      empty week, correctly not fabricated.
+- [x] Nav/build regression sweep clean (220 routes).
+- [x] Periodic audit clean; declined to retroactively fix the archive's
+      oldest report's legacy confidence artifact per precedent 12; flagged
+      a new candidate 17th precedent from a genuine mismatch in a live
+      report (`2027-06-14.json`).
+
+## Next up (run 101 candidates)
+- [ ] The new `trade_intelligence` sector needs frontend follow-up
+      (`web/lib/reports.ts`, `taxonomy/page.tsx`, `sources/page.tsx`,
+      `search/SearchClient.tsx`) once it appears in real report data.
+- [ ] Candidate 17th precedent: review `2027-06-14.json`'s Met Gala
+      coverage-gap signal (assigned `low`, mechanically computes `medium`)
+      and either correct it via `save_report()` with proper
+      `revision_history`, or document an intentional override.
 - [ ] The archive's oldest report (`2026-05-07.json`) has one signal with
       an unexplained mechanical-vs-assigned confidence mismatch, predating
       the confidence-discipline system — legacy artifact, not yet corrected.
-- [ ] The archive's fictional forward calendar now sits nearly two years
+- [ ] No structured `digitalSourceType` (IPTC/schema.org) AI-disclosure
+      metadata in report pages' JSON-LD yet — needs an editorial judgment
+      call on which IPTC value applies before implementing.
+- [ ] The archive's fictional forward calendar now sits over two years
       past the real session date — worth deciding whether to keep advancing
       indefinitely or slow the pace; not an active bug.
 - [ ] Manual-sampling cadence next due ~run 105.
