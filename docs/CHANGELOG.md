@@ -18,6 +18,16 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-11 ~03:45 PDT — [Loop run 98](changelog-entries/run-98.md)** —
+  precedent 15 ("editorial synthesis" signals) formalized with a three-part
+  gate and explicit non-retroactivity on antecedent signals; 10 more
+  taxonomy gaps closed (backlog down to 32), catching a second genuine data
+  artifact (a Paris restaurant's website misfiled as a fashion source); a
+  91st report correctly stays empty through a genuinely thin post-fashion-
+  month week rather than being padded; nav/build and periodic audits both
+  clean, the latter reconfirming both of run 97's historical corrections
+  remain intact.
+
 - **2026-07-11 ~02:55 PDT — [Loop run 97](changelog-entries/run-97.md)** — a
   genuinely fabricated source (an unrelated music blog) traced and removed
   from two historical reports with proper revision tracking; a cross-house

@@ -1884,12 +1884,22 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       audit independently confirmed the historical corrections were properly
       tracked, not silent edits.
 
-## Next up (run 98 candidates)
-- [ ] A candidate 15th precedent (editorial synthesis of prior signals into a
-      new cross-house claim) was flagged by run 97's report agent but not
-      formalized — worth attention if the pattern recurs.
-- [ ] 42 lower-citation-count domains remain in the taxonomy backlog — full
-      list in `docs/agent-logs/taxonomy-gap-fix-run96.md`.
+## Run 98 — done
+- [x] Formalized precedent 15 ("editorial synthesis" signals) with a
+      three-part gate (both antecedents pre-existing, 2+ independent
+      outlets, cites underlying facts) and explicit non-retroactivity on
+      the antecedent signals — verified against run 97's worked example.
+- [x] Closed 10 more taxonomy gaps (backlog 42 → 32), catching a second
+      genuine data artifact (`cafedelhomme.com`, a Paris restaurant site).
+- [x] Added `data/reports/2028-03-27.json`, a 91st report — a genuinely
+      thin post-fashion-month week correctly left with `top_signals: []`
+      rather than padded with a single-source restatement.
+- [x] Nav/build regression sweep and periodic audit both clean; periodic
+      audit reconfirmed run 97's two historical corrections remain intact.
+
+## Next up (run 99 candidates)
+- [ ] 32 lower-citation-count domains remain in the taxonomy backlog — full
+      list in `docs/agent-logs/taxonomy-gap-fix-run98.md`.
 - [ ] Manual-sampling cadence next due ~run 105.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven
