@@ -82,6 +82,12 @@ DOMAIN_SECTOR_MAP = {
     "louisvuitton.com": "designer_origin",
     "prada.com": "designer_origin",
 
+    # added run (2028-02-21 report) -- khaite.com is the brand's own official
+    # site, first crawled for its Fall/Winter 2028 New York Fashion Week
+    # lookbook; same first-party-collection-drop pattern as the other
+    # designer_origin entries above
+    "khaite.com": "designer_origin",
+
     # runway / editorial / magazine sources
     "vogue.com": "editorial",
     "wwd.com": "editorial",
@@ -213,6 +219,17 @@ DOMAIN_SECTOR_MAP = {
     # run 39, is Hong Kong/East Asia, not Middle East); see
     # docs/agent-logs/middle-east-source-research-run75.md
     "voguearabia.com": "editorial",
+
+    # added run 93 -- verified via WebSearch before classifying (see
+    # docs/agent-logs/taxonomy-gap-fix-run93.md): proenzaschouler.com is the
+    # house's own official site (proenzaschouler.com/pages/<season>, e.g.
+    # fall-2024, spring-2026), publishing seasonal runway lookbook pages
+    # alongside its shop -- same designer-owned-site-plus-commerce pattern as
+    # chanel.com/dior.com/louisvuitton.com/gucci.com/prada.com, not a pure
+    # e-commerce-only domain. Cited as a designer_origin source in the
+    # 2028-02-14 report (Fall/Winter 2028 NYFW runway lookbook), flagged as a
+    # candidate gap in that report's own agent log.
+    "proenzaschouler.com": "designer_origin",
 }
 
 
