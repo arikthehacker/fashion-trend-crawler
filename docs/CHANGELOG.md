@@ -18,6 +18,14 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-10 ~18:40 PDT — [Loop run 90](changelog-entries/run-90.md)** — an
+  83rd report correctly lands the couture coverage deferred from last week;
+  gh/CI check hits its official run-90 checkpoint (11th consecutive match,
+  cadence to run 100); a real evidence-based review confirms the 5 precedents
+  embedded in `summarize.py`'s prompt (run 89) remain the right cut — the
+  other 9 have barely recurred; nav/build sweep caught and corrected its own
+  false alarms before reporting; periodic audit clean.
+
 - **2026-07-10 ~17:10 PDT — [Loop run 89](changelog-entries/run-89.md)** — an
   82nd report applies precedent 2 in both directions and respects the real
   fashion calendar (couture excluded as premature); a real structural gap

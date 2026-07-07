@@ -1770,13 +1770,20 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       (10th consecutive matching check).
 - [x] Nav/build regression sweep and periodic audit both clean.
 
-## Next up (run 90 candidates)
-- [ ] `gh` CLI/CI-status check officially due this run (run 90) — already
-      confirmed unchanged one run early (run 89), so this can just confirm
-      rather than re-verify. Next full check after that at run 100.
-- [ ] The 9 narrower confidence precedents not included in `summarize.py`'s
-      condensed in-prompt summary remain accessible only via the full doc —
-      worth revisiting if any recur often once the automated pipeline resumes.
+## Run 90 — done
+- [x] Added `data/reports/2028-01-31.json`, an 83rd report — Dior Haute
+      Couture SS28 correctly lands this window (deferred from last week's
+      report pending menswear month's close), earning "high" via genuine
+      cross-sector corroboration.
+- [x] `gh`/CI check hit its official run-90 checkpoint — 11th consecutive
+      match, cadence extended to run 100.
+- [x] Reviewed all 9 confidence precedents excluded from `summarize.py`'s
+      condensed prompt summary with real recurrence data — confirmed the
+      current 5-precedent cut remains correct; all 9 excluded ones have
+      recurred only once or twice across 83 reports.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Next up (run 91 candidates)
 - [ ] Manual-sampling cadence next due ~run 97.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven
@@ -1784,3 +1791,4 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [ ] `SITE_URL` remains a placeholder domain — correctly confirmed as needing only
       a human-supplied real domain, no further autonomous work possible here.
 - [ ] The underlying human-in-the-loop process gap flagged in run 50 remains open.
+- [ ] `gh` CLI/CI-status check next due at run 100.
