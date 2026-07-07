@@ -1,0 +1,107 @@
+{
+  "report_date": "2026-06-01",
+  "collection_window": {
+    "start": "2026-05-26",
+    "end": "2026-06-01"
+  },
+  "sources_scanned": 25,
+  "items_collected": 8,
+  "source_sector_breakdown": {
+    "editorial": 15,
+    "retail": 1,
+    "designer_origin": 1,
+    "trade_intelligence": 1
+  },
+  "executive_summary": "Coverage inside this window concentrated almost entirely around Miami Swim Week 2026 (PARAISO's 22nd edition, running alongside Runway 7 and Sports Illustrated Swimsuit programming, May 27-31), which independent trend recaps across retail, editorial, and trade-intelligence sources described consistently: side-tie and bandeau swimsuit silhouettes, high-cut/asymmetrical cutouts, sculptural body-jewelry hardware, an ocean-and-sherbet color story replacing tropical florals, zebra print as the standout pattern, and a broader 'beach-to-evening' styling throughline blurring swim and eveningwear. Two other genuinely large fashion events -- the Cannes Film Festival (concluded May 23) and Louis Vuitton's and Dior's Cruise 2027 shows (May 20 and May 13 respectively) -- generated substantial real editorial coverage, but that coverage was dated to the days immediately following each event, all of which fall before this window opens on May 26; it is not logged here to avoid attributing an earlier week's news to this one. An ongoing regal-purple color trend and a Bermuda-shorts silhouette trend both had real, multi-outlet editorial coverage bracketing this window on both sides (April and late June respectively), but no article could be confirmed as published specifically within May 26-June 1, so neither is logged as a fresh signal this week.",
+  "top_signals": [
+    {
+      "name": "Miami Swim Week 2026 (PARAISO 22nd edition): sculptural swim silhouettes, ocean-tone palette, beach-to-evening styling",
+      "type": "aesthetic_signal",
+      "source_sectors": [
+        "retail",
+        "editorial",
+        "trade_intelligence"
+      ],
+      "confidence": "high",
+      "volatility": "seasonal",
+      "origin_classification": "designer_originated",
+      "evidence": "Miami Swim Week 2026 (organized under the PARAISO banner, its 22nd edition, plus additional Runway 7 and Sports Illustrated Swimsuit programming) ran May 27-31, 2026, inside this collection window. Independent trend recaps published by Who What Wear ('8 It-Girl Trends From Paraiso Miami Swim Week 2026'), Fashionista ('The 7 Biggest Trends We Saw at Miami Swim Week'), Modern Luxury, RUNWAY Magazine (runwaylive.com), and Trendalytics' own trend-recap blog post converged on a consistent set of observations: designers (Luli Fama's 20th-anniversary show, Monday Swimwear, Oseree, Fae, Kulani Kinis, Oh Polly) showed side-tie and bandeau swimsuits, high-cut/asymmetrical cutouts, and sculptural hardware-and-jewelry detailing (belly chains, waist scarves, metal connectors doubling as the garment's structure). Reported color story shifted from tropical florals toward Baywatch red, butter yellow, orange sherbet, periwinkle, and ocean tones (navy/turquoise/seafoam), with zebra print (in both classic black-and-white and fuchsia/lime colorways) as the standout pattern. Multiple outlets independently described a 'beach-to-evening' throughline -- wrap skirts, sheer overlays, and matching sets styled to move from poolside to night out -- rather than treating swimwear as a category apart from eveningwear.",
+      "index_note": "Origin_classification is set to designer_originated because the reported trends were observed directly on PARAISO/Runway 7 runway presentations (new SS27-labeled collections, e.g. Luli Fama's anniversary show), not retrofitted from retail buying or social virality after the fact. The trade_intelligence source (Trendalytics) reports quantified year-over-year market-adoption percentages (e.g. claimed jumps in bandeau and scarf-belt adoption); those specific percentage figures are sourced from a vendor with a commercial incentive to describe trends as bigger/more certain than editorial coverage would (see taxonomy.py's trade_intelligence sector rationale), so they are treated here as one corroborating data point on directional silhouette/print movement, not as a precise, independently verified market statistic. Swimwear-week coverage is inherently seasonal and concentrated in a single week of shows each year; volatility is marked 'seasonal' rather than 'flash' because the underlying category (resort/swim silhouettes) carries forward through the summer selling season rather than fading within days, consistent with how resort/cruise-season signals have been treated in prior reports.",
+      "source_corroboration_count": 5,
+      "signal_id": "miami-swim-week-2026-paraiso-trends",
+      "confidence_source": "derived",
+      "human_editor_note": "derive_confidence() computes 'high' on its own terms: corroboration count 5 (whowhatwear.com, fashionista.com, modernluxury.com, runwaylive.com, trendalytics.co) spanning three genuinely distinct sectors (retail, editorial, trade_intelligence). Adopted without override. Note that whowhatwear.com classifies as 'retail' rather than 'editorial' per the existing DOMAIN_SECTOR_MAP entry, which is what supplies the second distinct sector alongside editorial; trade_intelligence (trendalytics.co) supplies the third.",
+      "source_domains": [
+        "whowhatwear.com",
+        "fashionista.com",
+        "modernluxury.com",
+        "runwaylive.com",
+        "trendalytics.co"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "beach-to-evening",
+    "sculptural swimwear",
+    "ocean tones",
+    "zebra print",
+    "body jewelry",
+    "side-tie bikini"
+  ],
+  "garments": [
+    "side-tie bikini",
+    "bandeau swimsuit",
+    "micro bikini",
+    "matching wrap-skirt set",
+    "high-fashion beach trouser"
+  ],
+  "silhouettes": [
+    "high-cut/asymmetrical cutout swimsuit",
+    "sculptural hardware-connected swim silhouette",
+    "bubble/puffed resort skirt"
+  ],
+  "materials": [
+    "metallic/high-shine swim fabrication",
+    "sheer overlay",
+    "crystal embellishment",
+    "body-chain and waist-scarf hardware"
+  ],
+  "colors": [
+    "Baywatch red",
+    "butter yellow",
+    "orange sherbet",
+    "periwinkle",
+    "midnight/ocean blue",
+    "seafoam"
+  ],
+  "aesthetic_terms": [
+    "beach-to-evening styling",
+    "destination glamour",
+    "safari-by-the-pool"
+  ],
+  "cultural_references": [
+    "PARAISO Miami Swim Week (22nd edition)",
+    "Luli Fama 20th-anniversary runway show",
+    "Sports Illustrated Swimsuit runway at W South Beach",
+    "Megan Thee Stallion 'Hot Girl Summer' swimwear collection"
+  ],
+  "limitations": [
+    "The Cannes Film Festival (concluded May 23, 2026) generated substantial real, multi-outlet editorial coverage describing a shift toward sculptural, structured red-carpet gowns and away from sheer/naked dressing (CNN, W Magazine, Marie Claire, Ebony, Coveteur). Every dated instance of this coverage found in research was published May 18-24, before this window opens on May 26; it was not logged here because attributing it to this window would misdate it to a week after it actually ran. It likely belongs in the archive's coverage of the preceding window (May 19-25), which was not available to cross-check at the time of writing.",
+    "Louis Vuitton's Cruise 2027 show (The Frick Collection, New York, May 20, 2026, a Keith Haring collaboration) and Dior's Cruise 2027 show ('Wilshire Boulevard', LACMA, Los Angeles, May 13, 2026, Jonathan Anderson's Dior cruise debut) both generated extensive real editorial coverage (WWD, The Impression, L'Officiel USA, FashionNetwork, Wallpaper*, Modern Luxury, among others), but every dated review found was published May 14-21, before this window. Same reasoning as the Cannes note above: not logged here to avoid misdating an earlier week's runway news as this week's.",
+    "An ongoing regal/royal-purple color trend (Prada, Celine, Valentino, Miu Miu cited across spring/summer and fall/winter 2026 collections) had real, dated Who What Wear coverage in January, March, and April 2026, with an apparent continuation piece dated roughly mid-June. No article confirmed published inside May 26-June 1 itself was found, so this was treated as background/ongoing rather than a fresh in-window signal.",
+    "A Bermuda-shorts silhouette trend (tracing to spring 2026 runway shows at Balenciaga, Hermes, Bottega Veneta, Loewe, and McQueen, then picked up by Who What Wear, Marie Claire, Refinery29, and a WWD/Trendalytics denim trend report) had real multi-outlet, multi-sector coverage, but the most specific dated piece found (WWD's Trendalytics-sourced denim report) was published around late June, after this window closes; earlier Who What Wear/Marie Claire pieces on the same trend were undated in search results. Not logged as an in-window signal for the same dating-discipline reason as above.",
+    "Mulberry's appointment of Christopher Kane as creative director of its women's ready-to-wear (first reported by Fashionista in March 2026, with follow-on coverage into May) was found in research but is a personnel/business-strategy story rather than an observed garment, silhouette, or aesthetic signal, and its dating is also well before this window; excluded on both grounds.",
+    "World Cup 2026-linked fashion coverage (jerseys styled with high-fashion pieces, national-team formalwear sponsorships) was found but centers on the tournament's actual kickoff in mid-June 2026, after this window closes; excluded as out of window rather than carried forward early."
+  ],
+  "archive_tags": [
+    "miami-swim-week-2026",
+    "paraiso-miami-swim-week-22nd-edition",
+    "swim-resort-2026-season"
+  ],
+  "content_hash": "2d1e7885c10fc37f0b11b632eee7161561035494bf80cd0c0f9ace8e57488855",
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": "real-research-pilot-2026-06-01"
+}

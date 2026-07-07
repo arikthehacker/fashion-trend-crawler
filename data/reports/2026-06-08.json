@@ -1,0 +1,154 @@
+{
+  "report_date": "2026-06-08",
+  "collection_window": {
+    "start": "2026-06-02",
+    "end": "2026-06-08"
+  },
+  "sources_scanned": 12,
+  "items_collected": 12,
+  "source_sector_breakdown": {
+    "editorial": 9,
+    "institutional": 1,
+    "retail": 1,
+    "unclear": 1
+  },
+  "executive_summary": "The window of June 2-8, 2026 was dominated by the annual CFDA/Vogue Fashion Fund cycle -- ten finalists named June 2, corroborated across institutional and editorial trade press -- alongside a designer-retail crossover (Marine Serre's baselayer capsule with Under Armour, launched June 5) and the first wave of Resort 2027 season previews (Carolina Herrera's Georgia O'Keeffe-referencing collection, previewed by WWD June 7). A retail-sector summer trend roundup (Who What Wear) surfaced a cluster of garment/silhouette terms -- lace-trimmed shorts, crochet skullcaps, asymmetric and handkerchief hems, longline Bermuda shorts, wedge sandals -- but was excluded from top_signals as single-outlet, shopping-oriented service journalism rather than a corroborated signal; its terms are still recorded in the structured garment/silhouette/color lists below. Paris Men's Fashion Week and its Resort/Spring-Summer 2027 runway shows (Louis Vuitton, Dior Homme, MM6 Maison Margiela, David Koma, and others) run June 23-28, 2026, entirely after this window's close, and are out of scope here.",
+  "top_signals": [
+    {
+      "name": "CFDA/Vogue Fashion Fund 2026 finalists announced",
+      "type": "industry_recognition",
+      "source_sectors": [
+        "institutional",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "recurring",
+      "origin_classification": "unclear",
+      "evidence": "CFDA and Vogue named ten finalists for the 2026 CFDA/Vogue Fashion Fund on June 2, 2026: Aisling Camps, Amir Taghi, Terrence Zhou (Bad Binch TONGTONG), Emily Dawn Long, Jamie Haller, Julia Ferentinos (Juju Vera), Zane Li (Lii), George Inaki (Milamore), Claire Sullivan, and Zoe Gustavia Anna Whalen. First designer presentations to judges were scheduled for June 10, 2026, with a $300,000 winner's prize and $100,000 to each of two runners-up, to be announced October 20, 2026.",
+      "index_note": "Institutional program-cycle news (CFDA's own announcement corroborated by five independent editorial trade outlets), not an observed garment/silhouette/aesthetic trend -- origin_classification set to 'unclear' rather than forced into one of the trend-adoption categories, per precedent 11's guidance that industry-recognition discourse is a distinct categorization from a style signal even when well corroborated. Logged because the archive has an existing CFDA Fashion Fund tracking thread (see docs/confidence-discipline-precedents.md and SKILL.md's prolonged-silence note on the CFDA Fashion Fund winner question) -- this is the finalist-announcement stage of that same annual cycle, not new scope.",
+      "source_corroboration_count": 6,
+      "signal_id": "cfda-vogue-fashion-fund-2026-finalists",
+      "confidence_source": "derived",
+      "human_editor_note": "Six independent outlets (cfda.com, wwd.com, businessoffashion.com, fashionista.com, theimpression.com, runwaylive.com) across two genuinely distinct sectors (institutional + editorial) -- derive_confidence() correctly computes 'high' here without need for manual override, unlike the Marine Serre/Under Armour signal below.",
+      "source_domains": [
+        "cfda.com",
+        "wwd.com",
+        "businessoffashion.com",
+        "fashionista.com",
+        "theimpression.com",
+        "runwaylive.com"
+      ]
+    },
+    {
+      "name": "Marine Serre x Under Armour capsule collaboration",
+      "type": "designer_retail_collaboration",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "Under Armour and designer Marine Serre launched a limited-edition capsule on June 5, 2026, exclusively via marineserre.com and select Marine Serre retail locations (global Under Armour rollout planned later in the year), marking Under Armour's 30th anniversary. The capsule reworks the baselayer using Under Armour's HeatGear technical fabric, in a black-and-white minimalist palette carrying an exclusive print combining Marine Serre's Crescent Moon motif with the Under Armour logo, drawing on early-2000s sportswear archives.",
+      "index_note": "A first-party brand announcement (underarmour.com) corroborated by three independent editorial trade/culture outlets. underarmour.com does not resolve to a mapped sector in taxonomy.py's DOMAIN_SECTOR_MAP (out of scope to edit that file for this report), so per precedent 3 (an unmapped/'unclear' domain must not be counted as real sector diversity) it is cited as a source domain but excluded from source_sectors -- leaving this a single-sector (editorial) signal with corroboration_count 4, which derive_confidence() correctly computes as 'medium' rather than 'high', per precedent 2's same-sector volume cap.",
+      "source_corroboration_count": 4,
+      "signal_id": "marine-serre-under-armour-capsule",
+      "confidence_source": "derived",
+      "human_editor_note": "underarmour.com is flagged here as a taxonomy.py DOMAIN_SECTOR_MAP gap (first-party brand press site, same designer_origin pattern as chanel.com/loewe.com/proenzaschouler.com) for a future run authorized to edit that file.",
+      "source_domains": [
+        "underarmour.com",
+        "wwd.com",
+        "highsnobiety.com",
+        "fashionnetwork.com"
+      ]
+    },
+    {
+      "name": "Carolina Herrera Resort 2027 preview (O'Keeffe florals)",
+      "type": "collection_preview",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "seasonal",
+      "origin_classification": "designer_originated",
+      "evidence": "WWD previewed Wes Gordon's Carolina Herrera Resort 2027 collection on June 7, 2026: two new prints inspired by Georgia O'Keeffe's paintings (a painterly floral and a desert-bloom print) on silk gazar camp shirts and printed mesh knit pencil skirts, an optimistic palette (banana yellow, melon, claret, ultramarine, wisteria purple, geranium pink), macrame totes in waxed cord with long fringes, raffia-style bags, and the house's debut denim jeans.",
+      "index_note": "Single-source signal (one WWD preview article dated within this collection window). editorial is a HIGH_RELIABILITY_SECTORS member, so derive_confidence() correctly computes 'medium' at corroboration_count 1 rather than 'low'. Other outlets (thefashionfold.com, theimpression.com, boujeez.com) also covered this collection but their publication dates could not be confirmed as falling inside the 2026-06-02 to 2026-06-08 window (thefashionfold.com's own page metadata places it closer to mid-June), so they were not cited to avoid overstating in-window corroboration.",
+      "source_corroboration_count": 1,
+      "signal_id": "carolina-herrera-resort-2027-okeeffe",
+      "confidence_source": "derived",
+      "human_editor_note": "",
+      "source_domains": [
+        "wwd.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "Resort 2027",
+    "capsule collaboration",
+    "CFDA/Vogue Fashion Fund",
+    "botanical/floral print",
+    "sport-luxe crossover"
+  ],
+  "garments": [
+    "camp shirt",
+    "pencil skirt",
+    "denim jeans",
+    "tote bag",
+    "lace-trimmed shorts",
+    "crochet skullcap",
+    "Bermuda shorts",
+    "contrast-trim bikini"
+  ],
+  "silhouettes": [
+    "asymmetric hemline",
+    "handkerchief hem",
+    "godet-style skirt",
+    "longline relaxed Bermuda short"
+  ],
+  "materials": [
+    "silk gazar",
+    "printed mesh knit",
+    "macrame",
+    "raffia",
+    "waxed cord",
+    "HeatGear technical knit"
+  ],
+  "colors": [
+    "banana yellow",
+    "melon",
+    "claret",
+    "ultramarine",
+    "wisteria purple",
+    "geranium pink",
+    "black and white (sport-luxe monochrome)"
+  ],
+  "aesthetic_terms": [
+    "botanical/floral motif",
+    "desert bloom",
+    "utility-driven luxury",
+    "playful nostalgia",
+    "sport-luxe minimalism"
+  ],
+  "cultural_references": [
+    "Georgia O'Keeffe paintings",
+    "early-2000s sportswear archive revival"
+  ],
+  "limitations": [
+    "Business/regulatory fashion-industry news found in this window (SHEIN's acquisition of Everlane, the EU's EUR200m fine against Temu, Patagonia's lawsuit) was excluded from top_signals as corporate/regulatory news, not observation of a garment, silhouette, or aesthetic trend -- the same categorization discipline as precedent 11 (attention-economics/casting discourse is not automatically a style signal).",
+    "Who What Wear's summer 2026 trend roundup (published June 2, 2026) was excluded from top_signals as single-outlet, shopping/service-journalism content (precedent 8's commercial-vertical discount) rather than a corroborated signal; its garment/silhouette/color terms were still folded into the structured lists above since those fields do not require the same corroboration bar as a top_signals entry.",
+    "A Canopy/nonprofit report on wheat-straw Lyocell/viscose alternatives (materials-innovation coverage, via goodonyou.eco) was found but not logged as a signal -- goodonyou.eco is not in taxonomy.py's DOMAIN_SECTOR_MAP and editing that file was out of scope for this report; flagged here as a candidate domain-map addition for a future run.",
+    "Paris Men's Fashion Week Spring/Summer 2027 (Louis Vuitton, Dior Homme, MM6 Maison Margiela, David Koma, and others) runs June 23-28, 2026, and the Dior Cruise 2027 'Wilshire Boulevard' show at LACMA (Jonathan Anderson's first Dior cruise collection) was staged May 13, 2026 -- both fall outside this window's June 2-8 boundaries and were confirmed via search but not logged here.",
+    "underarmour.com and goodonyou.eco were the two source domains encountered this window that are not yet in taxonomy.py's DOMAIN_SECTOR_MAP; adding them was out of scope for this report (scoped only to the report JSON and this agent log), so they are recorded here as gaps for a future taxonomy-focused run."
+  ],
+  "archive_tags": [
+    "cfda-vogue-fashion-fund-2026",
+    "marine-serre-under-armour-capsule",
+    "carolina-herrera-resort-2027",
+    "resort-2027-season"
+  ],
+  "content_hash": "c8f9f5214a9abb1d4ab17b8e9a5501f829579fdea41426a4a913c6ec350d48a8",
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": "real-research-pilot-2026-06-08"
+}

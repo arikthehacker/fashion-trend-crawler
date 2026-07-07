@@ -1,0 +1,162 @@
+{
+  "report_date": "2026-06-22",
+  "collection_window": {
+    "start": "2026-06-16",
+    "end": "2026-06-22"
+  },
+  "sources_scanned": 21,
+  "items_collected": 9,
+  "source_sector_breakdown": {
+    "editorial": 8,
+    "retail": 1,
+    "institutional": 1
+  },
+  "executive_summary": "The window is dominated by the opening of Men's Fashion Month: Pitti Uomo 110 ran in Florence June 16-19 under the curatorial theme 'THE POOL,' with Brunello Cucinelli's traditional opening-night dinner marking the formal start of the season. Within that frame, two dated designer events converge as the window's strongest single-event signals -- Simone Rocha's first-ever standalone menswear show (June 18, Pitti Uomo guest designer, Teatro della Pergola) and Thom Browne's first-ever Milan runway show (June 22, the window's closing day, Palazzo Serbelloni). Both are corroborated across multiple editorial outlets with consistent dating and design detail. Separately, editorial and retail coverage continued to document an already-running summer 2026 aesthetic cluster -- asymmetric/uneven hemlines, a Y2K-revival palette, and contrast-trim swimwear -- but this is season-long documentation rather than a claim of week-specific novelty, and is held at medium confidence accordingly despite crossing the corroboration-count/sector-diversity threshold that would otherwise derive to high.",
+  "top_signals": [
+    {
+      "name": "Pitti Uomo 110 opens Men's Fashion Month under 'THE POOL' theme",
+      "signal_id": "pitti-uomo-110-menswear-month-open",
+      "type": "cultural_moment",
+      "source_sectors": [
+        "institutional",
+        "editorial"
+      ],
+      "confidence": "high",
+      "confidence_source": "derived",
+      "volatility": "flash",
+      "origin_classification": "unclear",
+      "source_corroboration_count": 4,
+      "source_domains": [
+        "pittimmagine.com",
+        "wwd.com",
+        "wallpaper.com",
+        "imfirenzedigest.com"
+      ],
+      "evidence": "Pitti Uomo 110 ran at Florence's Fortezza da Basso June 16-19, 2026, with over 720 exhibiting brands. The creative theme for the cycle, 'THE POOL' (curated by Chris Vidal Tenomaa and Tuomas Laitinen of SSAW Magazine), drew on a modern-Narcissus-by-the-pool visual register reminiscent of David Hockney. Brunello Cucinelli's twice-yearly opening dinner, held the first evening of the fair, is treated by trade press as the conventional marker of Men's Fashion Month's start. WWD, Wallpaper*, and I'M FIRENZE DIGEST each independently covered the fair's opening and theme; Pitti Immagine's own event calendar (pittimmagine.com) confirms the June 16-19 dates.",
+      "index_note": "Origin classification recorded as 'unclear' rather than forced into an existing category, matching the precedent set for the 2026 Met Gala signal (2026-05-04 report): the signal originates from an institutional trade-fair/organizing-body framework (Pitti Immagine), not from a designer, an editorial outlet, retail adoption, or social amplification. pittimmagine.com is not yet in taxonomy.DOMAIN_SECTOR_MAP; classified 'institutional' here by the same reasoning already applied to cameramoda.it (Milan Fashion Week's organizing body) and fhcm.paris (Paris's), since Pitti Immagine plays the identical organizing-body role for Pitti Uomo. taxonomy.py itself was not edited -- out of scope for this task; see the agent log for the reasoning to carry forward if a future run wants to add it to the map."
+    },
+    {
+      "name": "Simone Rocha stages first-ever standalone menswear show (Pitti Uomo guest designer)",
+      "signal_id": "simone-rocha-pitti-uomo-menswear-debut",
+      "type": "designer_event",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "confidence_source": "derived",
+      "volatility": "flash",
+      "origin_classification": "designer_originated",
+      "source_corroboration_count": 3,
+      "source_domains": [
+        "wallpaper.com",
+        "wonderlandmagazine.com",
+        "rte.ie"
+      ],
+      "evidence": "As Pitti Uomo 110's guest designer, Simone Rocha presented her first standalone menswear show on Thursday, June 18, at Florence's 17th-century Teatro della Pergola -- her first catwalk show outside London. Coverage describes the collection as loosely drawing on E.M. Forster's 'A Room With a View,' framing an 'Irish man arriving in Florence' narrative, and carrying Rocha's signature softness-and-subversion language into menswear via ruffled rugby jerseys, elongated shirting, cut-out tailored jackets, and wide Oxford trousers.",
+      "index_note": "Single-sector corroboration (three editorial outlets, no independent designer-origin or institutional source directly observed in this run's searches -- simonerocha.com itself did not surface in results and is not cited here to avoid overstating what was actually found), held at 'medium' per derive_confidence(). wonderlandmagazine.com and rte.ie are new domains for this taxonomy, classified 'editorial' by hand-research: Wonderland is a staffed UK fashion/music/culture magazine; RTE is Ireland's national public broadcaster, covering this as culture/fashion news in the same geographic-diversity general-press bucket already applied to euronews.com/wionews.com. taxonomy.py was not edited."
+    },
+    {
+      "name": "Thom Browne stages first-ever Milan runway show, broadens signature color palette",
+      "signal_id": "thom-browne-milan-debut-ss27",
+      "type": "designer_event",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "confidence_source": "derived",
+      "volatility": "flash",
+      "origin_classification": "designer_originated",
+      "source_corroboration_count": 3,
+      "source_domains": [
+        "wwd.com",
+        "fashionnetwork.com",
+        "theimpression.com"
+      ],
+      "evidence": "Thom Browne staged his first-ever Milan runway show on Monday, June 22 (the window's closing day), at Palazzo Serbelloni, joining the Milan men's Spring 2027 calendar after prior shows in New York, Paris, Florence, and San Francisco. The show, staged amid roughly 400 seersucker plant pots and referencing the 1998 film 'A Bug's Life,' featured Swiss dot tailoring trimmed in his signature tipping and pearl-embellished tulle. Coverage notes the designer broadened his usual grey/white/red/navy palette with yellow, green, pink, and pale blue, resolving to white for a final bridal look.",
+      "index_note": "Corroborated across three independent editorial outlets (WWD, FashionNetwork, The Impression) with consistent dating and design detail; held at 'medium' rather than 'high' per derive_confidence() since all three sources sit in the single editorial sector -- no designer-origin, institutional, or independent-criticism source was found corroborating this specific show in this run's searches."
+    },
+    {
+      "name": "Summer 2026 aesthetic cluster: asymmetric hemlines, Y2K-revival palette, contrast-trim swimwear",
+      "signal_id": "summer-2026-aesthetic-cluster-asymmetric-y2k",
+      "type": "aesthetic_cluster",
+      "source_sectors": [
+        "editorial",
+        "retail"
+      ],
+      "confidence": "medium",
+      "confidence_source": "manual",
+      "volatility": "seasonal",
+      "origin_classification": "retail_adopted",
+      "source_corroboration_count": 3,
+      "source_domains": [
+        "whowhatwear.com",
+        "marieclaire.com",
+        "graziadaily.co.uk"
+      ],
+      "evidence": "Editorial and retail-facing coverage active during this window continued to document a summer 2026 cluster: asymmetric/uneven skirt hemlines (handkerchief hems, structured godet inserts), a Y2K-revival palette and silhouette language (mermaidcore sequins, Lisa Frank-adjacent color, Barbie pink alongside earlier-season powdery blush), and contrast-trim swimwear -- with the Burberry x Hunza G capsule (Burberry check trim on Hunza G's Original Crinkle silhouettes) repeatedly cited as the season's reference example, though that specific capsule dropped April 27, before this window. Leading color calls for the season split across sources between tomato red/chartreuse/purple and, in at least one outlet's later June framing, blue.",
+      "index_note": "derive_confidence() would return 'high' here (corroboration_count 3 across 2 sectors), but confidence is manually held at 'medium' (confidence_source: 'manual', overriding the derived value) because this is season-long aggregated trend content -- most of the cited pieces are evergreen 'summer 2026 trends' roundups rather than coverage tied to this specific seven-day window, and the Burberry x Hunza G example specifically predates the window by seven weeks. Flagged honestly as ongoing seasonal documentation, not week-specific novelty, consistent with the same-pattern override the 2026-05-04 report applied to its street-style-cluster signal."
+    }
+  ],
+  "repeated_keywords": [
+    "Pitti Uomo",
+    "Men's Fashion Month",
+    "menswear debut",
+    "asymmetric hem",
+    "Y2K revival",
+    "contrast-trim swimwear",
+    "Milan runway"
+  ],
+  "garments": [
+    "ruffled rugby jersey",
+    "wide Oxford trousers",
+    "Swiss-dot tailored jacket",
+    "asymmetric/godet skirt",
+    "contrast-trim swimsuit"
+  ],
+  "silhouettes": [
+    "asymmetric/uneven hemline (handkerchief, godet)",
+    "elongated shirting",
+    "seersucker tailored volume"
+  ],
+  "materials": [
+    "seersucker",
+    "pearl-embellished tulle",
+    "crinkle stretch swim fabric"
+  ],
+  "colors": [
+    "tomato red",
+    "chartreuse green",
+    "Barbie pink",
+    "pale blue",
+    "Thom Browne's broadened yellow/green/pink/pale-blue palette"
+  ],
+  "aesthetic_terms": [
+    "THE POOL (Pitti Uomo 110 curatorial theme)",
+    "Y2K revival / mermaidcore",
+    "American preppy reset (Thom Browne, Milan)"
+  ],
+  "cultural_references": [
+    "David Hockney visual register (Pitti Uomo 'THE POOL')",
+    "E.M. Forster's 'A Room With a View' (Simone Rocha)",
+    "'A Bug's Life' (1998) (Thom Browne, Milan)"
+  ],
+  "limitations": [
+    "WebSearch (not direct WebFetch of full article text) was the sole research tool used this run; findings rest on search-result snippets and synthesized summaries rather than full primary-source article text.",
+    "Two source domains encountered for the first time this run (wonderlandmagazine.com, rte.ie) plus one more (pittimmagine.com) were classified by hand-research rather than an existing taxonomy.DOMAIN_SECTOR_MAP entry -- see docs/agent-logs/real-research-2026-06-22.md for the reasoning. taxonomy.py itself was not edited (out of scope for this task).",
+    "The summer-2026 aesthetic-cluster signal is season-long aggregated content, not precisely dated to this seven-day window; confidence was manually capped at 'medium' rather than the corroboration formula's derived 'high' for this reason (see that signal's index_note).",
+    "Independent criticism and designer-origin sources (e.g. a Substack critic, or simonerocha.com/thombrowne.com directly) were searched for but did not surface corroborating content for this specific window's events in this run's queries; not fabricated to fill a sector gap."
+  ],
+  "archive_tags": [
+    "pitti-uomo-110-menswear-month-open",
+    "simone-rocha-pitti-uomo-menswear-debut",
+    "thom-browne-milan-debut-ss27",
+    "summer-2026-aesthetic-cluster-asymmetric-y2k",
+    "mens-fashion-month-2026"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "review_status": "reviewed",
+  "reviewed_by": "real-research-pilot-2026-06-22",
+  "revision_history": [],
+  "content_hash": "38e1d4c2e008f136a939a36455983116ca2e457544d0643ca0e2e374bb56245f"
+}

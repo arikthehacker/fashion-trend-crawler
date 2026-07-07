@@ -4,131 +4,120 @@
     "start": "2026-06-30",
     "end": "2026-07-06"
   },
-  "sources_scanned": 14,
-  "items_collected": 31,
+  "sources_scanned": 42,
+  "items_collected": 8,
   "source_sector_breakdown": {
-    "editorial": 9,
-    "retail": 5,
-    "social": 6,
-    "designer_origin": 2,
-    "independent_criticism": 2
+    "editorial": 6,
+    "institutional": 1,
+    "retail": 1
   },
-  "executive_summary": "This report identifies recurring style signals across 31 collected items from 14 public web sources. The most consistently repeated signals are sheer layering and softened tailoring, both appearing across editorial and retail sectors with limited but growing social amplification. A smaller cluster of references to 1990s minimalist archives suggests early-stage revival activity rather than an established trend. Coverage this period is weighted toward editorial sources, so conclusions about consumer adoption should be treated as limited.",
+  "executive_summary": "Collection window June 30-July 6, 2026 sits at the immediate lead-up to and opening day of Paris Haute Couture Week Fall/Winter 2026-27 (July 6-9), and overlaps the closing weeks of the FIFA World Cup 2026 (June 11-July 19). Web search across general fashion-news, couture-calendar, and trend queries returned genuine, dated editorial and institutional coverage for two items: the Paris Haute Couture Week Fall/Winter 2026-27 calendar (30 Maisons, confirmed by the FHCM's own official schedule) and its opening day, July 6, when Schiaparelli (Daniel Roseberry) and Christian Dior (Jonathan Anderson's second couture outing) showed, reported same-day by Grazia and previewed in the preceding week by Fashionista, WWD, RunwayLive, and Wallpaper*; and a babydoll-dress revival narrative, published July 6 by Marie Claire and corroborated by Who What Wear, tied to Olivia Rodrigo's repeated styling of the silhouette and the resulting public controversy over its youth-coded aesthetic. A substantial volume of additional search results were excluded: World Cup 2026 jersey/blokecore street-style coverage (Dazed, SoccerBible, Who What Wear, Complex) is genuine and well corroborated but every dated instance found (mid-June 2026) predates this window's June 30 start, so it was not logged as a fresh signal for this specific window; several fringe/handbag-trend pieces (Marie Claire, WWD) were Spring-2026-season or even December-2025 forward-looking forecast content rather than dated to this window and were excluded on that basis. This is the first report filed for this window in the rebuilt real-research archive; no immediately prior collection window exists yet on disk to carry signal_ids or standing threads forward from (see data/reports/README.md).",
   "top_signals": [
     {
-      "name": "Sheer layering",
-      "type": "styling_behavior",
+      "name": "Paris Haute Couture Week Fall/Winter 2026-27 opens: Schiaparelli's oceanic surrealism and Jonathan Anderson's craft-led second Dior collection",
+      "type": "runway_event",
       "source_sectors": [
         "editorial",
-        "retail",
-        "social"
+        "institutional"
       ],
       "confidence": "medium",
       "volatility": "seasonal",
-      "origin_classification": "editorial_amplified",
-      "evidence": "Repeated references to mesh, organza, and layered transparent fabrics across editorial and retail copy, with a smaller number of social captions using the same language.",
-      "index_note": "Classified as seasonal rather than emerging because comparable coverage appeared in the prior collection window.",
-      "source_corroboration_count": 3,
-      "signal_id": "sheer-layering"
+      "origin_classification": "designer_originated",
+      "evidence": "The Federation de la Haute Couture et de la Mode's official calendar confirms Paris Haute Couture Week Fall/Winter 2026-27 runs July 6-9, 2026, with 30 Maisons showing across four days -- up from 27 the prior season. Fashionista, WWD, RunwayLive, and Wallpaper* previewed the schedule in the days before the window's close, flagging Pierpaolo Piccioli's first couture collection for Balenciaga and Duran Lantink's first for Jean Paul Gaultier (both July 8), Manish Malhotra's couture-calendar debut (July 8), and Fendi's off-calendar Rome show under Kim Jones (July 9) as the season's most-anticipated moments. On the window's final day, July 6, the week opened with Schiaparelli (Daniel Roseberry) and Christian Dior (Jonathan Anderson's second couture collection for the house); Grazia's same-day report described Roseberry's collection as oceanic-themed (silicone bustiers, fish-scale and latex tentacle detailing, sea-anemone-inspired accessories) after an abandoned Barcelona-set concept, and Anderson's as softer and more craft-focused than his debut, referencing artist Lynda Benglis, with silver netting resembling chicken wire, knotted and pleated fabric, and antique chintz detailing drawing on Indian textile heritage.",
+      "index_note": "Origin classified designer_originated: the collections themselves are first-party couture presentations by the houses, not a retail or social amplification of them. Confidence held at medium rather than the high the raw two-sector count would suggest, per this archive's precedent 2 (docs/confidence-discipline-precedents.md) -- prior reports have repeatedly held 'couture-fwXX-designer-debuts'-type signals at medium when multiple outlets cover the same event from essentially one sector (editorial). The FHCM (institutional) source here confirms the calendar/schedule fact only, not independent corroboration of the shows' aesthetic content itself, which is precedent 7's caution about a nominal second-sector tag overstating real cross-sector diversity -- the substantive aesthetic description (oceanic surrealism, craft-led softness) comes entirely from editorial outlets describing the runway secondhand.",
+      "source_corroboration_count": 6,
+      "signal_id": "couture-fw26-paris-opening-shows",
+      "confidence_source": "manual",
+      "human_editor_note": "Held at medium confidence per precedent 2 and precedent 7 despite citing an institutional (fhcm.paris) source alongside editorial outlets -- see index_note for the reasoning.",
+      "source_domains": [
+        "fashionista.com",
+        "wwd.com",
+        "graziadaily.co.uk",
+        "runwaylive.com",
+        "wallpaper.com",
+        "fhcm.paris"
+      ]
     },
     {
-      "name": "Soft tailoring",
-      "type": "silhouette",
+      "name": "Babydoll-dress revival intensifies amid Olivia Rodrigo styling controversy",
+      "type": "aesthetic_trend",
       "source_sectors": [
-        "designer_origin",
         "editorial",
         "retail"
       ],
-      "confidence": "high",
-      "volatility": "stable",
-      "origin_classification": "designer_originated",
-      "evidence": "Relaxed suiting and softened blazer proportions were referenced across designer collection copy, editorial coverage, and retail category naming.",
-      "index_note": "High confidence reflects presence across three distinct source sectors, including designer-origin material.",
-      "source_corroboration_count": 3,
-      "signal_id": "soft-tailoring"
-    },
-    {
-      "name": "1990s minimalism revival",
-      "type": "cultural_term",
-      "source_sectors": [
-        "independent_criticism",
-        "editorial"
-      ],
-      "confidence": "low",
-      "volatility": "emerging",
-      "origin_classification": "unclear",
-      "evidence": "Independent criticism and a small number of editorial pieces referenced slip dresses and column silhouettes tied to 1990s minimalism.",
-      "index_note": "Low confidence due to limited source diversity; requires tracking across further reporting periods before reclassification.",
-      "source_corroboration_count": 2,
-      "signal_id": "1990s-minimalism-revival"
-    },
-    {
-      "name": "Micro-bag styling",
-      "type": "styling_behavior",
-      "source_sectors": [
-        "social"
-      ],
-      "confidence": "low",
+      "confidence": "medium",
       "volatility": "volatile",
-      "origin_classification": "social_amplified",
-      "evidence": "Social captions and comments repeatedly referenced small-format bag styling, with no corroborating designer, editorial, or retail language this period.",
-      "index_note": "Classified as volatile per default handling of social-only signals absent non-social corroboration.",
-      "source_corroboration_count": 1,
-      "signal_id": "micro-bag-styling"
+      "origin_classification": "editorial_amplified",
+      "evidence": "Marie Claire (published July 6, 2026) and Who What Wear both framed the babydoll dress as summer 2026's most talked-about and polarizing silhouette, tying the coverage explicitly to Olivia Rodrigo's repeated styling choices: a floral Generation78 babydoll stage look with lace frills and matching bloomer shorts worn in Barcelona, and a cream-colored Modomorpho silk babydoll micro-minidress with a large horizontal chest cutout worn in a magazine interview. Both outlets trace the silhouette's runway origin to Spring 2026 collections from Ulla Johnson, Chloe, and Miu Miu (frills, puff sleeves, embroidery, florals), and both describe an online backlash calling the style youth-coded or 'infantilizing,' which Rodrigo has publicly disputed, citing Kathleen Hanna and Courtney Love as her actual reference points rather than the criticism's framing.",
+      "index_note": "Origin classified editorial_amplified rather than designer_originated: the driver of coverage in this specific window is celebrity styling and editorial commentary about a public controversy, not a fresh runway presentation -- the cited runway collections are Spring 2026, already several months prior to this window. Confidence manually held at medium rather than the high the two-sector, count-2 formula would derive, per precedent 8 -- Who What Wear's celebrity-style vertical and Marie Claire's own piece (which closes with 16 shopping-pick recommendations) both carry the commercial/service-journalism discount precedent 8 applies even to multi-sector, seemingly well-corroborated signals.",
+      "source_corroboration_count": 2,
+      "signal_id": "babydoll-dress-revival-rodrigo-controversy",
+      "confidence_source": "manual",
+      "human_editor_note": "Held at medium rather than mechanically-derived high per precedent 8 (commercial/service-journalism discount); see index_note.",
+      "source_domains": [
+        "marieclaire.com",
+        "whowhatwear.com"
+      ]
     }
   ],
   "repeated_keywords": [
-    "sheer",
-    "soft tailoring",
-    "relaxed blazer",
-    "slip dress",
-    "column silhouette",
-    "micro bag",
-    "mesh"
+    "haute couture",
+    "Paris Fashion Week",
+    "babydoll dress",
+    "couture debut"
   ],
   "garments": [
-    "blazer",
-    "slip dress",
-    "trench coat",
-    "micro bag"
+    "haute couture gown",
+    "bustier",
+    "babydoll dress",
+    "micro minidress"
   ],
   "silhouettes": [
-    "relaxed suiting",
-    "column dress",
-    "dropped shoulder"
+    "babydoll silhouette (fitted bodice, loose floaty skirt)",
+    "micro-mini hemline",
+    "horizontal chest cutout"
   ],
   "materials": [
-    "mesh",
-    "organza",
-    "wool crepe"
+    "silicone",
+    "latex",
+    "silver netting",
+    "antique chintz",
+    "lace",
+    "embroidery"
   ],
   "colors": [
-    "ecru",
-    "black",
-    "chocolate brown",
-    "dusty rose"
+    "cream",
+    "silver"
   ],
   "aesthetic_terms": [
-    "quiet luxury",
-    "soft minimalism",
-    "1990s minimalism"
+    "oceanic surrealism",
+    "craft-led softness",
+    "babydoll revival",
+    "youth-coded controversy"
   ],
   "cultural_references": [
-    "1990s minimalism",
-    "office siren"
+    "Lynda Benglis (Dior Fall/Winter 2026-27 couture reference)",
+    "Olivia Rodrigo babydoll-dress controversy",
+    "Kathleen Hanna / Courtney Love riot-grrrl reference (Rodrigo's stated inspiration)"
   ],
   "limitations": [
-    "Coverage is weighted toward editorial sources; retail and social sectors are comparatively underrepresented.",
-    "Designer-origin sourcing is limited to two entries this period, constraining origin classification confidence for several signals.",
-    "Sample size (31 items across 14 sources) is small relative to the full scope of public style discourse and should not be read as statistically representative."
+    "This report is built entirely from WebSearch/WebFetch results, not the crawler.py/summarize.py pipeline, since it reconstructs a real past week rather than processing a live crawl.",
+    "World Cup 2026 jersey/blokecore street-style coverage (dazeddigital.com, soccerbible.com, whowhatwear.com, complex.com) is genuine and well corroborated, but every dated instance found (mid-June 2026, roughly two to three weeks before this window opened) predates this window's June 30 start; per precedent 9 (a signal whose entire discourse is driven by an external calendar event has genuinely unknown durability until tracked past the event), and absent a source dated inside this specific window, it was not logged here. The tournament runs through July 19, 2026, so a later window may pick this up with freshly dated coverage.",
+    "Fringe-trend and handbag-trend pieces surfaced in search (marieclaire.com, wwd.com) were dated to the Spring 2026 season-forecast cycle or, for one handbag piece, December 2025 -- forward-looking forecast content rather than coverage dated to this window -- and were excluded per precedent 14 (a forecast about a prior/future season is not evidence of a present-window signal).",
+    "No designer_origin-sector primary source (a house's own site) was independently checked or cited for either couture house's Fall/Winter 2026-27 collection; both are sourced entirely from third-party editorial coverage of the shows, with fhcm.paris (institutional) confirming only the calendar/schedule fact, not the shows' aesthetic content.",
+    "No collection window immediately preceding this one (e.g. 2026-06-22 or 2026-06-29) exists yet on disk in data/reports/ -- the archive currently holds 2026-05-04, 2026-05-11, and 2026-05-18 alongside this file -- so no signal_id continuity or get_signal_status_history() carry-forward could be checked for either signal in this report; other collection windows in the intervening period are presumed to be in progress from parallel research agents per the archive rebuild.",
+    "Several outlets encountered during research (refinery29.com, variety.com, stanforddaily.com, realitytea.com, grazia.my, fashionisers.com, babble-up.com, sortiraparis.com, modemonline.com, and others) are not yet in taxonomy.py's DOMAIN_SECTOR_MAP. Rather than guessing a sector or editing taxonomy.py (out of scope for this task), their coverage was read as background research context but not cited in source_domains or counted in source_sector_breakdown/items_collected."
   ],
   "archive_tags": [
-    "sheer-layering",
-    "soft-tailoring",
-    "1990s-minimalism-revival",
-    "2026-q3"
+    "couture-fw26-paris-opening",
+    "babydoll-dress-controversy",
+    "world-cup-2026-jersey-styling-excluded-precedent-9",
+    "real-research-pilot"
   ],
-  "content_hash": "c995e033868859f0ff515f06f30805cbb1b1490cd80b52225517201ba98bc35e",
-  "reviewed_by": "hand-authored-example-run1",
-  "revision_history": []
+  "content_hash": "97fd434c9759790f6630d432e797f8a4e121e25501d07286e9630ff49e83b325",
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": "real-research-pilot-2026-07-06"
 }

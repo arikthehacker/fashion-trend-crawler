@@ -1944,16 +1944,67 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [x] Nav/build regression sweep and periodic audit both clean; periodic
       audit re-verified 10 taxonomy classifications with no new artifacts.
 
-## Next up (run 102 candidates)
-- [ ] The archive's oldest report (`2026-05-07.json`) has one signal with
-      an unexplained mechanical-vs-assigned confidence mismatch, predating
-      the confidence-discipline system — legacy artifact, not yet corrected.
-- [ ] No structured `digitalSourceType` (IPTC/schema.org) AI-disclosure
-      metadata in report pages' JSON-LD yet — needs an editorial judgment
-      call on which IPTC value applies before implementing.
-- [ ] The archive's fictional forward calendar now sits over two years
-      past the real session date, with four consecutive thin weeks — worth
-      a human decision on pacing eventually; not an active bug.
+## Run 102 — done
+- [x] The archive's oldest report (`2026-05-07.json`) legacy confidence
+      mismatch: formally closed as a permanent grandfather exception (see
+      `docs/agent-logs/legacy-confidence-artifact-resolution-run102.md`),
+      not corrected — it's placeholder content, not a real editorial call.
+- [x] Added structured `digitalSourceType` (IPTC/schema.org) AI-disclosure
+      metadata to report pages' JSON-LD (`compositeWithTrainedAlgorithmicMedia`).
+- [x] Added a 95th synthetic report (`2028-04-24.json`), a fifth
+      consecutive honest thin week — then immediately superseded by the
+      decision below.
+
+## 2026-07-06 ~18:56 PDT — human decision: retire the fictional forward calendar
+The user reviewed the archive and correctly identified that every report to date
+(`2026-05-07.json` through `2028-04-24.json`) is synthetic — dated on a fictional
+forward calendar rather than real history, some hand-authored, most produced by an
+agent honestly running `WebSearch` against fake future dates and finding nothing (see
+`docs/agent-logs/real-report-2028-04-24.md`). This was flagged as an open pacing
+question as early as the run-102-candidates list above, but never resolved by a
+human until now.
+
+**Decision:** all 95 synthetic reports moved to `data/examples/synthetic-reports/`
+(kept for schema/format reference and provenance, not treated as real data — see that
+folder's README). `data/reports/` is now empty and is being rebuilt from **genuine
+backdated research** starting with a pilot batch of real weeks, before deciding
+whether to commit to the full requested range (2018 through 2026-07, then further
+back).
+
+- [x] **Pilot batch — done.** 10 parallel agents each genuinely researched one real
+      week (2026-05-04 through 2026-07-06), using real `WebSearch` queries, citing
+      real outlet homepage domains, and honestly excluding real-but-out-of-window
+      events rather than stretching dates (e.g. Dior/Chanel Cruise shows dated
+      outside their window, misdated seasonal listicles). All 10 weeks turned out
+      `collection_status: "normal"` — none were thin, because this real span
+      happened to cover Met Gala, Cannes, Cruise/Resort season, CFDA Fashion Fund,
+      Men's Fashion Month, and Paris Couture Week. Full validation
+      (`validate_all_reports.py`, `audit_confidence.py --all`,
+      `check_field_coverage.py`, `check_signal_reuse_claims.py --all`) and a full
+      `next build` all passed. One real cross-report bug found and fixed during
+      consolidation: the same one-time Gucci Demna Times Square show got
+      independently logged as two different signal_ids in adjacent weeks
+      (2026-05-18 and 2026-05-25) because outlets disagreed on its exact date
+      (May 16 vs. 19); consolidated into the single 2026-05-18 entry, enriching it
+      with 2 extra source domains the second pass found, and removed the
+      duplicate from 2026-05-25 with an explanatory note — both reports carry
+      `revision_history` entries recording the correction.
+- [ ] Pending human review of the pilot batch (10 reports in `data/reports/`,
+      2026-05-04 through 2026-07-06) before continuing. Open decision: how far to
+      continue backdating weekly reports — toward the original ask of 2018 (the
+      user's original ask), and how far past 2018 — and at what pace (this pilot
+      took ~10 parallel agents running concurrent real research, each taking
+      roughly 4-9 minutes; scaling to ~440 weeks needs a real time/cost estimate
+      before committing, see next item).
+- [ ] Not yet estimated: the real wall-clock/token cost of continuing back to
+      2018 at this same real-research quality bar (~440 weeks total). Should be
+      sized before the user commits to the full range, since it's meaningfully
+      more expensive than the fictional-calendar version this replaced.
+- [ ] `docs/confidence-discipline-precedents.md` and `docs/PROMPT_CHANGELOG.md`
+      still reference the synthetic reports by filename/date — those documents
+      remain valid as a record of the methodology's development; no need to rewrite
+      them, but don't be confused by dates in them no longer matching what's in
+      `data/reports/`.
 - [ ] Manual-sampling cadence next due ~run 105.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven

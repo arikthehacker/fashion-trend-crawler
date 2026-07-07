@@ -1,0 +1,140 @@
+{
+  "report_date": "2026-05-04",
+  "collection_window": {
+    "start": "2026-04-27",
+    "end": "2026-05-04"
+  },
+  "sources_scanned": 19,
+  "items_collected": 14,
+  "source_sector_breakdown": {
+    "editorial": 7,
+    "retail": 4,
+    "trade_intelligence": 1,
+    "institutional": 1,
+    "independent_criticism": 1
+  },
+  "executive_summary": "The window closes with the 2026 Met Gala (Monday, May 4), the Costume Institute's highest-visibility annual event, run under the 'Fashion Is Art' dress code tied to its spring exhibition 'Costume Art.' Institutional framing (Metropolitan Museum of Art) and broad editorial/entertainment-press pickup converge tightly on this single dated event, the strongest-corroborated signal of the window. Separately, editorial and retail-facing coverage of spring/summer 2026 street style continues to document an accessories-forward cluster -- oversized silk scarves worn as garments, team jerseys styled outside sport context, plaid/check prints, and midi skirts -- corroborated across editorial, retail, and trade-intelligence sources, though this is season-long documentation rather than an event tied specifically to this seven-day window. A single dated trade item -- WWD's spring 2026 denim runway roundup, published April 27, the window's opening day -- is carried as a lower-confidence, single-source item. Independent criticism (Derek Guy's Die, Workwear Substack) was checked but returned only general newsletter/audience description for this period, not a specific dated claim, and was not logged as a standalone signal.",
+  "top_signals": [
+    {
+      "name": "Met Gala 2026 'Fashion Is Art' dress code / Costume Institute 'Costume Art' exhibition",
+      "signal_id": "met-gala-2026-costume-art",
+      "type": "cultural_moment",
+      "source_sectors": [
+        "institutional",
+        "editorial"
+      ],
+      "confidence": "high",
+      "confidence_source": "derived",
+      "volatility": "flash",
+      "origin_classification": "unclear",
+      "source_corroboration_count": 5,
+      "source_domains": [
+        "metmuseum.org",
+        "vogue.com",
+        "eonline.com",
+        "cbsnews.com",
+        "npr.org"
+      ],
+      "evidence": "Metropolitan Museum of Art press release confirms the Costume Institute's spring 2026 exhibition 'Costume Art' (on view May 10, 2026 - Jan 10, 2027) and the associated benefit gala's dress code, 'Fashion Is Art,' inviting sculptural, draped, sheer/nude-referencing, and museum-statue-evoking dress. The gala itself was held Monday, May 4 (the final day of this window), co-chaired by Beyonce, Nicole Kidman, Venus Williams, and Anna Wintour, with Jeff Bezos and Lauren Sanchez Bezos as honorary chairs/lead sponsors. Vogue hosted the official livestream. NPR, CBS News, and E! Online each ran preview and same-day coverage explaining the theme and cataloguing early red-carpet interpretations (e.g. Emma Chamberlain's Van Gogh-referencing custom Mugler, Sabrina Carpenter's Audrey Hepburn 'Sabrina'-referencing custom Dior).",
+      "index_note": "Origin classification is recorded as 'unclear' rather than forced into an existing category: the signal originates from an institutional exhibition/gala framework (the Costume Institute setting an annual theme), which is not the same as designer-originated, editorial-amplified, retail-adopted, or social-amplified as those terms are used elsewhere in this taxonomy. Treated as a single-window 'flash' event rather than an ongoing style signal -- the theme itself does not carry forward into future weeks the way a garment or aesthetic trend would, though specific red-carpet looks may seed downstream editorial-amplified signals in later reports.",
+      "human_editor_note": "First real (non-thin, non-fictional-date) report produced for this archive. This signal was chosen because it is the most tightly and verifiably dated item found in the window -- an institutional press release plus same-day broadcast/entertainment-press coverage, not a synthesized trend roundup. Confirmed real via WebSearch, not fabricated."
+    },
+    {
+      "name": "Spring/summer 2026 accessories-forward street style cluster (oversized silk scarves, team jerseys, plaid/check, midi skirts)",
+      "signal_id": "ss26-street-style-accessories-cluster",
+      "type": "aesthetic_cluster",
+      "source_sectors": [
+        "editorial",
+        "retail",
+        "trade_intelligence"
+      ],
+      "confidence": "high",
+      "confidence_source": "derived",
+      "volatility": "seasonal",
+      "origin_classification": "retail_adopted",
+      "source_corroboration_count": 6,
+      "source_domains": [
+        "harpersbazaar.com.sg",
+        "whowhatwear.com",
+        "trendalytics.co"
+      ],
+      "evidence": "Harper's Bazaar Singapore's spring/summer 2026 street style and runway trend roundups, Who What Wear's Paris street-style-shopping coverage and a dedicated 'tassel scarf' trend piece, and Trendalytics' SS26 street-style-trends insight report independently converge on the same cluster: oversized silk scarves worn as tops, dresses, or bag slings (runway-originated at Hermes, Celine, Miu Miu, Lanvin per Harper's Bazaar and Who What Wear); soccer/team jerseys styled with heels or tailored trousers; plaid/check prints (framed by Harper's Bazaar Singapore as 'school chic with a rebellious twist'); and midi skirts in sheer, suede, or lace across multiple fashion-week cities. Who What Wear's Paris coverage additionally names printed silk scarves, statement belts, and barrel bags as recurring street-style pieces.",
+      "index_note": "This is season-long documentation (spring/summer 2026 runway-to-street adoption), not a claim that the cluster emerged newly within this specific seven-day window -- flagged honestly rather than implying week-specific novelty. Classified 'retail_adopted' because the cited evidence centers on documented street-style/consumer wear rather than the runway origination itself, though runway origin (Hermes/Celine/Miu Miu/Lanvin) is noted in evidence for traceability. trendalytics.co is a B2B trend-forecasting vendor (taxonomy.SOURCE_SECTORS 'trade_intelligence', added run 100) -- included here as one of three corroborating sectors, not the sole source, consistent with that sector's known commercial-incentive noise profile."
+    },
+    {
+      "name": "Spring 2026 runway denim: polished washes, '90s-baggy volume, saturated color",
+      "signal_id": "spring-2026-denim-wwd",
+      "type": "garment_trend",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "confidence_source": "derived",
+      "volatility": "seasonal",
+      "origin_classification": "designer_originated",
+      "source_corroboration_count": 1,
+      "source_domains": [
+        "wwd.com"
+      ],
+      "evidence": "WWD's spring 2026 denim-trends roundup, published April 27 (the opening day of this collection window), reports no single dominant 'it' jean across the spring 2026 runways but instead three convergent threads: polished, refined classic-wash denim (MM6 Maison Margiela straight-leg), '90s-influenced voluminous/baggy silhouettes (Stella McCartney's organic-cotton Relaxed Curve jeans), and saturated color (lavender at Chloe, rose-hued denim via an Agolde collaboration, a full rainbow range at Versace).",
+      "index_note": "Single-source item (WWD only found for this specific dated claim); confidence held at 'medium' per derive_confidence() -- one high-reliability (editorial) sector, corroboration_count 1. Not upgraded on the strength of the outlet's reputation alone, consistent with this archive's confidence discipline."
+    }
+  ],
+  "repeated_keywords": [
+    "scarf",
+    "midi skirt",
+    "denim",
+    "jersey",
+    "plaid",
+    "Met Gala",
+    "Costume Art"
+  ],
+  "garments": [
+    "silk scarf (worn as top/dress)",
+    "team jersey",
+    "midi skirt",
+    "voluminous/baggy jeans"
+  ],
+  "silhouettes": [
+    "'90s-baggy denim volume",
+    "sculptural draped scarf-as-garment",
+    "relaxed tailoring"
+  ],
+  "materials": [
+    "silk",
+    "denim",
+    "suede",
+    "sheer lace/sequin"
+  ],
+  "colors": [
+    "saturated lavender",
+    "rose-hued denim",
+    "rainbow-range denim"
+  ],
+  "aesthetic_terms": [
+    "accessories-forward styling",
+    "school chic with a rebellious twist",
+    "Fashion Is Art"
+  ],
+  "cultural_references": [
+    "Costume Institute 'Costume Art' exhibition",
+    "Met Gala 2026 'Fashion Is Art' dress code"
+  ],
+  "limitations": [
+    "WebSearch (not direct WebFetch of full article text) was the sole research tool used; findings rest on search-result snippets and synthesized summaries rather than full primary-source article text.",
+    "Most spring/summer 2026 street-style and runway-trend coverage found is season-long aggregated content (published across March-May 2026) rather than precisely dated to this seven-day window; only the WWD denim piece (April 27) and the Met Gala coverage (May 4) are tightly dated within the window itself. The street-style cluster signal is explicitly framed as ongoing seasonal documentation, not week-specific novelty.",
+    "Independent criticism (dieworkwear.substack.com / Derek Guy) was checked but returned only general newsletter/traffic description for this period, with no specific dated claim substantive enough to log as a standalone signal -- excluded rather than forced.",
+    "Four source domains encountered for the first time this run (harpersbazaar.com.sg, eonline.com, cbsnews.com, npr.org) were classified by hand-research rather than via an existing taxonomy.DOMAIN_SECTOR_MAP entry; see docs/agent-logs/real-research-2026-05-04.md for the reasoning. taxonomy.py itself was not edited (out of scope for this task)."
+  ],
+  "archive_tags": [
+    "met-gala-2026-costume-art",
+    "ss26-street-style-accessories-cluster",
+    "spring-2026-denim-wwd",
+    "first-real-research-report"
+  ],
+  "collection_status": "normal",
+  "review_status": "reviewed",
+  "reviewed_by": "real-research-pilot-2026-05-04",
+  "revision_history": [],
+  "content_hash": "c21205f5331b90e1de7695d636284656a59e7e8ca4b472315568fb3c6bbc6c84"
+}

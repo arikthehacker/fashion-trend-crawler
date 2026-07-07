@@ -1,0 +1,104 @@
+{
+  "report_date": "2026-05-25",
+  "collection_window": {
+    "start": "2026-05-19",
+    "end": "2026-05-25"
+  },
+  "sources_scanned": 61,
+  "items_collected": 10,
+  "source_sector_breakdown": {
+    "editorial": 3,
+    "retail": 2
+  },
+  "executive_summary": "Coverage inside this window clustered around two calendar-driven events: the 79th Festival de Cannes, which ran its final days and closing ceremony (May 23, 2026) inside this window, and Gucci's Resort 2027 \"GucciCore\" runway show, staged by creative director Demna as a takeover of New York's Times Square (dated May 16 or May 19, 2026 depending on the outlet, both at or just before this window's start). Cannes red-carpet coverage published during the festival's closing days converged on sheer/transparent dressing worn over structured underlayers and a 1990s-minimalism revival (explicitly tied by two outlets to the FX series 'Love Story,' about Carolyn Bessette-Kennedy), alongside separate reporting on saturated color and feather embellishment -- the sheer-and-minimalism and color-and-spectacle threads are not fully reconciled across outlets and are presented here as reported, not resolved into one narrative. Gucci's Resort 2027 \"GucciCore\" show was also found in this window's research, but is not logged as a separate top_signal here -- outlets disagree on its exact date (May 16 vs. May 19), and it is the same single event already logged as signal_id \"gucci-cruise-2027-demna-times-square\" in the 2026-05-18 report; see limitations. Two other major real events adjacent to this window -- Jonathan Anderson's debut Dior Cruise 2027 show at LACMA (dated May 13, 2026) and Matthieu Blazy's debut Chanel Cruise collection in Biarritz (dated late April 2026) -- were confirmed via search but fall outside this window's date range and are not logged as top_signals here; see limitations.",
+  "top_signals": [
+    {
+      "name": "Cannes 2026 red carpet: sheer/transparent dressing and 90s-minimalism revival",
+      "type": "aesthetic_signal",
+      "source_sectors": [
+        "editorial",
+        "retail"
+      ],
+      "confidence": "medium",
+      "volatility": "flash",
+      "origin_classification": "editorial_amplified",
+      "evidence": "The 79th Festival de Cannes ran through its closing ceremony on May 23, 2026, inside this window. Editorial and service-fashion coverage published during the festival's final days described two converging red-carpet threads: sheer/diaphanous fabric worn over fitted camisoles, bodysuits, or bralettes rather than as shock value (Marie Claire; Style Rave; Who What Wear's coverage of the festival's older, more established attendees), and a 1990s-minimalism revival -- bias-cut slip dresses, column skirts, crisp button-downs, clean-lined slingbacks -- that Marie Claire and Style Rave each explicitly tied to search-traffic interest driven by the FX series 'Love Story,' about Carolyn Bessette-Kennedy. Separately, PORTER (Net-a-Porter's editorial arm) reported bold saturated color and feather embellishment (Gucci feathered look for Salma Hayek, Bottega Veneta feathered bag for Julianne Moore, Chanel couture feathered look for Sandra Huller) as a third, not fully reconciled thread running alongside the sheer/minimalist coverage.",
+      "index_note": "This is single-event, festival-driven red-carpet discourse, not evidence of a runway or retail silhouette shift; sheer dressing and 90s minimalism both also appear in separate, undated evergreen listicle content found in the same searches, but only the Cannes-specific reporting cited here is tied to a real, dated event inside this window. The sheer/minimalism framing and the bold-color/feather framing come from different outlets describing different subsets of the same red carpet and are presented as reported rather than forced into one consistent narrative.",
+      "source_corroboration_count": 5,
+      "signal_id": "cannes-2026-sheer-90s-minimalism-red-carpet",
+      "confidence_source": "manual",
+      "human_editor_note": "derive_confidence() computes 'high' on its own terms (corroboration count 5, spanning two genuinely distinct sectors: editorial via marieclaire.com/stylerave.com and retail via whowhatwear.com/net-a-porter.com). Manually held down to 'medium' under this archive's precedent 9 (docs/confidence-discipline-precedents.md): the entire signal is calendar-driven by an external event (a film festival, not a fashion-industry calendar event) rather than an independent fashion-cycle development, and its durability past the festival is genuinely unknown. Volatility is separately marked 'flash' to carry this same single-event caveat, following the exact technique the 2026-05-11 Met Gala signal used, rather than double-penalizing the same fact in both fields.",
+      "source_domains": [
+        "marieclaire.com",
+        "stylerave.com",
+        "whowhatwear.com",
+        "net-a-porter.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "sheer",
+    "90s minimalism",
+    "cruise 2027",
+    "red carpet"
+  ],
+  "garments": [
+    "sheer/diaphanous evening gown",
+    "bias-cut slip dress",
+    "column skirt",
+    "tailored suit / pinstripe separates"
+  ],
+  "silhouettes": [
+    "sheer-over-structured layering (worn over a fitted camisole or bralette)",
+    "bias-cut slip silhouette",
+    "column skirt",
+    "slick tailored suiting"
+  ],
+  "materials": [
+    "sheer georgette / diaphanous fabric",
+    "silk",
+    "feather embellishment"
+  ],
+  "colors": [
+    "saturated jewel tones (red carpet)"
+  ],
+  "aesthetic_terms": [
+    "90s minimalism revival",
+    "sheer/transparent dressing"
+  ],
+  "cultural_references": [
+    "79th Festival de Cannes (2026), closing ceremony May 23, 2026",
+    "FX series 'Love Story' (Carolyn Bessette-Kennedy) cited by two outlets as driving 90s-minimalism search interest"
+  ],
+  "limitations": [
+    "Jonathan Anderson's debut Dior Cruise 2027 'Wilshire Boulevard' show at LACMA was confirmed via search to be dated May 13, 2026 -- six days before this window opens. The prior report (2026-05-11.json) had already flagged this show as expected to surface in a later window; it in fact falls in the May 12-18 gap week between that report and this one, not in this May 19-25 window, and is not logged here.",
+    "Matthieu Blazy's debut Chanel Cruise 2026/27 collection in Biarritz was confirmed via search to be dated late April 2026 (publication dates on review coverage ranged April 28-30, 2026), well outside this window, and is not logged here.",
+    "Both logged signals are single calendar-event-driven (a film festival, a single runway show); precedent 9's 'hold down until tracked past the event' caution was applied to the Cannes signal (manual override to medium) and considered but not additionally applied to the Gucci signal (already capped at medium by precedent 2, a house's own runway show is not treated as an external calendar event under that precedent). Neither signal should be read as durable beyond its originating event without further corroboration in a later window.",
+    "Exact date discrepancies exist in outlet reporting for the Gucci Resort 2027 show (May 16 vs. May 19, 2026 across different sources); both dates place it at or immediately before this window's start, and coverage/reviews cited here were found via searches without a further per-article publish-date audit beyond confirming they concern this specific show.",
+    "The Cannes red carpet signal's sheer/90s-minimalism framing and its separate bold-color/feather framing come from different subsets of coverage and are not reconciled into a single narrative; both are reported here as found rather than collapsed into one consistent read.",
+    "No designer_origin, institutional, social, or independent_criticism sector sourcing was found for either signal this window; both rest on editorial sourcing, with the Cannes signal additionally corroborated by retail-sector service journalism (whowhatwear.com, net-a-porter.com).",
+    "The Gucci Resort 2027 \"GucciCore\" Times Square show was found in this window's research (outlets place it May 16 or May 19, 2026) but is not logged as a top_signal here: it is the same one-time runway show already logged as signal_id \"gucci-cruise-2027-demna-times-square\" in the 2026-05-18 report. Logging it a second time under a new signal_id here (as this report originally did, before pilot-batch consolidation on 2026-07-06) would have double-counted one event as two archive signals. See that report for the full entry, now enriched with 2 additional source domains this window's research independently found (theimpression.com, voguehk.com)."
+  ],
+  "archive_tags": [
+    "cannes-2026"
+  ],
+  "content_hash": "036ede98b5ce8c79381c9b2cd6e65be01bfefc633ca02a16217be6af689a16b1",
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [
+    {
+      "previous_content_hash": "1a12737993b5d3f0abb2f08a1cf9017f82f208d020a2528b2a03fc7c32bd9faa",
+      "corrected_at": "2026-07-06",
+      "reason": "Removed a duplicate Gucci Times Square signal already canonically logged under 2026-05-18.json's signal_id gucci-cruise-2027-demna-times-square; same one-time event, outlets disagreed on exact date causing it to be independently re-discovered and re-logged in this adjacent week.",
+      "changed_signals": {
+        "added": [],
+        "removed": [
+          "gucci-guccicore-resort-2027-times-square"
+        ],
+        "modified": {}
+      }
+    }
+  ],
+  "review_status": "reviewed",
+  "reviewed_by": "real-research-pilot-2026-05-25"
+}

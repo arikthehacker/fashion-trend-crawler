@@ -18,6 +18,49 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-06 ~19:30 PDT — Real-research pilot batch (10 weeks, 2026-05-04 – 2026-07-06).**
+  10 parallel agents each genuinely researched one real week via `WebSearch`, citing
+  real outlet homepage domains and honestly excluding real-but-out-of-window events
+  rather than stretching dates. All 10 came back `collection_status: "normal"` — this
+  real span happened to cover the Met Gala, Cannes, Cruise/Resort season, CFDA Fashion
+  Fund, Men's Fashion Month, and the opening of Paris Couture Week. Full validation
+  (`validate_all_reports.py`, `audit_confidence.py --all`, `check_field_coverage.py`,
+  `check_signal_reuse_claims.py --all`) and `next build` all passed clean. Found and
+  fixed one real cross-report bug during consolidation: two agents independently
+  logged the same one-time Gucci Demna Times Square show under different signal_ids
+  in adjacent weeks (2026-05-18, 2026-05-25) because outlets disagreed on its exact
+  date; consolidated into a single canonical entry with a `revision_history` trail on
+  both affected reports. See `TODO.md`'s pilot-batch entry and each week's
+  `docs/agent-logs/real-research-<date>.md` for full detail. Open next step: human
+  review of this batch, then a decision on pace/scope before continuing further back
+  toward 2018.
+
+- **2026-07-06 ~18:56 PDT — Human decision: retire the fictional forward calendar.**
+  The user reviewed the archive and correctly flagged that all 95 reports to date
+  (`2026-05-07.json` – `2028-04-24.json`, produced across loop runs 0-102) sit on a
+  synthetic forward calendar rather than real history — accurate per-report
+  methodology (including honestly-reported thin weeks and real `WebSearch` calls
+  against fictional future dates that correctly found nothing), applied to invented
+  dates. This had already been flagged as an open pacing question in run 100-102's
+  own candidate lists but never resolved by a human before now. **Action:** all 95
+  reports moved to `data/examples/synthetic-reports/` (kept for schema/format
+  reference and provenance — see that folder's README); `data/reports/` is now empty
+  and being rebuilt from genuine backdated research, starting with a pilot batch of
+  10 real weeks (2026-05-04 through 2026-07-06) before deciding how much further back
+  (toward the user's original ask of 2018, and potentially beyond) to take it. See
+  `TODO.md`'s "human decision" entry for full detail; no `changelog-entries/` file for
+  this one since it's a single directory reorganization + decision, not a build run.
+
+- **2026-07-06 ~18:00 PDT — Loop run 102 (uncommitted work closed out)** — Added
+  structured IPTC `digitalSourceType` JSON-LD metadata to report pages
+  (`compositeWithTrainedAlgorithmicMedia`, the structured counterpart to the existing
+  prose AI-disclosure); formally closed the archive's oldest legacy
+  confidence-derivation mismatch (`2026-05-07.json`) as a permanent, documented
+  grandfather exception rather than a silent inconsistency, since the report predates
+  the entire confidence-discipline system and is explicitly self-labeled a
+  placeholder. The 95th report this run produced (`2028-04-24.json`) is one of the
+  files relocated by the decision immediately above.
+
 - **2026-07-06 ~01:10 PDT — [Loop run 101](changelog-entries/run-101.md)** —
   precedent 17 formalized (absence-of-coverage signals don't get the
   single-source high-reliability-sector exception), with the original

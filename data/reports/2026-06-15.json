@@ -1,0 +1,119 @@
+{
+  "report_date": "2026-06-15",
+  "collection_window": {
+    "start": "2026-06-09",
+    "end": "2026-06-15"
+  },
+  "sources_scanned": 28,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "editorial": 6,
+    "institutional": 1
+  },
+  "executive_summary": "This window sits in the gap between the 2026 spring awards calendar and the start of men's fashion month: Pitti Uomo 110 opens in Florence June 16 (one day after this window closes), Milan Fashion Week Men's Spring/Summer 2027 runs June 19-23, and Paris Fashion Week Men's Spring/Summer 2027 runs June 23-28 -- all after this window ends, so no runway or brand-site (designer_origin) coverage of that calendar was available to collect yet. Two genuinely dated, corroborated threads were found instead. First, the 2026 CFDA/Vogue Fashion Fund's ten finalists presented their collections to judges on June 10, corroborated by the program's own announcement and independent trade/editorial coverage describing a maximalist, embellishment-heavy cohort (tutu volume, appliqued capes, a sequined lobster-motif piece). Second, recap coverage of the June 7 Tony Awards red carpet -- published inside this window -- described a split between sculptural, heavily embellished eveningwear and a minimalist plain-column counter-current. Both threads are single-event and editorial-or-institutional sourced; no retail, social, resale, or designer_origin corroboration was found for either this window. Targeted searches for general June 2026 runway/trend coverage otherwise returned mostly generic listicle/aggregator content whose primary reporting traces to dates well outside this window; none of that was logged as a signal.",
+  "top_signals": [
+    {
+      "name": "CFDA/Vogue Fashion Fund 2026 finalists: maximalist embellishment among American emerging designers",
+      "type": "industry_event",
+      "source_sectors": [
+        "institutional",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "The 2026 CFDA/Vogue Fashion Fund's ten finalists (Aisling Camps, Amir Taghi, Terrence Zhou of Bad Binch Tongtong, Emily Dawn Long, Jamie Haller, Julia Ferentinos of Juju Vera, Zane Li of Lii, George Inaki of Milamore, Claire Sullivan of Miss Claire Sullivan, and Zoe Gustavia Anna Whalen) presented their collections to the judging panel on June 10, 2026, followed by a cocktail event hosted by Vogue and the CFDA with Nordstrom -- both inside this collection window. The CFDA's own announcement (cfda.com) is corroborated by independent trade and editorial coverage of the same presentations (WWD, Business of Fashion, Fashionista, RUNWAY Magazine), which converge on describing a maximalist, embellishment-heavy thread across the cohort: dramatic tutu volume finished with polka-dot lace, capes appliqued with pink lilies, and a sequined lobster-motif garment cited by multiple outlets as representative of the class's willingness to take formal risks rather than play safe commercial silhouettes.",
+      "index_note": "This is a designer-originated signal -- garments shown directly by their makers to a judging panel, not a runway show or retail assortment -- corroborated by both the program's own institutional record and independent trade/editorial coverage of the same presentations. It describes one cohort's output at one industry event, not a claim that maximalist embellishment is moving broadly into ready-to-wear; the CFDA/Vogue Fashion Fund winner is not announced until October 20, so this window captures only the finalists' presentation stage of a months-long process.",
+      "source_corroboration_count": 5,
+      "signal_id": "cfda-vogue-fashion-fund-2026-finalists",
+      "confidence_source": "derived",
+      "human_editor_note": "derive_confidence() computes 'high' on its own terms (corroboration count 5, spanning two genuinely distinct sectors: institutional via the CFDA's own announcement, editorial via four independent trade/editorial outlets that covered the same June 10 presentations rather than reprinting the CFDA release). No manual override applied. Volatility is set to 'emerging' rather than 'flash' because, unlike a single-night calendar event, this signal opens onto a tracked, months-long process (Material Innovation Challenge and other brand challenges through the October 20 winner announcement) rather than closing out same-day.",
+      "source_domains": [
+        "cfda.com",
+        "wwd.com",
+        "businessoffashion.com",
+        "fashionista.com",
+        "runwaylive.com"
+      ]
+    },
+    {
+      "name": "2026 Tony Awards red carpet: sculptural capes and sequin embellishment against a minimalist-column counter-current",
+      "type": "aesthetic_signal",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "flash",
+      "origin_classification": "editorial_amplified",
+      "evidence": "The 2026 Tony Awards were held at Radio City Music Hall on June 7, 2026 -- two days before this window opens. Best-dressed/recap coverage dated inside this window (Marie Claire, published June 9; HelloBeautiful) converged on two competing threads: dramatic, sculptural, heavily embellished looks (Queen Latifah's feathered cape over a black gown, Deborah Cox's sequined and crystal-embellished gown with a sweeping train, Megan Thee Stallion's sculptural-waist sequined dress) alongside a minimalist counter-current of plain column gowns in black, white, or silver (Rachel Zegler in Michael Kors, Rose Byrne in Prada, Danielle Brooks in Wiederhoeft).",
+      "index_note": "A single awards-ceremony red carpet recap, not an observed shift in ready-to-wear or runway silhouette. Both corroborating outlets are general-interest/entertainment-adjacent editorial press synthesizing the same event rather than trade press or a designer statement about a broader direction. Framed as discourse about one ceremony, not as evidence that sculptural/embellished eveningwear is moving into general circulation.",
+      "source_corroboration_count": 2,
+      "signal_id": "tony-awards-2026-red-carpet",
+      "confidence_source": "derived",
+      "human_editor_note": "derive_confidence() computes 'medium' (corroboration count 2, but both sources resolve to a single sector, editorial) -- no manual override needed. Precedent 9 (docs/confidence-discipline-precedents.md: signals driven by an external calendar event are held down until tracked past that event) applies directly -- the entire signal is discourse about one awards ceremony, so volatility is marked 'flash' and confidence is not pushed any higher on the strength of outlet count alone. Also considered whether this event (June 7) falls outside the window the same way the 2026-05-11 report's Met Gala signal (May 4, one day before that window) did -- same resolution applies here: included because the recap coverage cited was published inside this window (Marie Claire, June 9), noted explicitly in limitations rather than silently treated as in-window.",
+      "source_domains": [
+        "marieclaire.com",
+        "hellobeautiful.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "capes",
+    "sculptural silhouette",
+    "sequin/crystal embellishment",
+    "maximalist embellishment vs. minimalist column gown",
+    "American emerging designers"
+  ],
+  "garments": [
+    "cape (appliqued, feathered)",
+    "tutu",
+    "column gown",
+    "power suit",
+    "sculptural bodice"
+  ],
+  "silhouettes": [
+    "sculptural/voluminous cape silhouette",
+    "minimalist plain column gown",
+    "exaggerated tutu volume"
+  ],
+  "materials": [
+    "sequins",
+    "crystal embellishment",
+    "polka-dot lace",
+    "feather",
+    "tulle"
+  ],
+  "colors": [
+    "sky-blue",
+    "hot pink",
+    "emerald",
+    "turquoise"
+  ],
+  "aesthetic_terms": [
+    "maximalist embellishment",
+    "theatrical red-carpet dressing",
+    "minimalist counter-current"
+  ],
+  "cultural_references": [
+    "2026 CFDA/Vogue Fashion Fund finalist cohort (winner announced October 20, 2026)",
+    "2026 Tony Awards at Radio City Music Hall, hosted by Pink"
+  ],
+  "limitations": [
+    "Milan Fashion Week Men's Spring/Summer 2027 (June 19-23) and Paris Fashion Week Men's Spring/Summer 2027 (June 23-28) both fall after this window closes, and Pitti Uomo 110 (Florence, June 16-19) begins the day after this window closes -- no designer_origin or runway coverage of men's fashion month was available to collect this window; expected to surface starting next window.",
+    "The 2026 Tony Awards ceremony itself took place June 7, two days before this window's start (June 9). It is included here, per the same resolution the 2026-05-11 report applied to a Met Gala one day outside that window, because the recap/best-dressed coverage cited (Marie Claire, published June 9) was published inside this window -- noted explicitly rather than silently treated as in-window.",
+    "Several recirculating seasonal trend listicles (wedge sandals, crochet skullcaps, asymmetric hemlines) surfaced repeatedly across searches for general June 2026 trend coverage, but their primary reporting traces to dates well before this window (a WWD wedge-sandal trend piece dated May 17, 2026; crochet-cap coverage tied to Copenhagen Fashion Week's January 2026 Fall/Winter 2026 season) and were simply being recirculated in June round-up content. Excluded as signals per this archive's discipline against manufacturing in-window coverage out of recirculated, off-window primary reporting.",
+    "No designer_origin, retail, social, or resale sector coverage was found meeting the corroboration bar this window; both logged signals rest on institutional and/or editorial sourcing only.",
+    "Two outlets with real, dated coverage of the Tony Awards red carpet inside this window -- vogue.ph (Vogue Philippines) and redcarpet-fashionawards.com -- are not yet present in taxonomy.py's DOMAIN_SECTOR_MAP. They were left out of this signal's source_domains rather than cited unclassified (editing taxonomy.py is out of scope for this report); flagged here as a taxonomy gap for a future run to research and classify."
+  ],
+  "archive_tags": [
+    "cfda-vogue-fashion-fund-2026",
+    "tony-awards-2026",
+    "pre-fashion-month-june-2026"
+  ],
+  "content_hash": "f07232e2c3fbd7daa4d260200af45da9585062b42edf5ad5b429aa2e04a4770f",
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": "real-research-pilot-2026-06-15"
+}

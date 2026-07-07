@@ -1,0 +1,109 @@
+{
+  "report_date": "2026-06-29",
+  "collection_window": {
+    "start": "2026-06-23",
+    "end": "2026-06-29"
+  },
+  "sources_scanned": 41,
+  "items_collected": 10,
+  "source_sector_breakdown": {
+    "editorial": 9
+  },
+  "executive_summary": "Collection window June 23-29, 2026 overlaps the Paris Men's Fashion Week Spring/Summer 2027 shows (Ready-to-Wear Men's, June 23-28, 2026), staged during a record-breaking Paris heatwave that reportedly hit 42\u00b0C. Web search across general fashion-news, menswear-runway, and design/architecture-crossover queries returned genuine, independently corroborated coverage dated to this specific window for two items: Rick Owens' reunion with adidas on inflatable, fan-cooled Tyvek tracksuits and jackets built on adidas' Climacool technology, shown June 25 at the Palais de Tokyo as a direct design response to the heatwave (reported by Dezeen, Designboom, FashionUnited, and Highsnobiety); and Michael Rider's first standalone menswear collection as Celine's creative director, shown as part of the same week's schedule and described across multiple reviews as an explicitly anti-trend, individuality-first collection (reviewed by AnOther, nss magazine, and WWD). A larger volume of additional search results were evergreen 'summer trend' shopping listicles (balloon pants, Tiffany-blue accents, wedge sandals) whose underlying runway references trace to the Spring 2026 women's season shown in September/October 2025, not to this window, and were excluded rather than pulled forward as if newly reported this week. This is the second report filed in the rebuilt real-research archive; the prior report on disk (2026-05-18) covers Cannes/Cruise 2027 season news and carries no signal_ids that recur in this menswear-focused window, so no continuation notes apply.",
+  "top_signals": [
+    {
+      "name": "Rick Owens x adidas: inflatable, fan-cooled Tyvek tracksuits as a direct heatwave design response at Paris Men's SS27",
+      "type": "designer_signal",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "flash",
+      "origin_classification": "designer_originated",
+      "evidence": "On June 25, 2026, Rick Owens presented his Spring/Summer 2027 menswear collection at the Palais de Tokyo during Paris Men's Fashion Week, staged amid a Paris heatwave reported at up to 42\u00b0C. The collection included a surprise reunion with adidas: ballooning jackets, shorts, and full-body tracksuits made from Tyvek (the material used for hazmat suits), each fitted with small battery-powered fans built on adidas' Climacool technology and worn over ice vests, producing what Owens described as a 'personal air conditioning system.' Dezeen, Designboom, FashionUnited, and Highsnobiety independently reported the same show, material, and heatwave framing.",
+      "index_note": "Logged as designer_originated: a first-party runway presentation, not a retail or social amplification of it. Volatility is set to 'flash' rather than 'emerging' because the design is explicitly a direct, one-off response to a specific weather event (the June 2026 Paris heatwave) rather than a silhouette or material choice being proposed as an ongoing direction; whether adidas or Owens revisit wearable-cooling garments in a future season is not yet knowable from this single show. All four cited outlets are editorial-sector press covering the same event, so this does not clear the cross-sector bar for 'high' confidence under derive_confidence().",
+      "source_corroboration_count": 4,
+      "signal_id": "rick-owens-adidas-heatwave-cooling-ss27",
+      "confidence_source": "derived",
+      "human_editor_note": "",
+      "source_domains": [
+        "dezeen.com",
+        "designboom.com",
+        "fashionunited.com",
+        "highsnobiety.com"
+      ]
+    },
+    {
+      "name": "Celine Spring/Summer 2027 menswear: Michael Rider's solo debut collection, framed across reviews as deliberately anti-trend",
+      "type": "designer_signal",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "During Paris Men's Fashion Week (week of June 23-28, 2026), Celine creative director Michael Rider staged his first standalone menswear collection for the house, for Spring/Summer 2027. Reviews (AnOther, nss magazine, WWD) independently describe the collection as mixing collegiate dressing, bohemian references, rock attitude, minimalism, and classical-ballet nods without quoting or paying homage to another designer's codes; Rider is quoted backstage saying 'Clothes are clothes.' Coverage repeatedly frames the show as notable specifically for resisting a single legible trend or reference in a fashion landscape reviewers describe as increasingly homogenized.",
+      "index_note": "Logged as designer_originated: a first-party creative-director debut show, not a retail or social amplification. Volatility held at 'emerging' rather than 'stable': a single debut collection's critical reception is confirmed, but whether this anti-trend, personal-style framing persists as Rider's ongoing direction at Celine is not yet established from one show. All three cited outlets are editorial-sector press, so this does not clear the cross-sector bar for 'high' confidence.",
+      "source_corroboration_count": 3,
+      "signal_id": "celine-ss27-rider-menswear-debut",
+      "confidence_source": "derived",
+      "human_editor_note": "",
+      "source_domains": [
+        "anothermag.com",
+        "nssmag.com",
+        "wwd.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "Paris Men's Fashion Week SS27",
+    "heatwave",
+    "Climacool",
+    "anti-trend"
+  ],
+  "garments": [
+    "inflatable tracksuit",
+    "Tyvek jacket",
+    "ice vest",
+    "collegiate blazer"
+  ],
+  "silhouettes": [
+    "ballooning fit",
+    "oversized tailoring",
+    "shrunken tailoring"
+  ],
+  "materials": [
+    "Tyvek",
+    "technical mesh",
+    "paper-thin jazz sole leather"
+  ],
+  "colors": [],
+  "aesthetic_terms": [
+    "wearable air conditioning",
+    "anti-trend individuality"
+  ],
+  "cultural_references": [
+    "adidas Climacool technology (also referenced in 2026 FIFA World Cup / Formula 1 apparel contexts)"
+  ],
+  "limitations": [
+    "This report is built entirely from WebSearch results, not the crawler.py/summarize.py pipeline, since it reconstructs a real past week rather than processing a live crawl.",
+    "Source citation is restricted to outlet-homepage domains judged to be staffed editorial publications. dezeen.com and designboom.com are not yet in taxonomy.py's DOMAIN_SECTOR_MAP; both were verified via WebSearch this run (Dezeen: London-based architecture/design magazine, ~50 staff, named editor Tom Ravenscroft, launched 2006; Designboom: founded 1999, named editor-in-chief Sofia Lekka Angelopoulou, daily editorial director since 2008) and treated as editorial in this report's source_sectors -- the same fashion-adjacent-trade-press pattern already accepted for artnews.com (run 98). This mapping was not persisted to taxonomy.py, which is out of scope for this task; flagged here for a future taxonomy-gap-fix run.",
+    "A large share of raw search results were evergreen 'summer trend' shopping/listicle content (balloon pants, Tiffany-blue accents, crochet skullcaps, wedge heels -- Who What Wear, Marie Claire, Coveteur, Essence, PureWow, Grazia) whose cited runway references trace to the Spring 2026 women's season (shown September/October 2025), not to this collection window; these were excluded from top_signals rather than presented as newly reported this week, consistent with the project's shopping-language voice rule and with not fabricating recency.",
+    "sortiraparis.com and womanmagazine.com surfaced repeatedly in search results covering this same Paris Men's Fashion Week window but were excluded from source_domains: sortiraparis.com is primarily a Paris tourism/leisure listings guide that also functions as a paid communications/advertising platform, and womanmagazine.com is an undifferentiated celebrity/lifestyle aggregator; neither was judged to clear the staffed-editorial-with-independent-standards bar on the research done this run.",
+    "Both logged signals are single-week runway/design-crossover coverage from one fashion week and have not yet been corroborated by a second, independent collection window, so neither carries a signal_id history beyond this single report.",
+    "No designer_origin-sector source (Rick Owens' or Celine's own site) was independently verified and cited for either signal; both are sourced entirely from third-party editorial coverage of the shows.",
+    "Broader Paris Men's SS27 season coverage (Louis Vuitton's Pharrell-era opening show, Dior Homme under Peter Copping, Hermes' in-house-studio collection ahead of Grace Wales Bonner's January 2027 debut) was found in search results but not independently corroborated across multiple named sources within this window's research pass, so it is not logged as a separate signal here."
+  ],
+  "archive_tags": [
+    "paris-mens-fashion-week-ss27",
+    "paris-heatwave-2026",
+    "rick-owens-adidas-collab",
+    "celine-rider-menswear-debut"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "review_status": "reviewed",
+  "reviewed_by": "real-research-pilot-2026-06-29",
+  "revision_history": [],
+  "content_hash": "a15db477179f82ed96b3b2c7516c7784c3e01ece8ba6c993346a3e9c377579d3"
+}

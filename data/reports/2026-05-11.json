@@ -1,0 +1,118 @@
+{
+  "report_date": "2026-05-11",
+  "collection_window": {
+    "start": "2026-05-05",
+    "end": "2026-05-11"
+  },
+  "sources_scanned": 53,
+  "items_collected": 10,
+  "source_sector_breakdown": {
+    "editorial": 9,
+    "institutional": 1
+  },
+  "executive_summary": "Coverage inside this window concentrated almost entirely around one calendar event: the May 4, 2026 Met Gala's \"Fashion Is Art\" dress code and the Costume Institute's companion exhibition \"Costume Art,\" which opened to the public May 10 in a new, roughly 12,000-square-foot permanent gallery space. Red-carpet coverage published this week described a body-as-canvas aesthetic -- hand-painted and beadwork-mimicking-paint garments, sculpted/molded bodices and breastplates, and modular jewelry -- as the night's dominant thread, though this is a single-event, editorial-only-sourced observation, not evidence of a broader silhouette shift. Separately, the museum's own gallery expansion and exhibition opening was independently reviewed by multiple editorial critics, giving it genuine institutional-plus-editorial corroboration. Outside this Met Gala/Costume Institute cluster, targeted searches for general May 2026 runway or trend coverage returned largely generic listicle content with no window-specific reporting to log.",
+  "top_signals": [
+    {
+      "name": "Met Gala 2026 \"Fashion Is Art\" red carpet: body-as-canvas / sculptural dressing",
+      "type": "aesthetic_signal",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "flash",
+      "origin_classification": "editorial_amplified",
+      "evidence": "The May 4, 2026 Met Gala (one day before this window opens) used the dress code \"Fashion Is Art,\" tied to the Costume Institute's spring exhibition. Coverage published inside this window (Forbes, May 5; NPR and The Washington Post recap/best-dressed pieces; Rolling Stone) converged on describing the night's dominant aesthetic as the body treated as a canvas or sculptural surface rather than a conventional gown silhouette: a hand-painted dress (Emma Chamberlain, executed by Mugler's Miguel Castro Freitas), beadwork applied to mimic paint (Jeremy Pope), sculpted/molded bodices and breastplates (multiple Kardashian-family and Hailey Bieber looks, Sabine Getty's trompe-l'oeil piece), and modular or magnet-based jewelry systems worn as wearable sculpture. Individual garment references skewed toward fine-art quotation -- Gracie Abrams' Chanel gown cited as a Gustav Klimt reference, Madonna's Saint Laurent gown cited as drawing on a Leonora Carrington painting.",
+      "index_note": "This is a single-night, calendar-driven event dressed as a style signal, not an observed shift in ready-to-wear or runway silhouette. All four corroborating outlets are editorial press synthesizing the same event; none is a designer or institutional statement about a broader aesthetic direction. Framed here as discourse about one gala, not as a claim that sculptural/painted-body dressing is moving into general circulation.",
+      "source_corroboration_count": 4,
+      "signal_id": "met-gala-2026-fashion-is-art-body-as-canvas",
+      "confidence_source": "derived",
+      "human_editor_note": "derive_confidence() computes 'medium' here on its own terms (corroboration count 4, but all four sources resolve to a single sector, editorial) -- no manual override needed, but flagging the reasoning per this archive's precedent 2 (docs/confidence-discipline-precedents.md): raw outlet count within one sector does not cross into 'high' no matter how many editorial outlets repeat essentially the same red-carpet recap. Also considered and rejected precedent 9 (calendar-driven signals held down until tracked past the event) as a further downgrade -- the signal is already capped at medium by precedent 2, and volatility is separately marked 'flash' to carry the single-event caveat rather than double-penalizing the same fact in both fields.",
+      "source_domains": [
+        "npr.org",
+        "washingtonpost.com",
+        "forbes.com",
+        "rollingstone.com"
+      ]
+    },
+    {
+      "name": "Met's Costume Institute opens \"Costume Art\" and ~12,000 sq ft of new fashion galleries",
+      "type": "industry_event",
+      "source_sectors": [
+        "institutional",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "long_tail",
+      "origin_classification": "unclear",
+      "evidence": "The Metropolitan Museum of Art's own press materials (metmuseum.org) confirm the Costume Institute's spring 2026 exhibition \"Costume Art\" opened to the public May 10, 2026 (running through January 10, 2027) in a new, nearly 12,000-square-foot dedicated gallery space -- the Costume Institute's first permanent above-ground exhibition footprint, replacing its former basement space. The show pairs historical and contemporary garments directly against fine-art works from the Met's collection, using inclusive/diverse mannequins (designed by sculptor Samar Hejazi) including pregnant, wheelchair-using, and little-person body types. Independent editorial review coverage published inside this window -- Wallpaper*, The Art Newspaper (dated May 11, 2026), W Magazine, and Time Out -- corroborates the opening date, gallery description, and curator Andrew Bolton's framing (\"fashion has been positioned at the margins of art\") from outlets independent of the museum's own release.",
+      "index_note": "An institutional development (a museum permanently expanding its fashion exhibition footprint and reframing historical/contemporary garments as fine art), not a garment or silhouette trend. Logged as an industry/institutional event because it is a structural change in how one major institution positions fashion, independently corroborated by the museum's own announcement and by editorial critics who reviewed the show rather than reprinting the press release.",
+      "source_corroboration_count": 5,
+      "signal_id": "met-costume-institute-costume-art-gallery-opening",
+      "confidence_source": "derived",
+      "human_editor_note": "derive_confidence() computes 'high' here on its own terms (corroboration count 5, spanning two genuinely distinct sectors -- institutional via the museum's own press release, editorial via four independent review outlets). Checked against precedent 7 (a nominal sector tag can mislabel what is really the same underlying sector): the institutional citation here is the Met's own first-party press release, not an editorial outlet describing an institutional announcement secondhand, so the two-sector read is genuine, not a mislabeling. origin_classification is set to 'unclear' rather than forced into one of the six existing values -- none of designer_originated/editorial_amplified/retail_adopted/social_amplified/platform_native/archive_revival cleanly describes a museum permanently expanding its own exhibition space; 'archive_revival' was considered (the show does recontextualize archival garments) but rejected because that value is calibrated for a specific historical design element returning to fashion currency, not an institution's own curatorial/gallery-footprint decision. Leaving this as an honest taxonomy gap rather than a poor-fit label, consistent with precedent 14's approach to a different taxonomy gap.",
+      "source_domains": [
+        "metmuseum.org",
+        "wallpaper.com",
+        "theartnewspaper.com",
+        "wmagazine.com",
+        "timeout.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "fashion is art",
+    "body as canvas",
+    "sculptural",
+    "costume institute",
+    "living canvas",
+    "moving museum"
+  ],
+  "garments": [
+    "hand-painted gown",
+    "beadwork-embellished gown",
+    "sculpted/molded bodice",
+    "structured breastplate",
+    "crystal-embellished sheer gown"
+  ],
+  "silhouettes": [
+    "sculptural/molded bodice",
+    "body-conscious sheer column",
+    "structured breastplate silhouette"
+  ],
+  "materials": [
+    "hand-painted fabric",
+    "beadwork",
+    "crystal embellishment",
+    "cast/molded metal (jewelry and bodice pieces)"
+  ],
+  "colors": [],
+  "aesthetic_terms": [
+    "body as canvas",
+    "living canvas",
+    "moving museum",
+    "art on the body"
+  ],
+  "cultural_references": [
+    "Gustav Klimt (cited reference for Chanel's Met Gala gown)",
+    "Leonora Carrington (cited reference for Saint Laurent's Met Gala gown)",
+    "Costume Institute's \"Fashion Is Art\" dress code and companion exhibition"
+  ],
+  "limitations": [
+    "The Met Gala itself took place May 4, 2026 -- one day before this window's start (May 5). It is included here because the analytical/trend coverage cited (Forbes, NPR, Washington Post, Rolling Stone, and the Costume Art exhibition reviews) was published within the May 5-11 window, but the event generating that coverage falls just outside it; noted explicitly rather than silently treated as in-window.",
+    "Coverage this window concentrated almost entirely in one cluster (Met Gala / Costume Institute). Targeted searches for general May 2026 runway, resort 2027, and vogue.com-specific trend coverage returned mostly generic listicle/aggregator content with no dated, window-specific reporting -- no signal was logged from those searches to avoid manufacturing coverage that does not exist.",
+    "Dior's Cruise 2027 \"Wilshire Boulevard\" show at LACMA (Jonathan Anderson's first Dior cruise collection) was confirmed via search to be dated May 13, 2026 -- two days after this window closes. Not logged here; expected to surface in the next window's search instead.",
+    "Signal 1 (body-as-canvas Met Gala aesthetic) is sourced entirely from general-interest/entertainment-adjacent editorial outlets (Forbes, NPR, Washington Post, Rolling Stone) rather than fashion trade press (Vogue, WWD, BoF); no trade-press synthesis of the same red-carpet trend was found in this window's searches.",
+    "No retail-adoption, social-platform, or designer-origin (runway/brand-site) sourcing was found for either signal this window; both rest on editorial and (for signal 2) institutional sourcing only."
+  ],
+  "archive_tags": [
+    "met-gala-2026",
+    "fashion-is-art",
+    "costume-institute-gallery-opening"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "review_status": "reviewed",
+  "reviewed_by": "real-research-pilot-2026-05-11",
+  "revision_history": [],
+  "content_hash": "749296ca0535369f3834ed38b90a49c05b804f03d8fa44a839fdcc197d8e0b3f"
+}

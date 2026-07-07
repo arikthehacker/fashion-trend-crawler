@@ -1,0 +1,163 @@
+{
+  "report_date": "2026-05-18",
+  "collection_window": {
+    "start": "2026-05-12",
+    "end": "2026-05-18"
+  },
+  "sources_scanned": 29,
+  "items_collected": 12,
+  "source_sector_breakdown": {
+    "editorial": 8,
+    "retail": 1
+  },
+  "executive_summary": "Collection window May 12-18, 2026 overlaps the opening week of the 79th Cannes Film Festival (May 12-23, 2026) and two houses' Cruise/Resort 2027 runway shows. Web search across general fashion-news, red-carpet, and resort/cruise-preview queries returned genuine, independently corroborated editorial coverage dated to this specific window for three items: a red-carpet aesthetic cluster from the first week of Cannes (couture-scale sculptural gowns alongside more playful, less formal choices, reported by CNN, W Magazine, Marie Claire, and WWD); Dior's Cruise 2027 show staged by Jonathan Anderson at LACMA on May 13 (his first cruise collection for the house, reviewed by WWD, Modern Luxury, and Wallpaper*); and Gucci's Cruise 2027 show staged by Demna in Times Square on May 16 (covered by WWD, RunwayLive, W Magazine, AnOther, and Whowhatwear). A large volume of additional search results were low-quality aggregator/SEO content (e.g. listicle-style 'best looks' round-ups republishing agency photos with no named byline or masthead) and were excluded rather than cited; a fourth widely-covered Cannes look (Bella Hadid in Schiaparelli) is dated May 20, after this window's May 18 close, and is excluded rather than pulled forward. This is the first report filed in the rebuilt real-research archive (see data/reports/README.md); there is no prior real report to carry signal_ids or standing threads forward from.",
+  "top_signals": [
+    {
+      "name": "79th Cannes Film Festival red carpet: couture-scale drama alongside playful anti-formality",
+      "type": "event_aesthetic_cluster",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "recurring",
+      "origin_classification": "editorial_amplified",
+      "evidence": "The 79th Cannes Film Festival ran May 12-23, 2026, opening the same day this collection window begins. Editorial red-carpet coverage of the festival's first week (May 12-18) repeatedly names two coexisting registers rather than a single dominant look: large-scale sculptural/couture pieces (Tilda Swinton in Chanel Spring-Summer 2026 couture; Joan Collins in an orchid-inspired Stephane Rolland gown with black opera gloves at the May 12 opening ceremony; Demi Moore's custom Jacquemus mermaid-silhouette opening-ceremony gown with a peplum waist and sequined bodice; Hoyeon in a Louis Vuitton gown with a draped cowl neckline and asymmetric skirt on May 17) running alongside deliberately less formal or playful choices at the same event (Demi Moore's polka-dot Jacquemus day dress with an oversize matching bag at the jury photocall; Ruth Negga in an Ami tuxedo suit; Diane Kruger in a Givenchy Fall 2026 floral-embroidered mini dress at the May 14 Fatherland premiere; Riley Keough in a drop-waist Alaia little black dress on May 15). CNN's coverage explicitly frames the festival's fashion as reading 'international' rather than converging on one silhouette or era, unlike 2025's more uniform red-carpet mood it compares against.",
+      "index_note": "This is a wire-service description of what four editorial outlets independently reported about the same week of red-carpet appearances, not a claim that either register will outlast the festival itself. Cannes red-carpet coverage recurs every May; volatility is set to 'recurring' rather than 'emerging' or 'volatile' for that reason. A dress requiring 22,000 hours of hand-embroidery (Bella Hadid, Schiaparelli) was widely covered but is dated May 20, outside this window's end (May 18), and is excluded rather than pulled forward.",
+      "source_corroboration_count": 4,
+      "signal_id": "cannes-2026-red-carpet-cluster",
+      "confidence_source": "derived",
+      "human_editor_note": "",
+      "source_domains": [
+        "wmagazine.com",
+        "cnn.com",
+        "marieclaire.com",
+        "wwd.com"
+      ]
+    },
+    {
+      "name": "Dior Cruise 2027 (\"Wilshire Boulevard\"): Jonathan Anderson's first Dior cruise show, staged as an Old Hollywood set piece",
+      "type": "designer_signal",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "On the evening of Wednesday, May 13, 2026, Christian Dior staged Jonathan Anderson's first Cruise collection for the house at the newly opened David Geffen Galleries at the Los Angeles County Museum of Art (LACMA). WWD's review describes a 75-look lineup mixing flowing women's dresses, belted outerwear, and a reworked Bar jacket (stretched to mid-thigh, fringed hem) with men's tailoring, staged against concrete, smoke, and sunset-haze lighting referencing Hitchcock's 'Stage Fright' and Marlene Dietrich's costuming for it. Recurring Anderson-era motifs at the house -- florals, feathers, wordplay -- continued, alongside vintage Cadillacs and reworked Saddle bags on set. Modern Luxury and Wallpaper* independently corroborated the same show and venue.",
+      "index_note": "Logged as designer_originated because this is the house's own staged cruise show, not a retail or social amplification of it. Volatility is 'emerging' rather than 'stable': this is a creative-director debut collection whose downstream influence on broader style discourse is not yet knowable from opening coverage alone. All three cited sources are editorial press covering the same single show, so this does not clear the cross-sector bar for 'high' confidence.",
+      "source_corroboration_count": 3,
+      "signal_id": "dior-cruise-2027-anderson-lacma",
+      "confidence_source": "derived",
+      "human_editor_note": "",
+      "source_domains": [
+        "wwd.com",
+        "modernluxury.com",
+        "wallpaper.com"
+      ]
+    },
+    {
+      "name": "Gucci Cruise 2027: Demna's Times Square takeover introduces \"GucciCore\", a wardrobe-staples-first collection",
+      "type": "designer_signal",
+      "source_sectors": [
+        "editorial",
+        "retail"
+      ],
+      "confidence": "high",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "On the evening of Saturday, May 16, 2026, Gucci artistic director Demna closed several blocks of Times Square in Manhattan for his first Cruise show for the house, attended by Kim Kardashian, Lindsay Lohan, Mariah Carey, Iman, Stormzy, and Willy Chavarria among others, with Tom Brady, Alex Consani, Paris Hilton, and Cindy Crawford on the runway. WWD's review and framing by the house itself describe the collection -- termed 'GucciCore' in coverage -- as roughly 90 percent wardrobe staples and 10 percent more fashion-forward pieces, a deliberately more commercial, wardrobe-minded approach than Demna's February 2026 debut mainline show for the house. Whowhatwear (retail-sector) independently covered the same street takeover; W Magazine, AnOther, and RunwayLive (all editorial) corroborated the show's staging and reception. The Impression and Vogue Hong Kong independently reviewed the same show, each converging on Demna's own name for the aesthetic, \"GucciCore\" -- his fourth successive thematic era at the house, following \"La Famiglia,\" \"Generation Gucci,\" and \"Primavera.\"",
+      "index_note": "Designer_originated: a first-party runway/cruise show, not a retail or social amplification. Two distinct source sectors (editorial and retail) each independently corroborate the same show, which is why this signal clears the 'high' confidence bar that the single-sector Dior signal above does not. Volatility held at 'emerging' rather than 'stable' for the same reason as the Dior signal: a single debut show's staging is confirmed, but whether 'GucciCore' becomes a durable retail or editorial framing beyond this one collection is not yet established. Consolidated 2026-07-06 during pilot-batch review: this same show was independently re-logged under a different signal_id in the 2026-05-25 report (outlets disagreed on the exact date, May 16 vs. May 19); merged here as the single canonical entry rather than double-counting one runway show as two archive signals across adjacent weeks.",
+      "source_corroboration_count": 7,
+      "signal_id": "gucci-cruise-2027-demna-times-square",
+      "confidence_source": "derived",
+      "human_editor_note": "",
+      "source_domains": [
+        "anothermag.com",
+        "runwaylive.com",
+        "theimpression.com",
+        "voguehk.com",
+        "whowhatwear.com",
+        "wmagazine.com",
+        "wwd.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "Cruise 2027",
+    "Cannes red carpet",
+    "GucciCore",
+    "Old Hollywood"
+  ],
+  "garments": [
+    "opera gloves",
+    "tuxedo suit",
+    "reworked Bar jacket",
+    "cruise/resort collection"
+  ],
+  "silhouettes": [
+    "mermaid silhouette",
+    "peplum waist",
+    "draped cowl neckline",
+    "asymmetric drape",
+    "drop-waist"
+  ],
+  "materials": [
+    "hand embroidery",
+    "sequins",
+    "feathers",
+    "fringing"
+  ],
+  "colors": [
+    "buttercup yellow",
+    "poppy orange",
+    "black",
+    "polka dot"
+  ],
+  "aesthetic_terms": [
+    "Old Hollywood glamour",
+    "GucciCore",
+    "sculptural drama",
+    "playful anti-formality"
+  ],
+  "cultural_references": [
+    "Hitchcock's 'Stage Fright' / Marlene Dietrich costuming (Dior Cruise 2027)",
+    "Cannes red-carpet convention"
+  ],
+  "limitations": [
+    "This report is built entirely from WebSearch results, not the crawler.py/summarize.py pipeline, since it reconstructs a real past week rather than processing a live crawl.",
+    "Source citation is restricted to outlet-homepage domains already vetted as staffed editorial/retail publications (matching src/taxonomy.py's DOMAIN_SECTOR_MAP conventions); a substantial share of raw search results were low-quality aggregator/listicle sites (e.g. iblingjewels.com, storynews.us, news.amomama.com, entertainmentnow.com, famedelivered.com, whatgoesaroundnyc.com, ouispeakfashion.com, lesfacons.com, futurefestival.com, trendhunter.com, fashionwiredaily.net) republishing wire photos with no named masthead or byline; these were excluded from source_domains and from sources_scanned's credible count rather than cited.",
+    "cnn.com is not yet in taxonomy.py's DOMAIN_SECTOR_MAP; it is treated as editorial in this report's source_sectors (a staffed general-news network with a dedicated Style vertical, the same pattern already accepted for nytimes.com) but this mapping was not persisted to taxonomy.py, which is out of scope for this task. Flagged here for a future taxonomy-gap-fix run.",
+    "All three signals are runway/red-carpet event coverage from the first week of a still-running festival (Cannes continues through May 23) and two single-show designer debuts; none of the three has yet been corroborated by a second, independent collection window, so none carries a signal_id history beyond this single report.",
+    "No designer_origin-sector source (a brand's own site) was independently verified and cited for either Cruise show; both are sourced entirely from third-party editorial/retail press coverage of the shows."
+  ],
+  "archive_tags": [
+    "cannes-2026-fashion-week",
+    "dior-anderson-cruise-debut",
+    "gucci-demna-cruise-debut",
+    "first-real-research-report"
+  ],
+  "content_hash": "b05c982275a2a78e4ec2f63b9995b5d225650e0115a7ab2e142a41e5229aa376",
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [
+    {
+      "previous_content_hash": "62a46e288ce2cd09c6ffe6057ddbc9d1830070ed035313b5e9274444d6f9a01f",
+      "corrected_at": "2026-07-06",
+      "reason": "Consolidated a duplicate Gucci Times Square signal from 2026-05-25.json into this report's existing entry, merging in 2 additional corroborating source domains found by that week's independent research pass.",
+      "changed_signals": {
+        "added": [],
+        "removed": [],
+        "modified": {
+          "gucci-cruise-2027-demna-times-square": [
+            "evidence",
+            "index_note",
+            "source_corroboration_count",
+            "source_domains"
+          ]
+        }
+      }
+    }
+  ],
+  "review_status": "reviewed",
+  "reviewed_by": "real-research-pilot-2026-05-18"
+}
