@@ -230,6 +230,58 @@ DOMAIN_SECTOR_MAP = {
     # 2028-02-14 report (Fall/Winter 2028 NYFW runway lookbook), flagged as a
     # candidate gap in that report's own agent log.
     "proenzaschouler.com": "designer_origin",
+
+    # added run 94 -- closing the top of run 93's 58-domain gap backlog
+    # (docs/agent-logs/taxonomy-gap-fix-run93.md), each verified via WebSearch
+    # before classifying (see docs/agent-logs/taxonomy-gap-fix-run94.md):
+    # voguescandinavia.com is Vogue Scandinavia, Conde Nast's Nordic-region
+    # local Vogue edition (launched 2021, same publisher family as vogue.com/
+    # voguearabia.com); wallpaper.com is a Future plc-owned British design/
+    # architecture/fashion/art monthly (est. 1996); marieclaire.com is the
+    # US edition of the long-running Marie Claire women's magazine (est.
+    # 1937 in France, now Future plc); wmagazine.com is W Magazine, a
+    # fashion/film/art/culture title (est. 1993, now Bustle Digital Group);
+    # anothermag.com is AnOther Magazine, published by Dazed Media (the same
+    # independent publisher as dazeddigital.com, already editorial) -- all
+    # five are genuine staffed editorial titles with bylines, not retailers.
+    "voguescandinavia.com": "editorial",
+    "wallpaper.com": "editorial",
+    "marieclaire.com": "editorial",
+    "wmagazine.com": "editorial",
+    "anothermag.com": "editorial",
+
+    # added run 94 -- nssmag.com (nss magazine) is a Milan-based streetwear/
+    # culture editorial title, a registered newspaper publication (est. 2012,
+    # official status 2022) with investigative/feature journalism plus a
+    # "shopping" vertical -- same editorial-plus-commerce-layer pattern
+    # already accepted for okayafrica.com/stylerave.com, not a pure
+    # retailer; coveteur.com is a staffed multimedia editorial brand (est.
+    # 2011, relaunched 2025 under Gallery Media Group/VaynerX) covering
+    # fashion/beauty/lifestyle with a named editorial policy barring
+    # pay-for-play coverage -- editorial-led despite a "shopping" section,
+    # matching the same pattern rather than the pure-transactional retailers
+    # (net-a-porter.com, ssense.com, etc.) already in this map.
+    "nssmag.com": "editorial",
+    "coveteur.com": "editorial",
+
+    # added run 94 -- istitutomarangoni.com is Istituto Marangoni, a
+    # genuine higher-education institution (founded 1935, campuses in
+    # Milan/Paris/London/Florence/Shanghai, QS-ranked fashion/design/luxury
+    # schools) -- an institutional/educational body, not a designer house
+    # or editorial outlet, matching fitnyc.edu's pattern rather than the
+    # editorial or designer_origin sectors.
+    "istitutomarangoni.com": "institutional",
+
+    # added run (2028-02-28 report) -- verified via WebSearch before
+    # classifying, same convention as domain-classification-run56/run70/
+    # run93/run94: simonerocha.com is the house's own official site, first
+    # crawled for its Fall/Winter 2028 London Fashion Week lookbook; same
+    # first-party-collection-drop pattern as khaite.com/proenzaschouler.com.
+    # cameramoda.it is Camera Nazionale della Moda Italiana, the official
+    # governing body that organizes Milan Fashion Week, confirmed official
+    # site, mirrors cfda.com/britishfashioncouncil.co.uk/fhcm.paris.
+    "simonerocha.com": "designer_origin",
+    "cameramoda.it": "institutional",
 }
 
 
