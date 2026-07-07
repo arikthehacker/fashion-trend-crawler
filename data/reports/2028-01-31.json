@@ -1,0 +1,73 @@
+{
+  "report_date": "2028-01-31",
+  "collection_window": {
+    "start": "2028-01-25",
+    "end": "2028-01-31"
+  },
+  "sources_scanned": 10,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "designer_origin": 1,
+    "editorial": 1
+  },
+  "executive_summary": "Collection window January 25-31, 2028: Paris's Haute Couture Spring/Summer 2028 shows opened within this window, following the close of Fall/Winter 2028 menswear fashion month (2028-01-24), as anticipated in that report. Dior's own site published the house's runway lookbook for its Haute Couture Spring/Summer 2028 show in Paris, and vogue.com independently reviewed the same show, both identifying a bias-cut column dress -- cut on the fabric's diagonal grain so the fabric drapes close to the body rather than falling straight from a vertical seam -- as a recurring construction across multiple looks. This is treated as genuine cross-sector corroboration: one designer_origin source (the house's own lookbook, describing its own runway as designer intent) and one editorial source doing independent runway-review reporting, not a restatement of the house's own materials. Per derive_confidence(), corroboration_count=2 spanning two distinct sectors yields 'high'; this is adopted as computed, applying the same reasoning already applied to the 2028-01-24 Louis Vuitton signal: sector diversity here is genuine (a first-party lookbook plus a separately reported independent review), not a taxonomy artifact (precedent 3) or a mislabeled single underlying source (precedent 7). This remains designer intent (a specific construction shown on one house's couture runway) reported through one designer-origin channel and one independent editorial review; it is not yet a claim of editorial-consensus interpretation across other houses, retail adoption, or social amplification -- couture pieces are made-to-order and not stocked at retail, so no retail-adoption claim is possible or implied for this signal, and none of the other three categories have occurred yet within this window either. No retail, social, resale, independent-criticism, or institutional source introduced a development distinct from this runway coverage this window. The resort 2028 puffer-shell skirt thread, the resale-demand signal on structured waist-tailoring, the obi-sash cocoon coat thread, and the opera-glove/'restraint dressing' thread all produced no new development this window and are not carried forward again absent fresh movement. The Margiela raw-edge thread remains closed out as of 2027-10-18. Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention.",
+  "top_signals": [
+    {
+      "name": "Dior Haute Couture Spring/Summer 2028 runway: bias-cut column dress",
+      "type": "silhouette",
+      "source_sectors": [
+        "designer_origin",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "Dior published its own runway lookbook for its Haute Couture Spring/Summer 2028 show at Paris Haute Couture Week, and vogue.com independently reviewed the same show, both identifying a column dress cut on the fabric's bias (diagonal) grain -- producing a close, fluid drape against the body rather than the straighter fall of a garment cut on the straight grain -- repeated across multiple looks. The lookbook is the house's own first-party statement of the collection; vogue.com's review adds independent critical framing rather than restating the lookbook's own copy.",
+      "index_note": "Read as a single-runway-event silhouette observation at the designer-intent stage: a garment shown on one house's couture runway this window, not yet a claim of editorial trend consensus across other designers, retail buying, or social circulation. Couture garments are made-to-order rather than stocked at retail, so no retail-adoption pathway is being implied here even prospectively.",
+      "human_editor_note": "derive_confidence() computes 'high' here (corroboration_count=2, two distinct sectors: designer_origin, editorial), and this report adopts that result rather than overriding it, applying the identical reasoning already used for the 2028-01-24 Louis Vuitton dropped-shoulder-overcoat signal: the second source is a genuinely distinct sector -- the house's own first-party lookbook (designer_origin) plus an independent editorial review, not two outlets in the same sector -- so the sector diversity is real, not a taxonomy artifact (precedent 3) or a mislabeled single underlying source (precedent 7). This also contrasts with the 2028-01-17 Gucci shawl-collar-overcoat signal, where both sources resolved to the single sector 'editorial' and was held at 'medium' under precedent 2. confidence_source is set to 'derived' since the mechanical result is adopted as-is, no manual override.",
+      "source_corroboration_count": 2,
+      "signal_id": "dior-couture-ss28-bias-cut-column-dress",
+      "confidence_source": "derived",
+      "source_domains": [
+        "dior.com",
+        "vogue.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "bias-cut column dress",
+    "Dior couture",
+    "Paris Haute Couture Week"
+  ],
+  "garments": [
+    "bias-cut column dress"
+  ],
+  "silhouettes": [
+    "bias-cut column dress"
+  ],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [
+    "bias-cut column dress"
+  ],
+  "cultural_references": [
+    "Paris Haute Couture Week"
+  ],
+  "limitations": [
+    "Only one runway-derived signal cleared this report's corroboration bar this window; confidence reached 'high' on genuine cross-sector corroboration (designer_origin, editorial), applying the same reasoning already used for the 2028-01-24 Louis Vuitton signal -- see this signal's human_editor_note.",
+    "This signal reflects designer intent observed on a single couture runway this window, reported through one first-party channel and one independent editorial review; it does not represent editorial-consensus interpretation across other houses, retail adoption, or social amplification. Couture pieces are made-to-order rather than retail-stocked, so a retail-adoption claim is not applicable to this signal even in principle.",
+    "No new development occurred on the resort 2028 puffer-shell skirt, resale-demand, obi-sash cocoon coat, or opera-glove/'restraint dressing' threads this window; per standing convention, none are carried forward again absent fresh movement."
+  ],
+  "archive_tags": [
+    "margiela-raw-edge-editorial-close-out",
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "review_status": "reviewed",
+  "reviewed_by": "ari3lla-index-loop-improvements agent",
+  "revision_history": []
+}
