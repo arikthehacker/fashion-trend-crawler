@@ -126,6 +126,8 @@ const sections: { title: string; body: string[] }[] = [
     body: [
       "Signals cite the outlet-level domain they were drawn from (for example, a homepage domain), not a link to the specific article or post. This is a deliberate, permanent design choice, not a placeholder for per-article links added later.",
       "Linking directly to a single small or independent outlet's specific article can expose that outlet to a disproportionate traffic spike from this Index. Domain-level citation preserves accountability for where a signal came from without creating that exposure.",
+      "This is a known, named departure from the reader-verification standard the International Fact-Checking Network's Code of Principles sets for fact-checking organizations more broadly — that a report provide sourcing detailed enough for a reader to fully replicate the underlying work. Domain-level citation lets a reader confirm which outlet and sector a signal came from, but not reconstruct the exact article without independently searching that outlet. The trade-off is made deliberately, for the source-protection reason above, not overlooked.",
+      "Reports also never describe a single-outlet signal as coming from \"sources\" in the plural, matching Reuters sourcing convention: attribution language reflects the actual number of independent outlets behind a claim, not a rounded-up or vaguer plural.",
     ],
   },
   {

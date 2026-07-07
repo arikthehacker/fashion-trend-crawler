@@ -504,6 +504,36 @@ correctly left the Miu Miu and Margiela report entries completely unedited.
 
 ---
 
+### 16. Prose must never describe a single-outlet signal's sourcing in the plural
+
+**First established as an audit finding:** `docs/agent-logs/journalism-standards-check-run71.md`
+(spot-check only, not previously codified as a durable rule); formalized here at run 99
+after dedicated journalism-standards benchmarking research
+(`docs/agent-logs/journalism-standards-review-run99.md`).
+
+**Rule:** `evidence`/`human_editor_note`/`index_note` prose must never describe a signal
+backed by `source_corroboration_count == 1` using plural language ("sources report...",
+"outlets are covering...") — attribution language must match the actual number of
+independent outlets behind a claim. This is a prose-discipline companion to precedent 1
+(a single source spanning multiple sector tags is not real corroboration): precedent 1
+governs the mechanical confidence tier, this rule governs how the sourcing is *described*
+in prose, independent of what tier it lands on.
+
+**Reasoning:** Reuters' published sourcing conventions state plainly that a report should
+never "cite sources in the plural when only one source exists" — treated as a core
+sourcing-integrity rule, not a stylistic nicety, because inflating apparent corroboration
+in the prose itself misleads a reader even when the structured `confidence` field is
+correct. ([Reuters Handbook of Journalism](https://www.mediareform.org.uk/wp-content/uploads/2015/12/Reuters_Handbook_of_Journalism.pdf))
+
+**Status:** run 71's spot-check of the two most recent reports at the time found this
+already being followed in practice. This entry exists so the rule is checkable going
+forward against the actual written record rather than re-verified informally each time —
+per this project's own recurring "documented once in an agent-log, never carried into the
+durable ruleset" bug class (SKILL.md workflow convention #9's underlying pattern, applied
+here to a prose convention rather than a schema field).
+
+---
+
 ## Related, non-override background (for context, not confidence exceptions themselves)
 
 - **`independent_criticism` added to `HIGH_RELIABILITY_SECTORS`** — proposed
