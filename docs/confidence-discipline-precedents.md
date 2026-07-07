@@ -415,6 +415,95 @@ before run 86's case.
 
 ---
 
+### 15. A signal whose content is a claim about a relationship between two other already-logged signals ("editorial synthesis") is a distinct category, gated by stricter requirements than an ordinary multi-source signal, and must never retroactively touch the signals it references
+
+**First established:** `data/reports/2028-03-20.json` (run 97), signal
+`fw28-season-wrap-unfinished-edge-editorial-synthesis`, flagged as a candidate in
+that report's `limitations` field; formalized here at run 98 after dedicated review
+(`docs/agent-logs/editorial-synthesis-precedent-run98.md`).
+
+**Rule:** an "editorial synthesis" signal is one whose evidentiary content is not a new
+garment/aesthetic observation but a *claim of relationship* between two (or more)
+signals that already exist as their own logged `signal_id`s in the archive. This is a
+different, stronger kind of claim than an ordinary observation, so logging it requires
+clearing a gate first, not just running it through `derive_confidence()` directly:
+
+1. **Both/all referenced antecedent signals must already exist as their own logged
+   `signal_id`s, independently sourced and confidence-tiered before the synthesis piece
+   appeared.** A "connection" drawn between one archived fact and a claim invented in
+   the same wave of coverage is not synthesis of prior signals — see precedent 1's
+   "one source's classification spanning categories is not two sources," applied here
+   to signals rather than sectors.
+2. **At least two outlets must independently perform the synthesis, and neither may
+   cite the other for the connective claim itself.** If one synthesis piece credits or
+   links to the other for the cross-signal read, that is precedent 4's downstream-
+   reprint case applied to the synthesis layer, and it must be logged as a
+   single-source synthesis claim, not independently-converged synthesis.
+3. **The synthesis must cite the underlying archived facts, not merely assert the
+   pattern.** A piece asserting a trend without naming the specific prior
+   garments/shows being connected is an ordinary trend-observation piece, evaluated on
+   its own terms (including precedent 5's citation-free-rehash test), not a synthesis
+   signal.
+
+**Two illegitimate patterns to check for explicitly, not assume away:**
+
+- **A single outlet's opinion piece dressed up as a discovered pattern** — caught by
+  requirement 2. A solo synthesis piece may still be logged as its own signal, but never
+  at more than single-source-equivalent confidence, and its `index_note` must state
+  plainly the pattern claim is one outlet's read, not a corroborated observation.
+- **A single house's PR narrative echoed by two outlets** — precedent 5's citation-free-
+  rehash logic applied to the synthesis layer. If both outlets' "independent" synthesis
+  actually traces to the same seeded talking point (a lookbook press note, a designer
+  interview asserting the lineage first, a stylist's framing distributed to press),
+  that is one source wearing two bylines, not independent editorial judgment, and must
+  be manually held down (e.g. to `low`), the same mechanism precedent 5 used for the
+  Dieworkwear/opera-gloves overrides. The test is whether each outlet independently
+  argued the connection from the archive facts themselves, versus each reporting a
+  connection a design house's own communications asserted first.
+
+**Confidence still runs through the normal formula and precedent 2 once the gate is
+cleared:** two outlets independently synthesizing is still two sources in one sector
+(`editorial`) unless a genuinely distinct sector also corroborates the same connective
+claim — precedent 2's "volume within one sector does not become cross-sector
+corroboration" applies at the synthesis layer exactly as at the observation layer.
+
+**Retroactivity: original signals are never touched.** A synthesis signal must not
+retroactively edit, tag, or re-tier the antecedent signals it references — no added
+`archive_tags`, no prose edit to `human_editor_note`/`evidence`/`index_note`, no
+confidence or classification change on the original signal records. This extends
+precedent 12 (structured fields correctable, prose fields never retroactively rewritten
+to reflect later judgment): the antecedent signals' prose is a preserved record of what
+was known and reasoned at their own authoring time, and rewriting it to reflect a later
+discovered connection would make that historical record look more prescient than it
+was. The synthesis signal's own record (its own `signal_id`, `evidence` field naming
+both antecedents, and its own `/signals/[slug]` page) is sufficient for the connection
+to be discoverable via archive/search/timeline surfaces without altering either
+original entry.
+
+**Reasoning:** `docs/agent-logs/editorial-synthesis-precedent-run98.md` — checked
+carefully against precedent 4 (does not apply: the two outlets are not restating each
+other's reporting of the same fact, they are independently performing the same
+analytical act) and precedent 6 (does not apply: this is not two signals coincidentally
+co-occurring in the same window, it is one new signal whose entire content is an
+explicit claim of relationship between two prior signals). Neither precedent, nor any
+of the other 13, states a rule for a signal whose subject is a relationship between two
+other archived signals, confirming a genuine categorization gap rather than a case
+already covered by careful reading.
+
+**Worked example:** `fw28-season-wrap-unfinished-edge-editorial-synthesis`
+(`data/reports/2028-03-20.json`, run 97): wwd.com and vogue.com each independently
+published a season-wrap piece connecting the already-logged
+`miu-miu-raw-hem` signal (2028-03-13) and the closed-out `margiela-raw-edge` thread
+(2027-10-18) into a claimed recurring unfinished-edge construction idiom. Passes all
+three gate requirements (both antecedents pre-existing and independently sourced;
+neither outlet cites the other for the connective claim; both cite the underlying
+runway lookbooks/reviews directly) and shows no sign of the PR-echo pattern. Correctly
+kept as its own distinct `signal_id` (not merged into either antecedent), correctly
+capped at `medium` under precedent 2 (both sources resolve to `editorial`), and
+correctly left the Miu Miu and Margiela report entries completely unedited.
+
+---
+
 ## Related, non-override background (for context, not confidence exceptions themselves)
 
 - **`independent_criticism` added to `HIGH_RELIABILITY_SECTORS`** — proposed
