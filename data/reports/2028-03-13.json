@@ -1,0 +1,102 @@
+{
+  "report_date": "2028-03-13",
+  "collection_window": {
+    "start": "2028-03-07",
+    "end": "2028-03-13"
+  },
+  "sources_scanned": 11,
+  "items_collected": 4,
+  "source_sector_breakdown": {
+    "designer_origin": 2,
+    "editorial": 2
+  },
+  "executive_summary": "Collection window March 7-13, 2028: Paris Fashion Week Fall/Winter 2028 women's shows, on the calendar confirmed in the 2028-03-06 report (signal_id pfw-fw28-womens-calendar-confirmed), opened within this window, closing out the international fashion-month sequence that began with New York in early February. Two houses' runway lookbooks produced independently corroborated silhouette observations this window. Miu Miu published its own runway lookbook for its Fall/Winter 2028 Paris show, and vogue.com independently reviewed the same show, both identifying a bias-cut slip skirt left with a deliberately unfinished, raw-cut hem rather than a folded or bound edge, repeated across multiple looks. Separately, Loewe published its own runway lookbook for its Fall/Winter 2028 Paris show, and wwd.com independently reviewed the same show, both identifying a trench coat with a sculpted, balloon-shaped sleeve set into a otherwise structured trench body, also repeated across multiple looks. Both signals apply the identical reasoning already used for the 2028-01-24 Louis Vuitton, 2028-01-31 Dior, 2028-02-14 Proenza Schouler, 2028-02-21 Khaite, 2028-02-28 Simone Rocha, and 2028-03-06 Prada signals: one designer_origin source (the house's own lookbook) and one editorial source doing independent runway-review reporting, not a restatement of the house's own materials. miumiu.com and loewe.com were not yet present in taxonomy.py's DOMAIN_SECTOR_MAP and have been added this run as designer_origin, following the same first-party-collection-drop pattern already established for khaite.com/proenzaschouler.com/simonerocha.com. Per precedent 6 in the confidence-discipline precedents doc, these two signals' same-week co-occurrence is not treated as cross-sector corroboration between them; each is derived only from sources that address it directly. This closes the Fall/Winter 2028 women's fashion-month sequence across all four cities tracked this cycle (New York, London, Milan, Paris); no further women's FW28 calendar-confirmation signals are expected. The Khaite cantilevered-shoulder-blazer thread, the Proenza Schouler spiral-seam-wrap-coat thread, the Simone Rocha pearl-trimmed puff-sleeve dress thread, the Prada inverted-pleat cargo skirt thread, the resort 2028 puffer-shell skirt thread, the resale-demand signal on structured waist-tailoring, the obi-sash cocoon coat thread, and the opera-glove/'restraint dressing' thread all produced no new development this window and are not carried forward again absent fresh movement. The Margiela raw-edge thread remains closed out as of 2027-10-18. Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention.",
+  "top_signals": [
+    {
+      "name": "Miu Miu Fall/Winter 2028 runway: raw-hem bias-cut slip skirt",
+      "type": "silhouette",
+      "source_sectors": [
+        "designer_origin",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "Miu Miu published its own runway lookbook for its Fall/Winter 2028 show at Paris Fashion Week, and vogue.com independently reviewed the same show, both identifying a bias-cut slip skirt left with a deliberately unfinished, raw-cut hem rather than a folded or bound edge, repeated across multiple looks. The lookbook is the house's own first-party statement of the collection; vogue.com's review adds independent critical framing rather than restating the lookbook's own copy.",
+      "index_note": "Read as a single-runway-event silhouette observation at the designer-intent stage: a garment shown on one house's runway this window, not yet a claim of editorial trend consensus across other designers, retail buying, or social circulation. The raw hem treatment is a distinct construction choice from the closed-out Margiela raw-edge thread (2027-10-18) -- a different house, garment category, and design lineage -- and is not read as a continuation of that earlier signal.",
+      "human_editor_note": "derive_confidence() computes 'high' here (corroboration_count=2, two distinct sectors: designer_origin, editorial), and this report adopts that result rather than overriding it, applying the identical reasoning already used for the 2028-01-24 Louis Vuitton, 2028-01-31 Dior, 2028-02-14 Proenza Schouler, 2028-02-21 Khaite, 2028-02-28 Simone Rocha, and 2028-03-06 Prada signals: the second source is a genuinely distinct sector -- the house's own first-party lookbook (designer_origin) plus an independent editorial review, not two outlets in the same sector -- so the sector diversity is real, not a taxonomy artifact (precedent 3) or a mislabeled single underlying source (precedent 7). miumiu.com was not yet present in taxonomy.py's DOMAIN_SECTOR_MAP and has been added this run as designer_origin, following the same first-party-collection-drop pattern as khaite.com/proenzaschouler.com/simonerocha.com. confidence_source is set to 'derived' since the mechanical result is adopted as-is, no manual override. Flagging as a candidate rather than assuming an existing precedent covers it outright: this is the first raw-hem construction observation since the Margiela thread's close-out, and while it does not cleanly match any existing precedent's exception criteria, a future agent revisiting raw-edge/raw-hem constructions across houses should check whether a cross-house 'unfinished edge' aesthetic cluster is forming before treating each instance as fully independent.",
+      "source_corroboration_count": 2,
+      "signal_id": "miumiu-fw28-raw-hem-bias-slip-skirt",
+      "confidence_source": "derived",
+      "source_domains": [
+        "miumiu.com",
+        "vogue.com"
+      ]
+    },
+    {
+      "name": "Loewe Fall/Winter 2028 runway: sculpted balloon-sleeve trench coat",
+      "type": "silhouette",
+      "source_sectors": [
+        "designer_origin",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "Loewe published its own runway lookbook for its Fall/Winter 2028 show at Paris Fashion Week, and wwd.com independently reviewed the same show, both identifying a trench coat with a sculpted, balloon-shaped sleeve set into an otherwise structured, traditionally-cut trench body, repeated across multiple looks. The lookbook is the house's own first-party statement of the collection; wwd.com's review adds independent critical framing rather than restating the lookbook's own copy.",
+      "index_note": "Read as a single-runway-event silhouette observation at the designer-intent stage: a garment shown on one house's runway this window, not yet a claim of editorial trend consensus across other designers, retail buying, or social circulation.",
+      "human_editor_note": "derive_confidence() computes 'high' here (corroboration_count=2, two distinct sectors: designer_origin, editorial), and this report adopts that result rather than overriding it, applying the identical reasoning already used for the 2028-01-24 Louis Vuitton, 2028-01-31 Dior, 2028-02-14 Proenza Schouler, 2028-02-21 Khaite, 2028-02-28 Simone Rocha, and 2028-03-06 Prada signals, and the Miu Miu signal logged in this same report. loewe.com was not yet present in taxonomy.py's DOMAIN_SECTOR_MAP and has been added this run as designer_origin, following the same first-party-collection-drop pattern as khaite.com/proenzaschouler.com/simonerocha.com/miumiu.com. Per precedent 6, this signal's same-week co-occurrence with the Miu Miu signal is not treated as cross-sector corroboration between them -- each is derived only from sources addressing it directly. confidence_source is set to 'derived' rather than 'manual' since the mechanical result is adopted as-is.",
+      "source_corroboration_count": 2,
+      "signal_id": "loewe-fw28-balloon-sleeve-trench-coat",
+      "confidence_source": "derived",
+      "source_domains": [
+        "loewe.com",
+        "wwd.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "raw-hem bias-cut slip skirt",
+    "Miu Miu",
+    "balloon-sleeve trench coat",
+    "Loewe",
+    "Paris Fashion Week"
+  ],
+  "garments": [
+    "bias-cut slip skirt",
+    "trench coat"
+  ],
+  "silhouettes": [
+    "raw-hem bias-cut slip skirt",
+    "sculpted balloon-sleeve trench coat"
+  ],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [
+    "raw-hem bias-cut slip skirt",
+    "sculpted balloon-sleeve trench coat"
+  ],
+  "cultural_references": [
+    "Paris Fashion Week"
+  ],
+  "limitations": [
+    "Two signals cleared this report's corroboration bar this window, both designer-intent silhouette observations reaching 'high' on genuine cross-sector corroboration -- see each signal's human_editor_note.",
+    "Both signals reflect designer intent observed on a single runway this window, reported through one first-party channel and one independent editorial review each; neither represents editorial-consensus interpretation across other houses, retail adoption, or social amplification, none of which have occurred yet within this window.",
+    "Per precedent 6 in the confidence-discipline precedents doc, the two signals' same-week co-occurrence is not treated as cross-sector corroboration between them.",
+    "The Miu Miu raw-hem observation is flagged as a candidate for future review rather than assumed to cleanly match an existing precedent: it does not repeat the closed-out Margiela raw-edge thread (different house, garment, and design lineage), but a future agent should check whether a cross-house 'unfinished edge' construction cluster is forming before treating each new instance as fully independent of the others.",
+    "No new development occurred on the Khaite cantilevered-shoulder-blazer, Proenza Schouler spiral-seam-wrap-coat, Simone Rocha pearl-trimmed puff-sleeve dress, Prada inverted-pleat cargo skirt, resort 2028 puffer-shell skirt, resale-demand, obi-sash cocoon coat, or opera-glove/'restraint dressing' threads this window; per standing convention, none are carried forward again absent fresh movement.",
+    "This window closes the Fall/Winter 2028 women's fashion-month sequence across New York, London, Milan, and Paris; no further women's FW28 calendar-confirmation signals are expected in subsequent reports."
+  ],
+  "archive_tags": [
+    "margiela-raw-edge-editorial-close-out",
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "review_status": "reviewed",
+  "reviewed_by": "ari3lla-index-loop-improvements agent",
+  "revision_history": []
+}

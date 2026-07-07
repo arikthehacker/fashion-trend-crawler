@@ -282,6 +282,43 @@ DOMAIN_SECTOR_MAP = {
     # site, mirrors cfda.com/britishfashioncouncil.co.uk/fhcm.paris.
     "simonerocha.com": "designer_origin",
     "cameramoda.it": "institutional",
+
+    # added run (2028-03-13 report) -- same first-party-collection-drop
+    # pattern as khaite.com/proenzaschouler.com/simonerocha.com: miumiu.com
+    # and loewe.com are each house's own official site, first crawled for
+    # their Fall/Winter 2028 Paris Fashion Week runway lookbooks.
+    "miumiu.com": "designer_origin",
+    "loewe.com": "designer_origin",
+
+    # added run 96 -- closing the next tier of run 93/94's gap backlog
+    # (docs/agent-logs/taxonomy-gap-fix-run96.md), each verified via
+    # WebSearch before classifying: fashionista.com is a staffed fashion
+    # news site (Breaking Media, est. 2007, named EIC/editorial team);
+    # fashionnetwork.com is FashionNetwork.com, an independent French
+    # fashion-business trade news outlet (est. 2001, ~60 editors
+    # worldwide) -- trade press, same pattern as wwd.com/
+    # businessoffashion.com; fashionunited.com is the global edition of
+    # the FashionUnited business-news/jobs platform, matching the
+    # already-mapped fashionunited.in; graziadaily.co.uk is Grazia UK's
+    # website (Bauer Media, launched 2005/web 2008, staffed glossy
+    # magazine); stylist.co.uk is Stylist magazine (UK, est. 2009, named
+    # EIC, owned by The Stylist Group/DC Thomson); thefashionlaw.com is
+    # a legal/business fashion-industry trade journalism site founded by
+    # attorney Julie Zerbo (2012), analytical trade reporting in the same
+    # bucket as businessoffashion.com/wwd.com rather than a personal
+    # opinion blog; theimpression.com is a NYC-based fashion-industry
+    # trade site covering runway/marketing/business news, membership
+    # model. hellobeautiful.com is a staffed Black-women's fashion/
+    # beauty/lifestyle editorial site under Urban One (Radio One's media
+    # division) -- a legitimate media company property, not a PR mill.
+    "fashionista.com": "editorial",
+    "fashionnetwork.com": "editorial",
+    "fashionunited.com": "editorial",
+    "graziadaily.co.uk": "editorial",
+    "stylist.co.uk": "editorial",
+    "thefashionlaw.com": "editorial",
+    "theimpression.com": "editorial",
+    "hellobeautiful.com": "editorial",
 }
 
 
