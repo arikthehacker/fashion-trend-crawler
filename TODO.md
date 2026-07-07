@@ -1783,7 +1783,22 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       recurred only once or twice across 83 reports.
 - [x] Nav/build regression sweep and periodic audit both clean.
 
-## Next up (run 91 candidates)
+## Run 91 — done
+- [x] Added `data/reports/2028-02-07.json`, an 84th report — NYFW FW28
+      women's calendar confirmation logged as a factual institutional+
+      editorial signal, otherwise an honest thin week. Fixed a real
+      filename/`report_date` convention mismatch: the agent correctly
+      flagged (rather than silently resolved) that it had used the window's
+      start date instead of the archive's established end-date convention;
+      coordinator corrected `report_date`, recomputed `content_hash`, and
+      renamed the file to match.
+- [x] Dormancy/prolonged-silence re-audit across all 83 reports — clean, no
+      new violations, all 5 previously-transitioned signals still correct.
+- [x] First full glossary voice audit since run 78 — checked all 146 entries,
+      zero violations found.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Next up (run 92 candidates)
 - [ ] Manual-sampling cadence next due ~run 97.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven

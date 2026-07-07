@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-10 ~19:50 PDT — [Loop run 91](changelog-entries/run-91.md)** — an
+  84th report honestly logs a thin week with one factual calendar signal; a
+  dormancy re-audit across the larger archive comes back clean, catching and
+  discarding its own false-positive match before finalizing; the first full
+  glossary voice audit since run 78 checks all 146 entries and finds zero
+  violations; nav/build and periodic audits both clean.
+
 - **2026-07-10 ~18:40 PDT — [Loop run 90](changelog-entries/run-90.md)** — an
   83rd report correctly lands the couture coverage deferred from last week;
   gh/CI check hits its official run-90 checkpoint (11th consecutive match,
