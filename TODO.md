@@ -1842,11 +1842,22 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       existed, when it's been used since run 4).
 - [x] Nav/build regression sweep and periodic audit both clean.
 
-## Next up (run 95 candidates)
-- [ ] **Manual-sampling cadence is close to due (~run 97, 3 runs out)** —
-      run it within the next 1-3 cycles rather than waiting for it to lapse.
+## Run 95 — done
+- [x] Added `data/reports/2028-03-06.json`, an 88th report — correctly
+      handles the 2028 leap-year Feb 29 window boundary and fashion-month
+      sequencing (avoided claiming a Paris runway review before shows opened).
+- [x] Ran the manual-sampling cadence proactively before its due date —
+      same honest negative as every prior check. Cadence extended to run 105.
+- [x] RSS/sitemap re-verified healthy at the archive's larger scale — exact
+      count matching (203 sitemap entries = 87 reports + 106 signal_ids), RSS
+      cap holds precisely at 50.
+- [x] Nav/build regression sweep and periodic audit both clean; periodic
+      audit caught and discarded its own www-prefix false positive.
+
+## Next up (run 96 candidates)
 - [ ] ~50 lower-citation-count domains from the taxonomy survey remain
       unclassified — full list in `docs/agent-logs/taxonomy-gap-fix-run94.md`.
+- [ ] Manual-sampling cadence next due ~run 105.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven
       only; README now accurately reflects this off-limits status.

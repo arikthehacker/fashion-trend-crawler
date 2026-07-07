@@ -18,6 +18,14 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-11 ~00:35 PDT — [Loop run 95](changelog-entries/run-95.md)** — an
+  88th report correctly handles a leap-year date boundary and fashion-month
+  sequencing; the manual-sampling cadence run proactively before its due
+  date, extended to run 105; RSS/sitemap re-verified healthy at the
+  archive's larger scale with exact count matching; nav/build and periodic
+  audits both clean, the latter catching its own false positive before
+  finalizing.
+
 - **2026-07-10 ~23:25 PDT — [Loop run 94](changelog-entries/run-94.md)** — an
   87th report cleanly applies established precedents; 8 of run 93's 58
   flagged taxonomy gaps closed with independent verification (correctly
