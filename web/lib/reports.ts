@@ -132,9 +132,11 @@ export interface TimelineEntry {
 
 /**
  * Flattens top_signals from every report into a single reverse-chronological
- * list for the /timeline page. Keys on signal name + date only — there is no
- * signal_id/slug field yet, so no cross-report identity matching is attempted
- * here.
+ * list for the /timeline page. `signal_id` is included when present (it was
+ * added to the schema after this comment was first written) so the page can
+ * link recurring signals to their /signals/[slug] history; entries without a
+ * signal_id render as plain text rather than a broken/guessed link. No
+ * cross-report fuzzy name matching is attempted for entries lacking an id.
  */
 export function getTimelineEntries(): TimelineEntry[] {
   const reports = getAllReports();
