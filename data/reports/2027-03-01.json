@@ -21,14 +21,13 @@
       "confidence": "medium",
       "volatility": "emerging",
       "origin_classification": "designer_originated",
-      "evidence": "Grace Wales Bonner's debut as Hermes menswear creative director, succeeding Veronique Nichanian, has been widely reported as scheduled for January 2027. A dedicated search this window for dated post-show coverage (reviews, garments, silhouettes, critical reaction) again found none. Reachable coverage (Uranium Waves and Istituto Marangoni's anticipation framing, Wallpaper and Vogue Scandinavia's original appointment reporting, and WWD/Savoir Flair's review of a separate, in-house-designed Hermes Spring-Summer 2027 menswear collection shown during the interim before her own debut) remains appointment, anticipation, and interim-collection coverage, not an observed Wales Bonner collection. This keeps the same signal_id as the six prior reports' anticipation-stage entry rather than opening a duplicate.",
+      "evidence": "Grace Wales Bonner's debut as Hermes menswear creative director, succeeding Veronique Nichanian, has been widely reported as scheduled for January 2027. A dedicated search this window for dated post-show coverage (reviews, garments, silhouettes, critical reaction) again found none. Reachable coverage (Istituto Marangoni's anticipation framing, Wallpaper and Vogue Scandinavia's original appointment reporting, and WWD/Savoir Flair's review of a separate, in-house-designed Hermes Spring-Summer 2027 menswear collection shown during the interim before her own debut) remains appointment, anticipation, and interim-collection coverage, not an observed Wales Bonner collection. This keeps the same signal_id as the six prior reports' anticipation-stage entry rather than opening a duplicate.",
       "index_note": "Continuation of the same signal_id across seven consecutive reports (2027-01-18 through 2027-03-01). is_prolonged_silence()'s default threshold (4) first crossed at 2027-02-08; this window is three windows past that crossing -- the point SKILL.md note 10's convention treats as roughly the mark for an 'untracked going forward' transition. Per the prior report's explicit revisit plan, the planned checkpoint for that transition is the 2027-03-08 report, one window from now, so this window holds at active tracking rather than transitioning early. A future report should replace this entry with the actual debut collection's garment/silhouette content once reachable, or transition language at the 2027-03-08 checkpoint if it remains unresolved.",
-      "source_corroboration_count": 6,
+      "source_corroboration_count": 5,
       "signal_id": "wales-bonner-hermes-debut",
       "confidence_source": "manual",
       "human_editor_note": "Held at medium, unchanged across seven reports: multiple independent editorial outlets corroborate the appointment/team-building facts, but confidence does not move to high because all corroboration remains within a single source_sector (editorial) and no institutional or designer_origin corroboration of an observed show exists. This is three windows past the point is_prolonged_silence() first returned True for this signal_id -- the point the project's convention treats as roughly the transition mark -- but the prior report explicitly set the 2027-03-08 report as the checkpoint for that transition, and this window is one short of it. This report makes the deliberate, honest call to hold at normal active tracking for one more window rather than transition early or repeat an unresolved status indefinitely without flagging the plan.",
       "source_domains": [
-        "uraniumwaves.com",
         "istitutomarangoni.com",
         "wallpaper.com",
         "voguescandinavia.com",
@@ -100,7 +99,23 @@
       "previous_content_hash": "95e90b255d57cdfc3dc0b63a87195a05141fa5dece00913d43bbc36850719dad",
       "corrected_at": "2026-07-06",
       "reason": "Slug quality audit (run 44): renamed over-length signal_id(s) and fixed stale prose references for: wales-bonner-hermes-menswear-debut-2027, paris-january-2027-weeks-post-show-coverage-gap"
+    },
+    {
+      "previous_content_hash": "0b5df3eb913841156d61a909e6d1528c3b8029ba594ff8e215b028a6611f0535",
+      "corrected_at": "2026-07-06",
+      "reason": "Data-integrity fix (run 97): 'uraniumwaves.com' / 'Uranium Waves' was cited as one of this signal's corroborating editorial sources, but it is actually an unrelated Canadian music blog/label with no fashion coverage (flagged by taxonomy-gap-fix run 96, traced here). Removed the fabricated source from source_domains and evidence prose, and decremented source_corroboration_count by 1 since it was counted as a real corroborating outlet supporting this signal's medium-confidence, multi-outlet-corroboration reasoning.",
+      "changed_signals": {
+        "added": [],
+        "removed": [],
+        "modified": {
+          "wales-bonner-hermes-debut": [
+            "evidence",
+            "source_corroboration_count",
+            "source_domains"
+          ]
+        }
+      }
     }
   ],
-  "content_hash": "0b5df3eb913841156d61a909e6d1528c3b8029ba594ff8e215b028a6611f0535"
+  "content_hash": "d75c8da1ccec6a48ee90111818a401e45adbe3b4e629aaa9f8c3f897c154fbe0"
 }

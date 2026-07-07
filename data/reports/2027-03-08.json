@@ -21,15 +21,14 @@
       "confidence": "medium",
       "volatility": "emerging",
       "origin_classification": "designer_originated",
-      "evidence": "Grace Wales Bonner's debut as Hermes menswear creative director, succeeding Veronique Nichanian, was widely reported as scheduled for January 2027. A dedicated search this window for dated post-show coverage (reviews, garments, silhouettes, critical reaction) again found none. Reachable coverage (Istituto Marangoni's profile, Uranium Waves' anticipation framing, Wallpaper and Vogue Scandinavia's original appointment reporting, Euronews' and FZINE Singapore's profile pieces, and WWD/Savoir Flair's review of a separate, in-house-designed Hermes Spring-Summer 2027 menswear collection shown during the interim before her own debut) remains appointment, anticipation, and interim-collection coverage, not an observed Wales Bonner collection. This keeps the same signal_id as the seven prior reports' anticipation-stage entry.",
+      "evidence": "Grace Wales Bonner's debut as Hermes menswear creative director, succeeding Veronique Nichanian, was widely reported as scheduled for January 2027. A dedicated search this window for dated post-show coverage (reviews, garments, silhouettes, critical reaction) again found none. Reachable coverage (Istituto Marangoni's profile, Wallpaper and Vogue Scandinavia's original appointment reporting, Euronews' and FZINE Singapore's profile pieces, and WWD/Savoir Flair's review of a separate, in-house-designed Hermes Spring-Summer 2027 menswear collection shown during the interim before her own debut) remains appointment, anticipation, and interim-collection coverage, not an observed Wales Bonner collection. This keeps the same signal_id as the seven prior reports' anticipation-stage entry.",
       "index_note": "Continuation of the same signal_id across eight consecutive reports (2027-01-18 through 2027-03-08). is_prolonged_silence()'s default threshold (4) first crossed at 2027-02-08; this window is four windows past that crossing and is the specific checkpoint the 2027-03-01 report set for a transition decision. Per SKILL.md note 10, this report makes the actual call: transitioning to 'untracked going forward pending new information' rather than deferring to another future checkpoint. The underlying question (has the debut produced observable coverage) is not resolved and is not being declared resolved -- eight consecutive identical-result searches simply no longer justify weekly re-litigation. A future report should replace this entry with the actual debut collection's garment/silhouette content the moment reachable coverage appears, resuming normal tracking immediately, per the convention's explicit instruction that any agent finding real coverage should resume.",
-      "source_corroboration_count": 7,
+      "source_corroboration_count": 6,
       "signal_id": "wales-bonner-hermes-debut",
       "confidence_source": "manual",
       "human_editor_note": "Held at medium, unchanged across eight reports: multiple independent editorial outlets corroborate the appointment/team-building facts, but confidence does not move to high because all corroboration remains within a single source_sector (editorial) and no institutional or designer_origin corroboration of an observed show exists. This is the transition checkpoint flagged since the 2027-02-08 report and explicitly set as the decision point by the 2027-03-01 report. Independent judgment made here: eight consecutive windows of an identical, unresolved search result meet SKILL.md note 10's bar for a factual question that has 'gone unresolved long enough that continued weekly re-litigation adds no value' -- the same three sources keep recurring, no new corroboration has appeared for a full month, and repeating the same 'still pre-show' note has stopped surfacing anything new for a reader. Signal_id is marked 'untracked going forward pending new information' as of this report. This is a deprioritization of weekly re-checking, not a claim the debut didn't happen or a resolution of the underlying question -- any future agent that finds dated post-show coverage should resume normal tracking and confidence re-derivation immediately.",
       "source_domains": [
         "istitutomarangoni.com",
-        "uraniumwaves.com",
         "wallpaper.com",
         "voguescandinavia.com",
         "euronews.com",
@@ -101,7 +100,23 @@
       "previous_content_hash": "dec79b2e203328d7c9802f82b2c10e2744505568733b93d4b44cf91bc4c6d3b2",
       "corrected_at": "2026-07-06",
       "reason": "Consolidation fix (run 44): this report was authored concurrently with a slug-quality pass that renamed wales-bonner-hermes-menswear-debut-2027 -> wales-bonner-hermes-debut and paris-january-2027-weeks-post-show-coverage-gap -> paris-post-show-coverage-gap across all earlier reports; this file used the pre-rename long slugs, breaking recurrence tracking continuity for this window. Renamed to match."
+    },
+    {
+      "previous_content_hash": "a42914f7a3b03f29fb97791f20f937a50d9405666f3217403941107acf7e6230",
+      "corrected_at": "2026-07-06",
+      "reason": "Data-integrity fix (run 97): 'uraniumwaves.com' / 'Uranium Waves' was cited as one of this signal's corroborating editorial sources, but it is actually an unrelated Canadian music blog/label with no fashion coverage (flagged by taxonomy-gap-fix run 96, traced here). Removed the fabricated source from source_domains and evidence prose, and decremented source_corroboration_count by 1 since it was counted as a real corroborating outlet supporting this signal's medium-confidence, multi-outlet-corroboration reasoning, which also underpins the report's 'untracked going forward' transition call.",
+      "changed_signals": {
+        "added": [],
+        "removed": [],
+        "modified": {
+          "wales-bonner-hermes-debut": [
+            "evidence",
+            "source_corroboration_count",
+            "source_domains"
+          ]
+        }
+      }
     }
   ],
-  "content_hash": "a42914f7a3b03f29fb97791f20f937a50d9405666f3217403941107acf7e6230"
+  "content_hash": "f190301900546bcf74e5ca5667e7b3acbc637696c65072faf32c74f5fad29cf2"
 }
