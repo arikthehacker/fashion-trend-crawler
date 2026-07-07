@@ -172,6 +172,8 @@ const DEFINITIONS: Record<string, string> = {
   "spiral-seam wrap coat": "A wrap coat constructed with a single seam that spirals diagonally around the torso rather than running vertically down the front or side, producing an asymmetric front closure line, observed in Fall/Winter 2028 New York Fashion Week runway coverage.",
   "cantilevered-shoulder blazer": "A tailored blazer built with an internal structural framework that extends the shoulder line beyond the wearer's natural silhouette in a rigid, unsupported-looking projection, observed in Fall/Winter 2028 New York Fashion Week runway coverage.",
   "london fashion week": "The London leg of the international ready-to-wear fashion week circuit, organized by the British Fashion Council, cited as an institutional-sector source event when its published calendar or participating collections are tracked.",
+  "pearl-trimmed puff-sleeve dress": "A dress with an exaggerated, rounded puffed-sleeve construction finished with a dense pearl-bead trim at the cuff and neckline, observed in Fall/Winter 2028 London Fashion Week runway coverage.",
+  "milan fashion week": "The Milan leg of the international ready-to-wear fashion week circuit, organized by Camera Nazionale della Moda Italiana, cited as an institutional-sector source event when its published calendar or participating collections are tracked.",
 };
 
 function normalize(term: string): string {
