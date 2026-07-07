@@ -1829,12 +1829,24 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       resolved a transient Pagefind filesystem race on the first build
       attempt (Next.js itself compiled fine; not a real regression).
 
-## Next up (run 94 candidates)
-- [ ] 58 editorial/media/retail/institute domains cited in `source_domains`
-      remain unclassified in `DOMAIN_SECTOR_MAP` — full list by citation
-      frequency in `docs/agent-logs/taxonomy-gap-fix-run93.md`, worth a
-      dedicated future run.
-- [ ] Manual-sampling cadence next due ~run 97 — close.
+## Run 94 — done
+- [x] Added `data/reports/2028-02-28.json`, an 87th report — Simone Rocha
+      MFW FW28 and MFW calendar-confirmation signals both matched established
+      precedent shapes cleanly.
+- [x] Closed 8 of run 93's 58 flagged taxonomy gaps with independent
+      verification — correctly reclassified `istitutomarangoni.com` as
+      `institutional` rather than editorial like its 7 neighbors.
+      ~50 domains remain listed in `docs/agent-logs/taxonomy-gap-fix-run94.md`.
+- [x] First dedicated `/timeline` audit — confirmed accurate and purposeful,
+      fixed one stale code comment (falsely claimed no `signal_id` field
+      existed, when it's been used since run 4).
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Next up (run 95 candidates)
+- [ ] **Manual-sampling cadence is close to due (~run 97, 3 runs out)** —
+      run it within the next 1-3 cycles rather than waiting for it to lapse.
+- [ ] ~50 lower-citation-count domains from the taxonomy survey remain
+      unclassified — full list in `docs/agent-logs/taxonomy-gap-fix-run94.md`.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven
       only; README now accurately reflects this off-limits status.

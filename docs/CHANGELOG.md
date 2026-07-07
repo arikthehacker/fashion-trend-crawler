@@ -18,6 +18,15 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-10 ~23:25 PDT — [Loop run 94](changelog-entries/run-94.md)** — an
+  87th report cleanly applies established precedents; 8 of run 93's 58
+  flagged taxonomy gaps closed with independent verification (correctly
+  catching a fashion-school domain that isn't editorial like its neighbors);
+  the first dedicated `/timeline` audit confirms accuracy and fixes a stale
+  code comment; nav/build clean with no repeat of run 93's transient
+  filesystem race; periodic audit proactively flags the manual-sampling
+  cadence as due soon.
+
 - **2026-07-10 ~22:15 PDT — [Loop run 93](changelog-entries/run-93.md)** — an
   86th report cleanly applies two established precedent shapes; the run-92
   flagged taxonomy gap closed with real verification, plus a useful survey of
