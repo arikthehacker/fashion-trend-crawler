@@ -1,0 +1,41 @@
+{
+  "report_date": "2028-04-03",
+  "collection_window": {
+    "start": "2028-03-28",
+    "end": "2028-04-03"
+  },
+  "sources_scanned": 8,
+  "items_collected": 0,
+  "source_sector_breakdown": {},
+  "executive_summary": "Collection window March 28-April 3, 2028: this window continues the established post-fashion-month lull following the close of the international Fall/Winter 2028 women's fashion-month sequence (2028-03-20) and the single-item retrospective window that followed it (2028-03-27). No house had a runway event, lookbook release, or calendar-confirmation announcement scheduled in this window per the archive's prior-cycle pacing; resort/pre-fall 2028 previews are not expected to begin for several more weeks. No item was collected from any of the 8 sources scanned this window -- not even a restatement piece of the kind logged 2028-03-27. This report is filed as collection_status 'thin' with an empty top_signals list rather than manufacturing or stretching a signal to fill the usual quota, per the standing thin-week convention (docs/agent-logs/thin-week-fallback.md) and precedent 14's underlying discipline against treating the absence of present-tense observable activity as license to invent one. The Khaite, Proenza Schouler, Simone Rocha, Prada cargo-skirt, resort 2028 puffer-shell skirt, resale-demand, obi-sash cocoon coat, and opera-glove/'restraint dressing' threads all remain without new movement and are not carried forward again absent fresh development. The Miu Miu raw-hem and Loewe balloon-sleeve signals (2028-03-13) and the FW28 season-wrap unfinished-edge synthesis (2028-03-20) remain the archive's most recent live signal_ids but produced no new corroboration this window. Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention.",
+  "top_signals": [],
+  "repeated_keywords": [
+    "post-fashion-month lull"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [],
+  "limitations": [
+    "collection_status is 'thin': zero items were collected across all 8 sources scanned this window, consistent with the established post-fashion-month lull between the close of Fall/Winter 2028 women's fashion month (2028-03-20) and the start of resort/pre-fall 2028 previews, which are not expected for several more weeks based on this archive's prior-cycle pacing.",
+    "No candidate for a new top_signals entry was found or excluded on a close judgment call this window -- there was simply no collectible item, so no confidence-discipline precedent needed to be applied to any specific candidate signal.",
+    "No new development occurred on the Khaite, Proenza Schouler, Simone Rocha, Prada cargo-skirt, resort 2028 puffer-shell skirt, resale-demand, obi-sash cocoon coat, or opera-glove/'restraint dressing' threads this window; per standing convention, none are carried forward again absent fresh movement.",
+    "The Miu Miu raw-hem bias-slip-skirt and Loewe balloon-sleeve trench signals (2028-03-13) and the FW28 season-wrap unfinished-edge synthesis (2028-03-20) remain the archive's most recently active signal_ids but received no new corroborating coverage this window."
+  ],
+  "archive_tags": [
+    "margiela-raw-edge-editorial-close-out",
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked",
+    "post-fashion-month-lull"
+  ],
+  "content_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "collection_status": "thin",
+  "thin_week_note": "Zero items were collected across all 8 sources scanned this window (0 of 8), continuing the post-fashion-month lull that began with the 2028-03-27 report. This window sits between the close of Fall/Winter 2028 women's fashion month and the start of resort/pre-fall 2028 previews. Report reflects genuinely empty coverage during an expected quiet stretch rather than a crawl failure or manufactured content to fill a weekly quota.",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": "ari3lla-index-loop-improvements agent"
+}
