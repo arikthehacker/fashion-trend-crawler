@@ -176,6 +176,7 @@ const DEFINITIONS: Record<string, string> = {
   "milan fashion week": "The Milan leg of the international ready-to-wear fashion week circuit, organized by Camera Nazionale della Moda Italiana, cited as an institutional-sector source event when its published calendar or participating collections are tracked.",
   "inverted-pleat cargo skirt": "A knee-length skirt built with box pleats sewn so the fold faces inward rather than outward, paired with structured cargo-style patch pockets, producing a flatter front panel than a conventional pleated skirt, observed in Fall/Winter 2028 Milan Fashion Week runway coverage.",
   "raw-hem bias-cut slip skirt": "A slip skirt cut on the fabric's diagonal (bias) grain and left with a deliberately unfinished, raw-cut hem rather than a folded or bound edge, observed in Fall/Winter 2028 Paris Fashion Week runway coverage.",
+  "unfinished-edge construction idiom": "A cross-house construction pattern -- raw, unfinished-cut hems or exposed seams left deliberately unbound -- identified by editorial season-wrap coverage as recurring across separate designers and design lineages within a single fashion-month cycle, rather than as one designer's isolated choice.",
   "sculpted balloon-sleeve trench coat": "A trench coat built with a structured, traditionally-cut body paired with a rounded, balloon-shaped sleeve set into the armhole, observed in Fall/Winter 2028 Paris Fashion Week runway coverage.",
 };
 
