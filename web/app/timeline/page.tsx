@@ -23,7 +23,7 @@ export default function Timeline() {
   const dates = Array.from(byDate.keys());
 
   return (
-    <main style={{
+    <main id="main-content" style={{
       minHeight: "100vh",
       background: "var(--white)",
       display: "flex",

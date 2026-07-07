@@ -15,10 +15,13 @@ const sectors: { name: string; def: string; items: string[] }[] = [
   },
   {
     name: "Runway / Editorial",
-    def: "Style publications reporting on collections, shows, and seasonal direction. Treated as one source sector, not as final authority.",
+    def: "Style publications reporting on collections, shows, and seasonal direction. Treated as one source sector, not as final authority. Coverage has expanded past English-language Western titles to reduce a bias flagged in an early audit of this list.",
     items: [
       "Vogue Runway", "WWD", "Business of Fashion", "GQ Style", "Harper's Bazaar", "Elle",
       "i-D", "Dazed", "Highsnobiety", "Hypebeast", "The Cut", "New York Times Style",
+      "Nataal", "OkayAfrica", "FashionUnited India", "Tokyo Fashion", "Vogue Mexico",
+      "The Express Tribune (Pakistan)", "Savoir Flair", "Dewi Magazine", "SCMP Lifestyle",
+      "RUNWAY Magazine", "Style Rave", "FFW (Brazil)", "Vogue Arabia",
     ],
   },
   {
@@ -54,10 +57,11 @@ const sectors: { name: string; def: string; items: string[] }[] = [
   },
   {
     name: "Institutional / Historical",
-    def: "Archival and academic material used to establish historical continuity for a signal.",
+    def: "Archival and academic material used to establish historical continuity for a signal, plus the governing bodies and trade institutes that coordinate fashion weeks and publish industry research.",
     items: [
       "FIT resources", "Museum collections", "Fashion archives", "Costume history databases",
       "Academic papers", "Old runway archives", "Library collections",
+      "Fashion week governing bodies", "National fashion trade/export institutes",
     ],
   },
   {
@@ -70,11 +74,16 @@ const sectors: { name: string; def: string; items: string[] }[] = [
     def: "Secondhand marketplace listings, tracked as a distinct sector from primary retail because pricing and description language reflect a different market.",
     items: ["Resale marketplace listings", "Secondhand item descriptions"],
   },
+  {
+    name: "Trade Intelligence",
+    def: "B2B commercial trend-forecasting and retail-analytics vendors selling predictions or merchandising software to brand and retail clients, tracked separately because the incentive is to package trends as sellable, quantified certainties rather than to report on discourse. Not included among high-reliability sectors.",
+    items: ["Commercial trend-forecasting services", "Retail-analytics platforms", "Merchandising/assortment-planning software vendors"],
+  },
 ];
 
 export default function Sources() {
   return (
-    <main
+    <main id="main-content"
       style={{
         minHeight: "100vh",
         background: "var(--white)",
@@ -124,8 +133,10 @@ export default function Sources() {
             { href: "/", label: "Report" },
             { href: "/methodology", label: "Methodology" },
             { href: "/taxonomy", label: "Taxonomy" },
+            { href: "/glossary", label: "Glossary" },
             { href: "/timeline", label: "Timeline" },
             { href: "/archive", label: "Archive" },
+            { href: "/search", label: "Search" },
             { href: "/about", label: "About" },
             { href: "/case-study", label: "Case Study" },
           ].map((item) => (
@@ -140,6 +151,8 @@ export default function Sources() {
                 color: "var(--black)",
                 textDecoration: "underline",
                 textUnderlineOffset: "3px",
+                display: "inline-block",
+                padding: "0.65rem 0",
               }}
             >
               {item.label}

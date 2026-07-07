@@ -1,0 +1,72 @@
+{
+  "report_date": "2028-01-17",
+  "collection_window": {
+    "start": "2028-01-11",
+    "end": "2028-01-17"
+  },
+  "sources_scanned": 10,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "editorial": 2
+  },
+  "executive_summary": "Collection window January 11-17, 2028, the opening week of Fall/Winter 2028 menswear fashion month: Milan's men's shows run within this window, ahead of Paris's men's calendar (confirmed 2028-01-10). Two editorial outlets, vogue.com and wwd.com, independently covered Gucci's Fall/Winter 2028 menswear show in Milan -- creative director Demna's first menswear collection for the house since his 2027 debut on the womenswear/ready-to-wear side -- and both singled out an exaggerated, oversized shawl-collar overcoat as a recurring silhouette across multiple looks in the collection. This is logged as one signal, not two: both outlets are reporting on the same runway event within the same source sector (editorial), so per precedent 2 in the confidence-discipline precedents doc (republication within the same sector does not become cross-sector corroboration), confidence is held at 'medium' rather than the mechanically-adjacent 'high' a naive count might suggest, since both sources land in a single sector. This is designer intent (a specific silhouette shown on Gucci's own runway) reported through editorial coverage, not yet an independent editorial interpretation applied across other houses, retail adoption, or social amplification -- those remain unconfirmed and are not claimed here. No retail, social, resale, designer_origin (direct), independent-criticism, or institutional source introduced a development distinct from this runway coverage this window. The resort 2028 puffer-shell skirt thread, the resale-demand signal on structured waist-tailoring, the obi-sash cocoon coat thread, and the opera-glove/'restraint dressing' thread all produced no new development this window and are not carried forward again absent fresh movement. The Margiela raw-edge thread remains closed out as of 2027-10-18. Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention. Paris's men's shows have not yet begun within this window and are expected to generate separate coverage next window.",
+  "top_signals": [
+    {
+      "name": "Gucci Fall/Winter 2028 menswear runway: exaggerated shawl-collar overcoat",
+      "type": "silhouette",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "Demna presented his first menswear-specific collection as Gucci's creative director at Milan Fashion Week Men's Fall/Winter 2028, featuring an oversized, exaggerated shawl-collar overcoat repeated across multiple looks. vogue.com and wwd.com each ran independent runway-review coverage of the show and both singled out the shawl-collar overcoat as a recurring construction choice, rather than one outlet restating the other's framing.",
+      "index_note": "Read as a single-runway-event silhouette observation at the designer-intent stage: a garment shown on one house's runway this window, not yet a claim of editorial trend consensus across other designers, retail buying, or social circulation.",
+      "human_editor_note": "derive_confidence() computes 'medium' here (corroboration_count=2, but both sources resolve to the single sector 'editorial'), and this report adopts that result rather than overriding it, per precedent 2 (republication/independent coverage within a single sector does not cross into 'high' on volume or outlet count alone -- the wales-bonner-hermes-debut and couture-fw27-designer-debuts worked examples apply the same discipline to runway-review coverage specifically). This is distinct from the 2028-01-10 pfw-mens-fw28-calendar-confirmed signal, where 'high' was adopted because that signal's two sources spanned institutional and editorial sectors; here both sources are editorial, so the cap applies. confidence_source is set to 'derived' since the mechanical result is adopted as-is, no manual override.",
+      "source_corroboration_count": 2,
+      "signal_id": "gucci-fw28-menswear-shawl-collar-overcoat",
+      "confidence_source": "derived",
+      "source_domains": [
+        "vogue.com",
+        "wwd.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "shawl-collar overcoat",
+    "Gucci menswear",
+    "Milan Fashion Week Men's"
+  ],
+  "garments": [
+    "shawl-collar overcoat"
+  ],
+  "silhouettes": [
+    "shawl-collar overcoat"
+  ],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [
+    "shawl-collar overcoat"
+  ],
+  "cultural_references": [
+    "Paris Fashion Week"
+  ],
+  "limitations": [
+    "Only one runway-derived signal cleared this report's corroboration bar this window; both corroborating sources are editorial, so confidence is held at 'medium' rather than 'high' per precedent 2 in the confidence-discipline precedents doc -- see that signal's human_editor_note for the direct contrast with the 2028-01-10 calendar-confirmation signal, which did reach 'high' on genuine cross-sector corroboration.",
+    "This signal reflects designer intent observed on a single runway this window; it does not represent editorial-consensus interpretation across other houses, retail adoption, or social amplification, none of which have occurred yet within this window.",
+    "No new development occurred on the resort 2028 puffer-shell skirt, resale-demand, obi-sash cocoon coat, or opera-glove/'restraint dressing' threads this window; per standing convention, none are carried forward again absent fresh movement.",
+    "Paris's men's Fall/Winter 2028 shows had not yet begun within this collection window (Jan 11-17); coverage of that leg of fashion month is expected in a subsequent window, not retroactively folded into this one."
+  ],
+  "archive_tags": [
+    "margiela-raw-edge-editorial-close-out",
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "review_status": "reviewed",
+  "reviewed_by": "ari3lla-index-loop-improvements agent",
+  "revision_history": []
+}

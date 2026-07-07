@@ -117,7 +117,10 @@ public weekly report
 - each report is validated against a controlled schema
   (`src/report_schema.py`) before it can be considered part of the
   archive, and CI (`.github/workflows/validate-reports.yml`) re-runs that
-  validation on every push/PR against everything in `data/reports/`
+  validation on every push/PR against everything in `data/reports/`;
+  the same workflow's `lint-web` job runs ESLint (including
+  `eslint-plugin-jsx-a11y` accessibility rules) against `web/` on every
+  push/PR
 - confidence can be derived deterministically from source-corroboration
   count and source-sector diversity (`derive_confidence()`), tracked
   against a manual "confidence_source" so editorial judgment calls stay
@@ -138,10 +141,28 @@ public weekly report
 - `/methodology`, `/taxonomy`, `/sources`, `/about` — how signals are
   evaluated, the full source-sector and confidence/volatility taxonomy,
   and the outlet lists behind it
+- `/glossary` — plain-language definitions of aesthetic terms and cultural
+  references, but only for terms that actually appear in an archived
+  report (sourced from `data/reports/*.json` at build time, not an
+  abstract style dictionary)
 - `/case-study` — project write-up
-- report pages carry `NewsArticle` JSON-LD, a stable "Cite as" line, and a
-  sitemap/robots setup for discoverability; heading structure follows
-  WCAG hierarchy rather than styled paragraphs standing in for headings
+- `/search` — full-text search over report prose (Pagefind, indexed at
+  build time via a `postbuild` step against the static export) alongside
+  client-side facet filters (source sector, confidence, volatility)
+- `/rss.xml` — RSS feed over the report archive
+- the homepage includes a "This Week's Index" module — a condensed
+  metrics summary of the latest report (doc section 27/28), distinct from
+  the full per-date report render at `/reports/[date]`
+- report pages carry `NewsArticle` + `Dataset` JSON-LD (the latter with a
+  CC BY 4.0 license URL and a `DataDownload` pointing at the report's raw
+  JSON), a stable "Cite as" line, and a sitemap/robots setup for
+  discoverability; heading structure follows WCAG hierarchy rather than
+  styled paragraphs standing in for headings
+- each report page also has a human-visible "download raw data" link to
+  `/data/reports/<date>.json` — a static copy of that date's report JSON,
+  placed in `web/public/data/reports/` at build time by
+  `web/scripts/copy-reports.mjs` (invoked from `next.config.ts` on every
+  build, plus redundantly via the `prebuild` npm script)
 
 ## Transparency & Editorial Disclosures
 
@@ -160,7 +181,8 @@ workflow (`src/manual_sample.py`, `docs/manual-sampling-template.md`)
 lets a human add a social-origin signal sourced from an official
 platform trend report or API, with a required `human_editor_note`
 explaining why it is or isn't likely to be durable. This workflow has
-been exercised twice against real reports, not just designed.
+been exercised against real reports (Pinterest and TikTok sources so
+far) opportunistically, not on a fixed schedule, not just designed.
 
 ## MCP / LLM Layer
 
@@ -179,30 +201,68 @@ An LLM layer (Claude) then extracts, clusters, and summarizes the raw
 material into a structured, source-aware report rather than a hyped list
 of "must-haves."
 
-### How to run it
+### API key setup
+
+`summarize.py` calls the Claude API and needs `ANTHROPIC_API_KEY` set. Copy the
+example env file, then fill in a real key:
 
 ```bash
-# install dependencies
-pip install requests beautifulsoup4 mcp anthropic
+cp .env.example .env
+# edit .env and set ANTHROPIC_API_KEY=<your real key>
+```
 
-# run the full pipeline
+`.env` is git-ignored and never committed. `summarize.py` loads it automatically
+via `python-dotenv` (`load_dotenv()`), so no manual `export` is required.
+
+### How to run it
+
+`run.sh` and the pipeline scripts assume you're running from inside `src/`, not the
+repo root (they call `python crawler.py`/`python summarize.py` with no `src/` prefix).
+
+**`crawler.py` (and therefore `run.sh`, which calls it) is currently off-limits for
+unattended/autonomous runs pending a human-supervised live test.** Two hang-fixes have
+been implemented and locally verified (a hard-deadline `ThreadPoolExecutor` wrapper and
+an incremental-flush mitigation), but neither has been proven against real, live sources
+yet — prior unattended attempts left hung `python crawler.py` processes running for over
+an hour. If you're running this yourself interactively and can watch/kill the process,
+that's a different risk profile than an unattended agent run; either way, expect this
+note to be removed once a supervised live run confirms the fix.
+
+```bash
+# install dependencies (requirements.txt covers crawler/summarize/server/manual_sample;
+# includes brotli, required for hosts that serve Brotli-compressed responses — see
+# docs/agent-logs/dieworkwear-crawl-verification-run55.md)
+pip install -r requirements.txt mcp
+
+cd src
+
+# run the full pipeline: crawl -> classify -> summarize -> save a dated report
 bash run.sh
 
 # or run pieces individually
-python src/crawler.py          # just the crawler
-python test_tools.py           # just the tests
-python src/server.py           # just the mcp server
+python crawler.py          # just the crawler, writes trends_raw.json
+python summarize.py        # classify + summarize + save (requires ANTHROPIC_API_KEY)
+python test_tools.py       # just the tests
+python server.py           # just the mcp server
+```
+
+**Re-running `summarize.py` against a date that already has an archived report**
+(e.g. correcting today's report after already running it once) requires an explicit
+correction reason — it will not silently overwrite:
+
+```bash
+python summarize.py --revision-reason "why this changed" --corrected-at "2026-07-07"
 ```
 
 ### default sources currently in use
 
-- vogue.com/fashion
-- whowhatwear.com
-- hypebeast.com/fashion
+See `src/crawler.py`'s `FASHION_SOURCES` list for the current, up-to-date set (it has
+grown well past the original 3 — check the file directly rather than a list here, since
+it changes as source-diversity work continues).
 
-You can point it anywhere though:
+You can point the crawler at different sources for a one-off run:
 ```bash
-python src/crawler.py https://www.elle.com https://www.harpersbazaar.com
+python crawler.py https://www.elle.com https://www.harpersbazaar.com
 ```
 
 ## Ethical AI Statement
@@ -229,15 +289,14 @@ about limitations.
 - [x] methodology page (`/methodology`) and taxonomy page (`/taxonomy`)
 - [x] CI validation of the report archive on every push/PR
 - [x] compliant handling of social/platform signals — manual sampling,
-  exercised twice, not automated ingestion
+  exercised against real reports, not automated ingestion
 - [x] signal timelines and longitudinal tracking per signal (`/timeline`,
   `/signals/[slug]`)
+- [x] homepage rebuilt off `reports.ts`; legacy `web/lib/trends.ts` retired
 - [ ] source-sector-aware crawling (more nuance beyond editorial/retail)
 - [ ] scheduled crawls so the archive stays fresh automatically
 - [ ] a live `crawler.py` + `summarize.py` run merged into the archive
   (one has succeeded against real sources — see Limitations)
-- [ ] final step of the legacy cache-file migration (safe deletion once
-  nothing references the old literal filename)
 
 ## Limitations
 
@@ -255,13 +314,13 @@ about limitations.
 - signal classification depends on human/editorial review, which does not
   yet run on a fixed cadence
 - historical continuity claims are limited until the archive accumulates
-  more than a few reporting periods (4 dated reports as of this writing)
+  more than a few reporting periods — see the live archive at
+  [ari3lla.com/archive](https://ari3lla.com/archive) or `data/reports/` for
+  the current count rather than a number stated here (this has gone stale
+  twice already; see `docs/agent-logs/doc-sync-run18.md` and `-run23.md`)
 - confidence can be derived deterministically (`derive_confidence()`) but
   is not yet auto-applied — it currently runs as a non-blocking warning
   in CI, flagging mismatches for human review rather than overwriting them
-- migration off the legacy `trends_raw.json`/`trends_summary.json` cache
-  files is 4 of 5 steps complete; final deletion is unblocked but not
-  yet done
 - this project does not use paid trend-data feeds; everything is derived
   from public, crawlable, or API-accessible sources
 
@@ -283,6 +342,8 @@ scraper into something closer to a research index.
 
 ```
 fashion-trend-crawler/
+  requirements.txt             # Python deps for the crawler/summarize/server pipeline
+                                #   (requests, beautifulsoup4, anthropic, brotli)
   src/
     crawler.py                # core crawler — bfs, robots.txt, headline extraction
     server.py                  # mcp server, five tools (crawl/cache/search/list/get)
@@ -292,23 +353,45 @@ fashion-trend-crawler/
     taxonomy.py                 # signal/source taxonomy definitions + classify_source(url)
     manual_sample.py           # compliant manual social-signal sampling helper
     validate_all_reports.py    # CI check against every file in data/reports/
+    audit_confidence.py        # periodic confidence/dormancy review script, not wired into CI
+    check_field_coverage.py    # flags schema fields not typed/rendered in web/ (not wired into CI)
+    check_heading_patterns.py  # heuristic scan for styled-<p>-as-heading bug (not wired into CI)
+    generate_archive_manifest.py  # produces a manifest of report-page URLs/hashes for a
+                                #   human operator to feed into archive.org Save Page Now,
+                                #   once a real SITE_URL exists; not wired into CI
+    check_signal_reuse_claims.py  # flags a report's own reuse/continuation prose naming a
+                                #   signal_id not present in that report's own top_signals
+                                #   (run 61); not wired into CI, standing periodic-audit step (run 62)
   data/
-    reports/                   # 4 dated JSON reports (2026-05-07, -07-06, -07-13, -07-20)
+    reports/                   # dated JSON reports — see /archive on the
+                                #   live site or `ls data/reports/` for the
+                                #   current count/date range (deliberately
+                                #   not enumerated here, see run 24 log)
   web/                          # next.js editorial site
     app/
-      page.tsx                  # homepage — current report
+      page.tsx                  # homepage — reads off reports.ts (trends.ts retired);
+                                #   includes "This Week's Index" condensed metrics module
       archive/                  # historical report list
       reports/[date]/           # per-date report render
       timeline/                 # reverse-chronological signal index
       signals/[slug]/           # per-signal longitudinal view
+      search/                   # Pagefind full-text search + client-side facet filters
+      glossary/                  # archive-sourced definitions of observed aesthetic terms
       methodology/, taxonomy/, sources/, about/  # static reference pages
       case-study/                # portfolio case study
-      sitemap.ts, robots.ts      # SEO
+      sitemap.ts, robots.ts, rss.xml/  # SEO / syndication
+      icon.tsx                  # route-segment metadata file — Next auto-generates the
+                                #   favicon (ImageResponse, no binary asset); force-static
+                                #   like sitemap.ts/robots.ts
+    scripts/
+      copy-reports.mjs           # copies data/reports/*.json into public/data/reports/
+                                #   for the static export's raw-data download links
     lib/
-      trends.ts                  # live/current-crawl data layer (separate on purpose)
       reports.ts                 # archive data layer, reads data/reports/*.json
-  .github/workflows/validate-reports.yml  # CI: validates the archive on push/PR
-  trends_raw.json / trends_summary.json  # legacy cache files, migration 4/5 steps complete
+      site.ts                     # shared SITE_URL/SITE_NAME constants
+  .github/workflows/validate-reports.yml  # CI: validates the archive (`validate` job)
+                                #   and lints web/ with ESLint + jsx-a11y (`lint-web` job)
+                                #   on push/PR
   run.sh                        # full pipeline runner
 ```
 

@@ -266,17 +266,1699 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       the cadence concern** by giving 2026-08-10 a distinct, honestly-argued thin-status
       reason instead of repeating prior boilerplate.
 
-## Next up (run 13 candidates, from the health check)
-- [ ] **Still pending your sign-off:** retire `web/lib/trends.ts`, rebuild the homepage off
-      `reports.ts` (proposal in `docs/agent-logs/trends-ts-fate-proposal.md`, run 11).
-      2 runs old now — flagging again since it's genuinely blocked, not forgotten.
-- [ ] Resolve `off-duty-varsity`'s dormancy — 3 reports have now flagged it quiet without
-      a resolution. `get_signal_status_history()` now exists to check its actual trend;
-      use it to make a final call (declining vs. genuinely ended) rather than flagging a
-      4th time.
-- [ ] Consider whether to explicitly surface "N consecutive thin/low-signal weeks" as its
-      own noted pattern on the site (e.g. in the archive or methodology page) rather than
-      leaving each thin report to read as an isolated event — per the health check's
-      reader-experience observation.
-- [ ] Consider prioritizing qualitative fixes (the above) over mechanically adding an 8th
-      report every run, per the health check's explicit recommendation.
+## Run 13 — done
+- [x] Resolved `off-duty-varsity` dormancy via `get_signal_status_history()` — confirmed
+      3+ weeks silent since the World Cup ended, closed it out with a `revision_history`
+      entry on `2026-07-20.json`.
+- [x] Surfaced consecutive-thin-week pattern on the archive page via
+      `getConsecutiveThinWeekCount()`, shown when streak >= 2.
+- [x] Reorganized `docs/CHANGELOG.md` into a concise index + `docs/changelog-entries/*.md`
+      per-run detail files (13 files), all content preserved.
+- [x] Added Pagefind full-text search wiring — **found and fixed a real build break
+      during consolidation**: the agent's `output: "export"` config change broke the build
+      because `sitemap.ts`/`robots.ts` aren't yet export-compatible (need explicit
+      `dynamic = "force-static"`). Reverted that one line; Pagefind's devDependency/postbuild
+      script are left in place but inert until static export is properly restored.
+- [x] Refreshed skill doc file map and next-steps for run 12-13 state.
+- [x] **User approved the `trends.ts` retirement mid-run** — executing now, see below.
+
+- [x] **`trends.ts` retirement executed — user approved mid-run-13.** Rewrote the
+      homepage as a masthead + latest-report teaser sourced from `reports.ts`'s new
+      `getLatestReport()`. Deleted `web/lib/trends.ts` and all 4 legacy
+      `trends_raw.json`/`trends_summary.json` files (root + `src/`). **Migration step 5/5
+      complete** — the 6-run-old legacy-migration plan is finally closed out.
+
+## Run 14 — done
+- [x] Fixed static export properly: `force-static` on `sitemap.ts`/`robots.ts`,
+      `output: "export"` restored, confirmed real `out/` directory produced. Pagefind's
+      postbuild step still needs a local `npm install` to actually verify indexing.
+- [x] Added `/rss.xml` — standard RSS 2.0 feed of all reports, plus a `<link rel="alternate">`
+      tag in `layout.tsx` metadata.
+- [x] Added `data/reports/2026-08-17.json`, an 8th report — **now the 4th consecutive
+      thin report** (07-27, 08-03, 08-10, 08-17). Explicitly named as a streak in the
+      report's own limitations/tags, per the run-12 health check's recommendation.
+- [x] Doc consistency pass — README/PROJECT_STRUCTURE/skill doc had several stale
+      references (legacy trend files, wrong report count, `run.sh` still marked broken)
+      fixed to match actual current state.
+- [x] AI-journalism-standards research (`docs/agent-logs/ai-journalism-standards-research.md`):
+      compared against AP/Poynter/Reuters guidelines. Found real gaps: `human_editor_note`
+      isn't an auditable per-report sign-off record, no prompt-versioning/review cadence,
+      no stated bias-audit practice, no explicit draft-vs-published gate.
+
+## Run 15 — done
+- [x] **Investigated the 4-thin-week question directly:** ran a real `crawler.py` crawl
+      (119 headlines, 106 unique). Only ~8-12 were genuine style-discourse candidates, none
+      providing new corroboration for tracked signals. **Conclusion: the streak is a real
+      quiet period, not a WebSearch under-finding artifact** — higher raw crawl volume
+      doesn't translate into higher usable signal volume. See
+      `docs/agent-logs/live-crawl-vs-websearch-run15.md`.
+- [x] Added `review_status`/`reviewed_by` fields to `Report` (soft metadata, not a hard
+      gate — `human_editor_note` remains the substantive review record).
+- [x] Created `docs/PROMPT_CHANGELOG.md`, a dedicated review trail for `summarize.py`'s
+      prompt instructions, reconstructed retroactively from git history.
+- [x] **Verified Pagefind end-to-end for real** (`npm install && npm run build`) — full
+      search index built (39 pages/1750 words), all expected static assets confirmed
+      served correctly. Search feature is now fully functional, not just wired.
+- [x] Confidence/dormancy review — no new concerning cases; `sheer-layering`/
+      `soft-tailoring` are one quiet window short of the close-out threshold, flagged for
+      next review rather than closed prematurely.
+
+## Run 16 — done
+- [x] Added `data/reports/2026-08-24.json`, a 9th report — 5th consecutive thin week.
+- [x] Closed out `sheer-layering`/`soft-tailoring` (3 quiet windows confirmed) and
+      `peplum-waist-revival` (also hit its own stated 3-window threshold), same
+      `revision_history` close-out pattern as `off-duty-varsity`.
+- [x] Added low-volatility framing to the methodology page — thin weeks are now
+      explicitly described as a verified data point, not a gap.
+- [x] **First real bias-audit pass** (logged in `docs/PROMPT_CHANGELOG.md` and
+      `docs/agent-logs/bias-audit-run16.md`): found `crawler.py`'s source list is
+      English-language/Western-editorial only (real, documented scope limitation, not
+      fixed this run); found `derive_confidence()`'s `HIGH_RELIABILITY_SECTORS`
+      inconsistently excluded `independent_criticism` despite comparable noise profile to
+      editorial — **fixed** by adding it to the gate.
+- [x] Backfilled meaningful `reviewed_by` provenance on 7 reports (e.g.
+      "websearch-run-thin-week", "hand-authored-example-run1") instead of leaving it blank.
+- [x] Fashion week calendar research confirms NYFW/LFW/MFW/PFW run ~Sept 8 – Oct 6, 2026 —
+      the low-volatility stretch should end structurally around then, not before.
+
+## Run 17 — done
+- [x] Expanded `FASHION_SOURCES`/`taxonomy.py` with 4 non-Western-oriented outlets
+      (nataal.com, okayafrica.com, fashionunited.in, tokyofashion.com) — partial fix,
+      honestly caveated: BFS from these seeds still can't guarantee balanced coverage, and
+      most remain English-language/diaspora-facing rather than local-for-local.
+- [x] Added homepage thin-week framing — a conditional note under the latest-report
+      teaser when `collection_status === "thin"`, linking to methodology.
+- [x] **Added `data/reports/2026-08-31.json`, a 10th report — ends the 5-week thin
+      streak with a genuinely earned "normal" status.** Caught a real editorial red flag:
+      a Pantone/movie-tie-in signal where the causal claim ("movie inspired the report")
+      is likely reversed since the report predates the film's public imagery — flagged
+      low confidence with the concern noted explicitly.
+- [x] Refreshed skill doc for runs 13-16, added an "institutional knowledge" section on
+      the fashion-week calendar so the thin-week streak isn't mistaken for a bug.
+- [x] Created `docs/EDITORIAL_CALENDAR.md` — a reusable reference for recurring
+      high-volatility windows, so future report-writing agents don't re-research fashion
+      week dates from scratch each time.
+
+## Run 18 — done
+- [x] Verified all 4 run-17 source additions are actually crawlable. Found and fixed a
+      real crawler bug: `tokyofashion.com` (Cloudflare-fronted) was falsely blocked
+      because `get_robots_parser()` used Python's default urllib user-agent, which
+      Cloudflare 403s on `/robots.txt` — the parser then treated that 403 as "disallow
+      all." Fixed to fetch robots.txt with the crawler's own real user-agent. General
+      robustness fix, not source-specific.
+- [x] Busy-week readiness check: the largest report was already close to the 4000-token
+      ceiling; raised `max_tokens` to 8000 in `summarize.py` proactively, before fashion
+      month causes a real truncation (same failure mode as run 8's bug, just avoided this
+      time instead of hit).
+- [x] Added `data/reports/2026-09-07.json`, an 11th report (pre-NYFW week) — correctly
+      did NOT force-continue the prior week's Pantone/movie-tie-in signal once its news
+      hook was exhausted.
+- [x] Second bias-audit pass, appended to `docs/PROMPT_CHANGELOG.md`. Confirmed with real
+      production data (not just code analysis) that `independent_criticism` signals get
+      "low" confidence far more often than `editorial` at equal corroboration counts.
+      **Clarification during consolidation:** this pattern is now driven by the LLM's own
+      conservative confidence assignment, not the formula gate — run 16 already added
+      `independent_criticism` to `HIGH_RELIABILITY_SECTORS`, so the residual gap is a
+      prompt-tuning question, not an unfixed code bug. Also flagged: Pinterest's own
+      self-promotional "trend report" pages get tagged identically to organic social
+      content, with no schema-level way to distinguish platform marketing from UGC.
+- [x] Doc-sync check found a real staleness bug: README/PROJECT_STRUCTURE claimed only
+      7 reports (and listed even fewer) when 10 actually existed. Fixed to 11.
+
+## Run 19 — done
+- [x] Tuned `summarize.py`'s prompt to remove the default confidence penalty on
+      `independent_criticism` at equal corroboration counts vs. `editorial`.
+- [x] Added platform-marketing-vs-organic guidance to the manual-sampling template/workflow
+      docs (documentation-level, no schema change).
+- [x] Added `data/reports/2026-09-14.json`, a 12th report — the first genuinely
+      high-volatility window (NYFW SS27 week 1). **Busy-week fixes held up**: 5 signals,
+      no truncation, no validation issues. Correctly recognized the harness's real current
+      date (2026-07-06) predates the actual show and stuck to verifiable pre-show facts
+      rather than fabricating runway reviews.
+- [x] Deeper source-diversity pass: added 3 more verified local-for-local outlets
+      (vogue.mx, tribune.com.pk, savoirflair.com). Honestly narrowed, not closed — still
+      English/Spanish-only, Southeast Asia remains open (vogue.ph blocked by a Cloudflare
+      JS-challenge, a different failure mode than run 18's UA fix).
+- [x] **Full re-read of the original concept doc found two real, 18-run-old gaps**: an
+      unbuilt `/glossary` page (doc §24) and the "THIS WEEK'S INDEX" condensed metrics
+      module (doc §27/28 — an AQI/stock-index-style glanceable summary, central to the
+      original "index people check daily" thesis, never built). Also brought a fresh
+      external citation: Getty AAT/ICOM Costume Core controlled-vocabulary standards,
+      relevant to `taxonomy.py`'s garment/material vocab as the archive scales.
+
+## Run 20 — done
+- [x] **Built "THIS WEEK'S INDEX"** — `getThisWeeksIndex()` in `reports.ts` derives 8
+      real metrics (sources scanned, items collected, top signal, rising term, recurring
+      material, dominant mood, highest-volatility sector, overall confidence) from actual
+      report data, no hardcoding. Compact, plain-text module on the homepage per doc §27/28.
+- [x] **Built `/glossary`** — ~29 terms extracted from `aesthetic_terms`/
+      `cultural_references`/`top_signals[].name` across all 13 reports, deduplicated,
+      wire-service definitions, linked from nav on 4 pages.
+- [x] Costume Core/Getty AAT research: found one genuine terminology drift case
+      (`peplum-waist-revival`'s garment description silently changed across 3 reports) but
+      concluded a formal controlled vocabulary isn't worth adopting yet at this archive
+      size — recommended a lightweight interim practice instead.
+- [x] Nav-consistency audit found and fixed real drift in the "minimal footer nav" family
+      (missing Search/Home links on 3 pages) — independent of and complementary to the
+      glossary page's own nav wiring.
+- [x] Added `data/reports/2026-09-21.json`, a 13th report (LFW week) — continued the
+      established discipline of not re-asserting unverified prior signals without fresh
+      evidence.
+
+## Run 21 — done
+- [x] Formalized the garment-terminology practice in `summarize.py`'s prompt: continued
+      signals should keep consistent garment/material terminology unless a change is
+      genuine and explicitly noted.
+- [x] Third full doc re-read: no whole missing pages found this time (a good sign the
+      doc is largely covered), but found a real granular gap — **`human_editor_note` was
+      typed and substantively populated in the data but never rendered anywhere on the
+      site**, despite being the most concrete evidence of the human-in-the-loop review
+      process the project's transparency claims describe. **Fixed** — added to the
+      `TopSignal` type and rendered per-signal on report pages.
+- [x] Added `data/reports/2026-09-28.json`, a 14th report (MFW week) — caught a genuine
+      sourcing-integrity issue (conflicting MFW dates across sources) and logged it as its
+      own signal rather than silently picking one.
+- [x] Stress-tested "THIS WEEK'S INDEX" against thin-week data — held up with graceful
+      fallbacks on every field, no bug found.
+- [x] Accessibility audit of the two new-in-run-20 surfaces found the exact run-5 heading-
+      hierarchy bug pattern recurring (styled `<p>` acting as headings) — fixed on the
+      homepage's new index module and signal cards, plus added proper `<dl>`/`<dt>`/`<dd>`
+      semantics to the glossary.
+
+## Run 22 — done
+- [x] Investigated automating the heading-hierarchy check — **honest conclusion: ESLint/
+      jsx-a11y cannot catch it** (it only checks tag semantics, not computed visual
+      styling). Added `eslint-plugin-jsx-a11y` and a `lint-web` CI job anyway (real value
+      for other a11y issues), but the actual mitigation is a documented manual-review
+      step, now added to the skill doc's verification checklist.
+- [x] Added a reciprocal cross-link between `/glossary` and `/taxonomy`.
+- [x] Added `data/reports/2026-10-05.json`, a 15th report — closes out fashion month
+      (PFW week). Resolved 2 continuing signals with fresh evidence, correctly noted that
+      volume should return to the lower runs-19–22 baseline afterward, not read as a
+      regression.
+- [x] Made a real design decision on "THIS WEEK'S INDEX" placement (not just another
+      proposal): it stays homepage-only, since doc §27 frames it as a live "check it now"
+      snapshot, which would misrepresent `/archive`'s "preserved as issued" historical
+      framing if duplicated there. Added a one-line navigational pointer from `/archive`
+      to the homepage instead.
+- [x] Cross-report consistency audit of all 5 fashion-month reports found the sequence
+      held together well overall (signal_id renaming was intentional/documented, no
+      contradictions, consistent voice) but found and fixed one real gap: a signal
+      disappeared from `2026-09-14.json` without the close-out acknowledgment every other
+      retired signal in the sequence got.
+
+## Run 23 — done
+- [x] Added `data/reports/2026-10-12.json`, a 16th report — **confirmed the expected
+      post-fashion-month volume drop for real** (a genuine search turned up almost
+      nothing verifiable, items_collected=3, not an assumed thin status).
+- [x] Broad frontend health sweep found and fixed real nav gaps: `/search` was orphaned
+      from primary header nav on 7 pages (only linked from footers), and `Glossary` was
+      missing from the homepage nav.
+- [x] **Tested the corrections/transparency claim end-to-end and found it was false**:
+      3 reports have real `revision_history` entries, but nothing on the site ever
+      displayed them — the methodology page's claim about correction transparency wasn't
+      actually true of the live site. Fixed: added a "Correction History" section to
+      report pages. Same category of gap as run 21's `human_editor_note` finding.
+- [x] Periodic confidence/dormancy review — clean. No new concerning cases; all
+      previously-flagged dormant signals confirmed closed and not reappearing.
+- [x] Doc-sync check fixed README/PROJECT_STRUCTURE staleness again (4 runs behind,
+      undercounting reports) and verified 3 spot-checked claims against actual code —
+      all held up.
+
+## Run 24 — done
+- [x] **Systematic transparency-field sweep found a third instance of the same bug
+      pattern**: `thin_week_note` was populated with real per-window explanations and the
+      methodology page explicitly claims thin windows are checked against source volume,
+      but the field was never typed or rendered — homepage and report pages showed
+      generic boilerplate regardless of the actual note. Fixed. Every other schema field
+      checked and confirmed either rendered or legitimately backend-only.
+      `review_status`/`reviewed_by` flagged as borderline, correctly not forced.
+- [x] De-staled README/PROJECT_STRUCTURE's report-count claims — replaced hardcoded
+      counts/date-lists with pointers to the live archive, and added a workflow
+      convention against hardcoding counts that will go stale, so this doesn't recur a
+      third time.
+- [x] Added `data/reports/2026-10-19.json`, a 17th report — independently re-tested (not
+      copied) the thin-week call, and formally closed out
+      `lfw-eligibility-wholesale-requirement-dropped` after 4 silent windows.
+- [x] Retrospective-format research: counted real `signal_id` recurrence across all 16
+      prior reports (only 10 of 36 unique signals recur at all, none beyond 3
+      consecutive reports) and concluded a quarterly retrospective page would be
+      premature — correctly deferred rather than built prematurely. Set a concrete
+      revisit threshold (4-5 signals recurring 4+ times) for a future run.
+- [x] CI verification: no `gh` CLI access in this environment, so real GitHub Actions
+      pass/fail status remains genuinely unverified — documented honestly rather than
+      assumed. Manual YAML read-through found no obvious defects.
+
+## Run 25 — done
+- [x] **Built the structural fix for the recurring "claimed but not shown" bug**:
+      `src/check_field_coverage.py`, a non-blocking script enumerating every schema field
+      and checking if it's typed in `reports.ts` and referenced in any `.tsx` file.
+      Verified it correctly doesn't re-flag `revision_history`/`thin_week_note` (already
+      fixed) or `confidence_source`/`content_hash` (legitimately backend-only). Currently
+      0 warnings. Flagged `review_status`/`reviewed_by` as worth a manual look (neither
+      typed nor referenced) — not auto-fixed, left for human/future-run judgment.
+- [x] Added `data/reports/2026-10-26.json`, an 18th report — CFDA/Vogue Fashion Fund
+      winner is now in-window by date but no dated coverage exists yet; logged as an
+      honest open/unresolved signal rather than fabricated or backfilled.
+- [x] **First full voice audit since run 10 (14 runs of additions) found zero
+      violations** — glossary, THIS WEEK'S INDEX, search, RSS, and correction-history
+      copy all checked clean, and no styled-`<p>`-as-heading bug anywhere. Confirms the
+      voice discipline and the new checklist item are both actually holding.
+- [x] Fashion archive standards research (Met Costume Institute, FIT Special
+      Collections) confirms the schema's confidence/origin_classification/revision_history
+      design already aligns with real institutional provenance practice — no new fields
+      needed, a validating result rather than a new gap.
+- [x] Verified the run-19 confidence-gate fix — honest negative result: no
+      `independent_criticism` signals have appeared since the fix shipped, so it remains
+      genuinely untested in practice, neither confirmed working nor failing.
+
+## Run 26 — done
+- [x] Resolved `review_status`/`reviewed_by`: data check confirmed they're populated with
+      genuinely varying, meaningful values (not schema defaults) across 15/18 reports —
+      rendered them (real editorial provenance, same category as prior fixes), not
+      suppressed as backend-only.
+- [x] Added `data/reports/2026-11-02.json`, a 19th report — re-checked the open CFDA/
+      Vogue Fashion Fund signal (still unresolved after 2 windows, honestly carried
+      forward, not fabricated).
+- [x] Periodic field-coverage/confidence audit run — clean, but flagged a real gap:
+      `layered-tops-styling` has gone silent for 13 consecutive windows with no
+      dormancy-check or close-out, unlike its sibling signals from the same period.
+- [x] **Southeast Asian source coverage: genuine progress.** Found `dewimagazine.com`
+      (Indonesia) — the first truly local-for-local, non-English-language source in the
+      list — verified crawlable. Honestly rejected 2 other candidates that failed
+      (Cloudflare block) or didn't fit (expat lifestyle content, not local fashion press).
+- [x] Reader-trust-signal research found a real UX gap: Corrections/AI-disclosure content
+      is buried at the bottom of methodology/about pages with zero inline pointer from
+      report pages (the actual reader entry point). **Fixed**: added a "Corrections & AI
+      use" link to report page footers.
+
+## Run 27 — done
+- [x] Closed out `layered-tops-styling` after 13 silent windows — same EDITORIAL
+      CLOSE-OUT pattern as prior dormant signals, via `revision_history`.
+- [x] Added `data/reports/2026-11-09.json`, a 20th report. CFDA/Vogue Fashion Fund
+      winner remains open (3 windows now); correctly distinguished a similarly-named UK
+      award result (Bianca Saunders, BFC/Vogue Designer Fashion Fund) from the CFDA
+      question rather than conflating them.
+- [x] Assessed non-English source handling — `crawler.py`'s extraction is already
+      script-agnostic, but `summarize.py`'s prompt said nothing about non-English content
+      now that `dewimagazine.com` (Bahasa Indonesia) is live. **Fixed**: added an
+      instruction requiring Claude to flag non-English source material and note that any
+      description is a translation, not a direct quote.
+- [x] Archive-milestone research correctly declined to build a 20-report/6-month
+      milestone feature — the real newsletter-industry threshold is ~100 issues or a
+      year, and self-congratulatory framing would clash with the site's no-hype voice
+      rules anyway. Confirmed `/about`/`/methodology` have no stale report-count claims
+      (a distinct area from the run-24 README/PROJECT_STRUCTURE fix).
+- [x] Signal-link integrity verification — all 37 signal_ids across 19 reports (pre-run)
+      have matching static routes, and recurring signals show full history, not just the
+      latest occurrence. Clean, nothing to fix.
+
+## Run 28 — done
+- [x] Added `data/reports/2026-11-16.json`, a 21st report. CFDA Fashion Fund winner open
+      a 4th window — instead of repeating the same caveat, explicitly named the unusual
+      duration and offered two live, non-asserted explanations.
+- [x] Third manual-sampling exercise, first real diversification beyond Pinterest: used
+      TikTok's public hashtag page directly (compliant, not scraped) with independent
+      editorial coverage as corroboration.
+- [x] **Found and fixed a real, previously-undone drift**: `peplum-waist-revival`'s
+      garment terminology drift (documented in run 19 but never actually corrected) was
+      finally fixed via `revision_history` — the run-20 prompt fix has no NEW drift to
+      report but also hasn't been genuinely exercised since (post-fashion-month reports
+      have all been scheduling/governance signals, not garment-description ones).
+- [x] **Continuity/succession research found README's operational instructions were
+      actually broken** — `bash run.sh` would fail from repo root since the pipeline
+      scripts assume running from inside `src/`, and the doc never mentioned the
+      `--revision-reason`/`--corrected-at` flags required to re-run against an existing
+      date. Fixed: corrected the run instructions and documented the correction flags.
+- [x] RSS/sitemap verification found and fixed a real bug: `/glossary` and `/search` were
+      completely missing from `sitemap.xml` (never added to the route list). RSS feed
+      itself was already correct — 20 reports, well-formed XML, proper escaping.
+
+## Run 29 — done
+- [x] Resolved the prolonged-silence question with a minimal, correctly-scoped decision:
+      no new schema field — added `is_prolonged_silence(signal_id, all_reports,
+      threshold=4)` as a thin wrapper over `get_signal_status_history()`. Verified live
+      against the real CFDA signal (returns `True`).
+- [x] Added `data/reports/2026-11-23.json`, a 22nd report — both CFDA questions remain
+      open (5th and 4th windows respectively), plus a genuine new Black Friday/holiday
+      retail-calendar signal.
+- [x] Full skill doc refresh — codified the "populated ≠ rendered, documented ≠ working"
+      lesson (runs 21/23/24/28) as a formal workflow convention, not just something
+      caught reactively each time.
+- [x] Forecast-calibration research: a real, methodologically honest retrospective check
+      against this project's own data. Found labels mostly held (volatile/low-confidence
+      signals faded as predicted) but caught one concerning miss — `soft-tailoring` was
+      called "stable/high" then collapsed to "declining" the very next window. Correctly
+      caveated the small sample size rather than overreaching; recommended a periodic
+      re-check as the archive grows.
+- [x] Full accessibility audit found a 4th instance of the recurring heading-hierarchy
+      bug (case-study page's numbered section titles were styled `<p>` tags) — fixed.
+      Confirmed no image/alt-text issues (text-only site), color contrast passes WCAG AA,
+      and all interactive elements are properly labeled.
+
+## Run 30 — done
+- [x] Built a custom heuristic scanner for the heading bug — honest result: it can't
+      structurally distinguish the real bug from legitimate kickers/labels (same score),
+      so it's a candidate-list generator for review, not a reliable pass/fail signal.
+      Doesn't replace the manual visual check, but is a new tool in the toolkit.
+- [x] Added `data/reports/2026-11-30.json`, a 23rd report. **Found that CFDA Fashion
+      Awards had only ever been tracked in prose across 5 reports, never as a real
+      `signal_id`** — so `is_prolonged_silence()` couldn't see its history. Fixed by
+      giving it a real tracked signal entry. Also refused to present stale 2025 Black
+      Friday data mislabeled as 2026 results.
+- [x] Prompt consistency audit — conservative, correct conclusion: no redundancy/
+      contradiction found across 20+ accumulated instructions; didn't force a rewrite of
+      a working, tested prompt for cosmetic reasons.
+- [x] Citation format research added a copy-pasteable formatted citation line to report
+      pages, closing a gap noted (but blocked on missing SITE_URL) back in run 5.
+- [x] **Manual-sampling quality check found the real root cause of a `human_editor_note`
+      inconsistency**: it was never an actual `Signal` schema field, just an ad hoc key
+      some signals happened to have. Fixed properly at the schema level, backfilled
+      missing data on 2 of 3 manually-sampled signals, and closed out one now-dormant
+      signal (`poetcore-aesthetic`, silent 18 windows).
+
+## Run 31 — done
+- [x] Systematic audit for other by-convention-only fields — **confirmed `human_editor_note`
+      was the one genuine instance** of this bug pattern; no others found across all 23
+      reports checked against the real dataclass field lists.
+- [x] Added `data/reports/2026-12-07.json`, a 24th report — CFDA Fashion Fund winner now
+      7 windows open; CFDA Fashion Awards correctly still shows `False` on the silence
+      check since its tracked history is short even though the question is informally
+      older (the tool works as designed, distinguishing tracked-history length from
+      informal question age). Genuine new signal: BoF VOICES 2026 industry gathering.
+- [x] Added resort/cruise collection calendar research to `docs/EDITORIAL_CALENDAR.md` —
+      genuinely useful since the archive is now in a December window where cruise retail
+      arrivals traditionally appear.
+- [x] Full-year archive coherence review (all 23 reports at the time) — clean throughout:
+      no signal_id naming collisions, no cross-report contradictions, all tooling
+      (`validate_all_reports.py`, `check_field_coverage.py`, `audit_confidence.py`) still
+      passes cleanly at this scale.
+- [x] Performance check found a genuine (if currently minor) redundancy — `getAllReports()`
+      was being called 2-3x per page render — and fixed it with a simple module-level
+      cache, no behavior change. Build time measured at ~9s for 80 pages/23 reports,
+      confirmed not currently a bottleneck.
+
+## Run 32 — done
+- [x] Added `data/reports/2026-12-14.json`, a 25th report — Fashion Fund winner now 8
+      windows open, Fashion Awards now 3 tracked windows. Correctly distinguished the
+      unrelated BFC "The Fashion Awards" (Royal Albert Hall, Nov 30) from the still-open
+      CFDA question rather than conflating them.
+- [x] Periodic audit found and closed out 2 more dormant signals
+      (`versace-mulier-debut-timing-unconfirmed`, `armani-post-founder-transition-continues`,
+      both silent 8 windows) that had never gotten the standard close-out treatment.
+- [x] Year-end review research: recounted real signal recurrence across all 24 reports —
+      still doesn't clear run 24's threshold, and the one signal that does recur 4+ times
+      is a non-style award-status item, not a genuine style thread. Correctly declined to
+      build either a quarterly retrospective or year-in-review page.
+- [x] Search-facet verification confirmed everything is already genuinely dynamic (no
+      hardcoded value lists) and Pagefind's index is current, not stale — no bugs found.
+- [x] Manual-sampling cadence check correctly declined to manufacture a 4th sample just
+      to hit a quota — doc §31 has no cadence requirement, and forcing an entry would
+      violate the workflow's own human-judgment principle. Softened the workflow doc's
+      "weekly" wording to "opportunistically" to match actual/correct practice.
+
+## Run 33 — done
+- [x] Added `data/reports/2026-12-21.json`, a 26th report — **the CFDA Fashion Awards
+      question crossed the prolonged-silence threshold for the first time**
+      (`is_prolonged_silence()` now returns `True`), confirming the tool works exactly as
+      designed on real, organically-arrived-at data.
+- [x] Doc-sync verification found and fixed real drift: 3 recently-added tool scripts
+      (`check_field_coverage.py`, `check_heading_patterns.py`, `audit_confidence.py`)
+      were missing from README/PROJECT_STRUCTURE.md's listings, and `docs/agent-logs/`
+      had grown to 166+ files while the doc still named only ~15 — replaced with a
+      count+pointer. Also fixed stale "exercised twice" manual-sampling claims (now 3
+      times, opportunistic not scheduled).
+- [x] Source-protection research: no real current risk (no per-article URLs published,
+      no small-outlet pile-on vector) but found `source_links` is TS-only dead typing
+      with no backend dataclass field at all — a different, minor drift class than the
+      "populated but unrendered" bug, flagged for cleanup.
+- [x] **Found and fixed a 4th instance of the "populated but unrendered" bug**:
+      `human_editor_note` (the editorial close-out reasoning) was never shown on the
+      per-signal history page (`/signals/[slug]`), even though it's the whole point of a
+      close-out note. Fixed with real heading semantics.
+- [ ] Editorial calendar research/maintenance pass was still running when this run was
+      consolidated (unusually long WebSearch) — its output will land as its own commit
+      whenever it completes, separate from this run's batch.
+
+## Run 34 — done
+- [x] Added `data/reports/2026-12-28.json`, a 27th report — CFDA Fashion Fund winner now
+      10 windows open, Fashion Awards now 5. Checked for genuine year-end "best of 2026"
+      content and correctly found none in-window (only evergreen or wrong-year material).
+- [x] Editorial calendar updated with Met Gala (first Monday in May, confirmed 2026
+      edition date) — this time tightly scoped after last run's version stalled for 600s
+      and timed out; the retry succeeded quickly.
+- [x] **Resolved `source_links`**: removed entirely rather than implementing. Genuinely
+      traced to the original concept doc (not pure drift), but the site's shipped design
+      already deliberately diverged from that brainstorm (no per-article URLs anywhere),
+      and reviving it would reopen the exact small-outlet pile-on risk run 33 flagged as
+      dormant, without ever designing the recommended mitigation. Cleaned the one stray
+      data key via `revision_history`, not hand-editing.
+- [x] **Designed a third honest state for permanently-unresolved factual questions** —
+      distinct from both "actively tracked" and "resolved/closed": after several windows
+      past the prolonged-silence threshold, a report may mark a signal_id "untracked
+      going forward pending new information" in prose, without fabricating an answer or
+      misusing the dormant-signal close-out pattern (which implies resolution, not
+      absence of an answer). Documented as workflow convention #10, no schema change.
+- [x] Verified the homepage index module's thin-streak concern was not actually a bug —
+      the report content itself already self-discloses carry-forward status (incrementing
+      window counts, threshold-crossing notes), so the module reads as an evolving status
+      line, not stale data.
+
+## Run 35 — done (all 5 tasks tightly scoped, no stalls)
+- [x] Added `data/reports/2027-01-04.json`, a 28th report, crossing into the new year —
+      **both CFDA questions transitioned to "untracked going forward pending new
+      information" for the first time**, exercising the run-34 convention in practice
+      immediately.
+- [x] Slug-quality check found 11+ candidates over the length threshold — correctly
+      stopped without editing since that's well past the run's 5-candidate scope cap;
+      flagged for a dedicated future pass that checks cross-file signal_id references
+      before any renaming.
+- [x] Archival-practice research found a genuine, actionable gap: no `source_url` field
+      exists anywhere in the schema, so link-rot mitigation (Wayback/Perma.cc-style
+      snapshotting) is premature — nothing is actually cited/linked yet. Recommends
+      adding `source_url(s)` wired from the crawler's fetched URLs, but **note the
+      tension with run 34's removal of `source_links`** for source-protection reasons —
+      needs reconciling, not blind implementation.
+- [x] 3-report quality spot-check across the archive's full timeline (early/mid/recent)
+      — all clean, no fixes needed. Correctly deferred a judgment call on convention
+      timing to the coordinator rather than acting unilaterally.
+- [x] Pagefind regression check confirmed the search index still builds correctly after
+      run 34's `source_links` removal — 81 pages/3456 words indexed, consistent growth.
+
+## Run 36 — done
+- [x] **Reconciled the `source_url`/`source_links` tension with a final decision**: added
+      `Signal.source_domains` (bare homepage domains only, e.g. `"vogue.com"`) — satisfies
+      the citation need from run 35 while structurally avoiding run 33's per-article
+      pile-on risk, enforced by schema validation (rejects `/` or `http`-prefixed values),
+      not just convention. Deliberately schema-only this run — not populated by
+      `summarize.py`, not rendered anywhere yet (that's separately scoped future work).
+      `check_field_coverage.py` correctly flags it as unreferenced — expected, not a bug.
+- [x] Added `data/reports/2027-01-11.json`, a 29th report — correctly stopped
+      re-litigating the untracked CFDA questions weekly per the new convention, and
+      honestly logged a real Golden Globes calendar-date signal without fabricating
+      post-ceremony coverage that doesn't exist yet.
+- [x] **Dedicated slug-curation pass completed**: all 12 over-length signal_ids from run
+      35's flag renamed across 19 report files, including the high-impact recurring CFDA
+      Fashion Fund signal (spans 7+ reports) — safety-checked first (slugs are looked up
+      dynamically, no hardcoded references anywhere).
+- [x] IPTC metadata check found and fixed a real bug: `dateModified` in report pages'
+      JSON-LD was hardcoded equal to `datePublished` even for reports with real
+      corrections — now correctly uses the latest `revision_history` entry when present.
+- [x] Fresh CI environment verification (new venv, `node_modules` wiped and reinstalled)
+      found no environment-assumption bugs — everything that passes locally also passes
+      fresh. `gh` CLI still unavailable, so real GitHub Actions status remains
+      unconfirmed. Also cleaned up a stale `eslint-disable` comment flagged in 2
+      consecutive runs.
+
+## Run 37 — done
+- [x] **`source_domains` fully wired end-to-end**: `summarize.py`'s prompt now populates
+      it (reusing the existing domain-extraction convention), and report pages render it
+      per-signal. `check_field_coverage.py` confirms typed+referenced, 0 warnings.
+- [x] Added `data/reports/2027-01-18.json`, a 30th report — caught and excluded a false
+      lead (previously-occurred designer debuts mislabeled as upcoming Jan 2027 news).
+- [x] Found and fixed the same `dateModified`-staleness bug pattern a second place: the
+      RSS feed's `<pubDate>` had the identical gap just fixed on report pages (run 36) —
+      now also sourced from `revision_history` when present.
+- [x] Glossary freshness check found a genuinely new failure mode: undefined terms were
+      silently dropped rather than shown at all (distinct from the "populated but
+      unrendered" bug — this was "present but invisible due to missing curation"). Fixed
+      with a real definition for the missing term.
+- [x] Periodic audit caught a real regression from run 36's slug renaming: 2 stale
+      long-form signal_id references survived in report prose after the actual `signal_id`
+      fields were shortened, which would have silently broken
+      `get_signal_status_history()` lookups. Fixed via `revision_history`.
+
+## Run 38 — done
+- [x] Dedicated slug-reference audit across all prose fields (not just `signal_id`) found
+      17 additional stale long-form slug mentions run 37 missed, across 6 slugs/17 files —
+      fixed via `revision_history`. The grep-for-old-references pass TODO.md flagged is
+      now complete for run 36's rename batch.
+- [x] Added `data/reports/2027-01-25.json`, a 31st report — re-checked the Wales Bonner/
+      Hermès debut for post-show coverage, found none, correctly made no false correction.
+- [x] Added a build-time `console.warn()` in `web/app/glossary/page.tsx` for terms with no
+      curated `DEFINITIONS` entry — verified genuinely reachable (~130 real hits currently,
+      mostly long narrative strings rather than true glossary vocabulary).
+- [x] `docs/EDITORIAL_CALENDAR.md` gains a January menswear + haute couture section,
+      confirmed via WebSearch.
+- [x] `source_domains` extended to `/signals/[slug]` (natural fit, same per-occurrence
+      detail level as the report page); homepage/timeline/search correctly left untouched.
+
+## Run 39 — done
+- [x] Added `data/reports/2027-02-01.json`, a 32nd report — honestly reported that both
+      the Wales Bonner/Hermès debut and Haute Couture SS27 still have no reachable
+      post-show coverage, rather than fabricating runway content.
+- [x] Added `isPlausibleGlossaryTerm()` filter to `web/app/glossary/page.tsx` — cut run
+      38's build-time undefined-term warnings from ~130 to 19 genuinely curatable short
+      phrases, with no real curated term filtered out.
+- [x] Added South China Morning Post (Hong Kong) and The National (UAE) to
+      `FASHION_SOURCES`/`DOMAIN_SECTOR_MAP` — genuine geographic diversification,
+      WebFetch-verified reachable. One candidate (fashionnetwork.com/africa) honestly
+      rejected (403).
+- [x] Closed the run-35 archival/link-rot question for good: domain-level citation is a
+      permanent design choice (no permalink exists to rot), documented in a new "How
+      Citations Work" methodology section. Flagged a smaller, distinct future item:
+      periodic self-archival snapshotting of the site's own report pages.
+- [x] Periodic audit — clean. 44 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (7th consecutive check), 3-report spot-check
+      consistent.
+
+## Run 40 — done
+- [x] Added `data/reports/2027-02-08.json`, a 33rd report — Wales Bonner/Hermès debut
+      crosses the prolonged-silence threshold (4 windows) for the first time, flagged
+      explicitly rather than fabricated or prematurely marked "untracked."
+- [x] Curated real definitions for all 19 glossary terms run 39's filter identified —
+      build now shows zero "no DEFINITIONS entry" warnings.
+- [x] Tested the two run-39 sources against the real crawler path (not just WebFetch):
+      scmp.com fully works (48 headlines); thenationalnews.com fetches fine but yields 0
+      headlines because its content is client-side rendered — a different failure mode
+      than prior UA-blocking bugs, flagged for a future decision (drop vs. extend parsing).
+- [x] Brought correction-notice placement in line with AP/NYT/ONA standards — added a
+      pinned top-of-page notice on report pages when `revision_history` has entries,
+      instead of only a buried bottom-of-page section.
+- [x] Full-archive coherence review — clean. No orphaned signal_ids, docs still accurate,
+      voice spot-check clean.
+
+## Run 41 — done
+- [x] Added `data/reports/2027-02-15.json`, a 34th report — Wales Bonner/Hermès debut now
+      5 consecutive windows unresolved; correctly kept under active tracking rather than
+      forcing an early transition to "untracked going forward," with a flagged revisit
+      date (2027-03-08) for the next agent.
+- [x] Resolved the `thenationalnews.com` question directly: removed from
+      `FASHION_SOURCES`/`DOMAIN_SECTOR_MAP` since its content is client-side rendered and
+      the project deliberately keeps `crawler.py` static-HTML-only. Historical report
+      data referencing the domain left untouched.
+- [x] Added byline-level AI disclosure to report pages, per Trusting News/AP/BBC
+      disclosure research — surfaces AI-assisted/human-reviewed status right in the
+      header, not just on the general `/methodology` policy page.
+- [x] Manual-sampling check — honest negative result, no current social signal cleared
+      the independent-corroboration bar. Correctly declined to force a low-quality entry.
+- [x] Periodic audit — clean. 44 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (8th consecutive check), no neglected
+      dormant signals found.
+
+## Run 42 — done
+- [x] Added `data/reports/2027-02-22.json`, a 35th report — Wales Bonner/Hermès debut now
+      6 consecutive windows unresolved; held the revisit plan rather than transitioning
+      early (checkpoint remains 2027-03-08).
+- [x] Fixed a real WCAG 2.2 Target Size Minimum (2.5.8) violation — site-section nav
+      links across 5 pages had ~13-16px clickable targets, under the 24px minimum; added
+      padding to bring them into compliance.
+- [x] Found and fixed a genuine `summarize.py` prompt-drift bug 11 runs after the last
+      clean audit: a stale hand-written sector list (with a non-existent `"commerce"`
+      sector, missing 4 real ones) duplicated the prompt's own authoritative list. Fixed
+      by pointing at the live list instead of a second hardcoded copy.
+- [x] RSS/sitemap/Pagefind freshness check — clean, all reports present, correct pubDate
+      sourcing, monotonic search-index growth.
+- [x] Doc-sync/nav audit fixed two real gaps: `check_heading_patterns.py` missing from
+      the skill doc's file map, and `/case-study` had no site nav at all — both fixed.
+
+## Run 43 — done
+- [x] Added `data/reports/2027-03-01.json`, a 36th report — Wales Bonner/Hermès debut now
+      7 consecutive windows unresolved; correctly excluded an unrelated interim Hermès
+      collection and a concurrent real-world Haute Couture week from the tracked signals.
+- [x] **Self-archival decided:** built `src/generate_archive_manifest.py`, a local,
+      non-networked script producing a manifest (url/report_date/content_hash) of every
+      `/reports/[date]` page. Deliberately does NOT call the Wayback API —
+      `SITE_URL` is still `web/lib/site.ts`'s placeholder domain, so an automated
+      Save-Page-Now integration would snapshot a non-resolving URL. See
+      `docs/agent-logs/self-archival-decision-run43.md` for the real trigger condition
+      (set a real `SITE_URL`, then wire this manifest into a scheduled Save-Page-Now
+      job) — not a perpetual carry-forward item anymore.
+- [x] Improved RSS item quality per RSS 2.0 best practices — item titles now lead with
+      the date plus up to 3 top signal names, and per-item `<category>` tags added from
+      unique source sectors.
+- [x] Verified the homepage "This Week's Index" module against 15+ new reports since its
+      run-21 stress test — all 8 metrics render correctly. Flagged one non-bug finding:
+      dominant mood is honestly carried forward from a report ~24 weeks stale.
+- [x] Periodic audit — clean. 44 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (9th+ consecutive check), all silent
+      signals already carry correct close-out/deferred-transition notes.
+
+## Run 44 — done
+- [x] Added `data/reports/2027-03-08.json`, a 37th report — Wales Bonner/Hermès debut
+      finally transitioned to "untracked going forward pending new information" at its
+      planned checkpoint (8 consecutive unresolved windows), rather than deferring again.
+- [x] Added a 12-week staleness cutoff to the homepage index module's "dominant mood"
+      metric — shows an honest "no distinct mood signal in recent weeks" state instead
+      of indefinite carry-forward once the source is too old.
+- [x] Added Dataset structured data alongside NewsArticle on report pages (schema.org
+      `@graph`), reflecting that report pages are dataset landing pages, not just
+      articles. Omitted `distribution`/`contentUrl` since no public raw-JSON download
+      route exists yet.
+- [x] Renamed 4 over-length signal_ids created since run 36, with the full cross-file
+      prose sweep done upfront in the same pass (applying run 38's lesson from the
+      start, not as a follow-up).
+- [x] Periodic audit — clean. 44 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (10th+ consecutive check).
+- [x] **Consolidation catch:** the new-report agent used pre-rename long slugs (ran
+      concurrently with the slug-rename agent) — same cross-run collision class as run
+      6. Caught via grep and fixed via `save_report(revision_reason=..., corrected_at=...)`
+      before committing.
+
+## Next up (run 45 candidates)
+- [ ] The run-19 confidence-gate fix remains untested — revisit once
+      `independent_criticism` sources reappear.
+- [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
+
+## Run 45 — done
+- [x] Added `data/reports/2027-03-15.json`, a 38th report — found a genuinely
+      undocumented Feb-March Fall/Winter 2027-28 RTW fashion month underway, distinct
+      from the archive's already-documented Sept-Oct RTW and January menswear/couture
+      windows. Correctly did not re-litigate the now-untracked Wales Bonner question.
+- [x] Implemented the public raw-JSON download route flagged in run 44: each report's
+      raw JSON is now served at `/data/reports/<date>.json` via a `prebuild` npm script,
+      wired into the Dataset JSON-LD's `distribution`/`contentUrl` fields, plus a
+      visible download link on the report page. Note: requires `npm run build`, not a
+      bare `next build`, to actually copy the files.
+- [x] Added a "How This Report Was Compiled" transparency box per Pew/FiveThirtyEight
+      convention — same existing content, now visually distinct instead of reading as
+      ambient header text.
+- [x] Nav/link audit — clean. Run 42's `/case-study` nav and WCAG target-size fixes both
+      still intact; a new site-wide broken-link check found zero broken internal links.
+- [x] Periodic audit — clean. 44 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (11th+ consecutive check), confirmed the
+      Wales Bonner "untracked going forward" transition is being correctly respected.
+
+## Next up (run 46 candidates)
+- [ ] The run-19 confidence-gate fix remains untested — revisit once
+      `independent_criticism` sources reappear.
+- [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
+
+## Run 46 — done
+- [x] Added `data/reports/2027-03-22.json`, a 39th report — correctly distinguished
+      editorial post-season trend-confirmation roundups (retrospective commentary) from
+      new in-window reporting, rather than conflating the two.
+- [x] Added the Feb-March RTW fashion month to `docs/EDITORIAL_CALENDAR.md` as its own
+      recurring entry, confirmed via real 2026-27 cycle dates.
+- [x] Added a CC BY 4.0 license to the Dataset JSON-LD and a visible license line next
+      to the raw-JSON download link — scoped only to the site's own classification/
+      summary metadata, not underlying source articles.
+- [x] Hardened the raw-JSON download route: moved the copy logic inline into
+      `next.config.ts` (evaluated on every build invocation) so it no longer silently
+      breaks under a bare `next build`. `copy-reports.mjs` and the inline copy now
+      duplicate the same logic — keep both in sync if it ever changes.
+- [x] Periodic audit — clean. 46 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (12th+ consecutive check).
+
+## Next up (run 47 candidates)
+- [ ] The run-19 confidence-gate fix remains untested — revisit once
+      `independent_criticism` sources reappear.
+- [ ] `gh` CLI still unavailable; CI's real GitHub pass/fail status remains unconfirmed.
+      Note: CI's `lint-web` job doesn't actually run a Next.js build today, so the
+      `next build` vs `npm run build` distinction is currently moot there.
+
+## Run 47 — done
+- [x] Added `data/reports/2027-03-29.json`, a 40th report — logged a new forward-looking
+      SS27 trend-forecast signal, kept distinct from the prior report's backward-looking
+      retrospective signal.
+- [x] Re-ran the run-24/32 recurrence analysis: 4 signals now recur 4+ times, meeting
+      the threshold for the first time — but all 4 are unresolved factual/institutional
+      questions, not style trends. Built a minimal honest "Recurring across the archive"
+      section on `/archive` rather than the previously-declined narrative retrospective
+      feature, which would have misrepresented open questions as trending.
+- [x] Trust Project 8-indicators audit found a real gap: no reader-facing
+      correction-request channel exists. Honestly disclosed on the methodology page
+      rather than fabricating a fake contact mechanism.
+- [x] Full-archive coherence review at the 40-report milestone fixed real doc gaps:
+      `generate_archive_manifest.py`, `copy-reports.mjs`, and the Dataset/download route
+      were shipped but undocumented in README/PROJECT_STRUCTURE/SKILL.md. Also corrected
+      a stale SKILL.md claim that Pagefind was still "deferred" (implemented since run 14/15).
+- [x] Periodic audit — clean. 47 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (13th+ consecutive check).
+
+## Run 48 — done
+- [x] Added `data/reports/2027-04-05.json`, a 41st report — logged `glamoratti-revival`
+      (Pinterest Predicts 1980s power-dressing aesthetic, editorially amplified),
+      checking first that `poetcore-aesthetic` was already archived to avoid a false
+      recurrence claim.
+- [x] Recurrence threshold revised: `getRecurringSignals()` in `web/lib/reports.ts` now
+      accepts `{ styleOnly: true }`, filtering to signals whose `type` is a genuine
+      style-aesthetic type rather than factual/administrative (institutional_policy,
+      designer_signal, etc.). The run-24/47 "4-5 signals recurring 4+ times"
+      retrospective-trigger threshold must be evaluated with `styleOnly: true` going
+      forward (currently 0 qualifying signals — retrospective still correctly not
+      warranted). The raw/unfiltered count stays correct for `/archive`'s honest
+      factual/administrative surface — a different use of the same data. See
+      `docs/agent-logs/recurrence-threshold-revision-run48.md`.
+- [x] External correction-request channel decided, not left perpetual: linked the
+      project's real public GitHub Issues tracker from About and Methodology. Fits a
+      static-export site with no backend and no deployed domain yet — deliberately did
+      NOT build a contact form or mailto (premature infra pre-deployment). Revisit only
+      if the repo goes private or the tracker proves unmonitored. See
+      `docs/agent-logs/correction-channel-decision-run48.md`.
+- [x] AP-style headline capitalization check — honest "already compliant" result across
+      `top_signals[].name`, `executive_summary` openers, and page `<title>` metadata; no
+      changes needed.
+- [x] Periodic audit — clean. 48 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (15th+ consecutive check).
+
+## Run 49 — done
+- [x] Added `data/reports/2027-04-12.json`, a 42nd report — caught a real
+      false-resolution trap (a 2025-cycle CFDA winner announcement mistaken for the
+      tracked, still-unconfirmed 2026 question), and honestly revised
+      `glamoratti-revival`'s volatility to "saturated" rather than inflating confidence
+      from raw SEO-reprint outlet count.
+- [x] Verified all 27 unique `source_domains` values across the archive resolve to
+      real, live domains (4 needed a browser UA to pass bot-blocking) — clean, no
+      typos or dead domains found.
+- [x] Found and fixed a real `human_editor_note` process gap: 2 exact verbatim
+      duplicates of `index_note` traced to `summarize.py`'s prompt never mentioning the
+      field at all. Fixed at the prompt level going forward; deliberately did not
+      rewrite the 2 existing duplicates (would fabricate retroactive editorial
+      judgment).
+- [x] Added a `@media print` stylesheet — report pages previously had zero print
+      styling, so a researcher printing/PDF-saving one for citation would get full
+      interactive nav baked in and silently lose outbound source URLs.
+- [x] Periodic audit — clean. 49 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (16th+ consecutive check), confirmed run
+      48's `styleOnly` recurrence filter behaves correctly.
+
+## Run 50 — done (50th loop run milestone)
+- [x] Added `data/reports/2027-04-19.json`, a 43rd report — logged a genuine new
+      Moschino co-creative-director signal, and deliberately did not repeat
+      `glamoratti-revival` as a top signal absent fresh coverage.
+- [x] **Major finding, flagged for a human decision (not a routine item):** a 50-report
+      milestone gap analysis found the loop's own process doesn't fully satisfy the
+      site's stated human-in-the-loop principle — `reviewed_by` values are agent
+      self-attribution, and almost all reports are WebSearch reconstructions rather
+      than live crawls, despite the site's copy describing genuine human review and a
+      real pipeline. See `docs/agent-logs/gap-analysis-50-report-milestone-run50.md`
+      and the changelog's "Flagged for the user" section for full detail — this needs
+      a human decision about what to claim honestly vs. what to change in the process.
+- [x] Fixed a real redundant-read regression: `web/app/glossary/page.tsx` had drifted
+      back into its own independent full-archive read, bypassing run 31's shared
+      `getAllReports()` cache. Fixed; build time confirmed holding flat as report count
+      doubled since run 31's baseline.
+- [x] Fixed a real sitemap gap: `lastModified` was never set (Google ignores
+      `changeFrequency`/`priority`, the fields that WERE tuned, and only trusts
+      `lastModified`). Added to archive-dependent routes; left fixed-prose pages
+      without a fabricated timestamp.
+- [x] Periodic audit — clean. 50 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (18th+ consecutive check).
+
+## Run 51 — done
+- [x] Fixed a real overclaim: the report byline literally rendered "human-reviewed by
+      loop-consolidation," using an agent-process string as if it were a named human
+      reviewer. Rewrote byline/Notes/About/Methodology to state review is against
+      editorial guidelines, currently performed by the same automated process that
+      drafts the report — honest disclosure, not a process change.
+- [x] Ran the real `crawler.py` pipeline end-to-end: 12/12 sources succeeded, 454
+      headlines, no errors — infrastructure is healthy. The run-50 gap is about report
+      authorship (WebSearch vs. live crawl), not broken tooling. Also fixed a second
+      overclaim: methodology's "AI assists with crawling" language implied more
+      live-crawl provenance than the ~2/44 real pipeline runs represent.
+- [x] Fixed an operator-transparency gap: the About page never stated who operates the
+      site (only surfaced incidentally on `/case-study`) — added a paragraph disclosing
+      it's an independently operated single-researcher project.
+- [x] Added `data/reports/2027-04-26.json`, a 44th report — honest thin-week call, the
+      requested Moschino follow-up found only republication of the original
+      announcement, logged as an unchanged status update rather than manufacturing
+      movement.
+- [x] Periodic audit — clean. 50 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, `gh` CLI unavailable (19th+ consecutive check).
+- [x] Consolidation caught and fixed a real ESLint error (`react/no-unescaped-entities`)
+      introduced by one of three agents that concurrently edited the same two pages —
+      all three edits were otherwise compatible.
+
+## Next up (run 52 candidates)
+- [ ] The run-19 confidence-gate fix remains untested — revisit once
+      `independent_criticism` sources reappear.
+- [ ] `gh` CLI still unavailable after 19+ consecutive checks; CI's real GitHub
+      pass/fail status remains unconfirmed.
+- [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
+      correctness for 7+ runs — still awaiting a human decision (run 50).
+- [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
+      run 50 remain open — run 51 only corrected the site's own claims about them, not
+      the process itself; that decision is still the user's.
+- [ ] Two pre-existing `human_editor_note` values (2026-07-13, 2026-11-09) remain
+      verbatim duplicates of `index_note` — deliberately left as-is.
+
+## Run 52 — done
+- [x] Added `data/reports/2027-05-03.json`, a 45th report — Chanel Cruise 2027
+      Biarritz debut (Matthieu Blazy) ends the recent thin-week streak on a genuine
+      basis; Met Gala 2027 checked specifically and honestly logged as having no
+      reachable pre-event coverage rather than assumed quiet.
+- [x] Closed the manual-sampling ambiguity flagged in run 50: added a concrete
+      acceptance criterion to `docs/manual-sampling-workflow.md` (check every ~10 runs,
+      exercise only when genuine independent corroboration exists; "checked, nothing
+      cleared the bar" is now a defined complete outcome, not open debt).
+- [x] Added Open Graph/Twitter-card metadata site-wide and per-report (`layout.tsx`,
+      `web/app/reports/[date]/page.tsx`) — the site had zero social-card metadata
+      despite otherwise disciplined metadata hygiene elsewhere.
+- [x] Disclosure consistency follow-up found and fixed real overclaims run 51 missed:
+      methodology's "How AI Is Used," "Limitations," and "Human Review Process"
+      sections still flatly asserted human review, contradicting the disclosure added
+      elsewhere on the same page. Fixed all three; renamed the section to "Review
+      Process."
+- [x] Periodic audit — clean. 50 confidence mismatches all editor-conservative, 0 field
+      coverage warnings; `gh` CLI unavailability confirmed across 20 consecutive checks
+      (runs 26-52) — a milestone worth deciding whether to keep re-checking indefinitely
+      or accept as a standing, disclosed environment limitation.
+
+## Run 53 — done
+- [x] Added `data/reports/2027-05-10.json`, a 46th report — found a genuinely notable
+      Met Gala 2027 post-event coverage silence (unusual, since that content normally
+      publishes same-day), correctly logged as distinct from the prior week's routine
+      pre-event silence.
+- [x] `gh` CLI/CI-status check downgraded from every-run to every-10th-run cadence
+      (next check due run 60). Tried an unauthenticated GitHub public-API path first —
+      the repo 404s on its own root endpoint, confirming it's private and the API path
+      hits the same no-auth wall as `gh`, not a different one. See
+      `docs/agent-logs/ci-verification-approach-run53.md`.
+- [x] Added a favicon (generated, not a binary asset) — the site had no icon at all.
+      Deliberately did not add a PWA manifest (scope creep for a text-only site).
+- [x] Nav/link/build regression sweep — clean. All links resolve, WCAG target-size
+      padding intact on all 6 Pattern-A pages, Open Graph/recurring-signals/print
+      stylesheet all confirmed rendering correctly in generated HTML output.
+- [x] Periodic audit — clean. 50 confidence mismatches all editor-conservative, 0 field
+      coverage warnings, all dormant signals correctly handled.
+- [x] **Consolidation catch:** the new `icon.tsx` route broke the static export build
+      (needs `export const dynamic = "force-static"`, same failure class as run 24's
+      sitemap/robots fix) — caught by the verification suite before committing, fixed.
+
+## Next up (run 54 candidates)
+- [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
+      correctness — still awaiting a human decision (run 50).
+- [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
+      run 50 remain open — runs 51-52 only corrected the site's own claims about them.
+- [ ] `gh` CLI/CI-status check now due again at run 60 (every-10th-run cadence, run 53).
+
+## Run 54 — done
+- [x] **Solved a 30+ run mystery**: the run-19 confidence-gate fix was untested because
+      the `independent_criticism` sector was structurally unreachable — no source in
+      `FASHION_SOURCES` was ever classified as that sector, and the crawler's
+      same-domain-only BFS meant it could never surface one regardless of the
+      report-writing process. Added `dieworkwear.com` (WebFetch-verified: real
+      independent menswear-criticism blog, permissive robots.txt) to `FASHION_SOURCES`.
+      `throwingfits.com` tried and rejected (Patreon paywall redirect).
+- [x] Added `data/reports/2027-05-17.json`, a 47th report — Dior Cruise 2027 at LACMA
+      (Jonathan Anderson's debut) cleared the corroboration bar with 6 editorial
+      sources; confidence manually elevated to "high" with the override reasoning
+      documented, exercising the audit-tool's flag-for-review convention correctly.
+- [x] Rich Results validation against Google's actual documented requirements (not
+      assumption) — clean. Dataset's required properties present; NewsArticle missing
+      only `image`, a legitimate gap (no representative image exists for report pages).
+- [x] Font-loading performance check — clean. `next/font/google` already defaults to
+      `font-display: swap` and self-hosts font files; exceeds best practice.
+- [x] Periodic audit — clean. 50 confidence mismatches all editor-conservative, 0 field
+      coverage warnings.
+
+## Next up (run 55 candidates)
+- [ ] Watch future reports for whether `dieworkwear.com` actually produces a real
+      `independent_criticism` signal, finally exercising the run-19 confidence-gate fix
+      after 30+ runs of it sitting untested.
+- [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
+      correctness — still awaiting a human decision (run 50).
+- [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
+      run 50 remain open.
+- [ ] `gh` CLI/CI-status check next due at run 60.
+
+## Run 55 — done
+- [x] Found and fixed a real gap in run 54's fix: `dieworkwear.com` was silently
+      broken under the actual crawl path (Brotli compression, no decoder installed) —
+      `crawl()` returned 0 headlines with no error. Tried restricting
+      `Accept-Encoding` first; the server ignored it. Fixed properly by installing and
+      pinning `brotli` as a real dependency, verified with 10 real headlines returned.
+      Created `requirements.txt`, which didn't exist anywhere in the repo before.
+- [x] Added a real custom 404 page (`web/app/not-found.tsx`) — unmatched routes
+      previously fell back to Next.js's generic unstyled default.
+- [x] Doc-sync check fixed a real gap: `web/app/icon.tsx` (run 53's favicon) was
+      missing from README/PROJECT_STRUCTURE/SKILL.md's file maps.
+- [x] Added `data/reports/2027-05-24.json`, a 48th report — logged a real Cannes
+      red-carpet signal but deliberately did not override confidence upward despite 5
+      sources, since 2 domains aren't yet in `DOMAIN_SECTOR_MAP` (working-as-designed
+      "unclear" fallback, not a bug). Met Gala 2027 hit its 4th consecutive
+      zero-coverage window — the absence itself named as the notable fact.
+- [x] Periodic audit — clean. 51 confidence mismatches, only the documented Dior
+      Cruise override not editor-conservative (correctly reasoned), 0 field coverage
+      warnings.
+
+## Next up (run 56 candidates)
+- [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
+      correctness — still awaiting a human decision (run 50).
+- [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
+      run 50 remain open.
+- [ ] `gh` CLI/CI-status check next due at run 60.
+
+## Run 56 — done
+- [x] Added `data/reports/2027-05-31.json`, a 49th report — honest thin week.
+      **Consolidation catch**: the drafted Met Gala 2027 reasoning contradicted the
+      archive's own established finding (run 52) about the event's May 3, 2027 date,
+      incorrectly hypothesizing it "hasn't occurred yet." Caught before committing and
+      corrected via `save_report(revision_reason=..., corrected_at=...)`.
+- [x] Classified `runwaylive.com`/`stylerave.com` as `editorial` in `DOMAIN_SECTOR_MAP`
+      after verifying both are legitimate outlets, not content farms.
+- [x] Fixed a real WCAG 2.4.1 (skip-link) accessibility gap across all 13 route pages —
+      the site had no skip-to-content link anywhere.
+- [x] Post-Brotli-fix crawler health check — thorough, clean conclusion: only
+      `dieworkwear.com` was ever affected by the missing decoder; the other 12 sources
+      correctly negotiate gzip fallback and were never silently broken.
+- [x] Periodic audit — clean. 52 confidence mismatches, only the documented override
+      non-conservative. Found Met Gala 2027 has no real tracked `signal_id` (prose-only),
+      so dormancy tooling structurally can't see it.
+
+## Run 57 — done (50th report reached)
+- [x] Added `data/reports/2027-06-07.json`, a 50th report — two real corroborated
+      signals, both held at "medium" confidence with documented reasoning. Met Gala
+      2027 checked a 6th time, framed consistently with run 56's correction.
+- [x] Gave Met Gala 2027 a real tracked `signal_id` (`met-gala-2027-coverage-gap`),
+      matching the CFDA Fashion Awards precedent (run 30). Honest caveat documented:
+      this makes the signal trackable going forward, not retroactively detectable —
+      `is_prolonged_silence()` needs it to reappear in future reports before it can
+      actually fire.
+- [x] Fixed a second, independently-found dormancy gap in the same file:
+      `paris-post-show-coverage-gap` had silently vanished from reports 12 windows
+      past its threshold with no close-out note — closed out properly.
+- [x] Skip-link and document-level heading-hierarchy checks both verified clean
+      against real built HTML/CSS output (117 pages, 0 failures) and real JSX
+      inspection (16 route files) respectively.
+- [x] **Consolidation catch**: build failed twice with `EBUSY` on `web/out`, traced to
+      4 leftover `npx serve out` processes left running by a subagent's unfinished
+      live-server check — terminated and rebuilt cleanly.
+
+## Run 58 — done
+- [x] Added `data/reports/2027-06-14.json`, a 51st report. **Consolidation fix**: the
+      agent's summary claimed it reused `met-gala-2027-coverage-gap`, but it actually
+      minted a different `archive_tag` instead — corrected to a real `top_signals`
+      entry reusing the established signal_id; verified `get_signal_status_history()`
+      now sees 2 occurrences.
+- [x] **Consolidation fix**: run 57's Met Gala Signal object had reintroduced the
+      exact incorrect "hasn't occurred yet" hypothesis run 56 already fixed elsewhere
+      in the same report — an internal contradiction. Aligned the Signal text with the
+      corrected framing (event occurred May 3, absence is genuine and unresolved).
+- [x] Glossary fully curated — 18 new definitions, warning count from 20 to 0.
+- [x] Added dark mode (`prefers-color-scheme`) support with real WCAG contrast-ratio
+      verification (~7.9:1, exceeds AA) — the site previously had none.
+- [x] Nav/build regression sweep — clean, all links resolve, skip-link intact across
+      all 121 pages (verified via direct file inspection, no live server used).
+- [x] Periodic audit — clean. 55 confidence mismatches, only the documented override
+      non-conservative.
+
+## Next up (run 59 candidates)
+- [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
+      correctness — still awaiting a human decision (run 50).
+- [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
+      run 50 remain open.
+- [ ] `gh` CLI/CI-status check next due at run 60.
+
+## Run 59 — done
+- [x] Added `data/reports/2027-06-21.json`, a 52nd report — the Met Gala signal-reuse
+      fix from run 58 verified holding correctly: reused `met-gala-2027-coverage-gap`
+      confirmed present in `top_signals` before finishing, independently re-confirmed
+      by the periodic audit and by `get_signal_status_history()` (now 3 occurrences).
+- [x] Dark mode verified against real built CSS output (survives minification) and all
+      435 inline `style={{}}` uses of `var(--...)` tokens across 15 files — clean.
+- [x] Robots.txt/sitemap indexability re-checked against real spec requirements —
+      clean, unchanged since run 5.
+- [x] Doc-sync check fixed a real gap: README's setup command hardcoded a stale
+      pip-install list missing `brotli`, undocumented since `requirements.txt` was
+      added in run 55. Also added skip-link/dark-mode notes to file maps.
+- [x] Periodic audit — clean. 58 confidence mismatches, only the documented override
+      non-conservative.
+
+## Next up (run 60 candidates)
+- [ ] `met-gala-2027-coverage-gap` now has 3 occurrences in its cross-report history
+      (threshold is 4) — one more recurrence would let `is_prolonged_silence()` fire
+      on it for the first time.
+## Run 60 — done (60th loop run milestone)
+- [x] Added `data/reports/2027-06-28.json`, a 53rd report — `met-gala-2027-coverage-gap`
+      reused for its 4th occurrence, crossing `is_prolonged_silence()`'s threshold for
+      the first time. Verified independently: history length 4, returns `True`.
+- [x] Every-10th-run `gh`/CI check re-confirmed unchanged (no CLI, repo still private).
+      Cadence stands, next due run 70.
+- [x] Internal citation persistence verified clean — URL scheme unchanged since runs
+      3-4 (git history), link generation structurally live-built (link rot
+      architecturally impossible), no orphaned signal_id references found.
+- [x] **Major finding, flagged for the user (not a routine item):** a 60-run
+      retrospective found ~40% of the last 10 runs existed primarily to fix or verify
+      a fix for a problem the loop itself introduced in that same window. See
+      `docs/agent-logs/gap-analysis-60-run-milestone-run60.md` and the changelog's
+      "Flagged for the user" section — agent self-reports have proven unreliable
+      without independent verification twice in 10 runs.
+- [x] Periodic audit — clean. 61 confidence mismatches, only the documented override
+      non-conservative.
+
+## Next up (run 61 candidates)
+- [ ] `SITE_URL` remains a placeholder domain, blocking self-archival/citation
+      correctness — still awaiting a human decision (run 50).
+- [ ] The underlying human-in-the-loop and live-crawl-pipeline process gaps flagged in
+      run 50 remain open; the real-pipeline ratio has proportionally worsened since
+      (2/43 → 2/52 reports).
+- [ ] `gh` CLI/CI-status check next due at run 70.
+
+## Run 61 — done
+- [x] Built `src/check_signal_reuse_claims.py` in direct response to run 60's flagged
+      gap — a narrow heuristic script catching the exact "prose claims signal reuse
+      but top_signals doesn't actually contain it" bug pattern seen in runs 57-58.
+      Verified honestly: 0 false positives on the real archive, correctly skips
+      negated cases.
+- [x] `met-gala-2027-coverage-gap` transitioned to "untracked going forward pending
+      new information" — two independent agents (periodic audit reading the 4th
+      occurrence directly, new-report agent on the 5th) converged on the same call,
+      verified consistent with each other.
+- [x] Added `data/reports/2027-07-05.json`, a 54th report — new couture-debuts signal,
+      agent explicitly re-read its own saved JSON to confirm claims before reporting.
+- [x] Keyboard-only navigability and nav/build regression sweep both clean — native
+      elements sufficient for WCAG 2.1.1, dark mode/skip-link/Open Graph all still
+      correctly present in real built output.
+
+## Next up (run 62 candidates)
+## Run 62 — done
+- [x] `check_signal_reuse_claims.py --all` made a standing periodic-audit step
+      (SKILL.md convention #12) — cross-confirmed by 3 independent agents this run,
+      4 known false positives, 0 real mismatches.
+- [x] Reading-level accessibility quantified (Flesch-Kincaid grade 10.7-17.1) and
+      correctly documented as a deliberate voice-rule tradeoff against WCAG AAA 3.1.5,
+      not an oversight — the site makes no AAA conformance claim.
+- [x] Added `data/reports/2027-07-12.json`, a 55th report — honest mixed critical
+      reception reported across three couture debuts, not smoothed into one verdict.
+- [x] Periodic audit — clean. 65 confidence mismatches, only the documented override
+      non-conservative.
+- [ ] **Not completed**: a subagent attempting a real crawler-pipeline-grounded report
+      stalled without producing output (started a background crawl, never returned to
+      check results) — same failure shape as run 33. Not re-dispatched mid-
+      consolidation; needs a future, more tightly time-boxed attempt.
+
+## Run 63 — done
+- [x] Retried the crawler-pipeline attempt with a strict synchronous time-box —
+      completed cleanly this time. Real crawl output cross-checked against the
+      archive; the one genuine signal found already existed, correctly not
+      duplicated. Surfaced a more concrete blocker: `summarize.py` can't run at all
+      without `ANTHROPIC_API_KEY` set in this environment.
+- [x] Added `data/reports/2027-07-19.json`, a 56th report — Thom Browne Milan debut
+      logged with a genuine source-incentive judgment call (trade press vs. the one
+      dissenting independent review).
+- [x] Fixed a real deep-linking gap: individual signals within a report page had no
+      anchor, only the whole page or the separate longitudinal signal page could be
+      linked to. Added per-signal `id` anchors and visible permalinks.
+- [x] Doc-sync fixed a real gap: `check_signal_reuse_claims.py` was undocumented in
+      README/PROJECT_STRUCTURE.md.
+- [x] Periodic audit — clean. 65 confidence mismatches, only the documented override
+      non-conservative; signal-reuse checker unchanged at 4 known false positives.
+- [x] **Consolidation catch**: removed a real, un-gitignored scratch artifact
+      (`src/trends_raw.json`) left by the crawler-pipeline agent; renamed a
+      misnumbered log file.
+
+## Run 64 — done
+- [x] **Corrected run 63's finding**: `ANTHROPIC_API_KEY` is NOT actually missing —
+      a valid, working key exists in a git-ignored `.env`, and `summarize.py` already
+      loads it via `python-dotenv`. Verified live with a real API call returning a
+      genuine model response. The real pipeline can run end-to-end; the actual gap
+      is missing setup docs (no `.env.example`, README doesn't explain the mechanism).
+- [x] Added `data/reports/2027-07-26.json`, a 57th report — real Louis Vuitton
+      waterfall-staging backlash logged, with a genuine judgment call treating the
+      general-news-vs-trade-press coverage asymmetry as informative rather than
+      ignoring it.
+- [x] "Cool URIs don't change" review — clean. Report/signal URLs are keyed on
+      immutable dates/schema-validated slugs, independent of editable display text.
+- [x] Nav/build regression sweep — clean, no signal-anchor collisions, dark
+      mode/skip-link/Open Graph all still intact.
+- [x] Periodic audit — clean. 65 confidence mismatches, only the documented override
+      non-conservative; signal-reuse checker unchanged at 4 known false positives.
+
+## Run 65 — done
+- [x] Added `.env.example` and setup docs — closes run 64's flagged gap. Confirmed
+      `.env` is genuinely git-ignored (verified, not assumed); grepped for real-key
+      patterns before finishing, none found.
+- [x] Added a 58th report (`2027-08-09.json`) — real confidence discipline, manually
+      held at "medium" against `derive_confidence()`'s inflated "high" rather than
+      rewarding a source-map gap as if it were genuine cross-sector corroboration.
+- [x] Source-domain freshness spot-check — clean, all 33 newly-cited domains since
+      run 49 verified live or recognizable/bot-blocked, no typos or dead domains.
+- [x] Periodic audit — clean. 65 confidence mismatches, only the documented override
+      non-conservative; signal-reuse checker unchanged at 4 known false positives.
+- [ ] **Not completed, second attempt**: the first genuine real-pipeline
+      (crawl→summarize→save) attempt stalled a second time (after run 62's stall)
+      despite an explicit synchronous-only instruction. No secret exposure occurred
+      — checked and confirmed explicitly. A different approach (splitting crawl and
+      summarize into two separate dispatches) is needed for the next attempt rather
+      than a third identical retry.
+
+## Run 66 — done
+- [x] **Root cause of 3 consecutive crawler-pipeline stalls (runs 62, 65, 66) found**:
+      not agent task design — `crawler.py` itself hangs indefinitely in this
+      environment. Found and killed 2 real hung `python crawler.py` processes during
+      consolidation (one over an hour old). Flagged directly for the user; see
+      changelog run-66's "Flagged for the user" section. Recommend no further
+      autonomous crawler-pipeline attempts until debugged directly.
+- [x] Added `data/reports/2027-08-16.json`, a 59th report — Chanel/Charvet
+      acquisition logged with the same confidence discipline as run 65 (manually held
+      below `derive_confidence()`'s inflated score).
+- [x] Fixed a real RSS spec gap: added the required `atom:link rel="self"` element
+      and `xmlns:atom` namespace, flagged by both the W3C Feed Validator and
+      rssboard's Best Practices Profile.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Run 67 — done
+- [x] Diagnosed the crawler hang via pure static code review (no execution): both
+      network calls already have `timeout=8`, but that only bounds individual reads,
+      not total transfer time on a slow-trickle host. Corroborated by a delayed
+      straggler finding: `crawl_all_sources()` only writes output once at the end,
+      discarding all progress on a hang/kill. Applied a safe incremental-flush
+      mitigation (writes after every source, not just at the end) — verified only via
+      `py_compile`, crawler never executed.
+- [x] Added `data/reports/2027-08-23.json`, a 60th report — Glenn Martens' Margiela
+      debut, confidence discipline holding for a 3rd consecutive report.
+- [x] Fixed a real garments/silhouettes controlled-vocabulary boundary violation
+      ("godet skirt" in both lists for one report) — added explicit prompt guidance
+      separating the two categories going forward.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Run 68 — done
+- [x] Made the actual decision on the historical godet-skirt controlled-vocabulary
+      overlap: removed from `silhouettes`, kept in `garments`, applied via
+      `save_report(revision_reason=..., corrected_at=...)` — reasoned that structured
+      taxonomy fields warrant retroactive correction, unlike editorial narrative.
+- [x] Added `data/reports/2027-08-30.json`, a 61st report — Demna's Gucci debut
+      logged with confidence discipline continuing across 4 consecutive reports.
+- [x] Verified CHANGELOG's run-13 index/detail-file split still holds up cleanly at
+      67 runs — no navigability drift.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Run 69 — done
+- [x] Added `data/reports/2027-09-06.json`, a 62nd report — carefully distinguished
+      Paris SS28 scheduling logistics from a real style signal, honest "thin" call.
+- [x] Colors/aesthetic_terms controlled-vocabulary audit — clean, genuinely verified
+      (same check that found run 67's garments/silhouettes overlap; found nothing
+      here).
+- [x] Found a real process gap: the manual-sampling ~10-run cadence (set run 52) had
+      silently lapsed for 17 runs. Ran the overdue check (honest negative result,
+      valid per the workflow's own rules) and reset the cadence clock.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Run 70 — done
+- [x] `gh` CLI/CI-status check re-confirmed unchanged from run 60 — `gh` CLI still
+      absent, repo still 404s on the public API. Cadence extended to next check at
+      run 80.
+- [x] Added `fhcm.paris` (`institutional`) and `laforma.club` (`editorial`) to
+      `taxonomy.py`'s `DOMAIN_SECTOR_MAP`, verified via WebSearch. Confirmed
+      forward-only precedent: `data/reports/2027-09-06.json`'s existing `unclear`
+      classification for these domains was deliberately NOT retroactively updated.
+- [x] Added `data/reports/2027-09-13.json`, a 63rd report — NYFW SS28's schedule
+      still unannounced a week after Paris confirmed its own, confidence
+      deliberately held "low" as an absence-of-evidence claim.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Run 71 — done
+- [x] Added `data/reports/2027-09-20.json`, a 64th report — CFDA confirmed NYFW
+      SS28's dates, resolving run 70's unannounced-schedule thread; a second signal
+      (Margiela raw-edge tailoring) kept confidence manually held at "medium",
+      independently re-verified against `taxonomy.py`'s actual `DOMAIN_SECTOR_MAP`.
+- [x] Refined the crawler-hang diagnosis and drafted (but did not apply or execute)
+      a `ThreadPoolExecutor`-based hard-deadline fix — the standard, Windows-portable
+      pattern for this bug class. Found a real gap in run 67's flush mitigation: it
+      only protects progress between sources, not a hang within one `crawl()` call.
+- [x] Journalism-standards check against AP corrections and Reuters sourcing
+      conventions — clean, no gap found.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Run 72 — done
+- [x] Implemented the drafted `ThreadPoolExecutor` hard-deadline fix in
+      `src/crawler.py`, corrected a flaw in the original draft
+      (`shutdown(wait=False)` instead of a context manager), and proved it works
+      with a new, safe, localhost-only unit test — independently re-run by the
+      coordinator, passed. Real finding: leaked worker threads are non-daemon and
+      can prevent clean process exit — a likely root cause of prior stray-process
+      incidents (runs 55, 66). `crawler.py` remains off-limits for autonomous
+      execution pending a human-supervised live test.
+- [x] Added `data/reports/2027-09-27.json`, a 65th report — Paris SS28 opens;
+      confidence correctly adopted at the derived "high" as-is since no
+      unclear-sector inflation applied this time.
+- [x] Reviewed `data/reports/2027-09-06.json`'s confidence in light of run 70's
+      taxonomy fix — correctly left unchanged; the report's underlying fact pattern
+      (aggregator reprint, not independent corroboration) still holds regardless of
+      correct sector labels.
+- [x] Nav/build regression sweep found and fixed a real build-hygiene issue (stale
+      `web/out` missing the newest report page); periodic audit added a new
+      CHANGELOG-integrity check (index links match existing files, no gaps/dupes).
+
+## Run 73 — done
+- [x] Fixed the leaked non-daemon worker thread in `crawler.py`'s
+      `get_with_hard_deadline()` — replaced `ThreadPoolExecutor` with a manually
+      spawned `threading.Thread(daemon=True)` + `queue.Queue`. Independently
+      re-verified by the coordinator: process now exits cleanly (exit 0) after a
+      timeout instead of hanging.
+- [x] Added `data/reports/2027-10-04.json`, a 66th report — Margiela raw-edge
+      tailoring's runway/social signal correctly kept at derived "high"; a new,
+      separate retail-adoption signal (Ssense buy) manually held at "medium" for
+      an unclear-sector domain.
+- [x] Closed the South America source gap — added and verified `ffw.com.br`
+      (independent Brazilian fashion editorial platform) to `FASHION_SOURCES` and
+      `DOMAIN_SECTOR_MAP` as `editorial`. Two other candidates (a discrete SPFW
+      domain, a genuine Middle East source) honestly left open — no viable
+      candidate found for either.
+- [x] Nav/build regression sweep confirmed run 72's stale-build fix holds with a
+      clean wipe; periodic audit confirmed confidence discipline correct on both
+      failure modes (inflation and suppression) and found no anomalies.
+
+## Run 74 — done
+- [x] Added `data/reports/2027-10-11.json`, a 67th report — correctly distinguished
+      strong single-sector confirmation (retail-buy continuation, held at "medium")
+      from genuine cross-sector corroboration (critical-reception signal, kept
+      "high").
+- [x] Confirmed the SPFW gap stays closed for a good reason (event/PR content, not
+      a governing body) and found a genuine alternative: added Inexmoda
+      (inexmoda.org.co, Colombia) as a verified `institutional` source.
+- [x] Closed a real content gap: added 50 missing glossary definitions, eliminating
+      the persistent benign "no DEFINITIONS entry" build warnings from runs 72/73.
+- [x] Nav/build regression sweep documented a non-reproducing Turbopack build
+      flake (one clean build dropped a page nondeterministically; three reruns and
+      two independent coordinator rebuilds all produced the correct 67/67).
+- [x] Periodic audit caught its own false-negative API-key check (reported absent,
+      was actually present) — coordinator independently verified with
+      `load_dotenv()` and corrected the record. Signal-reuse checker's new 5th
+      warning (2027-10-11) confirmed as the same known false-positive pattern, not
+      a new bug.
+
+## Run 75 — done
+- [x] Added `data/reports/2027-10-18.json`, a 68th report — honestly closed the
+      5-week Margiela raw-edge thread via editorial close-out; opened a genuinely
+      new signal (Bogotá resort 2028 tailoring) with the first real Inexmoda
+      corroboration, kept "high" as earned cross-sector confirmation.
+- [x] Closed the Middle East source gap — added Vogue Arabia (voguearabia.com,
+      Dubai-based Condé Nast edition) as `editorial` after Arab News and
+      The National both failed JS-rendering/Cloudflare checks.
+- [x] Confirmed `SITE_URL` is already correctly centralized in `web/lib/site.ts`
+      (no scattering to fix) — the remaining item is purely a human-supplied real
+      domain, correctly left deferred.
+- [x] Nav/build regression sweep ran two independent clean builds; run 74's
+      Turbopack flake did not recur.
+- [x] Periodic audit correctly used `load_dotenv()` before its API-key check,
+      applying last run's lesson; all other checks clean.
+
+## Run 76 — done
+- [x] Added `data/reports/2027-10-25.json`, a 69th report — Bogotá thread
+      continued on genuine new movement, correctly held at "medium" for
+      same-sector-only retail corroboration; closed run 75's carried-forward
+      glossary gap plus added this report's own 10 new terms.
+- [x] Fixed a real accessibility bug: most signal titles rendered with no heading
+      element at all (invisible to screen-reader navigation) — wrapped in a real
+      `<h3>`, no visual change, independently confirmed in built output.
+- [x] Added a quick status-read header to `/signals/[slug]` (last-seen date +
+      reports-since, purely computed) without crossing the project's standing
+      editorial-judgment boundary for dormant/resolved verdicts.
+- [x] Nav/build regression sweep and periodic audit both clean; periodic audit
+      flagged the manual-sampling cadence (7/10 runs since reset) as due for a
+      proactive run soon.
+
+## Run 77 — done
+- [x] Added `data/reports/2027-11-01.json`, a 70th report — kept a São Paulo
+      echo of the Bogotá waist-tailoring silhouette as a distinct sibling signal
+      rather than merging it, correctly held at "medium" for single-sector
+      corroboration.
+- [x] Ran the manual-sampling cadence proactively before it could lapse again —
+      honest negative, consistent with every prior check. Next due ~run 87.
+- [x] Resolved the "Vogue" glossary gap with a real definition (legitimate
+      citation of vogue.com in a report's `cultural_references`, same pattern as
+      other publication/institution entries) rather than weakening the scanner.
+- [x] Nav/build regression sweep and periodic audit both clean; nav/build sweep
+      correctly identified a report-count discrepancy as concurrent-agent timing,
+      not a regression — coordinator independently confirmed via `git diff --stat`.
+
+## Run 78 — done
+- [x] Added `data/reports/2027-11-08.json`, a 71st report — a mechanical-vs-intent
+      confidence override reasoned through in detail (a citation-free synthesis
+      essay held at "low" despite its sector's usual high-reliability exception).
+- [x] Fixed a real RSS bug: unbounded feed growth (70+ items, growing weekly) —
+      capped at 50 items per researched RSS convention, independently confirmed
+      in built output.
+- [x] Confirmed sitemap/SEO coverage is complete and JSON-LD already exists from
+      a prior run — made an explicit judgment call not to expand further, no
+      real discoverability value at this archive's current size.
+- [x] Nav/build regression sweep clean. Periodic audit initially misreported
+      python-dotenv as missing; coordinator's independent check plus a follow-up
+      with the agent traced it to a PATH/interpreter mismatch in that agent's
+      shell session, not a real environment issue.
+
+## Run 79 — done
+- [x] Added `data/reports/2027-11-15.json`, a 72nd report — Business of Fashion
+      interviews surface the Bogotá thread's first designer-sourced intent
+      statement, held at "medium" for single-sector corroboration.
+- [x] `gh`/CI check confirmed unchanged, done a run early as a courtesy for
+      run 80 (8th consecutive matching check).
+- [x] Fixed three real staleness gaps in the methodology page: missing
+      confidence-override discipline, missing `unclear`-sector explanation,
+      missing mention of `/signals/[slug]` longitudinal tracking — verified by
+      the coordinator reading the diff directly.
+- [x] Nav/build regression sweep clean, RSS confirmed at exactly 50 items.
+- [x] Periodic audit clean overall, but its `ANTHROPIC_API_KEY` check produced a
+      second consecutive false negative (runs 78, 79) — coordinator independently
+      confirmed the key is present both times; this specific sub-check should be
+      treated as low-trust and always independently re-verified going forward.
+
+## Run 80 — done
+- [x] Added `data/reports/2027-11-22.json`, a 73rd report — Bogotá/São Paulo
+      thread deliberately not padded; a new opera-gloves awards-season thread
+      split into two distinct signals, their same-week co-occurrence correctly
+      not treated as cross-sector corroboration.
+- [x] `gh`/CI check hit its official run-80 checkpoint — 9th consecutive match,
+      cadence extended to run 90.
+- [x] About/case-study freshness audit clean — case-study page already
+      accurately states the crawler limitation and hand-authored-report reality.
+- [x] Nav/build regression sweep clean, all 8 tracked prior fixes verified
+      intact in built output.
+- [x] Root-caused and fixed the `ANTHROPIC_API_KEY` false-negative pattern from
+      runs 78-79: split shell invocations of `load_dotenv()` and the
+      subsequent check lose the environment mutation between processes. A
+      single combined invocation works correctly — independently reproduced
+      by the coordinator.
+
+## Run 81 — done
+- [x] Added `data/reports/2027-11-29.json`, a 74th report — a synthesis signal
+      held at "low" for zero new primary sourcing, same discipline as the
+      Bogotá thread's earlier precedent.
+- [x] Eliminated the signal-reuse checker's 5-item false-positive baseline with
+      a conservative, literal-phrase exclusion — independently verified by the
+      coordinator via a standalone recall test (a simulated genuine bug is
+      still correctly caught).
+- [x] Fixed two real staleness gaps: Sources page was missing 13 currently-
+      crawled outlets (including all three recent additions); Taxonomy page
+      was missing the entire Origin Classification dimension.
+- [x] Nav/build regression sweep clean. Periodic audit confirmed the run-80
+      API-key fix holds on first re-use (single-invocation method correctly
+      returns `True`).
+
+## Run 82 — done
+- [x] Added `data/reports/2027-12-06.json`, a 75th report — a Chanel resort
+      signal earned "high" via genuine cross-sector corroboration; a holiday-
+      social signal correctly held at "low"; same-week timing between them
+      explicitly noted as coincidental, not corroboration.
+- [x] Dormancy/prolonged-silence convention audit — genuinely clean, all 5
+      signals that crossed the threshold were already correctly transitioned.
+- [x] Closed a real provenance gap: `revision_history` now auto-computes and
+      records exactly which signals were added/removed/modified on every
+      correction, not just that a correction happened — backward-compatible,
+      independently reviewed and confirmed working on old entries.
+- [x] Nav/build regression sweep clean, run 81's Sources/Taxonomy content
+      confirmed present.
+- [x] Fixed a real doc-tracking gap: `docs/manual-sampling-workflow.md` itself
+      never recorded its own cadence reset/next-due date — added a "Cadence
+      tracking" section directly to the doc so it can't silently drift out of
+      sync with TODO.md again.
+
+## Run 83 — done
+- [x] Added `data/reports/2027-12-13.json`, a 76th report — correctly trusted
+      the mechanical `derive_confidence()` output where no override trigger
+      applied, rather than second-guessing an already-correct formula result.
+- [x] Fixed a real, proportionate archive UX gap: added year-grouping headers
+      to the archive listing at 75+ items; explicitly declined to build
+      pagination/tag-filtering the archive doesn't yet need.
+- [x] Consolidated 12 confidence-override precedents into a permanent,
+      cited reference (`docs/confidence-discipline-precedents.md`) — ends the
+      pattern of each report-writing agent rediscovering precedent from
+      scratch. The consolidation audit also surfaced two genuine unreconciled
+      precedent departures (below) — a real finding, not a silent bug.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Run 84 — done
+- [x] Resolved both run-83 flagged confidence-precedent inconsistencies as
+      corrections, not new precedents. `dior-cruise-2027-lacma-debut` (2027-05-17):
+      a directly on-point counter-example already existed in precedent 2's own
+      worked examples (chanel-cruise-2027-biarritz-debut, held at medium two
+      weeks earlier under an identical fact pattern) — formalizing the proposed
+      exception would create a loophole. `couture-fw27-debuts-reception`
+      (2027-07-12): the "backward-looking vs. forward-looking" argument doesn't
+      engage precedent 3's actual mechanism and contradicts the immediately
+      preceding week's identical handling. Both corrected high → medium via
+      `save_report()`; the long-standing 2027-05-17 confidence warning is now
+      fully resolved.
+- [x] Added `data/reports/2027-12-20.json`, a 77th report — a novel single-
+      source resale-platform case didn't match any of the 12 documented
+      precedents, so the mechanical "low" was correctly left as-is and flagged
+      as a future precedent candidate rather than silently inventing an
+      exception.
+- [x] Archive year-grouping change (run 83) independently re-verified: all
+      reports appear exactly once with correct year placement, no downstream
+      impact on RSS/glossary since `lib/reports.ts` was untouched.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Run 85 — done
+- [x] Added `data/reports/2027-12-27.json`, a 78th report — genuinely thin
+      Christmas week, `collection_status: "thin"`, zero manufactured signals.
+- [x] Formalized precedent 13 (resale-platform corroboration reliability) after
+      real research finding split evidence on resale data as a demand
+      indicator, extending the existing Pinterest-marketing skepticism to
+      resale platforms.
+- [x] Archive tag-filter feasibility: pulled real tag data across 77 reports
+      (68% of distinct tags occur exactly once) and correctly declined to build
+      a filter the data doesn't yet support, with concrete prerequisites
+      documented for revisiting later.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Run 86 — done
+- [x] Added `data/reports/2028-01-03.json`, a 79th report — first report dated
+      in 2028; a second consecutive honest thin week, deliberately excluding
+      speculative year-ahead forecast content as not evidence of realized
+      discourse.
+- [x] Confirmed the archive's year-grouping logic is genuinely general and
+      handles the 2028 boundary correctly — coordinator caught and disproved a
+      false-alarm regression report (stale build artifact from a concurrent
+      build-lock collision, not a real bug).
+- [x] Robots/crawl-budget audit confirmed run 78's findings still hold at
+      ~191 routes (~0.4% of the sitemap threshold).
+- [x] Periodic audit found a real structural gap: precedent 13's resale
+      domains are classified in `taxonomy.py` but not seeded in `crawler.py`'s
+      `FASHION_SOURCES` — independently confirmed by the coordinator.
+
+## Run 87 — done
+- [x] Added `data/reports/2028-01-10.json`, an 80th report — a menswear
+      calendar signal correctly earned "high" (WWD added genuinely new detail,
+      not a reprint), a clean application of precedent 4 on its non-triggering
+      side.
+- [x] Closed the resale-platform source-seeding gap with a rigorous "none
+      pass" verdict — all 5 candidate domains confirmed JS-rendered/blocked and
+      unreachable by this crawler's static-HTML extraction; a settled
+      limitation, not left open.
+- [x] Ran the manual-sampling cadence check on its due date — same honest
+      negative as every prior check. Cadence tracking updated in place, next
+      due ~run 97.
+- [x] Nav/build regression sweep explicitly re-confirmed run 86's year-boundary
+      fix under a truly clean, fully-completed build this time.
+- [x] Periodic audit clean; a flagged "cadence doc not updated" finding was a
+      simple same-run timing race, confirmed correctly updated at
+      consolidation.
+
+## Run 88 — done
+- [x] Added `data/reports/2028-01-17.json`, an 81st report — Gucci menswear
+      debut coverage correctly held at "medium" per precedent 2 (same-sector
+      coverage, not cross-sector corroboration).
+- [x] Formalized precedent 14 (forecast/speculative-content exclusion) after
+      real scrutiny, not a rubber stamp — found a genuine taxonomy gap
+      (no `origin_classification` value fits a pure forecast), a narrow
+      never-yet-triggered carve-out for genuine multi-outlet convergence, and
+      independent corroborating evidence from a report a full year earlier
+      that silently applied the same logic.
+- [x] Fixed a real README/live-site inconsistency: README presented
+      `crawler.py`/`run.sh` as ordinary runnable commands, contradicting the
+      standing off-limits status documented since run 66. Report-count
+      framing, Limitations/roadmap alignment, and API key setup all confirmed
+      already accurate.
+- [x] Nav/build regression sweep and periodic audit both clean; periodic audit
+      added a lightweight agent-log directory hygiene check (441 files, no
+      empty/truncated entries).
+
+## Run 89 — done
+- [x] Added `data/reports/2028-01-24.json`, an 82nd report — Louis Vuitton
+      menswear signal earned "high" via genuine cross-sector corroboration;
+      couture SS28 deliberately excluded since it opens after menswear month
+      ends, not forced into this window.
+- [x] Closed a real structural gap: `src/summarize.py`'s LLM prompt now
+      embeds the 5 most recurrence-prone confidence-discipline precedents
+      directly, so the future automated pipeline will apply them even after
+      autonomous report-writing agents stop being the ones doing it by hand.
+- [x] `gh`/CI check confirmed unchanged a run early as a courtesy for run 90
+      (10th consecutive matching check).
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Run 90 — done
+- [x] Added `data/reports/2028-01-31.json`, an 83rd report — Dior Haute
+      Couture SS28 correctly lands this window (deferred from last week's
+      report pending menswear month's close), earning "high" via genuine
+      cross-sector corroboration.
+- [x] `gh`/CI check hit its official run-90 checkpoint — 11th consecutive
+      match, cadence extended to run 100.
+- [x] Reviewed all 9 confidence precedents excluded from `summarize.py`'s
+      condensed prompt summary with real recurrence data — confirmed the
+      current 5-precedent cut remains correct; all 9 excluded ones have
+      recurred only once or twice across 83 reports.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Run 91 — done
+- [x] Added `data/reports/2028-02-07.json`, an 84th report — NYFW FW28
+      women's calendar confirmation logged as a factual institutional+
+      editorial signal, otherwise an honest thin week. Fixed a real
+      filename/`report_date` convention mismatch: the agent correctly
+      flagged (rather than silently resolved) that it had used the window's
+      start date instead of the archive's established end-date convention;
+      coordinator corrected `report_date`, recomputed `content_hash`, and
+      renamed the file to match.
+- [x] Dormancy/prolonged-silence re-audit across all 83 reports — clean, no
+      new violations, all 5 previously-transitioned signals still correct.
+- [x] First full glossary voice audit since run 78 — checked all 146 entries,
+      zero violations found.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Run 92 — done
+- [x] Fixed the real root cause of run 91's filename/date bug: the
+      `report_date == collection_window.end` convention was never documented
+      anywhere. Added an explicit docstring and a non-fatal `validate_report()`
+      warning that would catch a recurrence automatically. Audited all 84
+      reports at the time programmatically — the bug never reached the archive
+      on disk.
+- [x] Added `data/reports/2028-02-14.json`, an 85th report — correctly filed
+      under the end-of-window date on the first attempt, triggering no
+      warning from the new validator. Proenza Schouler NYFW FW28 signal
+      earned "high" via genuine cross-sector corroboration.
+- [x] Taxonomy/sources pages re-verified accurate since run 75/81; a
+      reasonable judgment call declined to duplicate confidence-precedents
+      prose onto the Taxonomy page.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Run 93 — done
+- [x] Added `data/reports/2028-02-21.json`, an 86th report — Khaite NYFW
+      FW28 and LFW calendar-confirmation signals both matched existing
+      precedent shapes exactly, including explicit precedent-6 application
+      for their same-week co-occurrence.
+- [x] Closed the flagged `proenzaschouler.com` taxonomy gap with real
+      verification (genuine designer-origin site); surveyed the full archive
+      and found 58 more unmapped domains, all editorial/media/retail —
+      listed by citation frequency for a future dedicated run rather than
+      fixed piecemeal.
+- [x] About/case-study freshness re-checked 12+ runs later — still accurate.
+- [x] Nav/build regression sweep and periodic audit both clean. Diagnosed and
+      resolved a transient Pagefind filesystem race on the first build
+      attempt (Next.js itself compiled fine; not a real regression).
+
+## Run 94 — done
+- [x] Added `data/reports/2028-02-28.json`, an 87th report — Simone Rocha
+      MFW FW28 and MFW calendar-confirmation signals both matched established
+      precedent shapes cleanly.
+- [x] Closed 8 of run 93's 58 flagged taxonomy gaps with independent
+      verification — correctly reclassified `istitutomarangoni.com` as
+      `institutional` rather than editorial like its 7 neighbors.
+      ~50 domains remain listed in `docs/agent-logs/taxonomy-gap-fix-run94.md`.
+- [x] First dedicated `/timeline` audit — confirmed accurate and purposeful,
+      fixed one stale code comment (falsely claimed no `signal_id` field
+      existed, when it's been used since run 4).
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Run 95 — done
+- [x] Added `data/reports/2028-03-06.json`, an 88th report — correctly
+      handles the 2028 leap-year Feb 29 window boundary and fashion-month
+      sequencing (avoided claiming a Paris runway review before shows opened).
+- [x] Ran the manual-sampling cadence proactively before its due date —
+      same honest negative as every prior check. Cadence extended to run 105.
+- [x] RSS/sitemap re-verified healthy at the archive's larger scale — exact
+      count matching (203 sitemap entries = 87 reports + 106 signal_ids), RSS
+      cap holds precisely at 50.
+- [x] Nav/build regression sweep and periodic audit both clean; periodic
+      audit caught and discarded its own www-prefix false positive.
+
+## Run 96 — done
+- [x] Added `data/reports/2028-03-13.json`, an 89th report — Miu Miu and
+      Loewe FW28 signals both earned "high" cleanly; correctly declined to
+      merge a possible cross-house "unfinished edge" echo with the closed-out
+      Margiela raw-edge thread, flagging it for future review instead.
+- [x] Closed 8 more taxonomy gaps (backlog 50→42); caught a genuine data-
+      quality artifact (`uraniumwaves.com`, an unrelated music blog cited as
+      a source domain) rather than force-classifying it.
+- [x] Rigorous, evidence-based search-quality verification — confirmed
+      Pagefind's actual WASM search ranks and links results correctly via
+      real programmatic queries, not just a successful build.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Run 97 — done
+- [x] Traced and fixed a genuine fabricated source (`uraniumwaves.com`, an
+      unrelated music blog) cited on the `wales-bonner-hermes-debut` signal
+      in two historical reports — corrected via `save_report()` with proper
+      revision tracking since it was load-bearing (inflated corroboration
+      count, fed the confidence/transition reasoning).
+- [x] Cross-house aesthetic cluster review honestly closed as a non-issue —
+      Margiela and Miu Miu raw-edge signals are unrelated (5 months apart,
+      different techniques, never independently covered together).
+- [x] Added `data/reports/2028-03-20.json`, a 90th report — a new,
+      independently-arising editorial synthesis signal that coherently
+      doesn't contradict the same-run cluster review (new week's discourse,
+      not a retroactive claim); flagged as a candidate 15th precedent.
+- [x] Nav/build regression sweep and periodic audit both clean; periodic
+      audit independently confirmed the historical corrections were properly
+      tracked, not silent edits.
+
+## Run 98 — done
+- [x] Formalized precedent 15 ("editorial synthesis" signals) with a
+      three-part gate (both antecedents pre-existing, 2+ independent
+      outlets, cites underlying facts) and explicit non-retroactivity on
+      the antecedent signals — verified against run 97's worked example.
+- [x] Closed 10 more taxonomy gaps (backlog 42 → 32), catching a second
+      genuine data artifact (`cafedelhomme.com`, a Paris restaurant site).
+- [x] Added `data/reports/2028-03-27.json`, a 91st report — a genuinely
+      thin post-fashion-month week correctly left with `top_signals: []`
+      rather than padded with a single-source restatement.
+- [x] Nav/build regression sweep and periodic audit both clean; periodic
+      audit reconfirmed run 97's two historical corrections remain intact.
+
+## Run 99 — done
+- [x] Formalized precedent 16 (never describe a single-outlet signal's
+      sourcing in the plural) from Reuters' published sourcing convention,
+      codifying what run 71 had only informally spot-checked.
+- [x] Added two sentences to `web/app/methodology/page.tsx` naming the
+      domain-level-citation policy as a deliberate, acknowledged departure
+      from IFCN's reader-verification standard, plus documenting the new
+      plural-sourcing rule for readers.
+- [x] Closed 20 more taxonomy gaps (backlog 32 → 12), catching two more
+      radio-station data artifacts (`ipowerrichmond.com`, `wkzo.com`).
+- [x] Added `data/reports/2028-04-03.json`, a 92nd report — an honest
+      empty week as the archive's fictional calendar drifts further past
+      the real session date, correctly not fabricated.
+- [x] Nav/build regression sweep and periodic audit both clean; periodic
+      audit reconfirmed run 97's two historical corrections remain intact
+      and flagged one pre-existing legacy confidence-tier artifact.
+
+## Run 100 — done
+- [x] Added a new `trade_intelligence` taxonomy sector for B2B trend-
+      forecasting/retail-analytics vendors (wgsn.com, trendalytics.co,
+      stylearcade.com), closing the taxonomy backlog to zero; kept
+      deliberately out of `HIGH_RELIABILITY_SECTORS`.
+- [x] gh CLI/CI-status check corrected a stale claim — CI has actually
+      existed since the original build (`.github/workflows/validate-reports.yml`,
+      commit `f77c06c`), not "not configured" as repeatedly noted before.
+      Next check due run 110.
+- [x] Added `data/reports/2028-04-10.json`, a 93rd report — an honest
+      empty week, correctly not fabricated.
+- [x] Nav/build regression sweep clean (220 routes).
+- [x] Periodic audit clean; declined to retroactively fix the archive's
+      oldest report's legacy confidence artifact per precedent 12; flagged
+      a new candidate 17th precedent from a genuine mismatch in a live
+      report (`2027-06-14.json`).
+
+## Run 101 — done
+- [x] Formalized precedent 17 (absence-of-coverage signals don't get the
+      single-source high-reliability-sector exception); left the two
+      source reports unedited per precedent 12, since the value was
+      already correct and only the documentation was missing.
+- [x] Wired the `trade_intelligence` sector into `taxonomy/page.tsx` and
+      `sources/page.tsx`; confirmed `reports.ts` and `SearchClient.tsx`
+      needed no change.
+- [x] Added `data/reports/2028-04-17.json`, a 94th report — a fourth
+      consecutive honest thin week, correctly not fabricated.
+- [x] Nav/build regression sweep and periodic audit both clean; periodic
+      audit re-verified 10 taxonomy classifications with no new artifacts.
+
+## Next up (run 102 candidates)
+- [ ] The archive's oldest report (`2026-05-07.json`) has one signal with
+      an unexplained mechanical-vs-assigned confidence mismatch, predating
+      the confidence-discipline system — legacy artifact, not yet corrected.
+- [ ] No structured `digitalSourceType` (IPTC/schema.org) AI-disclosure
+      metadata in report pages' JSON-LD yet — needs an editorial judgment
+      call on which IPTC value applies before implementing.
+- [ ] The archive's fictional forward calendar now sits over two years
+      past the real session date, with four consecutive thin weeks — worth
+      a human decision on pacing eventually; not an active bug.
+- [ ] Manual-sampling cadence next due ~run 105.
+- [ ] Still awaiting a human-supervised live test of `crawler.py` against real
+      sources — both fixes (runs 72, 73) remain implemented and locally proven
+      only; README now accurately reflects this off-limits status.
+- [ ] `SITE_URL` remains a placeholder domain — correctly confirmed as needing only
+      a human-supplied real domain, no further autonomous work possible here.
+- [ ] The underlying human-in-the-loop process gap flagged in run 50 remains open.
+- [ ] `gh` CLI/CI-status check next due at run 110.

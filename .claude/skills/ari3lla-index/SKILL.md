@@ -33,19 +33,34 @@ wrong for this project, full stop — rewrite it in report/wire-service voice.
 ## Architecture / file map
 
 ```
+requirements.txt      # Python deps (run 55) for crawler.py/summarize.py/server.py/
+                       # manual_sample.py: requests, beautifulsoup4, anthropic, brotli
+                       # (brotli needed for hosts serving Brotli-compressed responses —
+                       # see agent-logs/dieworkwear-crawl-verification-run55.md); `mcp`
+                       # (for server.py) is installed separately, not listed here
 src/
   crawler.py         # BFS crawler, robots.txt-respecting, extracts headlines — UNCHANGED core logic
-  taxonomy.py         # source sector / confidence / volatility / origin-classification vocab + classify_source(url)
-  report_schema.py    # Report/Signal/CollectionWindow dataclasses, validate_report(), save/load/list by date
+  taxonomy.py         # source sector / confidence / volatility / origin-classification vocab + classify_source(url); domain coverage expanded run 12 for 4 previously-thin sectors (designer_origin, visual_archive, independent_criticism, institutional)
+  report_schema.py    # Report/Signal/CollectionWindow dataclasses, validate_report(), save/load/list by date; get_signal_status_history(signal_id, all_reports) (run 12) surfaces a signal's volatility/confidence trend across reports instead of a static dormancy label
   summarize.py        # calls Claude to produce a report; prompt MUST follow doc section 21's objective tone; max_tokens=4000 (fixed run 8, was 2000 and truncated real API output)
   server.py           # MCP tools: crawl_fashion_trends, get_cached_trends, search_trends, list_reports, get_report — now uses shared DEFAULT_OUTPUT_FILE constant (run 8)
   run.sh               # runs the full pipeline: crawler.py -> summarize.py (classify+summarize+save dated report). Fixed in run 1 — no longer stale.
   test_tools.py       # tests the OLD raw-cache pipeline, unrelated to report_schema — leave alone unless migrating it
   manual_sample.py    # helper for the manual TikTok/Pinterest sampling workflow; enforces non-empty human_editor_note
   validate_all_reports.py  # CI check — runs validate_report() against every file in data/reports/, see .github/workflows/validate-reports.yml; also runs derive_confidence() as a non-blocking warning (run 8)
+  audit_confidence.py # reusable script (run 7) comparing assigned confidence vs. derive_confidence() across all reports; used for periodic confidence/dormancy review, not wired into CI
+  check_field_coverage.py # reusable script (run 25) enumerating every Report/Signal schema field and flagging any that's neither typed in reports.ts nor referenced in a .tsx file — the structural fix for the "claimed but not shown" bug pattern (human_editor_note/thin_week_note/revision_history all shipped in data before they were ever rendered); non-blocking, not wired into CI
+  check_heading_patterns.py # reusable script (run 22, revisited run 29) — heuristic scan for the recurring styled-<p>-as-heading bug that ESLint/jsx-a11y cannot catch; not wired into CI, manual/heuristic
+  generate_archive_manifest.py # reusable script (run 43) — manifest of /reports/[date] URLs + content hashes for a human operator to feed into archive.org's Save Page Now once a real SITE_URL exists; does not call any Wayback API itself, not wired into CI
+  check_signal_reuse_claims.py # reusable script (run 61) — flags a report's own reuse/continuation prose (index_note/human_editor_note/limitations) naming a signal_id not present in that report's own top_signals; narrow heuristic for the run 57/58 Met Gala signal_id bug pattern; not wired into CI, exit code always 0. Run 62 ran `--all` against the full 54-report archive: 0 true positives, 4 flagged mismatches, all confirmed false positives from the same known limitation (negation/precedent-mention language, e.g. "is not carried forward" or citing a prior signal_id as a precedent rather than claiming reuse of it) — expect a handful of these on every `--all` run, dismiss after a quick read rather than treating as a bug. Made a **standing step of the periodic-audit routine** (run 62 decision) alongside `audit_confidence.py`/`check_field_coverage.py`: run `--all` periodically, not just ad hoc, since it's cheap, non-blocking, and does target a real bug class even though it hasn't caught a live instance since run 57/58.
 data/
   reports/<YYYY-MM-DD>.json   # one archived report per collection window, schema in report_schema.py
 web/                   # Next.js app
+  scripts/
+    copy-reports.mjs    # copies data/reports/*.json into public/data/reports/ (run 45,
+      hardened run 46 to also run directly from next.config.ts, not just the npm
+      "prebuild" lifecycle hook); backs the Dataset JSON-LD DataDownload + visible
+      "download raw data" link on reports/[date]/page.tsx
   app/
     page.tsx            # homepage — hero/tagline/footer must match section 2 voice + section 25 copy
     archive/page.tsx     # lists all dated reports
@@ -55,19 +70,32 @@ web/                   # Next.js app
     methodology/page.tsx  # doc section 22
     taxonomy/page.tsx     # doc sections 11/14/15/16
     sources/page.tsx      # doc section 11's outlet lists
+    search/page.tsx, search/SearchClient.tsx  # client-side facet filter (source sector,
+      confidence, volatility) over getSearchIndex() in reports.ts (run 12), plus Pagefind
+      full-text search over report prose (added a later run, see
+      agent-logs/pagefind-integration.md — no longer deferred)
     about/page.tsx        # doc sections 37/38
+    glossary/page.tsx     # ~29 terms from aesthetic_terms/cultural_references/top_signals[].name across all reports, deduped, wire-service definitions (shipped run 20)
     case-study/page.tsx   # doc section 33, portfolio framing
-    layout.tsx           # site-wide <title>/description metadata — keep in sync with rebrand, this has gone stale before
+    layout.tsx           # site-wide <title>/description metadata — keep in sync with rebrand, this has gone stale before; also renders a site-wide skip-to-content link (`<a href="#main-content">`, `#main-content` on <main>) verified across all 117 generated pages, agent-logs/skip-link-verification-run57.md
+    globals.css          # includes a `prefers-color-scheme: dark` block for automatic dark-mode styling (OS-preference-driven, no manual toggle)
     sitemap.ts, robots.ts  # added run 5
+    icon.tsx              # route-segment metadata file (run 53) — Next auto-generates the
+      favicon via ImageResponse, no binary asset; needs `dynamic = "force-static"` for
+      static export, same pattern as sitemap.ts/robots.ts
+    rss.xml/route.ts      # RSS feed over the report archive
   lib/
-    trends.ts           # ORIGINAL data layer for the live/current-crawl view — don't repurpose for archive reads
-    reports.ts           # archive data layer, reads data/reports/*.json — separate from trends.ts on purpose
+    reports.ts           # archive data layer, reads data/reports/*.json; homepage reads off this too (trends.ts retired run 13, confirmed gone — do not re-add); also exposes getSearchIndex() (run 12) for the /search facet filter and getConsecutiveThinWeekCount()/getLatestReport() helpers (run 13)
+    site.ts               # shared SITE_URL/SITE_NAME constants for metadata/sitemap/robots/JSON-LD
 docs/
   ARI3LLA INDEX.txt      # source concept doc, read-only reference, don't edit
-  CHANGELOG.md           # master reconciled log of what changed and why, chronological, PDT/PST timestamps
+  CHANGELOG.md           # master INDEX — one paragraph + link per run, chronological, PDT/PST timestamps
+  changelog-entries/*.md # full per-run changelog detail (run-00-branch-setup.md .. run-16.md), linked from CHANGELOG.md
+  PROMPT_CHANGELOG.md    # dedicated review trail for summarize.py's prompt instructions (added run 15, reconstructed retroactively from git history)
   PROJECT_STRUCTURE.md   # intended end-state tree with per-entry notes
   agent-logs/*.md        # per-agent working logs from the overnight build — provenance detail, not the master log
   agent-logs/live-crawl-2026-07-06-real-output.json  # real crawler.py+summarize.py output (run 8), saved for reference, not merged into data/reports/ (collided with existing curated date)
+  agent-logs/fashion-week-calendar-research.md  # NYFW/LFW/MFW/PFW run ~Sept 8 - Oct 6, 2026 (run 16 research) — see institutional-knowledge note below
 .github/
   workflows/validate-reports.yml  # CI: runs validate_all_reports.py on push/PR (added run 4)
 ```
@@ -85,6 +113,11 @@ docs/
 3. **Always verify before committing**: `cd web && npx tsc --noEmit && npx next build` for
    the frontend, `python -m py_compile src/*.py` for the backend. Don't trust an agent's
    self-report of "verified" without re-running it if you're the one consolidating.
+   **When adding new page copy/sections, manually check for the styled-`<p>`-as-heading
+   bug** (a `<p>` with heading-scale styling instead of a real `<h1>`-`<h6>`) — this has
+   recurred 3+ times across runs and jsx-a11y/ESLint cannot detect it (confirmed run 22:
+   it only checks tag semantics, not computed visual styling), so it needs an actual
+   visual/structural read, not just a lint pass.
 4. **Never let voice slip** — if new copy sounds like a blog post or an ad, it's a bug, not
    a style choice. Check against doc section 2 before shipping any new page copy.
 5. **The designer-eye / interpretive classification work (which signals cluster together,
@@ -106,22 +139,101 @@ docs/
    the original agents' logged specs. Caught only because the coordinator diffed actual
    working-tree state against each agent's described changes before committing.
 
+8. **Avoid hardcoded counts/date-ranges in docs that will go stale.** README/
+   PROJECT_STRUCTURE's report-count and dated-file-list claims went stale twice
+   (doc-sync runs 18 and 23) because they're manually maintained numbers that drift
+   every time a new report is added. Run 24 replaced them with pointers to the live
+   `/archive` page or `data/reports/` instead of a specific number/list. When editing
+   docs going forward, prefer phrasing that doesn't need updating (point at the live
+   source of truth) over a hardcoded count/date-range; if a specific number is
+   genuinely useful, tag it with "(count as of <date>, verify against
+   data/reports/ for current total)" so it reads as a snapshot, not a guarantee.
+
+9. **A schema field being populated with real data is not the same as it being visible
+   to a reader, and a documented instruction is not the same as it actually working.**
+   Three separate runs (21, 23, 24) found fields (`human_editor_note`,
+   `revision_history`, `thin_week_note`) that were typed, populated, and referenced in
+   the site's own transparency claims — but never actually rendered anywhere, making
+   those claims false in practice. Run 25's `check_field_coverage.py` is the structural
+   fix for this specific pattern. Separately, run 28 found README's own run instructions
+   (`bash run.sh`) didn't work from the documented starting point. When a doc or schema
+   field makes a claim about what the project does, verify it end-to-end (grep for the
+   render site, or actually run the command) rather than trusting that "it's in the
+   data/doc" means "it's true of the live site."
+
+10. **A prolonged-silence factual question is not the same as a dormant style signal, and
+    must not be closed out the same way.** Dormant STYLE signals (off-duty-varsity,
+    layered-tops-styling) get an `EDITORIAL CLOSE-OUT` note declaring them
+    resolved/faded — a legitimate call, since discourse volume genuinely dropping is an
+    observable fact. A tracked FACTUAL question (e.g. CFDA Fashion Fund winner, CFDA
+    Fashion Awards — both past `is_prolonged_silence()`'s threshold as of the
+    2026-12-21 report) has no such resolution available from silence: the crawler not
+    finding an answer is not evidence the question is settled. Do not declare these
+    "closed" or "resolved." Once `is_prolonged_silence()` has been True for several
+    consecutive windows running (roughly 3 windows past the initial crossing), mark the
+    signal_id **"untracked going forward pending new information"** in prose
+    (`human_editor_note`/`index_note`/`archive_tags`) instead of repeating the same
+    "still open" note every week. This is a third, honest state — distinct from
+    "resolved" and from routine "still tracked" — that lets future report-writing
+    agents stop re-litigating the question weekly without fabricating an answer. Any
+    agent that later finds real coverage should resume normal tracking/resolution.
+    See `is_prolonged_silence()`'s docstring in `src/report_schema.py` and
+    `docs/agent-logs/permanent-open-signal-design.md` for full reasoning. No new schema
+    enum was added for this — it's expressed as prose in existing free-text fields.
+
+11. **`gh` CLI / CI-status check cadence: every 10th run, not every run.** Runs 26-52
+    (20 consecutive checks) all confirmed `gh` unavailable on PATH with zero new
+    information. Run 53 also tried an unauthenticated GitHub public-API alternative
+    (`https://api.github.com/repos/arikthehacker/fashion-trend-crawler`) as a `gh`-free
+    path to real CI status — it 404s on the repo's own root endpoint, meaning the repo
+    is private, so this hits the same no-auth wall `gh` does, not a different one. There
+    is no read-only way to confirm real GitHub Actions pass/fail status from this
+    environment. Going forward: check `gh`/API access only every 10th periodic-audit run
+    (next due run 60), and treat 9 skipped runs in between as "no new information, see
+    last check" rather than silently dropping the topic. If the environment ever changes
+    (repo made public, `gh` installed, a token becomes available), resume checking every
+    run until confirmed stable. See `docs/agent-logs/ci-verification-approach-run53.md`.
+
+12. **Periodic-audit routine's task template should include `check_signal_reuse_claims.py
+    --all`** (decided run 62), alongside `audit_confidence.py --all`-style checks and
+    `check_field_coverage.py`. It's cheap and non-blocking, and its zero-true-positive
+    track record so far (runs 61-62, full archive both times) doesn't mean it's
+    catching nothing — it means the run 57/58 Met Gala bug class hasn't recurred since it
+    was fixed. Expect a few false-positive warnings each run from its documented
+    negation/precedent-mention limitation (see the script's file-map entry above); a
+    human skims and dismisses those in under a minute, same review step
+    `check_field_coverage.py`/`audit_confidence.py` already expect. `validate_all_reports.py`
+    deliberately does NOT mention this script (or `audit_confidence.py`/
+    `check_field_coverage.py`) in its own output/comments — it's the CI-blocking schema
+    gate, and cross-referencing every non-blocking sibling script there would be scope
+    creep un-related to schema validation; this list in SKILL.md plus TODO.md is the
+    right place to track "what non-blocking checks exist."
+
+## Institutional knowledge worth knowing before you start
+
+**Fashion-week calendar context (run 16 research,
+`docs/agent-logs/fashion-week-calendar-research.md`):** NYFW/LFW/MFW/PFW run roughly
+Sept 8 - Oct 6, 2026. The site has logged 5 consecutive thin/low-volatility reports
+(07-27 through 08-24) — this is a **verified, expected quiet stretch**, not a crawl or
+sourcing failure. Don't treat it as a bug to fix or force `collection_status: "normal"`
+before fashion month actually starts around Sept 8, 2026. This isn't obvious from the
+schema or code alone — it only shows up if you've read the run-16 agent log, so it's
+called out here explicitly.
+
 ## Common next steps
 
 See `TODO.md` at repo root for the current authoritative, per-run list (updated every loop
-run) — don't duplicate it here. As of run 9, the highest-priority open items are:
+run) — don't duplicate it here. As of run 28, the highest-priority open items ("run 29
+candidates" in `TODO.md`) are:
 
-- `save_report()` now has a `revision_history` mechanism (run 9) that requires a
-  `revision_reason`/`corrected_at` when overwriting a differing report for an existing
-  date. A live `crawler.py` + `summarize.py` run succeeded (run 8) but its output for
-  today's date predates this mechanism and still hasn't been merged — see
-  `docs/agent-logs/pipeline-rerun-design.md` for the recommended approach (use
-  `revision_history`, not a silent overwrite or a `--force` flag).
-- Corrections/transparency/AI-disclosure sections shipped on methodology/about pages
-  (run 7) — this item is closed.
-- Legacy `trends_raw.json`/`trends_summary.json` migration: 4 of 5 steps done (crawler.py,
-  summarize.py, server.py, test_tools.py all now reference one shared
-  `DEFAULT_OUTPUT_FILE` constant). Step 5 (final deletion) is unblocked pending one last
-  verification pass that nothing else references the old literal filename.
-- Manual-sampling workflow has now been exercised twice (runs 8 and 9) — established as
-  repeatable.
+- The run-19 confidence-gate fix (`independent_criticism` added to
+  `HIGH_RELIABILITY_SECTORS`) remains untested in practice — revisit once
+  `independent_criticism` sources reappear in a report.
+- `gh` CLI is unavailable in this environment; CI's real GitHub Actions pass/fail status
+  remains genuinely unconfirmed (manual YAML read-throughs only).
+- CFDA Fashion Fund winner and CFDA Fashion Awards have both stayed unconfirmed across
+  multiple windows — consider whether prolonged silence eventually warrants an explicit
+  "awaiting resolution" status rather than repeated carry-forward.
+- README's operational instructions are now fixed (run 28) — periodically re-verify them
+  against actual pipeline behavior as `summarize.py`/`run.sh` evolve, since this is the
+  second time a doc-accuracy sweep found a real, previously-unknown gap.

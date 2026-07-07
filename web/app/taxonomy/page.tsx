@@ -20,6 +20,7 @@ const sourceSectors = [
   { name: "Institutional/historical", def: "Museum collections, costume history databases, academic papers, and archival runway records." },
   { name: "Street/user-generated", def: "Street style photography and public outfit documentation, distinct from platform-native captions and comments." },
   { name: "Resale/secondhand", def: "Secondhand marketplace listings and descriptions — a separate signal channel from primary retail." },
+  { name: "Trade intelligence", def: "B2B commercial trend-forecasting and retail-analytics vendors, whose public content markets a paid prediction or merchandising product rather than reporting independently on discourse. Excluded from high-reliability sectors." },
 ];
 
 const volatility = [
@@ -41,6 +42,16 @@ const confidence = [
   { label: "Medium", def: "Appears across two or more source types with some language consistency." },
   { label: "High", def: "Appears across multiple distinct sectors, such as designer, editorial, retail, social, and visual search." },
   { label: "Archival", def: "Recurring across multiple time periods or connected to documented historical cycles." },
+];
+
+const originClassification = [
+  { label: "Designer-originated", def: "Traced to a brand or creative team's own material — collection pages, show notes, campaigns, interviews — before any outside interpretation." },
+  { label: "Editorial-amplified", def: "Carried into wider discourse primarily through runway coverage or style-publication interpretation of what a designer showed or meant." },
+  { label: "Retail-adopted", def: "Carried into wider discourse primarily through product naming, category language, or trend-edit copy applied at the point of sale." },
+  { label: "Social-amplified", def: "Carried into wider discourse primarily through platform captions, comments, or creator content, independent of editorial or retail framing." },
+  { label: "Platform-native", def: "Originates on a social platform itself, with no clear designer, editorial, or retail point of origin." },
+  { label: "Archive revival", def: "Traced to a previously documented style cycle or archival record resurfacing rather than a new origin point." },
+  { label: "Unclear", def: "No reliable origin point could be established from available sources." },
 ];
 
 function Table({ rows }: { rows: { label: string; def: string }[] }) {
@@ -88,7 +99,7 @@ function Table({ rows }: { rows: { label: string; def: string }[] }) {
 
 export default function Taxonomy() {
   return (
-    <main
+    <main id="main-content"
       style={{
         minHeight: "100vh",
         background: "var(--white)",
@@ -138,8 +149,10 @@ export default function Taxonomy() {
             { href: "/", label: "Report" },
             { href: "/methodology", label: "Methodology" },
             { href: "/sources", label: "Sources" },
+            { href: "/glossary", label: "Glossary" },
             { href: "/timeline", label: "Timeline" },
             { href: "/archive", label: "Archive" },
+            { href: "/search", label: "Search" },
             { href: "/about", label: "About" },
             { href: "/case-study", label: "Case Study" },
           ].map((item) => (
@@ -154,6 +167,8 @@ export default function Taxonomy() {
                 color: "var(--black)",
                 textDecoration: "underline",
                 textUnderlineOffset: "3px",
+                display: "inline-block",
+                padding: "0.65rem 0",
               }}
             >
               {item.label}
@@ -172,8 +187,14 @@ export default function Taxonomy() {
             marginBottom: "3.5rem",
           }}
         >
-          Signals are classified along four dimensions: signal type, source sector, volatility, and
-          confidence. Definitions below are applied consistently across reports.
+          Signals are classified along five dimensions: signal type, source sector, volatility,
+          confidence, and origin classification. Definitions below are applied consistently across
+          reports. This page does not
+          define style or aesthetic terminology (e.g. quiet luxury, Y2K nostalgia) — for that, see{" "}
+          <Link href="/glossary" style={{ color: "var(--black)", textDecoration: "underline" }}>
+            Glossary
+          </Link>
+          .
         </p>
 
         <div style={{ marginBottom: "3.5rem" }}>
@@ -259,6 +280,35 @@ export default function Taxonomy() {
             Confidence Levels
           </h2>
           <Table rows={confidence} />
+        </div>
+
+        <div style={{ marginTop: "3.5rem" }}>
+          <h2
+            style={{
+              fontFamily: "var(--font-instrument)",
+              fontSize: "1.5rem",
+              fontWeight: "400",
+              marginBottom: "1rem",
+              borderTop: "1px solid var(--border)",
+              paddingTop: "1.5rem",
+            }}
+          >
+            Origin Classification
+          </h2>
+          <p
+            style={{
+              fontFamily: "var(--font-franklin)",
+              fontSize: "0.9rem",
+              lineHeight: "1.6",
+              color: "var(--gray)",
+              marginBottom: "1.25rem",
+            }}
+          >
+            Recorded separately from confidence and volatility, to keep what a designer made,
+            what editors said it meant, what retailers sold it as, and what a platform renamed it
+            from collapsing into a single undifferentiated &ldquo;trending&rdquo; label.
+          </p>
+          <Table rows={originClassification} />
         </div>
       </section>
 

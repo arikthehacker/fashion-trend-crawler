@@ -1,0 +1,100 @@
+{
+  "report_date": "2027-01-25",
+  "collection_window": {
+    "start": "2027-01-19",
+    "end": "2027-01-25"
+  },
+  "sources_scanned": 16,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "editorial": 3,
+    "institutional": 1
+  },
+  "executive_summary": "This collection window (January 19-25, 2027) is the thirty-first archived window and falls inside the live Paris menswear Fall/Winter 2027-2028 week (Jan 19-24) and the opening day of Haute Couture Spring/Summer 2027 (Jan 25-28). Per SKILL.md workflow note 10, the CFDA/Vogue Fashion Fund winner and CFDA Fashion Awards questions were checked briefly rather than re-litigated; both remain unresolved as of the most recent searchable coverage and stay 'untracked going forward pending new information.' This window's central question -- whether Grace Wales Bonner's Hermes menswear debut, flagged as upcoming in the prior report, now has real dated show coverage -- was checked specifically. It does not: every search still returns pre-show anticipation, appointment, and team-hire coverage (WWD, Essence, Yahoo Finance business coverage of Hermes' share price reaction, and reference sources), not a post-show review with observed garments, silhouettes, or materials. No correction to the prior report was warranted. What is new and genuinely dated this window is the official FHCM provisional show lineup for Paris menswear FW27-28 (Jan 19-24), naming Wales Bonner's Hermes debut alongside other scheduled houses (including Undercover, Kiko Kostadinov, Maison Kitsune, and Magliano) -- an institutional scheduling fact, not observed collection content, since this report is assembled from indexed search coverage rather than a live crawl timed to actual show days. No garment, silhouette, material, or aesthetic content is reported this window for either the Hermes debut or Haute Couture Spring/Summer 2027, consistent with the project's rule against speculating about collections ahead of verified coverage.",
+  "top_signals": [
+    {
+      "name": "Wales Bonner's Hermes menswear debut remains pre-show anticipation, no dated runway coverage yet",
+      "type": "designer_signal",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "Grace Wales Bonner's debut as Hermes menswear creative director, succeeding Veronique Nichanian, is scheduled inside this window's Paris menswear FW27-28 dates (Jan 19-24). A dedicated search this window for post-show coverage (reviews, garments, silhouettes) found none -- all corroborating coverage (WWD's report on Hermes' market reaction to her appointment, Essence's profile naming her the first woman of Black heritage to lead a major luxury house, and Yahoo Finance's business coverage of the appointment) remains pre-show: appointment, succession, and team-hire (John-Gabriel Harrison) facts, not observed collection content. This keeps the same signal_id as the prior report's anticipation-stage entry rather than opening a duplicate.",
+      "index_note": "Continuation of the prior report's signal_id, not a new signal. Explicitly checked this window for whether the debut had crossed into observed show coverage per the loop's standing instruction to verify upcoming-event flags -- it has not, as of the sources indexed and reachable this window. A future report should replace this entry with the actual debut collection's garment/silhouette content once dated post-show coverage becomes available, rather than continuing to restate anticipation indefinitely.",
+      "source_corroboration_count": 3,
+      "signal_id": "wales-bonner-hermes-debut",
+      "confidence_source": "manual",
+      "human_editor_note": "Held at medium, unchanged from the prior report: three independent outlets now corroborate the appointment/succession/team facts (up from two), which is why corroboration_count moved from 2 to 3, but confidence itself does not move to high because all three are a single source_sector (editorial) and no institutional or designer_origin corroboration was found this window. No garment content exists yet to assess, so this stays an anticipation entry, not an observation.",
+      "source_domains": [
+        "wwd.com",
+        "essence.com",
+        "yahoo.com"
+      ]
+    },
+    {
+      "name": "Official Paris menswear FW27-28 show lineup (Jan 19-24) confirmed, includes Wales Bonner's Hermes debut",
+      "type": "institutional_policy",
+      "source_sectors": [
+        "institutional"
+      ],
+      "confidence": "medium",
+      "volatility": "seasonal",
+      "origin_classification": "unclear",
+      "evidence": "FHCM's provisional calendar for Paris Fashion Week Menswear Fall/Winter 2027-2028 (Jan 19-24, 2027) names the participating houses and presentation slots for the week that falls inside this collection window, including Wales Bonner's Hermes debut alongside scheduled shows/presentations from houses such as Undercover, Kiko Kostadinov, Maison Kitsune, White Mountaineering, Kolor, and Magliano. Haute Couture Spring/Summer 2027 (Jan 25-28) opens on the window's last day, per the same federation calendar re-checked this window.",
+      "index_note": "New signal_id this window (distinct from the prior report's restated-dates entry, which this replaces): this is the actual named show lineup, not just confirmed dates. Still an institutional scheduling fact, not observed runway content -- a future report covering the same dates once post-show coverage exists should report garment/silhouette content per-house rather than a lineup.",
+      "source_corroboration_count": 1,
+      "signal_id": "paris-menswear-fw27-lineup",
+      "confidence_source": "manual",
+      "human_editor_note": "Kept at medium rather than low because this is a single source, but it is a fixed, officially published federation calendar/lineup fact from a high-reliability institutional sector, not an unverified single claim -- consistent with how the prior report treated the equivalent calendar-dates entry.",
+      "source_domains": [
+        "fhcm.paris"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "Grace Wales Bonner",
+    "Hermes menswear debut",
+    "Paris menswear FW27-28",
+    "Haute Couture Spring/Summer 2027",
+    "pre-show anticipation",
+    "untracked pending new information"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [
+    "Grace Wales Bonner as first woman of Black heritage to lead design at a major luxury house (Hermes menswear)"
+  ],
+  "limitations": [
+    "items_collected (2) and sources_scanned (16) remain below the fashion-month baseline; this window falls inside live Paris menswear FW27-28 and the opening of Haute Couture SS27, but no dated post-show runway/garment coverage was found for either -- this report reflects the boundary of reachable, indexed coverage at assembly time, not a claim that the shows did not happen.",
+    "The Wales Bonner/Hermes debut was specifically re-checked for resolution into observed show coverage per the prior report's flag; it remains pre-show anticipation, so no correction was made to 2027-01-18.json.",
+    "The CFDA/Vogue Fashion Fund winner and CFDA Fashion Awards questions were checked briefly this window per SKILL.md workflow note 10 but not re-litigated as top signals; both remain untracked pending new information.",
+    "This report was assembled via targeted web search rather than a live automated crawl timed to the actual show days or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach.",
+    "No speculative or fabricated collection content (looks, silhouettes, materials) was introduced for the Wales Bonner debut or Haute Couture SS27 ahead of verified post-show coverage."
+  ],
+  "archive_tags": [
+    "paris-menswear-fw27-live-window",
+    "wales-bonner-hermes",
+    "couture-ss27-opens",
+    "cfda-signals-untracked-pending-new-information",
+    "pre-show-anticipation-unresolved",
+    "thin-week",
+    "2027-q1"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "Fewer than 3 distinct, independently verifiable style-discourse signals were found this window despite this window genuinely overlapping live Paris menswear FW27-28 and the opening of Haute Couture SS27. A dedicated check for whether the Wales Bonner/Hermes debut had produced dated post-show coverage found none -- reachable coverage remains pre-show anticipation. Discourse consists of refreshed anticipation corroboration and a named (not restated) official show lineup, not observed runway content. No new CFDA resolution surfaced.",
+  "review_status": "reviewed",
+  "reviewed_by": "loop-consolidation",
+  "revision_history": [
+    {
+      "previous_content_hash": "3a87f829ac21b47a28a253e7682598d93560886fba5e682a793c0456be7dfb3c",
+      "corrected_at": "2026-07-06",
+      "reason": "Slug quality audit (run 44): renamed over-length signal_id(s) and fixed stale prose references for: wales-bonner-hermes-menswear-debut-2027"
+    }
+  ],
+  "content_hash": "7aaa96c06c7a65b4876d9df1d1184f38b7afe34d39fea6289680ff4a9e72dfcc"
+}

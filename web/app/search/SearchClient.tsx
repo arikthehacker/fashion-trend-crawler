@@ -5,9 +5,58 @@
 // docs/agent-logs/search-discoverability-design.md's "simpler half" scope.
 // Full-text search over report prose (Pagefind) is deliberately deferred.
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import type { SearchableSignal } from "../../lib/reports";
+
+// Pagefind full-text search mount point. Pagefind indexes the rendered HTML
+// output as a postbuild step (see package.json's `postbuild` script and
+// next.config.ts's `output: "export"`) and writes its UI bundle to
+// `out/_pagefind/`. That bundle only exists after `npm run build` has been
+// run locally with `pagefind` installed (`npm install`) — it is not present
+// in `npm run dev` or in this source tree. The loader below fails silently
+// (leaves the mount point empty) if the bundle isn't there yet, so this is
+// safe to ship ahead of a build that actually produces it. See
+// docs/agent-logs/pagefind-integration.md for what's confirmed vs. not.
+function PagefindSearch() {
+  useEffect(() => {
+    let cancelled = false;
+
+    async function mount() {
+      try {
+        // @ts-expect-error -- no type declarations ship for pagefind's UI bundle
+        await import(/* webpackIgnore: true */ "/_pagefind/pagefind-ui.js");
+        if (cancelled) return;
+        const w = window as unknown as { PagefindUI?: new (opts: Record<string, unknown>) => unknown };
+        if (w.PagefindUI) {
+          new w.PagefindUI({ element: "#pagefind-search", showSubResults: true });
+        }
+      } catch {
+        // Bundle not present (e.g. dev server, or build hasn't run pagefind
+        // yet) — leave the mount point empty rather than erroring.
+      }
+    }
+
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "/_pagefind/pagefind-ui.css";
+    document.head.appendChild(link);
+
+    mount();
+
+    return () => {
+      cancelled = true;
+      document.head.removeChild(link);
+    };
+  }, []);
+
+  return (
+    <div style={{ marginBottom: "3rem", paddingBottom: "2rem", borderBottom: "1px solid var(--border)" }}>
+      <p style={labelStyle}>Full-text search</p>
+      <div id="pagefind-search" />
+    </div>
+  );
+}
 
 const labelStyle: React.CSSProperties = {
   fontFamily: "var(--font-franklin)",
@@ -62,6 +111,9 @@ export default function SearchClient({ index }: { index: SearchableSignal[] }) {
 
   return (
     <>
+      {/* full-text search over report prose, alongside (not replacing) facet filters below */}
+      <PagefindSearch />
+
       {/* facet controls */}
       <div
         style={{

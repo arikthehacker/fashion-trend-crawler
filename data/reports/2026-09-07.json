@@ -1,0 +1,141 @@
+{
+  "report_date": "2026-09-07",
+  "collection_window": {
+    "start": "2026-09-01",
+    "end": "2026-09-07"
+  },
+  "sources_scanned": 16,
+  "items_collected": 10,
+  "source_sector_breakdown": {
+    "editorial": 5,
+    "institutional": 3,
+    "retail": 2
+  },
+  "executive_summary": "This collection window (September 1-7, 2026) is the final week before New York Fashion Week's Spring/Summer 2027 shows begin -- the CFDA's official schedule runs September 10-15, with a pre-week slate (Ralph Lauren, Coach, Rachel Comey, Cult Gaia, Libertine) on September 9, one day outside this window. No runway coverage exists yet; the only genuinely dated activity found this window is continued logistics and institutional-announcement coverage building toward that start date, plus a fading tail of back-to-school retail content. The CFDA's preliminary schedule (first reported early July and already logged in the August 31 report) has not materially changed, but two distinct, newly-dated developments surfaced this window: trade coverage of the CFDA's fur-free policy taking effect across the Official Schedule and the Ralph Lauren-led pre-week slate, and the CFDA/Vogue Fashion Fund's announcement of its 2026 finalists -- an annual institutional signal independent of the runway calendar itself. The Pantone/'Devil Wears Prada 2' recirculation logged August 25-31 did not reappear this window; the film is already in home streaming release and the press hook it was riding appears exhausted, so it is not carried forward here on the strength of a single prior sighting. Back-to-school retail content continues but is thinning and increasingly overlapped with early-fall framing, consistent with the seasonal transition rather than new discourse. This report is marked normal rather than thin: the CFDA fur-free policy and Fashion Fund announcements are genuinely dated, first-party institutional facts, not recirculated filler, even though none of it is show content yet.",
+  "top_signals": [
+    {
+      "name": "NYFW September 2026 schedule adds pre-week slate and fur-free policy milestone",
+      "type": "market_behavior",
+      "source_sectors": [
+        "institutional",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "stable",
+      "origin_classification": "unclear",
+      "evidence": "Trade coverage this window (WWD, Fashionista, The Impression, Daily Front Row, The Zoe Report) detailed the finalized September 2026 Official NYFW Schedule (CFDA, running September 10-15, opening with Henry Zankov's Diane von Furstenberg debut and closing with Thom Browne) alongside a pre-week slate of shows on September 9 -- Ralph Lauren, Coach, Rachel Comey (marking her label's 25th anniversary), Cult Gaia, and Libertine -- that sits just outside the Official Schedule proper. Coverage also confirmed the CFDA's fur-free policy takes effect across all brands on the Official Schedule this season, and that the Friday, September 11 schedule will begin at 10:00am out of respect for the 25th anniversary of September 11.",
+      "index_note": "Continues signal_id nyfw-ss27-schedule-finalization from the August 31 report with genuinely new, dated detail (the pre-week slate and fur-free policy) rather than repeating the same designer-lineup fact. Held at stable/unclear for the same reasons as the prior entry: this is pre-season logistics, not a style claim, and does not originate from a single aesthetic decision.",
+      "human_editor_note": "Still a logistics signal, not a style signal -- do not read the fur-free policy or the pre-week slate as evidence of any aesthetic trend. This is the last anticipatory entry expected before the October 5 report window covers the shows themselves; recommend that report shift decisively to show-based signals and retire active tracking of nyfw-ss27-schedule-finalization once the week opens.",
+      "source_corroboration_count": 4,
+      "signal_id": "nyfw-ss27-schedule-finalization",
+      "confidence_source": "manual"
+    },
+    {
+      "name": "CFDA/Vogue Fashion Fund names 2026 finalists",
+      "type": "industry_recognition",
+      "source_sectors": [
+        "institutional",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "recurring",
+      "origin_classification": "unclear",
+      "evidence": "The CFDA announced its 2026 CFDA/Vogue Fashion Fund finalists this window -- Aisling Camps, Amir Taghi, Terrence Zhou of Bad Binch TONGTONG, Emily Dawn Long, Jamie Haller, Julia Ferentinos of Juju Vera, Zane Li of Lii, George Inaki of Milamore, Claire Sullivan of Miss Claire Sullivan, and Zoe Gustavia Anna Whalen -- independently reported by the CFDA's own release, Business of Fashion, and Daily Front Row. The winner and two runners-up (receiving $300,000 and $100,000 each) will be named October 20, 2026.",
+      "index_note": "Classified recurring rather than emerging: this is CFDA's annual program, not a new institutional behavior. Confidence held high on first-party CFDA sourcing corroborated by independent trade coverage; origin_classification unclear for the same structural reason as the schedule signal -- an institutional award announcement isn't designer, editorial, retail, or social in origin.",
+      "human_editor_note": "New signal this window, distinct from the NYFW schedule signal even though both are CFDA-sourced -- the Fashion Fund tracks emerging-designer patronage, not the runway calendar, so keep it as a separate signal_id rather than folding it into nyfw-ss27-schedule-finalization. Worth revisiting at the October 20 announcement.",
+      "source_corroboration_count": 3,
+      "signal_id": "cfda-fashion-fund-finalists",
+      "confidence_source": "manual"
+    },
+    {
+      "name": "Back-to-school 2026 styling continues, thinning as fall/NYFW framing takes over",
+      "type": "styling_behavior",
+      "source_sectors": [
+        "retail",
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "declining",
+      "origin_classification": "retail_adopted",
+      "evidence": "Retail-adjacent coverage (Hello Molly's '2026 Back to School Trend Report', Classpop, Macy's back-to-school guide) continues describing the Y2K/preppy cluster logged August 25-31 -- oversized denim jackets, varsity-inspired layers, wide-leg silhouettes, overalls -- with Pantone's Alexandrite (teal-blue-green) cited as a seasonal color addition. Volume is visibly lower than the prior window and increasingly framed as back-to-school/early-fall transition content rather than a standalone seasonal push.",
+      "index_note": "Continues signal_id school-y2k-preppy from August 31 but reclassified volatility from seasonal to declining: this is the same retail-SEO cluster, not new discourse, and its news cycle is visibly winding down as attention shifts to NYFW. Confidence held at medium for the same reason as before -- concrete, cross-outlet item agreement, but sourced entirely from commerce-adjacent content.",
+      "human_editor_note": "Recommend closing this out if it doesn't reappear in the next window with dated content of its own -- the pattern here (declining volume, no new sectors joining) looks like the start of a natural wind-down rather than a signal worth carrying into fashion month.",
+      "source_corroboration_count": 3,
+      "signal_id": "school-y2k-preppy",
+      "confidence_source": "manual"
+    }
+  ],
+  "repeated_keywords": [
+    "NYFW schedule",
+    "CFDA",
+    "pre-week shows",
+    "fur-free policy",
+    "Fashion Fund",
+    "finalists",
+    "back to school",
+    "Y2K",
+    "preppy",
+    "overalls",
+    "Alexandrite"
+  ],
+  "garments": [
+    "overalls",
+    "denim jacket",
+    "cardigan",
+    "polo shirt"
+  ],
+  "silhouettes": [
+    "oversized layering",
+    "wide-leg",
+    "varsity-inspired"
+  ],
+  "materials": [
+    "denim",
+    "organic cotton",
+    "recycled denim"
+  ],
+  "colors": [
+    "Alexandrite"
+  ],
+  "aesthetic_terms": [
+    "Y2K nostalgia (carryover)",
+    "preppy layering (carryover)",
+    "pre-fashion-week anticipation"
+  ],
+  "cultural_references": [
+    "CFDA September 2026 NYFW Official Schedule",
+    "CFDA fur-free policy",
+    "CFDA/Vogue Fashion Fund 2026",
+    "Rachel Comey 25th anniversary"
+  ],
+  "limitations": [
+    "This window (September 1-7, 2026) precedes New York Fashion Week's confirmed September 10-15 start and even the September 9 pre-week slate; no show coverage exists yet, and this report does not treat institutional/logistics announcements as equivalent to style signals.",
+    "The Pantone/'Devil Wears Prada 2' recirculation logged in the August 31 report did not reappear this window and is not carried forward on the strength of a single prior sighting; the film's press hook appears exhausted now that it is in home streaming release.",
+    "Back-to-school signal sourcing remains concentrated in commerce-adjacent SEO/roundup content; it is reclassified declining this window as volume visibly thins.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach.",
+    "Collection_status is normal on the strength of two genuinely dated, first-party institutional developments (fur-free policy, Fashion Fund finalists), not because fashion month coverage has begun -- read it as 'real and corroborated,' not 'comparable in scale to a fashion-month report.'"
+  ],
+  "archive_tags": [
+    "nyfw-ss27-schedule",
+    "cfda-fashion-fund-2026",
+    "back-to-school-2026",
+    "pre-fashion-week",
+    "2026-q3"
+  ],
+  "collection_status": "normal",
+  "review_status": "reviewed",
+  "reviewed_by": "loop-consolidation",
+  "revision_history": [
+    {
+      "previous_content_hash": "cf15385f43e7102c4a78c8cea3d331f0b1d11caa47161fa7d8c91d9476b014b2",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    },
+    {
+      "previous_content_hash": "a2cee80cdc2cdd365ee201b3e7b59a886311c670270d4670b5b08047a0857368",
+      "corrected_at": "2026-07-06",
+      "reason": "periodic audit run 38: replaced stale pre-run-36 long-form slug reference(s) (back-to-school-2026-y2k-preppy) in prose fields with current short-form signal_id equivalents; the underlying signal_id fields were already renamed in run 36, only the prose text still referenced the old names"
+    }
+  ],
+  "content_hash": "eb917b1232ea8f373c8520b54315c6b550230c512ed0ede40ad0314ba276fcaf"
+}

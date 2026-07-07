@@ -1,0 +1,73 @@
+{
+  "report_date": "2028-03-20",
+  "collection_window": {
+    "start": "2028-03-14",
+    "end": "2028-03-20"
+  },
+  "sources_scanned": 9,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "editorial": 2
+  },
+  "executive_summary": "Collection window March 14-20, 2028: Paris Fashion Week Fall/Winter 2028 women's shows, which opened in the prior window per the 2028-03-13 report, concluded within this window, closing the international Fall/Winter 2028 women's fashion-month sequence across New York, London, Milan, and Paris. No individual house published a new runway lookbook with independent editorial corroboration this window, so no designer-intent silhouette signal cleared the corroboration bar. Instead, wwd.com and vogue.com each independently published a season-in-review piece synthesizing the runway lookbooks and reviews already logged across this fashion-month cycle, and both independently drew the same specific cross-house comparison: the raw, unfinished-cut hem construction on the 2028-03-13 Miu Miu slip skirt and the exposed-seam construction underlying the closed-out 2027-10-18 Margiela raw-edge thread, read together as a recognizable unfinished-edge construction idiom recurring across separate houses and design lineages this Fall/Winter 2028 season, rather than as two coincidentally similar one-off choices. This is retrospective editorial interpretation of runway output that has already occurred within this archive's tracked window -- not a forecast or prediction about a future season -- so precedent 14's forecast-exclusion reasoning does not apply; the two houses' actual shows are past events being interpreted, not speculative claims about what a future season will contain. It is nonetheless treated as a distinct category from the earlier designer-intent-stage signals themselves: this is the first editorial-interpretation-stage cross-house synthesis logged since the Miu Miu signal's human_editor_note flagged watching for exactly this pattern. Because both corroborating sources resolve to the same source_sector (editorial), per precedent 2 this is capped at 'medium' regardless of the fact that two separate outlets independently reached the same read -- volume within one sector does not substitute for cross-sector corroboration. This case is flagged as a candidate rather than assumed to cleanly match an existing precedent: no precedent in the discipline doc directly addresses a season-wrap piece that synthesizes multiple already-logged signals into a new cross-house interpretive claim, as distinct from a single-signal confidence question. A future agent revisiting this signal type should consider whether a dedicated precedent is warranted before this pattern recurs unreviewed. The Khaite cantilevered-shoulder-blazer, Proenza Schouler spiral-seam-wrap-coat, Simone Rocha pearl-trimmed puff-sleeve dress, Prada inverted-pleat cargo skirt, resort 2028 puffer-shell skirt, resale-demand, obi-sash cocoon coat, and opera-glove/'restraint dressing' threads all produced no new development this window and are not carried forward again absent fresh movement. The Margiela raw-edge thread itself remains closed out as of 2027-10-18 -- this window's synthesis cites it as a historical reference point in the editorial framing, not as a reopening of that thread. Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention.",
+  "top_signals": [
+    {
+      "name": "Fall/Winter 2028 season-wrap: unfinished-edge construction idiom read across houses",
+      "type": "aesthetic",
+      "source_sectors": [
+        "editorial",
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "editorial_amplified",
+      "evidence": "wwd.com and vogue.com each independently published a Fall/Winter 2028 season-in-review piece this window. Both, without citing each other, drew the same specific comparison between the 2028-03-13 Miu Miu raw-hem bias-cut slip skirt and the exposed-seam construction underlying the closed-out 2027-10-18 Margiela raw-edge thread, framing them as two instances of a recognizable unfinished-edge construction idiom recurring across separate houses this season rather than as unrelated choices. Neither piece is a restatement of the other; each cites the underlying runway lookbooks and reviews already in this archive independently.",
+      "index_note": "Read as editorial-interpretation-stage synthesis, one step removed from the designer-intent stage of the Miu Miu and Margiela signals it cites: this is trade press drawing a cross-house pattern from runway output that has already occurred, not a new garment observation and not a claim of retail adoption or social amplification, neither of which has occurred yet. Also distinct from a trend forecast about a future season -- both cited houses' shows have already happened and are documented in this archive; the synthesis interprets the past, it does not predict a future one, so precedent 14's forecast-exclusion reasoning does not apply here.",
+      "human_editor_note": "derive_confidence() computes 'medium' here (corroboration_count=2, but both sources resolve to a single source_sector, editorial), and this report adopts that result rather than overriding it, applying precedent 2 (republication/volume within one sector does not become cross-sector corroboration, does not cross into 'high'). This is distinguished from precedent 4 (downstream reprint of a primary source): wwd.com and vogue.com each independently synthesized the same comparison from the archive's own prior signals rather than one outlet restating the other's copy, so this is genuine independent editorial judgment, just not cross-sector. Flagging as a candidate rather than assuming an existing precedent covers it outright: no precedent in the discipline doc directly addresses a season-wrap piece synthesizing multiple already-logged signals into a new cross-house interpretive claim (as opposed to corroborating a single existing signal, which precedents 1-13 all address). This is also explicitly checked against precedent 14 (forecast exclusion): both source pieces are backward-looking retrospectives of shows that already occurred within this archive's tracked windows, not predictions about a future season, so the forecast exclusion does not apply and this synthesis is correctly logged rather than excluded. confidence_source is set to 'derived' since the mechanical result is adopted as-is, no manual override applied on top of it.",
+      "source_corroboration_count": 2,
+      "signal_id": "fw28-season-wrap-unfinished-edge-editorial-synthesis",
+      "confidence_source": "derived",
+      "source_domains": [
+        "wwd.com",
+        "vogue.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "unfinished-edge construction",
+    "season wrap",
+    "Fall/Winter 2028",
+    "Paris Fashion Week"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [
+    "unfinished-edge construction idiom"
+  ],
+  "cultural_references": [
+    "Paris Fashion Week"
+  ],
+  "limitations": [
+    "This is a thin window by raw item count (2 items collected, 1 signal), but is treated as 'normal' rather than 'thin' collection_status: the single signal logged is a genuine, independently-corroborated editorial-interpretation event, not an absence of coverage -- see standing convention distinguishing a quiet week from a low-volume week with one solid signal.",
+    "No individual house's runway lookbook cleared the corroboration bar this window; the only signal logged is retrospective editorial synthesis of shows already logged in prior windows (2028-03-13 Miu Miu, 2027-10-18 Margiela), not a new designer-intent observation.",
+    "Per precedent 2, the signal is capped at 'medium' because both corroborating sources resolve to the same source_sector (editorial), even though the two outlets reached the same read independently rather than one reprinting the other.",
+    "This case is flagged as a candidate for a possible new precedent: none of the 14 documented precedents directly addresses a season-wrap piece synthesizing multiple already-logged signals into a new cross-house interpretive claim, as distinct from corroborating a single existing signal. A future agent should consider whether this warrants formalizing before the pattern recurs.",
+    "This window closes the Fall/Winter 2028 women's fashion-month sequence across New York, London, Milan, and Paris entirely; no further FW28 women's runway or calendar-confirmation signals are expected in subsequent reports.",
+    "No new development occurred on the Khaite cantilevered-shoulder-blazer, Proenza Schouler spiral-seam-wrap-coat, Simone Rocha pearl-trimmed puff-sleeve dress, Prada inverted-pleat cargo skirt, resort 2028 puffer-shell skirt, resale-demand, obi-sash cocoon coat, or opera-glove/'restraint dressing' threads this window; per standing convention, none are carried forward again absent fresh movement."
+  ],
+  "archive_tags": [
+    "margiela-raw-edge-editorial-close-out",
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked",
+    "fw28-season-wrap-precedent-candidate"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "review_status": "reviewed",
+  "reviewed_by": "ari3lla-index-loop-improvements agent",
+  "revision_history": []
+}

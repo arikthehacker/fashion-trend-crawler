@@ -1,0 +1,99 @@
+{
+  "report_date": "2027-12-13",
+  "collection_window": {
+    "start": "2027-12-07",
+    "end": "2027-12-13"
+  },
+  "sources_scanned": 11,
+  "items_collected": 4,
+  "source_sector_breakdown": {
+    "retail": 2,
+    "editorial": 2
+  },
+  "executive_summary": "Collection window December 7-13, 2027. Two threads advanced this window, both tied to expected mid-December patterns -- holiday retail peak and year-end 'best of 2027' retrospective coverage -- rather than new runway or designer-origin events. First, the obi-sash cocoon coat silhouette logged 2027-12-06 from Chanel's resort 2028 lookbook and Vogue's cross-house editorial roundup reached its first retail-facing stage: net-a-porter.com and ssense.com independently listed the coat for pre-order this window, neither citing the other or crediting Vogue's roundup specifically, each sourcing directly from resort 2028 delivery schedules. This is logged as a new signal_id distinct from the original designer/editorial signal, since retail stocking is a different claim type than designer intent or editorial interpretation, consistent with standing practice on the Bogota/Sao Paulo thread. Second, businessoffashion.com and elle.com each published independent 'best of 2027' year-end retrospective features this window naming the Bogota/Sao Paulo 'return to structure' waist-tailoring pattern as one of the year's defining silhouette narratives; neither piece cites the other, both cite the archive's already-logged Bogota, Sao Paulo, and BoF-designer-intent reporting rather than introducing new primary sourcing of their own. This is logged as a new signal_id (retrospective naming is a distinct claim type from primary reporting) rather than folded into the underlying thread's existing signal_ids. The opera-glove/'restraint dressing' thread produced no new development this window and is not carried forward again absent fresh movement. The Margiela raw-edge thread remains closed out as of 2027-10-18. Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention.",
+  "top_signals": [
+    {
+      "name": "Net-a-Porter and SSENSE independently list obi-sash cocoon coat for pre-order",
+      "type": "silhouette",
+      "source_sectors": [
+        "retail"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "retail_adopted",
+      "evidence": "net-a-porter.com and ssense.com each listed the obi-sash cocoon coat silhouette (first logged 2027-12-06 from Chanel's resort 2028 lookbook and Vogue's cross-house roundup) for pre-order this window, sourcing the item from resort 2028 delivery schedules. Neither retailer's listing cites the other or references Vogue's roundup specifically; both frame it as a resort-season buy decision made independently.",
+      "index_note": "Logged as a new signal_id (resort-2028-obi-sash-cocoon-coat-retail-buy), distinct from resort-2028-obi-sash-cocoon-coat (the designer_origin/editorial parent signal from 2027-12-06): this is the market's own stocking decision, a different claim type than the designer lookbook or the editorial cross-house observation, mirroring how the Bogota/Sao Paulo thread kept its retail-buy signals distinct from the institutional and editorial signals that preceded them. Confidence is derived mechanically as 'medium': source_corroboration_count=2 but both sources map to the single 'retail' sector, which per derive_confidence()'s formula caps single-sector corroboration at medium regardless of count -- this is not a case warranting override, since the two retailers are genuinely independent (neither cites the other) and this is exactly what the mechanical single-sector-medium rule is designed to produce, not a case of citation-free rehash or unclear-sector corroboration.",
+      "source_corroboration_count": 2,
+      "signal_id": "resort-2028-obi-sash-cocoon-coat-retail-buy",
+      "confidence_source": "derived",
+      "human_editor_note": "derive_confidence() computes 'medium': source_corroboration_count=2, source_sectors = {'retail'} (single sector). Adopted as derived rather than upgraded, because both sources are genuinely independent retailers reporting the same specific stocking decision -- not a case of one sector's rehash of another's reporting -- and adopted rather than held down, because none of the three documented override conditions (unclear-sector corroboration, single-sector corroboration standing in for cross-sector, or a high-reliability-sector citation-free rehash) applies in the downgrading direction beyond what the mechanical formula already reflects: single-sector corroboration is exactly why this sits at medium rather than high, which is the formula working as intended, not a manual override.",
+      "source_domains": [
+        "net-a-porter.com",
+        "ssense.com"
+      ]
+    },
+    {
+      "name": "Year-end 'best of 2027' retrospectives from BoF and Elle name Bogota/Sao Paulo 'return to structure' as a defining 2027 silhouette narrative",
+      "type": "critical_synthesis",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "stable",
+      "origin_classification": "editorial_amplified",
+      "evidence": "businessoffashion.com and elle.com each published independent 'best of 2027' year-end retrospective features this window naming the Bogota/Sao Paulo waist-tailoring 'return to structure' pattern (tracked since 2027-10-18) as one of the year's defining silhouette narratives. Neither piece cites the other. Both cite material already logged in this archive (Inexmoda's institutional program note, FFW's Sao Paulo echo, and BoF's own earlier designer-intent interviews) rather than introducing new primary sourcing of their own.",
+      "index_note": "Logged as a new signal_id (bogota-waist-tailoring-year-end-retrospective) rather than folded into bogota-waist-tailoring-resort28-institutional or any of its later entries: a year-end retrospective naming a pattern as trend-of-the-year is a distinct claim type from primary reporting, designer intent, retail adoption, or in-season critical synthesis, consistent with how this archive has kept each claim shape in the thread as its own signal_id. Origin classification is editorial_amplified because both pieces are editorial framing of an already-documented pattern, not new designer intent or retail data.",
+      "source_corroboration_count": 2,
+      "signal_id": "bogota-waist-tailoring-year-end-retrospective",
+      "confidence_source": "derived",
+      "human_editor_note": "derive_confidence() computes 'medium': source_corroboration_count=2, source_sectors = {'editorial'} (single sector). Adopted as derived, not overridden. This is genuine same-sector corroboration -- BoF and Elle are independently authored, neither cites the other, and both name the same specific claim (this pattern as a defining 2027 silhouette narrative) rather than merely publishing in the same week on unrelated topics. None of the three override conditions applies: the sectors are not 'unclear', the single-sector cap is the mechanical formula operating correctly rather than a sign the formula should be manually overridden further, and neither piece is a citation-free rehash of the other -- both cite the archive's own prior primary reporting rather than each other, so there is no rehash-of-a-single-source pattern to penalize beyond what the single-sector cap already reflects.",
+      "source_domains": [
+        "businessoffashion.com",
+        "elle.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "resort 2028",
+    "obi sash",
+    "cocoon coat",
+    "pre-order",
+    "best of 2027",
+    "year-end retrospective",
+    "return to structure",
+    "waist tailoring",
+    "holiday retail"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [
+    "Net-a-Porter",
+    "SSENSE",
+    "Business of Fashion",
+    "Elle",
+    "Chanel",
+    "Vogue"
+  ],
+  "limitations": [
+    "The obi-sash cocoon coat retail signal reflects two retailers' pre-order listings, not confirmed sell-through or consumer uptake; it is tracked as retail adoption only, not proven consumer demand.",
+    "Both year-end retrospective pieces cite this archive's own already-logged primary reporting rather than introducing new sourcing; the retrospective signal should not be read as a third and fourth independent report of the underlying waist-tailoring pattern.",
+    "No new development occurred on the opera-glove/'restraint dressing' thread this window; per standing convention, it is not carried forward again absent fresh movement.",
+    "Both new signals this window are single-sector corroboration (retail-only and editorial-only respectively); neither reaches the cross-sector bar this archive treats as 'high' confidence."
+  ],
+  "archive_tags": [
+    "margiela-raw-edge-editorial-close-out",
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "review_status": "reviewed",
+  "reviewed_by": "ari3lla-index-loop-improvements agent",
+  "revision_history": [],
+  "content_hash": "0f86bf1910c3de41bd68ce9a20dee885f036321d35649cdb9b82d985559a5a3a"
+}

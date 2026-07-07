@@ -1,0 +1,111 @@
+{
+  "report_date": "2027-07-12",
+  "collection_window": {
+    "start": "2027-07-06",
+    "end": "2027-07-12"
+  },
+  "sources_scanned": 17,
+  "items_collected": 1,
+  "source_sector_breakdown": {
+    "editorial": 5,
+    "unclear": 2
+  },
+  "executive_summary": "This collection window (July 6 - July 12, 2027) is the fifty-fifth archived window and covers the actual staging of Paris Haute Couture Week FW27, which this index flagged as pre-show anticipation coverage last window. All three creative-director-level debuts previewed on 2027-07-05 -- Pierpaolo Piccioli's first Balenciaga couture collection, Duran Lantink's first Jean Paul Gaultier couture collection, and Olivier Theyskens's new label Boloria -- have now shown and generated real post-show reception coverage, upgrading last window's anticipation signal into a confirmed reception signal. Reception across all three is genuinely mixed rather than uniformly positive: Piccioli's Balenciaga is described as a confident, reverent recalibration that has nonetheless divided audiences loyal to the prior era; Lantink's Gaultier is described in openly polarizing terms, from 'worthy heir' to accusations of a 'cheap imitation'; Theyskens's Boloria drew comparatively narrower but still split notices, praised for craftsmanship while some found it emotionally distant. Met Gala 2027 remains untracked going forward per last window's call -- a targeted check this window surfaced no new theme, co-chair, or red-carpet coverage, consistent with that status rather than reopening it. Wales Bonner/Hermes and CFDA Fashion Fund/Awards were not re-litigated this window per SKILL.md workflow note 10.",
+  "top_signals": [
+    {
+      "name": "Paris Haute Couture Week FW27 debuts: confirmed post-show reception (Piccioli/Balenciaga, Lantink/Jean Paul Gaultier, Theyskens/Boloria)",
+      "type": "designer_signal",
+      "source_sectors": [
+        "editorial",
+        "unclear"
+      ],
+      "confidence": "medium",
+      "volatility": "flash",
+      "origin_classification": "designer_originated",
+      "evidence": "All three debuts previewed in the 2027-07-05 report have now shown during Paris Haute Couture Week (July 6-9, 2027) and generated substantive post-show critical coverage. Piccioli's Balenciaga debut is covered as reverent toward Cristobal Balenciaga's archive (neo gazar volumes, cocoon and balloon silhouettes) while opening a distinct new chapter from the prior era, with coverage explicitly noting a divided audience response. Lantink's Jean Paul Gaultier debut is covered as deliberately provocative, drawing reactions from 'worthy heir' framing to explicit criticism calling it a 'cheap imitation' of the house's subversive-but-chic codes. Theyskens's Boloria debut is covered as a tailoring-forward, melancholic collection ('The Row meets Rimbaud') with mixed reviews -- praised for dressmaking craft, criticized by some as emotionally distant.",
+      "index_note": "Classified designer_originated, continuing the 2027-07-05 signal's classification rather than starting a new one: this is the same three debuts moving from pre-show anticipation to confirmed post-show reception, not a new event. Confidence raised from 'medium' to 'high' relative to last window because the underlying claim has shifted from 'these shows will happen and are anticipated' (forward-looking, harder to verify) to 'these shows happened and here is documented critical reaction' (backward-looking, directly verifiable against published reviews). Genuinely mixed/divided reception across all three is reported as such rather than smoothed into a single verdict -- flattening 'divisive' coverage into 'well-received' or 'poorly-received' would misrepresent the actual discourse.",
+      "source_corroboration_count": 6,
+      "signal_id": "couture-fw27-debuts-reception",
+      "confidence_source": "manual",
+      "human_editor_note": "The editorial judgment call here is what NOT to do: it would be easy to round three genuinely split critical receptions into a tidy 'couture week was a triumph' or 'couture week disappointed' narrative for a cleaner report. The actual coverage doesn't support either -- each of the three debuts reads as contested on its own terms (Piccioli: reverent vs. a departure from Demna's era; Lantink: inventive heir vs. cheap imitation; Theyskens: refined craft vs. soulless), and treating three different arguments as one aggregate trend would be the exact kind of flattening this index exists to avoid. Also worth flagging: wallpaper.com, nssmag.com, and theimpression.com are established fashion trade press by any reasonable read but remain outside DOMAIN_SECTOR_MAP, so a chunk of this signal's real corroboration still classifies as 'unclear' sector -- the same taxonomy-coverage gap noted last window, not yet closed. CORRECTION (run 84, 2026-07-06): on review, the backward-looking/forward-looking distinction argued above does not address precedent 3's actual mechanism -- the unclear-domain-taxonomy gap this note itself names (wallpaper.com, nssmag.com, theimpression.com) is unchanged by whether the underlying claim is anticipation or confirmed reception; the sources are exactly as unmapped in either case. This is also inconsistent with the immediately preceding window (2027-07-05), which held the identical sector mix at medium. Not formalizing a new precedent; corrected to medium. See docs/confidence-discipline-precedents.md and docs/agent-logs/confidence-precedent-resolution-run84.md.",
+      "source_domains": [
+        "wwd.com",
+        "dazeddigital.com",
+        "businessoffashion.com",
+        "wallpaper.com",
+        "nssmag.com",
+        "runwaylive.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "Paris Haute Couture Week post-show reception",
+    "divisive designer debut couture"
+  ],
+  "garments": [
+    "couture gown",
+    "cocoon coat",
+    "tailored suit",
+    "bodysuit"
+  ],
+  "silhouettes": [
+    "cocoon",
+    "balloon",
+    "sculptural",
+    "tailored"
+  ],
+  "materials": [
+    "neo gazar",
+    "silk",
+    "leather"
+  ],
+  "colors": [
+    "deep violet",
+    "neon lime",
+    "primary red"
+  ],
+  "aesthetic_terms": [
+    "quiet luxury",
+    "archival reverence"
+  ],
+  "cultural_references": [
+    "Paris Haute Couture Week",
+    "Cristobal Balenciaga archive"
+  ],
+  "limitations": [
+    "This signal is built from post-show critical/press reception, not a systematic or representative sample of all published reviews -- coverage volume for a three-debut couture week is large, and this report reflects the outlets checked, not an exhaustive survey.",
+    "wallpaper.com, nssmag.com, and theimpression.com remain outside taxonomy.py's DOMAIN_SECTOR_MAP and classify as 'unclear' sector rather than a verified one -- the same taxonomy coverage gap flagged on 2027-07-05, not yet closed.",
+    "Met Gala 2027 was checked again this window per its 'untracked going forward pending new information' status (set 2027-07-05); no new theme, co-chair, or red-carpet coverage surfaced, consistent with continuing to leave it untracked rather than a claim the question is resolved.",
+    "Wales Bonner/Hermes and CFDA Fashion Fund/Awards were not re-litigated this window per SKILL.md workflow note 10; no coverage was searched for or found for either.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "couture-fw27-debuts-reception",
+    "wales-bonner-untracked-pending-new-information",
+    "cfda-signals-untracked-pending-new-information",
+    "met-gala-2027-untracked-pending-new-information",
+    "2027-q3"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [
+    {
+      "previous_content_hash": "cf96ba0fb4de3dbc81ebedb11e94f8d610d845602064b58bd24c4eaa49d3fb95",
+      "corrected_at": "2026-07-06",
+      "reason": "Reconciling precedent-3 unclear-domain-gap cap after run-83 audit found this override unreconciled against precedent 3 and inconsistent with 2027-07-05's identical treatment; corrected high -> medium.",
+      "changed_signals": {
+        "added": [],
+        "removed": [],
+        "modified": {
+          "couture-fw27-debuts-reception": [
+            "confidence",
+            "human_editor_note"
+          ]
+        }
+      }
+    }
+  ],
+  "review_status": "reviewed",
+  "reviewed_by": "",
+  "content_hash": "b990fdec6ba6db5768651a6a8d315737a15dc5779a730dffff2e05846a765b00"
+}

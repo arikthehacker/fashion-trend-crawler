@@ -18,7 +18,7 @@ export default function Search() {
   const index = getSearchIndex();
 
   return (
-    <main style={{
+    <main id="main-content" style={{
       minHeight: "100vh",
       background: "var(--white)",
       display: "flex",
@@ -117,6 +117,9 @@ export default function Search() {
         </Link>
         <Link href="/timeline" style={{ fontFamily: "var(--font-franklin)", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--black)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
           Timeline
+        </Link>
+        <Link href="/" style={{ fontFamily: "var(--font-franklin)", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--black)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+          Current report
         </Link>
       </footer>
 

@@ -29,6 +29,16 @@ no hype, no "obsessed," no shopping language (doc section 2 voice rules).
 - **Observer notes** (`human_editor_note`): what you actually saw, why it seemed
   notable, any doubts. This is the human-judgment field — required, not optional (doc
   section 18/19: clustering/meaning is a human call, not automated).
+  - **If the signal is sourced from a platform's own official "trend report," newsroom
+    post, or other marketing/PR page — rather than organic user posts, hashtag activity,
+    or search volume you observed directly — say so explicitly in this field.** For
+    example: "sourced from Pinterest's official trend report, not organic post volume."
+    A platform publishing its own trend report is self-promotional content with its own
+    incentives (driving ad sales, press coverage, platform relevance), not a neutral
+    measurement of organic discourse — the same caution the workflow already applies to
+    editorial coverage. There is no separate schema field for this distinction (this is
+    a documentation-level fix, not a schema change); it belongs in this free-text note so
+    future editors and readers know the evidentiary basis for the entry.
 - **Number of independent sources** (`source_corroboration_count`): how many separate
   posts/accounts/platforms showed this independently. Defaults to 1 if you only saw it
   once.

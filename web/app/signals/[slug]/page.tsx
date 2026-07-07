@@ -5,7 +5,7 @@
 
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllSignalSlugs, getSignalHistory } from "../../../lib/reports";
+import { getAllSignalSlugs, getSignalHistory, getSignalRecencyStatus } from "../../../lib/reports";
 
 export function generateStaticParams() {
   return getAllSignalSlugs().map((slug) => ({ slug }));
@@ -43,9 +43,10 @@ export default async function SignalPage({ params }: { params: Promise<{ slug: s
 
   const firstSeen = occurrences[0].report_date;
   const name = occurrences[occurrences.length - 1].signal.name;
+  const recency = getSignalRecencyStatus(slug);
 
   return (
-    <main style={{
+    <main id="main-content" style={{
       minHeight: "100vh",
       background: "var(--white)",
       display: "flex",
@@ -89,6 +90,19 @@ export default async function SignalPage({ params }: { params: Promise<{ slug: s
         }}>
           First recorded {firstSeen} &nbsp;·&nbsp; {occurrences.length} occurrence{occurrences.length === 1 ? "" : "s"} on file
         </p>
+        {recency && (
+          <p style={{
+            fontFamily: "var(--font-franklin)",
+            fontSize: "0.75rem",
+            letterSpacing: "0.05em",
+            color: "var(--gray)",
+            marginTop: "0.5rem",
+          }}>
+            {recency.isMostRecentReport
+              ? "Appeared in the most recently published report."
+              : `Last appeared ${recency.lastSeen} — ${recency.reportsSinceLastSeen} published report${recency.reportsSinceLastSeen === 1 ? "" : "s"} since, with no further occurrence on file.`}
+          </p>
+        )}
       </header>
 
       {/* occurrence list */}
@@ -124,6 +138,9 @@ export default async function SignalPage({ params }: { params: Promise<{ slug: s
                 {signal.source_sectors?.length > 0 && (
                   <span>Sectors: {signal.source_sectors.join(", ")}</span>
                 )}
+                {signal.source_domains && signal.source_domains.length > 0 && (
+                  <span>Sources: {signal.source_domains.join(", ")}</span>
+                )}
               </div>
               <p style={{
                 fontFamily: "var(--font-franklin)",
@@ -144,6 +161,28 @@ export default async function SignalPage({ params }: { params: Promise<{ slug: s
                 }}>
                   Index note: {signal.index_note}
                 </p>
+              )}
+              {signal.human_editor_note && (
+                <div style={{ marginTop: "1rem" }}>
+                  <h4 style={{
+                    fontFamily: "var(--font-franklin)",
+                    fontSize: "0.7rem",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: "var(--red)",
+                    marginBottom: "0.4rem",
+                  }}>
+                    Editorial Close-Out
+                  </h4>
+                  <p style={{
+                    fontFamily: "var(--font-franklin)",
+                    fontSize: "0.85rem",
+                    lineHeight: "1.6",
+                    color: "var(--black)",
+                  }}>
+                    {signal.human_editor_note}
+                  </p>
+                </div>
               )}
             </div>
           ))}
@@ -181,6 +220,17 @@ export default async function SignalPage({ params }: { params: Promise<{ slug: s
           textUnderlineOffset: "3px",
         }}>
           Full archive
+        </Link>
+        <Link href="/search" style={{
+          fontFamily: "var(--font-franklin)",
+          fontSize: "0.75rem",
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          color: "var(--black)",
+          textDecoration: "underline",
+          textUnderlineOffset: "3px",
+        }}>
+          Search
         </Link>
         <Link href="/" style={{
           fontFamily: "var(--font-franklin)",

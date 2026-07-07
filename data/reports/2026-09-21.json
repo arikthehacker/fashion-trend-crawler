@@ -1,0 +1,115 @@
+{
+  "report_date": "2026-09-21",
+  "collection_window": {
+    "start": "2026-09-15",
+    "end": "2026-09-21"
+  },
+  "sources_scanned": 19,
+  "items_collected": 12,
+  "source_sector_breakdown": {
+    "editorial": 7,
+    "institutional": 4,
+    "designer_origin": 1
+  },
+  "executive_summary": "This collection window (September 15-21, 2026) opens with the final day of New York Fashion Week's Spring/Summer 2027 season -- Thom Browne's confirmed closing show and Sabyasachi Mukherjee's Official Schedule debut, both on September 15, per the CFDA's preliminary schedule confirmed in trade coverage (WWD, Fashionista, FashionUnited) -- and then, from September 17, shifts to the opening of London Fashion Week's SS27 season, which runs through September 21 and is the primary new signal this window. The nyfw-ss27-week-underway signal from the September 14 report is resolved: NYFW's own run is now fully complete, not still in progress. As with the prior window, this archive's sourcing is text-based web search rather than live show attendance, so verifiable content for both NYFW's close and LFW's open is schedule/structural reporting -- confirmed dates, confirmed designer lineups, confirmed policy and eligibility changes -- rather than critical reception of specific collections, which was not available via this sourcing method within the window and is not fabricated here. The most substantive verifiable new signal is structural rather than aesthetic: the British Fashion Council has removed the minimum wholesale-stockist requirement from LFW's designer eligibility criteria for this season, a policy change to who can show, not what is shown. The DVF/Zankov succession, the NYFW first-timer cohort, and the CFDA fur-free policy (all logged September 14) are not carried forward as fresh top_signals this window -- no new verifiable reporting on any of the three surfaced during this window's sourcing, so they are treated as continuing-but-quiet rather than re-asserted without new evidence.",
+  "top_signals": [
+    {
+      "name": "NYFW SS27 concludes September 15 with Thom Browne's confirmed closing show and Sabyasachi's Official Schedule debut",
+      "type": "market_behavior",
+      "source_sectors": [
+        "institutional",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "stable",
+      "origin_classification": "unclear",
+      "evidence": "Per the CFDA's Official Schedule and corroborating trade coverage (WWD, Fashionista, FashionUnited, Daily Front Row), New York Fashion Week's SS27 season closed Tuesday, September 15 with a slate including Collina Strada, Sabyasachi, and Thom Browne, with Thom Browne holding the traditional closing slot. Sabyasachi Mukherjee's show marked his first NYFW Official Schedule appearance in over a decade, flagged as pending in the prior window's report.",
+      "index_note": "Resolves the two 'pending' items noted in the September 14 report (Thom Browne's closing show, Sabyasachi's debut) and folds nyfw-ss27-week-underway into a closing state: NYFW's run is now complete, not still in progress. No verifiable critical reception of either show's actual content surfaced during this window's sourcing, so this entry is confined to schedule/timing confirmation, consistent with the prior window's same limitation.",
+      "human_editor_note": "This is confirmation that both shows occurred as scheduled, not a style or quality claim about either collection. Do not backfill a critical verdict onto Sabyasachi's or Thom Browne's shows from this entry.",
+      "source_corroboration_count": 4,
+      "signal_id": "nyfw-ss27-close",
+      "confidence_source": "manual"
+    },
+    {
+      "name": "London Fashion Week SS27 opens September 17, running through September 21",
+      "type": "market_behavior",
+      "source_sectors": [
+        "institutional",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "stable",
+      "origin_classification": "unclear",
+      "evidence": "The British Fashion Council confirmed London Fashion Week's September 2026 season runs Thursday, September 17 through Monday, September 21, 2026, with digital schedule activations beginning September 17. This is the first LFW window logged in this archive and immediately follows NYFW's close within this same collection window, consistent with the editorial calendar's known NY-then-London sequencing.",
+      "index_note": "New signal_id -- first LFW-specific entry in the archive. Volatility set to stable rather than emerging: the week opening on schedule is procedural confirmation, not a new or surprising development, mirroring how the analogous NYFW-opens signal was classified in the September 14 report.",
+      "human_editor_note": "As with NYFW's opening entry two windows prior, this confirms the schedule held, not anything about show content. LFW-specific designer-level or aesthetic signals should get their own signal_id in a later window once verifiable show-specific reporting exists.",
+      "source_corroboration_count": 3,
+      "signal_id": "lfw-ss27-week-opens",
+      "confidence_source": "manual"
+    },
+    {
+      "name": "British Fashion Council drops minimum wholesale-stockist requirement from LFW eligibility criteria",
+      "type": "industry_recognition",
+      "source_sectors": [
+        "institutional"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "unclear",
+      "evidence": "The British Fashion Council's published LFW accreditation criteria for this season no longer include a minimum wholesale-stockist requirement; eligibility is instead assessed on creative merit, with applicants required to be over one year in business and showing ready-to-wear or accessories (bridalwear and childrenswear excluded). All designers, including past LFW participants, must reapply each season given limited slots.",
+      "index_note": "Single-sector corroboration (institutional/BFC's own published criteria; no independent editorial confirmation found this window), held at medium rather than high per this archive's confidence formula. This is a structural gate-keeping change -- who is eligible to show, not what is shown -- comparable in kind to the NYFW first-timer cohort signal from September 14, but for London's admission criteria rather than NYFW's actual roster.",
+      "human_editor_note": "Worth tracking against this season's actual LFW lineup once announced: if designers without wholesale distribution appear on the schedule as a direct result, that would be a genuine downstream market-behavior signal. One criteria change is not yet evidence of who actually shows.",
+      "source_corroboration_count": 1,
+      "signal_id": "lfw-wholesale-eligibility-dropped",
+      "confidence_source": "manual"
+    }
+  ],
+  "repeated_keywords": [
+    "NYFW",
+    "LFW",
+    "Thom Browne",
+    "Sabyasachi",
+    "Collina Strada",
+    "British Fashion Council",
+    "CFDA",
+    "Official Schedule",
+    "wholesale requirement",
+    "closing show",
+    "debut"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [
+    "CFDA September 2026 NYFW Official Schedule (closing slate)",
+    "Sabyasachi Mukherjee NYFW return after over a decade",
+    "British Fashion Council LFW September 2026 accreditation criteria"
+  ],
+  "limitations": [
+    "This window (September 15-21, 2026) spans the very end of NYFW SS27 and the opening days of LFW SS27; neither week's actual runway-look critical reception was verifiable via this archive's text-search sourcing method within the window, so garments/silhouettes/colors/materials are left empty rather than populated from unverifiable or templated content, consistent with the September 14 report's same approach.",
+    "The DVF/Zankov succession debut, the NYFW first-timer cohort (Conner Ives, Magda Butrym), and the CFDA fur-free policy in effect (all logged September 14) are not re-asserted as top_signals this window because no new verifiable reporting on any of the three surfaced during sourcing -- see get_signal_status_history() for their prior trend rather than treating their absence here as resolution or reversal.",
+    "nyfw-ss27-week-underway is superseded this window by nyfw-ss27-close now that NYFW's run has fully concluded rather than still being in progress.",
+    "LFW-specific designer lineup and any first-timer cohort for this London season were not yet verifiable via this sourcing method within the window; only the week's dates and eligibility-criteria change were confirmable.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "nyfw-ss27-close",
+    "lfw-ss27-week-one",
+    "lfw-eligibility-change",
+    "fashion-month-2026",
+    "2026-q3"
+  ],
+  "collection_status": "normal",
+  "review_status": "reviewed",
+  "reviewed_by": "loop-consolidation",
+  "revision_history": [
+    {
+      "previous_content_hash": "390fd5a2954e98cb96ff6de5d5f09cf8c795f2b3d087101e1017b64a787b746a",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    }
+  ],
+  "content_hash": "7bce3b9871fe41413511c9f743c2fe50334dba4afc4fe0bf38f629a6ff490694"
+}

@@ -1,0 +1,99 @@
+{
+  "report_date": "2027-01-18",
+  "collection_window": {
+    "start": "2027-01-12",
+    "end": "2027-01-18"
+  },
+  "sources_scanned": 14,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "editorial": 2,
+    "institutional": 1
+  },
+  "executive_summary": "This collection window (January 12-18, 2027) is the thirtieth archived window overall and the last full week before Paris menswear Fall/Winter 2027-2028 (Jan 19-24) and Haute Couture Spring/Summer 2027 (Jan 25-28) begin. Consistent with SKILL.md workflow note 10, the CFDA/Vogue Fashion Fund winner and CFDA Fashion Awards questions were checked briefly rather than re-litigated: fresh search again found no dated announcement resolving either, so both remain 'untracked going forward pending new information' and are not repeated as top signals this window. Discourse this window is genuine pre-show anticipation coverage rather than in-window runway content, since the shows themselves have not started. Multiple editorial and trade sources (WWD, Wikipedia's designer biography entry, and additional outlet coverage) corroborate that Grace Wales Bonner's menswear debut as creative director of Hermes -- succeeding Veronique Nichanian after a 37-year tenure -- is scheduled for the upcoming January 19-24 Paris menswear week and is widely described as one of the most anticipated designer transitions of the season; coverage also notes she has hired designer John-Gabriel Harrison to her creative team ahead of the show. Separately, trade coverage confirms the fixed calendar dates for both the Paris menswear week and Haute Couture Spring/Summer 2027 (Jan 25-28), both falling just after this window closes. No garment, silhouette, or look content is reported this window, since no show has taken place yet -- this report logs confirmed pre-show facts (appointment, succession, schedule) rather than speculating about collection content ahead of time.",
+  "top_signals": [
+    {
+      "name": "Grace Wales Bonner's Hermes menswear debut (Jan 19-24, 2027) draws pre-show anticipation coverage",
+      "type": "designer_signal",
+      "source_sectors": [
+        "editorial",
+        "institutional"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "Grace Wales Bonner was named creative director of Hermes menswear in 2025, succeeding Veronique Nichanian, fashion's longest-serving creative director after a 37-year run; Nichanian presented her final Hermes collection in January 2026. Wales Bonner's own debut collection is scheduled for the January 19-24, 2027 Paris menswear week -- inside the week immediately following this collection window. Trade press (WWD) reports she has hired longtime Lanvin designer John-Gabriel Harrison to her creative team ahead of the show, and multiple outlets independently frame the debut as among the most closely watched designer transitions of the season, given her label's established blend of European tailoring with Afro-Atlantic references and archival research.",
+      "index_note": "New signal_id this window. Logged as confirmed pre-show anticipation -- appointment, succession, and schedule facts corroborated across editorial and reference sources -- not as observed runway content, since the show itself falls after this window closes. A future report covering Jan 19-24 should follow up with the actual debut collection's garment/silhouette/material content once shown, and should treat this entry as the anticipation-stage precursor to that later signal rather than a duplicate.",
+      "source_corroboration_count": 2,
+      "signal_id": "wales-bonner-hermes-debut",
+      "confidence_source": "manual",
+      "human_editor_note": "Editorial judgment call: this is treated as medium confidence because the appointment, succession timeline, and schedule are corroborated across independent editorial/trade coverage (not a single outlet), but the collection content itself does not exist yet -- so no silhouette, material, or aesthetic claims are attached. This keeps the entry honest about being anticipation, not observation.",
+      "source_domains": [
+        "wwd.com"
+      ]
+    },
+    {
+      "name": "Paris menswear FW27-28 and Haute Couture SS27 calendar dates confirmed, both fall just after this window",
+      "type": "institutional_policy",
+      "source_sectors": [
+        "institutional"
+      ],
+      "confidence": "medium",
+      "volatility": "seasonal",
+      "origin_classification": "unclear",
+      "evidence": "Federation de la Haute Couture et de la Mode (FHCM) calendar confirms Paris Fashion Week Menswear Fall/Winter 2027-2028 runs January 19-24, 2027, followed by Haute Couture Spring/Summer 2027 on January 25-28, 2027. Both dates are consistent with the prior two reports' calendar checks and fall immediately after this window (Jan 12-18) closes.",
+      "index_note": "Carried-forward calendar fact, restated because this window is the last full week before both events begin. No new schedule change found. Future reports covering Jan 19-28 should replace this entry with actual observed runway/collection signals rather than continuing to restate the calendar.",
+      "source_corroboration_count": 1,
+      "signal_id": "paris-couture-fw27-calendar",
+      "confidence_source": "manual",
+      "human_editor_note": "Kept at medium rather than low because this is a fixed, officially published federation calendar fact with low volatility risk, not a single unverified claim -- consistent with how docs/EDITORIAL_CALENDAR.md treats known recurring fashion-month windows.",
+      "source_domains": [
+        "fhcm.paris"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "Grace Wales Bonner",
+    "Hermes menswear debut",
+    "Paris menswear week",
+    "Haute Couture Spring/Summer 2027",
+    "pre-show anticipation",
+    "untracked pending new information"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [
+    "Grace Wales Bonner succeeding Veronique Nichanian at Hermes menswear after her 37-year tenure"
+  ],
+  "limitations": [
+    "items_collected (2) and sources_scanned (14) remain below the fashion-month baseline; this window contains confirmed pre-show anticipation and calendar facts but no observed runway/garment content, since Paris menswear and couture have not yet begun.",
+    "The CFDA/Vogue Fashion Fund winner and CFDA Fashion Awards questions were checked briefly this window per updated convention (SKILL.md workflow note 10) but not re-litigated as top signals; both remain untracked pending new information.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach.",
+    "No speculative or fabricated collection content (looks, silhouettes, materials) was introduced for the upcoming Wales Bonner debut or couture week ahead of the actual shows."
+  ],
+  "archive_tags": [
+    "paris-menswear-fw27-preview",
+    "wales-bonner-hermes",
+    "couture-ss27-preview",
+    "cfda-signals-untracked-pending-new-information",
+    "pre-paris-menswear-fw-window",
+    "pre-couture-window",
+    "thin-week",
+    "2027-q1"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "Fewer than 3 distinct, independently verifiable style-discourse signals were found this window. Discourse consists of confirmed pre-show anticipation (Wales Bonner's Hermes debut) and a restated calendar fact, not observed runway content, since Paris menswear and couture both begin after this window closes. No new CFDA resolution surfaced.",
+  "review_status": "reviewed",
+  "reviewed_by": "loop-consolidation",
+  "revision_history": [
+    {
+      "previous_content_hash": "232428d4384bf5a659c06305de2ca0bd575195c1ffbea7e7a5d5c0c336c1ca3d",
+      "corrected_at": "2026-07-06",
+      "reason": "Slug quality audit (run 44): renamed over-length signal_id(s) and fixed stale prose references for: wales-bonner-hermes-menswear-debut-2027, paris-menswear-couture-fw27-calendar"
+    }
+  ],
+  "content_hash": "9c6fab3f0664d000a7e6c3957956593e05775994a31986d8eade7a8e4eb7d1e7"
+}

@@ -23,6 +23,7 @@ const sections: { title: string; body: string[] }[] = [
     body: [
       "Sources are grouped into sectors: designer-origin, runway/editorial, retail/commerce, social/platform, visual archive and search, independent criticism, institutional/historical, street/user-generated, and resale/secondhand.",
       "Each sector carries a different incentive structure, and reports note which sectors a signal is drawn from. A full breakdown is available on the Sources page.",
+      "A domain that has not yet been mapped to a sector is classified unclear rather than guessed into an existing sector. An unclear classification is not treated as a distinct sector for confidence purposes, and it is not evidence against a signal — it reflects a gap in source coverage, not a judgment about the source itself.",
     ],
   },
   {
@@ -36,6 +37,7 @@ const sections: { title: string; body: string[] }[] = [
     title: "How Confidence Is Assigned",
     body: [
       "Confidence reflects how many distinct source sectors report a signal and how consistent the language is across them. Low confidence indicates a signal drawn from one noisy source type; high confidence requires recurrence across multiple distinct sectors.",
+      "A computed baseline is checked against the underlying evidence rather than applied automatically. Two sources carrying different sector labels are not treated as independent corroboration if one is a downstream reprint of the other's own announcement rather than separate reporting. A single source from a high-reliability sector (designer-origin, editorial, institutional, or independent criticism) can lift a signal above the lone-source floor, but only when that source did independent reporting of its own; a citation-free rehash of signals already in the archive does not receive the same credit, even from a high-reliability sector.",
       "Full confidence definitions are listed on the Taxonomy page.",
     ],
   },
@@ -63,7 +65,7 @@ const sections: { title: string; body: string[] }[] = [
   {
     title: "How AI Is Used",
     body: [
-      "Language models are used to extract, cluster, and summarize source material. They are not treated as independent authorities. Final classification depends on the Index taxonomy and human review.",
+      "Language models are used to extract, cluster, and summarize source material. They are not treated as independent authorities. Final classification depends on the Index taxonomy and a review step against editorial guidelines, currently carried out by the same automated process rather than a separate named human editor — see \"AI Involvement\" below for the full disclosure.",
       "This project uses AI for summarization and organization, not for replacing designers, journalists, stylists, archivists, or cultural analysis. The goal is to make public style discourse easier to scan while keeping human interpretation central.",
     ],
   },
@@ -71,7 +73,23 @@ const sections: { title: string; body: string[] }[] = [
     title: "Limitations",
     body: [
       "Coverage is bounded by the sources scanned in a given collection window and is not a representative sample of all style discourse. Reports may under-represent sources without accessible public text, or that require API access not yet integrated.",
-      "Signal classification involves human judgment applied to machine-extracted data, and reports may reflect that interpretive layer as much as the underlying source material.",
+      "Signal classification involves an interpretive review layer applied to machine-extracted data — currently performed by the same automated process rather than a separate human editor (see \"AI Involvement\") — and reports may reflect that layer as much as the underlying source material.",
+      "A suspected error in a published report can be flagged by opening an issue on the project's public repository (github.com/arikthehacker/fashion-trend-crawler/issues). This is not a staffed inbox — response time is not guaranteed — but it is a real, monitored channel, not a placeholder. Corrections are appended to the affected report once verified; see the About page for the correction process itself.",
+    ],
+  },
+  {
+    title: "How Low-Volatility Windows Are Reported",
+    body: [
+      "Some collection windows return a `collection_status` of \"thin,\" meaning fewer signals met the recurrence and source-diversity thresholds than in a typical reporting period.",
+      "A thin status is not treated as a gap to be filled. Where possible it is checked against raw source volume for that window; when source volume was itself low, the reduced signal count reflects observed style discourse rather than a collection failure.",
+      "Reports do not manufacture signals to normalize a thin window to a target count. A verified low-volatility period is recorded as a data point in the archive, the same as any other classification.",
+    ],
+  },
+  {
+    title: "How Signal Recurrence Is Tracked",
+    body: [
+      "Each signal is assigned a persistent identifier that carries across reports. A dedicated page for that identifier lists every dated report in which it appeared, in chronological order, and states plainly whether it appeared in the most recently published report or how many reports have passed since it last did.",
+      "A signal that stops recurring is not automatically marked resolved. A style signal whose discourse volume has genuinely dropped can be noted as closed. A tracked factual question that goes unanswered across multiple consecutive reports is not closed the same way — its absence from new coverage is evidence the crawler has not found an answer, not evidence the question has been settled. After a sustained stretch of unresolved carry-forward, such a signal may be marked untracked pending new information rather than repeated as open indefinitely; tracking resumes if new coverage appears.",
     ],
   },
   {
@@ -79,6 +97,7 @@ const sections: { title: string; body: string[] }[] = [
     body: [
       "When a signal classification or a stated fact is found to be wrong, the affected report is not silently edited. A dated correction note is appended to the report, stating what was wrong and what changed.",
       "The original entry is preserved alongside the correction so the archive reflects what was published at the time, not a retroactively cleaned-up version of it.",
+      "Each correction records, in addition to a prose explanation, which signal identifiers were added, removed, or modified and which specific fields changed on a modified signal — so a reader can reconstruct exactly what changed, not only that a change occurred. A cryptographic hash of the prior signal content is also kept, so the archive can prove content changed even if a correction note were ever incomplete.",
     ],
   },
   {
@@ -91,8 +110,8 @@ const sections: { title: string; body: string[] }[] = [
   {
     title: "AI Involvement",
     body: [
-      "AI assists with crawling source material, extracting recurring language, clustering related terms, and drafting summaries. It does not make final classification decisions.",
-      "A human reviews AI-assisted output before publication, deciding what a cluster of terms means culturally, assigning taxonomy and origin classification, and recording judgment calls in a human-editor note attached to the report data.",
+      "AI assists with crawling source material, extracting recurring language, clustering related terms, and drafting summaries. In most collection windows to date, this has meant AI-directed research (web search and direct review of outlet coverage) rather than the project's automated `crawler.py` fetching live pages end to end; the automated crawler has been run directly for a minority of windows so far. Per-report \"sources scanned\" and \"items collected\" counts reflect the sources reviewed in that window either way, not exclusively a live-crawl page count — that distinction is a known limitation of the current process, not a claim this page makes otherwise.",
+      "Each report is reviewed against this project's editorial guidelines — what a cluster of terms means culturally, taxonomy and origin classification, and judgment calls recorded in a human-editor-note field attached to the report data — before publication. This review is currently performed by the same automated process that drafts the report, not by a separate named human editor; that distinction is a known limitation of the current process, not a claim this page makes otherwise.",
     ],
   },
   {
@@ -103,9 +122,18 @@ const sections: { title: string; body: string[] }[] = [
     ],
   },
   {
-    title: "Human Review Process",
+    title: "How Citations Work",
     body: [
-      "Raw extraction identifies repeated language and clusters related terms. Human review interprets whether those terms belong together, assigns classification and origin, downgrades hype, and connects signals to historical context where relevant.",
+      "Signals cite the outlet-level domain they were drawn from (for example, a homepage domain), not a link to the specific article or post. This is a deliberate, permanent design choice, not a placeholder for per-article links added later.",
+      "Linking directly to a single small or independent outlet's specific article can expose that outlet to a disproportionate traffic spike from this Index. Domain-level citation preserves accountability for where a signal came from without creating that exposure.",
+      "This is a known, named departure from the reader-verification standard the International Fact-Checking Network's Code of Principles sets for fact-checking organizations more broadly — that a report provide sourcing detailed enough for a reader to fully replicate the underlying work. Domain-level citation lets a reader confirm which outlet and sector a signal came from, but not reconstruct the exact article without independently searching that outlet. The trade-off is made deliberately, for the source-protection reason above, not overlooked.",
+      "Reports also never describe a single-outlet signal as coming from \"sources\" in the plural, matching Reuters sourcing convention: attribution language reflects the actual number of independent outlets behind a claim, not a rounded-up or vaguer plural.",
+    ],
+  },
+  {
+    title: "Review Process",
+    body: [
+      "Raw extraction identifies repeated language and clusters related terms. The review step interprets whether those terms belong together, assigns classification and origin, downgrades hype, and connects signals to historical context where relevant — currently performed by the same automated process that drafts the report, not a separate named human editor (see \"AI Involvement\" above).",
       "The scraping collects signals. The taxonomy interprets them.",
     ],
   },
@@ -113,7 +141,7 @@ const sections: { title: string; body: string[] }[] = [
 
 export default function Methodology() {
   return (
-    <main
+    <main id="main-content"
       style={{
         minHeight: "100vh",
         background: "var(--white)",
@@ -163,8 +191,10 @@ export default function Methodology() {
             { href: "/", label: "Report" },
             { href: "/taxonomy", label: "Taxonomy" },
             { href: "/sources", label: "Sources" },
+            { href: "/glossary", label: "Glossary" },
             { href: "/timeline", label: "Timeline" },
             { href: "/archive", label: "Archive" },
+            { href: "/search", label: "Search" },
             { href: "/about", label: "About" },
             { href: "/case-study", label: "Case Study" },
           ].map((item) => (

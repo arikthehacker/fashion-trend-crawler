@@ -1,0 +1,74 @@
+{
+  "report_date": "2027-08-09",
+  "collection_window": {
+    "start": "2027-08-03",
+    "end": "2027-08-09"
+  },
+  "sources_scanned": 9,
+  "items_collected": 11,
+  "source_sector_breakdown": {
+    "editorial": 1,
+    "unclear": 2
+  },
+  "executive_summary": "Collection window August 3-9, 2027. The dominant discourse item this window is not a garment or silhouette trend but a casting-strategy pattern: menswear label 424 opened its Paris Fashion Week SS27 show with a controversial internet personality, prompting coverage that frames the choice as part of a repeating attention-economy tactic across recent seasons rather than an isolated incident. A separate, lower-corroboration runway-performance controversy at Australian Fashion Week surfaced the same week but is tracked independently. Met Gala 2027, Wales Bonner, and CFDA remain untracked going forward per standing convention and are not re-litigated in this report.",
+  "top_signals": [
+    {
+      "name": "Provocative-casting \"ragebait\" runway strategy",
+      "type": "industry_pattern",
+      "source_sectors": [
+        "editorial",
+        "unclear"
+      ],
+      "confidence": "medium",
+      "volatility": "volatile",
+      "origin_classification": "designer_originated",
+      "evidence": "424 opened its SS27 menswear show at Paris Fashion Week (Musee des Archives Nationales) with looksmaxxing influencer Braden Peters (\"Clavicular\"), whose public record includes racist, misogynistic, and homophobic conduct. Coverage frames this as a repeat pattern rather than an isolated stunt, citing Marilyn Manson's AW26 appearance opening the Enfants Riches Deprimes show despite sexual-assault and domestic-violence allegations against him. Front-row and celebrity reaction (French commentator Lyas, actor Francois Arnaud) was widely screenshotted and recirculated; multiple outlets report the collection itself received comparatively little discussion relative to the casting choice.",
+      "index_note": "Distinct from a single-designer controversy: coverage explicitly names this an escalating casting pattern across at least two brands/seasons, not a one-off. Separately, an Australian Fashion Week ISG/Spyridon Gogos runway moment (a model dragging another model across the runway) drew comparable \"provocation vs. spectacle\" debate the same week, but is tracked as a separate, lower-corroboration item rather than folded into this signal_id, since it wasn't yet framed by any outlet as part of the same named pattern.",
+      "source_corroboration_count": 3,
+      "signal_id": "ragebait-runway-casting",
+      "confidence_source": "manual",
+      "human_editor_note": "The editorial judgment worth stating plainly: this is coverage about the attention economics of casting, not about a garment, silhouette, or aesthetic the brand designed. Folding it under a style signal would misrepresent it. Two of the three corroborating outlets fall outside taxonomy.py's domain map and classify unclear rather than as named sectors -- confidence is held at medium rather than derive_confidence()'s literal high, since counting \"unclear\" as a second distinct sector for the diversity gate would reward a coverage gap in the source map rather than genuine cross-sector corroboration. No first-party statement from 424 or Clavicular disputing the backlash was found in this search pass.",
+      "source_domains": [
+        "dazeddigital.com",
+        "coveteur.com",
+        "nssmag.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "ragebait",
+    "looksmaxxing",
+    "controversial casting",
+    "runway stunt"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [
+    "shock-casting",
+    "attention-economy runway"
+  ],
+  "cultural_references": [
+    "Clavicular / Braden Peters",
+    "424",
+    "Marilyn Manson / Enfants Riches Deprimes AW26",
+    "Spyridon Gogos / ISG Australian Fashion Week"
+  ],
+  "limitations": [
+    "No first-party brand statement from 424 found defending or explaining the casting choice.",
+    "Two of three corroborating domains fall outside taxonomy.py's DOMAIN_SECTOR_MAP and classify as 'unclear', limiting genuine cross-sector confirmation.",
+    "The Australian Fashion Week ISG/Spyridon Gogos runway moment was found but not corroborated by enough independent outlets this pass to include as its own signal."
+  ],
+  "archive_tags": [
+    "met-gala-2027-coverage-gap (untracked going forward pending new information)",
+    "wales-bonner (untracked going forward pending new information)",
+    "cfda (untracked going forward pending new information)"
+  ],
+  "content_hash": "22aabeffc98ceb88a14523cb13befe39bd836ba882453f3ae2dd3d00f7a5e672",
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": ""
+}

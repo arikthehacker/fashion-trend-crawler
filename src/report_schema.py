@@ -14,11 +14,16 @@ import os
 
 from taxonomy import CONFIDENCE_LEVELS, VOLATILITY_LABELS, ORIGIN_CLASSIFICATIONS, SOURCE_SECTORS
 
-# sectors treated as "high-reliability" for the medium-confidence single-source
-# gate in derive_confidence() (see docs/agent-logs/confidence-scoring-research.md).
-# only includes names that actually exist in taxonomy.SOURCE_SECTORS.
+# sectors treated as low-noise for the medium-confidence single-source gate in
+# derive_confidence() (see docs/agent-logs/confidence-scoring-research.md) --
+# this is a noise-rate heuristic, not a legitimacy ranking. independent_criticism
+# added run 16 after a bias audit found its exclusion looked like an oversight:
+# it's curated, named-author commentary with a noise profile comparable to
+# editorial, not raw social/UGC volume. only includes names that actually exist
+# in taxonomy.SOURCE_SECTORS.
 HIGH_RELIABILITY_SECTORS = [
-    s for s in ("editorial", "designer_origin", "institutional") if s in SOURCE_SECTORS
+    s for s in ("editorial", "designer_origin", "institutional", "independent_criticism")
+    if s in SOURCE_SECTORS
 ]
 
 REPORTS_DIR = os.path.join(
@@ -91,6 +96,32 @@ class Signal:
     # predate the derivation formula — see
     # docs/agent-logs/confidence-derivation-impl.md.
     confidence_source: str = "manual"
+    # free-text human-editor judgment call, distinct from index_note.
+    # rendered separately on the site (web/app/reports/[date]/page.tsx,
+    # "Editor review: ...") and required non-empty for manually-sampled
+    # social signals (src/manual_sample.py's build_manual_signal()) per
+    # docs/manual-sampling-template.md. optional/backward compatible: many
+    # older signals only populate index_note. see
+    # docs/agent-logs/manual-sampling-quality-check-run30.md for why this
+    # field was added to the dataclass instead of remaining an ad hoc extra
+    # key some reports had and others didn't.
+    human_editor_note: str = ""
+    # outlet homepage domains this signal was corroborated from (e.g.
+    # "vogue.com", "dewimagazine.com") -- NOT per-article URLs. See
+    # docs/agent-logs/source-citation-resolution-run36.md: run 33 flagged
+    # per-article links to small/independent outlets as a "hug of death"/
+    # pile-on risk (a direct permalink to a specific small site's specific
+    # article, published on a report page, inviting traffic surges); run 35
+    # separately found no citable link exists at all, which blocks future
+    # link-rot/archival work. This field resolves both at once by citing at
+    # the outlet-homepage level only -- the same level of granularity
+    # web/app/sources/page.tsx already uses for its outlet listing, so it
+    # carries no incremental pile-on risk over what's already public.
+    # Deliberately NOT a full source_url/source_links list of article
+    # permalinks -- see the resolution log for why that was rejected.
+    # Optional/backward compatible: empty list until summarize.py populates
+    # it from the crawler's already-fetched URLs.
+    source_domains: list = field(default_factory=list)
 
 
 CONFIDENCE_SOURCE_VALUES = ["manual", "derived"]
@@ -100,6 +131,12 @@ CONFIDENCE_SOURCE_VALUES = ["manual", "derived"]
 # Lab burnout research: an honest low-signal report state should exist
 # instead of inflating weak signals to fill a quota every week).
 COLLECTION_STATUS_VALUES = ["normal", "thin"]
+
+# valid values for Report.review_status — see
+# docs/agent-logs/review-status-field.md. soft metadata distinguishing
+# draft reports from ones that have been through editorial review; not a
+# hard gate like human_editor_note.
+REVIEW_STATUS_VALUES = ["draft", "reviewed"]
 
 
 def derive_confidence(signal) -> str:
@@ -196,8 +233,82 @@ def get_signal_status_history(signal_id: str, all_reports: list) -> list:
     return history
 
 
+def is_prolonged_silence(signal_id: str, all_reports: list, threshold: int = 4) -> bool:
+    """
+    return True if `signal_id` has appeared in `threshold` or more
+    consecutive reports (by report_date, ascending) with no resolution --
+    i.e. it keeps getting explicitly carried forward as "still open"
+    rather than being resolved or dropped.
+
+    this is deliberately a thin wrapper over get_signal_status_history():
+    it does not introduce a new schema field or status enum (see TODO.md's
+    "awaiting resolution" question). the reasoning is the same as for
+    get_signal_status_history() itself -- whether a question has gone
+    unresolved too long is an observation about cross-report recurrence,
+    not a property of any single report's signal entry, so a report-writing
+    agent should compute it on demand rather than have each agent
+    re-derive "is this taking too long" from scratch or a human have to
+    hardcode a schema field that immediately goes stale.
+
+    note this is distinct from signal *dormancy* (see
+    get_signal_status_history()'s docstring / signal-dormancy-mechanism.md):
+    dormancy means a signal stopped appearing across reports. prolonged
+    silence is the opposite pattern -- the signal keeps appearing, window
+    after window, because the underlying question (e.g. "who won the CFDA
+    Fashion Fund") is still open and being explicitly re-asserted as
+    unresolved, not because coverage of it went quiet.
+
+    callers (e.g. summarize.py or a human editor) can use the return value
+    to decide whether report copy/human_editor_note should name the
+    prolonged-silence pattern itself, as guidance rather than a hard gate.
+
+    returns False if signal_id has fewer than `threshold` entries in its
+    history (including if it never appears at all).
+
+    on the "what happens if it NEVER resolves" question (see TODO.md and
+    docs/agent-logs/permanent-open-signal-design.md): do NOT reuse the
+    dormant-signal "EDITORIAL CLOSE-OUT" pattern (see
+    layered-tops-styling-closeout.md / off-duty-varsity-resolution.md) for
+    a prolonged-silence factual question. A close-out declares a STYLE
+    signal resolved/faded, which is a legitimate editorial observation
+    about discourse volume. A factual question like "who won the CFDA
+    Fashion Fund" has no such resolution available from silence -- silence
+    is evidence the crawler hasn't found an answer, not evidence there
+    isn't one. Declaring it "closed" would misrepresent an open question
+    as answered.
+
+    the intended convention instead: once is_prolonged_silence() has been
+    True for several consecutive windows in a row (a coordinator/human call,
+    not a hardcoded second threshold in this function -- e.g. ~3 windows
+    past the initial crossing is a reasonable default), a report may mark
+    the signal_id "untracked going forward pending new information" in its
+    human_editor_note/index_note/archive_tags, instead of repeating the
+    same "still open" note indefinitely. This is an honest third state,
+    distinct from both "resolved" (close-out) and "still actively
+    tracked" (routine carry-forward): it says the archive is deprioritizing
+    further weekly re-litigation of the question without claiming to know
+    the answer, and any future agent that finds real coverage should
+    resume tracking / add a normal resolution note at that point. No new
+    schema enum value is introduced for this -- it is expressed the same
+    way close-outs are, as prose in existing free-text fields, so it stays
+    a report-writing convention rather than a schema commitment made before
+    it's been used more than once in practice.
+    """
+    history = get_signal_status_history(signal_id, all_reports)
+    return len(history) >= threshold
+
+
 @dataclass
 class Report:
+    # date this report was filed, in the archive's dated-filename convention
+    # (data/reports/<report_date>.json). CONVENTION (previously undocumented
+    # -- see docs/agent-logs/report-date-convention-audit-run92.md): this
+    # MUST equal collection_window.end, not collection_window.start. The
+    # archive files/labels a report by the END of the window it summarizes,
+    # not the start. Run 91 caught a report filed under the window's start
+    # date instead; validate_report() below emits a non-fatal warning if
+    # this convention is violated, to catch a recurrence before it reaches
+    # consolidation.
     report_date: str = ""
     collection_window: CollectionWindow = field(default_factory=CollectionWindow)
     sources_scanned: int = 0
@@ -233,11 +344,29 @@ class Report:
     # audit trail of corrections made to this report after initial save.
     # each entry: {"previous_content_hash": str, "corrected_at": str (ISO
     # date string, caller-supplied for determinism/testability), "reason":
-    # str (non-empty, required)}. populated by save_report() itself when it
-    # detects it's overwriting an existing report file for this date with
-    # differing content — see docs/agent-logs/retention-versioning-design.md.
+    # str (non-empty, required), "changed_signals": dict (optional —
+    # {"added": [signal_id...], "removed": [signal_id...], "modified":
+    # {signal_id: [field_name...]}}, auto-computed by save_report() via
+    # diff_signal_changes() so a reader can reconstruct exactly WHAT
+    # changed, not just that a correction happened — see
+    # docs/agent-logs/archival-standards-audit-run82.md)}. populated by
+    # save_report() itself when it detects it's overwriting an existing
+    # report file for this date with differing content — see
+    # docs/agent-logs/retention-versioning-design.md.
     # optional/backward compatible: old reports without it default to [].
     revision_history: list = field(default_factory=list)
+    # "draft" or "reviewed" (default). marks whether this report has been
+    # through editorial review. defaults to "reviewed" because reports
+    # created before this field existed already went through the loop's
+    # consolidation process — see docs/agent-logs/review-status-field.md.
+    # optional/backward compatible: old reports without it default to
+    # "reviewed". this is a soft provenance field, not a hard gate like
+    # human_editor_note.
+    review_status: str = "reviewed"
+    # free-text attribution for who/what performed the review, e.g.
+    # "loop-consolidation" or a human name. optional metadata, not enforced
+    # non-empty — see docs/agent-logs/review-status-field.md.
+    reviewed_by: str = ""
 
     def to_dict(self) -> dict:
         d = asdict(self)
@@ -263,6 +392,40 @@ def compute_content_hash(data: dict) -> str:
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
+def diff_signal_changes(old_signals: list, new_signals: list) -> dict:
+    """
+    compare two top_signals lists (by signal_id) and return which
+    signal_ids were added, removed, or had at least one field change,
+    plus which specific field names changed on each modified signal.
+
+    this exists so a revision_history entry can record WHAT changed,
+    not just THAT something changed (a bare content_hash proves
+    tamper-evidence but is not human-reconstructable) — see
+    docs/agent-logs/archival-standards-audit-run82.md.
+
+    returns {"added": [signal_id, ...], "removed": [signal_id, ...],
+    "modified": {signal_id: [field_name, ...], ...}}. signals missing
+    a signal_id are ignored (can't be tracked by identity), which
+    mirrors validate_report's own signal_id requirement.
+    """
+    old_by_id = {s["signal_id"]: s for s in old_signals if isinstance(s, dict) and s.get("signal_id")}
+    new_by_id = {s["signal_id"]: s for s in new_signals if isinstance(s, dict) and s.get("signal_id")}
+
+    added = sorted(set(new_by_id) - set(old_by_id))
+    removed = sorted(set(old_by_id) - set(new_by_id))
+
+    modified = {}
+    for sid in sorted(set(old_by_id) & set(new_by_id)):
+        old_sig, new_sig = old_by_id[sid], new_by_id[sid]
+        changed_fields = sorted(
+            k for k in set(old_sig) | set(new_sig) if old_sig.get(k) != new_sig.get(k)
+        )
+        if changed_fields:
+            modified[sid] = changed_fields
+
+    return {"added": added, "removed": removed, "modified": modified}
+
+
 def validate_report(data: dict) -> None:
     """
     raise SchemaValidationError if `data` is missing required
@@ -276,6 +439,29 @@ def validate_report(data: dict) -> None:
     window = data.get("collection_window", {})
     if not isinstance(window, dict) or "start" not in window or "end" not in window:
         raise SchemaValidationError("collection_window must have 'start' and 'end'")
+
+    # heuristic, non-fatal check (run 92): the archive's established
+    # convention is report_date == collection_window.end (the report is
+    # filed/dated by the END of the window it summarizes, not the start).
+    # this was never written down explicitly before run 92 and run 91 caught
+    # a real violation of it, so we warn here rather than hard-fail --
+    # consistent with this project's other heuristic checkers
+    # (check_field_coverage.py, check_signal_reuse_claims.py), which warn
+    # instead of raising so an unanticipated legitimate edge case doesn't
+    # block saving a report. see
+    # docs/agent-logs/report-date-convention-audit-run92.md.
+    report_date = data.get("report_date", "")
+    window_end = window.get("end", "") if isinstance(window, dict) else ""
+    if report_date and window_end and report_date != window_end:
+        import sys
+        print(
+            f"WARNING: report_date ({report_date!r}) does not match "
+            f"collection_window.end ({window_end!r}) -- the archive convention "
+            f"is that a report is dated/filed by the END of its collection "
+            f"window, not the start. Double-check this report was filed under "
+            f"the correct date before consolidating.",
+            file=sys.stderr,
+        )
 
     for i, signal in enumerate(data.get("top_signals", [])):
         missing_signal_keys = [k for k in REQUIRED_SIGNAL_KEYS if k not in signal]
@@ -332,6 +518,31 @@ def validate_report(data: dict) -> None:
                 f"not in {CONFIDENCE_SOURCE_VALUES}"
             )
 
+        # optional field: default to [] if absent so old reports (predating
+        # source_domains) remain valid. must be a list of bare homepage
+        # domains (no scheme, no path) -- deliberately rejects anything that
+        # looks like a full article URL, since a per-article permalink to a
+        # small outlet is the exact pile-on risk this field was designed to
+        # avoid (see docs/agent-logs/source-citation-resolution-run36.md).
+        source_domains = signal.get("source_domains", [])
+        if not isinstance(source_domains, list):
+            raise SchemaValidationError(
+                f"top_signals[{i}].source_domains must be a list, got {source_domains!r}"
+            )
+        for domain in source_domains:
+            if not isinstance(domain, str) or not domain:
+                raise SchemaValidationError(
+                    f"top_signals[{i}].source_domains entries must be non-empty strings, "
+                    f"got {domain!r}"
+                )
+            if "/" in domain or domain.startswith("http:") or domain.startswith("https:"):
+                raise SchemaValidationError(
+                    f"top_signals[{i}].source_domains entries must be bare homepage "
+                    f"domains (e.g. 'vogue.com'), not full URLs/paths -- got {domain!r}. "
+                    f"Per-article links are a known pile-on risk for small outlets, see "
+                    f"docs/agent-logs/source-citation-resolution-run36.md."
+                )
+
     # optional field: default to "normal" if absent so old reports (predating
     # the thin-week fallback) remain valid.
     collection_status = data.get("collection_status", "normal")
@@ -376,6 +587,42 @@ def validate_report(data: dict) -> None:
             raise SchemaValidationError(
                 f"revision_history[{i}].reason must be a non-empty string"
             )
+        # optional field: "changed_signals" — {"added": [...], "removed":
+        # [...], "modified": {signal_id: [field, ...]}} as produced by
+        # diff_signal_changes(). only type-checked when present so
+        # revision entries predating this field (or hand-authored ones
+        # without a prior on-disk version to diff against) remain valid.
+        if "changed_signals" in entry:
+            changed = entry["changed_signals"]
+            if not isinstance(changed, dict):
+                raise SchemaValidationError(
+                    f"revision_history[{i}].changed_signals must be a dict"
+                )
+            for key in ("added", "removed"):
+                if key in changed and not isinstance(changed[key], list):
+                    raise SchemaValidationError(
+                        f"revision_history[{i}].changed_signals.{key} must be a list"
+                    )
+            if "modified" in changed and not isinstance(changed["modified"], dict):
+                raise SchemaValidationError(
+                    f"revision_history[{i}].changed_signals.modified must be a dict"
+                )
+
+    # optional field: default to "reviewed" if absent so old reports
+    # (predating this field) remain valid.
+    review_status = data.get("review_status", "reviewed")
+    if review_status not in REVIEW_STATUS_VALUES:
+        raise SchemaValidationError(
+            f"review_status '{review_status}' not in {REVIEW_STATUS_VALUES}"
+        )
+
+    # optional field: free-text provenance, not enforced non-empty. only
+    # type-checked when present.
+    reviewed_by = data.get("reviewed_by", "")
+    if not isinstance(reviewed_by, str):
+        raise SchemaValidationError(
+            f"reviewed_by must be a string, got {reviewed_by!r}"
+        )
 
     content_hash = data.get("content_hash", "")
     if content_hash:
@@ -444,6 +691,9 @@ def save_report(
                 "previous_content_hash": old_hash,
                 "corrected_at": corrected_at,
                 "reason": revision_reason,
+                "changed_signals": diff_signal_changes(
+                    existing_data.get("top_signals", []), data.get("top_signals", [])
+                ),
             })
             data["revision_history"] = revision_history
         elif "revision_history" not in data:

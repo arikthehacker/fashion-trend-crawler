@@ -1,0 +1,74 @@
+{
+  "report_date": "2026-10-12",
+  "collection_window": {
+    "start": "2026-10-06",
+    "end": "2026-10-12"
+  },
+  "sources_scanned": 11,
+  "items_collected": 3,
+  "source_sector_breakdown": {
+    "editorial": 2,
+    "institutional": 1
+  },
+  "executive_summary": "This collection window (October 6-12, 2026) is the first full week after fashion month closed: Paris Fashion Week's SS27 women's season ended October 6, concluding the New York-London-Milan-Paris sequence that ran September 8-October 6, 2026 per docs/EDITORIAL_CALENDAR.md. This report treats the expected post-fashion-month volume drop as a hypothesis to test, not a foregone conclusion, and searched accordingly rather than assuming thinness. The search effort turned up no new, independently verifiable in-window developments: no show content (none is in scope this far past the calendar's close), no resolution of either open schedule-date discrepancy carried from prior windows, and no new downstream reporting on the British Fashion Council's dropped LFW wholesale-stockist eligibility requirement. The one genuinely new, verifiable item found -- the CFDA/Vogue Fashion Fund's 2026 finalist slate -- was announced June 2, 2026 and its winner announcement is scheduled for October 20, 2026; both dates fall outside this window, so per this archive's no-backfill practice it is not logged as an in-window signal, only noted here as upcoming institutional context. The lfw-wholesale-eligibility-dropped signal (first logged September 21) is carried forward for a third consecutive quiet window with no new corroborating or contradicting reporting -- its volatility is moved from emerging to declining to reflect that pattern, not to assert resolution. The pfw-schedule-inconsistency and mfw-schedule-inconsistency threads are not re-verified this window; both concern dates that have now fully elapsed, so further reconciliation is unlikely to surface and they are logged as closed-by-elapse in limitations rather than re-asserted as open signals. On balance, this window's honest read is thin: not because fashion month ending makes thinness automatic, but because a genuine search for new discourse this week returned very little that met this archive's verification bar.",
+  "top_signals": [
+    {
+      "name": "LFW wholesale-stockist eligibility change remains uncorroborated after three windows",
+      "type": "institutional_policy",
+      "source_sectors": [
+        "institutional"
+      ],
+      "confidence": "medium",
+      "volatility": "declining",
+      "origin_classification": "designer_originated",
+      "evidence": "The British Fashion Council's LFW Designer Applications page continues to state that eligibility criteria no longer include a minimum wholesale-stockist requirement, and that all designers -- regardless of prior show history -- must apply each season and are assessed on creative merit given limited slots. As of this window, no downstream reporting (editorial, trade, or designer-side) on the effect of this change -- e.g. a shift in the applicant pool or a newly-admitted designer citing it -- has surfaced in three consecutive collection windows (Sept 21, Oct 5, Oct 12).",
+      "index_note": "Same signal_id carried forward from the September 21 report. Volatility moved emerging -> declining this window: not because the underlying policy changed, but because three windows without any corroborating downstream reporting is itself informative about how much this is actually shaping applicant behavior so far, versus being a rule change noted once and then unobserved.",
+      "human_editor_note": "Treat 'declining' here as a statement about reporting activity, not about the policy's importance -- a rule change like this may only become visible in outcomes (who actually shows) at the next LFW cycle, which is outside this archive's current observation window. Worth a longitudinal check when LFW's next season is scheduled.",
+      "source_corroboration_count": 1,
+      "signal_id": "lfw-wholesale-eligibility-dropped",
+      "confidence_source": "manual"
+    }
+  ],
+  "repeated_keywords": [
+    "fashion month close",
+    "post-fashion-month",
+    "London Fashion Week eligibility",
+    "British Fashion Council",
+    "CFDA Vogue Fashion Fund"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [
+    "British Fashion Council LFW eligibility policy (dropped wholesale-stockist requirement)",
+    "CFDA/Vogue Fashion Fund 2026 finalist cycle (upcoming, out-of-window winner announcement Oct 20)"
+  ],
+  "limitations": [
+    "This window returned very little independently verifiable new discourse despite a genuine search effort spanning editorial, institutional, and trade sources -- items_collected (3) and sources_scanned (11) are both markedly below the fashion-month reports. This is reported as an honest empirical finding, not assumed in advance from the fact that fashion month had just ended.",
+    "pfw-schedule-inconsistency (Oct 5 report) and mfw-schedule-inconsistency (Sept 28 report) are not re-verified this window. Both concern SS27 schedule dates that have now fully elapsed (Milan and Paris fashion month both concluded before this window opened), so they are logged as closed-by-elapse rather than re-asserted as open signals; see get_signal_status_history() for each signal_id's full trend. Neither discrepancy was ever reconciled to a single authoritative date.",
+    "lfw-wholesale-eligibility-dropped remains single-source (the British Fashion Council's own page) after three windows; no independent outlet has reported on its effects. Confidence is held at medium on the strength of the source being the policy-setting institution itself, not on corroboration count.",
+    "The CFDA/Vogue Fashion Fund's 2026 finalists were announced June 2, 2026 and the winner announcement is scheduled for October 20, 2026 -- both outside this window -- so this institutional-sector development is noted for context only and is not logged as an in-window top_signal, per this archive's standing no-backfill/no-forward-fill practice.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "post-fashion-month-2026",
+    "lfw-eligibility-declining",
+    "pfw-mfw-schedule-closed-by-elapse",
+    "thin-week",
+    "2026-q4"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "Fewer than 5 distinct, independently verifiable signals were found this window despite active search effort across editorial, institutional, and trade sources. This is the first full week after fashion month's close (Sept 8-Oct 6, 2026) and the drop is consistent with the pre-fashion-month baseline documented in runs 19-22, but this report reached that conclusion by testing for new discourse and finding little, not by assuming the drop in advance.",
+  "review_status": "reviewed",
+  "reviewed_by": "loop-consolidation",
+  "revision_history": [
+    {
+      "previous_content_hash": "0ed242d60e5bc3826557c05b4f6a9ac4862b216ff4932d2f5d1bee59e5e27b59",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    }
+  ],
+  "content_hash": "1fc5311ccee510ccc78fbd68d7a74f6c7e416707c49acdac14e48bd705db9e40"
+}

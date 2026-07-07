@@ -1,0 +1,70 @@
+{
+  "report_date": "2028-02-07",
+  "collection_window": {
+    "start": "2028-02-01",
+    "end": "2028-02-07"
+  },
+  "sources_scanned": 10,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "institutional": 1,
+    "editorial": 1
+  },
+  "executive_summary": "Collection window February 1-7, 2028, the week immediately following the close of Paris's Haute Couture Spring/Summer 2028 shows (2028-01-31) and preceding the start of New York Fashion Week Fall/Winter 2028 women's shows, which customarily open in the second week of February. No new style, garment, or aesthetic signal cleared this report's corroboration bar this week. The one checkable item is logistics rather than trend content: the CFDA published its official New York Fashion Week Fall/Winter 2028 women's calendar this window, and wwd.com independently reported on the announcement with additional confirmed-participant detail (a preliminary designer lineup, including several return and debut slots) beyond a restatement of the CFDA's own release. This is treated as genuine cross-sector corroboration, the same fact pattern already applied to the 2028-01-10 FHCM/wwd.com Paris menswear calendar-confirmation signal: one institutional primary source, one editorial outlet doing its own reporting on top of that source, not an aggregator reprint of the same announcement. No retailer, designer_origin, social, resale, or independent-criticism source introduced a development distinct from material already logged in prior windows this week; couture week's close produced no retail-adoption or social-amplification follow-through within this window (couture pieces are made-to-order and not stocked at retail, and no social discourse volume around either the Dior bias-cut column dress or the Louis Vuitton dropped-shoulder overcoat threads met this report's corroboration bar). The resort 2028 puffer-shell skirt thread, the resale-demand signal on structured waist-tailoring, the obi-sash cocoon coat thread, and the opera-glove/'restraint dressing' thread all produced no new development this window and are not carried forward again absent fresh movement. The Margiela raw-edge thread remains closed out as of 2027-10-18. Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention.",
+  "top_signals": [
+    {
+      "name": "New York confirms Fall/Winter 2028 women's Fashion Week dates",
+      "type": "market_behavior",
+      "source_sectors": [
+        "institutional",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "stable",
+      "origin_classification": "unclear",
+      "evidence": "The CFDA, New York Fashion Week's governing body, published its official calendar for Fall/Winter 2028 women's New York Fashion Week this window, opening the next leg of the international fashion-month sequence following Paris's Haute Couture Spring/Summer 2028 close. wwd.com independently reported on the announcement, adding a preliminary confirmed-designer-participant list (including several notable returns and at least one debut slot) not present in the CFDA's own release -- this is treated as genuine independent second-sector reporting rather than a reprint of the primary announcement, the same distinction drawn for the 2028-01-10 pfw-mens-fw28-calendar-confirmed signal.",
+      "index_note": "Read as routine pre-season fashion-week logistics, not a style signal -- confirmation of a calendar date and participant list is not, itself, a garment, silhouette, or aesthetic claim.",
+      "human_editor_note": "derive_confidence() computes 'high' here (corroboration_count=2, two distinct sectors: institutional, editorial) and this report adopts that result rather than overriding it, applying the identical reasoning already used for the 2028-01-10 FHCM/wwd.com menswear calendar-confirmation signal: wwd.com's coverage adds confirmed-participant detail the CFDA's own release did not include, which is genuine independent journalism, not a reprint of the primary announcement (contrast the 2027-09-06 fhcm.paris/laforma.club aggregator-reprint case under precedent 4). confidence_source is set to 'derived' rather than 'manual' since the mechanical result is adopted as-is.",
+      "source_corroboration_count": 2,
+      "signal_id": "nyfw-fw28-womens-calendar-confirmed",
+      "confidence_source": "derived",
+      "source_domains": [
+        "cfda.com",
+        "wwd.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "New York Fashion Week calendar",
+    "Fall/Winter 2028",
+    "CFDA"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [
+    "New York Fashion Week",
+    "CFDA"
+  ],
+  "limitations": [
+    "No style, garment, silhouette, or aesthetic signal cleared this report's corroboration bar this window; the only checkable item is a fashion-week scheduling fact, not trend content.",
+    "The 'high' confidence on the calendar-confirmation signal rests on the same judgment call already applied at 2028-01-10 -- that wwd.com's added participant detail counts as independent reporting rather than republication (precedent 4 in the confidence-discipline precedents doc), applied here to a New York/CFDA announcement rather than a Paris/FHCM one.",
+    "No development occurred this window on the Dior Haute Couture Spring/Summer 2028 bias-cut column dress or the Louis Vuitton Fall/Winter 2028 dropped-shoulder overcoat signals logged in the two preceding reports; neither retail-adoption nor social-amplification follow-through met this report's corroboration bar, and couture garments are not retail-stocked in any case, so the Dior thread in particular has no retail-adoption pathway to observe.",
+    "No new development occurred on the resort 2028 puffer-shell skirt, resale-demand, obi-sash cocoon coat, or opera-glove/'restraint dressing' threads this window; per standing convention, none are carried forward again absent fresh movement."
+  ],
+  "archive_tags": [
+    "margiela-raw-edge-editorial-close-out",
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "The window between the close of Paris Haute Couture Spring/Summer 2028 (2028-01-31) and the start of New York Fashion Week Fall/Winter 2028 women's shows (mid-February) is predictably quiet for style discourse: the only checkable development this week is a fashion-week scheduling confirmation, not a garment, silhouette, or aesthetic claim. Fewer than 3 sources returned genuinely distinct signals this window; this report reflects limited coverage rather than manufactured trend content.",
+  "review_status": "reviewed",
+  "reviewed_by": "ari3lla-index-loop-improvements agent",
+  "revision_history": [],
+  "content_hash": "d53a79bd2a4a414ec12f0ebd177bea0147d9b0f0ec0074e937eb446933a929f6"
+}

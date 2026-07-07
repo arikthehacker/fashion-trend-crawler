@@ -1,0 +1,117 @@
+{
+  "report_date": "2027-06-28",
+  "collection_window": {
+    "start": "2027-06-22",
+    "end": "2027-06-28"
+  },
+  "sources_scanned": 17,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "editorial": 1,
+    "unclear": 4
+  },
+  "executive_summary": "This collection window (June 22-28, 2027) is the fifty-third archived window. One new signal cleared the cross-source corroboration bar: a Wimbledon-driven tenniscore/event-dressing wave (polka dots, butter yellow, tennis-inspired accessories) spanning fashion and lifestyle press ahead of and during the tournament. Met Gala 2027 was checked a ninth consecutive window -- still no theme, co-chair, or red-carpet coverage has surfaced for an event this index's own calendar research places on May 3, 2027, already past; this is the fourth occurrence of the exact same signal_id in top_signals, meeting the index's prolonged-silence threshold for the first time. Wales Bonner/Hermes and CFDA Fashion Fund/Awards were not re-litigated this window per SKILL.md workflow note 10; incidental checks surfaced no new resolving coverage for either.",
+  "top_signals": [
+    {
+      "name": "Wimbledon 2027 tenniscore event dressing",
+      "type": "aesthetic_signal",
+      "source_sectors": [
+        "editorial",
+        "unclear"
+      ],
+      "confidence": "medium",
+      "volatility": "seasonal",
+      "origin_classification": "editorial_amplified",
+      "evidence": "RUNWAY Magazine (runwaylive.com), Hello!, Your Coffee Break, and Vogue Adria independently covered a Wimbledon-tied 'tenniscore' event-dressing wave -- polka dots, butter yellow, powder blue, and tennis-inspired accessories -- reported alongside sharp reported search-volume increases for polka-dot dresses and 'Wimbledon outfit' queries, and tied to spectator looks worn courtside by royals and celebrities.",
+      "index_note": "Classified editorial_amplified rather than designer_originated: the trend claim is the outlets' synthesis of spectator styling and search behavior around a recurring annual sporting event, not a single designer's seasonal collection statement. Same event-driven volatility pattern as prior Royal Ascot/tomato-red and royal-purple signals -- expect coverage to fade with the tournament rather than persist as an independent fashion-cycle development.",
+      "source_corroboration_count": 4,
+      "signal_id": "wimbledon-tenniscore-polka-dot",
+      "confidence_source": "manual",
+      "human_editor_note": "Held at 'medium' despite four corroborating outlets: three of the four domains (hellomagazine.com, yourcoffeebreak.co.uk, vogueadria.com) aren't in DOMAIN_SECTOR_MAP and classify 'unclear', so the apparent editorial diversity is thinner than the raw count suggests -- the same taxonomy-coverage caveat applied to every color/event-dressing signal this quarter. The reported search-volume spikes are self-reported by one of the covering outlets rather than independently verified, so I'm treating them as corroborating color but not as a separate data point.",
+      "source_domains": [
+        "runwaylive.com",
+        "hellomagazine.com",
+        "yourcoffeebreak.co.uk",
+        "vogueadria.com"
+      ]
+    },
+    {
+      "name": "Met Gala 2027 coverage gap: untracked going forward pending new information",
+      "type": "factual_question",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "declining",
+      "origin_classification": "editorial_amplified",
+      "evidence": "Targeted search across nine consecutive weekly collection windows (2027-05-03 through 2027-06-28) found zero reachable coverage of a Met Gala 2027 theme, co-chairs, or red-carpet under that name, despite the event historically generating same-day saturation coverage.",
+      "index_note": "Reuses the signal_id introduced on 2027-05-31 (and reused on 2027-06-14 and 2027-06-21). This is the fourth consecutive occurrence and is_prolonged_silence() is now True for the first time this window. Per SKILL.md note 10 and the precedent set for wales-bonner-hermes-debut and the CFDA signals, this report makes the transition call directly rather than deferring again: signal_id is marked 'untracked going forward pending new information.' The underlying question (did Met Gala 2027 coverage ever surface) is NOT resolved and is not being declared resolved -- the event's May 3, 2027 date per this index's own calendar research is not in doubt, and zero coverage across nine consecutive collection windows is a genuine, unexplained absence, not evidence the event was cancelled or didn't happen. This is a deprioritization of weekly re-litigation, not a resolution. Any future agent that finds real Met Gala 2027 coverage should resume normal tracking and confidence re-derivation immediately.",
+      "source_corroboration_count": 1,
+      "signal_id": "met-gala-2027-coverage-gap",
+      "confidence_source": "manual",
+      "human_editor_note": "Periodic audit run 61: the 2027-06-28 report (a concurrent agent's work) correctly identified that this signal crossed is_prolonged_silence()'s threshold for the first time but explicitly deferred the transition decision to 'a future run or periodic audit.' Making that call now, applying the exact convention already used for wales-bonner-hermes-debut and the CFDA signals (SKILL.md note 10): nine consecutive windows of identical zero-coverage results no longer justify weekly re-litigation, so the signal is marked 'untracked going forward pending new information' rather than repeating the same open note next window. Not a claim that the event didn't happen or that the question is settled -- just a deprioritization, reversible the moment real coverage appears.",
+      "source_domains": []
+    }
+  ],
+  "repeated_keywords": [
+    "Wimbledon tenniscore polka dot",
+    "Met Gala 2027 no coverage ninth window"
+  ],
+  "garments": [
+    "tennis dress",
+    "linen suit",
+    "polka dot dress",
+    "cream trousers"
+  ],
+  "silhouettes": [
+    "tailored",
+    "A-line",
+    "spectator"
+  ],
+  "materials": [
+    "poplin",
+    "boucl\u00e9",
+    "cotton pique"
+  ],
+  "colors": [
+    "butter yellow",
+    "powder blue",
+    "Wimbledon white"
+  ],
+  "aesthetic_terms": [
+    "tenniscore",
+    "spectator style"
+  ],
+  "cultural_references": [
+    "Wimbledon 2027",
+    "royal courtside style"
+  ],
+  "limitations": [
+    "Met Gala 2027 was checked a ninth consecutive window (following 2027-05-03 through 2027-06-21). No theme, co-chair, or red-carpet coverage has ever surfaced across any of the nine windows checked, for an event this index's own calendar research places on May 3, 2027. This is now the fourth consecutive-report occurrence of the signal, meeting is_prolonged_silence()'s threshold for the first time; whether to transition it to 'untracked going forward' is left to a future run or periodic audit rather than decided here.",
+    "The Wimbledon tenniscore signal is tied to an annual sporting/social event's calendar rather than an independent fashion-cycle development; its durability past the tournament window is unknown and should be re-checked in future reports rather than assumed to persist.",
+    "3 of 4 Wimbledon tenniscore source domains are not yet present in taxonomy.py's DOMAIN_SECTOR_MAP and classify as 'unclear' sector rather than a verified one -- a taxonomy coverage gap, not a claim those outlets are unreliable.",
+    "Wales Bonner/Hermes and CFDA Fashion Fund/Awards were not re-litigated this window per SKILL.md workflow note 10; incidental checks surfaced no new resolving coverage for either. Both remain 'untracked going forward pending new information.'",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "wimbledon-tenniscore-polka-dot",
+    "wales-bonner-untracked-pending-new-information",
+    "cfda-signals-untracked-pending-new-information",
+    "2027-q2",
+    "met-gala-2027-coverage-gap",
+    "met-gala-2027-untracked-pending-new-information",
+    "transition-checkpoint-decided-2027-06-28"
+  ],
+  "content_hash": "a51b795a87f51c604a32a17b1c4c3442714dc858f03d36c032703f70cc1e8994",
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [
+    {
+      "previous_content_hash": "589d6154539ba94c8cf6c2cc8cbecbb78e74469f79b8b5d45d34f0c22904e9e1",
+      "corrected_at": "2026-07-06",
+      "reason": "Periodic audit run 61: applied SKILL.md note 10 untracked-going-forward transition to met-gala-2027-coverage-gap now that is_prolonged_silence() has crossed threshold, matching precedent set for wales-bonner-hermes-debut/CFDA signals."
+    }
+  ],
+  "review_status": "reviewed",
+  "reviewed_by": ""
+}

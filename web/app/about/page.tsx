@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function About() {
   return (
-    <main
+    <main id="main-content"
       style={{
         minHeight: "100vh",
         background: "var(--white)",
@@ -56,8 +56,10 @@ export default function About() {
             { href: "/methodology", label: "Methodology" },
             { href: "/taxonomy", label: "Taxonomy" },
             { href: "/sources", label: "Sources" },
+            { href: "/glossary", label: "Glossary" },
             { href: "/timeline", label: "Timeline" },
             { href: "/archive", label: "Archive" },
+            { href: "/search", label: "Search" },
             { href: "/case-study", label: "Case Study" },
           ].map((item) => (
             <Link
@@ -71,6 +73,8 @@ export default function About() {
                 color: "var(--black)",
                 textDecoration: "underline",
                 textUnderlineOffset: "3px",
+                display: "inline-block",
+                padding: "0.65rem 0",
               }}
             >
               {item.label}
@@ -203,9 +207,26 @@ export default function About() {
               marginBottom: "1rem",
             }}
           >
-            AI assists with crawling, extraction, and summarization. A human reviews that output,
-            makes the interpretive classification calls, and records them in a human-editor note
-            attached to each report.
+            ARI3LLA INDEX is an independently operated research and reporting project, not a
+            staffed newsroom or a commercial publication. It is built and maintained by a single
+            researcher-developer, with source code published on the project&apos;s public
+            repository; there is no separate editorial board, ownership structure, or funding
+            source to disclose beyond that.
+          </p>
+          <p
+            style={{
+              fontFamily: "var(--font-franklin)",
+              fontSize: "0.95rem",
+              lineHeight: "1.8",
+              color: "var(--gray)",
+              marginBottom: "1rem",
+            }}
+          >
+            AI assists with crawling, extraction, and summarization. Each report is reviewed
+            against the project&apos;s editorial guidelines, including the interpretive classification
+            calls, which are recorded in a human-editor note attached to each report. That review
+            is currently carried out by the same automated process that drafts the report, not by
+            a separate named human editor — see <Link href="/methodology" style={{ color: "var(--gray)" }}>methodology</Link> for the full disclosure.
           </p>
           <p
             style={{
@@ -220,7 +241,16 @@ export default function About() {
             <Link href="/methodology" style={{ color: "var(--black)", textDecoration: "underline" }}>
               Methodology
             </Link>{" "}
-            page.
+            page. A suspected error can be reported by{" "}
+            <a
+              href="https://github.com/arikthehacker/fashion-trend-crawler/issues"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "var(--black)", textDecoration: "underline" }}
+            >
+              opening an issue on the project&apos;s public repository
+            </a>
+            . This is not a staffed inbox, but it is a real channel, not a placeholder.
           </p>
         </div>
 

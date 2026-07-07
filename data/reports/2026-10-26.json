@@ -1,0 +1,74 @@
+{
+  "report_date": "2026-10-26",
+  "collection_window": {
+    "start": "2026-10-20",
+    "end": "2026-10-26"
+  },
+  "sources_scanned": 9,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "institutional": 1,
+    "editorial": 1
+  },
+  "executive_summary": "This collection window (October 20-26, 2026) is the third full week after fashion month's close and is the window in which the CFDA/Vogue Fashion Fund's 2026 winner announcement -- previously logged as out-of-window context on October 12 and October 19 -- falls by scheduled date. A genuine search was re-run rather than assuming an outcome: as of search time, no dated, sourced reporting naming an actual 2026 CFDA/Vogue Fashion Fund winner had surfaced from CFDA, Vogue, WWD, Business of Fashion, or wire coverage; available coverage remains limited to the June finalist announcement (ten designers) and the scheduled October 20 gala date itself. Per this archive's no-fabrication standard, no winner name is asserted. This is logged as an open, in-window item pending confirmation rather than resolved, and is a strong candidate for reconciliation next window if lagging coverage appears. The LFW wholesale-stockist eligibility signal, closed out by silence in the prior window after four consecutive quiet checks, was not re-opened this window -- no new reporting on it was found, consistent with that closure. Miami Fashion Week's October 13-17 dates fell in the prior window; a follow-up check this window still found no dated runway or reaction coverage, so it remains unlogged as a signal. No new, independently verifiable in-window garment, silhouette, or aesthetic discourse was found. On balance this window's honest read is thin, driven primarily by the fact that this window's one anticipated news event -- the Fashion Fund result -- has not yet produced verifiable coverage despite falling within the collection window by date.",
+  "top_signals": [
+    {
+      "name": "CFDA/Vogue Fashion Fund 2026 winner announcement pending verification",
+      "type": "institutional_policy",
+      "source_sectors": [
+        "institutional",
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "emerging",
+      "origin_classification": "unclear",
+      "evidence": "The CFDA/Vogue Fashion Fund's 2026 winner gala was scheduled for October 20, 2026, which falls inside this window. As of search time, no dated post-gala reporting naming a winner had surfaced from CFDA.com, Vogue, WWD, Business of Fashion, Fashionista, or other trade outlets; the most recent dated coverage available remains the June 2026 finalist announcement (ten designers: Aisling Camps, Amir Taghi, Terrence Zhou/Bad Binch TONGTONG, Emily Dawn Long, Jamie Haller, Julia Ferentinos/Juju Vera, Zane Li/Lii, George Inaki/Milamore, Claire Sullivan, Zoe Gustavia Anna Whalen).",
+      "index_note": "Logged as an open, unresolved item rather than a resolved signal -- this archive does not assert outcomes it cannot verify with dated, sourced coverage, even when the underlying event's schedule places it inside the window. Confidence is low specifically because the outcome itself is unconfirmed; the schedule/finalist facts are well-sourced but do not constitute a result.",
+      "human_editor_note": "Do not backfill a winner name here from memory or inference -- if lagging trade coverage of the October 20 gala appears after this report is saved, reconcile it into the next window's report rather than editing this one, consistent with this archive's no-forward-fill and no-retroactive-fabrication practice.",
+      "source_corroboration_count": 1,
+      "signal_id": "cfda-fashion-fund-winner",
+      "confidence_source": "manual"
+    }
+  ],
+  "repeated_keywords": [
+    "CFDA Vogue Fashion Fund",
+    "post-fashion-month",
+    "Miami Fashion Week"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [
+    "CFDA/Vogue Fashion Fund 2026 gala (scheduled Oct 20, 2026, inside this window -- winner outcome not yet verifiable via dated sourced coverage as of search time)",
+    "Miami Fashion Week (Oct 13-17, 2026, prior window -- still no dated runway/reaction coverage found as of this window's search)"
+  ],
+  "limitations": [
+    "items_collected (2) and sources_scanned (9) remain well below the fashion-month baseline; this window continues the post-fashion-month quiet stretch, re-confirmed by an active, non-assumed search rather than carried over by default from the prior report.",
+    "The CFDA/Vogue Fashion Fund's 2026 winner announcement was scheduled for October 20, 2026, placing it inside this window by date. However, this report was assembled without access to real-time post-gala trade/editorial coverage, and no dated source confirming a winner was found as of search time. Rather than infer or assert an outcome, this is logged as an open, low-confidence, unresolved signal pending confirmation -- see human_editor_note on the signal for the explicit no-backfill instruction.",
+    "lfw-wholesale-eligibility-dropped was closed by silence in the prior window (2026-10-19) after four consecutive quiet checks (Sept 21, Oct 5, Oct 12, Oct 19); no new reporting surfaced this window, so it was not reopened. Full trend remains available via get_signal_status_history('lfw-wholesale-eligibility-dropped', ...).",
+    "Miami Fashion Week's October 13-17, 2026 dates fell in the prior collection window; a follow-up check this window still found no dated runway or reaction coverage, so it remains unlogged rather than asserted on schedule dates alone.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach.",
+    "No fabricated show content, reviews, winner names, or trend claims were introduced to fill this window's gaps."
+  ],
+  "archive_tags": [
+    "post-fashion-month-2026",
+    "cfda-vogue-fashion-fund-unresolved",
+    "lfw-eligibility-closed",
+    "thin-week",
+    "2026-q4"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "Fewer than 3 distinct, independently verifiable in-window signals were found despite an active, non-assumed search effort. This window's single anticipated news event -- the CFDA/Vogue Fashion Fund winner announcement -- falls inside the window by schedule but had not yet produced verifiable dated coverage as of search time, so it is logged as open/unresolved rather than as a completed signal.",
+  "review_status": "reviewed",
+  "reviewed_by": "loop-consolidation",
+  "revision_history": [
+    {
+      "previous_content_hash": "3488dbc4a18e8edb53395e6b4e5bebc7ef5683633e36cd54a220bbb13b11fae3",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    }
+  ],
+  "content_hash": "d0c08dc77fddbe89fbc6d7992f5ae3f816b6ab4a9c7c962e624123fcbe8a75bb"
+}

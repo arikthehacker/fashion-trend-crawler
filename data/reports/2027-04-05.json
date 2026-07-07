@@ -1,0 +1,84 @@
+{
+  "report_date": "2027-04-05",
+  "collection_window": {
+    "start": "2027-03-30",
+    "end": "2027-04-05"
+  },
+  "sources_scanned": 14,
+  "items_collected": 1,
+  "source_sector_breakdown": {
+    "editorial": 4,
+    "social": 1
+  },
+  "executive_summary": "This collection window (March 30-April 5, 2027) is the forty-first archived window. The FW27-28 women's ready-to-wear fashion month remains closed and Haute Couture Spring/Summer 2027 remains unconfirmed as having occurred, consistent with the prior nine windows and with FHCM's published calendar (scheduled for late January 2027; no reachable post-show coverage was found this window either). The one new item this window is 'Glamoratti,' an 1980s power-dressing revival named in Pinterest's annual Predicts trend report and subsequently amplified across multiple editorial outlets. This is logged as a new, distinct signal (glamoratti-revival) rather than folded into last window's ss27-trend-forecast, since it originates from a social platform's first-party data product rather than a commercial forecasting outlet, and is a season-agnostic annual aesthetic call rather than terminology for a specific upcoming collection season. Medium confidence, emerging volatility, social_amplified origin. Per SKILL.md workflow note 10, the Wales Bonner/Hermes debut and CFDA Fashion Fund/Awards questions were checked briefly but not re-litigated as top signals: searches surfaced only already-known appointment/team-building coverage and no new CFDA announcement, both remaining untracked pending new information. `collection_status` is set to \"thin\" again: fashion month remains closed, and the only in-window discourse independently verifiable is a single platform-originated aesthetic-term signal.",
+  "top_signals": [
+    {
+      "name": "'Glamoratti' 80s power-dressing revival surfaces via Pinterest Predicts data",
+      "type": "aesthetic_term",
+      "source_sectors": [
+        "social",
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "social_amplified",
+      "evidence": "Pinterest's annual Predicts trend report names 'Glamoratti' -- an 1980s power-dressing revival built around sculpted-shoulder suiting, funnel-neck jackets, metallic fabrics, and deliberately unsubtle jewelry -- citing platform search-volume increases (self-reported by Pinterest: '80s luxury' up 225%, 'baggy suit' up 90%, 'chunky belt' up 65%, 'gold cuff' up 50%). This is distinct from the SS27/Resort 27 commercial-forecast terminology logged last window (ss27-trend-forecast, WGSN/Trendalytics-style labels for an upcoming season): Glamoratti is a season-agnostic annual aesthetic call originating from a social platform's own first-party data product, subsequently picked up and amplified across multiple editorial outlets (Marie Claire, Grazia, and others) framing it as a pullback from 'quiet luxury' toward overt glamour.",
+      "index_note": "New signal_id, distinct from poetcore-aesthetic (2026-07-20, an unrelated literary/preppy aesthetic already archived) and from ss27-trend-forecast (2027-03-29, commercial forecasting-outlet terminology for an upcoming season). Glamoratti is a Pinterest Predicts-originated, editorially-amplified aesthetic label, not designer- or runway-originated. Checked existing signal_ids across all reports before assigning -- no collisions.",
+      "source_corroboration_count": 4,
+      "signal_id": "glamoratti-revival",
+      "confidence_source": "manual",
+      "human_editor_note": "Pinterest Predicts is the platform's own first-party trend report (an official data product, not scraped or manually sampled UGC), consistent with the compliant-sourcing requirement in SKILL.md workflow note 6. Search-volume percentages are self-reported by Pinterest and not independently audited, so this is logged as editorial-amplified social signal at medium confidence rather than upgraded on the strength of the editorial pickup alone -- editorial covering a platform's own trend report is not independent corroboration of the underlying data. Recommend a human editor re-check whether this term recurs in designer-origin or runway content once FW27-28/SS28 collections become reachable.",
+      "source_domains": [
+        "pinterest.com",
+        "marieclaire.com",
+        "graziadaily.co.uk",
+        "chicstylecollective.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "Glamoratti",
+    "80s power dressing revival",
+    "Pinterest Predicts",
+    "Haute Couture SS27 coverage gap",
+    "Wales Bonner untracked"
+  ],
+  "garments": [
+    "funnel-neck jacket",
+    "sculpted-shoulder suit"
+  ],
+  "silhouettes": [
+    "sculpted shoulder"
+  ],
+  "materials": [
+    "metallic fabric"
+  ],
+  "colors": [],
+  "aesthetic_terms": [
+    "Glamoratti"
+  ],
+  "cultural_references": [
+    "Pinterest Predicts annual trend report"
+  ],
+  "limitations": [
+    "The Wales Bonner/Hermes debut signal was not re-litigated this window per the 2027-03-08 transition to 'untracked going forward pending new information.' A check this window surfaced only already-known appointment/team-building coverage, not new reporting.",
+    "The CFDA Fashion Fund winner and CFDA Fashion Awards questions remain untracked pending new information per SKILL.md workflow note 10; no 2027 announcement was found this window.",
+    "Haute Couture Spring/Summer 2027 (scheduled per FHCM's calendar for late January 2027) again has no reachable post-show coverage this window -- unchanged from the prior nine windows, kept under normal tracking per the same paris-post-show-coverage-gap signal_id, referenced only in these limitations.",
+    "This window's only new-to-archive content is a single platform-originated (Pinterest Predicts) aesthetic-term signal; no new runway, designer-origin, or retail-adoption discourse independently verifiable to this specific window was found.",
+    "This report was assembled via targeted web search rather than a live automated crawl timed to actual show days or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "fw27-28-fashion-month-closed",
+    "glamoratti-revival",
+    "wales-bonner-untracked-pending-new-information",
+    "cfda-signals-untracked-pending-new-information",
+    "couture-ss27-coverage-gap-continued",
+    "2027-q2"
+  ],
+  "content_hash": "200a99fc4dd7936a5003d4cc2a48c543f07449a05010b5859df12dacd88352da",
+  "collection_status": "thin",
+  "thin_week_note": "The FW27-28 women's ready-to-wear fashion month remains closed and Haute Couture SS27 remains unconfirmed as having occurred. The only reachable in-window content is a single Pinterest Predicts-originated aesthetic-term signal ('Glamoratti'); no new runway, designer-origin, or retail signal was found.",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": "loop-consolidation"
+}

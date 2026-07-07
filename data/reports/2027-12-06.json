@@ -1,0 +1,101 @@
+{
+  "report_date": "2027-12-06",
+  "collection_window": {
+    "start": "2027-11-30",
+    "end": "2027-12-06"
+  },
+  "sources_scanned": 10,
+  "items_collected": 3,
+  "source_sector_breakdown": {
+    "designer_origin": 1,
+    "editorial": 1,
+    "social": 1
+  },
+  "executive_summary": "Collection window November 30-December 6, 2027. Resort 2028 preview coverage, already tracked this cycle via the Bogota/Sao Paulo waist-tailoring thread, produced a second and distinct silhouette signal this window: chanel.com published resort 2028 lookbook imagery featuring a sculpted, obi-sash-tied cocoon coat, and vogue.com's independently reported resort 2028 season preview roundup -- published the same window, with no citation of Chanel -- described the same wide obi-sash cocoon-coat shape recurring across multiple houses' resort collections. Because the two sources are genuinely independently sourced (neither cites the other) and describe the same specific garment feature rather than merely appearing in the same week, this is logged as one signal with source_corroboration_count=2 across designer_origin and editorial sectors, meeting derive_confidence()'s high-confidence bar on its own merits -- not a reflexive downgrade case. Separately, a lower-confidence social signal was logged: TikTok circulation of a bow-and-ribbon accent styling pattern, dubbed 'gift-wrap dressing' in the platform's own captions, tied to the Black Friday/Cyber Monday holiday shopping window. This is a single-source, social-sector-only observation with no editorial or retail corroboration and is held at low confidence; its same-week timing alongside the resort coat signal is coincidental calendar overlap, not corroboration between the two. The opera-glove/'restraint dressing' thread produced no new development this window and is not carried forward again absent fresh movement. The Bogota/Sao Paulo waist-tailoring thread's underlying resort 2028 'return to structure' framing continues via this window's obi-sash coat signal but is tracked as a separate signal_id rather than folded in, since the garment feature (waist boning vs. an obi-sash-tied coat silhouette) is distinct. Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention. The Margiela raw-edge thread remains closed out as of 2027-10-18.",
+  "top_signals": [
+    {
+      "name": "Resort 2028 previews from Chanel and Vogue's cross-house roundup converge on obi-sash cocoon coat silhouette",
+      "type": "silhouette",
+      "source_sectors": [
+        "designer_origin",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "chanel.com published resort 2028 lookbook imagery this window featuring a sculpted cocoon coat closed with a wide obi-style sash tie at the waist. Independently, vogue.com's resort 2028 season preview roundup -- published the same window and not citing Chanel specifically -- described a wide obi-sash cocoon-coat shape recurring across several houses' resort collections as a season-defining silhouette.",
+      "index_note": "Logged as a new signal_id (resort-2028-obi-sash-cocoon-coat), distinct from the Bogota/Sao Paulo waist-tailoring thread's structured-waist signals (structured-waist/corseted-waistband, tracked since the 2027-10 window): both concern resort 2028 waist emphasis, but the garment feature differs -- a sash-tied coat silhouette versus boned/corseted waistband construction -- so they are tracked as separate strands rather than merged. This signal's corroboration is treated as genuinely cross-sector: designer_origin (Chanel's own lookbook) and editorial (Vogue's independently reported cross-house observation) are two independently sourced accounts of the same specific garment feature, not two sources that merely happen to publish in the same week on unrelated topics. That distinction is the basis for adopting derive_confidence()'s 'high' output rather than holding it down, consistent with this archive's standing discipline of not treating same-week co-occurrence as corroboration -- the discipline cuts both ways, and genuine cross-sector agreement should not be suppressed just because the archive has been cautious elsewhere this cycle. No retail adoption data exists yet for this silhouette; it remains tracked as designer intent plus editorial interpretation, not (yet) retail adoption.",
+      "source_corroboration_count": 2,
+      "signal_id": "resort-2028-obi-sash-cocoon-coat",
+      "confidence_source": "derived",
+      "human_editor_note": "derive_confidence() computes 'high': source_corroboration_count=2 and source_sectors spans two distinct sectors (designer_origin, editorial). This is adopted as-is rather than overridden downward, because both conditions that would normally warrant a manual hold are absent here: Vogue's account is not a citation-free rehash of Chanel's lookbook (it independently frames the silhouette as a cross-house pattern rather than reporting on Chanel specifically), and the corroborating sectors are not 'unclear' or single-sector -- they are two named, high-reliability sectors reporting the same specific garment feature independently. This is exactly the case the confidence formula is designed to reward, and holding it down without a documented reason would be the same error as reflexively trusting a weak signal, just in the opposite direction.",
+      "source_domains": [
+        "chanel.com",
+        "vogue.com"
+      ]
+    },
+    {
+      "name": "TikTok bow-and-ribbon 'gift-wrap dressing' styling circulates during Black Friday/Cyber Monday window",
+      "type": "aesthetic",
+      "source_sectors": [
+        "social"
+      ],
+      "confidence": "low",
+      "volatility": "microtrend",
+      "origin_classification": "platform_native",
+      "evidence": "tiktok.com videos this window showed a bow-and-ribbon accent styling pattern -- ribbon detailing added to coats, bags, and hair -- captioned by users as 'gift-wrap dressing,' concentrated around the Black Friday/Cyber Monday holiday shopping period. No editorial outlet, retailer, or designer has referenced the term or the styling pattern.",
+      "index_note": "Logged as its own signal_id (gift-wrap-dressing-holiday-social), origin classification platform_native since the term and styling pattern originated in TikTok captions rather than being amplified from an existing editorial or retail source. Its same-week timing alongside the obi-sash cocoon coat signal is coincidental calendar overlap (both fall in a routine end-of-November/early-December collection window) and is explicitly not being treated as cross-sector corroboration between the two signals -- they concern unrelated garment categories with no shared sourcing.",
+      "source_corroboration_count": 1,
+      "signal_id": "gift-wrap-dressing-holiday-social",
+      "confidence_source": "derived",
+      "human_editor_note": "derive_confidence() computes 'low': source_corroboration_count=1 from 'social', which is not in HIGH_RELIABILITY_SECTORS, so neither the cross-sector-high nor single-source-medium exceptions apply. Held at 'low' as derived; no override warranted since this is a single, high-noise-sector mention with no corroboration and no editorial or retail pickup yet. Flagged for a recheck next window given the plausible holiday-retail-season hook, but not upgraded pre-emptively.",
+      "source_domains": [
+        "tiktok.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "resort 2028",
+    "obi sash",
+    "cocoon coat",
+    "gift-wrap dressing",
+    "bow and ribbon detailing",
+    "black friday",
+    "cyber monday",
+    "holiday shopping season"
+  ],
+  "garments": [
+    "obi-sash cocoon coat"
+  ],
+  "silhouettes": [
+    "cocoon silhouette"
+  ],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [
+    "gift-wrap dressing"
+  ],
+  "cultural_references": [
+    "Chanel",
+    "Vogue",
+    "TikTok"
+  ],
+  "limitations": [
+    "The obi-sash cocoon coat signal has no retail adoption data yet; it is tracked as designer intent plus editorial interpretation only, not confirmed retail pickup.",
+    "The gift-wrap dressing signal is single-source and social-sector-only; its same-week co-occurrence with the obi-sash cocoon coat signal is coincidental calendar overlap and is not treated as corroboration between the two unrelated signals.",
+    "No new development occurred on the opera-glove/'restraint dressing' thread this window; per standing convention, it is not carried forward again absent fresh movement.",
+    "The Bogota/Sao Paulo structured-waist thread and this window's obi-sash coat signal both concern resort 2028 waist emphasis but describe distinct garment features and are tracked as separate signal_ids rather than merged."
+  ],
+  "archive_tags": [
+    "margiela-raw-edge-editorial-close-out",
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": "ari3lla-index-loop-improvements agent"
+}

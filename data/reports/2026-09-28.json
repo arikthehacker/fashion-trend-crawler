@@ -1,0 +1,113 @@
+{
+  "report_date": "2026-09-28",
+  "collection_window": {
+    "start": "2026-09-22",
+    "end": "2026-09-28"
+  },
+  "sources_scanned": 16,
+  "items_collected": 8,
+  "source_sector_breakdown": {
+    "editorial": 5,
+    "institutional": 2,
+    "designer_origin": 1
+  },
+  "executive_summary": "This collection window (September 22-28, 2026) is the Milan leg of fashion month, immediately following the close of London Fashion Week's SS27 season logged in the September 21 report. The two signals opened in that report -- nyfw-ss27-close and lfw-ss27-week-opens -- are both fully resolved by the start of this window (NYFW ended September 15; LFW's own run ended September 21) and are not carried forward as top_signals; see get_signal_status_history() for their closed trend rather than treating their absence here as new information. The third September 21 signal, the British Fashion Council's removal of LFW's minimum wholesale-stockist requirement, is continuing-but-quiet: no new verifiable reporting on downstream effects (e.g., which designers without wholesale distribution actually showed as a result) surfaced during this window's sourcing, so it is not re-asserted. The most notable finding specific to Milan this window is not a designer or show detail but a sourcing problem: multiple aggregator and 'definitive guide' outlets report materially different date ranges for Milan Fashion Week's SS27 women's season -- September 16-22, September 22-28, and September 23-29 all appear across different sources, including one page published directly by Camera Nazionale della Moda Italiana's own Milano Fashion Week site. This archive's editorial calendar reference (Sept 23-29) was set from earlier research and this window's sourcing did not turn up an unambiguous single authoritative confirmation superseding it; the discrepancy is logged as a media-integrity/sourcing-ambiguity signal rather than silently picking one date range and presenting it as settled fact. Separately, two real personnel/succession threads relevant to this Milan window were verifiable but incomplete: Pieter Mulier's move from Alaia to Versace creative director formally took effect July 1, 2026, but trade coverage found during this window's sourcing did not confirm whether his first full Versace collection shows within this specific window or later in the season calendar; and Giorgio Armani's house, run jointly by Silvana Armani and Leo Dell'Orco since the founder's September 2025 death, has a standing tradition of closing Milan's calendar, but no verifiable September 2026 show-date confirmation for the house surfaced this window (their most recent confirmed show, a joint menswear/cruise presentation, was in June 2026, outside this window and outside the women's SS27 season this window covers). Both are logged as pending rather than reported, consistent with this archive's standing practice of not backfilling show occurrence or content from adjacent, off-window reporting.",
+  "top_signals": [
+    {
+      "name": "Milan Fashion Week SS27 dates reported inconsistently across sources",
+      "type": "media_integrity",
+      "source_sectors": [
+        "editorial",
+        "institutional"
+      ],
+      "confidence": "low",
+      "volatility": "flash",
+      "origin_classification": "editorial_amplified",
+      "evidence": "Searches for Milan Fashion Week's September 2026 SS27 women's schedule returned at least three different date ranges across sources: September 16-22 (per a page on Camera Nazionale della Moda Italiana's own Milano Fashion Week SS 2027 site, alongside speculative pre-show 'trend' language about silhouettes such as 1980s-inflected tailoring presented as an already-observed theme), September 22-28 (per a separate aggregator), and September 23-29 (this archive's editorial-calendar reference, set in an earlier window's research). No single search turned up an unambiguous, current, first-party confirmation reconciling the three.",
+      "index_note": "Logged as a media-integrity observation, not a schedule fact -- comparable in kind to the September 8-14 report's flagged 'trend forecast published before the week occurred' entry. This archive is not resolving the discrepancy here by picking a date range and presenting it as settled; the collection_window recorded for this report (Sept 22-28) matches this archive's own prior editorial-calendar reference and the sequencing expected after LFW's September 21 close, not an independent re-verification of Camera Moda's calendar.",
+      "human_editor_note": "Worth a follow-up pass once the week has actually occurred: whichever date range produces verifiable show-day reporting (not aggregator copy) is the one that was real. Do not treat any of the three date ranges above as confirmed until then.",
+      "source_corroboration_count": 3,
+      "signal_id": "mfw-schedule-inconsistency",
+      "confidence_source": "manual"
+    },
+    {
+      "name": "Pieter Mulier's Versace tenure formally begins; first full collection timing unconfirmed",
+      "type": "designer_signal",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "Pieter Mulier's appointment as Versace's creative director, announced following the brand's acquisition by Prada Group, formally took effect July 1, 2026, after his prior run at Alaia concluded with that house's Fall 2026 Paris show. Trade coverage (WWD) reports his first full Versace collection is anticipated but did not, in this window's sourcing, specify a confirmed runway date within Milan's SS27 women's calendar.",
+      "index_note": "New signal_id. Held at medium rather than high confidence: single-sector corroboration (editorial trade coverage) on the appointment-effective-date fact, and the show-timing question -- whether Mulier's Versace debut falls inside this window at all -- remains unverified rather than confirmed.",
+      "human_editor_note": "This is a personnel/appointment-timeline fact, not confirmation that a Mulier-for-Versace show occurred this window. If a specific show date surfaces in a later window, give it its own designer_signal entry rather than backfilling it here.",
+      "source_corroboration_count": 1,
+      "signal_id": "versace-mulier-debut-unconfirmed",
+      "confidence_source": "manual"
+    },
+    {
+      "name": "Armani house's post-founder joint creative direction continues; SS27 Milan show date unconfirmed",
+      "type": "market_behavior",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "stable",
+      "origin_classification": "designer_originated",
+      "evidence": "Giorgio Armani's house has been run jointly by his niece Silvana Armani (womenswear) and Leo Dell'Orco (menswear) since the founder's death on September 4, 2025. The pair's most recently confirmed joint presentation, a menswear SS27 collection paired with Silvana Armani's first cruise collection, took place at Palazzo Orsini in Milan on June 22, 2026 -- outside this window. No verifiable confirmation of a September 2026 women's SS27 Milan show date for the house surfaced during this window's sourcing.",
+      "index_note": "New signal_id. Confidence held at medium: the succession/joint-direction fact itself is well corroborated from prior reporting, but this window's specific claim -- whether/when the house shows within Milan's SS27 women's calendar -- is unconfirmed, single-sector, and not itself independently re-verified this window.",
+      "human_editor_note": "Armani has traditionally closed Milan's calendar in past seasons; that pattern is background context, not confirmation it holds this season. Do not report an Armani SS27 show as having occurred until a dated, sourced confirmation exists.",
+      "source_corroboration_count": 1,
+      "signal_id": "armani-founder-transition",
+      "confidence_source": "manual"
+    }
+  ],
+  "repeated_keywords": [
+    "Milan Fashion Week",
+    "SS27",
+    "Camera Nazionale della Moda Italiana",
+    "Versace",
+    "Pieter Mulier",
+    "Giorgio Armani",
+    "Silvana Armani",
+    "Leo Dell'Orco",
+    "schedule",
+    "date discrepancy"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [
+    "Camera Nazionale della Moda Italiana Milano Fashion Week SS 2027 site",
+    "Pieter Mulier / Alaia-to-Versace creative director transition",
+    "Giorgio Armani house post-founder succession (Silvana Armani, Leo Dell'Orco)"
+  ],
+  "limitations": [
+    "nyfw-ss27-close and lfw-ss27-week-opens (both from the September 21 report) are fully closed by the start of this window and are not carried forward as top_signals; see get_signal_status_history() for their trend rather than treating their absence here as new information.",
+    "lfw-wholesale-eligibility-dropped (September 21) is continuing-but-quiet: no new verifiable reporting on its downstream effects surfaced this window, so it is not re-asserted without new evidence.",
+    "Milan Fashion Week SS27's exact date range is reported inconsistently across sources found during this window's sourcing (September 16-22, 22-28, and 23-29 all appear); this report's collection_window (Sept 22-28) follows this archive's own prior editorial-calendar reference and the expected NY-London-Milan-Paris sequencing rather than an independently re-verified Camera Moda date, per the media-integrity signal above.",
+    "Versace's Pieter Mulier debut timing and Armani house's SS27 Milan show date were both unconfirmed within this window's sourcing and are logged as pending, not reported, consistent with this archive's standing practice for unresolved schedule items (e.g. Thom Browne/Sabyasachi in the September 14 report).",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "mfw-ss27-schedule-ambiguity",
+    "versace-mulier-transition",
+    "armani-post-founder-transition",
+    "fashion-month-2026",
+    "2026-q3"
+  ],
+  "collection_status": "normal",
+  "review_status": "reviewed",
+  "reviewed_by": "loop-consolidation",
+  "revision_history": [
+    {
+      "previous_content_hash": "5f82e498c7554eafc825c139e1ad7249eacee0152f3f74a0d67215685550002f",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    }
+  ],
+  "content_hash": "104e37bc14637c6030e64ee43fa30152f66504c46897ca399a65b53b13d5a764"
+}

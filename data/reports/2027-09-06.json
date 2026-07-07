@@ -1,0 +1,66 @@
+{
+  "report_date": "2027-09-06",
+  "collection_window": {
+    "start": "2027-08-31",
+    "end": "2027-09-06"
+  },
+  "sources_scanned": 6,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "unclear": 2
+  },
+  "executive_summary": "Collection window August 31 - September 6, 2027. No new style, garment, or aesthetic discourse cleared this report's corroboration bar this week. The one checkable item found is logistics rather than trend content: Paris's governing body (Federation de la Haute Couture et de la Mode) has published official calendar dates for the Womenswear Spring/Summer 2028 season (Monday, September 27 - Tuesday, October 5, 2027), while New York's equivalent SS28 schedule has not yet been announced as of this window's close. This is an early pre-fashion-month logistics signal, not a style or aesthetic claim, and is reported as such. Met Gala 2027, Wales Bonner, and CFDA remain untracked going forward per standing convention and are not re-litigated in this report.",
+  "top_signals": [
+    {
+      "name": "Paris confirms SS28 fashion week dates; New York not yet announced",
+      "type": "market_behavior",
+      "source_sectors": [
+        "unclear",
+        "unclear"
+      ],
+      "confidence": "medium",
+      "volatility": "stable",
+      "origin_classification": "unclear",
+      "evidence": "FHCM (Federation de la Haute Couture et de la Mode), Paris Fashion Week's governing body, has published its official 2027 calendar, setting Womenswear Spring/Summer 2028 for Monday, September 27 - Tuesday, October 5, 2027 -- consistent with the Big Four's usual Sept-Oct sequence. Independently republished by LA FORMA's fashion-week calendar aggregation. Searches for a comparable CFDA-issued New York SS28 preliminary schedule (the kind of announcement covered in this archive's 2026-08-31 report for the SS27 season) turned up nothing dated past the SS27 cycle -- New York has not yet published SS28 dates as of this window's close.",
+      "index_note": "Read as routine pre-season fashion-week logistics, not a style signal -- the calendar sequence (Paris confirming ahead of New York's announcement) is itself unremarkable and should not be read as a scheduling shakeup.",
+      "human_editor_note": "Held at medium rather than upgrading on corroboration count: both source domains (fhcm.paris, laforma.club) fall outside taxonomy.py's DOMAIN_SECTOR_MAP and classify as 'unclear', so derive_confidence()'s literal reading of two matching 'sectors' would be counting a domain-map gap as cross-sector corroboration, not a real second sector -- same reasoning applied to the unclear-heavy Demna/Gucci signal in the prior (2027-08-30) report. fhcm.paris is functionally a first-party institutional source (the federation publishing its own calendar), which is why this isn't held at low, but it is not literally tagged 'institutional' in the domain map, so the report does not claim that higher-reliability sector label it hasn't earned in the taxonomy yet. Recommend adding fhcm.paris to DOMAIN_SECTOR_MAP as institutional in a future taxonomy pass, mirroring cfda.com.",
+      "source_corroboration_count": 2,
+      "signal_id": "pfw-ss28-calendar-confirmed",
+      "confidence_source": "manual",
+      "source_domains": [
+        "fhcm.paris",
+        "laforma.club"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "fashion week calendar",
+    "SS28",
+    "pre-season schedule"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [
+    "Paris Fashion Week",
+    "FHCM"
+  ],
+  "limitations": [
+    "No style, garment, silhouette, or aesthetic signal cleared this report's corroboration bar this window; the only checkable item is a fashion-week scheduling fact, not trend content.",
+    "Both corroborating domains (fhcm.paris, laforma.club) fall outside taxonomy.py's DOMAIN_SECTOR_MAP and classify as 'unclear', limiting genuine cross-sector confirmation despite fhcm.paris being a first-party institutional source in practice.",
+    "New York's SS28 schedule had not been announced as of this window's close; this report does not speculate on its timing beyond noting the gap."
+  ],
+  "archive_tags": [
+    "met-gala-2027-coverage-gap (untracked going forward pending new information)",
+    "wales-bonner (untracked going forward pending new information)",
+    "cfda (untracked going forward pending new information)"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "Fewer than 3 sources returned genuinely distinct signals this window, and the one item found is fashion-week scheduling logistics rather than a style or aesthetic claim; report reflects limited coverage rather than manufactured trend content.",
+  "review_status": "reviewed",
+  "reviewed_by": "",
+  "revision_history": [],
+  "content_hash": "559e7033973ea912d8c4f31a510071732a1b22d4f2204b1daa443f41ad9f6c52"
+}

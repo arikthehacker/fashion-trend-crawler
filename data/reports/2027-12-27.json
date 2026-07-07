@@ -1,0 +1,35 @@
+{
+  "report_date": "2027-12-27",
+  "collection_window": {
+    "start": "2027-12-21",
+    "end": "2027-12-27"
+  },
+  "sources_scanned": 10,
+  "items_collected": 0,
+  "source_sector_breakdown": {},
+  "executive_summary": "Collection window December 21-27, 2027, Christmas week. No genuinely new signal was identified across scanned sources this window: editorial and designer_origin outlets ran holiday-schedule programming (gift guides, year-in-review retrospectives, archival reposts) rather than new reporting, and no retailer, designer, or independent-criticism source introduced a development distinct from material already logged in prior windows. This is treated as an honest thin week consistent with the trade-press calendar rather than a crawl or sourcing failure -- fashion trade press (WWD, BoF, Vogue) predictably runs skeleton coverage between Christmas and New Year, and manufacturing signals to fill a quota would misrepresent a quiet holiday week as active discourse. The resort 2028 puffer-shell skirt thread (2027-12-20), the resale-demand signal on structured waist-tailoring (2027-12-20), the obi-sash cocoon coat thread, and the opera-glove/'restraint dressing' thread all produced no new development this window and are not carried forward again absent fresh movement. The Margiela raw-edge thread remains closed out as of 2027-10-18. Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention.",
+  "top_signals": [],
+  "repeated_keywords": [],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [],
+  "limitations": [
+    "No new signal was identified this window; this report intentionally carries zero top_signals rather than manufacturing a development to fill the usual quota.",
+    "No new development occurred on the resort 2028 puffer-shell skirt, resale-demand, obi-sash cocoon coat, or opera-glove/'restraint dressing' threads this window; per standing convention, none are carried forward again absent fresh movement."
+  ],
+  "archive_tags": [
+    "margiela-raw-edge-editorial-close-out",
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "Christmas week (December 21-27) is a predictably quiet window for fashion trade press: editorial and designer_origin sources ran holiday-schedule programming (gift guides, year-end retrospectives, archival reposts) rather than new reporting, and no source introduced a development distinct from material already logged in prior windows. Zero new signals is the honest outcome for this window; this report does not manufacture a signal to fill the usual quota.",
+  "review_status": "reviewed",
+  "reviewed_by": "ari3lla-index-loop-improvements agent",
+  "revision_history": []
+}

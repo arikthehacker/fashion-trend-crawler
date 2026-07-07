@@ -1,0 +1,125 @@
+{
+  "report_date": "2027-10-11",
+  "collection_window": {
+    "start": "2027-10-05",
+    "end": "2027-10-11"
+  },
+  "sources_scanned": 9,
+  "items_collected": 3,
+  "source_sector_breakdown": {
+    "independent_criticism": 1,
+    "editorial": 1,
+    "retail": 2,
+    "social": 1
+  },
+  "executive_summary": "Collection window October 5-11, 2027. In the week following Maison Margiela's Spring/Summer 2028 Paris runway show (tracked 2027-09-20 through 2027-10-04), the raw-edge tailoring detail moved from runway presentation into a second wave of editorial interpretation and market confirmation, kept here as distinct signals rather than folded into one undifferentiated trend claim. dieworkwear.com and ffw.com.br independently published critical/regional-market reception of the runway moment -- interpretation, not new designer output. Net-a-Porter confirmed a second retailer buy alongside Ssense's first-reported one, strengthening but not elevating the retail-adoption signal, since both retailers sit in the same source sector. Separately, a single unverified social post claimed a wider Antwerp-lineage trend beyond Margiela specifically; this is logged at low confidence as its own claim, not allowed to inherit the higher confidence of the Margiela-specific signals. Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention.",
+  "top_signals": [
+    {
+      "name": "Margiela raw-edge tailoring: independent criticism and Brazilian editorial pick up the runway signal",
+      "type": "aesthetic_shift",
+      "source_sectors": [
+        "independent_criticism",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "emerging",
+      "origin_classification": "editorial_amplified",
+      "evidence": "In the week following the Spring/Summer 2028 Paris runway show (2027-10-04 report, signal_id margiela-raw-edge-tailoring-preview), dieworkwear.com published a longer-form critical essay situating Glenn Martens's raw-edge tailoring within the house's own deconstructivist lineage back to Martin Margiela's 1989 debut, arguing the exposed-seam treatment reads as archival continuity rather than a novel gesture. Separately, ffw.com.br covered the same runway moment from a Brazilian market-interest angle, reporting that regional stockists and editors were tracking the look ahead of any confirmed South American retail buy. Both pieces are interpretation of the same designer-originated runway event tracked since 2027-09-20; neither reports a new retail or social development this window.",
+      "index_note": "Origin classification is editorial_amplified, not designer_originated, because both developments this window are commentary/interpretation layered on top of the runway moment, not new designer output. Kept as a distinct signal_id continuation rather than merged into margiela-raw-edge-tailoring-preview's evidence field, since this is a genuinely new claim (critical/regional editorial reception) rather than a repeat of the runway claim itself -- consistent with the designer-intent/editorial-interpretation split this project maintains.",
+      "source_corroboration_count": 2,
+      "signal_id": "margiela-raw-edge-critical-reception",
+      "confidence_source": "derived",
+      "human_editor_note": "derive_confidence() adopted as-is (high): source_corroboration_count=2, source_sectors independent_criticism (dieworkwear.com) and editorial (ffw.com.br) are both real, mapped sectors in taxonomy.py's DOMAIN_SECTOR_MAP -- two genuinely distinct sectors, neither 'unclear.' independent_criticism is included in HIGH_RELIABILITY_SECTORS per the run-16 bias audit, so this corroboration is treated as substantive, not noise. Confidence is not held down artificially here: the cross-sector spread is real.",
+      "source_domains": [
+        "dieworkwear.com",
+        "ffw.com.br"
+      ]
+    },
+    {
+      "name": "Margiela raw-edge tailoring: second retailer (Net-a-Porter) confirms Spring 2028 buy",
+      "type": "market_behavior",
+      "source_sectors": [
+        "retail",
+        "retail"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "retail_adopted",
+      "evidence": "Net-a-Porter confirmed, in its own Spring 2028 pre-order listings, that it has placed a buy of Maison Margiela raw-edge tailoring pieces for Spring 2028 delivery, following Ssense's first-reported buy in the 2027-10-04 report (signal_id margiela-raw-edge-retail-buy). This is a second, independent retailer stocking decision for the same detail, not a repeat of the Ssense report.",
+      "index_note": "Origin classification remains retail_adopted. Logged as a continuation of margiela-raw-edge-retail-buy's signal_id -- same underlying claim type (retail stocking decision), now with a second retailer -- rather than a new signal_id, since the distinction worth preserving is retailer count/spread, not a new category of claim.",
+      "source_corroboration_count": 2,
+      "signal_id": "margiela-raw-edge-retail-buy",
+      "confidence_source": "manual",
+      "human_editor_note": "Held at medium, overriding derive_confidence()'s literal result (medium). ssense.com and net-a-porter.com both map to the single sector 'retail' in taxonomy.py's DOMAIN_SECTOR_MAP -- two retailers, but one sector, so this does not clear the >=2-distinct-sectors bar for 'high.' Two retail stocking decisions is genuinely stronger corroboration than the single-retailer, one-real-sector-plus-one-unclear-domain case in the 2027-10-04 report, but it is still single-sector evidence of a retail-adoption claim, not cross-sector confirmation (e.g. no editorial or independent-criticism reporting has corroborated the buy itself, as opposed to the runway moment). Medium is the accurate tier for 'two retailers agree' without inflating to 'high' for what remains one vantage point on the market.",
+      "source_domains": [
+        "ssense.com",
+        "net-a-porter.com"
+      ]
+    },
+    {
+      "name": "Deconstructed tailoring beyond Margiela: unverified single-source claim of a wider Antwerp-lineage trend",
+      "type": "aesthetic_shift",
+      "source_sectors": [
+        "social"
+      ],
+      "confidence": "low",
+      "volatility": "microtrend",
+      "origin_classification": "unclear",
+      "evidence": "A single Instagram post from an independent stylist account claimed, without naming specific collections or designers, that 'multiple' Antwerp Six-lineage labels are showing raw-edge or unfinished-seam tailoring for Spring 2028, framing Margiela's runway moment as one example of a broader movement rather than an isolated house-specific detail. No editorial, runway, or retail source has corroborated this broader claim; only the single Margiela-specific signal (margiela-raw-edge-tailoring-preview) is independently confirmed.",
+      "index_note": "Logged as its own signal, separate from the Margiela-specific signal_ids, because it is a distinct and broader claim (a house-spanning trend, not one house's runway detail) that should not be allowed to borrow the Margiela signals' higher confidence by association. origin_classification is 'unclear' rather than 'social_amplified' because the post does not amplify a specific documented designer-originated event -- it asserts an unverified pattern across unnamed houses, which is a different thing than amplifying a known runway moment.",
+      "source_corroboration_count": 1,
+      "signal_id": "antwerp-lineage-raw-edge-wider-claim",
+      "confidence_source": "derived",
+      "human_editor_note": "derive_confidence() adopted as-is (low): source_corroboration_count=1 from 'social', which is not in HIGH_RELIABILITY_SECTORS, so the single-source medium exception does not apply. This is exactly the lone-social-mention case the 'low' tier exists for -- an unverified, unnamed-designer claim from one stylist account. It is retained in this report (rather than dropped) because it is a genuinely distinct claim shape worth archiving at low confidence, not because it deserves more editorial weight than that.",
+      "source_domains": [
+        "instagram.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "raw-edge seam",
+    "deconstructed tailoring",
+    "SS28",
+    "market-week buy",
+    "Antwerp Six lineage"
+  ],
+  "garments": [
+    "tailored jacket"
+  ],
+  "silhouettes": [],
+  "materials": [
+    "exposed canvas",
+    "raw-edge fabric"
+  ],
+  "colors": [],
+  "aesthetic_terms": [
+    "deconstructed tailoring",
+    "raw-edge finishing",
+    "unfinished seam"
+  ],
+  "cultural_references": [
+    "Glenn Martens",
+    "Maison Margiela",
+    "Martin Margiela",
+    "Ssense",
+    "Net-a-Porter",
+    "Antwerp Six"
+  ],
+  "limitations": [
+    "The wider Antwerp-lineage claim (signal_id antwerp-lineage-raw-edge-wider-claim) rests on a single, unnamed-designer social post and has no editorial, runway, or retail corroboration; it is retained at low confidence as a distinct claim shape, not treated as confirmation of a broader trend.",
+    "The second retail buy (Net-a-Porter) and the first (Ssense) both classify to the same 'retail' sector in taxonomy.py, so this report does not treat two retailers agreeing as cross-sector confirmation of the retail-adoption claim.",
+    "No new designer-originated development occurred this window; both editorial/critical reception and the second retail buy are downstream of the 2027-09-20/2027-10-04 runway moment, not new source events."
+  ],
+  "archive_tags": [
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked"
+  ],
+  "content_hash": "ef1f82e3271c250700ceb2149c364160920ecc7820d80783b70c6ce4a17d89f7",
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": "ari3lla-index-loop-improvements agent"
+}

@@ -1,0 +1,109 @@
+{
+  "report_date": "2027-06-07",
+  "collection_window": {
+    "start": "2027-06-01",
+    "end": "2027-06-07"
+  },
+  "sources_scanned": 16,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "editorial": 6,
+    "runway": 2,
+    "designer_origin": 1
+  },
+  "executive_summary": "This collection window (June 1-7, 2027) is the fiftieth archived window. Two signals cleared the cross-source corroboration bar this window, both carrying forward from the ongoing spring/summer runway cycle rather than originating in this window specifically: a beaded-jewelry accessory revival (multi-outlet editorial convergence citing Celine, Chanel, and Polo Ralph Lauren runway styling) and a sleepwear-as-outerwear/relaxed-tailoring menswear shift (editorial convergence citing Milan menswear runway presentations). Met Gala 2027 was checked a sixth consecutive window -- still no theme, co-chair, or red-carpet coverage of any kind has surfaced. Consistent with the prior window's corrected framing, this is logged as a standing, unresolved coverage gap for an event that occurred May 3, 2027, not a calendar question -- the index's tracking window has been past the event date for five prior windows with no coverage appearing. Wales Bonner/Hermes and the CFDA Fashion Fund/Awards questions were not re-litigated this window per SKILL.md workflow note 10; no new coverage surfaced for either.",
+  "top_signals": [
+    {
+      "name": "Beaded jewelry and accessory revival",
+      "type": "aesthetic_signal",
+      "source_sectors": [
+        "editorial",
+        "runway"
+      ],
+      "confidence": "medium",
+      "volatility": "seasonal",
+      "origin_classification": "editorial_amplified",
+      "evidence": "Multiple editorial outlets (Marie Claire, Who What Wear, Fashionista, L'Officiel USA) independently reported a beaded-jewelry accessory wave for spring/summer, each citing overlapping runway reference points: stacked colorful beaded necklaces and beaded earrings at Celine under Michael Rider, draped beaded necklaces layered over looks at Chanel, and full-wrist beaded bracelet stacks at Polo Ralph Lauren. Coverage extends past necklaces into beaded bags, footwear, and paillette embellishment. Framed by more than one outlet as a nostalgic, tactile counter-move against 'quiet luxury' minimalism.",
+      "index_note": "Editorial-sector convergence on a shared descriptive frame (beaded accessories, named across four independent outlets, tied to three named runway houses) -- treated as editorial_amplified rather than designer_originated since the trend claim is the outlets' synthesis across multiple houses' collections, not a single designer's stated intent.",
+      "source_corroboration_count": 4,
+      "signal_id": "beaded-jewelry-revival",
+      "confidence_source": "manual",
+      "human_editor_note": "derive_confidence() would land this at 'high' (corroboration_count 4, two distinct source_sectors). Holding at 'medium' by manual override: three of the four corroborating outlets (Marie Claire, Who What Wear, Fashionista) are enthusiast/service-jewelry verticals within the same outlets that also run shopping-recommendation content, which raises the risk that 'trend' coverage here is partly commerce-driven framing rather than independent editorial judgment converging by coincidence. That's a source-incentive concern this index's own voice rules flag (no shopping-recommendation logic gets laundered into a confidence score), not a corroboration-count problem, so it's a manual downgrade rather than a taxonomy gap.",
+      "source_domains": [
+        "marieclaire.com",
+        "whowhatwear.com",
+        "fashionista.com",
+        "lofficielusa.com"
+      ]
+    },
+    {
+      "name": "Sleepwear-as-outerwear / relaxed menswear tailoring",
+      "type": "aesthetic_signal",
+      "source_sectors": [
+        "editorial",
+        "runway"
+      ],
+      "confidence": "medium",
+      "volatility": "seasonal",
+      "origin_classification": "editorial_amplified",
+      "evidence": "WWD, Wallpaper*, and other editorial coverage of the spring/summer menswear runway cycle independently described a shift toward fluid silhouettes, lightweight layering, and pajama-inspired dressing -- striped sleep sets, negligee-like tops, and silk robe styling worn as outerwear at Milan menswear presentations -- alongside looser, deconstructed tailoring replacing rigid suiting. Thom Browne's Milan menswear show (technical-nylon seersucker, garden-party staging) was cited by multiple outlets as the season's clearest single expression of the lighter, breathable-fabric direction.",
+      "index_note": "Editorial convergence across independent outlets on the same seasonal silhouette description (relaxed tailoring plus sleepwear-coded pieces), anchored to specific named runway presentations rather than a single brand's marketing claim -- editorial_amplified, not designer_originated.",
+      "source_corroboration_count": 3,
+      "signal_id": "sleepwear-as-outerwear-relaxed-tailoring",
+      "confidence_source": "manual",
+      "human_editor_note": "Not upgraded to 'high' despite 3 sources across 2 sectors: the runway sector citation here is really editorial outlets describing runway shows secondhand (WWD's own runway review counts as editorial reportage, not an independent designer-origin statement), so the cross-sector diversity is thinner in practice than the raw tag count implies. 'Medium' reflects strong same-sector convergence rather than genuinely independent cross-sector confirmation.",
+      "source_domains": [
+        "wwd.com",
+        "wallpaper.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "beaded jewelry revival",
+    "sleepwear as outerwear",
+    "relaxed tailoring menswear",
+    "Met Gala 2027 no coverage sixth window"
+  ],
+  "garments": [
+    "beaded necklace",
+    "silk robe",
+    "striped pajama set",
+    "deconstructed blazer"
+  ],
+  "silhouettes": [
+    "fluid",
+    "relaxed",
+    "loose tailoring"
+  ],
+  "materials": [
+    "technical nylon seersucker",
+    "beaded glass",
+    "silk"
+  ],
+  "colors": [],
+  "aesthetic_terms": [
+    "nostalgic maximalism",
+    "leisure dressing"
+  ],
+  "cultural_references": [],
+  "limitations": [
+    "Met Gala 2027 was checked a sixth consecutive window (following 2027-05-03 through 2027-05-31). No theme, co-chair, or red-carpet coverage has ever surfaced across any of the six windows checked, for an event that this index's own calendar research places on May 3, 2027. Consistent with the prior window's corrected framing, this is treated as a genuine, unresolved coverage gap -- not a calendar question about the event not having happened yet, and not evidence of cancellation or restructuring. Per SKILL.md workflow note 10, this is a factual-silence case, not a style-dormancy close-out.",
+    "Both signals this window are continuations of the ongoing spring/summer runway press cycle rather than discourse that originated within the June 1-7 window itself; dated to this window because that is when the corroborating coverage was found via search, not because the underlying runway events are new.",
+    "Wales Bonner/Hermes and the CFDA Fashion Fund/Awards questions were not re-litigated this window per SKILL.md workflow note 10; both remain 'untracked going forward pending new information' with no new coverage found.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "beaded-jewelry-revival",
+    "sleepwear-as-outerwear-relaxed-tailoring",
+    "met-gala-2027-postevent-coverage-gap-sixth-window",
+    "wales-bonner-untracked-pending-new-information",
+    "cfda-signals-untracked-pending-new-information",
+    "2027-q2"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "review_status": "reviewed",
+  "reviewed_by": "",
+  "revision_history": [],
+  "content_hash": "b3c876b8d3af64d4d476fa6629d9f16a1d85a23cb9ea5b6da7aeacf16625fad1"
+}

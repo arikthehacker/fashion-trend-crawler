@@ -1,0 +1,90 @@
+{
+  "report_date": "2027-05-03",
+  "collection_window": {
+    "start": "2027-04-27",
+    "end": "2027-05-03"
+  },
+  "sources_scanned": 16,
+  "items_collected": 1,
+  "source_sector_breakdown": {
+    "editorial": 7
+  },
+  "executive_summary": "This collection window (April 27-May 3, 2027) is the forty-fifth archived window, and ends the recent thin-week run: collection_status returns to 'normal'. Chanel's Cruise 2027 debut under Matthieu Blazy, staged April 28 at the Art Deco casino in Biarritz, produced wide, corroborated editorial-sector coverage (WWD, The Impression, Our Culture, AnOther, nss magazine, W Magazine, Harper's Bazaar Arabia, The Zoe Report, TheFashionSpot) and falls squarely inside the documented April-June Resort/Cruise runway window (docs/EDITORIAL_CALENDAR.md) -- expected seasonal recurrence, not an anomaly. Per this window's brief, Met Gala 2027 pre-event coverage was checked specifically: the Editorial Calendar's first-Monday-in-May rule places the 2027 gala on May 3, 2027 -- the final day of this window -- yet no reachable coverage of a theme, Costume Institute exhibition, or co-chair announcement surfaced. That is logged as a genuine coverage gap to watch, not assumed quiet. The Moschino creative-director transition (moschino-messina-rizzo-appointment) was checked again and shows no change from the prior window's status update. Per SKILL.md workflow note 10, Wales Bonner/Hermes and the CFDA Fashion Fund/Awards questions were checked briefly and not re-litigated: no coverage beyond what is already archived was found for either.",
+  "top_signals": [
+    {
+      "name": "Chanel Cruise 2027 debut in Biarritz (Matthieu Blazy)",
+      "type": "designer_signal",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "seasonal",
+      "origin_classification": "designer_originated",
+      "evidence": "Matthieu Blazy staged his first Chanel Cruise collection April 28 at the Art Deco seafront casino in Biarritz, the town where Gabrielle Chanel opened her first couture house in 1915. Collection titled 'Sous le Salon la Plage,' built around 1920s Chanel sportswear/workwear/sailor codes plus a personal mermaid motif: a reworked 1926 little black dress opened the show, sailor-stripe quarter-zip sweaters and Basque-linen-inspired stripe fabrics ran through the middle, and beaded mermaid gowns in aquamarine and orange with fishtail hems closed it. Corroborated across seven independent editorial outlets (WWD, The Impression, Our Culture, AnOther, nss magazine, W Magazine, Harper's Bazaar Arabia, The Zoe Report, TheFashionSpot) with consistent reporting of date, venue, title, and key looks.",
+      "index_note": "New signal_id, no collision with prior 44 reports. Falls inside the documented Resort/Cruise runway window (roughly April-June each year per docs/EDITORIAL_CALENDAR.md); Dior (LA, May 13) and Gucci (New York, date unconfirmed) Cruise 2027 shows are scheduled later in this same seasonal cluster but fall outside this collection window and are not logged here.",
+      "source_corroboration_count": 7,
+      "signal_id": "chanel-cruise-2027-biarritz-debut",
+      "confidence_source": "manual",
+      "human_editor_note": "Kept at 'medium' rather than 'high' despite unusually wide reproduction across nine outlets, because every one of them sits in the same source sector (editorial) -- breadth of republication within one sector is not the same as cross-sector corroboration, and no designer_origin-sector confirmation (chanel.com) or retail-sector follow-through was reachable this window. The editorial call worth recording is that this reads as the seasonal calendar working as expected -- a known annual show slot producing predictable, well-covered discourse -- rather than a standalone discovery, which is why volatility is set to 'seasonal' and not 'emerging' or 'volatile.'",
+      "source_domains": [
+        "wwd.com",
+        "theimpression.com",
+        "anothermag.com",
+        "nssmag.com",
+        "wmagazine.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "Chanel Cruise 2027 Biarritz",
+    "Matthieu Blazy mermaid motif",
+    "Sous le Salon la Plage",
+    "Met Gala 2027 theme unannounced",
+    "Moschino no new coverage"
+  ],
+  "garments": [
+    "little black dress (1926 archive revisited)",
+    "sailor-stripe quarter-zip sweater",
+    "beaded mermaid gown"
+  ],
+  "silhouettes": [
+    "eased fits, lowered armholes",
+    "fishtail hem"
+  ],
+  "materials": [
+    "paillette/sequin beading",
+    "Basque-linen-inspired stripe fabric"
+  ],
+  "colors": [
+    "aquamarine",
+    "orange"
+  ],
+  "aesthetic_terms": [
+    "nautical revival",
+    "mermaidcore"
+  ],
+  "cultural_references": [
+    "1920s Chanel sportswear/workwear codes",
+    "Biarritz Basque coastal heritage"
+  ],
+  "limitations": [
+    "Met Gala 2027 pre-event coverage was checked specifically per this window's brief: the Editorial Calendar's first-Monday-in-May rule places the 2027 gala on May 3, 2027 -- the last day of this window -- but no reachable coverage of a theme, Costume Institute exhibition title, or co-chair lineup surfaced. Given how close the actual date is, this is logged as a genuine coverage gap worth checking again next window, not treated as evidence the gala itself has changed or moved.",
+    "The Moschino creative-director transition (moschino-messina-rizzo-appointment) was checked again this window: no coverage beyond what was already logged in the 2027-04-19 and 2027-04-26 reports surfaced, so it is not repeated as a top_signals entry; its last recorded status (confidence: medium, volatility: flash) stands unchanged.",
+    "Per the 2027-03-08 transition to 'untracked going forward pending new information,' the Wales Bonner/Hermes debut signal and the CFDA Fashion Fund/Awards questions were checked briefly this window and not re-litigated: no new coverage beyond what prior reports already logged was found for either.",
+    "Dior's Cruise 2027 show (Los Angeles, May 13) and Gucci's Cruise 2027 show (New York, date unconfirmed at time of writing) are both scheduled later in the same Resort/Cruise seasonal cluster as the Chanel show logged this window, but fall outside the April 27-May 3 collection window and are not logged as signals here; expect them to surface in later windows.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "chanel-cruise-2027-biarritz-debut",
+    "resort-cruise-window-2027",
+    "met-gala-2027-preevent-coverage-gap",
+    "moschino-messina-rizzo-appointment-no-change",
+    "wales-bonner-untracked-pending-new-information",
+    "cfda-signals-untracked-pending-new-information",
+    "2027-q2"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [],
+  "content_hash": "d61e39ced8bd73cf40a85123b0edae0936b5ea588978ea41448ea86b8d8a7abc"
+}

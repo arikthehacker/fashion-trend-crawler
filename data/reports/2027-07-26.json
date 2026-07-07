@@ -1,0 +1,76 @@
+{
+  "report_date": "2027-07-26",
+  "collection_window": {
+    "start": "2027-07-20",
+    "end": "2027-07-26"
+  },
+  "sources_scanned": 12,
+  "items_collected": 1,
+  "source_sector_breakdown": {
+    "unclear": 5
+  },
+  "executive_summary": "This collection window (July 20 - July 26, 2027) is the fifty-seventh archived window. The dominant new discourse is the backlash over Louis Vuitton's menswear runway show, staged with an 8-meter artificial waterfall set against a sand-covered runway in Paris during a deadly regional heatwave. Coverage is broadly critical of the show's optics -- water use and disrupted public space during a heatwave blamed for over a thousand excess deaths -- rather than a review of the garments themselves; Louis Vuitton has defended the installation as a closed-loop, non-wasteful system. A dedicated search found no dedicated fashion-trade-press (Vogue/WWD/BoF) coverage of this angle, only general-news and wire-syndicated outlets, which this report treats as informative about which sector picked the story up, not as evidence the story is minor. Met Gala 2027, Wales Bonner/Hermes, and CFDA Fashion Fund/Awards were not re-litigated this window per SKILL.md workflow note 10.",
+  "top_signals": [
+    {
+      "name": "Louis Vuitton waterfall runway staged amid Paris heatwave -- optics backlash",
+      "type": "designer_signal",
+      "source_sectors": [
+        "unclear"
+      ],
+      "confidence": "medium",
+      "volatility": "flash",
+      "origin_classification": "designer_originated",
+      "evidence": "Louis Vuitton staged its men's Spring-Summer 2027 show on June 23, 2026 at the Cite internationale universitaire de Paris, building an 8-meter artificial waterfall behind a sand-covered runway. The show coincided with a regional heatwave that multiple outlets tie to over 1,300 excess deaths. Coverage across SBS (South Korea), WION (India), Asia Business Daily, ecostylia.com, and wkzo.com (a US AP-wire-carrying local outlet) frames the installation as poor climate optics: a Paris deputy mayor is quoted calling it 'a highly inappropriate message' during a heatwave, and residents separately objected to restricted access to shared university grounds during setup. Louis Vuitton/LVMH responded that the water was supplied by the city in a closed-loop system returned to the sewage system with no external leakage, and that stage sand would be donated to a dormitory beach-volleyball court and recyclers.",
+      "index_note": "Classified designer_originated: the precipitating event is a single house's own staging choice, with editorial/general-news amplification of the reaction rather than an independent trend pattern. All five corroborating domains (news.sbs.co.kr, wionews.com, asiae.co.kr, ecostylia.com, wkzo.com) fall outside taxonomy.py's DOMAIN_SECTOR_MAP and classify as 'unclear' -- the same taxonomy-coverage gap flagged repeatedly in prior windows (e.g. fashionnetwork.com/insidehook.com on 2027-07-19), here affecting general-news/broadcast outlets rather than fashion trade press specifically.",
+      "source_corroboration_count": 5,
+      "signal_id": "lv-waterfall-heatwave-backlash",
+      "confidence_source": "manual",
+      "human_editor_note": "Worth naming what the source mix itself says: a dedicated search for Vogue, WWD, or Business of Fashion coverage of this specific backlash angle came back empty -- the outlets that did cover it are general-news, broadcast, and wire-syndicated (SBS, WION, an AP-affiliate local station), not fashion trade press. That is not evidence the story is minor inside the industry; general-news picking up a fashion story as a 'luxury excess amid climate crisis' angle, while trade press stays quiet on it, is itself a data point about which sector treats this as newsworthy and how. Held at 'medium' rather than 'high' confidence strictly on the derive_confidence() formula (5 corroborating sources but all in a single, unclear sector) -- this is a case where the formula's sector-diversity requirement does real work: broad volume in one sector is not the same as broad institutional confirmation. LVMH's closed-loop defense is included in evidence rather than omitted, but this report does not take a side on whether the technical defense answers the optics criticism -- that is a judgment call left to the reader, not this archive.",
+      "source_domains": [
+        "news.sbs.co.kr",
+        "wionews.com",
+        "asiae.co.kr",
+        "ecostylia.com",
+        "wkzo.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "Louis Vuitton waterfall",
+    "Paris heatwave runway backlash"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [
+    "sand-covered runway surface"
+  ],
+  "colors": [],
+  "aesthetic_terms": [
+    "spectacle staging",
+    "climate-optics backlash"
+  ],
+  "cultural_references": [
+    "Cite internationale universitaire de Paris",
+    "2026 European heatwave"
+  ],
+  "limitations": [
+    "This signal is about staging/reception optics, not garment or silhouette content -- the collection's actual clothing is not characterized here because corroborating coverage centers on the water/heatwave controversy, not a garment review.",
+    "All five corroborating domains (news.sbs.co.kr, wionews.com, asiae.co.kr, ecostylia.com, wkzo.com) sit outside taxonomy.py's DOMAIN_SECTOR_MAP and classify as 'unclear' rather than a verified sector -- a new instance of a taxonomy-coverage gap flagged repeatedly in prior windows, this time affecting general-news/broadcast outlets rather than fashion trade press.",
+    "No Vogue/WWD/Business of Fashion coverage of this specific backlash angle was found despite a dedicated search; see human_editor_note for why this is treated as an observation, not disqualifying.",
+    "Met Gala 2027, Wales Bonner/Hermes, and CFDA Fashion Fund/Awards were not re-litigated this window per SKILL.md workflow note 10; no coverage was searched for or found for any of them.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "lv-waterfall-heatwave-backlash",
+    "wales-bonner-untracked-pending-new-information",
+    "cfda-signals-untracked-pending-new-information",
+    "met-gala-2027-untracked-pending-new-information",
+    "2027-q3"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "review_status": "reviewed",
+  "reviewed_by": "",
+  "revision_history": [],
+  "content_hash": "17326cfdb68bd5246258ffe173f6c0befffb523a3fd1c2edc335566c1c26a0f1"
+}

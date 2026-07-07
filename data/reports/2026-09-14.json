@@ -1,0 +1,158 @@
+{
+  "report_date": "2026-09-14",
+  "collection_window": {
+    "start": "2026-09-08",
+    "end": "2026-09-14"
+  },
+  "sources_scanned": 21,
+  "items_collected": 15,
+  "source_sector_breakdown": {
+    "editorial": 8,
+    "institutional": 4,
+    "designer_origin": 2,
+    "retail": 1
+  },
+  "executive_summary": "This collection window (September 8-14, 2026) sits inside New York Fashion Week's Spring/Summer 2027 season for the first time in this archive's run -- the CFDA's Official Schedule opened September 10 with Henry Zankov's debut as artistic director of Diane von Furstenberg, preceded by the September 9 pre-week slate (Ralph Lauren, Coach, Rachel Comey, Cult Gaia, Libertine), and runs through the close of this window on September 14, one day before Thom Browne's scheduled closing show and Sabyasachi's NYFW debut on September 15 -- both of which fall just outside this window and are noted as pending rather than reported. The nyfw-ss27-schedule-finalization signal tracked since August 31 is resolved this window: the schedule itself is no longer new information now that the week it describes has begun, and coverage has shifted from pre-season logistics to the week's actual structure -- a genuine first-timer cohort (Conner Ives showing September 12, Magda Butrym September 13) joining the Official Schedule alongside the CFDA's fur-free policy taking effect for the first time on any brand's actual runway rather than as an announced future rule. One structural limitation is reported plainly rather than glossed over: this archive's sourcing is text-based web search, not live show attendance or wire-photo review, so verifiable coverage this window is dominated by pre-show and day-of-schedule reporting (who is showing when, and why it matters) rather than runway-look critical reception, which typically publishes on a rolling basis over the following days. A generic 'trend forecast' article was found during sourcing that described specific colors and silhouettes 'walking down the runway' in past tense for a week that, per the same outlet's own dateline, had barely opened -- flagged here as a media-integrity concern rather than treated as a legitimate signal, consistent with this project's standing distinction between reported fact and templated content-mill copy. Even accounting for that exclusion, this window has the highest genuine signal count in the archive to date, consistent with NYFW being the first real high-volatility test of the collection process since it began.",
+  "top_signals": [
+    {
+      "name": "NYFW SS27 Official Schedule opens as planned; September 2026 fashion month structurally underway",
+      "type": "market_behavior",
+      "source_sectors": [
+        "institutional",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "stable",
+      "origin_classification": "unclear",
+      "evidence": "The CFDA's Official NYFW Schedule opened Thursday, September 10 as finalized in prior windows, with Henry Zankov's debut collection as artistic director of Diane von Furstenberg as the opening show, following the September 9 pre-week slate (Ralph Lauren, Coach, Rachel Comey's 25th-anniversary show, Cult Gaia, Libertine). Trade coverage (WWD, Fashionista, Daily Front Row, The Impression) confirms the roughly 70-show schedule is proceeding as announced, with no reported cancellations or date changes through this window's close on September 14.",
+      "index_note": "Resolves signal_id nyfw-ss27-schedule-finalization from the August 31/September 7 reports: that signal tracked the schedule's finalization as pre-season logistics, which is no longer the relevant fact now that the week itself has started. This is a new signal_id (nyfw-ss27-week-underway) because it describes a different thing -- execution, not planning.",
+      "human_editor_note": "This is confirmation that the schedule held, not a style claim -- do not read 'opened as planned' as evidence about any collection's content. The prior report's recommendation to retire nyfw-ss27-schedule-finalization and shift to show-based signals once the week opened is followed here; the successor signals below (Zankov/DVF, first-timer cohort, fur-free policy in effect) are the show-based follow-through.",
+      "source_corroboration_count": 4,
+      "signal_id": "nyfw-ss27-week-underway",
+      "confidence_source": "manual"
+    },
+    {
+      "name": "Diane von Furstenberg opens NYFW under new artistic director Henry Zankov -- closely watched succession moment",
+      "type": "designer_signal",
+      "source_sectors": [
+        "designer_origin",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "Diane von Furstenberg opened the Official NYFW Schedule September 10 at 9:30am with the debut collection of Henry Zankov as the house's new artistic director -- a house long defined by a single named designer's identity. Trade coverage (WWD, The Impression, Daily Front Row) framed this as one of the season's most closely watched succession moments, distinct from a routine seasonal show.",
+      "index_note": "New signal this window, designer-originated by definition (a creative-director change is a first-party house decision). Volatility set to emerging rather than stable: a succession debut is a one-time structural event whose downstream style influence isn't yet knowable from the opening show announcement alone.",
+      "human_editor_note": "This report captures that the succession happened and was the designated opener -- it does not have access to verified critical reception of the collection's actual content, which typically publishes on a rolling basis after a show and was not confirmable via this archive's text-search sourcing method within this window. Do not backfill a style verdict onto this entry.",
+      "source_corroboration_count": 3,
+      "signal_id": "dvf-zankov-succession-debut",
+      "confidence_source": "manual"
+    },
+    {
+      "name": "First-timer cohort joins NYFW Official Schedule: Conner Ives, Magda Butrym among SS27 debuts",
+      "type": "market_behavior",
+      "source_sectors": [
+        "editorial",
+        "institutional"
+      ],
+      "confidence": "high",
+      "volatility": "emerging",
+      "origin_classification": "unclear",
+      "evidence": "London-based designer Conner Ives (known for reworking vintage/deadstock into Americana-inflected pieces, and for a celebrity following including Rihanna and Charli XCX) made his NYFW debut September 12; Magda Butrym followed September 13. Both join a first-timer cohort that also includes Sabyasachi Mukherjee and High Sport, per the CFDA's Official Schedule and corroborating trade coverage (WWD, Fashionista, FashionUnited).",
+      "index_note": "New signal_id. Classified emerging rather than stable: a shift in who is admitted to the Official Schedule -- toward designers with existing London/global reputations and social-media-native followings rather than NYFW-incumbent houses -- is a structural pattern worth watching across future seasons, not a single-season curiosity, but one season of debuts isn't enough evidence to call it a trend yet.",
+      "human_editor_note": "Flagging for future windows: if this cohort pattern (international-reputation designers newly added to NYFW rather than NYFW-grown designers) repeats next season, it becomes a genuine structural signal about NYFW's positioning relative to London/Paris. One season is not enough to call that yet -- keep tracking, don't overclaim now.",
+      "source_corroboration_count": 3,
+      "signal_id": "nyfw-ss27-first-timer-cohort",
+      "confidence_source": "manual"
+    },
+    {
+      "name": "CFDA fur-free policy takes effect for the first time on an actual Official Schedule show",
+      "type": "industry_recognition",
+      "source_sectors": [
+        "institutional",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "stable",
+      "origin_classification": "unclear",
+      "evidence": "The CFDA's fur-free policy for all brands on the Official NYFW Schedule -- announced in September 2025 and confirmed as taking effect this season in the August 31 and September 7 reports -- applied in practice for the first time as the September 10 opening show and subsequent Official Schedule shows took place this window, per trade coverage (WWD, FashionUnited).",
+      "index_note": "Continues the policy thread first logged August 31/September 7, but this is genuinely new information (the policy moving from announced to actually enforced during real shows) rather than a repeat of the same fact, so it keeps its own distinct signal_id from nyfw-ss27-week-underway rather than being folded in.",
+      "human_editor_note": "Institutional/policy signal, not a style signal -- do not read this as evidence about material trends this season. Worth a follow-up check in a later window for any reporting on designers who substituted faux fur or alternative materials as a direct result, which would be a genuine materials signal if it surfaces.",
+      "source_corroboration_count": 2,
+      "signal_id": "cfda-fur-free-policy-in-effect",
+      "confidence_source": "manual"
+    },
+    {
+      "name": "Generic 'trend forecast' content describing NYFW SS27 in past tense before verifiable show coverage exists",
+      "type": "media_integrity",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "flash",
+      "origin_classification": "editorial_amplified",
+      "evidence": "During sourcing for this window, at least one outlet (Daily Sabah) published a piece framed as a trend recap of NYFW September 2026 -- citing specific colors (purple, creamy yellow, turquoise) and silhouettes (bubble hems, oversized coats) as having 'walked down the runway' -- that reads as templated seasonal-trend copy rather than reporting tied to specific, named shows or dates checkable against the confirmed Official Schedule.",
+      "index_note": "Logged as a media-integrity observation, not a style signal -- confidence held to low and it is explicitly excluded from garments/silhouettes/colors below. This is exactly the kind of editorial-sector content this project's taxonomy exists to catch: editorial framing is a source sector with its own incentives (SEO-driven seasonal content calendars), not a neutral authority, and volume of editorial mentions should never substitute for verifiable, dated, attributable reporting.",
+      "human_editor_note": "Do not promote this into garments/silhouettes/colors even if it recurs -- its content reads as generic year-over-year trend-forecast language, not specific to identifiable SS27 shows. Included here so the archive has a record of sourcing friction during fashion month, per the project's standing distinction between reported fact and content-mill copy.",
+      "source_corroboration_count": 1,
+      "signal_id": "nyfw-forecast-integrity-flag",
+      "confidence_source": "manual"
+    }
+  ],
+  "repeated_keywords": [
+    "NYFW",
+    "Official Schedule",
+    "CFDA",
+    "fur-free",
+    "Henry Zankov",
+    "Diane von Furstenberg",
+    "Conner Ives",
+    "Magda Butrym",
+    "Thom Browne",
+    "Sabyasachi",
+    "pre-week",
+    "debut"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [
+    "succession narrative (Zankov at DVF)",
+    "international-reputation designer admitted to NYFW schedule"
+  ],
+  "cultural_references": [
+    "CFDA September 2026 NYFW Official Schedule",
+    "Henry Zankov artistic-director debut at Diane von Furstenberg",
+    "CFDA fur-free policy",
+    "Conner Ives NYFW debut",
+    "Magda Butrym NYFW debut"
+  ],
+  "limitations": [
+    "This window (September 8-14, 2026) sits inside NYFW SS27 but ends one day before Thom Browne's scheduled closing show and Sabyasachi's debut on September 15; both are pending, not reported.",
+    "This archive's sourcing is text-based web search rather than live show attendance, wire photography, or direct access to runway review embargoes -- verifiable content this window is concentrated in schedule/who's-showing-when reporting rather than rolling day-of critical reception of specific collections, which typically publishes over the following days.",
+    "garments/silhouettes/colors/materials are left empty this window rather than populated from the excluded generic trend-forecast content (see the media-integrity signal above); populating them from unverifiable templated copy would misrepresent it as a reported style signal.",
+    "The school-y2k-preppy signal (logged 2026-08-31, continued declining in the 2026-09-07 report, which recommended closing it out if it did not reappear) is not carried forward this window: no new verifiable reporting on it surfaced during sourcing. This is noted explicitly here, consistent with this archive practice in later windows, rather than letting the signal disappear from the record without acknowledgment.",
+    "nyfw-ss27-schedule-finalization is resolved this window (superseded by nyfw-ss27-week-underway) now that the schedule it tracked is executing rather than still being finalized.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "nyfw-ss27-week-one",
+    "dvf-zankov-succession",
+    "cfda-fur-free-policy",
+    "nyfw-first-timer-cohort",
+    "fashion-month-2026",
+    "2026-q3"
+  ],
+  "collection_status": "normal",
+  "review_status": "reviewed",
+  "reviewed_by": "loop-consolidation",
+  "revision_history": [
+    {
+      "previous_content_hash": "28debb09584197a5fbd05ba45d22e1662e3acf9268ee7e405657c890c7e959cf",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    }
+  ],
+  "content_hash": "26f661de7b2c26c0a1b9a532914cbc408463aa583394b6f3b40e20a8afc9b741"
+}

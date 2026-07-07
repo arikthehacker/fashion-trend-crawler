@@ -59,5 +59,6 @@
   "collection_status": "thin",
   "thin_week_note": "Only one genuinely trackable item (a continuation/close-out check, not a new discovery) was found for this window after multiple targeted searches across editorial, retail, and social-adjacent sources. No fashion week or comparable event fell in this period, and the Chanel/Charvet story already reported on July 20 has gone quiet. Rather than fill out a full signal roster with repackaged seasonal 'summer trends' listicles that were not specific to this window, this report is marked thin per the project's Nieman Lab-informed policy against inflating weak coverage to hit a quota.",
   "revision_history": [],
-  "content_hash": "90db65e62de3e0e5cc8633f5f51d532eca39eb9baf09481f29e431db8e400530"
+  "content_hash": "90db65e62de3e0e5cc8633f5f51d532eca39eb9baf09481f29e431db8e400530",
+  "reviewed_by": "websearch-run-thin-week"
 }

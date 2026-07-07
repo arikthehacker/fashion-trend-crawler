@@ -1,0 +1,102 @@
+{
+  "report_date": "2027-10-25",
+  "collection_window": {
+    "start": "2027-10-19",
+    "end": "2027-10-25"
+  },
+  "sources_scanned": 7,
+  "items_collected": 3,
+  "source_sector_breakdown": {
+    "retail": 2,
+    "social": 1
+  },
+  "executive_summary": "Collection window October 19-25, 2027. The Bogota waist-tailoring signal, first logged 2027-10-18 from Inexmoda's institutional market-week coverage and vogue.com's editorial follow-up, moved into its first market-facing week: two independent retailers confirmed resort 2028 buys of the structured, waist-focused tailoring from Latin American designers named in the original Inexmoda roundup, and a single social post amplified the look to a wider audience. Both developments are kept as distinct signal_ids continuing the same thread, per standing convention separating designer intent, editorial interpretation, retail adoption, and social amplification. No further institutional or editorial development occurred this window; the retail and social movement documented here is downstream of the 2027-10-18 runway-adjacent moment, not a new source event. The Margiela raw-edge thread remains closed out as of 2027-10-18 with no new development this window. Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention.",
+  "top_signals": [
+    {
+      "name": "Bogota waist-tailoring signal reaches market: Farfetch and Net-a-Porter confirm resort 2028 buys",
+      "type": "market_behavior",
+      "source_sectors": [
+        "retail",
+        "retail"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "retail_adopted",
+      "evidence": "Farfetch and Net-a-Porter each confirmed, in their own resort 2028 pre-order listings, buys of structured waist-focused tailoring from Colombian and regional Latin American designers named in Inexmoda's 2027-10-18 Bogota market-week roundup. This is the first retail confirmation of the signal since it was logged from institutional and editorial sources last window; neither retailer's listing names a single house exclusively -- both describe the boned/corseted-waistband-over-shirting silhouette as a buy across multiple labels from the showcase, consistent with Inexmoda's framing of the look as a cross-collection theme rather than one designer's signature.",
+      "index_note": "Origin classification is retail_adopted, distinct from the designer_originated parent signal (bogota-waist-tailoring-resort28-institutional) and from vogue.com's editorial_amplified follow-up: this is the market's own stocking decision, a new claim type in the thread, not a repeat of the runway or editorial claims. Logged as a continuation of the same signal thread rather than a wholly new signal_id, mirroring how the Margiela retail-buy signal was kept distinct from its own critical-reception signal.",
+      "source_corroboration_count": 2,
+      "signal_id": "bogota-waist-tailoring-retail-buy",
+      "confidence_source": "derived",
+      "human_editor_note": "derive_confidence() adopted as-is (medium): source_corroboration_count=2, but farfetch.com and net-a-porter.com both map to the single sector 'retail' in taxonomy.py's DOMAIN_SECTOR_MAP -- two retailers, one sector, so this does not clear the >=2-distinct-sectors bar for 'high'. This mirrors the 2027-10-11 Margiela retail-buy precedent exactly: two independent retail stocking decisions is real corroboration of market adoption, stronger than a single retailer, but it remains one vantage point on the market (no editorial or institutional source has yet corroborated the buy itself, as distinct from the original runway showcase). Medium is the accurate tier; not held down further, since the corroboration within its single sector is genuine and not manufactured.",
+      "source_domains": [
+        "farfetch.com",
+        "net-a-porter.com"
+      ]
+    },
+    {
+      "name": "Bogota waist-tailoring look gains social amplification via a single styling post",
+      "type": "aesthetic_shift",
+      "source_sectors": [
+        "social"
+      ],
+      "confidence": "low",
+      "volatility": "microtrend",
+      "origin_classification": "social_amplified",
+      "evidence": "A single Instagram styling-account post this window recreated the corseted-waistband-over-shirting look from the Bogota resort 2028 showcase, crediting the Inexmoda market-week coverage by name and linking it to the vogue.com follow-up piece. No further social platforms (TikTok, Pinterest) or additional accounts have picked up the look as of this window; this is one post, not a documented cross-platform pattern.",
+      "index_note": "Origin classification is social_amplified rather than 'unclear', because -- unlike the 2027-10-11 Antwerp-lineage case -- this post amplifies a specific, already-documented designer-originated event (the Inexmoda-reported Bogota showcase) rather than asserting a new, unverified, unnamed-designer claim. It is logged as its own signal_id at low confidence rather than folded into the institutional/retail signals, since a single social mention should not borrow their higher confidence.",
+      "source_corroboration_count": 1,
+      "signal_id": "bogota-waist-tailoring-social-amplification",
+      "confidence_source": "derived",
+      "human_editor_note": "derive_confidence() adopted as-is (low): source_corroboration_count=1 from 'social', which is not in HIGH_RELIABILITY_SECTORS, so the single-source medium exception does not apply. This is a genuine single mention with no second account or platform corroborating it yet -- the honest tier is low, not an inflated medium borrowed from the retail or institutional signals in this same thread.",
+      "source_domains": [
+        "instagram.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "waist-focused tailoring",
+    "corseted waistband",
+    "resort 2028 buy",
+    "Bogota market week",
+    "structured silhouette"
+  ],
+  "garments": [
+    "corseted waistband",
+    "shirting"
+  ],
+  "silhouettes": [
+    "structured waist"
+  ],
+  "materials": [
+    "boning",
+    "jersey"
+  ],
+  "colors": [],
+  "aesthetic_terms": [
+    "return to structure",
+    "waist definition"
+  ],
+  "cultural_references": [
+    "Inexmoda",
+    "Bogota fashion week",
+    "Farfetch"
+  ],
+  "limitations": [
+    "Both retail buys (Farfetch, Net-a-Porter) classify to the single 'retail' sector in taxonomy.py, so this report does not treat two retailers agreeing as cross-sector confirmation of the retail-adoption claim -- the same limitation the Margiela retail-buy signal carried on 2027-10-11.",
+    "The social-amplification signal rests on a single Instagram post; it is retained at low confidence as a distinct claim shape, not treated as evidence of a broader cross-platform social trend.",
+    "No editorial or institutional source has independently corroborated the retail buys themselves, as distinct from the original 2027-10-18 runway/market-week showcase; corroboration of the parent signal remains limited to inexmoda.org.co and vogue.com."
+  ],
+  "archive_tags": [
+    "margiela-raw-edge-editorial-close-out",
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": "ari3lla-index-loop-improvements agent",
+  "content_hash": "497184d75be07f504103fc74b726b0bcf54a056b58e3207a5d66da14529269e9"
+}

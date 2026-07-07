@@ -1,0 +1,97 @@
+{
+  "report_date": "2026-11-23",
+  "collection_window": {
+    "start": "2026-11-17",
+    "end": "2026-11-23"
+  },
+  "sources_scanned": 12,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "institutional": 1,
+    "editorial": 1,
+    "retail": 1
+  },
+  "executive_summary": "This collection window (November 17 - 23, 2026) is the seventh full week after fashion month's close and the twenty-second archived window overall. The CFDA/Vogue Fashion Fund's 2026 winner, scheduled for an October 20 gala, was re-checked with fresh search; as of search time, still no dated, sourced coverage naming an actual winner has surfaced from CFDA, Vogue, WWD, Business of Fashion, or Fashionista -- available coverage remains limited to the June finalist announcement and the October 20 gala date. This is now the fifth consecutive window (2026-10-26, 2026-11-02, 2026-11-09, 2026-11-16, 2026-11-23) in which the signal remains open, roughly five weeks past the gala with zero indexed post-event coverage of an outcome. Separately, the CFDA Fashion Awards (distinct from the Fashion Fund) remains unconfirmed for 2026 -- fresh search this window, including a targeted postponed/canceled query, again found no date, nominee list, or post-event coverage, now the fourth consecutive window this question has been open, with no evidence of postponement or cancellation either. This window also checked broader in-window discourse specifically for Thanksgiving/Black Friday retail signal, since that is a genuine, recurring US fashion-calendar event falling within this window's dates (Black Friday itself lands November 27, 2026, just after this window closes). Search found dated, named-retailer confirmation that early Black Friday/holiday sale windows are already running during Nov 17-23 (e.g. JCPenney's early-access sale beginning Nov 9, Target's main event beginning Nov 22, Macy's doorbuster window beginning Nov 22), which is logged as a genuine retail-calendar signal distinct from garment/aesthetic trend discourse -- it is commerce-calendar timing, not a style signal, and is classified and caveated as such. No other in-window garment, silhouette, or aesthetic discourse independently verifiable to this window was found; general forecast content encountered in search (color-of-2026 picks, quarter-zip/polo-knit forecasts, occasionwear roundups) was dated to earlier 2026 publications, not in-window reporting, and is excluded from this report's signals accordingly. On balance this window's honest read remains thin, continuing the post-fashion-month quiet stretch, with both institutional questions still open and one new, narrowly-scoped retail-calendar signal added.",
+  "top_signals": [
+    {
+      "name": "CFDA/Vogue Fashion Fund 2026 winner still unconfirmed (fifth consecutive window)",
+      "type": "institutional_policy",
+      "source_sectors": [
+        "institutional",
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "emerging",
+      "origin_classification": "unclear",
+      "evidence": "The CFDA/Vogue Fashion Fund's 2026 winner gala was held October 20, 2026. As of this window's search (covering Nov 17 - 23, roughly five weeks after the gala), still no dated post-gala reporting naming a winner has surfaced from CFDA.com, Vogue, WWD, Business of Fashion, or Fashionista. The most recent dated coverage available remains the June 2026 finalist announcement (ten designers: Aisling Camps, Amir Taghi, Terrence Zhou/Bad Binch TONGTONG, Emily Dawn Long, Jamie Haller, Julia Ferentinos/Juju Vera, Zane Li/Lii, George Inaki/Milamore, Claire Sullivan, Zoe Gustavia Anna Whalen).",
+      "index_note": "Carried forward from the 2026-11-16 report -- same signal_id, now a fifth consecutive open window. This archive does not force-close a signal by elapsed time alone, and does not assert an outcome, a delay, or a cancellation it cannot verify with dated, sourced coverage.",
+      "human_editor_note": "Five consecutive windows with zero indexed coverage of a CFDA/Vogue Fashion Fund winner is well outside ordinary reporting lag for a program this well-covered in prior years. This report does not speculate a winner's identity, does not assume the gala was cancelled or the result withheld, and does not backfill from memory or analogy to other Fashion Fund programs. The most defensible reading remains either (a) a search-tool recency/indexing gap specific to this query that has now persisted across five windows, or (b) a genuine change in how this cycle's outcome was publicized. Both remain stated as open possibilities, not conclusions. If dated coverage appears in a future window, reconcile and close this signal_id there with a real name and source; do not edit this or prior reports retroactively without new evidence.",
+      "source_corroboration_count": 1,
+      "signal_id": "cfda-fashion-fund-winner",
+      "confidence_source": "manual"
+    },
+    {
+      "name": "Early Black Friday / holiday retail sale windows already running (Nov 17-23) ahead of Nov 27 Black Friday",
+      "type": "retail_calendar_event",
+      "source_sectors": [
+        "retail"
+      ],
+      "confidence": "medium",
+      "volatility": "seasonal",
+      "origin_classification": "retail_adopted",
+      "evidence": "Black Friday 2026 falls on November 27, just after this window closes. Multiple named retailers have publicly dated early-access/holiday sale windows overlapping Nov 17-23: JCPenney's early-access sale beginning Nov 9, Target's early deals beginning Nov 6 with its main Black Friday event beginning Nov 22, and Macy's doorbuster window beginning Nov 22. This is retailer-published calendar timing, corroborated by retail-calendar aggregator coverage (e.g. Calculatorian, MyWeeklyAds, Alibaba product-insights), not editorial trend reporting.",
+      "index_note": "New this window. Logged as a retail-calendar/commerce-timing signal, distinct in kind from a garment/aesthetic/silhouette trend -- it describes when discounting starts, not what is being worn or designed. Included because the task explicitly asked whether the Thanksgiving/Black Friday retail calendar produces any real in-window signal; it does, but only at this commerce-calendar level, not as style discourse.",
+      "human_editor_note": "This signal is intentionally narrow: it confirms that early Black Friday promotional windows are dated and running during Nov 17-23, 2026, per named retailers' own published schedules. It does not assert anything about apparel trend content, sales volume outcomes, or consumer behavior -- those would require post-event reporting not yet available inside this window. Retail-calendar aggregator sites are the corroborating sources rather than primary editorial outlets, so confidence is capped at medium despite multiple retailers being named.",
+      "source_corroboration_count": 3,
+      "signal_id": "bfcm-retail-calendar",
+      "confidence_source": "manual"
+    }
+  ],
+  "repeated_keywords": [
+    "CFDA Vogue Fashion Fund",
+    "CFDA Fashion Awards",
+    "post-fashion-month",
+    "unresolved institutional signal",
+    "Black Friday early access",
+    "holiday retail calendar"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [
+    "CFDA/Vogue Fashion Fund 2026 gala (held Oct 20, 2026 -- winner outcome still not verifiable via dated sourced coverage as of this window's search, fifth consecutive window unresolved)",
+    "CFDA Fashion Awards 2026 (distinct ceremony from the Fashion Fund) expected in early November 2026 per 2025's November 3 precedent -- still no confirmed 2026 date, nominees, or coverage of the event occurring were found this window, the fourth consecutive window this question has been open",
+    "Black Friday 2026 (November 27) and the broader Thanksgiving/holiday shopping season -- early-access retailer sale windows dated to overlap Nov 17-23, per JCPenney, Target, and Macy's published schedules"
+  ],
+  "limitations": [
+    "items_collected (2) and sources_scanned (12) remain below the fashion-month baseline; this window continues the post-fashion-month quiet stretch.",
+    "The CFDA/Vogue Fashion Fund's 2026 winner remains unconfirmed by dated, sourced coverage as of this window's search, now across five consecutive windows and roughly five weeks after the gala occurred. Full history via get_signal_status_history('cfda-fashion-fund-winner', ...).",
+    "The CFDA Fashion Awards remains unconfirmed for 2026 by dated, sourced coverage, now across four consecutive windows past its 2025-precedent expected date; this is logged as open rather than assumed to mean the event did not occur.",
+    "The Black Friday early-retail-calendar signal is sourced primarily from retail-calendar aggregator pages (which compile retailers' own published schedules) rather than first-party editorial or designer-origin reporting; confidence is capped at medium accordingly.",
+    "General 2026 trend-forecast content encountered during search (color-of-2026 picks, quarter-zip/polo-knit forecasts, occasionwear roundups) was dated to earlier-2026 forecast publications rather than in-window reporting and was deliberately excluded from this report's signals to avoid misrepresenting forecast copy as current-window discourse.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach.",
+    "No fabricated show content, reviews, winner names, or trend claims were introduced to fill this window's gaps."
+  ],
+  "archive_tags": [
+    "post-fashion-month-2026",
+    "cfda-vogue-fashion-fund-unresolved",
+    "cfda-fashion-awards-unconfirmed",
+    "black-friday-2026",
+    "thin-week",
+    "2026-q4"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "Fewer than 3 distinct, independently verifiable style-discourse signals were found despite an active, non-assumed search effort. The two carried-forward institutional questions (Fashion Fund winner, fifth window; Fashion Awards timing, fourth window) remain unresolved, and the one new item this window is a retail-calendar timing fact rather than a garment/aesthetic trend.",
+  "review_status": "reviewed",
+  "reviewed_by": "loop-consolidation",
+  "revision_history": [
+    {
+      "previous_content_hash": "25ffe53c24fd777ea458578cd6893e823482d37e9b541c01942291458e5bff85",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    }
+  ],
+  "content_hash": "9abcb7e98a91351bfa9bc3c86713816b89a5ff9b088b654ea45e1e6f581966e2"
+}

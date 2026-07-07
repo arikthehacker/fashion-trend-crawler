@@ -65,9 +65,13 @@ Classify observed style signals by recurrence, source diversity, volatility, vis
 
 Use only the provided source material. Do not invent trends, brands, or claims. Focus on repeated language, recurring visual references, garments, silhouettes, colors, materials, styling behaviors, and cultural/aesthetic terms.
 
+"garments" and "silhouettes" are distinct controlled-vocabulary fields, not interchangeable buckets: "garments" names a wearable item (e.g. "godet skirt", "trench coat", "blazer"); "silhouettes" names a shape, proportion, or construction quality (e.g. "asymmetric hem", "relaxed tailoring", "oversized"). A construction detail belonging to an item already listed in "garments" (e.g. a godet insert) should be described as a silhouette trait of that garment, not repeated as its own entry in "silhouettes" under the same name. Do not place the same term in both lists.
+
 Treat TikTok/social signals as high-noise by default. Identify them, but classify them as volatile unless supported by non-social evidence across multiple reporting periods.
 
-Do not treat editorial sources as neutral confirmation. Classify each source by incentive context: designer-originated, editorial, commerce, social, retail, independent criticism, or institutional archive.
+Do not treat editorial sources as neutral confirmation. Classify each source by incentive context, using the source sector vocabulary given below (see "Valid source sectors").
+
+Independent criticism (named-author, attributed commentary) and editorial coverage are both curated, attributed commentary, not raw social volume. When assigning confidence, do not let source sector alone push independent criticism lower than editorial at an equal corroboration count — evaluate both on the same evidentiary basis. This is not a case for treating independent criticism as more reliable than editorial; it is a case for not treating it as less reliable by default.
 
 Distinguish between style as lived practice and trend as market instruction. Do not recommend adoption. Do not describe signals as must-have, essential, or the next big thing.
 
@@ -75,7 +79,23 @@ Do not use evaluative or editorializing verbs such as "declared," "revealed," or
 
 Avoid vague, unsupported claims of ubiquity such as "everyone is wearing" or "everywhere right now." If evidence is thin, limited to one source sector, or contradictory, state that plainly in the evidence or index_note field rather than smoothing it over or omitting it.
 
+When a signal continues an existing signal_id carried forward from a prior report, keep garment/material terminology describing it consistent with prior usage unless the change is genuine — in which case note it explicitly (e.g. "garment description updated from X to Y because...") rather than letting the terminology silently drift.
+
+If a headline is in a language other than English, do not silently translate and classify it as if it were equivalent to English-language coverage. You may interpret it to extract the signal, but note in the evidence or index_note field that the source material was non-English (name the language if identifiable) and that the term/description is a translation, not a direct quote.
+
+Do not write anything into human_editor_note yourself -- leave it empty. It is populated by a separate human/editorial review pass and exists specifically to hold a judgment call that evidence and index_note cannot: what a cluster of raw signals actually means, what to watch for next, or a call the archive is choosing not to make yet. A human_editor_note that only rephrases the evidence or index_note sentence in different words defeats the field's purpose (see doc section 18/19 and SKILL.md workflow note 5) and should not be produced.
+
+Confidence discipline: derive_confidence() computes a mechanical baseline (source_corroboration_count and sector spread), but do not treat that formula's output as automatically correct. Apply these accumulated exceptions, drawn from docs/confidence-discipline-precedents.md (consult that file for the full reasoning and worked examples; this is a condensed summary of the most recurrent cases, not the complete list):
+- Same-sector volume cap: many outlets repeating a story does not raise confidence if they all resolve to the same source_sector -- sector diversity, not raw count, is what moves a signal past "medium."
+- Unclear-domain gap: if sources resolve to an unmapped/"unclear" sector, do not count that as genuine cross-sector diversity just because the mechanical formula would.
+- Citation-free rehash: independent_criticism only earns its high-reliability treatment for genuinely independent reporting -- a citation-free rehash/synthesis of material already covered by other sectors in the same signal thread should be held down, not credited as independent.
+- Same-week coincidence: two analytically distinct signals surfacing in the same collection window are not corroboration of each other, even if topically related.
+- Forecast exclusion: a forecast or prediction about a future season is not evidence of a present signal and must not be logged in top_signals as an observed trend, even if well-corroborated; report it as collected/limitations context only, unless independently-converging forecasting activity is itself being framed as this week's discourse event (not as though the forecast content were observed).
+When a case doesn't clearly match one of the above, use judgment consistent with these examples rather than defaulting to the raw mechanical output.
+
 If the source material yields only a small number of genuinely distinct, well-supported signals, do not stretch, duplicate, or manufacture additional signals to appear more comprehensive. Instead, set "collection_status" to "thin" and use "thin_week_note" to state plainly that this reporting period had limited signal volume, so the report reflects the actual state of coverage rather than an inflated one. Use "collection_status": "normal" and leave "thin_week_note" empty when signal volume is adequate.
+
+For each signal, populate "source_domains" with the bare homepage domain(s) (the same domain form shown in each headline's [domain | source_sector] tag, e.g. "vogue.com" — never a full article URL or path) of the sources supporting that signal. List each distinct domain once.
 
 Each headline below is tagged as [domain | source_sector]. Valid source sectors are: {", ".join(SOURCE_SECTORS)}.
 Valid confidence levels are: {", ".join(CONFIDENCE_LEVELS)}.
@@ -95,11 +115,13 @@ Return your response as JSON with exactly this structure (no markdown, no backti
       "name": "signal name",
       "type": "garment | silhouette | color | material | styling_behavior | cultural_term",
       "source_sectors": ["editorial", "retail"],
+      "source_domains": ["vogue.com", "whowhatwear.com"],
       "confidence": "low | medium | high | archival",
       "volatility": "stable | emerging | seasonal | volatile | flash | microtrend | recurring | revival | long_tail | saturated | declining",
       "origin_classification": "designer_originated | editorial_amplified | retail_adopted | social_amplified | platform_native | archive_revival | unclear",
       "evidence": "one sentence describing what the data shows, citing source sectors, not opinion.",
-      "index_note": "one sentence of methodological context, e.g. why this confidence/volatility was assigned."
+      "index_note": "one sentence of methodological context, e.g. why this confidence/volatility was assigned.",
+      "human_editor_note": "leave empty here -- this field is a human editorial judgment call, not AI output, and must not restate evidence or index_note in different words. Populated later by a human/editor pass per doc section 18/19."
     }}
   ],
   "repeated_keywords": [],
@@ -136,9 +158,17 @@ def summarize(pages=None, revision_reason=None, corrected_at=None):
     print(f"sending {sum(len(p['titles']) for p in pages)} headlines to claude...")
     prompt = build_prompt(pages, report_date, window_start, window_end)
 
+    # 4000 (raised from 2000 in run 8) covers today's thin-week reports (1-8
+    # signals, e.g. 2026-07-20.json's 8 signals ran close to ~3.8k tokens
+    # of completion) but leaves little headroom. Each signal costs ~400-450
+    # tokens of JSON; a genuinely busy fashion-week window (NYFW/LFW/MFW/PFW
+    # from Sept 8, 2026, per docs/EDITORIAL_CALENDAR.md) could plausibly
+    # surface 15+ signals, which extrapolates to ~6000-7000 tokens plus
+    # overhead -- past 4000. Raised to 8000 for headroom; see
+    # docs/agent-logs/busy-week-readiness-run18.md.
     response = client.messages.create(
         model="claude-sonnet-4-6",
-        max_tokens=4000,
+        max_tokens=8000,
         messages=[{"role": "user", "content": prompt}],
     )
 

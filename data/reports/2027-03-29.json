@@ -1,0 +1,76 @@
+{
+  "report_date": "2027-03-29",
+  "collection_window": {
+    "start": "2027-03-23",
+    "end": "2027-03-29"
+  },
+  "sources_scanned": 13,
+  "items_collected": 1,
+  "source_sector_breakdown": {
+    "editorial": 3
+  },
+  "executive_summary": "This collection window (March 23-29, 2027) is the fortieth archived window. The FW27-28 women's ready-to-wear fashion month remains closed, as logged the prior two windows, and no new in-window runway or designer-origin content was found. The one new item this window is forward-looking SS27/Resort 27 trend-forecasting terminology from commercial forecasting outlets -- 'Miximalism' (a layered, eclectic take on maximalism) and 'New Naturalism' (regenerative-design framing) -- plus continued reporting of deep wine/burgundy tones carrying forward from Resort 26/FW26. This is logged as a new, distinct, low-confidence signal (ss27-trend-forecast) since it is forecasting content about an upcoming season rather than a continuation of last window's retrospective FW27-28 trend-confirmation signal. Per SKILL.md workflow note 10, the Wales Bonner/Hermes debut question and the CFDA Fashion Fund/Awards questions remain untracked pending new information; searches this window surfaced only the already-known Wales Bonner appointment (no new coverage) and no CFDA 2027 announcement, so neither was reopened. Haute Couture Spring/Summer 2027 was checked again for post-show coverage and again found none reachable -- consistent with FHCM's published calendar, since that season has not yet occurred. On balance this window is thin: fashion month remains closed, and the only in-window discourse found is forward forecast terminology rather than new, independently verifiable in-window reporting.",
+  "top_signals": [
+    {
+      "name": "Spring/Summer 2027 trend-forecast terminology surfaces ahead of the season",
+      "type": "aesthetic_term",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "emerging",
+      "origin_classification": "editorial_amplified",
+      "evidence": "With the FW27-28 women's ready-to-wear fashion month closed and this window's reachable coverage still limited to secondary commentary, the only new-to-archive material found is forward-looking SS27/Resort 27 trend-forecasting terminology from commercial forecasting outlets: 'Miximalism' (an eclectic, layered take on maximalism, distinct from a return to overt excess) and 'New Naturalism' (regenerative-design framing built around natural dyes and raw textures), alongside continued reporting of deep wine/burgundy tones carrying over from Resort 26/FW26 into Resort 27. This is forecast content about an upcoming season, not retrospective commentary on the closed FW27-28 season, so it is logged as a distinct, new signal rather than folded into last week's fw27-28-post-season-trend-confirmation.",
+      "index_note": "New signal_id, distinct from fw27-28-post-season-trend-confirmation (2027-03-22): that signal was retrospective commentary on an already-closed season, this one is forward forecasting terminology for an upcoming season (SS27/Resort 27). Kept low confidence and emerging volatility since this is commercial-forecasting-outlet terminology, not yet corroborated by designer-origin or runway content specific to this window.",
+      "source_corroboration_count": 2,
+      "signal_id": "ss27-trend-forecast",
+      "confidence_source": "manual",
+      "human_editor_note": "Treated forecasting-outlet terminology (WGSN/Trendalytics-style naming of 'Miximalism' and 'New Naturalism') as low-confidence editorial signal, not designer-origin fact -- these are commercial forecast labels applied ahead of the season, not confirmed runway or designer-stated intent. Recommend a human editor re-check whether either term recurs once SS27/Resort 27 runway content becomes independently verifiable.",
+      "source_domains": [
+        "fashionunited.com",
+        "trendalytics.co"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "SS27 trend forecast",
+    "Miximalism",
+    "New Naturalism",
+    "burgundy carryover",
+    "Haute Couture SS27 coverage gap",
+    "Wales Bonner untracked"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [
+    "burgundy",
+    "wine"
+  ],
+  "aesthetic_terms": [
+    "Miximalism",
+    "New Naturalism"
+  ],
+  "cultural_references": [],
+  "limitations": [
+    "The Wales Bonner/Hermes debut signal was not re-litigated this window per the 2027-03-08 transition to 'untracked going forward pending new information.' A check this window surfaced only the already-known appointment/debut-timeline coverage, not new reporting; this is consistent with the transition decision, not a new finding.",
+    "The CFDA Fashion Fund winner and CFDA Fashion Awards questions remain untracked pending new information per SKILL.md workflow note 10 and were not re-litigated as top signals; no 2027 announcement was found.",
+    "Haute Couture Spring/Summer 2027 was checked again for post-show coverage and again found none reachable -- unchanged from the prior eight windows, kept under normal tracking per the same signal_id, consistent with that season not yet having occurred per FHCM's published calendar.",
+    "This window's only new-to-archive content is forward-looking SS27/Resort 27 commercial trend-forecast terminology; no new runway, designer-origin, or retail-adoption discourse independently verifiable to this specific window was found.",
+    "This report was assembled via targeted web search rather than a live automated crawl timed to actual show days or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "fw27-28-fashion-month-closed",
+    "ss27-trend-forecast-terminology",
+    "wales-bonner-untracked-pending-new-information",
+    "cfda-signals-untracked-pending-new-information",
+    "couture-ss27-coverage-gap-continued",
+    "2027-q1"
+  ],
+  "content_hash": "f228854f9dd05f68da05d83e95309177f4a184e911dae6269b03e758f8369769",
+  "collection_status": "thin",
+  "thin_week_note": "The FW27-28 women's ready-to-wear fashion month remains closed, as in the prior two windows. The only reachable in-window content is forward-looking SS27/Resort 27 trend-forecast terminology from commercial forecasting outlets; no new runway, designer-origin, or retail signal was found.",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": "loop-consolidation"
+}

@@ -1,0 +1,95 @@
+{
+  "report_date": "2027-11-22",
+  "collection_window": {
+    "start": "2027-11-16",
+    "end": "2027-11-22"
+  },
+  "sources_scanned": 8,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "editorial": 1,
+    "retail": 1
+  },
+  "executive_summary": "Collection window November 16-22, 2027. Ahead of the British Fashion Council's Fashion Awards, scheduled for early December, two independent developments were logged this window: vogue.com published an awards-season style preview built around long opera gloves as a recurring element across the editorial's styled looks, and net-a-porter.com reported an increase in stock allocation and pre-orders for long evening gloves in the same period. The two developments are logged as separate signal_ids rather than merged, since they represent distinct claim types -- an editorial styling framing versus a retailer's own stocking decision -- occurring in the same calendar window without either outlet citing the other. No designer has been identified as originating or crediting the opera-glove element this window; it is tracked as editorial interpretation and retail adoption only, not as designer intent. The Bogota/Sao Paulo waist-tailoring thread produced no new development this window and is not carried forward again absent fresh movement, per standing convention. The Margiela raw-edge thread remains closed out as of 2027-10-18. Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention.",
+  "top_signals": [
+    {
+      "name": "Vogue awards-season style preview features long opera gloves as a recurring styled element",
+      "type": "aesthetic_shift",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "emerging",
+      "origin_classification": "editorial_amplified",
+      "evidence": "vogue.com published an awards-season style preview this window ahead of the British Fashion Council's Fashion Awards (early December) in which long opera gloves appear across several of the editorial's own styled looks. The piece frames the gloves as Vogue's own styling choice for the feature rather than attributing the element to any single designer collection, runway show, or prior retail listing; no designer is credited with originating or requesting the look.",
+      "index_note": "Origin classification is editorial_amplified, not designer_originated, because the primary claim is Vogue's own editorial styling decision, not a designer's stated intent -- no designer or house has been identified as the source of the opera-glove element this window. Logged as a distinct signal_id from the retail signal below (opera-gloves-awards-season-retail-buy) because an editorial styling framing and a retailer's stocking decision are different claim shapes occurring independently in the same window, consistent with how this archive has kept designer intent, editorial interpretation, retail adoption, and social amplification separate within a single thread rather than collapsing them (see the Bogota waist-tailoring thread, 2027-10-18 through 2027-11-15).",
+      "source_corroboration_count": 1,
+      "signal_id": "opera-gloves-awards-season-editorial",
+      "confidence_source": "derived",
+      "human_editor_note": "derive_confidence() adopted as-is (medium): source_corroboration_count=1 from 'editorial' (vogue.com), which is in HIGH_RELIABILITY_SECTORS, so the single-source medium exception applies. This is genuine independent editorial content -- Vogue's own styled feature, not a rehash of another outlet's reporting or a prior retail listing -- so no manual override is warranted; the formula's medium output is adopted honestly rather than reflexively held down. Not upgraded to high: only one editorial outlet has run this framing, and while net-a-porter.com's stocking increase (logged separately below) occurred in the same window, it is a different sector's independent claim, not corroboration of Vogue's specific styling framing, so cross-sector corroboration of this signal itself does not yet exist.",
+      "source_domains": [
+        "vogue.com"
+      ]
+    },
+    {
+      "name": "Net-a-Porter reports increased stock allocation and pre-orders for long evening gloves ahead of the British Fashion Awards",
+      "type": "market_behavior",
+      "source_sectors": [
+        "retail"
+      ],
+      "confidence": "low",
+      "volatility": "emerging",
+      "origin_classification": "retail_adopted",
+      "evidence": "net-a-porter.com's evening-occasion merchandising this window shows an increase in stock allocation and customer pre-orders for long gloves, timed ahead of the British Fashion Council's Fashion Awards in early December. The retailer's own copy frames this as a merchandising response to anticipated evening-occasion demand; it does not reference vogue.com's concurrent editorial feature or any designer collection as the basis for the stocking decision.",
+      "index_note": "Origin classification is retail_adopted, not editorial_amplified, because the primary claim is Net-a-Porter's own merchandising and stocking decision, independent of the concurrent Vogue editorial framing logged separately above. Kept as a distinct signal_id (opera-gloves-awards-season-retail-buy) rather than merged with the editorial signal, since a retail stocking decision and an editorial styling framing are different claim types even when they concern the same garment in the same window -- consistent with this archive's practice of not conflating designer intent, editorial interpretation, retail adoption, and social amplification into a single blob.",
+      "source_corroboration_count": 1,
+      "signal_id": "opera-gloves-awards-season-retail-buy",
+      "confidence_source": "derived",
+      "human_editor_note": "derive_confidence() adopted as-is (low): source_corroboration_count=1 from 'retail' (net-a-porter.com), and retail is not in HIGH_RELIABILITY_SECTORS, so the single-source medium exception does not apply. This is a genuine single-retailer stocking decision with no second retailer, editorial outlet, or institutional source corroborating it independently as of this window; low is the accurate, calibrated tier and is not being held down further than the formula already produces, since there is no rehash or citation-free-synthesis concern here to justify an additional manual discount.",
+      "source_domains": [
+        "net-a-porter.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "opera gloves",
+    "long evening gloves",
+    "awards season dressing",
+    "British Fashion Awards",
+    "pre-event style anticipation"
+  ],
+  "garments": [
+    "opera gloves"
+  ],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [
+    "awards season dressing"
+  ],
+  "cultural_references": [
+    "Vogue",
+    "Net-a-Porter",
+    "British Fashion Awards"
+  ],
+  "limitations": [
+    "The editorial signal rests on a single outlet's own styled feature; no second editorial outlet, designer, or institutional source has corroborated the opera-glove framing independently as of this window.",
+    "The retail signal rests on a single retailer's own stocking data; no second retailer has corroborated an increase in long-glove allocation or pre-orders as of this window.",
+    "The two signals occurred in the same calendar window and concern the same garment, but neither outlet references the other; this report does not treat their co-occurrence as cross-sector corroboration of either individual claim.",
+    "No designer or house has been identified as originating or crediting the opera-glove element; it is tracked as editorial interpretation and retail adoption only.",
+    "No new development occurred on the Bogota/Sao Paulo waist-tailoring thread this window; per standing convention, it is not carried forward again absent fresh movement."
+  ],
+  "archive_tags": [
+    "margiela-raw-edge-editorial-close-out",
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked"
+  ],
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": "ari3lla-index-loop-improvements agent",
+  "content_hash": "f0ce5864cea252a18de5833a1cab0224e95840142b78c2baaea95f65f0f8e96d"
+}

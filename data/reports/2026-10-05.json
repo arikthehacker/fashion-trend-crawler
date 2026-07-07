@@ -1,0 +1,122 @@
+{
+  "report_date": "2026-10-05",
+  "collection_window": {
+    "start": "2026-09-29",
+    "end": "2026-10-05"
+  },
+  "sources_scanned": 14,
+  "items_collected": 7,
+  "source_sector_breakdown": {
+    "editorial": 6,
+    "institutional": 1
+  },
+  "executive_summary": "This collection window (September 29 - October 5, 2026) falls within Paris Fashion Week's SS27 women's season, the final leg of fashion month following Milan (logged in the September 28 report). It closes out this archive's 2026 fashion-month coverage; Paris's own calendar runs through October 6, one day past this window's end, so any show-specific reporting from the season's final day is out of scope here by design, consistent with this archive's standing practice of not backfilling from adjacent windows. Three threads carried from prior reports were checked against this window's sourcing. First, the Milan Fashion Week SS27 date-range inconsistency logged September 28 is not independently re-verified this window (sourcing effort this window focused on Paris), so it remains open rather than resolved; however, a parallel discrepancy surfaced for Paris itself -- searches returned Paris Fashion Week SS27 women's dates as both September 28-October 6 (per two aggregator sources, including one citing FHCM, the Federation de la Haute Couture et de la Mode, which organizes the official calendar) and September 29-October 6 (this archive's own editorial-calendar reference). This is logged as a continuation of the same media-integrity pattern rather than a new, unrelated finding. Second, the Pieter Mulier/Versace debut-timing question left pending in the September 28 report is now resolved by verifiable trade reporting: multiple outlets (Hypebeast, FashionUnited, RUSSH) report that Versace and Prada Group confirmed Mulier's first collection will not premiere until early 2027, explicitly outside the September 2026 SS27 calendar -- meaning no Mulier-directed Versace show occurs within fashion month at all this season. Third, the Armani house's SS27 Milan show-date question, also pending as of September 28, is resolved by WWD reporting a confirmed Giorgio Armani mainline show at 7pm CET on September 28, 2026 at the Brera Pinacoteca, with Emporio Armani shows the preceding day -- both dates fall just outside this window (and outside the September 28 report's own window, since that report's sourcing predated the show), so this is logged as a retrospective resolution rather than an in-window event report. The British Fashion Council's dropped LFW wholesale-stockist requirement (first logged September 21) remains continuing-but-quiet: no new downstream reporting on its effects surfaced this window either.",
+  "top_signals": [
+    {
+      "name": "Paris Fashion Week SS27 dates reported inconsistently, echoing Milan's pattern",
+      "type": "media_integrity",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "flash",
+      "origin_classification": "editorial_amplified",
+      "evidence": "Searches for Paris Fashion Week's SS27 women's schedule returned September 28-October 6, 2026 from two sources (one an aggregator citing FHCM, the body that organizes the official Paris calendar), while this archive's own editorial-calendar reference states September 29-October 6. No single source reconciled the one-day discrepancy at the season's opening date.",
+      "index_note": "New signal_id, but logged as a continuation of the same pattern flagged for Milan in the September 28 report (mfw-schedule-inconsistency) rather than an isolated one-off: this is the second consecutive fashion-month city where aggregator/reference dates for the same official season diverge by a day or more. That prior Milan discrepancy was not independently re-checked this window (sourcing effort went to Paris), so it remains open, not resolved.",
+      "human_editor_note": "Treat the recurrence across two cities as worth a standing methodology note (aggregator calendar copy is not a substitute for the organizing body's own current page), not as evidence either date is wrong -- a one-day boundary discrepancy this close to a multi-source-confirmed season is lower-stakes than the earlier three-way Milan spread.",
+      "source_corroboration_count": 2,
+      "signal_id": "pfw-schedule-inconsistency",
+      "confidence_source": "manual"
+    },
+    {
+      "name": "Versace's Pieter Mulier debut confirmed delayed to early 2027, outside this fashion month entirely",
+      "type": "designer_signal",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "declining",
+      "origin_classification": "designer_originated",
+      "evidence": "Multiple trade and fashion outlets (Hypebeast, FashionUnited, RUSSH) report that Versace and Prada Group have confirmed Pieter Mulier's first collection as creative director will not premiere until early 2027, despite his appointment taking formal effect July 1, 2026. The brand's stated rationale is to give Mulier additional time for 'analysis and development' rooted in the house's archive rather than debuting within the compressed September-to-show turnaround.",
+      "index_note": "Same signal_id as the September 28 report (versace-mulier-debut-unconfirmed), carried forward with a resolved status: the open question (does a Mulier-directed Versace show occur inside fashion month 2026) is now answered -- no, it does not. Volatility moved from emerging to declining to reflect that the story is settling into a confirmed timeline rather than remaining speculative. Confidence held at medium (single-sector, editorial trade coverage) despite three-source corroboration, since all three outlets appear to be reporting the same underlying brand statement rather than independently verifying it.",
+      "human_editor_note": "This closes the open question from the prior two reports. Do not expect a Versace show entry in this or upcoming fashion-month windows this year; the next relevant signal for this signal_id would be a confirmed early-2027 show date, which is out of this archive's current season scope.",
+      "source_corroboration_count": 3,
+      "signal_id": "versace-mulier-debut-unconfirmed",
+      "confidence_source": "manual"
+    },
+    {
+      "name": "Armani house's SS27 Milan show date confirmed, retroactive to this window's boundary",
+      "type": "market_behavior",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "medium",
+      "volatility": "stable",
+      "origin_classification": "designer_originated",
+      "evidence": "WWD reports a confirmed Giorgio Armani mainline show at 7pm CET on September 28, 2026 at the Brera Pinacoteca courtyard, continuing the house's tradition of closing Milan's calendar, with two Emporio Armani shows staged the preceding day (September 27) at Armani Teatro. Both dates fall on or before September 28 -- just outside this report's September 29-October 5 window and outside the September 28 report's own sourcing cutoff.",
+      "index_note": "Same signal_id as the September 28 report (armani-founder-transition), carried forward as a retrospective resolution: the pending show-date question is now answered by a single dated, sourced confirmation (WWD), but the event itself occurred just before this window opened, so it is logged as closing prior uncertainty rather than as an in-window occurrence.",
+      "human_editor_note": "This is a scheduling/occurrence confirmation, not a show review -- no content, silhouette, or reception detail is asserted here, consistent with this archive's standing practice of not backfilling show content from adjacent-window reporting.",
+      "source_corroboration_count": 1,
+      "signal_id": "armani-founder-transition",
+      "confidence_source": "manual"
+    }
+  ],
+  "repeated_keywords": [
+    "Paris Fashion Week",
+    "SS27",
+    "FHCM",
+    "Pieter Mulier",
+    "Versace",
+    "Giorgio Armani",
+    "Brera Pinacoteca",
+    "schedule",
+    "date discrepancy",
+    "fashion month close"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [
+    "FHCM (Federation de la Haute Couture et de la Mode) Paris Fashion Week calendar",
+    "Pieter Mulier / Versace debut-timing confirmation",
+    "Giorgio Armani house Brera Pinacoteca show, post-founder era"
+  ],
+  "limitations": [
+    "mfw-schedule-inconsistency (September 28 report) was not independently re-checked this window -- sourcing effort focused on Paris -- so it remains open rather than resolved; see get_signal_status_history() for its trend.",
+    "lfw-wholesale-eligibility-dropped (September 21) remains continuing-but-quiet: no new verifiable reporting on its downstream effects surfaced this window either, so it is not re-asserted.",
+    "Paris Fashion Week SS27's exact start date is reported inconsistently (September 28 vs. September 29, 2026) across sources found this window; this report's own collection_window follows this archive's prior editorial-calendar reference rather than an independently re-verified FHCM date, per the media-integrity signal above.",
+    "The Versace and Armani resolutions logged this window both rest on this archive's standing practice of not backfilling show occurrence or content from off-window reporting: Armani's confirmed show date falls just before this window opened, and Mulier's confirmed debut falls well after fashion month ends, so neither is reported as an in-window show.",
+    "This window closes this archive's fashion-month coverage (NYFW through PFW, Sept 8-Oct 6, 2026 per docs/EDITORIAL_CALENDAR.md). Consistent with the pattern across runs 19-22, volume and volatility are expected to drop back to the lower, quieter baseline seen in the pre-fashion-month reports (late July through August 2026) starting with the next window; a return to low item counts and 'normal'-but-thin-feeling reports should be read as the expected seasonal pattern, not a crawl or sourcing regression.",
+    "This report was assembled via targeted web search rather than a live automated crawl or direct social-platform API/dataset access, consistent with prior reports' compliant manual-sampling approach."
+  ],
+  "archive_tags": [
+    "pfw-ss27-schedule-ambiguity",
+    "versace-mulier-debut-resolved",
+    "armani-show-date-resolved",
+    "fashion-month-2026-close",
+    "2026-q4"
+  ],
+  "collection_status": "normal",
+  "review_status": "reviewed",
+  "reviewed_by": "loop-consolidation",
+  "revision_history": [
+    {
+      "previous_content_hash": "6666d634094a2caa3cfd6e91bff50fd740a7ee43df703f7d17787410d72ba2bf",
+      "corrected_at": "2026-07-06",
+      "reason": "slug curation run 36: shortened overly-long signal_id slugs to 2-4 words per run 6 precedent, preserving consistency across recurring reports"
+    },
+    {
+      "previous_content_hash": "67d900def3db7c37c9d9efa5768be813eab2ef854bf3256bdc58f3051b7b1fe8",
+      "corrected_at": "2026-07-06",
+      "reason": "run 37 periodic audit: index_note prose for versace-mulier-debut-unconfirmed and armani-founder-transition self-referenced the pre-run-36-shortening long-form signal_id text instead of the actual (already-shortened) signal_id field, creating a mismatch that propagated into the 2026-12-07 close-out note"
+    },
+    {
+      "previous_content_hash": "b4ef5709a596ef7eb1327be6c75924b7c4af1c92dc8e78135472434ed7ce1585",
+      "corrected_at": "2026-07-06",
+      "reason": "periodic audit run 38: replaced stale pre-run-36 long-form slug reference(s) (lfw-eligibility-wholesale-requirement-dropped, mfw-ss27-schedule-date-inconsistency) in prose fields with current short-form signal_id equivalents; the underlying signal_id fields were already renamed in run 36, only the prose text still referenced the old names"
+    }
+  ],
+  "content_hash": "699e8fb4f34497d781c92b6d4c45bfe416909711427ffd9e69ca2f0ae170eb21"
+}

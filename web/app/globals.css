@@ -11,6 +11,23 @@
   --border: #e0ddd8;
 }
 
+/* Dark-mode support: the site is text-dense (long report prose, archive
+   tables) and previously had zero prefers-color-scheme handling — every
+   visitor got the light palette regardless of OS/browser setting. Swap the
+   four theme tokens; --gray and --border are re-picked (not just inverted)
+   so contrast against the new backgrounds still clears WCAG AA:
+   --gray (#b0aca4) on --black (#0a0a0a) ≈ 7.9:1, --border (#2a2827) is a
+   dark-on-dark hairline, matching the light mode's --border being a
+   light-on-light hairline. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --black: #f8f6f1;
+    --white: #0a0a0a;
+    --gray: #b0aca4;
+    --border: #2a2827;
+  }
+}
+
 body {
   background: var(--white);
   color: var(--black);
@@ -22,6 +39,64 @@ h1, h2, h3 {
   font-family: var(--font-instrument);
 }
 
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1000;
+  padding: 0.75rem 1.25rem;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-franklin);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 0.5rem;
+  top: 0.5rem;
+}
+
 .note {
   font-family: var(--font-reenie);
+}
+
+/* Per-signal anchor targets on report pages (run 63) — gives the "how do I
+   cite one signal within this dated report, not just the whole page" gap a
+   real answer (id="signal-<signal_id>"). scroll-margin-top just keeps the
+   anchored element from landing flush against the viewport top. */
+[id^="signal-"] {
+  scroll-margin-top: 1.5rem;
+}
+
+/* Print stylesheet — report pages are meant to be citable/archivable, and a
+   researcher printing or "Save as PDF"-ing a report page for a citation
+   should get the report text itself, not the site's interactive chrome.
+   .no-print marks in-page navigation (footer links to other site sections);
+   it has no effect on screen. Link URLs are expanded inline so a citation
+   made from a printout still carries the source address. */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #333;
+  }
+
+  @page {
+    margin: 2cm;
+  }
 }

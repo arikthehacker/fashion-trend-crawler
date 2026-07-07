@@ -1,0 +1,105 @@
+{
+  "report_date": "2027-09-27",
+  "collection_window": {
+    "start": "2027-09-21",
+    "end": "2027-09-27"
+  },
+  "sources_scanned": 10,
+  "items_collected": 2,
+  "source_sector_breakdown": {
+    "institutional": 1,
+    "editorial": 3,
+    "retail": 1
+  },
+  "executive_summary": "Collection window September 21-27, 2027. Paris Fashion Week's Spring/Summer 2028 schedule, confirmed in the 2027-09-06 report, opened on schedule on the window's final day with an official published show order; this is logged as a calendar fact, not a runway-content report, since the window closes as the week begins. Separately, the Glenn Martens-era Margiela raw-edge tailoring signal tracked since 2027-09-20 gained its first retail-sector attention this window -- a market-week preview citing wholesale buyers' anticipated interest -- but this is reported as anticipatory buyer commentary, not confirmed retail adoption, and origin_classification remains designer_originated accordingly. Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention and are not re-litigated in this report.",
+  "top_signals": [
+    {
+      "name": "Paris Fashion Week SS28 opens with published show order",
+      "type": "market_behavior",
+      "source_sectors": [
+        "institutional",
+        "editorial"
+      ],
+      "confidence": "high",
+      "volatility": "stable",
+      "origin_classification": "unclear",
+      "evidence": "FHCM published the official Paris Spring/Summer 2028 show-order calendar this window, confirming the September 27-October 5, 2027 dates already reported in the 2027-09-06 report (signal_id pfw-ss28-calendar-confirmed) and opening on schedule the final day of this collection window. Vogue independently reported the published show order and opening-day lineup, corroborating FHCM's own release rather than adding new claims about content or direction of any single house's collection.",
+      "index_note": "Logged as a logistics/calendar fact, consistent with how the NYFW SS28 schedule confirmation was handled in the 2027-09-20 report (signal_id nyfw-ss28-schedule-confirmed): no garment, silhouette, or aesthetic claim is made about any specific show from this signal alone. This report does not yet cover runway content, since the window closes on opening day itself.",
+      "source_corroboration_count": 2,
+      "signal_id": "pfw-ss28-opens-published-order",
+      "confidence_source": "derived",
+      "human_editor_note": "derive_confidence() adopted as-is: source_corroboration_count=2, source_sectors institutional+editorial are both real, mapped sectors in taxonomy.py's DOMAIN_SECTOR_MAP (fhcm.paris -> institutional, vogue.com -> editorial) -- no unclear-sector domain is being counted toward corroboration here, so there is no inflation to correct for and the derived 'high' tier is held.",
+      "source_domains": [
+        "fhcm.paris",
+        "vogue.com"
+      ]
+    },
+    {
+      "name": "Glenn Martens-era Margiela: raw-edge tailoring draws pre-market buyer attention",
+      "type": "aesthetic_shift",
+      "source_sectors": [
+        "editorial",
+        "editorial",
+        "retail"
+      ],
+      "confidence": "high",
+      "volatility": "emerging",
+      "origin_classification": "designer_originated",
+      "evidence": "Continuing the signal first tracked in the 2027-09-20 report (signal_id margiela-raw-edge-tailoring-preview), Dazed and Highsnobiety both published follow-up coverage of Glenn Martens' Maison Margiela ahead of its Paris slot later in this window's calendar, still keyed off the same house-released atelier imagery of raw, unfinished seam edges and exposed tailoring canvas. Separately, Who What Wear ran a market-week preview piece citing unnamed wholesale buyers describing the raw-edge tailoring as a detail they are 'watching closely' ahead of Paris showroom appointments -- explicitly anticipatory buyer interest, not a reported order or confirmed retail buy.",
+      "index_note": "Origin classification remains designer_originated: the underlying imagery still originates from the house's own atelier release, and no actual retail buy, stocking decision, or social amplification has been observed. The Who What Wear item is retail-sector commentary about anticipated interest, not evidence of retail_adopted status -- keeping designer intent, editorial interpretation, and retail anticipation distinct rather than collapsing 'buyers are watching' into 'buyers are adopting.'",
+      "source_corroboration_count": 3,
+      "signal_id": "margiela-raw-edge-tailoring-preview",
+      "confidence_source": "derived",
+      "human_editor_note": "Unlike the 2027-09-20 report -- which held this same signal_id at medium because two of its four corroborating domains (papermag.com, thefashionlaw.com) fell outside taxonomy.py's DOMAIN_SECTOR_MAP as 'unclear' -- this window's three corroborating domains (dazeddigital.com, highsnobiety.com, whowhatwear.com) are all real, mapped sectors (editorial, editorial, retail), giving two genuinely distinct mapped sectors. derive_confidence()'s 'high' tier is adopted as-is because there is no unclear-sector domain being counted toward this corroboration; the standing discipline is to hold confidence below the derived tier only when an 'unclear' domain is doing the work of a second sector, which is not the case here. This confidence increase describes reporting diversity, not a change in origin_classification or an actual retail adoption event -- see index_note.",
+      "source_domains": [
+        "dazeddigital.com",
+        "highsnobiety.com",
+        "whowhatwear.com"
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "fashion week calendar",
+    "SS28",
+    "raw-edge seam",
+    "market week",
+    "wholesale buyers"
+  ],
+  "garments": [
+    "tailored jacket"
+  ],
+  "silhouettes": [],
+  "materials": [
+    "exposed canvas",
+    "raw-edge fabric"
+  ],
+  "colors": [],
+  "aesthetic_terms": [
+    "deconstructed tailoring",
+    "raw-edge finishing"
+  ],
+  "cultural_references": [
+    "Glenn Martens",
+    "Maison Margiela",
+    "FHCM",
+    "Paris Fashion Week",
+    "Who What Wear"
+  ],
+  "limitations": [
+    "This window closes on Paris Fashion Week's opening day; runway content itself (specific collections, looks, or silhouettes shown) falls outside this window and is not covered here.",
+    "The Who What Wear item cites unnamed wholesale buyers and describes anticipated interest, not a confirmed order or stocking decision -- treated as retail-sector commentary, not retail adoption, per the designer-intent/editorial-interpretation/retail-adoption distinction this project maintains.",
+    "No social-sector amplification of the Margiela raw-edge tailoring detail has been observed as of this window."
+  ],
+  "archive_tags": [
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked"
+  ],
+  "content_hash": "03bfa82195a012b527be04c3fb712e4d31b2d232250485ea9b3ef731770d5430",
+  "collection_status": "normal",
+  "thin_week_note": "",
+  "revision_history": [],
+  "review_status": "reviewed",
+  "reviewed_by": "ari3lla-index-loop-improvements agent"
+}

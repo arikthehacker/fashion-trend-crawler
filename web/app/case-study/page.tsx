@@ -69,7 +69,7 @@ const sections: { title: string; body: string[] }[] = [
 
 export default function CaseStudy() {
   return (
-    <main
+    <main id="main-content"
       style={{
         minHeight: "100vh",
         background: "var(--white)",
@@ -149,6 +149,41 @@ export default function CaseStudy() {
           </Link>
           {" — weekly style signal report"}
         </p>
+
+        <nav
+          aria-label="Site sections"
+          style={{ display: "flex", justifyContent: "center", gap: "1.5rem", marginTop: "1.5rem", flexWrap: "wrap" }}
+        >
+          {[
+            { href: "/", label: "Report" },
+            { href: "/methodology", label: "Methodology" },
+            { href: "/taxonomy", label: "Taxonomy" },
+            { href: "/sources", label: "Sources" },
+            { href: "/glossary", label: "Glossary" },
+            { href: "/timeline", label: "Timeline" },
+            { href: "/archive", label: "Archive" },
+            { href: "/search", label: "Search" },
+            { href: "/about", label: "About" },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              style={{
+                fontFamily: "var(--font-franklin)",
+                fontSize: "0.7rem",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                color: "var(--black)",
+                textDecoration: "underline",
+                textUnderlineOffset: "3px",
+                display: "inline-block",
+                padding: "0.65rem 0",
+              }}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
       </header>
 
       {/* case study sections */}
@@ -176,18 +211,20 @@ export default function CaseStudy() {
                 alignItems: "start",
               }}
             >
-              <p
+              <h2
                 style={{
                   fontFamily: "var(--font-franklin)",
                   fontSize: "0.75rem",
+                  fontWeight: "400",
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
                   color: "var(--black)",
                   paddingTop: "0.2rem",
+                  margin: 0,
                 }}
               >
                 {String(i + 1).padStart(2, "0")}&nbsp;&nbsp;{s.title}
-              </p>
+              </h2>
               <div>
                 {s.body.map((p, j) => (
                   <p
