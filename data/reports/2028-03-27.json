@@ -1,0 +1,44 @@
+{
+  "report_date": "2028-03-27",
+  "collection_window": {
+    "start": "2028-03-21",
+    "end": "2028-03-27"
+  },
+  "sources_scanned": 8,
+  "items_collected": 1,
+  "source_sector_breakdown": {
+    "editorial": 1
+  },
+  "executive_summary": "Collection window March 21-27, 2028: this window falls immediately after the close of the international Fall/Winter 2028 women's fashion-month sequence (New York, London, Milan, Paris), which concluded per the 2028-03-20 report. This is the established post-fashion-month lull: no house has a runway event scheduled in this window, resort/pre-fall 2028 presentations and previews are not expected to begin for several more weeks per the archive's prior-cycle pacing, and no calendar-confirmation announcement for any upcoming fashion-week leg fell within this window either. One editorial retrospective piece was collected (a single wwd.com year-of-fashion-month roundup covering the full Fall/Winter 2028 cycle just closed), but it restates already-logged signals (Miu Miu raw-hem, Loewe balloon-sleeve, Prada inverted-pleat, and the 2028-03-20 unfinished-edge synthesis) without adding new corroboration, a new specific claim, or a second independent outlet's read -- a single-source restatement of prior archive content, not new evidence of anything. Per precedent 4's downstream-reprint logic (a single outlet re-describing material already fully corroborated elsewhere in the archive does not constitute a new signal or additional corroboration of the old ones), and consistent with the standing rule against manufacturing signals to fill a quota during a genuinely quiet week, this is not logged as a new top_signals entry. No garment, silhouette, or aesthetic observation new to this window was found from any source sector. This report is therefore filed as collection_status 'thin.' The Khaite, Proenza Schouler, Simone Rocha, Prada cargo-skirt, resort 2028 puffer-shell skirt, resale-demand, obi-sash cocoon coat, and opera-glove/'restraint dressing' threads all remain without new movement and are not carried forward again absent fresh development. The Miu Miu raw-hem and Loewe balloon-sleeve signals (2028-03-13) and the FW28 season-wrap unfinished-edge synthesis (2028-03-20) are the archive's most recent live signal_ids but produced no new corroboration this window. Met Gala 2027, Wales Bonner, and CFDA's Fashion Fund/Awards remain untracked going forward per standing convention.",
+  "top_signals": [],
+  "repeated_keywords": [
+    "post-fashion-month lull",
+    "Fall/Winter 2028 retrospective"
+  ],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [],
+  "limitations": [
+    "collection_status is 'thin': a single item was collected this window (a wwd.com Fall/Winter 2028 season retrospective), and it restates signals already logged in the 2028-03-13 and 2028-03-20 reports without adding new corroboration or a new claim, so it does not qualify as a new top_signals entry under precedent 4's downstream-reprint reasoning applied to a single outlet's own retrospective rather than manufacturing a signal to fill a quota.",
+    "This window falls in the established post-fashion-month lull between the close of Fall/Winter 2028 women's fashion month (2028-03-20) and the start of resort/pre-fall 2028 previews, which are not expected for several more weeks based on this archive's prior-cycle pacing; a quiet window here is expected, not a crawl or sourcing failure.",
+    "No new development occurred on the Khaite, Proenza Schouler, Simone Rocha, Prada cargo-skirt, resort 2028 puffer-shell skirt, resale-demand, obi-sash cocoon coat, or opera-glove/'restraint dressing' threads this window; per standing convention, none are carried forward again absent fresh movement.",
+    "The Miu Miu raw-hem bias-slip-skirt and Loewe balloon-sleeve trench signals (2028-03-13) and the FW28 season-wrap unfinished-edge synthesis (2028-03-20) remain the archive's most recently active signal_ids but received no new corroborating coverage this window.",
+    "No candidate-precedent question arose this window: the single collected item is a plain single-source restatement of already-logged material, which precedent 4's existing reasoning (downstream/reprint material does not add corroboration) covers directly without extension."
+  ],
+  "archive_tags": [
+    "margiela-raw-edge-editorial-close-out",
+    "met-gala-2027-untracked",
+    "wales-bonner-hermes-debut-untracked",
+    "cfda-fashion-fund-winner-untracked",
+    "cfda-fashion-awards-2026-untracked",
+    "post-fashion-month-lull"
+  ],
+  "collection_status": "thin",
+  "thin_week_note": "Fewer than 3 sources returned any collectible item this window (1 of 8 scanned), and the single item collected (a wwd.com Fall/Winter 2028 retrospective) restates signals already logged in the 2028-03-13 and 2028-03-20 reports rather than reporting anything new. This window sits in the expected post-fashion-month lull between the close of Fall/Winter 2028 women's fashion month and the start of resort/pre-fall 2028 previews. Report reflects genuinely limited coverage during an expected quiet stretch rather than a crawl failure or manufactured content to fill a weekly quota.",
+  "review_status": "reviewed",
+  "reviewed_by": "ari3lla-index-loop-improvements agent",
+  "revision_history": []
+}
