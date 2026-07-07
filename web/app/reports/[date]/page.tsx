@@ -106,6 +106,31 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
   // `contentUrl` below is no longer a placeholder.
   const reportUrl = `${SITE_URL}/reports/${report.report_date}`;
   const rawDataUrl = `${SITE_URL}/data/reports/${report.report_date}.json`;
+
+  // IPTC Digital Source Type (schema.org property `digitalSourceType`, value is a
+  // full IPTC NewsCodes URI, IPTCDigitalSourceEnumeration) — structured counterpart
+  // to the prose AI-disclosure already on /about ("AI Involvement") and /methodology
+  // ("How AI Is Used"/"Review Process"). Google actively parses this vocabulary
+  // (see docs/agent-logs/digital-source-type-metadata-run102.md for the research
+  // trail), so leaving it out of the JSON-LD makes the prose disclosure invisible to
+  // that pipeline even though it's true and visible to a human reader.
+  //
+  // Value chosen: compositeWithTrainedAlgorithmicMedia — "Augmentation, correction or
+  // enhancement using a Generative AI model" (per cv.iptc.org/newscodes/digitalsourcetype).
+  // This report is neither unassisted human journalism nor fully-synthetic AI media
+  // (there is no "trainedAlgorithmicMedia" here in the sense of content generated with
+  // no real underlying source): every signal traces to real crawled/verified source
+  // material (see the Dataset's `distribution`/`isBasedOn` below and each signal's
+  // outlet citations), and doc section 18/19's process is Claude extracting, clustering,
+  // and summarizing that real material, with taxonomy/confidence discipline and an
+  // editorial review layer applied on top (currently run by the same automated process,
+  // per the About page's own disclosure — not a separate named human editor). That is
+  // an augmentation/composite operation over real captured content, which is exactly
+  // what compositeWithTrainedAlgorithmicMedia describes, not pure algorithmic
+  // creation from nothing.
+  const digitalSourceType =
+    "https://cv.iptc.org/newscodes/digitalsourcetype/compositeWithTrainedAlgorithmicMedia";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -128,6 +153,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
         },
         keywords: report.archive_tags?.join(", "),
         about: { "@id": `${reportUrl}#dataset` },
+        digitalSourceType,
       },
       {
         "@type": "Dataset",
@@ -159,6 +185,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
             contentUrl: rawDataUrl,
           },
         ],
+        digitalSourceType,
       },
     ],
   };

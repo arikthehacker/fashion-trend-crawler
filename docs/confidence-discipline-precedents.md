@@ -627,3 +627,27 @@ reasoning from scratch.
   are the mechanism that periodically shrinks precedent 3's "unclear" gap over time —
   context for why that pattern recurs and then partially resolves, not a precedent of
   its own.
+- **`data/reports/2026-05-07.json` (`reviewed_by: "hand-authored-placeholder-run0"`),
+  signal `sheer-layering` — grandfathered, permanently closed, not a confidence
+  exception.** `source_corroboration_count: 2` across `["editorial", "retail"]` would
+  mechanically derive `high`; the report assigns `medium` with no `confidence_source`
+  field (the field did not exist yet when this report was hand-authored as the
+  archive's very first scaffold/placeholder, predating `derive_confidence()`,
+  `HIGH_RELIABILITY_SECTORS`, and every precedent above). Flagged unresolved at runs 99
+  and 100; resolved at run 102
+  (`docs/agent-logs/legacy-confidence-artifact-resolution-run102.md`) as follows: this
+  is deliberately **not** treated as a case for either applying the mechanical
+  correction (upgrading to `high`) or writing a retroactive manual-override
+  `confidence_source`/reasoning (per precedent 12, prose/override reasoning is never
+  invented after the fact to justify a value someone else assigned years earlier under
+  different, unrecorded standards). Unlike every signal covered by precedents 1-17,
+  this report's `source_sectors`/`evidence`/`source_corroboration_count` values are not
+  real crawl output describing real, checkable sources — the report is explicitly
+  self-labeled `human_editor_note: "Placeholder example report used to scaffold the
+  archive and report page templates."` There is no actual sourcing to re-evaluate
+  either up or down; "correcting" it in either direction would misrepresent a synthetic
+  scaffolding artifact as a substantive editorial judgment call, which it never was.
+  This is accepted as a permanent, explicitly-documented historical inconsistency
+  (a grandfather clause for pre-discipline placeholder content) — the underlying
+  content_hash-verified value is not to be changed via `save_report()`, and no future
+  audit should re-flag it as an unresolved open item; this entry is the closure.
