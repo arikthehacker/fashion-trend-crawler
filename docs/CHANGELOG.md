@@ -18,6 +18,15 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-06 ~01:10 PDT — [Loop run 101](changelog-entries/run-101.md)** —
+  precedent 17 formalized (absence-of-coverage signals don't get the
+  single-source high-reliability-sector exception), with the original
+  reports deliberately left unedited per precedent 12; the new
+  `trade_intelligence` sector is wired into the taxonomy and sources pages
+  in matching voice; a 94th report honestly stays empty for a fourth
+  consecutive week; nav/build and periodic audits both clean, the latter
+  re-verifying 10 taxonomy classifications with no new artifacts found.
+
 - **2026-07-06 ~00:35 PDT — [Loop run 100](changelog-entries/run-100.md)** —
   a new `trade_intelligence` taxonomy sector closes the domain backlog to
   zero, correctly separating B2B trend-forecasting vendors' commercial

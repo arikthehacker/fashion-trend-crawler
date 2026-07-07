@@ -1931,14 +1931,20 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       a new candidate 17th precedent from a genuine mismatch in a live
       report (`2027-06-14.json`).
 
-## Next up (run 101 candidates)
-- [ ] The new `trade_intelligence` sector needs frontend follow-up
-      (`web/lib/reports.ts`, `taxonomy/page.tsx`, `sources/page.tsx`,
-      `search/SearchClient.tsx`) once it appears in real report data.
-- [ ] Candidate 17th precedent: review `2027-06-14.json`'s Met Gala
-      coverage-gap signal (assigned `low`, mechanically computes `medium`)
-      and either correct it via `save_report()` with proper
-      `revision_history`, or document an intentional override.
+## Run 101 — done
+- [x] Formalized precedent 17 (absence-of-coverage signals don't get the
+      single-source high-reliability-sector exception); left the two
+      source reports unedited per precedent 12, since the value was
+      already correct and only the documentation was missing.
+- [x] Wired the `trade_intelligence` sector into `taxonomy/page.tsx` and
+      `sources/page.tsx`; confirmed `reports.ts` and `SearchClient.tsx`
+      needed no change.
+- [x] Added `data/reports/2028-04-17.json`, a 94th report — a fourth
+      consecutive honest thin week, correctly not fabricated.
+- [x] Nav/build regression sweep and periodic audit both clean; periodic
+      audit re-verified 10 taxonomy classifications with no new artifacts.
+
+## Next up (run 102 candidates)
 - [ ] The archive's oldest report (`2026-05-07.json`) has one signal with
       an unexplained mechanical-vs-assigned confidence mismatch, predating
       the confidence-discipline system — legacy artifact, not yet corrected.
@@ -1946,8 +1952,8 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       metadata in report pages' JSON-LD yet — needs an editorial judgment
       call on which IPTC value applies before implementing.
 - [ ] The archive's fictional forward calendar now sits over two years
-      past the real session date — worth deciding whether to keep advancing
-      indefinitely or slow the pace; not an active bug.
+      past the real session date, with four consecutive thin weeks — worth
+      a human decision on pacing eventually; not an active bug.
 - [ ] Manual-sampling cadence next due ~run 105.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven
@@ -1955,4 +1961,4 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
 - [ ] `SITE_URL` remains a placeholder domain — correctly confirmed as needing only
       a human-supplied real domain, no further autonomous work possible here.
 - [ ] The underlying human-in-the-loop process gap flagged in run 50 remains open.
-- [ ] `gh` CLI/CI-status check due this run (run 100).
+- [ ] `gh` CLI/CI-status check next due at run 110.
