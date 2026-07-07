@@ -370,6 +370,115 @@ DOMAIN_SECTOR_MAP = {
     "hollywoodreporter.com": "editorial",
     "interviewmagazine.com": "editorial",
     "papermag.com": "editorial",
+
+    # added run 99 -- closing more of run 96's 32-domain backlog
+    # (docs/agent-logs/taxonomy-gap-fix-run98.md), each verified via
+    # WebSearch before classifying (see
+    # docs/agent-logs/taxonomy-gap-fix-run99.md): fashionunited.uk is the
+    # UK edition of the FashionUnited B2B trade-news/jobs platform,
+    # matching the already-mapped fashionunited.in/fashionunited.com;
+    # fzine.com (F ZINE Singapore, formerly FEMALE magazine since 1974)
+    # is a staffed youth-culture/fashion editorial platform with a named
+    # editor-in-chief; imfirenzedigest.com is I'M FIRENZE DIGEST, an
+    # editorial trend/culture magazine published by Istituto Marangoni
+    # Firenze -- a magazine publication in its own right (fashion/art/
+    # beauty features), distinct from the school's own institutional site
+    # (istitutomarangoni.com, already institutional); insidehook.com is a
+    # staffed men's lifestyle outlet (12 full-time editors, named
+    # editorial policy) with a style vertical; lamag.com is Los Angeles
+    # magazine (est. 1961, named EIC, National Magazine Award winner)
+    # covering fashion among its city-lifestyle beat; lofficielusa.com is
+    # the US edition of L'Officiel, a major fashion/culture title founded
+    # in Paris in 1921 with 30 national editions; news.sbs.co.kr is the
+    # news portal of SBS, a major staffed South Korean broadcast network
+    # -- general/geographic-diversity press in the same vein as
+    # asiae.co.kr/scmp.com/tribune.com.pk; numero.com is Numero, a
+    # staffed international fashion/art magazine (founded 1998, named
+    # EIC); parisselectbook.com is Paris Select, a 17-year-running
+    # Paris luxury/lifestyle magazine with a named editor-in-chief and
+    # journalist-written content; pursuitist.com is an independent,
+    # ad-free luxury lifestyle publication (founded 2008, named EIC,
+    # cited by NYT/WSJ/Forbes) with a dedicated Style vertical;
+    # robbreport.com is Robb Report, a staffed luxury-lifestyle magazine
+    # (founded 1976, Penske Media-owned, same publisher family as
+    # hollywoodreporter.com) with a Style/fashion vertical; soccerbible.com
+    # is a staffed football-culture publisher (founded 2006) whose
+    # coverage includes footwear/apparel design content, fashion-adjacent
+    # in the same way artnews.com is art-adjacent; thezoereport.com is a
+    # staffed fashion/beauty/lifestyle title (launched 2009, named
+    # editorial director and masthead) under BDG; vmagazine.com is V
+    # Magazine, a major fashion/pop-culture title running since 1999;
+    # vogueadria.com is Vogue Adria, Conde Nast's Balkan-region regional
+    # Vogue edition (launched 2024, named EIC), matching the
+    # voguearabia.com/voguescandinavia.com pattern; whitewall.art is
+    # Whitewall, an independent art/fashion/design magazine (launched
+    # 2006) with a named editorial team; wionews.com is WION, a staffed
+    # global news network (India-headquartered) with named journalists --
+    # geographic-diversity editorial in the same vein as wionews.com's
+    # South Asian peers already mapped; yourcoffeebreak.co.uk is Your
+    # Coffee Break, a staffed lifestyle magazine for professional women
+    # (founded 2012, London-based with multi-city bureaus) covering
+    # fashion/beauty; euronews.com is Euronews, a major staffed
+    # pan-European news network (400 journalists) -- geographic-diversity
+    # general press, same bucket as scmp.com/asiae.co.kr.
+    "fashionunited.uk": "editorial",
+    "fzine.com": "editorial",
+    "imfirenzedigest.com": "editorial",
+    "insidehook.com": "editorial",
+    "lamag.com": "editorial",
+    "lofficielusa.com": "editorial",
+    "news.sbs.co.kr": "editorial",
+    "numero.com": "editorial",
+    "parisselectbook.com": "editorial",
+    "pursuitist.com": "editorial",
+    "robbreport.com": "editorial",
+    "soccerbible.com": "editorial",
+    "thezoereport.com": "editorial",
+    "vmagazine.com": "editorial",
+    "vogueadria.com": "editorial",
+    "whitewall.art": "editorial",
+    "wionews.com": "editorial",
+    "yourcoffeebreak.co.uk": "editorial",
+    "euronews.com": "editorial",
+
+    # added run 99 -- wardrobeoxygen.com is a long-running (since 2005,
+    # full-time since 2017) single-author personal style blog by Alison
+    # Gary, featured in the Washington Post/NYT/US News -- same
+    # single-voice, long-running, independently-credible pattern as
+    # dieworkwear.com/throwingfits.com, not a staffed masthead.
+    "wardrobeoxygen.com": "independent_criticism",
+
+    # Skipped (not added) this run, all researched but not clearing the
+    # bar, or found not to be fashion sources at all:
+    # ipowerrichmond.com -- WebSearch shows this is iPower 92.1/104.1 FM,
+    # a Richmond VA hip-hop/R&B radio station, not a fashion source at
+    # all -- same wrong-domain pattern as run 96/98's uraniumwaves.com/
+    # cafedelhomme.com. wkzo.com -- a Kalamazoo, Michigan AM/FM talk
+    # radio station (conservative syndicated programming), also not a
+    # fashion source at all, same pattern. outfittrends.com -- a
+    # 2009-founded "outfit ideas" content site with a rotating team of
+    # non-journalist contributors (doctors/teachers/engineers writing
+    # style posts) and shopping-guide framing; ambiguous in the same way
+    # as chicstylecollective.com/modernluxury.com, left unclassified
+    # rather than forced. stylearcade.com -- a B2B retail-analytics SaaS
+    # company (assortment planning/merchandising software for fashion
+    # retailers), not a media or content source at all; doesn't fit any
+    # SOURCE_SECTORS bucket cleanly. trendalytics.co -- likewise a B2B
+    # AI trend-forecasting/market-intelligence software vendor, not a
+    # publisher; same non-media-property issue as stylearcade.com.
+    # wgsn.com -- a major commercial trend-forecasting subscription
+    # service (WGSN); unlike cfda.com/britishfashioncouncil.co.uk (which
+    # are nonprofit/governing bodies), WGSN is a for-profit forecasting
+    # vendor with no public editorial content, and unlike net-a-porter.com
+    # etc. it sells forecasts, not product -- doesn't cleanly fit
+    # editorial, institutional, or retail; left unclassified pending a
+    # clearer read on how paid B2B forecasting vendors should be bucketed
+    # generally (same open question as stylearcade.com/trendalytics.co).
+    # yahoo.com -- a general news/search portal aggregating wire and
+    # syndicated content across many verticals under no single editorial
+    # identity, unlike a staffed masthead; genuinely ambiguous the way
+    # google.com is handled separately (visual_archive, a narrower usage
+    # pattern) rather than a comparable case.
 }
 
 
