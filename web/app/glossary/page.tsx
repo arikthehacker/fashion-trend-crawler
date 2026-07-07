@@ -174,6 +174,7 @@ const DEFINITIONS: Record<string, string> = {
   "london fashion week": "The London leg of the international ready-to-wear fashion week circuit, organized by the British Fashion Council, cited as an institutional-sector source event when its published calendar or participating collections are tracked.",
   "pearl-trimmed puff-sleeve dress": "A dress with an exaggerated, rounded puffed-sleeve construction finished with a dense pearl-bead trim at the cuff and neckline, observed in Fall/Winter 2028 London Fashion Week runway coverage.",
   "milan fashion week": "The Milan leg of the international ready-to-wear fashion week circuit, organized by Camera Nazionale della Moda Italiana, cited as an institutional-sector source event when its published calendar or participating collections are tracked.",
+  "inverted-pleat cargo skirt": "A knee-length skirt built with box pleats sewn so the fold faces inward rather than outward, paired with structured cargo-style patch pockets, producing a flatter front panel than a conventional pleated skirt, observed in Fall/Winter 2028 Milan Fashion Week runway coverage.",
 };
 
 function normalize(term: string): string {
