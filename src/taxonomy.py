@@ -28,6 +28,24 @@ SOURCE_SECTORS = [
     "institutional",
     "street_ugc",
     "resale",
+    # added run 100 -- B2B commercial trend-forecasting / retail-analytics
+    # vendors (e.g. wgsn.com, trendalytics.co, stylearcade.com) that publish
+    # public trend-report blog content as marketing for a paid forecasting/
+    # merchandising-intelligence product. Distinct incentive structure from
+    # every existing bucket: not journalism (editorial), not brand voice
+    # (designer_origin), not a nonprofit/governing body (institutional), not
+    # a product storefront (retail) -- it's a vendor selling *predictions* as
+    # a subscription product, with a commercial incentive to make trends
+    # sound bigger/more certain than editorial or independent criticism
+    # would. See docs/agent-logs/taxonomy-gap-fix-run100.md for the full
+    # reasoning and the three domains that motivated this addition; this is
+    # a bigger structural change than a routine domain mapping, flagged here
+    # for easy human review/reversal. NOT added to
+    # report_schema.HIGH_RELIABILITY_SECTORS -- the commercial incentive to
+    # inflate trend certainty is a noise-profile risk comparable to
+    # unvetted social/UGC sources, not comparable to editorial/independent
+    # criticism's noise profile.
+    "trade_intelligence",
 ]
 
 # ---------------------------------------------------------------
@@ -448,37 +466,65 @@ DOMAIN_SECTOR_MAP = {
     # dieworkwear.com/throwingfits.com, not a staffed masthead.
     "wardrobeoxygen.com": "independent_criticism",
 
+    # added run 100 -- see docs/agent-logs/taxonomy-gap-fix-run100.md.
+    # modernluxury.com is Modern Luxury, the largest US city-regional
+    # luxury-lifestyle magazine publisher (65+ city titles), covering
+    # fashion alongside dining/design/travel -- same
+    # general-lifestyle-magazine-with-a-fashion-vertical pattern as
+    # lamag.com/robbreport.com, already editorial.
+    "modernluxury.com": "editorial",
+
+    # chicstylecollective.com is Chic Style Collective, a staffed fashion/
+    # beauty/lifestyle site with a named editor-in-chief (Natalie Dixon,
+    # 15+ years fashion/beauty/lifestyle journalism) and a claimed 4.5M
+    # readership. Monetizes via affiliate links/shopping content, but that
+    # commerce layer doesn't disqualify it any more than it would other
+    # editorial outlets with shopping verticals -- named masthead + regular
+    # published output clears the same bar as fzine.com/lamag.com.
+    "chicstylecollective.com": "editorial",
+
+    # ecostylia.com is Ecostylia, an independently-funded French online
+    # press outlet (founder/editor Pierre-Antoine Tsady) covering arts,
+    # society, sustainable fashion, and Paris Fashion Week, including
+    # original designer interviews. General-interest with real, regular
+    # fashion coverage -- same bucket as other small independent editorial
+    # outlets (whitewall.art).
+    "ecostylia.com": "editorial",
+
+    # added run 100 -- new trade_intelligence sector, see SOURCE_SECTORS
+    # comment above for full reasoning. All three confirmed via WebSearch
+    # to publish public seasonal/runway trend-report blog content (not just
+    # gated SaaS product pages) as top-of-funnel marketing for a paid B2B
+    # forecasting/retail-analytics product -- that public content is what
+    # the crawler is picking up.
+    "wgsn.com": "trade_intelligence",
+    "trendalytics.co": "trade_intelligence",
+    "stylearcade.com": "trade_intelligence",
+
     # Skipped (not added) this run, all researched but not clearing the
     # bar, or found not to be fashion sources at all:
     # ipowerrichmond.com -- WebSearch shows this is iPower 92.1/104.1 FM,
     # a Richmond VA hip-hop/R&B radio station, not a fashion source at
-    # all -- same wrong-domain pattern as run 96/98's uraniumwaves.com/
-    # cafedelhomme.com. wkzo.com -- a Kalamazoo, Michigan AM/FM talk
-    # radio station (conservative syndicated programming), also not a
-    # fashion source at all, same pattern. outfittrends.com -- a
-    # 2009-founded "outfit ideas" content site with a rotating team of
-    # non-journalist contributors (doctors/teachers/engineers writing
-    # style posts) and shopping-guide framing; ambiguous in the same way
-    # as chicstylecollective.com/modernluxury.com, left unclassified
-    # rather than forced. stylearcade.com -- a B2B retail-analytics SaaS
-    # company (assortment planning/merchandising software for fashion
-    # retailers), not a media or content source at all; doesn't fit any
-    # SOURCE_SECTORS bucket cleanly. trendalytics.co -- likewise a B2B
-    # AI trend-forecasting/market-intelligence software vendor, not a
-    # publisher; same non-media-property issue as stylearcade.com.
-    # wgsn.com -- a major commercial trend-forecasting subscription
-    # service (WGSN); unlike cfda.com/britishfashioncouncil.co.uk (which
-    # are nonprofit/governing bodies), WGSN is a for-profit forecasting
-    # vendor with no public editorial content, and unlike net-a-porter.com
-    # etc. it sells forecasts, not product -- doesn't cleanly fit
-    # editorial, institutional, or retail; left unclassified pending a
-    # clearer read on how paid B2B forecasting vendors should be bucketed
-    # generally (same open question as stylearcade.com/trendalytics.co).
+    # all. wkzo.com -- a Kalamazoo, Michigan AM/FM talk radio station
+    # (conservative syndicated programming), also not a fashion source at
+    # all. uraniumwaves.com (carried forward from run 96, re-verified run
+    # 100) -- an independent Canadian music label/blog (artist submissions,
+    # mixing/mastering services, merch store), not a fashion source.
+    # cafedelhomme.com (carried forward from run 98, re-verified run 100)
+    # -- Cafe de l'Homme, a high-end Paris restaurant at the Trocadero, not
+    # a fashion source. All four are the same wrong-domain pattern: a
+    # plausible-sounding domain that turns out to be an unrelated business.
+    # outfittrends.com -- a 2009-founded "outfit ideas" content site with a
+    # rotating team of non-journalist contributors (doctors/teachers/
+    # engineers writing style posts) and shopping-guide framing; ambiguous,
+    # left unclassified rather than forced.
     # yahoo.com -- a general news/search portal aggregating wire and
     # syndicated content across many verticals under no single editorial
     # identity, unlike a staffed masthead; genuinely ambiguous the way
     # google.com is handled separately (visual_archive, a narrower usage
-    # pattern) rather than a comparable case.
+    # pattern) rather than a comparable case. Not a trade_intelligence fit
+    # either -- it's a general consumer portal, not a B2B forecasting
+    # vendor -- so the new sector doesn't resolve this one.
 }
 
 
