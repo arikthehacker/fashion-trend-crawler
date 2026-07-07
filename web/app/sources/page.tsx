@@ -74,6 +74,11 @@ const sectors: { name: string; def: string; items: string[] }[] = [
     def: "Secondhand marketplace listings, tracked as a distinct sector from primary retail because pricing and description language reflect a different market.",
     items: ["Resale marketplace listings", "Secondhand item descriptions"],
   },
+  {
+    name: "Trade Intelligence",
+    def: "B2B commercial trend-forecasting and retail-analytics vendors selling predictions or merchandising software to brand and retail clients, tracked separately because the incentive is to package trends as sellable, quantified certainties rather than to report on discourse. Not included among high-reliability sectors.",
+    items: ["Commercial trend-forecasting services", "Retail-analytics platforms", "Merchandising/assortment-planning software vendors"],
+  },
 ];
 
 export default function Sources() {

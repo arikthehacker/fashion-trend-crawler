@@ -20,6 +20,7 @@ const sourceSectors = [
   { name: "Institutional/historical", def: "Museum collections, costume history databases, academic papers, and archival runway records." },
   { name: "Street/user-generated", def: "Street style photography and public outfit documentation, distinct from platform-native captions and comments." },
   { name: "Resale/secondhand", def: "Secondhand marketplace listings and descriptions — a separate signal channel from primary retail." },
+  { name: "Trade intelligence", def: "B2B commercial trend-forecasting and retail-analytics vendors, whose public content markets a paid prediction or merchandising product rather than reporting independently on discourse. Excluded from high-reliability sectors." },
 ];
 
 const volatility = [
