@@ -18,6 +18,13 @@ All timestamps are Pacific (PDT, UTC-7 — this work happened in July).
 
 ## Index
 
+- **2026-07-10 ~21:00 PDT — [Loop run 92](changelog-entries/run-92.md)** — a
+  real root-cause fix for run 91's filename/date bug (the convention was
+  never documented anywhere; now has an explicit docstring and a non-fatal
+  validator warning that would catch a recurrence automatically); an 85th
+  report immediately verifies the fix in production; taxonomy/sources pages
+  re-confirmed accurate; nav/build and periodic audits both clean.
+
 - **2026-07-10 ~19:50 PDT — [Loop run 91](changelog-entries/run-91.md)** — an
   84th report honestly logs a thin week with one factual calendar signal; a
   dormancy re-audit across the larger archive comes back clean, catching and

@@ -1798,7 +1798,25 @@ Living list of work remaining on the site/pipeline. Updated each loop run. See
       zero violations found.
 - [x] Nav/build regression sweep and periodic audit both clean.
 
-## Next up (run 92 candidates)
+## Run 92 — done
+- [x] Fixed the real root cause of run 91's filename/date bug: the
+      `report_date == collection_window.end` convention was never documented
+      anywhere. Added an explicit docstring and a non-fatal `validate_report()`
+      warning that would catch a recurrence automatically. Audited all 84
+      reports at the time programmatically — the bug never reached the archive
+      on disk.
+- [x] Added `data/reports/2028-02-14.json`, an 85th report — correctly filed
+      under the end-of-window date on the first attempt, triggering no
+      warning from the new validator. Proenza Schouler NYFW FW28 signal
+      earned "high" via genuine cross-sector corroboration.
+- [x] Taxonomy/sources pages re-verified accurate since run 75/81; a
+      reasonable judgment call declined to duplicate confidence-precedents
+      prose onto the Taxonomy page.
+- [x] Nav/build regression sweep and periodic audit both clean.
+
+## Next up (run 93 candidates)
+- [ ] `proenzaschouler.com` isn't yet classified in `taxonomy.py`'s
+      `DOMAIN_SECTOR_MAP` — flagged by run 92's report agent, small follow-up.
 - [ ] Manual-sampling cadence next due ~run 97.
 - [ ] Still awaiting a human-supervised live test of `crawler.py` against real
       sources — both fixes (runs 72, 73) remain implemented and locally proven
