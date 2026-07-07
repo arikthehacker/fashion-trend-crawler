@@ -534,6 +534,79 @@ here to a prose convention rather than a schema field).
 
 ---
 
+### 17. An absence-of-coverage signal is not eligible for the single-source HIGH_RELIABILITY_SECTORS exception, even when its `source_sectors` tag is a high-reliability sector
+
+**First established:** `data/reports/2027-05-31.json` (run 56), signal
+`met-gala-2027-coverage-gap`, reinforced identically at `data/reports/2027-06-14.json`
+(run 58, same signal_id's second occurrence); flagged as an undocumented open finding
+at `docs/agent-logs/periodic-audit-run100.md` (run 100); formalized here at run 101
+after independent re-verification and review
+(`docs/agent-logs/precedent-17-review-run101.md`).
+
+**Rule:** a signal of `type: "factual_question"` whose entire evidentiary content is
+the *absence* of expected coverage (a targeted search across one or more collection
+windows finding zero reachable reporting on an event/topic that normally generates
+coverage) is not eligible for `HIGH_RELIABILITY_SECTORS`' `count == 1` -> `medium`
+exception, even when the signal's `source_sectors` field lists a high-reliability
+sector (e.g. `editorial`) and `source_corroboration_count` is 1.
+
+The `HIGH_RELIABILITY_SECTORS` exception is calibrated for the reliability of a
+single sector's *affirmative* reporting of a fact — one `editorial` outlet asserting
+X is more trustworthy than one social post asserting X, because of that sector's
+editorial process and accountability. An absence-of-coverage signal has no such
+assertion to vouch for: there is no editorial source being cited as having reported
+anything. The `source_sectors`/`source_corroboration_count` fields on this signal
+type record *which sectors were searched and came back empty* (a fact about the
+search), not a source being corroborated (a fact about a claim). Running that search
+metadata through a formula designed to score claim-corroboration overstates what is
+actually being asserted — "editorial coverage of this event is absent" is not made
+more certain by the searched sector being a normally-reliable one.
+
+An absence claim's real confidence driver — how exhaustively and broadly the search
+was conducted (number of consecutive windows, breadth of sectors/outlets checked,
+ruling out a crawler/reach failure rather than a genuine void) — is an axis the
+mechanical formula does not model at all. Hold at `low` by default. More consecutive
+silent windows is still zero evidence, not corroborating evidence, so window count
+alone does not license raising the tier either; it can only ever justify the prose
+noting the gap is more established/durable (as this signal's own `volatility:
+"declining"` and multi-window `human_editor_note`s already do), not the confidence
+tier.
+
+**Reasoning:** independently re-derived the mechanical vs. assigned mismatch flagged
+at `periodic-audit-run100.md`: `met-gala-2027-coverage-gap` in both
+`2027-05-31.json` and `2027-06-14.json` has `source_corroboration_count: 1`,
+`source_sectors: ["editorial"]`, `confidence_source: "manual"`; `editorial` is in
+`HIGH_RELIABILITY_SECTORS`, so `derive_confidence()` mechanically computes `medium`;
+both reports assign `confidence: "low"`. Confirmed neither report's
+`human_editor_note`/`evidence`/`index_note` states a reason for the confidence value
+specifically (both notes instead explain the signal_id-reuse/consolidation history).
+Despite that gap in contemporaneous documentation, the *same* `low` value was applied
+independently at both occurrences (run 56 and run 58, two different windows) rather
+than drifting inconsistently, which is itself evidence of a real, stable underlying
+judgment rather than a one-off slip — the same "independently reached, structurally
+sound" signal that led precedent 14 to be formalized from two unrelated reports a
+year apart. Per precedent 12 (structured fields are correctable retroactively;
+`human_editor_note`/`evidence`/prose fields are never retroactively rewritten to
+supply reasoning that was not contemporaneously recorded), **the two source reports
+are deliberately left unedited** — the missing contemporaneous reasoning is a real
+documentation gap, but the fix for that gap is capturing the rule here, going
+forward, not inventing prose in the original files to make it look like the
+reasoning existed at authoring time. `confidence_source: "manual"` on both is already
+accurate (a human/agent judgment overrode the mechanical result) and needs no
+retroactive prose to remain honest.
+
+**Worked example:** `met-gala-2027-coverage-gap` (`data/reports/2027-05-31.json` and
+`data/reports/2027-06-14.json`): `source_corroboration_count: 1`,
+`source_sectors: ["editorial"]`. Mechanical result `medium`; held at `low` both
+times. This precedent affirms that call as correct going forward — future
+`factual_question`/coverage-gap signals of this shape should be held at `low` by
+default regardless of which sector the (empty) search nominally covered, and any
+future report introducing or reusing this pattern should explicitly cite this
+precedent in its `human_editor_note` so the next audit does not have to re-derive the
+reasoning from scratch.
+
+---
+
 ## Related, non-override background (for context, not confidence exceptions themselves)
 
 - **`independent_criticism` added to `HIGH_RELIABILITY_SECTORS`** — proposed
