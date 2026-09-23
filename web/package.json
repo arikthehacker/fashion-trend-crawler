@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "prebuild": "node scripts/copy-reports.mjs",
-    "build": "next build",
-    "postbuild": "pagefind --site out --output-subdir _pagefind",
+    "build": "next build && pagefind --site out --output-path public/_pagefind && next build",
     "start": "next start",
     "lint": "eslint"
   },
