@@ -1,0 +1,6 @@
+# Optional dependencies for the ARI3LLA-Jev model (src/jev_spike.py).
+# Not needed for ingestion, the publish gate or the site build.
+
+numpy
+scikit-learn
+sentence-transformers

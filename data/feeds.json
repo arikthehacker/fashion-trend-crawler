@@ -14,10 +14,38 @@
     "source": "manual probe"
   },
   {
+    "domain": "allure.com",
+    "sector": "editorial",
+    "feed_url": "https://www.allure.com/feed/rss",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
+  },
+  {
     "domain": "anothermag.com",
     "sector": "editorial",
     "feed_url": "https://www.anothermag.com/Feed",
     "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "apparelresources.com",
+    "sector": "trade_intelligence",
+    "feed_url": "https://apparelresources.com/feed/",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
+  },
+  {
+    "domain": "beautyindependent.com",
+    "sector": "trade_intelligence",
+    "feed_url": "https://www.beautyindependent.com/feed/",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
+  },
+  {
+    "domain": "bellanaija.com",
+    "sector": "editorial",
+    "feed_url": "https://www.bellanaija.com/style/feed/",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
   },
   {
     "domain": "blackbirdspyplane.com",
@@ -69,6 +97,13 @@
     "review_note": "low keyword score but headlines checked: on-topic (2026-09-22)"
   },
   {
+    "domain": "cosmeticsbusiness.com",
+    "sector": "trade_intelligence",
+    "feed_url": "https://www.cosmeticsbusiness.com/rss",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
+  },
+  {
     "domain": "coveteur.com",
     "sector": "editorial",
     "feed_url": "https://coveteur.com/rss/all.xml",
@@ -96,6 +131,13 @@
     "discovered_at": "2026-09-23"
   },
   {
+    "domain": "drapersonline.com",
+    "sector": "trade_intelligence",
+    "feed_url": "https://www.drapersonline.com/rss",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
+  },
+  {
     "domain": "edited.com",
     "sector": "trade_intelligence",
     "feed_url": "https://www.edited.com/blog/rss",
@@ -108,6 +150,20 @@
     "feed_url": "https://www.elle.com/rss/all.xml/",
     "discovered_at": "2026-09-22",
     "source": "manual probe"
+  },
+  {
+    "domain": "elle.com.au",
+    "sector": "editorial",
+    "feed_url": "https://www.elle.com.au/feed",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
+  },
+  {
+    "domain": "elle.com.br",
+    "sector": "editorial",
+    "feed_url": "https://www.elle.com.br/feed",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
   },
   {
     "domain": "embedded.substack.com",
@@ -129,6 +185,20 @@
     "discovered_at": "2026-09-23"
   },
   {
+    "domain": "fashionmuseum.co.uk",
+    "sector": "institutional",
+    "feed_url": "https://www.fashionmuseum.co.uk/rss.xml",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
+  },
+  {
+    "domain": "fashionsnap.com",
+    "sector": "editorial",
+    "feed_url": "https://www.fashionsnap.com/rss.xml",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
+  },
+  {
     "domain": "fashionunited.com",
     "sector": "editorial",
     "feed_url": "https://fashionunited.com/rss-news",
@@ -141,6 +211,13 @@
     "feed_url": "https://fashionunited.uk/rss-news",
     "discovered_at": "2026-09-22",
     "source": "manual probe"
+  },
+  {
+    "domain": "fashionweekonline.com",
+    "sector": "runway",
+    "feed_url": "https://www.fashionweekonline.com/feed",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
   },
   {
     "domain": "ffw.com.br",
@@ -165,10 +242,31 @@
     "source": "manual probe"
   },
   {
+    "domain": "footwearnews.com",
+    "sector": "trade_intelligence",
+    "feed_url": "https://footwearnews.com/feed/",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
+  },
+  {
     "domain": "fzine.com",
     "sector": "editorial",
     "feed_url": "https://fzine.com/feed",
     "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "globenewswire.com",
+    "sector": "designer_origin",
+    "feed_url": "https://www.globenewswire.com/RssFeed/industry/3763-Clothing%20%26%20Accessories/feedTitle/GlobeNewswire%20-%20Industry%20News%20on%20Clothing%20and%20Accessories",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
+  },
+  {
+    "domain": "glossy.co",
+    "sector": "trade_intelligence",
+    "feed_url": "https://www.glossy.co/feed/",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
   },
   {
     "domain": "gq.com",
@@ -176,6 +274,20 @@
     "feed_url": "https://www.gq.com/feed/rss",
     "discovered_at": "2026-09-23",
     "style_share": 0.3
+  },
+  {
+    "domain": "gqitalia.it",
+    "sector": "editorial",
+    "feed_url": "https://www.gqitalia.it/feed/rss",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
+  },
+  {
+    "domain": "grazia.it",
+    "sector": "editorial",
+    "feed_url": "https://www.grazia.it/feed",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
   },
   {
     "domain": "graziadaily.co.uk",
@@ -189,6 +301,13 @@
     "feed_url": "https://www.harpersbazaar.com/rss/all.xml/",
     "discovered_at": "2026-09-22",
     "source": "manual probe"
+  },
+  {
+    "domain": "harpersbazaar.com.au",
+    "sector": "editorial",
+    "feed_url": "https://www.harpersbazaar.com.au/feed",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
   },
   {
     "domain": "harpersbazaar.com/uk",
@@ -232,6 +351,13 @@
     "section_found_at": "2026-09-23"
   },
   {
+    "domain": "hypebae.com",
+    "sector": "editorial",
+    "feed_url": "https://www.hypebae.com/feed",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
+  },
+  {
     "domain": "hypebeast.com",
     "sector": "editorial",
     "feed_url": "https://hypebeast.com/feed",
@@ -273,6 +399,13 @@
     "section_found_at": "2026-09-23"
   },
   {
+    "domain": "just-style.com",
+    "sector": "trade_intelligence",
+    "feed_url": "https://www.just-style.com/feed/",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
+  },
+  {
     "domain": "laforma.club",
     "sector": "editorial",
     "feed_url": "https://laforma.club/feed/",
@@ -286,6 +419,13 @@
     "style_share": 1.0,
     "site_feed_url": "https://lamag.com/feed/",
     "section_found_at": "2026-09-23"
+  },
+  {
+    "domain": "lemonde.fr",
+    "sector": "editorial",
+    "feed_url": "https://www.lemonde.fr/m-styles/rss_full.xml",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
   },
   {
     "domain": "marieclaire.com",
@@ -315,6 +455,13 @@
     "section_found_at": "2026-09-23"
   },
   {
+    "domain": "nylon.com",
+    "sector": "editorial",
+    "feed_url": "https://www.nylon.com/rss",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
+  },
+  {
     "domain": "oldloserinbrooklyn.substack.com",
     "sector": "independent_criticism",
     "feed_url": "https://oldloserinbrooklyn.substack.com/feed",
@@ -337,6 +484,20 @@
     "style_share": 0.67,
     "site_feed_url": "https://parisselectbook.com/feed",
     "section_found_at": "2026-09-23"
+  },
+  {
+    "domain": "permanentstyle.com",
+    "sector": "independent_criticism",
+    "feed_url": "https://permanentstyle.com/feed",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
+  },
+  {
+    "domain": "refinery29.com",
+    "sector": "editorial",
+    "feed_url": "https://www.refinery29.com/en-us/fashion/rss.xml",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
   },
   {
     "domain": "robbreport.com",
@@ -378,6 +539,20 @@
     "review_note": "low keyword score but headlines checked: on-topic (2026-09-22)"
   },
   {
+    "domain": "theguardian.com",
+    "sector": "editorial",
+    "feed_url": "https://www.theguardian.com/fashion/rss",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
+  },
+  {
+    "domain": "theindustry.fashion",
+    "sector": "trade_intelligence",
+    "feed_url": "https://www.theindustry.fashion/feed/",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
+  },
+  {
     "domain": "thezoereport.com",
     "sector": "editorial",
     "feed_url": "https://www.thezoereport.com/rss",
@@ -405,10 +580,45 @@
     "review_note": "low keyword score but headlines checked: on-topic (2026-09-22)"
   },
   {
+    "domain": "vogue.co.uk",
+    "sector": "editorial",
+    "feed_url": "https://www.vogue.co.uk/feed/rss",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
+  },
+  {
     "domain": "vogue.com",
     "sector": "editorial",
     "feed_url": "https://www.vogue.com/feed/rss",
     "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "vogue.de",
+    "sector": "editorial",
+    "feed_url": "https://www.vogue.de/feed/rss",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
+  },
+  {
+    "domain": "vogue.es",
+    "sector": "editorial",
+    "feed_url": "https://www.vogue.es/feed/rss",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
+  },
+  {
+    "domain": "vogue.fr",
+    "sector": "editorial",
+    "feed_url": "https://www.vogue.fr/feed/rss",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
+  },
+  {
+    "domain": "vogue.it",
+    "sector": "editorial",
+    "feed_url": "https://www.vogue.it/feed/rss",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
   },
   {
     "domain": "vogue.mx",
@@ -466,6 +676,13 @@
     "sector": "editorial",
     "feed_url": "https://wwd.com/feed/rss/",
     "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "wwd.com/beauty",
+    "sector": "editorial",
+    "feed_url": "https://wwd.com/beauty-industry-news/feed/",
+    "discovered_at": "2026-09-23",
+    "source": "verified by scouting agent"
   },
   {
     "domain": "yourcoffeebreak.co.uk",

@@ -503,6 +503,38 @@ DOMAIN_SECTOR_MAP = {
     # EDITED (retail pricing/assortment analytics); its blog is a public feed
     # (added 2026-09-22 for sector coverage in src/ingest_rss.py)
     "edited.com": "trade_intelligence",
+    # Added 2026-09-23 with feeds verified by src/ingest_rss.py (>= 5 dated
+    # entries, newest within 60 days) to widen sector and language coverage.
+    "fashionweekonline.com": "runway",
+    "fashionmuseum.co.uk": "institutional",
+    "globenewswire.com": "designer_origin",  # brand press releases (clothing & accessories category feed)
+    "permanentstyle.com": "independent_criticism",
+    "footwearnews.com": "trade_intelligence",
+    "glossy.co": "trade_intelligence",
+    "just-style.com": "trade_intelligence",
+    "apparelresources.com": "trade_intelligence",
+    "drapersonline.com": "trade_intelligence",
+    "theindustry.fashion": "trade_intelligence",
+    "beautyindependent.com": "trade_intelligence",
+    "cosmeticsbusiness.com": "trade_intelligence",
+    "theguardian.com": "editorial",
+    "vogue.co.uk": "editorial",
+    "hypebae.com": "editorial",
+    "nylon.com": "editorial",
+    "refinery29.com": "editorial",
+    "allure.com": "editorial",
+    "elle.com.au": "editorial",
+    "harpersbazaar.com.au": "editorial",
+    "bellanaija.com": "editorial",
+    "fashionsnap.com": "editorial",
+    "lemonde.fr": "editorial",
+    "vogue.fr": "editorial",
+    "vogue.it": "editorial",
+    "vogue.es": "editorial",
+    "vogue.de": "editorial",
+    "grazia.it": "editorial",
+    "gqitalia.it": "editorial",
+    "elle.com.br": "editorial",
 
     # Skipped (not added) this run, all researched but not clearing the
     # bar, or found not to be fashion sources at all:

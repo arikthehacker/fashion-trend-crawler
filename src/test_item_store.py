@@ -28,7 +28,7 @@ class ItemStoreTests(unittest.TestCase):
 
     def test_migrate_is_idempotent(self):
         self.assertEqual(store.migrate(self.con), [])
-        self.assertEqual(store.applied_versions(self.con), {1})
+        self.assertEqual(store.applied_versions(self.con), {1, 2})
 
     def test_same_item_twice_is_one_row(self):
         first = self.add()
@@ -83,6 +83,41 @@ class ItemStoreTests(unittest.TestCase):
     def test_exposure_view_counts_items(self):
         self.add()
         self.assertEqual(store.stats(self.con)["items_by_coarse_sector"], {"editorial": 1})
+
+    def test_excerpt_stored_and_backfilled(self):
+        item_id, _ = self.add()  # stored without an excerpt, as before migration 0002
+        self.add(text_excerpt="Sheer layers over tailoring.", lang="en", feed_url="https://www.vogue.com/feed/rss")
+        row = self.con.execute("SELECT text_excerpt, lang, feed_url FROM items WHERE item_id=?", (item_id,)).fetchone()
+        self.assertEqual(row, ("Sheer layers over tailoring.", "en", "https://www.vogue.com/feed/rss"))
+
+    def test_existing_excerpt_is_not_overwritten_by_empty(self):
+        item_id, _ = self.add(text_excerpt="First summary.")
+        self.add(text_excerpt=None)
+        self.assertEqual(self.con.execute("SELECT text_excerpt FROM items WHERE item_id=?", (item_id,)).fetchone()[0],
+                         "First summary.")
+
+    def test_label_predictions_are_append_only(self):
+        item_id, _ = self.add()
+        self.con.execute("INSERT INTO label_predictions (item_id, task, model_version, predicted_label, probability, created_at) "
+                         "VALUES (?, 'is_style_signal', 'jev-v0.0.1', 'true', 0.81, '2026-09-23T00:00:00Z')", (item_id,))
+        with self.assertRaises(sqlite3.DatabaseError):
+            self.con.execute("UPDATE label_predictions SET predicted_label='false'")
+        with self.assertRaises(sqlite3.DatabaseError):
+            self.con.execute("DELETE FROM label_predictions")
+
+    def test_label_split_is_checked(self):
+        item_id, _ = self.add()
+        with self.assertRaises(sqlite3.IntegrityError):
+            self.con.execute("INSERT INTO labels (item_id, task, label, source, labeler, split, created_at) "
+                             "VALUES (?, 'is_style_signal', 'true', 'human', 'ariella', 'whatever', '2026-09-23')", (item_id,))
+
+    def test_assign_split_is_deterministic_and_proportioned(self):
+        self.assertEqual(store.assign_split(42, "is_style_signal"), store.assign_split(42, "is_style_signal"))
+        splits = [store.assign_split(i, "is_style_signal") for i in range(20000)]
+        share = {k: splits.count(k) / len(splits) for k in ("train", "calibration", "test")}
+        self.assertAlmostEqual(share["train"], 0.65, delta=0.02)
+        self.assertAlmostEqual(share["calibration"], 0.15, delta=0.02)
+        self.assertAlmostEqual(share["test"], 0.20, delta=0.02)
 
 
 if __name__ == "__main__":

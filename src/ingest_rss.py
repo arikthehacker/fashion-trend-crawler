@@ -7,7 +7,8 @@
 # - respects robots.txt and the crawler's hard fetch deadline
 #   (reuses src/crawler.py), identifies itself honestly, and waits
 #   between requests to the same host
-# - stores title + link + dates only, never article text
+# - stores title, link, dates and a short excerpt of the feed's own summary
+#   (capped at EXCERPT_MAX characters), never full article text
 # - an entry without a publish date is skipped and counted: an
 #   undated item can't be evidence
 #
@@ -20,6 +21,7 @@
 #############################################################
 
 import argparse
+import html
 import json
 import os
 import re
@@ -85,18 +87,39 @@ def to_utc(value: str):
     return dt.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
+EXCERPT_MAX = 500  # characters; the feed's own summary, never full article text
+
+
+def clean_excerpt(raw: str):
+    """strip tags and entities from a feed summary, collapse whitespace, and
+    cap at EXCERPT_MAX characters on a word boundary. None if empty."""
+    if not raw:
+        return None
+    text = html.unescape(re.sub(r"<[^>]+>", " ", raw))
+    text = re.sub(r"\s+", " ", text).strip()
+    if not text:
+        return None
+    if len(text) > EXCERPT_MAX:
+        text = text[:EXCERPT_MAX].rsplit(" ", 1)[0].rstrip(",.;:") + "…"
+    return text
+
+
 def _text(el, path):
     found = el.find(path, NS)
     return (found.text or "").strip() if found is not None and found.text else ""
 
 
 def parse_feed(xml_text: str, feed_url: str) -> list:
-    """return [{url, title, published_at, summary}] for every entry that has
+    """return [{url, title, published_at, summary, lang}] for every entry that has
     a link, in feed order. published_at is None when the entry has no
     usable date (the caller skips those)."""
     # some feeds prepend whitespace or a BOM before the XML declaration
     root = ET.fromstring(xml_text.lstrip("﻿ \t\r\n").encode("utf-8"))
     entries = []
+    feed_lang = (root.get("{http://www.w3.org/XML/1998/namespace}lang")
+                 or _text(root, "channel/language") or None)
+    if feed_lang:
+        feed_lang = feed_lang.strip().lower()[:12]
     if root.tag == f"{{{NS['atom']}}}feed":
         for e in root.findall("atom:entry", NS):
             link = None
@@ -111,7 +134,8 @@ def parse_feed(xml_text: str, feed_url: str) -> list:
                 "url": urljoin(feed_url, link),
                 "title": _text(e, "atom:title"),
                 "published_at": to_utc(date),
-                "summary": _text(e, "atom:summary"),
+                "summary": _text(e, "atom:summary") or _text(e, "atom:content"),
+                "lang": feed_lang,
             })
     else:
         for item in root.iter("item"):
@@ -124,6 +148,7 @@ def parse_feed(xml_text: str, feed_url: str) -> list:
                 "title": _text(item, "title"),
                 "published_at": to_utc(date),
                 "summary": _text(item, "description"),
+                "lang": feed_lang,
             })
     return entries
 
@@ -280,7 +305,8 @@ def ingest_feed(con, feed: dict, fetched_at: str = None) -> dict:
                 continue
             _, status = upsert_item(con, url=e["url"], title=e["title"], published_at=e["published_at"],
                                     fetched_at=fetched_at, source_method="rss", ts_precision="exact",
-                                    hash_basis=e["summary"])
+                                    hash_basis=e["summary"], text_excerpt=clean_excerpt(e["summary"]),
+                                    lang=e.get("lang"), feed_url=feed["feed_url"])
             counts[status] += 1
     return counts
 

@@ -115,7 +115,8 @@ def content_hash(*parts: str) -> str:
 
 def upsert_item(con: sqlite3.Connection, *, url: str, published_at: str, source_method: str,
                 ts_precision: str = "exact", title: str = "", fetched_at: str = "",
-                hash_basis: str = "", wayback_url: str = None) -> tuple:
+                hash_basis: str = "", wayback_url: str = None, text_excerpt: str = None,
+                lang: str = None, feed_url: str = None) -> tuple:
     """insert or refresh one fetched item. idempotent on the canonical URL:
     re-fetching unchanged content changes nothing; changed content updates
     title, fetched_at and content_hash. returns (item_id, status) where status
@@ -132,25 +133,45 @@ def upsert_item(con: sqlite3.Connection, *, url: str, published_at: str, source_
     before = con.execute("SELECT item_id, content_hash FROM items WHERE url = ?", (url,)).fetchone()
     con.execute(
         """INSERT INTO items (outlet_id, url, title, published_at, ts_precision, fetched_at,
-                              content_hash, wayback_url, source_method)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                              content_hash, wayback_url, source_method, text_excerpt, lang, feed_url)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
            ON CONFLICT(url) DO UPDATE SET
              title = excluded.title,
              fetched_at = excluded.fetched_at,
-             content_hash = excluded.content_hash
+             content_hash = excluded.content_hash,
+             text_excerpt = COALESCE(excluded.text_excerpt, items.text_excerpt),
+             lang = COALESCE(excluded.lang, items.lang)
            WHERE excluded.content_hash <> items.content_hash""",
-        (outlet_id, url, title, published_at, ts_precision, fetched_at, digest, wayback_url, source_method),
+        (outlet_id, url, title, published_at, ts_precision, fetched_at, digest, wayback_url,
+         source_method, text_excerpt, lang, feed_url),
     )
+    # items stored before excerpts were kept (migration 0002): fill the gaps
+    # while the item is still in its feed, without touching anything else.
+    if before is not None and text_excerpt:
+        con.execute("UPDATE items SET text_excerpt = ?, lang = COALESCE(lang, ?), feed_url = COALESCE(feed_url, ?) "
+                    "WHERE url = ? AND text_excerpt IS NULL", (text_excerpt, lang, feed_url, url))
     if before is None:
         item_id = con.execute("SELECT item_id FROM items WHERE url = ?", (url,)).fetchone()[0]
         return item_id, "inserted"
     return before[0], ("unchanged" if before[1] == digest else "updated")
 
 
+def assign_split(item_id: int, task: str) -> str:
+    """fixed split for a new label, decided once at labeling time from a hash
+    of the item and task, so it can never drift or leak: 65% train, 15%
+    calibration, 20% test. (Time-holdout labels are assigned by date, not
+    here.)"""
+    bucket = int(hashlib.sha256(f"{item_id}:{task}".encode()).hexdigest(), 16) % 100
+    return "train" if bucket < 65 else "calibration" if bucket < 80 else "test"
+
+
 def stats(con: sqlite3.Connection) -> dict:
     out = {"schema_versions": sorted(applied_versions(con))}
-    for table in ("outlets", "items", "terms", "mentions", "reports"):
-        out[table] = con.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
+    for table in ("outlets", "items", "terms", "mentions", "reports", "labels", "label_predictions"):
+        if con.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?", (table,)).fetchone():
+            out[table] = con.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
+    if "text_excerpt" in {r[1] for r in con.execute("PRAGMA table_info(items)")}:
+        out["items_with_excerpt"] = con.execute("SELECT COUNT(*) FROM items WHERE text_excerpt IS NOT NULL").fetchone()[0]
     out["items_by_coarse_sector"] = dict(con.execute(
         "SELECT coarse_group, SUM(items) FROM v_exposure_weekly GROUP BY 1 ORDER BY 2 DESC"
     ).fetchall())

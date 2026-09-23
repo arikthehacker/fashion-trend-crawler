@@ -100,6 +100,26 @@ class IngestTests(unittest.TestCase):
             url, share, before = ingest_rss.find_section_feed("x.example", "https://x.example/feed")
         self.assertEqual((url, share, before), ("https://x.example/fashion/feed/", 1.0, 0.0))
 
+    def test_clean_excerpt(self):
+        self.assertEqual(ingest_rss.clean_excerpt("<p>Sheer&nbsp;layers <b>over</b>" + chr(10) + " tailoring.</p>"),
+                         "Sheer layers over tailoring.")
+        self.assertIsNone(ingest_rss.clean_excerpt("<img src='x.jpg'/>"))
+        long = ingest_rss.clean_excerpt("word " * 300)
+        self.assertLessEqual(len(long), ingest_rss.EXCERPT_MAX + 1)
+        self.assertTrue(long.endswith("…"))
+
+    def test_feed_language_and_excerpt_reach_the_store(self):
+        rss = RSS.replace("<channel>", "<channel><language>en-GB</language>", 1)
+        e = ingest_rss.parse_feed(rss, "https://www.vogue.com/feed")
+        self.assertEqual(e[0]["lang"], "en-gb")
+        con = store.connect(":memory:")
+        store.migrate(con)
+        feed = {"domain": "vogue.com", "feed_url": "https://www.vogue.com/feed"}
+        with mock.patch.object(ingest_rss, "polite_get", return_value=FakeResp(rss)):
+            ingest_rss.ingest_feed(con, feed, fetched_at="2026-09-20T00:00:00Z")
+        row = con.execute("SELECT text_excerpt, lang, feed_url FROM items WHERE url LIKE '%dated-item'").fetchone()
+        self.assertEqual(row, ("Summary.", "en-gb", "https://www.vogue.com/feed"))
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
