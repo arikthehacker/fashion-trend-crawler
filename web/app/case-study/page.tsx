@@ -2,7 +2,10 @@
 // last edited: 09/22/2026
 // case study — ARI3LLA INDEX: Building a Weekly Style Signal Report
 
-import Link from "next/link";
+import { pageMetadata } from "../../lib/site";
+
+export const metadata = pageMetadata("/case-study", "Case Study", "How ARI3LLA INDEX is built: the evidence standard, the data pipeline, the report schema and the static site, including current limitations.");
+
 
 const sections: { title: string; body: string[] }[] = [
   {
@@ -59,7 +62,7 @@ export default function CaseStudy() {
   return (
     <main id="main-content"
       style={{
-        minHeight: "100vh",
+        flex: 1,
         background: "var(--white)",
         display: "flex",
         flexDirection: "column",
@@ -67,37 +70,9 @@ export default function CaseStudy() {
       }}
     >
       {/* masthead */}
-      <header
-        style={{
-          width: "100%",
-          borderBottom: "3px solid var(--black)",
-          padding: "4rem 2rem 3rem",
-          textAlign: "center",
-        }}
-      >
-        <p
-          style={{
-            fontFamily: "var(--font-franklin)",
-            fontSize: "0.7rem",
-            letterSpacing: "0.15em",
-            textTransform: "uppercase",
-            color: "var(--red)",
-            marginBottom: "1.5rem",
-          }}
-        >
-          Case Study
-        </p>
-        <h1
-          style={{
-            fontFamily: "var(--font-instrument)",
-            fontSize: "clamp(2.5rem, 9vw, 6.5rem)",
-            fontWeight: "400",
-            lineHeight: "0.95",
-            letterSpacing: "-0.03em",
-            textTransform: "uppercase",
-            color: "var(--black)",
-          }}
-        >
+      <header className="page-masthead">
+        <p className="page-eyebrow">Case Study</p>
+        <h1 className="page-title">
           Building a Weekly<br />Style Signal Report
         </h1>
 
@@ -115,63 +90,6 @@ export default function CaseStudy() {
           materials, silhouettes, and cultural signals across the web.
         </p>
 
-        <p
-          style={{
-            fontFamily: "var(--font-franklin)",
-            fontSize: "0.7rem",
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            color: "var(--gray)",
-            marginTop: "2rem",
-          }}
-        >
-          <Link
-            href="/"
-            style={{
-              color: "var(--black)",
-              textDecoration: "underline",
-              textUnderlineOffset: "3px",
-            }}
-          >
-            ARI3LLA INDEX
-          </Link>
-          {" — weekly style signal report"}
-        </p>
-
-        <nav
-          aria-label="Site sections"
-          style={{ display: "flex", justifyContent: "center", gap: "1.5rem", marginTop: "1.5rem", flexWrap: "wrap" }}
-        >
-          {[
-            { href: "/", label: "Report" },
-            { href: "/methodology", label: "Methodology" },
-            { href: "/taxonomy", label: "Taxonomy" },
-            { href: "/sources", label: "Sources" },
-            { href: "/glossary", label: "Glossary" },
-            { href: "/timeline", label: "Timeline" },
-            { href: "/archive", label: "Archive" },
-            { href: "/search", label: "Search" },
-            { href: "/about", label: "About" },
-          ].map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              style={{
-                fontFamily: "var(--font-franklin)",
-                fontSize: "0.7rem",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                color: "var(--black)",
-                textDecoration: "underline",
-                textUnderlineOffset: "3px",
-                display: "inline-block",
-                padding: "0.65rem 0",
-              }}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
       </header>
 
       {/* case study sections */}
@@ -185,7 +103,7 @@ export default function CaseStudy() {
       >
         <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
           {sections.map((s, i) => (
-            <div
+            <div className="stack-sm"
               key={s.title}
               style={{
                 display: "grid",
@@ -234,30 +152,6 @@ export default function CaseStudy() {
         </div>
       </section>
 
-      {/* footer */}
-      <footer
-        style={{
-          width: "100%",
-          borderTop: "1px solid var(--border)",
-          padding: "2rem",
-          textAlign: "center",
-        }}
-      >
-        <p
-          style={{
-            fontFamily: "var(--font-franklin)",
-            fontSize: "0.85rem",
-            lineHeight: "1.6",
-            color: "var(--gray)",
-            maxWidth: "500px",
-            margin: "0 auto",
-          }}
-        >
-          ARI3LLA INDEX is an independent style signal archive. Reports are
-          compiled from public, linked source material and structured for
-          historical reference. No purchasing recommendation is implied.
-        </p>
-      </footer>
     </main>
   );
 }

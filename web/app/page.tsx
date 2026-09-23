@@ -8,6 +8,21 @@
 
 import Link from "next/link";
 import { getLatestReport, getThisWeeksIndex } from "../lib/reports";
+import { SITE_URL, SITE_NAME } from "../lib/site";
+import { CONTACT_EMAIL, REPO_URL } from "../lib/nav";
+
+// Identifies the site and its publisher to search engines.
+const siteJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebSite", "@id": `${SITE_URL}/#website`, url: SITE_URL, name: SITE_NAME, publisher: { "@id": `${SITE_URL}/#org` } },
+    { "@type": "Organization", "@id": `${SITE_URL}/#org`, name: SITE_NAME, url: SITE_URL, email: CONTACT_EMAIL, sameAs: [REPO_URL] },
+  ],
+};
+
+export const metadata = {
+  alternates: { canonical: SITE_URL, types: { "application/rss+xml": "/rss.xml" } },
+};
 
 export default function Home() {
   const latest = getLatestReport();
@@ -15,12 +30,13 @@ export default function Home() {
 
   return (
     <main id="main-content" style={{
-      minHeight: "100vh",
+      flex: 1,
       background: "var(--white)",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
     }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }} />
 
       {/* masthead */}
       <header style={{
@@ -65,7 +81,7 @@ export default function Home() {
 
         <p style={{
           fontFamily: "var(--font-franklin)",
-          fontSize: "0.7rem",
+          fontSize: "0.75rem",
           color: "var(--gray)",
           marginTop: "2.5rem",
           letterSpacing: "0.15em",
@@ -77,46 +93,6 @@ export default function Home() {
         </p>
 
 
-        {/* nav */}
-        <nav
-          aria-label="Site sections"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "1.5rem",
-            marginTop: "1.25rem",
-          }}
-        >
-          {[
-            { href: "/methodology", label: "Methodology" },
-            { href: "/taxonomy", label: "Taxonomy" },
-            { href: "/sources", label: "Sources" },
-            { href: "/glossary", label: "Glossary" },
-            { href: "/timeline", label: "Timeline" },
-            { href: "/archive", label: "Archive" },
-            { href: "/search", label: "Search" },
-            { href: "/about", label: "About" },
-            { href: "/case-study", label: "Case Study" },
-          ].map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              style={{
-                fontFamily: "var(--font-franklin)",
-                fontSize: "0.7rem",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                color: "var(--black)",
-                textDecoration: "underline",
-                textUnderlineOffset: "3px",
-                display: "inline-block",
-                padding: "0.65rem 0",
-              }}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
 
       </header>
 
@@ -133,7 +109,7 @@ export default function Home() {
         >
           <h2 style={{
             fontFamily: "var(--font-franklin)",
-            fontSize: "0.7rem",
+            fontSize: "0.75rem",
             letterSpacing: "0.15em",
             textTransform: "uppercase",
             color: "var(--black)",
@@ -180,7 +156,7 @@ export default function Home() {
               <div key={row.label}>
                 <dt style={{
                   fontFamily: "var(--font-franklin)",
-                  fontSize: "0.65rem",
+                  fontSize: "0.75rem",
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
                   color: "var(--gray)",
@@ -217,7 +193,7 @@ export default function Home() {
         >
           <h2 style={{
             fontFamily: "var(--font-franklin)",
-            fontSize: "0.7rem",
+            fontSize: "0.75rem",
             letterSpacing: "0.15em",
             textTransform: "uppercase",
             color: "var(--red)",
@@ -306,7 +282,7 @@ export default function Home() {
               href={`/reports/${latest.report_date}`}
               style={{
                 fontFamily: "var(--font-franklin)",
-                fontSize: "0.7rem",
+                fontSize: "0.75rem",
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
                 color: "var(--black)",
@@ -320,33 +296,6 @@ export default function Home() {
         </section>
       )}
 
-      {/* footer */}
-      <footer style={{
-        width: "100%",
-        borderTop: "1px solid var(--border)",
-        padding: "2rem",
-        textAlign: "center",
-      }}>
-        <p style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.85rem",
-          lineHeight: "1.7",
-          color: "var(--gray)",
-          maxWidth: "560px",
-          margin: "0 auto 0.75rem",
-        }}>
-          ARI3LLA INDEX is an independent style signal archive. Reports are compiled from public, linked source material and structured for historical reference. No purchasing recommendation is implied.
-        </p>
-        <p style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.7rem",
-          letterSpacing: "0.15em",
-          textTransform: "uppercase",
-          color: "var(--gray)",
-        }}>
-          Issued weekly
-        </p>
-      </footer>
 
     </main>
   );

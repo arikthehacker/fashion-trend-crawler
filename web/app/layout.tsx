@@ -3,6 +3,8 @@ import { Instrument_Serif, Libre_Franklin, Reenie_Beanie } from "next/font/googl
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SITE_URL, SITE_NAME } from "../lib/site";
+import SiteHeader from "./components/SiteHeader";
+import SiteFooter from "./components/SiteFooter";
 
 const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
@@ -26,13 +28,12 @@ const SITE_DESCRIPTION =
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "ARI3LLA INDEX: Weekly Style Signal Report",
-  description: SITE_DESCRIPTION,
-  alternates: {
-    types: {
-      "application/rss+xml": "/rss.xml",
-    },
+  title: {
+    default: "ARI3LLA INDEX: Weekly Style Signal Report",
+    template: "%s — ARI3LLA INDEX",
   },
+  alternates: { types: { "application/rss+xml": "/rss.xml" } },
+  description: SITE_DESCRIPTION,
   openGraph: {
     siteName: SITE_NAME,
     title: "ARI3LLA INDEX: Weekly Style Signal Report",
@@ -40,10 +41,9 @@ export const metadata: Metadata = {
     url: SITE_URL,
     type: "website",
   },
-  // No image assets exist on this site (text-only by design) — "summary" is the
-  // correct Twitter card type here, not "summary_large_image", which needs an image.
+  // The share image is generated from app/opengraph-image.tsx at build time.
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "ARI3LLA INDEX: Weekly Style Signal Report",
     description: SITE_DESCRIPTION,
   },
@@ -62,7 +62,9 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
+        <SiteHeader />
         {children}
+        <SiteFooter />
         <Analytics />
       </body>
     </html>

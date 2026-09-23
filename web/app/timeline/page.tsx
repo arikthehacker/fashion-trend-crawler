@@ -5,11 +5,10 @@
 
 import Link from "next/link";
 import { getTimelineEntries } from "../../lib/reports";
+import { pageMetadata } from "../../lib/site";
 
-export const metadata = {
-  title: "Timeline — ARI3LLA INDEX",
-  description: "A chronological index of signals observed across dated ARI3LLA INDEX reports.",
-};
+export const metadata = pageMetadata("/timeline", "Timeline", "A chronological index of signals observed across dated ARI3LLA INDEX reports.");
+
 
 export default function Timeline() {
   const entries = getTimelineEntries();
@@ -24,7 +23,7 @@ export default function Timeline() {
 
   return (
     <main id="main-content" style={{
-      minHeight: "100vh",
+      flex: 1,
       background: "var(--white)",
       display: "flex",
       flexDirection: "column",
@@ -32,31 +31,8 @@ export default function Timeline() {
     }}>
 
       {/* masthead */}
-      <header style={{
-        width: "100%",
-        borderBottom: "3px solid var(--black)",
-        padding: "4rem 2rem 3rem",
-        textAlign: "center",
-      }}>
-        <p style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.7rem",
-          letterSpacing: "0.15em",
-          textTransform: "uppercase",
-          color: "var(--red)",
-          marginBottom: "1rem",
-        }}>
-          Ari3lla Index
-        </p>
-        <h1 style={{
-          fontFamily: "var(--font-instrument)",
-          fontSize: "clamp(2.5rem, 8vw, 6rem)",
-          fontWeight: "400",
-          lineHeight: "0.95",
-          letterSpacing: "-0.02em",
-          textTransform: "uppercase",
-          color: "var(--black)",
-        }}>
+      <header className="page-masthead">
+        <h1 className="page-title">
           Timeline
         </h1>
         <p style={{
@@ -73,7 +49,7 @@ export default function Timeline() {
         </p>
         <p style={{
           fontFamily: "var(--font-franklin)",
-          fontSize: "0.7rem",
+          fontSize: "0.75rem",
           letterSpacing: "0.15em",
           textTransform: "uppercase",
           color: "var(--gray)",
@@ -161,7 +137,7 @@ export default function Timeline() {
                     )}
                     <p style={{
                       fontFamily: "var(--font-franklin)",
-                      fontSize: "0.7rem",
+                      fontSize: "0.75rem",
                       letterSpacing: "0.1em",
                       textTransform: "uppercase",
                       color: "var(--gray)",
@@ -172,7 +148,7 @@ export default function Timeline() {
                     </p>
                     <p style={{
                       fontFamily: "var(--font-franklin)",
-                      fontSize: "0.7rem",
+                      fontSize: "0.75rem",
                       letterSpacing: "0.1em",
                       textTransform: "uppercase",
                       color: "var(--gray)",
@@ -189,26 +165,6 @@ export default function Timeline() {
         )}
       </section>
 
-      {/* footer */}
-      <footer style={{
-        width: "100%",
-        borderTop: "1px solid var(--border)",
-        padding: "2rem",
-        textAlign: "center",
-        display: "flex",
-        justifyContent: "center",
-        gap: "2rem",
-      }}>
-        <Link href="/archive" style={{ fontFamily: "var(--font-franklin)", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--black)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
-          Full archive
-        </Link>
-        <Link href="/search" style={{ fontFamily: "var(--font-franklin)", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--black)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
-          Search
-        </Link>
-        <Link href="/" style={{ fontFamily: "var(--font-franklin)", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--black)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
-          Current report
-        </Link>
-      </footer>
 
     </main>
   );

@@ -2,85 +2,26 @@
 // about page for ARI3LLA INDEX — weekly style signal report
 
 import Link from "next/link";
+import { pageMetadata } from "../../lib/site";
+
+export const metadata = pageMetadata("/about", "About", "What ARI3LLA INDEX is and is not: an independent, source-linked archive of style language, its editorial independence, AI use and corrections policy.");
+
 
 export default function About() {
   return (
     <main id="main-content"
       style={{
-        minHeight: "100vh",
+        flex: 1,
         background: "var(--white)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
       }}
     >
-      <header
-        style={{
-          width: "100%",
-          borderBottom: "3px solid var(--black)",
-          padding: "3rem 2rem 2rem",
-          textAlign: "center",
-        }}
-      >
-        <p
-          style={{
-            fontFamily: "var(--font-franklin)",
-            fontSize: "0.7rem",
-            letterSpacing: "0.15em",
-            textTransform: "uppercase",
-            color: "var(--gray)",
-            marginBottom: "0.75rem",
-          }}
-        >
-          ARI3LLA INDEX
-        </p>
-        <h1
-          style={{
-            fontFamily: "var(--font-instrument)",
-            fontSize: "clamp(2.5rem, 8vw, 5rem)",
-            fontWeight: "400",
-            lineHeight: "0.95",
-            letterSpacing: "-0.02em",
-            textTransform: "uppercase",
-            color: "var(--black)",
-          }}
-        >
+      <header className="page-masthead">
+        <h1 className="page-title">
           About
         </h1>
-        <nav
-          aria-label="Site sections"
-          style={{ display: "flex", justifyContent: "center", gap: "1.5rem", marginTop: "1.5rem" }}
-        >
-          {[
-            { href: "/", label: "Report" },
-            { href: "/methodology", label: "Methodology" },
-            { href: "/taxonomy", label: "Taxonomy" },
-            { href: "/sources", label: "Sources" },
-            { href: "/glossary", label: "Glossary" },
-            { href: "/timeline", label: "Timeline" },
-            { href: "/archive", label: "Archive" },
-            { href: "/search", label: "Search" },
-            { href: "/case-study", label: "Case Study" },
-          ].map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              style={{
-                fontFamily: "var(--font-franklin)",
-                fontSize: "0.7rem",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                color: "var(--black)",
-                textDecoration: "underline",
-                textUnderlineOffset: "3px",
-                display: "inline-block",
-                padding: "0.65rem 0",
-              }}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
       </header>
 
       <section
@@ -123,7 +64,7 @@ export default function About() {
           <p
             style={{
               fontFamily: "var(--font-franklin)",
-              fontSize: "0.7rem",
+              fontSize: "0.75rem",
               letterSpacing: "0.15em",
               textTransform: "uppercase",
               color: "var(--gray)",
@@ -149,7 +90,7 @@ export default function About() {
           <p
             style={{
               fontFamily: "var(--font-franklin)",
-              fontSize: "0.7rem",
+              fontSize: "0.75rem",
               letterSpacing: "0.15em",
               textTransform: "uppercase",
               color: "var(--gray)",
@@ -176,7 +117,7 @@ export default function About() {
           <p
             style={{
               fontFamily: "var(--font-franklin)",
-              fontSize: "0.7rem",
+              fontSize: "0.75rem",
               letterSpacing: "0.15em",
               textTransform: "uppercase",
               color: "var(--gray)",
@@ -245,7 +186,6 @@ export default function About() {
             page. A suspected error can be reported by{" "}
             <a
               href="https://github.com/arikthehacker/fashion-trend-crawler/issues"
-              target="_blank"
               rel="noopener noreferrer"
               style={{ color: "var(--black)", textDecoration: "underline" }}
             >
@@ -280,29 +220,6 @@ export default function About() {
         </p>
       </section>
 
-      <footer
-        style={{
-          width: "100%",
-          borderTop: "1px solid var(--border)",
-          padding: "2rem",
-          textAlign: "center",
-        }}
-      >
-        <p
-          style={{
-            fontFamily: "var(--font-franklin)",
-            fontSize: "0.85rem",
-            lineHeight: "1.7",
-            color: "var(--gray)",
-            maxWidth: "560px",
-            margin: "0 auto",
-          }}
-        >
-          ARI3LLA INDEX is an independent style signal archive. Reports are compiled from public,
-          linked source material and structured for historical reference. No purchasing recommendation is
-          implied.
-        </p>
-      </footer>
     </main>
   );
 }

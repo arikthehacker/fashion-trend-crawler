@@ -5,6 +5,7 @@
 
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { SITE_URL } from "../../../lib/site";
 import { getAllSignalSlugs, getSignalHistory, getSignalRecencyStatus } from "../../../lib/reports";
 
 export function generateStaticParams() {
@@ -18,14 +19,15 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   return {
-    title: `${slug} — ARI3LLA INDEX`,
+    title: `Signal: ${slug}`,
+    alternates: { canonical: `${SITE_URL}/signals/${slug}` },
     description: `Occurrence history for the signal "${slug}" across dated ARI3LLA INDEX reports.`,
   };
 }
 
 const labelStyle: React.CSSProperties = {
   fontFamily: "var(--font-franklin)",
-  fontSize: "0.7rem",
+  fontSize: "0.75rem",
   letterSpacing: "0.15em",
   textTransform: "uppercase",
   color: "var(--gray)",
@@ -51,7 +53,7 @@ export default async function SignalPage({ params }: { params: Promise<{ slug: s
 
   return (
     <main id="main-content" style={{
-      minHeight: "100vh",
+      flex: 1,
       background: "var(--white)",
       display: "flex",
       flexDirection: "column",
@@ -59,30 +61,9 @@ export default async function SignalPage({ params }: { params: Promise<{ slug: s
     }}>
 
       {/* header */}
-      <header style={{
-        width: "100%",
-        borderBottom: "3px solid var(--black)",
-        padding: "4rem 2rem 3rem",
-        textAlign: "center",
-      }}>
-        <p style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.7rem",
-          letterSpacing: "0.15em",
-          textTransform: "uppercase",
-          color: "var(--red)",
-          marginBottom: "1rem",
-        }}>
-          Signal History &nbsp;·&nbsp; Ari3lla Index
-        </p>
-        <h1 style={{
-          fontFamily: "var(--font-instrument)",
-          fontSize: "clamp(2rem, 6vw, 4rem)",
-          fontWeight: "400",
-          lineHeight: "1",
-          letterSpacing: "-0.02em",
-          color: "var(--black)",
-        }}>
+      <header className="page-masthead">
+        <p className="page-eyebrow">Signal History</p>
+        <h1 className="page-title page-title--plain">
           {name}
         </h1>
         <p style={{
@@ -170,7 +151,7 @@ export default async function SignalPage({ params }: { params: Promise<{ slug: s
                 <div style={{ marginTop: "1rem" }}>
                   <h4 style={{
                     fontFamily: "var(--font-franklin)",
-                    fontSize: "0.7rem",
+                    fontSize: "0.75rem",
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
                     color: "var(--red)",
@@ -193,61 +174,6 @@ export default async function SignalPage({ params }: { params: Promise<{ slug: s
         </div>
       </section>
 
-      {/* footer */}
-      <footer style={{
-        width: "100%",
-        borderTop: "1px solid var(--border)",
-        padding: "2rem",
-        textAlign: "center",
-        display: "flex",
-        justifyContent: "center",
-        gap: "2rem",
-      }}>
-        <Link href="/timeline" style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.75rem",
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
-          color: "var(--black)",
-          textDecoration: "underline",
-          textUnderlineOffset: "3px",
-        }}>
-          Timeline
-        </Link>
-        <Link href="/archive" style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.75rem",
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
-          color: "var(--black)",
-          textDecoration: "underline",
-          textUnderlineOffset: "3px",
-        }}>
-          Full archive
-        </Link>
-        <Link href="/search" style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.75rem",
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
-          color: "var(--black)",
-          textDecoration: "underline",
-          textUnderlineOffset: "3px",
-        }}>
-          Search
-        </Link>
-        <Link href="/" style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.75rem",
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
-          color: "var(--black)",
-          textDecoration: "underline",
-          textUnderlineOffset: "3px",
-        }}>
-          Current report
-        </Link>
-      </footer>
 
     </main>
   );

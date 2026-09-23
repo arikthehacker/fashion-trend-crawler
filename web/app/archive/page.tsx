@@ -3,11 +3,10 @@
 
 import Link from "next/link";
 import { getAllReports, getConsecutiveThinWeekCount, getThisWeeksIndex, getRecurringSignals } from "../../lib/reports";
+import { pageMetadata } from "../../lib/site";
 
-export const metadata = {
-  title: "Archive — ARI3LLA INDEX",
-  description: "Dated style signal reports issued by ARI3LLA INDEX.",
-};
+export const metadata = pageMetadata("/archive", "Archive", "Every dated ARI3LLA INDEX report, preserved as issued.");
+
 
 export default function Archive() {
   const reports = getAllReports();
@@ -17,7 +16,7 @@ export default function Archive() {
 
   return (
     <main id="main-content" style={{
-      minHeight: "100vh",
+      flex: 1,
       background: "var(--white)",
       display: "flex",
       flexDirection: "column",
@@ -25,31 +24,8 @@ export default function Archive() {
     }}>
 
       {/* masthead */}
-      <header style={{
-        width: "100%",
-        borderBottom: "3px solid var(--black)",
-        padding: "4rem 2rem 3rem",
-        textAlign: "center",
-      }}>
-        <p style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.7rem",
-          letterSpacing: "0.15em",
-          textTransform: "uppercase",
-          color: "var(--red)",
-          marginBottom: "1rem",
-        }}>
-          Ari3lla Index
-        </p>
-        <h1 style={{
-          fontFamily: "var(--font-instrument)",
-          fontSize: "clamp(2.5rem, 8vw, 6rem)",
-          fontWeight: "400",
-          lineHeight: "0.95",
-          letterSpacing: "-0.02em",
-          textTransform: "uppercase",
-          color: "var(--black)",
-        }}>
+      <header className="page-masthead">
+        <h1 className="page-title">
           Archive
         </h1>
         <p style={{
@@ -66,7 +42,7 @@ export default function Archive() {
         </p>
         <p style={{
           fontFamily: "var(--font-franklin)",
-          fontSize: "0.7rem",
+          fontSize: "0.75rem",
           letterSpacing: "0.15em",
           textTransform: "uppercase",
           color: "var(--gray)",
@@ -161,7 +137,7 @@ export default function Archive() {
                     href={`/reports/${report.report_date}`}
                     style={{ textDecoration: "none", color: "inherit" }}
                   >
-                    <div
+                    <div className="stack-sm"
                       style={{
                         display: "grid",
                         gridTemplateColumns: "160px 1fr auto",
@@ -193,7 +169,7 @@ export default function Archive() {
                       </p>
                       <p style={{
                         fontFamily: "var(--font-franklin)",
-                        fontSize: "0.7rem",
+                        fontSize: "0.75rem",
                         letterSpacing: "0.1em",
                         textTransform: "uppercase",
                         color: "var(--gray)",
@@ -231,7 +207,7 @@ export default function Archive() {
         >
           <h2 style={{
             fontFamily: "var(--font-franklin)",
-            fontSize: "0.7rem",
+            fontSize: "0.75rem",
             letterSpacing: "0.15em",
             textTransform: "uppercase",
             color: "var(--gray)",
@@ -280,7 +256,7 @@ export default function Archive() {
                   </p>
                   <p style={{
                     fontFamily: "var(--font-franklin)",
-                    fontSize: "0.7rem",
+                    fontSize: "0.75rem",
                     letterSpacing: "0.08em",
                     textTransform: "uppercase",
                     color: "var(--gray)",
@@ -295,50 +271,6 @@ export default function Archive() {
         </section>
       )}
 
-      {/* footer */}
-      <footer style={{
-        width: "100%",
-        borderTop: "1px solid var(--border)",
-        padding: "2rem",
-        textAlign: "center",
-        display: "flex",
-        justifyContent: "center",
-        gap: "2rem",
-      }}>
-        <p style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.75rem",
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
-          color: "var(--gray)",
-        }}>
-          <Link href="/timeline" style={{ color: "var(--black)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
-            Timeline
-          </Link>
-        </p>
-        <p style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.75rem",
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
-          color: "var(--gray)",
-        }}>
-          <Link href="/search" style={{ color: "var(--black)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
-            Search
-          </Link>
-        </p>
-        <p style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.75rem",
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
-          color: "var(--gray)",
-        }}>
-          <Link href="/" style={{ color: "var(--black)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
-            Current report
-          </Link>
-        </p>
-      </footer>
 
     </main>
   );

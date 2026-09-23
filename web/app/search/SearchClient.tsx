@@ -60,7 +60,7 @@ function PagefindSearch() {
 
 const labelStyle: React.CSSProperties = {
   fontFamily: "var(--font-franklin)",
-  fontSize: "0.7rem",
+  fontSize: "0.75rem",
   letterSpacing: "0.1em",
   textTransform: "uppercase",
   color: "var(--gray)",
@@ -171,7 +171,7 @@ export default function SearchClient({ index }: { index: SearchableSignal[] }) {
 
       <p style={{
         fontFamily: "var(--font-franklin)",
-        fontSize: "0.7rem",
+        fontSize: "0.75rem",
         letterSpacing: "0.1em",
         textTransform: "uppercase",
         color: "var(--gray)",
@@ -194,7 +194,7 @@ export default function SearchClient({ index }: { index: SearchableSignal[] }) {
       ) : (
         <div style={{ display: "flex", flexDirection: "column" }}>
           {filtered.map((s, i) => (
-            <div
+            <div className="stack-sm"
               key={`${s.report_date}-${s.signal_id ?? s.name}-${i}`}
               style={{
                 display: "grid",
@@ -240,7 +240,7 @@ export default function SearchClient({ index }: { index: SearchableSignal[] }) {
               )}
               <p style={{
                 fontFamily: "var(--font-franklin)",
-                fontSize: "0.7rem",
+                fontSize: "0.75rem",
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
                 color: "var(--gray)",
@@ -251,7 +251,7 @@ export default function SearchClient({ index }: { index: SearchableSignal[] }) {
               </p>
               <p style={{
                 fontFamily: "var(--font-franklin)",
-                fontSize: "0.7rem",
+                fontSize: "0.75rem",
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
                 color: "var(--gray)",

@@ -11,6 +11,15 @@ export interface CollectionWindow {
   end: string;
 }
 
+export interface EvidenceItem {
+  url: string;
+  published_at: string;
+  retrieved_at: string;
+  title?: string;
+  outlet_domain?: string;
+  item_id?: string | number;
+}
+
 export interface TopSignal {
   name: string;
   type: string;
@@ -23,13 +32,10 @@ export interface TopSignal {
   signal_id?: string;
   source_corroboration_count?: number;
   human_editor_note?: string;
-  // Outlet homepage domains (e.g. "vogue.com"), NOT per-article URLs.
-  // Deliberately homepage-level only -- a per-article permalink to a small/
-  // independent outlet was identified as a "hug of death"/pile-on risk (see
-  // docs/agent-logs/source-protection-review-run33.md and the resolution in
-  // docs/agent-logs/source-citation-resolution-run36.md). Not yet rendered
-  // on any page -- schema/data-layer only for now.
+  // Outlet domains, for display and sector counts only. Not evidence.
   source_domains?: string[];
+  // The specific fetched items this signal rests on (required to publish).
+  evidence_items?: EvidenceItem[];
 }
 
 export interface Report {
@@ -39,6 +45,8 @@ export interface Report {
   items_collected: number;
   source_sector_breakdown: Record<string, number>;
   executive_summary: string;
+  // Evidence for claims made in the summary itself.
+  evidence_items?: EvidenceItem[];
   top_signals: TopSignal[];
   repeated_keywords: string[];
   garments: string[];

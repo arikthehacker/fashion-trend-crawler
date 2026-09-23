@@ -3,8 +3,33 @@
 
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllReportDates, getReportByDate } from "../../../lib/reports";
+import { getAllReportDates, getReportByDate, type EvidenceItem } from "../../../lib/reports";
 import { SITE_URL, SITE_NAME } from "../../../lib/site";
+
+// Linked evidence: every published claim resolves to a specific, dated item.
+function EvidenceList({ items }: { items?: EvidenceItem[] }) {
+  if (!items || items.length === 0) return null;
+  return (
+    <ol style={{
+      fontFamily: "var(--font-franklin)",
+      fontSize: "0.8rem",
+      lineHeight: "1.6",
+      color: "var(--gray)",
+      margin: "0.75rem 0 1rem",
+      paddingLeft: "1.25rem",
+    }}>
+      {items.map((item) => (
+        <li key={item.url}>
+          <a href={item.url} rel="noopener noreferrer" style={{ color: "var(--black)", textDecoration: "underline" }}>
+            {item.title || item.url}
+          </a>
+          {item.outlet_domain ? `, ${item.outlet_domain}` : ""}
+          {`, published ${item.published_at.slice(0, 10)}, retrieved ${item.retrieved_at.slice(0, 10)}`}
+        </li>
+      ))}
+    </ol>
+  );
+}
 
 export function generateStaticParams() {
   const dates = getAllReportDates();
@@ -16,7 +41,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ date: string }> }) {
   const { date } = await params;
-  const title = `${date} — ARI3LLA INDEX`;
+  const title = `Report, ${date}`;
   const description = `Weekly style signal report issued ${date}.`;
   return {
     title,
@@ -39,7 +64,7 @@ export async function generateMetadata({ params }: { params: Promise<{ date: str
 
 const labelStyle: React.CSSProperties = {
   fontFamily: "var(--font-franklin)",
-  fontSize: "0.7rem",
+  fontSize: "0.75rem",
   letterSpacing: "0.15em",
   textTransform: "uppercase",
   color: "var(--gray)",
@@ -169,7 +194,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
 
   return (
     <main id="main-content" style={{
-      minHeight: "100vh",
+      flex: 1,
       background: "var(--white)",
       display: "flex",
       flexDirection: "column",
@@ -183,30 +208,9 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
       />
 
       {/* report header */}
-      <header style={{
-        width: "100%",
-        borderBottom: "3px solid var(--black)",
-        padding: "4rem 2rem 3rem",
-        textAlign: "center",
-      }}>
-        <p style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.7rem",
-          letterSpacing: "0.15em",
-          textTransform: "uppercase",
-          color: "var(--red)",
-          marginBottom: "1rem",
-        }}>
-          Weekly Style Signal Report &nbsp;·&nbsp; Issued by Ari3lla Index
-        </p>
-        <h1 style={{
-          fontFamily: "var(--font-instrument)",
-          fontSize: "clamp(2.2rem, 7vw, 5rem)",
-          fontWeight: "400",
-          lineHeight: "1",
-          letterSpacing: "-0.02em",
-          color: "var(--black)",
-        }}>
+      <header className="page-masthead">
+        <p className="page-eyebrow">Weekly Style Signal Report</p>
+        <h1 className="page-title">
           {report.report_date}
         </h1>
 
@@ -224,7 +228,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
         }}>
           <p style={{
             fontFamily: "var(--font-franklin)",
-            fontSize: "0.7rem",
+            fontSize: "0.75rem",
             letterSpacing: "0.1em",
             textTransform: "uppercase",
             color: "var(--black)",
@@ -253,7 +257,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
               See docs/agent-logs/journalism-standards-check-run41.md */}
           <p style={{
             fontFamily: "var(--font-franklin)",
-            fontSize: "0.7rem",
+            fontSize: "0.75rem",
             letterSpacing: "0.03em",
             color: "var(--gray)",
             margin: 0,
@@ -304,6 +308,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
         }}>
           {report.executive_summary}
         </p>
+        <EvidenceList items={report.evidence_items} />
       </section>
 
       {/* source sector breakdown */}
@@ -425,6 +430,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
                     <span>Sources: {signal.source_domains.join(", ")}</span>
                   )}
                 </div>
+                <EvidenceList items={signal.evidence_items} />
                 <p style={{
                   fontFamily: "var(--font-franklin)",
                   fontSize: "0.95rem",
@@ -487,7 +493,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
               <div key={title as string}>
                 <h3 style={{
                   fontFamily: "var(--font-franklin)",
-                  fontSize: "0.7rem",
+                  fontSize: "0.75rem",
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
                   color: "var(--black)",
@@ -511,7 +517,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
               <div>
                 <h3 style={{
                   fontFamily: "var(--font-franklin)",
-                  fontSize: "0.7rem",
+                  fontSize: "0.75rem",
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
                   color: "var(--black)",
@@ -526,7 +532,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
               <div>
                 <h3 style={{
                   fontFamily: "var(--font-franklin)",
-                  fontSize: "0.7rem",
+                  fontSize: "0.75rem",
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
                   color: "var(--black)",
@@ -665,76 +671,11 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
       {/* footer — in-page site navigation, not part of the archival report
           record; hidden when printing/saving as PDF for citation (see
           globals.css .no-print) */}
-      <footer className="no-print" style={{
-        width: "100%",
-        borderTop: "1px solid var(--border)",
-        padding: "2rem",
-        textAlign: "center",
-        display: "flex",
-        justifyContent: "center",
-        gap: "2rem",
-      }}>
-        <Link href="/archive" style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.75rem",
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
-          color: "var(--black)",
-          textDecoration: "underline",
-          textUnderlineOffset: "3px",
-        }}>
-          Full archive
-        </Link>
-        <Link href="/timeline" style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.75rem",
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
-          color: "var(--black)",
-          textDecoration: "underline",
-          textUnderlineOffset: "3px",
-        }}>
-          Timeline
-        </Link>
-        <Link href="/search" style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.75rem",
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
-          color: "var(--black)",
-          textDecoration: "underline",
-          textUnderlineOffset: "3px",
-        }}>
-          Search
-        </Link>
-        <Link href="/" style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.75rem",
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
-          color: "var(--black)",
-          textDecoration: "underline",
-          textUnderlineOffset: "3px",
-        }}>
-          Current report
-        </Link>
-        <Link href="/methodology" style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.75rem",
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
-          color: "var(--black)",
-          textDecoration: "underline",
-          textUnderlineOffset: "3px",
-        }}>
-          Corrections &amp; AI use
-        </Link>
-      </footer>
 
       {report.content_hash && (
         <p style={{
           fontFamily: "monospace",
-          fontSize: "0.65rem",
+          fontSize: "0.75rem",
           color: "var(--gray)",
           padding: "0 2rem 1.5rem",
           textAlign: "center",
@@ -748,7 +689,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
           data/reports/<date>.json served via public/data/reports/ (run 45) */}
       <p style={{
         fontFamily: "monospace",
-        fontSize: "0.65rem",
+        fontSize: "0.75rem",
         color: "var(--gray)",
         padding: "0 2rem 0.5rem",
         textAlign: "center",
@@ -757,7 +698,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
           Download raw data (JSON)
         </a>
         {" — classification and summary metadata licensed "}
-        <a href="https://creativecommons.org/licenses/by/4.0/" style={{ color: "var(--gray)", textDecoration: "underline" }}>
+        <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener noreferrer" style={{ color: "var(--gray)", textDecoration: "underline" }}>
           CC BY 4.0
         </a>
         {"; underlying source articles remain the property of their original publishers"}
@@ -766,7 +707,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
       {/* citation line */}
       <p style={{
         fontFamily: "monospace",
-        fontSize: "0.65rem",
+        fontSize: "0.75rem",
         color: "var(--gray)",
         padding: "0 2rem 2rem",
         textAlign: "center",
@@ -778,7 +719,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
       {/* formatted citation string, for readers who want a copy-pasteable reference */}
       <p style={{
         fontFamily: "monospace",
-        fontSize: "0.65rem",
+        fontSize: "0.75rem",
         color: "var(--gray)",
         padding: "0 2rem 2rem",
         textAlign: "center",

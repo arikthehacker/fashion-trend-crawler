@@ -41,6 +41,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/timeline",
     "/glossary",
     "/search",
+    "/privacy",
+    "/terms",
+    "/accessibility",
   ].map((route) => ({
     url: `${SITE_URL}${route}`,
     ...(archiveDependentRoutes.has(route) && latestReportDate
