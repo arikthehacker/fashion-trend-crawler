@@ -11,3 +11,5 @@ requests
 beautifulsoup4
 anthropic
 brotli
+python-dotenv
+mcp
