@@ -1,5 +1,5 @@
 // page.tsx
-// last edited: 07/06/2026
+// last edited: 09/22/2026
 // case study — ARI3LLA INDEX: Building a Weekly Style Signal Report
 
 import Link from "next/link";
@@ -14,55 +14,43 @@ const sections: { title: string; body: string[] }[] = [
   {
     title: "Goal",
     body: [
-      "Build a recurring report that tracks what style culture is saying without turning it into shopping advice or brand forecasting.",
+      "A public, dated record of style language: what is being named, where it first appears, and how it moves between runway, editorial, social, retail, and resale sources. Every claim links to the specific source it rests on. No shopping advice and no forecasting.",
     ],
   },
   {
-    title: "Scope",
+    title: "What Exists",
     body: [
-      "Covers the crawler, MCP workflow, report schema and validation, confidence derivation, manual social sampling, archive and timeline interfaces, transparency disclosures, and editorial/product direction.",
-    ],
-  },
-  {
-    title: "Technical System",
-    body: [
-      "A crawler collects public source material. MCP tools expose extracted data. Language models summarize and structure recurring signals. Reports are validated against a controlled schema, saved as dated JSON files with a revision history for corrections, and rendered across an archive, a per-date report view, a reverse-chronological timeline, and a per-signal longitudinal view in a Next.js frontend. A CI workflow re-validates the archive on every push.",
+      "A Python crawler that respects robots.txt and enforces a hard per-request deadline. A report schema with controlled vocabularies for source sector, confidence, volatility, and origin, and a validator that runs in CI on every push. A source taxonomy mapping more than 125 outlets to sectors, including non-Anglophone publications. A static Next.js site with archive, timeline, per-signal history, search, RSS, sitemap, and structured data, linted for accessibility.",
     ],
   },
   {
     title: "Design System",
     body: [
-      "The interface uses an editorial/reporting tone, restrained typography, clear hierarchy, source transparency, and index-like structure. Report pages carry structured data, a stable citation line, and heading markup built for accessibility rather than visual-only hierarchy.",
+      "Editorial tone, restrained typography, clear hierarchy, and index-like structure. Report pages carry structured data, a stable citation line, and heading markup built for accessibility rather than visual-only hierarchy.",
     ],
   },
   {
-    title: "Methodology",
+    title: "Evidence Standard",
     body: [
-      "Signals are evaluated by recurrence, source diversity, source type, incentive context, visual coherence, volatility, and historical continuity. Confidence can additionally be derived deterministically from corroboration count and source-sector diversity, tracked separately from editorially assigned confidence so the two are never conflated.",
+      "A claim is published only with a link to a specific, dated article or record. An outlet's homepage is not evidence. A report may not be dated after the day it is published. Signals are weighed by recurrence, source diversity, source incentive, visual coherence, and historical continuity, and confidence is stated plainly, including when it is low.",
     ],
   },
   {
-    title: "Ethical AI Stance",
+    title: "Human and Machine",
     body: [
-      "AI is used for extraction and organization, not taste authority. Human interpretation and source transparency remain central. Corrections, editorial-independence, and AI-involvement disclosures are published on the methodology and about pages, and a genuinely low-signal reporting period is disclosed as such rather than padded with manufactured signals.",
-    ],
-  },
-  {
-    title: "Compliant Social Sampling",
-    body: [
-      "TikTok and Pinterest signals are added through a manual sampling workflow sourced from official platform trend reports or APIs, each carrying a required editor note, rather than through scraping. The workflow has been exercised against real reports, not only designed.",
+      "Software collects, extracts, and drafts. It does not decide what matters. Interpretation, naming, and the human-editor note on each signal belong to the editor. Social platforms are sampled through official reports and APIs or by hand, never by scraping, and runway images are linked, never rehosted.",
     ],
   },
   {
     title: "Current Limitations",
     body: [
-      "Every report in the archive is hand-authored or research-assembled rather than produced by a live crawl merged into the archive; a real crawl-and-summarize run has succeeded once but its output was not merged, pending a deliberate resolution of a same-date collision. Migration off the legacy cache-file pipeline is nearly, not fully, complete.",
+      "The archive is empty while the collection pipeline is rebuilt. The crawler captures headlines but not publish dates or article text, so it cannot yet support dated first appearances. There is no item store yet, so evidence cannot be checked mechanically.",
     ],
   },
   {
-    title: "Future Work",
+    title: "Next",
     body: [
-      "Scheduled live crawls merged into the archive, source-sector-aware crawling, source-sector comparison views, and completion of the legacy pipeline migration.",
+      "A store of dated, linked source items fed by outlet RSS feeds and archived snapshots; checks that fail any report with a future date or an unlinked claim; per-term pages showing first appearance and movement across sectors.",
     ],
   },
 ];
@@ -266,7 +254,7 @@ export default function CaseStudy() {
           }}
         >
           ARI3LLA INDEX is an independent style signal archive. Reports are
-          generated from public source material and structured for
+          compiled from public, linked source material and structured for
           historical reference. No purchasing recommendation is implied.
         </p>
       </footer>

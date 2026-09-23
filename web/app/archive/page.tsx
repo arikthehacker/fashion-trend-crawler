@@ -131,7 +131,7 @@ export default function Archive() {
             textAlign: "center",
             padding: "3rem 0",
           }}>
-            No reports on file yet.
+            No reports on file.
           </p>
         ) : (
           <div style={{ display: "flex", flexDirection: "column" }}>

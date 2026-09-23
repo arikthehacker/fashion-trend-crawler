@@ -7,7 +7,11 @@ import { getAllReportDates, getReportByDate } from "../../../lib/reports";
 import { SITE_URL, SITE_NAME } from "../../../lib/site";
 
 export function generateStaticParams() {
-  return getAllReportDates().map((date) => ({ date }));
+  const dates = getAllReportDates();
+  // `output: "export"` refuses to build a dynamic route with zero params. While
+  // the archive is empty, emit one placeholder that renders the 404 page below.
+  if (dates.length === 0) return [{ date: "none" }];
+  return dates.map((date) => ({ date }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ date: string }> }) {

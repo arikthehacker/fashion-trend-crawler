@@ -247,7 +247,7 @@ export default function Sources() {
             margin: "0 auto",
           }}
         >
-          ARI3LLA INDEX is an independent style signal archive. Reports are generated from public
+          ARI3LLA INDEX is an independent style signal archive. Reports are compiled from public, linked
           source material and structured for historical reference. No purchasing recommendation is
           implied.
         </p>

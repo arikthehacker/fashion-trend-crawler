@@ -29,7 +29,13 @@ export function copyReports() {
 
   fs.mkdirSync(destDir, { recursive: true });
 
-  const files = fs.readdirSync(srcDir).filter((f) => f.endsWith(".json"));
+  // Clear old copies first, so a report removed from data/reports/ (e.g. the
+  // simulated archive withdrawn on 2026-09-22) can't linger as a public download.
+  for (const stale of fs.readdirSync(destDir).filter((f) => f.endsWith(".json"))) {
+    fs.rmSync(path.join(destDir, stale));
+  }
+
+  const files = fs.existsSync(srcDir) ? fs.readdirSync(srcDir).filter((f) => f.endsWith(".json")) : [];
 
   for (const file of files) {
     fs.copyFileSync(path.join(srcDir, file), path.join(destDir, file));

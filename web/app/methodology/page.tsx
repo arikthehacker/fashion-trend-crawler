@@ -65,16 +65,16 @@ const sections: { title: string; body: string[] }[] = [
   {
     title: "How AI Is Used",
     body: [
-      "Language models are used to extract, cluster, and summarize source material. They are not treated as independent authorities. Final classification depends on the Index taxonomy and a review step against editorial guidelines, currently carried out by the same automated process rather than a separate named human editor — see \"AI Involvement\" below for the full disclosure.",
-      "This project uses AI for summarization and organization, not for replacing designers, journalists, stylists, archivists, or cultural analysis. The goal is to make public style discourse easier to scan while keeping human interpretation central.",
+      "Language models help extract, cluster, and draft from source material. They are not treated as authorities and do not decide what matters.",
+      "Final classification, interpretation, and every human-editor note are the editor's. The goal is to make public style discourse easier to scan while keeping human interpretation central, not to replace designers, journalists, stylists, archivists, or critics.",
     ],
   },
   {
     title: "Limitations",
     body: [
       "Coverage is bounded by the sources scanned in a given collection window and is not a representative sample of all style discourse. Reports may under-represent sources without accessible public text, or that require API access not yet integrated.",
-      "Signal classification involves an interpretive review layer applied to machine-extracted data — currently performed by the same automated process rather than a separate human editor (see \"AI Involvement\") — and reports may reflect that layer as much as the underlying source material.",
-      "A suspected error in a published report can be flagged by opening an issue on the project's public repository (github.com/arikthehacker/fashion-trend-crawler/issues). This is not a staffed inbox — response time is not guaranteed — but it is a real, monitored channel, not a placeholder. Corrections are appended to the affected report once verified; see the About page for the correction process itself.",
+      "Classification is an interpretive judgment applied to machine-extracted material, and reports reflect that judgment as well as the underlying sources.",
+      "A suspected error in a published report can be flagged by opening an issue on the project's public repository (github.com/arikthehacker/fashion-trend-crawler/issues). This is not a staffed inbox and response time is not guaranteed. Corrections are appended to the affected report once verified; see the Corrections section below.",
     ],
   },
   {
@@ -110,8 +110,8 @@ const sections: { title: string; body: string[] }[] = [
   {
     title: "AI Involvement",
     body: [
-      "AI assists with crawling source material, extracting recurring language, clustering related terms, and drafting summaries. In most collection windows to date, this has meant AI-directed research (web search and direct review of outlet coverage) rather than the project's automated `crawler.py` fetching live pages end to end; the automated crawler has been run directly for a minority of windows so far. Per-report \"sources scanned\" and \"items collected\" counts reflect the sources reviewed in that window either way, not exclusively a live-crawl page count — that distinction is a known limitation of the current process, not a claim this page makes otherwise.",
-      "Each report is reviewed against this project's editorial guidelines — what a cluster of terms means culturally, taxonomy and origin classification, and judgment calls recorded in a human-editor-note field attached to the report data — before publication. This review is currently performed by the same automated process that drafts the report, not by a separate named human editor; that distinction is a known limitation of the current process, not a claim this page makes otherwise.",
+      "AI assists with collecting source material, extracting recurring language, clustering related terms, and drafting summaries. Per-report \"sources scanned\" and \"items collected\" counts describe what was reviewed in that window.",
+      "Each report is reviewed by the editor before publication: what a cluster of terms means culturally, taxonomy and origin classification, and the judgment calls recorded in the human-editor note. That note is written by the editor, never generated.",
     ],
   },
   {
@@ -124,17 +124,16 @@ const sections: { title: string; body: string[] }[] = [
   {
     title: "How Citations Work",
     body: [
-      "Signals cite the outlet-level domain they were drawn from (for example, a homepage domain), not a link to the specific article or post. This is a deliberate, permanent design choice, not a placeholder for per-article links added later.",
-      "Linking directly to a single small or independent outlet's specific article can expose that outlet to a disproportionate traffic spike from this Index. Domain-level citation preserves accountability for where a signal came from without creating that exposure.",
-      "This is a known, named departure from the reader-verification standard the International Fact-Checking Network's Code of Principles sets for fact-checking organizations more broadly — that a report provide sourcing detailed enough for a reader to fully replicate the underlying work. Domain-level citation lets a reader confirm which outlet and sector a signal came from, but not reconstruct the exact article without independently searching that outlet. The trade-off is made deliberately, for the source-protection reason above, not overlooked.",
-      "Reports also never describe a single-outlet signal as coming from \"sources\" in the plural, matching Reuters sourcing convention: attribution language reflects the actual number of independent outlets behind a claim, not a rounded-up or vaguer plural.",
+      "Every claim links to the specific, dated article, post, or record it rests on. An outlet's homepage or section page is not a citation, and a claim without a link is not published.",
+      "Each cited item records its URL, its publication date, and the date it was retrieved, so a reader can check the claim against the original and see when it was said.",
+      "Attribution language matches the evidence: a signal from one outlet is never described as coming from \"sources\" in the plural.",
     ],
   },
   {
     title: "Review Process",
     body: [
-      "Raw extraction identifies repeated language and clusters related terms. The review step interprets whether those terms belong together, assigns classification and origin, downgrades hype, and connects signals to historical context where relevant — currently performed by the same automated process that drafts the report, not a separate named human editor (see \"AI Involvement\" above).",
-      "The scraping collects signals. The taxonomy interprets them.",
+      "Extraction identifies repeated language and clusters related terms. The editor then decides whether those terms belong together, assigns classification and origin, removes hype, and connects signals to historical context where relevant.",
+      "The machine collects signals. The editor interprets them.",
     ],
   },
 ];
@@ -289,7 +288,7 @@ export default function Methodology() {
             margin: "0 auto",
           }}
         >
-          ARI3LLA INDEX is an independent style signal archive. Reports are generated from public
+          ARI3LLA INDEX is an independent style signal archive. Reports are compiled from public, linked
           source material and structured for historical reference. No purchasing recommendation is
           implied.
         </p>

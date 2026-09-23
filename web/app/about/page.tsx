@@ -168,7 +168,7 @@ export default function About() {
             }}
           >
             Source-linked reporting. Style signal indexing. A public archive. Cultural
-            documentation. Objective style discourse tracking. Human-in-the-loop research.
+            documentation. Style discourse tracked by source and incentive. Human-edited research.
           </p>
         </div>
 
@@ -222,11 +222,12 @@ export default function About() {
               marginBottom: "1rem",
             }}
           >
-            AI assists with crawling, extraction, and summarization. Each report is reviewed
-            against the project&apos;s editorial guidelines, including the interpretive classification
-            calls, which are recorded in a human-editor note attached to each report. That review
-            is currently carried out by the same automated process that drafts the report, not by
-            a separate named human editor — see <Link href="/methodology" style={{ color: "var(--gray)" }}>methodology</Link> for the full disclosure.
+            AI assists with collection, extraction, and first drafts. It does not decide what
+            matters. Every claim in a report links to a specific, dated source, and a report is
+            published only after human review. The human-editor note on each signal is written by
+            the editor, never by software. See{" "}
+            <Link href="/methodology" style={{ color: "var(--gray)" }}>methodology</Link> for the
+            full process.
           </p>
           <p
             style={{
@@ -297,8 +298,8 @@ export default function About() {
             margin: "0 auto",
           }}
         >
-          ARI3LLA INDEX is an independent style signal archive. Reports are generated from public
-          source material and structured for historical reference. No purchasing recommendation is
+          ARI3LLA INDEX is an independent style signal archive. Reports are compiled from public,
+          linked source material and structured for historical reference. No purchasing recommendation is
           implied.
         </p>
       </footer>

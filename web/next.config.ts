@@ -14,7 +14,11 @@ import path from "path";
   const srcDir = path.join(__dirname, "..", "data", "reports");
   const destDir = path.join(__dirname, "public", "data", "reports");
   fs.mkdirSync(destDir, { recursive: true });
-  const files = fs.readdirSync(srcDir).filter((f) => f.endsWith(".json"));
+  // Clear old copies so a report removed from data/reports/ can't linger as a public download.
+  for (const stale of fs.readdirSync(destDir).filter((f) => f.endsWith(".json"))) {
+    fs.rmSync(path.join(destDir, stale));
+  }
+  const files = fs.existsSync(srcDir) ? fs.readdirSync(srcDir).filter((f) => f.endsWith(".json")) : [];
   for (const file of files) {
     fs.copyFileSync(path.join(srcDir, file), path.join(destDir, file));
   }

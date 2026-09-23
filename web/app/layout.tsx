@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Instrument_Serif, Libre_Franklin, Reenie_Beanie } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import { SITE_URL, SITE_NAME } from "../lib/site";
 
 const instrumentSerif = Instrument_Serif({
@@ -62,6 +63,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         {children}
+        <Analytics />
       </body>
     </html>
   );

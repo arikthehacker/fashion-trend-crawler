@@ -300,9 +300,15 @@ about limitations.
 
 ## Limitations
 
-- every report currently in `data/reports/` is hand-authored or
-  WebSearch-researched, not produced by a live `crawler.py` run merged
-  into the archive. A real crawl + summarize pass against live sources
+- **the published archive is empty as of 2026-09-22.** The 94 reports
+  previously published (dated 2026-05-07 to 2028-04-17) were produced by
+  an autonomous agent loop that advanced a simulated weekly calendar: 92
+  were written before their own report date, and no signal linked to a
+  specific article. They were withdrawn and are kept, unpublished, in
+  `data/archive/simulated/` (see its README). The archive restarts with
+  the first report whose every claim links to a dated, fetched source.
+- no report has yet been produced by a live `crawler.py` run merged into
+  the archive. A real crawl + summarize pass against live sources
   has succeeded once (119 headlines from Vogue/WhoWhatWear/Hypebeast,
   summarized via the Claude API), but its output collided with an
   existing dated report and was deliberately not merged — it's saved for

@@ -73,8 +73,9 @@ export default function Home() {
         }}>
           {latest
             ? <>Latest report issued {latest.report_date} &nbsp;·&nbsp; {latest.items_collected} items collected across {latest.sources_scanned} sources</>
-            : "No reports archived yet."}
+            : "No reports on file."}
         </p>
+
 
         {/* nav */}
         <nav
@@ -334,7 +335,7 @@ export default function Home() {
           maxWidth: "560px",
           margin: "0 auto 0.75rem",
         }}>
-          ARI3LLA INDEX is an independent style signal archive. Reports are generated from public source material and structured for historical reference. No purchasing recommendation is implied.
+          ARI3LLA INDEX is an independent style signal archive. Reports are compiled from public, linked source material and structured for historical reference. No purchasing recommendation is implied.
         </p>
         <p style={{
           fontFamily: "var(--font-franklin)",

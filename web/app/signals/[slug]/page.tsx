@@ -8,7 +8,11 @@ import { notFound } from "next/navigation";
 import { getAllSignalSlugs, getSignalHistory, getSignalRecencyStatus } from "../../../lib/reports";
 
 export function generateStaticParams() {
-  return getAllSignalSlugs().map((slug) => ({ slug }));
+  const slugs = getAllSignalSlugs();
+  // `output: "export"` refuses to build a dynamic route with zero params. While
+  // the archive is empty, emit one placeholder that renders the 404 page below.
+  if (slugs.length === 0) return [{ slug: "none" }];
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
