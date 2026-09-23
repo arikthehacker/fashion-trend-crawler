@@ -19,7 +19,12 @@ export default function SiteFooter() {
         <ul className="site-footer-nav">
           {FOOTER_NAV.map((item) => (
             <li key={item.href}>
-              <Link href={item.href} aria-current={pathname === item.href ? "page" : undefined}>{item.label}</Link>
+              {item.href.endsWith(".xml") ? (
+                // a file, not a page: a plain link, so Next doesn't prefetch it as a route
+                <a href={item.href}>{item.label}</a>
+              ) : (
+                <Link href={item.href} aria-current={pathname === item.href ? "page" : undefined}>{item.label}</Link>
+              )}
             </li>
           ))}
         </ul>
