@@ -1,0 +1,137 @@
+{
+  "report_date": "2026-05-18",
+  "collection_window": {
+    "start": "2026-05-12",
+    "end": "2026-05-18"
+  },
+  "sources_scanned": 20,
+  "items_collected": 96,
+  "source_sector_breakdown": {
+    "editorial": 20
+  },
+  "collection_status": "thin",
+  "review_status": "reviewed",
+  "reviewed_by": "the editor",
+  "executive_summary": "This is the first ARI3LLA INDEX report. It comes from the index's first real collection run, on 2026-05-18, which read 96 headlines from 20 section pages on vogue.com and hypebeast.com. The claims below were later checked against the specific articles behind those headlines, and only what those articles support is kept. Two resort 2027 collections were shown at public sites a week apart, and three musicians released clothing collaborations with brands and retailers in the same window. The same week's business coverage reported a 1.2% first-quarter revenue decline at Ferragamo and a signed agreement for LVMH to sell Marc Jacobs.",
+  "evidence_items": [
+    {
+      "url": "https://us.fashionnetwork.com/news/Ferragamo-s-first-quarter-revenues-dip-1-2-wholesale-sales-drop-19-but-d2c-proves-resilient,1832259.html",
+      "title": "Ferragamo's first-quarter revenues dip 1.2%, wholesale sales drop 19%, but D2C proves resilient",
+      "outlet_domain": "fashionnetwork.com",
+      "published_at": "2026-05-14",
+      "retrieved_at": "2026-09-23"
+    },
+    {
+      "url": "https://www.just-style.com/news/lvmh-whp-global-marc-jacobs/",
+      "title": "LVMH agrees to sell Marc Jacobs to WHP Global",
+      "outlet_domain": "just-style.com",
+      "published_at": "2026-05-18",
+      "retrieved_at": "2026-09-23"
+    }
+  ],
+  "top_signals": [
+    {
+      "signal_id": "resort-shows-at-public-sites",
+      "name": "Resort 2027 collections shown at public sites",
+      "type": "brand_behavior",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "seasonal",
+      "origin_classification": "designer_originated",
+      "evidence": "Gucci showed its Resort 2027 collection in Times Square, New York, reported by The Zoe Report on 2026-05-17. Dior showed its Resort 2027 collection on the W.M. Keck Plaza at LACMA in Los Angeles on 2026-05-13, reported by TheWrap on 2026-05-14. Both shows were held outdoors. Vogue headlines on both shows appeared in the 2026-05-18 crawl.",
+      "index_note": "Two shows are not enough to establish a pattern, and resort shows are often held on location. Recorded as a dated observation.",
+      "source_domains": [
+        "thezoereport.com",
+        "thewrap.com"
+      ],
+      "source_corroboration_count": 2,
+      "human_editor_note": "Resort collections are staged where they are for specific reasons. Both of these shows were held outdoors, Gucci's in Times Square and Dior's on the W.M. Keck Plaza at LACMA. There may be a relationship between a public, outdoor location and how visible a show becomes on social media. A sustained rise in outdoor shows across seasons would be grounds for calling this a pattern. Two shows are not.",
+      "evidence_items": [
+        {
+          "url": "https://www.thezoereport.com/fashion/gucci-cruise-2027-guccicore-review",
+          "title": "Demna's Gucci Cruise 2027 Debut Was A Full-On New York Spectacle",
+          "outlet_domain": "thezoereport.com",
+          "published_at": "2026-05-17",
+          "retrieved_at": "2026-09-23"
+        },
+        {
+          "url": "https://www.thewrap.com/culture-lifestyle/fashion/wrapstyle-dior-lacma-hollywood-glam-slam/",
+          "title": "Dior's Hollywood Glam Slam at LACMA Spotlights the Luxury Brand's New Golden Age",
+          "outlet_domain": "thewrap.com",
+          "published_at": "2026-05-14",
+          "retrieved_at": "2026-09-23"
+        }
+      ]
+    },
+    {
+      "signal_id": "musician-clothing-collaborations",
+      "name": "Musician clothing collaborations",
+      "type": "brand_behavior",
+      "source_sectors": [
+        "editorial"
+      ],
+      "confidence": "low",
+      "volatility": "recurring",
+      "origin_classification": "unclear",
+      "evidence": "Hypebeast reported three musician collaborations in two days: Jung Kook of BTS with Calvin Klein (2026-05-17), Bad Bunny's BENITO ANTONIO collection with Zara (2026-05-17), and a BEAMS T photo T-shirt of JENNIE of BLACKPINK (2026-05-18).",
+      "index_note": "All three reports come from one outlet. The BEAMS T release is a single printed T-shirt. Reported piece counts for the Calvin Klein collection differ between sources and are not given here.",
+      "source_domains": [
+        "hypebeast.com"
+      ],
+      "source_corroboration_count": 1,
+      "human_editor_note": "Collaborations like these are rarely made on a whim. Artist management and brands likely weigh the size of a musician's fanbase, and the expected return for both sides, before agreeing to one. This report has no evidence on how these three deals were made. Clothing made in a musician's image is worth recording because it shows fashion arising from the marketing system many artists depend on, and not only from individual artistic expression. That system can produce a style of its own that stays popular for a while, depending on what the clothes look like. Musicians and other widely followed public figures have long influenced what people wear.",
+      "evidence_items": [
+        {
+          "url": "https://hypebeast.com/2026/5/bts-jung-kook-calvin-klein-debut-collaboration-release-info-first-look",
+          "title": "First Look at BTS Jung Kook's Debut Collaboration With Calvin Klein",
+          "outlet_domain": "hypebeast.com",
+          "published_at": "2026-05-17",
+          "retrieved_at": "2026-09-23"
+        },
+        {
+          "url": "https://hypebeast.com/2026/5/bad-bunny-zara-man-benito-antonio-puerto-rico-apparel-collaboration-collection-release-info-first-look",
+          "title": "First Look at Bad Bunny's Exclusive Zara x BENITO ANTONIO Collection",
+          "outlet_domain": "hypebeast.com",
+          "published_at": "2026-05-17",
+          "retrieved_at": "2026-09-23"
+        },
+        {
+          "url": "https://hypebeast.com/2026/5/beams-t-jennie-photo-t-shirt-collaboration-collection-release-info",
+          "title": "BEAMS T's JENNIE Photo T-Shirt Sees the BLACKPINK Star Through a Vintage Lens",
+          "outlet_domain": "hypebeast.com",
+          "published_at": "2026-05-18",
+          "retrieved_at": "2026-09-23"
+        }
+      ]
+    }
+  ],
+  "repeated_keywords": [
+    "resort 2027",
+    "collaboration"
+  ],
+  "garments": [
+    "T-shirt"
+  ],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [
+    "BTS",
+    "BLACKPINK",
+    "Bad Bunny"
+  ],
+  "limitations": [
+    "This report was assembled after the fact from a real crawl on 2026-05-18. The claims were checked against articles retrieved on 2026-09-23.",
+    "The crawl covered two outlets, both editorial, so no other sector is represented.",
+    "Vogue articles could not be opened when the claims were checked. Where a Vogue headline appeared in the crawl, the linked evidence is another outlet's article on the same event.",
+    "The same-day summary also claimed that quiet luxury was holding steady. No article supported that claim, and it was removed."
+  ],
+  "archive_tags": [
+    "first-report",
+    "resort-2027",
+    "collaborations"
+  ]
+}

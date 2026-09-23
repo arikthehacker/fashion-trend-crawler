@@ -262,11 +262,13 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
             color: "var(--gray)",
             margin: 0,
           }}>
-            AI-assisted collection, extraction, and drafting for this report;{" "}
-            {report.reviewed_by
-              ? `reviewed against editorial guidelines (process: ${report.reviewed_by})`
-              : "reviewed against editorial guidelines"}
-            . <Link href="/methodology" style={{ color: "var(--gray)", textDecoration: "underline" }}>
+            AI assisted with collection, extraction and drafting.{" "}
+            {report.review_status === "draft"
+              ? "Not yet reviewed by the editor."
+              : report.reviewed_by
+                ? `Reviewed by ${report.reviewed_by}.`
+                : "Reviewed by the editor."}{" "}
+            <Link href="/methodology" style={{ color: "var(--gray)", textDecoration: "underline" }}>
               Full methodology
             </Link>
           </p>
@@ -558,7 +560,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
             color: "var(--gray)",
           }}>
             {report.thin_week_note ||
-              "Fewer signals met the recurrence and source-diversity thresholds than in a typical reporting period. This window is recorded as a verified low-volatility data point rather than filled to a target count."}
+              "Fewer signals met the recurrence and source-diversity thresholds than in a typical week. The report records what was found and is not padded to a target count."}
           </p>
         </section>
       )}
