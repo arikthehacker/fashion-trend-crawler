@@ -114,7 +114,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
   const headlineSource = report.executive_summary?.split(/(?<=[.!?])\s+/)[0];
   const headline = headlineSource
     ? headlineSource.slice(0, 110)
-    : `Weekly style signal report — ${report.report_date}`;
+    : `Weekly style signal report, ${report.report_date}`;
 
   // IPTC/schema.org distinguish datePublished (original issue) from dateModified
   // (last correction) — a corrected report should not claim it was never touched.
@@ -161,7 +161,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
       {
         "@type": "Dataset",
         "@id": `${reportUrl}#dataset`,
-        name: `ARI3LLA INDEX style signal report — ${report.report_date}`,
+        name: `ARI3LLA INDEX style signal report, ${report.report_date}`,
         description: report.executive_summary,
         url: reportUrl,
         creator: {
@@ -697,11 +697,11 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
         <a href={`/data/reports/${report.report_date}.json`} download style={{ color: "var(--gray)", textDecoration: "underline" }}>
           Download raw data (JSON)
         </a>
-        {" — classification and summary metadata licensed "}
+        {". Classification and summary metadata licensed "}
         <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener noreferrer" style={{ color: "var(--gray)", textDecoration: "underline" }}>
           CC BY 4.0
         </a>
-        {"; underlying source articles remain the property of their original publishers"}
+        {". Linked source articles belong to their publishers."}
       </p>
 
       {/* citation line */}

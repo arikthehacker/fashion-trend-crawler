@@ -116,7 +116,7 @@ export default function Home() {
             marginBottom: "1.25rem",
             textAlign: "center",
           }}>
-            This Week&rsquo;s Index — {index.reportDate}
+            This Week&rsquo;s Index, {index.reportDate}
           </h2>
 
           <dl style={{
@@ -141,7 +141,7 @@ export default function Home() {
                 label: "Dominant mood",
                 value: index.dominantMood
                   ? index.dominantMoodSourceDate
-                    ? `${index.dominantMood} (carried from ${index.dominantMoodSourceDate}; none logged this window)`
+                    ? `${index.dominantMood} (carried from ${index.dominantMoodSourceDate}, none logged this window)`
                     : index.dominantMood
                   : index.dominantMoodTooStale
                     ? "No distinct mood signal in recent weeks"
@@ -199,7 +199,7 @@ export default function Home() {
             color: "var(--red)",
             marginBottom: "1rem",
           }}>
-            Latest Report — {latest.report_date}
+            Latest Report, {latest.report_date}
           </h2>
 
           <p style={{
@@ -224,8 +224,8 @@ export default function Home() {
               borderTop: "1px solid var(--border)",
               paddingTop: "1.5rem",
             }}>
-              This window is classified thin. Low-volatility periods are recorded as a
-              verified data point rather than filled to a target count — see{" "}
+              This window is classified thin. A quiet week is recorded as it is and is never
+              padded to a target count. See{" "}
               <Link
                 href="/methodology"
                 style={{ color: "var(--gray)", textDecoration: "underline", textUnderlineOffset: "3px" }}

@@ -18,7 +18,7 @@ const sectors: { name: string; def: string; items: string[] }[] = [
   },
   {
     name: "Runway / Editorial",
-    def: "Style publications reporting on collections, shows, and seasonal direction. Treated as one source sector, not as final authority. Coverage has expanded past English-language Western titles to reduce a bias flagged in an early audit of this list.",
+    def: "Style publications reporting on collections, shows and seasonal direction. Editorial is one source sector and is not treated as final authority.",
     items: [
       "Vogue Runway", "WWD", "Business of Fashion", "GQ Style", "Harper's Bazaar", "Elle",
       "i-D", "Dazed", "Highsnobiety", "Hypebeast", "The Cut", "New York Times Style",

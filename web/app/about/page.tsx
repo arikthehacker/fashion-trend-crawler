@@ -148,11 +148,9 @@ export default function About() {
               marginBottom: "1rem",
             }}
           >
-            ARI3LLA INDEX is an independently operated research and reporting project, not a
-            staffed newsroom or a commercial publication. It is built and maintained by a single
-            researcher-developer, with source code published on the project&apos;s public
-            repository; there is no separate editorial board, ownership structure, or funding
-            source to disclose beyond that.
+            ARI3LLA INDEX is an independent research project built and maintained by one
+            researcher and developer. Its source code is public. It has no editorial board,
+            owners or funding to disclose.
           </p>
           <p
             style={{
@@ -178,20 +176,24 @@ export default function About() {
               color: "var(--gray)",
             }}
           >
-            Errors in a published report are not silently edited. A dated correction is appended
-            to the affected report, and the original entry is kept intact. Full detail is on the{" "}
-            <Link href="/methodology" style={{ color: "var(--black)", textDecoration: "underline" }}>
-              Methodology
-            </Link>{" "}
-            page. A suspected error can be reported by{" "}
+            Errors in a published report are not silently edited. A dated correction is added to the
+            report and the original entry is kept. Suspected errors can be reported by email to{" "}
+            <a href="mailto:ariella@duck.com" style={{ color: "var(--black)", textDecoration: "underline" }}>
+              ariella@duck.com
+            </a>{" "}
+            or as an issue on the{" "}
             <a
               href="https://github.com/arikthehacker/fashion-trend-crawler/issues"
               rel="noopener noreferrer"
               style={{ color: "var(--black)", textDecoration: "underline" }}
             >
-              opening an issue on the project&apos;s public repository
+              project&apos;s public repository
             </a>
-            . This is not a staffed inbox, but it is a real channel, not a placeholder.
+            . The full process is on the{" "}
+            <Link href="/methodology" style={{ color: "var(--black)", textDecoration: "underline" }}>
+              Methodology
+            </Link>{" "}
+            page.
           </p>
         </div>
 

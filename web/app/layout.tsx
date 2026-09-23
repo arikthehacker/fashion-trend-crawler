@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: "ARI3LLA INDEX: Weekly Style Signal Report",
-    template: "%s — ARI3LLA INDEX",
+    template: "%s | ARI3LLA INDEX",
   },
   alternates: { types: { "application/rss+xml": "/rss.xml" } },
   description: SITE_DESCRIPTION,

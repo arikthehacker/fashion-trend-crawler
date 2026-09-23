@@ -30,37 +30,37 @@ const DEFINITIONS: Record<string, string> = {
   "1970s boho": "A style reference to loose, textured, folk-influenced dressing associated with the 1970s, cited when current coverage draws an explicit historical parallel.",
   "1990s minimalism": "A pared-back, low-ornamentation aesthetic associated with 1990s fashion, referenced when current minimal styling is framed as a revival rather than a new development.",
   "1990s sitcom style": "A style reference to the casual, brand-forward dressing seen in 1990s American television, cited as a visual shorthand rather than a designer-originated term.",
-  "archival romanticism": "Styling that draws visibly on historical or archival garment references — antique construction, period silhouettes, preserved detailing — presented as romantic rather than costume-like.",
+  "archival romanticism": "Styling that draws visibly on historical or archival garment references (antique construction, period silhouettes, preserved detailing) presented as romantic rather than costume-like.",
   "aspirational realism": "A menswear framing describing loose, soft, muted tailoring positioned as attainable rather than formal or overtly luxury-coded.",
   "boho revival": "A recurrence of loose, layered, folk- and craft-influenced dressing associated with earlier bohemian style cycles.",
   "bug-eye sunglasses": "Oversized, rounded, wraparound-style sunglasses noted repeatedly across sources as a recurring accessory shape.",
   "coastal cowgirl": "A styling term combining beach-adjacent casualwear with Western references such as denim, fringe, and boots.",
   "color drenching": "A styling approach of dressing in a single color head-to-toe, including accessories, rather than mixing multiple colors in one look.",
   "eighties luxury": "A style reference to the structured, high-shine, status-signaling dressing associated with 1980s luxury fashion.",
-  "funmaxxing": "A maximalist-play aesthetic cluster observed on TikTok combining icy-blue and candy-pink palettes, 1980s technical sportswear, and tassels or fringe; logged as the narrower, checkable styling cluster rather than the broader generational-mood framing some coverage has attached to the term.",
-  "layered tops styling": "A styling pattern of wearing multiple visible top layers — camisoles, shirts, sweaters — rather than a single garment, observed primarily in social-platform sources.",
+  "funmaxxing": "A maximalist-play aesthetic cluster observed on TikTok combining icy-blue and candy-pink palettes, 1980s technical sportswear, and tassels or fringe. Logged as the narrower, checkable styling cluster rather than the broader generational-mood framing some coverage has attached to the term.",
+  "layered tops styling": "A styling pattern of wearing multiple visible top layers (camisoles, shirts, sweaters) rather than a single garment, observed primarily in social-platform sources.",
   "maximalism": "A styling approach favoring visible pattern mixing, layering, color, and ornamentation, framed in coverage as a counterpoint to pared-back minimalism.",
   "micro-bag styling": "The continued presence of small, low-capacity handbags as a recurring accessory signal rather than a newly emerging one.",
   "off-duty varsity": "A styling pattern combining sports-team jerseys or collegiate references with casual, non-athletic pieces such as cargo bottoms.",
   "office siren": "A style reference combining traditionally formal, buttoned-up officewear with more overtly styled or revealing elements.",
   "peplum / exaggerated-waistline revival": "A silhouette signal describing the recurrence of flared, structured, or exaggerated waist treatments, tracked across several reports as a forecast-stage signal not yet confirmed at retail.",
   "poetcore": "A dark-academia-adjacent, literary-coded aesthetic term originating on Pinterest, associated with muted tones and vintage-inflected styling.",
-  "preppy layering": "A styling pattern combining traditionally preppy garments — collared shirts, sweater vests, knee socks — in layered combinations.",
-  "preppy uniform dressing": "Styling that borrows structural elements of school-uniform dressing — collars, pleats, knee-length hems — read through a preppy aesthetic lens.",
+  "preppy layering": "A styling pattern combining traditionally preppy garments (collared shirts, sweater vests, knee socks) in layered combinations.",
+  "preppy uniform dressing": "Styling that borrows structural elements of school-uniform dressing (collars, pleats, knee-length hems) read through a preppy aesthetic lens.",
   "quiet luxury": "A style term describing unbranded, understated, high-quality dressing that avoids visible logos or overt status signaling.",
   "saturated purple": "A specific, highly pigmented shade of purple noted as a recurring dominant color across a reporting period.",
   "sheer layering": "A styling pattern combining sheer or transparent fabrics with opaque layers underneath or over them.",
   "soft minimalism": "A minimalist styling approach that favors rounded silhouettes and softer fabrics over the sharper, more austere lines of earlier minimalist cycles.",
-  "soft tailoring": "Tailoring that retains structured garment shapes — blazers, trousers — while using looser fit and softer fabrication than traditional formal tailoring.",
-  "textured maximalist layering": "A styling pattern combining multiple contrasting textures — fur, sheer fabric, denim — within a single maximalist look.",
+  "soft tailoring": "Tailoring that retains structured garment shapes (blazers, trousers) while using looser fit and softer fabrication than traditional formal tailoring.",
+  "textured maximalist layering": "A styling pattern combining multiple contrasting textures (fur, sheer fabric, denim) within a single maximalist look.",
   "uneven and handkerchief-hem silhouettes": "Garment hems cut at asymmetric or angular lengths rather than a uniform hemline, named for their resemblance to a folded handkerchief corner.",
   "utility belt": "A wide, hardware-heavy belt style referencing workwear and functional gear rather than purely decorative belting.",
-  "victorian undergarments": "A historical reference to 19th-century foundation garments — corsetry, underpinnings — cited when current silhouettes are read as drawing on that period.",
-  "y2k nostalgia": "A style reference to early-2000s fashion — low-rise cuts, logo-forward branding, metallics — recurring across reports as a sustained rather than one-off revival.",
+  "victorian undergarments": "A historical reference to 19th-century foundation garments (corsetry, underpinnings) cited when current silhouettes are read as drawing on that period.",
+  "y2k nostalgia": "A style reference to early-2000s fashion (low-rise cuts, logo-forward branding, metallics) recurring across reports as a sustained rather than one-off revival.",
   "1990s minimalism revival": "A pared-back, low-ornamentation aesthetic associated with 1990s fashion, referenced when current minimal styling is framed as an explicit historical revival.",
   "1970s 'boho' revival styling": "A recurrence of loose, textured, folk-influenced dressing associated with 1970s fashion, cited when current coverage draws an explicit period parallel.",
   "resale/secondhand retail growth": "Continued expansion of secondhand and resale clothing sales as a retail category, tracked as a structural market trend rather than a seasonal style signal.",
-  "coastal-cowgirl styling evolution": "Continued change in the coastal cowgirl styling term — combining beach-adjacent casualwear with Western references such as denim, fringe, and boots — tracked across reports as the specific combination of elements shifts.",
+  "coastal-cowgirl styling evolution": "Continued change in the coastal cowgirl styling term (combining beach-adjacent casualwear with Western references such as denim, fringe, and boots) tracked across reports as the specific combination of elements shifts.",
   "2026 fifa world cup": "The 2026 FIFA World Cup, a men's international soccer tournament co-hosted by the United States, Canada, and Mexico, cited as a source of team-branded and sport-referencing style coverage.",
   "oversized 'bug-eye' sunglasses": "Oversized, rounded, wraparound-style sunglasses noted repeatedly across sources as a recurring accessory shape.",
   "utility-detailed belts": "Wide, hardware-heavy belt styles referencing workwear and functional gear rather than purely decorative belting.",
@@ -74,14 +74,14 @@ const DEFINITIONS: Record<string, string> = {
   "conner ives nyfw debut": "Designer Conner Ives's first runway show at New York Fashion Week, cited as a designer-origin sourcing event.",
   "magda butrym nyfw debut": "Designer Magda Butrym's first runway show at New York Fashion Week, cited as a designer-origin sourcing event.",
   "nostalgic maximalism": "A styling approach combining heavy pattern, color, and ornamentation with explicit references to past decades, distinguishing it from maximalism that is not tied to a specific historical period.",
-  "leisure dressing": "A styling category built around loose, comfort-oriented garments — sweats, knits, soft tailoring — worn outside a strictly athletic or at-home context.",
+  "leisure dressing": "A styling category built around loose, comfort-oriented garments (sweats, knits, soft tailoring) worn outside a strictly athletic or at-home context.",
   "beaded jewelry and accessory revival": "A recurrence of beaded necklaces, bracelets, and bag or garment trim as a noted accessory category, tracked as a return of a previously common styling element.",
   "met gala 2027 coverage gap": "A tracked absence of confirmed reporting on the 2027 Met Gala's theme, guest list, or outcomes during a window when such coverage would typically be expected.",
   "precision over spectacle": "An editorial framing describing tailoring or styling choices as controlled and exact rather than dramatic or attention-seeking.",
   "old hollywood glamour": "A style reference to the polished, formal, high-shine dressing associated with mid-20th-century American film stars, cited when current styling draws an explicit historical parallel.",
   "marlene dietrich": "A mid-20th-century American film actress cited as a historical style reference point, typically for tailored menswear-influenced womenswear.",
   "ed ruscha": "An American visual artist cited as a reference point when coverage draws a parallel between his work and current design or styling choices.",
-  "nautical revival": "A recurrence of maritime-referencing styling elements — stripes, rope detailing, navy-and-white palettes — associated with earlier nautical style cycles.",
+  "nautical revival": "A recurrence of maritime-referencing styling elements (stripes, rope detailing, navy-and-white palettes) associated with earlier nautical style cycles.",
   "mermaidcore": "An aesthetic term describing styling built around iridescent, scaled, or water-associated textures and a blue-green color palette.",
   "1920s chanel sportswear/workwear codes": "A historical reference to sportswear and workwear-influenced garment codes established by Chanel in the 1920s, cited when current designs draw an explicit lineage to that period.",
   "biarritz basque coastal heritage": "A regional style reference to the coastal Basque resort town of Biarritz, France, cited when current collections or coverage draw on its historical association with leisurewear.",
@@ -91,7 +91,7 @@ const DEFINITIONS: Record<string, string> = {
   "new naturalism": "A styling framing favoring muted, earth-toned palettes and unstructured, texture-forward garments positioned as a counterpoint to more polished aesthetics.",
   "human craft vs ai": "A framing used in coverage to contrast garments or design work presented as handmade or artisan-produced against AI-generated or AI-assisted design and imagery.",
   "messy chic": "A styling term describing deliberately undone, imperfect hair, makeup, or garment styling presented as an aesthetic choice rather than an oversight.",
-  "deconstructed tailoring": "Tailoring that exposes or leaves visible its own construction — raw seams, unfinished edges, visible interfacing — rather than concealing it, associated with the deconstructivist design lineage.",
+  "deconstructed tailoring": "Tailoring that exposes or leaves visible its own construction (raw seams, unfinished edges, visible interfacing) rather than concealing it, associated with the deconstructivist design lineage.",
   "raw-edge finishing": "A garment-finishing technique that leaves fabric edges unhemmed or unbound, exposing raw or fraying edges as a deliberate design choice rather than an incomplete one.",
   "glenn martens": "A Belgian designer who became creative director of Maison Margiela in 2027, cited as a designer-origin reference when coverage tracks his design choices there.",
   "maison margiela": "A Paris-based fashion house founded by Martin Margiela in 1988, known for deconstructivist design, cited as a designer-origin source when its runway or retail output is tracked.",
@@ -100,7 +100,7 @@ const DEFINITIONS: Record<string, string> = {
   "tiktok": "A short-form video social media platform, cited as a social-amplification source sector when style content circulating there is tracked.",
   "fhcm": "The Fédération de la Haute Couture et de la Mode, the organizing body that publishes the official Paris fashion week and haute couture show calendars, cited as an institutional-sector source.",
   "who what wear": "An online fashion and style publication, cited as an editorial-sector source when its coverage is tracked.",
-  "vogue": "A Conde Nast fashion and lifestyle publication, cited as an editorial-sector source when its coverage is tracked; distinct from the CFDA/Vogue Fashion Fund, a separate jointly run award program.",
+  "vogue": "A Conde Nast fashion and lifestyle publication, cited as an editorial-sector source when its coverage is tracked. Distinct from the CFDA/Vogue Fashion Fund, a separate jointly run award program.",
   "cfda": "The Council of Fashion Designers of America, a nonprofit trade association of American fashion designers, cited as an institutional-sector source.",
   "new york fashion week": "The New York leg of the international ready-to-wear fashion week circuit, cited as a designer-origin source event when collections shown there are tracked.",
   "retro sexiness": "A styling framing describing overtly body-conscious, revealing garment choices presented as a deliberate historical throwback rather than a new development.",
@@ -108,7 +108,7 @@ const DEFINITIONS: Record<string, string> = {
   "gucci": "An Italian luxury fashion house, cited as a designer-origin source when its runway or retail output is tracked.",
   "balenciaga": "A Paris-based luxury fashion house, cited as a designer-origin source when its runway, retail, or archival output is tracked.",
   "demna's gucci debut reception": "Critical and retail response to Demna's first collection as Gucci's creative director, tracked as a designer-origin signal pending confirmation of retail follow-through.",
-  "deconstructivist": "A design approach that exposes, disrupts, or reworks a garment's own construction — visible seams, asymmetric cutting, unfinished edges — rather than presenting a conventionally finished silhouette.",
+  "deconstructivist": "A design approach that exposes, disrupts, or reworks a garment's own construction (visible seams, asymmetric cutting, unfinished edges) rather than presenting a conventionally finished silhouette.",
   "unfinished seams": "Garment seams left raw, exposed, or without a concealing finish, used as a deliberate construction detail rather than left incomplete.",
   "martin margiela": "The Belgian designer who founded Maison Margiela in 1988 and pioneered deconstructivist design, cited as a historical reference point when current design work is read against his legacy.",
   "john galliano": "A British designer known for past tenures at Givenchy, Dior, and Maison Margiela, cited as a historical or comparative reference point in coverage of designer transitions.",
@@ -124,16 +124,16 @@ const DEFINITIONS: Record<string, string> = {
   "spectacle staging": "A runway or show-production approach built around a dramatic physical setting or production element intended to generate coverage beyond the garments themselves.",
   "climate-optics backlash": "Critical response to a fashion event or staging choice read as tone-deaf against a concurrent climate event, such as extreme weather.",
   "2026 european heatwave": "An extreme-heat weather event across Europe in 2026, cited as context when a concurrent fashion event's staging drew climate-optics criticism.",
-  "preppy tailoring": "Tailoring that incorporates traditionally preppy design cues — collars, blazers, structured proportions — within an otherwise formal tailored garment.",
-  "nature motif embroidery": "Embroidered or applied decoration depicting botanical or natural imagery — florals, leaves, insects — as a garment's primary surface decoration.",
+  "preppy tailoring": "Tailoring that incorporates traditionally preppy design cues (collars, blazers, structured proportions) within an otherwise formal tailored garment.",
+  "nature motif embroidery": "Embroidered or applied decoration depicting botanical or natural imagery (florals, leaves, insects) as a garment's primary surface decoration.",
   "palazzo serbelloni": "A historic Milan palazzo used as a runway show venue, cited as a location reference for the show staged there.",
   "milan men's fashion week ss27": "The Milan leg of the international menswear fashion week circuit for the Spring/Summer 2027 season, cited as a designer-origin source event.",
   "archival reverence": "A design or editorial framing that treats a house's or designer's historical archive as a primary reference point, presented as respectful continuation rather than pastiche.",
   "paris haute couture week": "The Paris haute couture show season, distinct from ready-to-wear fashion week, cited as a designer-origin source event for made-to-order collections.",
   "cristobal balenciaga archive": "The historical design archive of the house's founder, Cristóbal Balenciaga, cited as a reference point when current collections draw on his original work.",
-  "tenniscore": "A styling term describing tennis-inspired garments and accessories — pleated skirts, polo shirts, headbands — worn outside an athletic context.",
+  "tenniscore": "A styling term describing tennis-inspired garments and accessories (pleated skirts, polo shirts, headbands) worn outside an athletic context.",
   "wimbledon 2027": "The 2027 edition of the Wimbledon tennis championships, cited as a source event for tennis-adjacent style coverage.",
-  "spectator style": "Dressing associated with attending, rather than competing in, a sporting event — tailored but occasion-specific rather than purely athletic.",
+  "spectator style": "Dressing associated with attending, rather than competing in, a sporting event, tailored but occasion-specific rather than purely athletic.",
   "royal courtside style": "Style coverage focused on members of the British royal family's dress choices while attending a sporting event, such as Wimbledon.",
   "wimbledon 2027 tenniscore event dressing": "Style coverage of tennis-inspired dressing tied specifically to attendance at the 2027 Wimbledon championships.",
   "blokecore": "A styling term describing casual dressing built around football (soccer) jerseys and related fan apparel, worn outside a sporting context.",
@@ -162,7 +162,7 @@ const DEFINITIONS: Record<string, string> = {
   "british fashion awards": "An annual British Fashion Council ceremony recognizing designers and industry figures, cited as a source event for pre-ceremony occasion-dressing style coverage.",
   "restraint dressing": "A critical framing describing covered-hand, high-neckline eveningwear as a deliberate counterpoint to overtly skin-baring red-carpet styling, proposed in independent-criticism commentary rather than by a designer or retailer.",
   "chanel": "A Paris-based luxury fashion house, cited as a designer-origin source when its runway, resort, or retail output is tracked.",
-  "gift-wrap dressing": "A social-platform styling term for bow-and-ribbon accent detailing added to coats, bags, or hair, observed circulating on TikTok during the Black Friday/Cyber Monday holiday shopping window; tracked as a single-source, platform-native signal, not yet picked up editorially or at retail.",
+  "gift-wrap dressing": "A social-platform styling term for bow-and-ribbon accent detailing added to coats, bags, or hair, observed circulating on TikTok during the Black Friday/Cyber Monday holiday shopping window. Tracked as a single-source, platform-native signal, not yet picked up editorially or at retail.",
   "obi-sash cocoon coat": "A rounded, sculpted cocoon-shaped coat closed with a wide obi-style sash tied at the waist, observed across resort 2028 previews from multiple houses.",
   "cocoon silhouette": "A rounded, voluminous garment shape that tapers inward at the hem, named for its resemblance to a cocoon rather than a fitted or A-line cut.",
   "elle": "A fashion and lifestyle magazine title, cited as an editorial-sector source when its coverage is tracked.",
@@ -277,16 +277,13 @@ export default function Glossary() {
             marginBottom: "3.5rem",
           }}
         >
-          Definitions for style and aesthetic terms that have recurred across the archive.
-          This page defines the terms themselves; the Taxonomy page defines the
-          classification system used to sort them. Entries are drawn only from terms that
-          have appeared in an archived report. This glossary does not cover source sectors
-          or confidence/volatility labels (e.g. flash, microtrend, revival) — for that
-          vocabulary, see{" "}
+          Definitions of style and aesthetic terms that have appeared in archived reports. A term
+          is listed only after it appears in a report. Source sectors and the confidence and
+          volatility labels are defined on the{" "}
           <Link href="/taxonomy" style={{ color: "var(--black)", textDecoration: "underline" }}>
             Taxonomy
-          </Link>
-          .
+          </Link>{" "}
+          page.
         </p>
 
         <dl style={{ display: "flex", flexDirection: "column", margin: 0 }}>

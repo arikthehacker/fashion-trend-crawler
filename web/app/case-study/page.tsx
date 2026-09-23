@@ -23,13 +23,13 @@ const sections: { title: string; body: string[] }[] = [
   {
     title: "What Exists",
     body: [
-      "A Python crawler that respects robots.txt and enforces a hard per-request deadline. A report schema with controlled vocabularies for source sector, confidence, volatility, and origin, and a validator that runs in CI on every push. A source taxonomy mapping more than 125 outlets to sectors, including non-Anglophone publications. A static Next.js site with archive, timeline, per-signal history, search, RSS, sitemap, and structured data, linted for accessibility.",
+      "A robots.txt-respecting ingester that reads outlet RSS and Atom feeds and stores each item with its URL, publish date and a content hash in a SQLite item store. A source taxonomy that maps more than 125 outlets to sectors, including publications outside the English-speaking press. A report schema with controlled vocabularies, and a publish gate in CI that rejects future-dated reports and any claim without a linked article. A static Next.js site with an archive, a timeline, per-signal histories, full-text search, RSS and structured data.",
     ],
   },
   {
     title: "Design System",
     body: [
-      "Editorial tone, restrained typography, clear hierarchy, and index-like structure. Report pages carry structured data, a stable citation line, and heading markup built for accessibility rather than visual-only hierarchy.",
+      "Editorial tone, restrained typography, clear hierarchy and an index-like structure. Report pages carry structured data, a stable citation line and real heading markup for screen readers.",
     ],
   },
   {
@@ -47,13 +47,13 @@ const sections: { title: string; body: string[] }[] = [
   {
     title: "Current Limitations",
     body: [
-      "The archive is empty while the collection pipeline is rebuilt. The crawler captures headlines but not publish dates or article text, so it cannot yet support dated first appearances. There is no item store yet, so evidence cannot be checked mechanically.",
+      "The published archive is empty. Drafting a weekly report from the item store is not built yet. Most collected sources are editorial, because brand, retail and resale sites rarely publish dated feeds. Social data waits on access to official platform APIs.",
     ],
   },
   {
     title: "Next",
     body: [
-      "A store of dated, linked source items fed by outlet RSS feeds and archived snapshots; checks that fail any report with a future date or an unlinked claim; per-term pages showing first appearance and movement across sectors.",
+      "Extracting style terms from stored items, drafting each weekly report from that evidence for the editor to review, and per-term pages that show where a term first appeared and how it moved between sectors.",
     ],
   },
 ];
@@ -75,20 +75,6 @@ export default function CaseStudy() {
         <h1 className="page-title">
           Building a Weekly<br />Style Signal Report
         </h1>
-
-        <p
-          style={{
-            fontFamily: "var(--font-franklin)",
-            fontSize: "1rem",
-            lineHeight: "1.7",
-            color: "var(--gray)",
-            maxWidth: "600px",
-            margin: "2rem auto 0",
-          }}
-        >
-          A source-linked archive that tracks style language, aesthetics,
-          materials, silhouettes, and cultural signals across the web.
-        </p>
 
       </header>
 

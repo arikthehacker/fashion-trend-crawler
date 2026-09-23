@@ -19,7 +19,7 @@ export default function Terms() {
         ]},
         { title: "Licensing", body: [
           <>The index&apos;s own material (its classifications, report text and structured data) is licensed under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener noreferrer">Creative Commons Attribution 4.0</a>. It may be reused with credit to &ldquo;ARI3LLA INDEX&rdquo; and a link to the page used.</>,
-          "Articles, images and other material that reports link to belong to their publishers and are not covered by that license. The index links to sources; it does not republish them.",
+          "Articles, images and other material that reports link to belong to their publishers and are not covered by that license. The index links to sources and does not republish them.",
           "The site's source code is published in its public repository under that repository's terms.",
         ]},
         { title: "Accuracy and corrections", body: [
@@ -32,7 +32,7 @@ export default function Terms() {
           "The site is provided as is, without warranties of any kind. To the extent the law allows, ARI3LLA INDEX is not liable for any loss arising from use of the site or reliance on its content.",
         ]},
         { title: "Changes", body: [
-          "These terms may be updated; the date above shows the latest version.",
+          "These terms may be updated. The date above shows the latest version.",
         ]},
       ]}
     />

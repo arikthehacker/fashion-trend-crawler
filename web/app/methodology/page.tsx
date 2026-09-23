@@ -8,135 +8,122 @@ export const metadata = pageMetadata("/methodology", "Methodology", "How ARI3LLA
 
 const sections: { title: string; body: string[] }[] = [
   {
-    title: "What This Index Tracks",
+    title: "What the index records",
     body: [
-      "ARI3LLA INDEX tracks recurring style language, silhouettes, materials, colors, aesthetic terms, and cultural references as they appear across public web sources.",
-      "Signals are collected on a recurring schedule and preserved as dated reports, forming a historical record of style discourse rather than a single snapshot.",
+      "ARI3LLA INDEX records recurring style language, silhouettes, materials, colors, aesthetic terms and cultural references as they appear in public sources.",
+      "Each weekly report covers a stated collection window and is kept as a dated record, so the archive shows how style language changes over time.",
     ],
   },
   {
-    title: "What This Index Does Not Track",
+    title: "Scope",
     body: [
-      "This is not a trend forecasting tool, a shopping guide, a brand analytics product, or an influencer trend recap.",
-      "The Index does not predict what will sell, recommend purchases, or advise brands on production. It does not treat any single platform or publication as an authority.",
+      "The index is not a trend forecasting tool, a shopping guide, a brand analytics product or an influencer trend recap.",
+      "It does not predict what will sell, recommend purchases or advise brands on production. It does not treat any single platform or publication as an authority.",
     ],
   },
   {
-    title: "Source Sectors",
+    title: "Source sectors",
     body: [
-      "Sources are grouped into sectors: designer-origin, runway/editorial, retail/commerce, social/platform, visual archive and search, independent criticism, institutional/historical, street/user-generated, and resale/secondhand.",
-      "Each sector carries a different incentive structure, and reports note which sectors a signal is drawn from. A full breakdown is available on the Sources page.",
-      "A domain that has not yet been mapped to a sector is classified unclear rather than guessed into an existing sector. An unclear classification is not treated as a distinct sector for confidence purposes, and it is not evidence against a signal — it reflects a gap in source coverage, not a judgment about the source itself.",
+      "Sources are grouped into sectors: designer origin, runway, editorial, independent criticism, trade intelligence, institutional, visual archive, retail, resale, social, and street or user-generated. Each sector has its own incentives, and every signal names the sectors it was drawn from. The outlets are listed on the Sources page.",
+      "A domain that has not been mapped to a sector is classified as unclear instead of being guessed into one. Unclear is not counted as a separate sector for confidence, and it says nothing against the source. It marks a gap in the index's coverage.",
     ],
   },
   {
-    title: "How Signals Are Classified",
+    title: "How signals are classified",
     body: [
-      "Signals are not ranked by popularity alone. Reports consider recurrence, source diversity, source type, specificity of language, visual coherence, historical continuity, and persistence across reporting periods.",
-      "Each signal is also assigned an origin classification — designer-originated, editorial-amplified, retail-adopted, social-amplified, platform-native, archive revival, or unclear — to separate what a designer made from what editors, retailers, and platforms did with it afterward.",
+      "Signals are not ranked by popularity alone. Reports weigh recurrence, source diversity, source type, specificity of language, visual coherence, historical continuity and persistence across reporting periods.",
+      "Each signal also gets an origin classification: designer originated, editorial amplified, retail adopted, social amplified, platform native, archive revival or unclear. It separates what a designer made from what editors, retailers and platforms did with it afterwards.",
     ],
   },
   {
-    title: "How Confidence Is Assigned",
+    title: "How confidence is assigned",
     body: [
-      "Confidence reflects how many distinct source sectors report a signal and how consistent the language is across them. Low confidence indicates a signal drawn from one noisy source type; high confidence requires recurrence across multiple distinct sectors.",
-      "A computed baseline is checked against the underlying evidence rather than applied automatically. Two sources carrying different sector labels are not treated as independent corroboration if one is a downstream reprint of the other's own announcement rather than separate reporting. A single source from a high-reliability sector (designer-origin, editorial, institutional, or independent criticism) can lift a signal above the lone-source floor, but only when that source did independent reporting of its own; a citation-free rehash of signals already in the archive does not receive the same credit, even from a high-reliability sector.",
-      "Full confidence definitions are listed on the Taxonomy page.",
+      "Confidence reflects how many distinct source sectors report a signal and how consistent the language is across them. Low confidence means the signal comes from one noisy source type. High confidence requires recurrence across several distinct sectors.",
+      "A computed baseline is checked against the evidence and is never applied automatically. Two sources with different sector labels do not count as independent if one reprints the other's announcement.",
+      "A single source from a high-reliability sector (designer origin, editorial, institutional or independent criticism) can lift a signal above the single-source floor, but only if that source did its own reporting. A source that repeats signals already in the archive without citing new evidence gets no such credit, whatever its sector.",
+      "Confidence definitions are listed on the Taxonomy page.",
     ],
   },
   {
-    title: "How Volatility Is Assigned",
+    title: "How volatility is assigned",
     body: [
-      "Volatility describes how a signal is likely to behave over time — flash, microtrend, seasonal, recurring, revival, long-tail, saturated, or declining.",
-      "Volatility is assigned independently of confidence: a signal can be widely reported and still classified as volatile if its recurrence is concentrated in short-cycle, platform-driven sources.",
+      "Volatility describes how a signal is likely to behave over time: flash, microtrend, seasonal, recurring, revival, long-tail, saturated or declining.",
+      "Volatility is assigned separately from confidence. A widely reported signal can still be classified as volatile if its recurrence comes mostly from short-cycle, platform-driven sources.",
     ],
   },
   {
-    title: "How Social and Platform Signals Are Handled",
+    title: "Social and platform signals",
     body: [
-      "Social platform signals are classified as high-noise by default. They may indicate cultural velocity, but they are not treated as stable style evidence unless supported by recurrence across multiple sectors or reporting periods.",
-      "TikTok/social signals are identified and tracked, but classified as volatile unless supported by non-social evidence across multiple reporting periods. Coverage of a social signal by an editorial outlet does not automatically upgrade its confidence.",
+      "Social platform signals are treated as high-noise by default. They can show how fast attention is moving, but they are not treated as stable evidence unless the signal recurs across several sectors or reporting periods.",
+      "Social signals are classified as volatile unless non-social evidence supports them across several reporting periods. Editorial coverage of a social signal does not raise its confidence on its own.",
+      "Social platforms are never scraped. Social data comes from official platform reports and APIs, or is sampled by hand and recorded with an editor's note.",
     ],
   },
   {
-    title: "How Editorial Authority Is Treated",
+    title: "Editorial sources",
     body: [
-      "Editorial coverage is treated as a source sector, not as final authority. Reports account for the fact that editorial media may also be shaped by commerce, PR, platform attention, and affiliate incentives.",
-      "Runway reviews and editorial interpretation sit below designer-originated material and above social-media reposting in the Index's source hierarchy for designer intent.",
+      "Editorial coverage is one source sector, and it is not treated as final authority. Editorial media is also shaped by commerce, PR, platform attention and affiliate income, and reports account for that.",
+      "On the question of what a designer intended, runway reviews and editorial interpretation rank below designer-originated material and above social media reposts.",
     ],
   },
   {
-    title: "How AI Is Used",
+    title: "AI and the editor",
     body: [
-      "Language models help extract, cluster, and draft from source material. They are not treated as authorities and do not decide what matters.",
-      "Final classification, interpretation, and every human-editor note are the editor's. The goal is to make public style discourse easier to scan while keeping human interpretation central, not to replace designers, journalists, stylists, archivists, or critics.",
+      "Software collects source material, extracts recurring language, clusters related terms and drafts summaries. It does not decide what matters.",
+      "The editor decides whether terms belong together, assigns classification and origin, removes hype and connects signals to historical context. The human-editor note on each signal is written by the editor, never by software. No report is published without the editor's review.",
     ],
   },
   {
-    title: "Limitations",
+    title: "Citations",
     body: [
-      "Coverage is bounded by the sources scanned in a given collection window and is not a representative sample of all style discourse. Reports may under-represent sources without accessible public text, or that require API access not yet integrated.",
-      "Classification is an interpretive judgment applied to machine-extracted material, and reports reflect that judgment as well as the underlying sources.",
-      "A suspected error in a published report can be flagged by opening an issue on the project's public repository (github.com/arikthehacker/fashion-trend-crawler/issues). This is not a staffed inbox and response time is not guaranteed. Corrections are appended to the affected report once verified; see the Corrections section below.",
+      "Every claim links to the specific, dated article, post or record it rests on. An outlet's homepage or section page does not count as a citation, and a claim without a link is not published.",
+      "Each cited item records its URL, its publication date and the date it was retrieved, so a reader can check the claim against the original and see when it was said.",
+      "Attribution matches the evidence. A signal from one outlet is never described as coming from \"sources\" in the plural.",
+      "Sources in languages other than English are named as such, and translated terms are marked as translations.",
     ],
   },
   {
-    title: "How Low-Volatility Windows Are Reported",
+    title: "Thin collection windows",
     body: [
-      "Some collection windows return a `collection_status` of \"thin,\" meaning fewer signals met the recurrence and source-diversity thresholds than in a typical reporting period.",
-      "A thin status is not treated as a gap to be filled. Where possible it is checked against raw source volume for that window; when source volume was itself low, the reduced signal count reflects observed style discourse rather than a collection failure.",
-      "Reports do not manufacture signals to normalize a thin window to a target count. A verified low-volatility period is recorded as a data point in the archive, the same as any other classification.",
+      "Some collection windows are marked thin, which means fewer signals met the recurrence and source-diversity thresholds than in a typical week.",
+      "A thin week is not padded. Where possible it is checked against the raw source volume for that window. If source volume was also low, the smaller signal count reflects the discourse and is not a collection failure.",
+      "Reports never invent signals to reach a target count. A verified quiet week is recorded like any other.",
     ],
   },
   {
-    title: "How Signal Recurrence Is Tracked",
+    title: "How recurrence is tracked",
     body: [
-      "Each signal is assigned a persistent identifier that carries across reports. A dedicated page for that identifier lists every dated report in which it appeared, in chronological order, and states plainly whether it appeared in the most recently published report or how many reports have passed since it last did.",
-      "A signal that stops recurring is not automatically marked resolved. A style signal whose discourse volume has genuinely dropped can be noted as closed. A tracked factual question that goes unanswered across multiple consecutive reports is not closed the same way — its absence from new coverage is evidence the crawler has not found an answer, not evidence the question has been settled. After a sustained stretch of unresolved carry-forward, such a signal may be marked untracked pending new information rather than repeated as open indefinitely; tracking resumes if new coverage appears.",
+      "Each signal keeps a permanent identifier across reports. Its page lists every dated report it appeared in, in order, and states whether it appeared in the most recent report or how many reports have passed since.",
+      "A signal that stops recurring is not automatically marked resolved. A style signal whose discussion has dropped can be closed. An open factual question that keeps going unanswered is handled differently, because its absence from coverage means no answer has been found. It does not mean the question is settled. After a long run without new information it can be marked untracked, and tracking resumes if new coverage appears.",
     ],
   },
   {
     title: "Corrections",
     body: [
-      "When a signal classification or a stated fact is found to be wrong, the affected report is not silently edited. A dated correction note is appended to the report, stating what was wrong and what changed.",
-      "The original entry is preserved alongside the correction so the archive reflects what was published at the time, not a retroactively cleaned-up version of it.",
-      "Each correction records, in addition to a prose explanation, which signal identifiers were added, removed, or modified and which specific fields changed on a modified signal — so a reader can reconstruct exactly what changed, not only that a change occurred. A cryptographic hash of the prior signal content is also kept, so the archive can prove content changed even if a correction note were ever incomplete.",
+      "A published report is never silently edited. When a classification or a stated fact turns out to be wrong, a dated correction note is added to the report, saying what was wrong and what changed.",
+      "The original entry is kept beside the correction, so the archive shows what was published at the time.",
+      "Each correction also records which signals were added, removed or changed, and which fields changed. A hash of the earlier signal content is kept, so the archive can prove the content changed even if a correction note were incomplete.",
+      "Suspected errors can be reported by email to ariella@duck.com or as an issue on the project's public repository (github.com/arikthehacker/fashion-trend-crawler/issues). Response time is not guaranteed.",
     ],
   },
   {
-    title: "Editorial Independence",
+    title: "Independence",
     body: [
-      "ARI3LLA INDEX is an independent research project. It is not sponsored by, affiliated with, or produced on behalf of any brand, publication, retailer, or platform referenced in its reports.",
-      "Editorial sources are cited as a source sector, not treated as neutral. Editorial coverage can be shaped by advertising relationships, affiliate commerce, and access to designers and PR — reports account for that incentive structure rather than assuming editorial framing is disinterested.",
+      "ARI3LLA INDEX is an independent research project. It is not sponsored by, affiliated with or produced for any brand, publication, retailer or platform named in its reports.",
     ],
   },
   {
-    title: "AI Involvement",
+    title: "Collection and copyright",
     body: [
-      "AI assists with collecting source material, extracting recurring language, clustering related terms, and drafting summaries. Per-report \"sources scanned\" and \"items collected\" counts describe what was reviewed in that window.",
-      "Each report is reviewed by the editor before publication: what a cluster of terms means culturally, taxonomy and origin classification, and the judgment calls recorded in the human-editor note. That note is written by the editor, never generated.",
+      "Collection respects robots.txt and platform terms, does not bypass platform protections, and uses official APIs where they exist.",
+      "Reports store links and metadata and never republish copyrighted content in full. Runway images are linked and never rehosted.",
     ],
   },
   {
-    title: "Ethical Scraping and Source Policy",
+    title: "Limitations",
     body: [
-      "Collection respects robots.txt and platform terms, avoids bypassing platform protections, and uses official APIs where available.",
-      "Reports store metadata and source links rather than reproducing copyrighted content in full, and cite sources directly so claims can be checked against the original material.",
-    ],
-  },
-  {
-    title: "How Citations Work",
-    body: [
-      "Every claim links to the specific, dated article, post, or record it rests on. An outlet's homepage or section page is not a citation, and a claim without a link is not published.",
-      "Each cited item records its URL, its publication date, and the date it was retrieved, so a reader can check the claim against the original and see when it was said.",
-      "Attribution language matches the evidence: a signal from one outlet is never described as coming from \"sources\" in the plural.",
-    ],
-  },
-  {
-    title: "Review Process",
-    body: [
-      "Extraction identifies repeated language and clusters related terms. The editor then decides whether those terms belong together, assigns classification and origin, removes hype, and connects signals to historical context where relevant.",
-      "The machine collects signals. The editor interprets them.",
+      "Coverage is limited to the sources collected in each window and is not a representative sample of all style discourse. Sources without public text, or that require API access not yet granted, are under-represented. Most collected sources are currently editorial.",
+      "Classification is an interpretive judgment, and reports reflect that judgment as well as the sources.",
     ],
   },
 ];
@@ -174,9 +161,8 @@ export default function Methodology() {
             marginBottom: "3.5rem",
           }}
         >
-          This report identifies recurring style signals observed across public web sources during
-          the collection window. Signals are ranked by recurrence, source diversity, and clarity of
-          language. The sections below describe how that process works, and where its limits are.
+          How ARI3LLA INDEX collects sources, classifies signals, cites evidence and corrects
+          mistakes, and where the method has limits.
         </p>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>

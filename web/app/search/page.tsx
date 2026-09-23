@@ -37,9 +37,8 @@ export default function Search() {
           maxWidth: "560px",
           margin: "1.5rem auto 0",
         }}>
-          Filter signals across all dated reports by source sector, confidence,
-          and volatility. Filtering is exact-match against the controlled
-          vocabulary used for classification — no free-text or fuzzy search.
+          Search the full text of every page, or filter signals by source sector,
+          confidence and volatility.
         </p>
         <p style={{
           fontFamily: "var(--font-franklin)",
@@ -70,7 +69,7 @@ export default function Search() {
             textAlign: "center",
             padding: "3rem 0",
           }}>
-            No signals on file yet.
+            No signals on file.
           </p>
         ) : (
           <SearchClient index={index} />

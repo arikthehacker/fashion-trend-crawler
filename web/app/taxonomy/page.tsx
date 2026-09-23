@@ -16,14 +16,15 @@ const signalTypes = [
 
 const sourceSectors = [
   { name: "Designer-origin", def: "Official brand websites, collection pages, show notes, lookbooks, campaign pages, press releases, designer interviews, creative director statements." },
-  { name: "Runway/editorial", def: "Runway coverage and style publications reporting on collections, shows, and seasonal direction." },
-  { name: "Retail/commerce", def: "Product titles, category names, new arrivals, material and color labels, styling copy, sold-out language, retailer trend edits." },
-  { name: "Social/platform", def: "TikTok, Instagram, YouTube, Reddit, and Pinterest language — captions, comments, and creator trend content." },
-  { name: "Visual archive/search", def: "Visual search and reference platforms used to observe recurring imagery rather than public commentary." },
+  { name: "Runway", def: "Show coverage, show notes and look-by-look records of collections." },
+  { name: "Editorial", def: "Style publications reporting on collections, designers and seasonal direction." },
+  { name: "Retail", def: "Product titles, category names, new arrivals, material and color labels, styling copy, sold-out language, retailer trend edits." },
+  { name: "Social", def: "Captions, comments and creator content on platforms such as TikTok, Instagram, YouTube, Reddit and Pinterest, collected through official reports, APIs or manual sampling." },
+  { name: "Visual archive", def: "Visual search and reference platforms, used to observe recurring imagery." },
   { name: "Independent criticism", def: "Substack fashion writers, independent newsletters, long-form blogs, and cultural commentary outside institutional media." },
-  { name: "Institutional/historical", def: "Museum collections, costume history databases, academic papers, and archival runway records." },
-  { name: "Street/user-generated", def: "Street style photography and public outfit documentation, distinct from platform-native captions and comments." },
-  { name: "Resale/secondhand", def: "Secondhand marketplace listings and descriptions — a separate signal channel from primary retail." },
+  { name: "Institutional", def: "Museum collections, costume history databases, academic papers, and archival runway records." },
+  { name: "Street and user-generated", def: "Street style photography and public outfit documentation, distinct from platform-native captions and comments." },
+  { name: "Resale", def: "Secondhand marketplace listings and descriptions, tracked separately from primary retail." },
   { name: "Trade intelligence", def: "B2B commercial trend-forecasting and retail-analytics vendors, whose public content markets a paid prediction or merchandising product rather than reporting independently on discourse. Excluded from high-reliability sectors." },
 ];
 
@@ -49,7 +50,7 @@ const confidence = [
 ];
 
 const originClassification = [
-  { label: "Designer-originated", def: "Traced to a brand or creative team's own material — collection pages, show notes, campaigns, interviews — before any outside interpretation." },
+  { label: "Designer-originated", def: "Traced to a brand or creative team's own material (collection pages, show notes, campaigns, interviews) before any outside interpretation." },
   { label: "Editorial-amplified", def: "Carried into wider discourse primarily through runway coverage or style-publication interpretation of what a designer showed or meant." },
   { label: "Retail-adopted", def: "Carried into wider discourse primarily through product naming, category language, or trend-edit copy applied at the point of sale." },
   { label: "Social-amplified", def: "Carried into wider discourse primarily through platform captions, comments, or creator content, independent of editorial or retail framing." },
@@ -129,13 +130,12 @@ export default function Taxonomy() {
           }}
         >
           Signals are classified along five dimensions: signal type, source sector, volatility,
-          confidence, and origin classification. Definitions below are applied consistently across
-          reports. This page does not
-          define style or aesthetic terminology (e.g. quiet luxury, Y2K nostalgia) — for that, see{" "}
+          confidence, and origin classification. This page does not
+          define style or aesthetic terms such as quiet luxury. Those are on the{" "}
           <Link href="/glossary" style={{ color: "var(--black)", textDecoration: "underline" }}>
             Glossary
-          </Link>
-          .
+          </Link>{" "}
+          page.
         </p>
 
         <div style={{ marginBottom: "3.5rem" }}>
@@ -245,9 +245,9 @@ export default function Taxonomy() {
               marginBottom: "1.25rem",
             }}
           >
-            Recorded separately from confidence and volatility, to keep what a designer made,
-            what editors said it meant, what retailers sold it as, and what a platform renamed it
-            from collapsing into a single undifferentiated &ldquo;trending&rdquo; label.
+            Origin is recorded separately from confidence and volatility. It keeps apart what a
+            designer made, what editors said it meant, what retailers sold it as and what a platform
+            renamed it.
           </p>
           <Table rows={originClassification} />
         </div>

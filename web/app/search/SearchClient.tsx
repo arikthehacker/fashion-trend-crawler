@@ -1,9 +1,7 @@
 "use client";
 // app/search/SearchClient.tsx
-// client-side facet filtering over the pre-built search index. No backend,
-// no full-text search library — plain array filtering in the browser, per
-// docs/agent-logs/search-discoverability-design.md's "simpler half" scope.
-// Full-text search over report prose (Pagefind) is deliberately deferred.
+// client-side facet filtering over the pre-built search index, plus Pagefind
+// full-text search over the built pages (mounted below).
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
@@ -29,7 +27,9 @@ function PagefindSearch() {
         if (cancelled) return;
         const w = window as unknown as { PagefindUI?: new (opts: Record<string, unknown>) => unknown };
         if (w.PagefindUI) {
-          new w.PagefindUI({ element: "#pagefind-search", showSubResults: true });
+          // bundlePath must match `--output-subdir _pagefind` in package.json; the UI
+          // otherwise looks for its engine at /pagefind/ and finds nothing.
+          new w.PagefindUI({ element: "#pagefind-search", bundlePath: "/_pagefind/", showSubResults: true });
         }
       } catch {
         // Bundle not present (e.g. dev server, or build hasn't run pagefind

@@ -35,8 +35,8 @@ export default function SiteFooter() {
       </p>
       <p className="site-footer-meta">
         © {year} ARI3LLA INDEX. Index classifications are licensed{" "}
-        <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener noreferrer">CC BY 4.0</a>;
-        linked articles belong to their publishers.
+        <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener noreferrer">CC BY 4.0</a>.
+        Linked articles belong to their publishers.
       </p>
     </footer>
   );

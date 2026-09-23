@@ -18,7 +18,7 @@ export default function Accessibility() {
           <>ARI3LLA INDEX aims to meet the <a href="https://www.w3.org/TR/WCAG22/" rel="noopener noreferrer">Web Content Accessibility Guidelines (WCAG) 2.2</a> at level AA.</>,
         ]},
         { title: "What is in place", body: [
-          "A skip link to the main content; the same navigation on every page, with the current page announced to screen readers; visible keyboard focus; text colors checked against AA contrast in light and dark mode; layouts that reflow to a single column on small screens; no autoplaying media or motion; reports readable and printable as plain text.",
+          "Every page has a skip link to the main content and the same navigation, with the current page announced to screen readers. Keyboard focus is always visible. Text colors meet AA contrast in light and dark mode. Layouts reflow to a single column on small screens. Nothing autoplays or animates, and reports can be read and printed as plain text.",
           "Accessibility rules are checked automatically on every change to the site's code.",
         ]},
         { title: "Known limitations", body: [

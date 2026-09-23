@@ -85,7 +85,7 @@ export default async function SignalPage({ params }: { params: Promise<{ slug: s
           }}>
             {recency.isMostRecentReport
               ? "Appeared in the most recently published report."
-              : `Last appeared ${recency.lastSeen} — ${recency.reportsSinceLastSeen} published report${recency.reportsSinceLastSeen === 1 ? "" : "s"} since, with no further occurrence on file.`}
+              : `Last appeared ${recency.lastSeen}. Not recorded in the ${recency.reportsSinceLastSeen === 1 ? "report" : `${recency.reportsSinceLastSeen} reports`} published since.`}
           </p>
         )}
       </header>

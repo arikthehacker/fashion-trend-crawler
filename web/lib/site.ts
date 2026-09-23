@@ -14,14 +14,14 @@ export const SITE_NAME = "ARI3LLA INDEX";
 export const OG_IMAGE = { url: "/opengraph-image", width: 1200, height: 630, alt: "ARI3LLA INDEX" };
 
 // Per-page metadata in one shape: the title (the layout template appends
-// " — ARI3LLA INDEX"), description, canonical URL and share cards.
+// " | ARI3LLA INDEX"), description, canonical URL and share cards.
 export function pageMetadata(path: string, title: string, description: string) {
   const url = `${SITE_URL}${path}`;
   return {
     title,
     description,
     alternates: { canonical: url },
-    openGraph: { siteName: SITE_NAME, title: `${title} — ${SITE_NAME}`, description, url, type: "website" as const, images: [OG_IMAGE] },
-    twitter: { card: "summary_large_image" as const, title: `${title} — ${SITE_NAME}`, description, images: [OG_IMAGE.url] },
+    openGraph: { siteName: SITE_NAME, title: `${title} | ${SITE_NAME}`, description, url, type: "website" as const, images: [OG_IMAGE] },
+    twitter: { card: "summary_large_image" as const, title: `${title} | ${SITE_NAME}`, description, images: [OG_IMAGE.url] },
   };
 }
