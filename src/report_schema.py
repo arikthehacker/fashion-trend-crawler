@@ -11,6 +11,7 @@ from dataclasses import dataclass, field, asdict
 import hashlib
 import json
 import os
+import re
 
 from taxonomy import CONFIDENCE_LEVELS, VOLATILITY_LABELS, ORIGIN_CLASSIFICATIONS, SOURCE_SECTORS
 
@@ -107,21 +108,19 @@ class Signal:
     # key some reports had and others didn't.
     human_editor_note: str = ""
     # outlet homepage domains this signal was corroborated from (e.g.
-    # "vogue.com", "dewimagazine.com") -- NOT per-article URLs. See
-    # docs/agent-logs/source-citation-resolution-run36.md: run 33 flagged
-    # per-article links to small/independent outlets as a "hug of death"/
-    # pile-on risk (a direct permalink to a specific small site's specific
-    # article, published on a report page, inviting traffic surges); run 35
-    # separately found no citable link exists at all, which blocks future
-    # link-rot/archival work. This field resolves both at once by citing at
-    # the outlet-homepage level only -- the same level of granularity
-    # web/app/sources/page.tsx already uses for its outlet listing, so it
-    # carries no incremental pile-on risk over what's already public.
-    # Deliberately NOT a full source_url/source_links list of article
-    # permalinks -- see the resolution log for why that was rejected.
-    # Optional/backward compatible: empty list until summarize.py populates
-    # it from the crawler's already-fetched URLs.
+    # "vogue.com"). A summary field for display and sector counting only:
+    # it is NOT evidence. Evidence lives in evidence_items below. (Before
+    # 2026-09-22 this domain-only field was the whole citation policy; that
+    # policy was withdrawn -- every claim now links to a specific article.)
     source_domains: list = field(default_factory=list)
+    # the specific, fetched items this signal rests on. Each entry is a dict:
+    #   url           full article/post/record URL (http/https, with a path)
+    #   published_at  YYYY-MM-DD (or ISO datetime) the item was published
+    #   retrieved_at  YYYY-MM-DD (or ISO datetime) it was fetched
+    #   title, outlet_domain, item_id   optional; item_id links the item store
+    # Optional in the schema so drafts can be saved; required for anything in
+    # data/reports/ by src/validate_all_reports.py (the publish gate).
+    evidence_items: list = field(default_factory=list)
 
 
 CONFIDENCE_SOURCE_VALUES = ["manual", "derived"]
@@ -426,6 +425,31 @@ def diff_signal_changes(old_signals: list, new_signals: list) -> dict:
     return {"added": added, "removed": removed, "modified": modified}
 
 
+EVIDENCE_REQUIRED_KEYS = ["url", "published_at", "retrieved_at"]
+_DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}")
+
+
+def _validate_evidence_items(items, i) -> None:
+    """Structure check for top_signals[i].evidence_items (see Signal)."""
+    if not isinstance(items, list):
+        raise SchemaValidationError(f"{'' if i == 'report' else f'top_signals[{i}].'}evidence_items must be a list")
+    for j, item in enumerate(items):
+        where = (f"evidence_items[{j}]" if i == "report" else f"top_signals[{i}].evidence_items[{j}]")
+        if not isinstance(item, dict):
+            raise SchemaValidationError(f"{where} must be an object")
+        missing = [k for k in EVIDENCE_REQUIRED_KEYS if not item.get(k)]
+        if missing:
+            raise SchemaValidationError(f"{where} missing {missing}")
+        url = item["url"]
+        if not (isinstance(url, str) and url.startswith(("http://", "https://"))):
+            raise SchemaValidationError(f"{where}.url must be an http(s) URL, got {url!r}")
+        for k in ("published_at", "retrieved_at"):
+            if not (isinstance(item[k], str) and _DATE_RE.match(item[k])):
+                raise SchemaValidationError(f"{where}.{k} must start YYYY-MM-DD, got {item[k]!r}")
+        if item["published_at"][:10] > item["retrieved_at"][:10]:
+            raise SchemaValidationError(f"{where} published_at is after retrieved_at")
+
+
 def validate_report(data: dict) -> None:
     """
     raise SchemaValidationError if `data` is missing required
@@ -462,6 +486,11 @@ def validate_report(data: dict) -> None:
             f"the correct date before consolidating.",
             file=sys.stderr,
         )
+
+    # report-level evidence for claims in the executive summary (same shape
+    # as Signal.evidence_items); required by the publish gate when a report
+    # has no signals, since a thin-week summary still states facts.
+    _validate_evidence_items(data.get("evidence_items", []), "report")
 
     for i, signal in enumerate(data.get("top_signals", [])):
         missing_signal_keys = [k for k in REQUIRED_SIGNAL_KEYS if k not in signal]
@@ -542,6 +571,8 @@ def validate_report(data: dict) -> None:
                     f"Per-article links are a known pile-on risk for small outlets, see "
                     f"docs/agent-logs/source-citation-resolution-run36.md."
                 )
+
+        _validate_evidence_items(signal.get("evidence_items", []), i)
 
     # optional field: default to "normal" if absent so old reports (predating
     # the thin-week fallback) remain valid.

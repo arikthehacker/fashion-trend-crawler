@@ -500,6 +500,9 @@ DOMAIN_SECTOR_MAP = {
     "wgsn.com": "trade_intelligence",
     "trendalytics.co": "trade_intelligence",
     "stylearcade.com": "trade_intelligence",
+    # EDITED (retail pricing/assortment analytics); its blog is a public feed
+    # (added 2026-09-22 for sector coverage in src/ingest_rss.py)
+    "edited.com": "trade_intelligence",
 
     # Skipped (not added) this run, all researched but not clearing the
     # bar, or found not to be fashion sources at all:

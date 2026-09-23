@@ -14,10 +14,22 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
       - name: Compile check
         run: python -m py_compile src/*.py
 
-      - name: Validate archived reports (schema + non-blocking confidence warnings)
+      - name: Publish gate tests (bad fixtures must fail)
+        run: python src/test_publish_gate.py
+
+      - name: Item store tests (schema, triggers, idempotent upserts)
+        run: python src/test_item_store.py
+
+      - name: RSS ingestion tests (offline fixtures)
+        run: python src/test_ingest_rss.py
+
+      - name: Validate published reports (schema + publish gate + non-blocking confidence warnings)
         run: python src/validate_all_reports.py
 
   lint-web:

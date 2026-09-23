@@ -1,0 +1,479 @@
+[
+  {
+    "domain": "1234kyle5678.substack.com",
+    "sector": "independent_criticism",
+    "feed_url": "https://1234kyle5678.substack.com/feed",
+    "discovered_at": "2026-09-22",
+    "source": "manual probe"
+  },
+  {
+    "domain": "afterschool.substack.com",
+    "sector": "independent_criticism",
+    "feed_url": "https://afterschool.substack.com/feed",
+    "discovered_at": "2026-09-22",
+    "source": "manual probe"
+  },
+  {
+    "domain": "anothermag.com",
+    "sector": "editorial",
+    "feed_url": "https://www.anothermag.com/Feed",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "blackbirdspyplane.com",
+    "sector": "independent_criticism",
+    "feed_url": "https://www.blackbirdspyplane.com/feed",
+    "discovered_at": "2026-09-22",
+    "source": "manual probe"
+  },
+  {
+    "domain": "blog.poshmark.com",
+    "sector": "resale",
+    "feed_url": "https://blog.poshmark.com/feed/",
+    "discovered_at": "2026-09-22",
+    "source": "manual probe"
+  },
+  {
+    "domain": "bricksmagazine.co.uk",
+    "sector": "editorial",
+    "feed_url": "https://bricksmagazine.co.uk/feed/",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "businessoffashion.com",
+    "sector": "editorial",
+    "feed_url": "https://www.businessoffashion.com/arc/outboundfeeds/rss/",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "chicstylecollective.com",
+    "sector": "editorial",
+    "feed_url": "https://www.chicstylecollective.com/feed/",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "clashmusic.com",
+    "sector": "editorial",
+    "feed_url": "https://clashmusic.com/fashion/feed/",
+    "discovered_at": "2026-09-23",
+    "style_share": 1.0,
+    "site_feed_url": "https://clashmusic.com/feed",
+    "section_found_at": "2026-09-23"
+  },
+  {
+    "domain": "complex.com",
+    "sector": "editorial",
+    "feed_url": "https://complex.com/index.xml",
+    "discovered_at": "2026-09-23",
+    "style_share": 0.28,
+    "review_note": "low keyword score but headlines checked: on-topic (2026-09-22)"
+  },
+  {
+    "domain": "coveteur.com",
+    "sector": "editorial",
+    "feed_url": "https://coveteur.com/rss/all.xml",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "dazeddigital.com",
+    "sector": "editorial",
+    "feed_url": "https://www.dazeddigital.com/rss",
+    "discovered_at": "2026-09-23",
+    "style_share": 0.47
+  },
+  {
+    "domain": "dewimagazine.com",
+    "sector": "editorial",
+    "feed_url": "https://www.dewimagazine.com/feed/",
+    "discovered_at": "2026-09-23",
+    "style_share": 0.2,
+    "review_note": "low keyword score but headlines checked: on-topic (2026-09-22)"
+  },
+  {
+    "domain": "dieworkwear.com",
+    "sector": "independent_criticism",
+    "feed_url": "https://dieworkwear.com/feed/",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "edited.com",
+    "sector": "trade_intelligence",
+    "feed_url": "https://www.edited.com/blog/rss",
+    "discovered_at": "2026-09-22",
+    "source": "manual probe"
+  },
+  {
+    "domain": "elle.com",
+    "sector": "editorial",
+    "feed_url": "https://www.elle.com/rss/all.xml/",
+    "discovered_at": "2026-09-22",
+    "source": "manual probe"
+  },
+  {
+    "domain": "embedded.substack.com",
+    "sector": "independent_criticism",
+    "feed_url": "https://embedded.substack.com/feed",
+    "discovered_at": "2026-09-22",
+    "source": "manual probe"
+  },
+  {
+    "domain": "essence.com",
+    "sector": "editorial",
+    "feed_url": "https://essence.com/feed",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "fashionista.com",
+    "sector": "editorial",
+    "feed_url": "https://fashionista.com/feed",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "fashionunited.com",
+    "sector": "editorial",
+    "feed_url": "https://fashionunited.com/rss-news",
+    "discovered_at": "2026-09-22",
+    "source": "manual probe"
+  },
+  {
+    "domain": "fashionunited.uk",
+    "sector": "editorial",
+    "feed_url": "https://fashionunited.uk/rss-news",
+    "discovered_at": "2026-09-22",
+    "source": "manual probe"
+  },
+  {
+    "domain": "ffw.com.br",
+    "sector": "editorial",
+    "feed_url": "https://ffw.com.br/feed/",
+    "discovered_at": "2026-09-23",
+    "style_share": 0.0,
+    "review_note": "low keyword score but headlines checked: on-topic (2026-09-22)"
+  },
+  {
+    "domain": "fhcm.paris",
+    "sector": "institutional",
+    "feed_url": "https://fhcm.paris/rss.xml",
+    "discovered_at": "2026-09-23",
+    "style_share": 0.5
+  },
+  {
+    "domain": "fitnyc.edu",
+    "sector": "institutional",
+    "feed_url": "https://www.fitnyc.edu/news/feed",
+    "discovered_at": "2026-09-22",
+    "source": "manual probe"
+  },
+  {
+    "domain": "fzine.com",
+    "sector": "editorial",
+    "feed_url": "https://fzine.com/feed",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "gq.com",
+    "sector": "editorial",
+    "feed_url": "https://www.gq.com/feed/rss",
+    "discovered_at": "2026-09-23",
+    "style_share": 0.3
+  },
+  {
+    "domain": "graziadaily.co.uk",
+    "sector": "editorial",
+    "feed_url": "https://rss.onebauer.media/api/feed-aggregator?hostname=https://graziadaily.co.uk",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "harpersbazaar.com",
+    "sector": "editorial",
+    "feed_url": "https://www.harpersbazaar.com/rss/all.xml/",
+    "discovered_at": "2026-09-22",
+    "source": "manual probe"
+  },
+  {
+    "domain": "harpersbazaar.com/uk",
+    "sector": "editorial",
+    "feed_url": "https://www.harpersbazaar.com/uk/rss/all.xml/",
+    "discovered_at": "2026-09-22",
+    "source": "manual probe"
+  },
+  {
+    "domain": "hellobeautiful.com",
+    "sector": "editorial",
+    "feed_url": "https://hellobeautiful.com/category/beauty/feed/",
+    "discovered_at": "2026-09-23",
+    "style_share": 0.73,
+    "site_feed_url": "https://hellobeautiful.com/feed/",
+    "section_found_at": "2026-09-23"
+  },
+  {
+    "domain": "hellomagazine.com",
+    "sector": "editorial",
+    "feed_url": "https://www.hellomagazine.com/feeds/rss/any/fashion/any/50.xml",
+    "discovered_at": "2026-09-23",
+    "style_share": 0.9,
+    "site_feed_url": "https://www.hellomagazine.com/feeds/rss/any/any/any/50.xml",
+    "section_found_at": "2026-09-23"
+  },
+  {
+    "domain": "highsnobiety.com",
+    "sector": "editorial",
+    "feed_url": "https://highsnobiety.com/feed",
+    "discovered_at": "2026-09-23",
+    "style_share": 0.44
+  },
+  {
+    "domain": "hollywoodreporter.com",
+    "sector": "editorial",
+    "feed_url": "https://www.hollywoodreporter.com/c/lifestyle/feed/",
+    "discovered_at": "2026-09-23",
+    "style_share": 1.0,
+    "site_feed_url": "https://www.hollywoodreporter.com/feed/rss/",
+    "section_found_at": "2026-09-23"
+  },
+  {
+    "domain": "hypebeast.com",
+    "sector": "editorial",
+    "feed_url": "https://hypebeast.com/feed",
+    "discovered_at": "2026-09-23",
+    "style_share": 0.32,
+    "review_note": "low keyword score but headlines checked: on-topic (2026-09-22)"
+  },
+  {
+    "domain": "i-d.co",
+    "sector": "editorial",
+    "feed_url": "https://i-d.co/category/style/feed/",
+    "discovered_at": "2026-09-23",
+    "style_share": 0.8,
+    "site_feed_url": "https://i-d.co/feed/",
+    "section_found_at": "2026-09-23"
+  },
+  {
+    "domain": "imfirenzedigest.com",
+    "sector": "editorial",
+    "feed_url": "https://imfirenzedigest.com/category/fashion/feed/",
+    "discovered_at": "2026-09-23",
+    "style_share": 0.92,
+    "site_feed_url": "https://imfirenzedigest.com/feed/",
+    "section_found_at": "2026-09-23"
+  },
+  {
+    "domain": "insidehook.com",
+    "sector": "editorial",
+    "feed_url": "https://www.insidehook.com/feed",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "interviewmagazine.com",
+    "sector": "editorial",
+    "feed_url": "https://www.interviewmagazine.com/category/fashion/feed",
+    "discovered_at": "2026-09-23",
+    "style_share": 0.95,
+    "site_feed_url": "https://www.interviewmagazine.com/feed",
+    "section_found_at": "2026-09-23"
+  },
+  {
+    "domain": "laforma.club",
+    "sector": "editorial",
+    "feed_url": "https://laforma.club/feed/",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "lamag.com",
+    "sector": "editorial",
+    "feed_url": "https://lamag.com/category/beauty/feed/",
+    "discovered_at": "2026-09-23",
+    "style_share": 1.0,
+    "site_feed_url": "https://lamag.com/feed/",
+    "section_found_at": "2026-09-23"
+  },
+  {
+    "domain": "marieclaire.com",
+    "sector": "editorial",
+    "feed_url": "https://www.marieclaire.com/feeds.xml",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "modernluxury.com",
+    "sector": "editorial",
+    "feed_url": "https://modernluxury.com/feed",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "nowfashion.com",
+    "sector": "visual_archive",
+    "feed_url": "https://nowfashion.com/rss.xml",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "numero.com",
+    "sector": "editorial",
+    "feed_url": "https://numero.com/category/mode/feed/",
+    "discovered_at": "2026-09-23",
+    "style_share": 1.0,
+    "site_feed_url": "https://numero.com/feed/",
+    "section_found_at": "2026-09-23"
+  },
+  {
+    "domain": "oldloserinbrooklyn.substack.com",
+    "sector": "independent_criticism",
+    "feed_url": "https://oldloserinbrooklyn.substack.com/feed",
+    "discovered_at": "2026-09-22",
+    "source": "manual probe"
+  },
+  {
+    "domain": "papermag.com",
+    "sector": "editorial",
+    "feed_url": "https://www.papermag.com/feeds/feed.rss",
+    "discovered_at": "2026-09-23",
+    "style_share": 0.13,
+    "review_note": "low keyword score but headlines checked: on-topic (2026-09-22)"
+  },
+  {
+    "domain": "parisselectbook.com",
+    "sector": "editorial",
+    "feed_url": "https://parisselectbook.com/category/mode/feed/",
+    "discovered_at": "2026-09-23",
+    "style_share": 0.67,
+    "site_feed_url": "https://parisselectbook.com/feed",
+    "section_found_at": "2026-09-23"
+  },
+  {
+    "domain": "robbreport.com",
+    "sector": "editorial",
+    "feed_url": "https://robbreport.com/style/feed/",
+    "discovered_at": "2026-09-23",
+    "style_share": 0.9,
+    "site_feed_url": "https://robbreport.com/feed/rss/",
+    "section_found_at": "2026-09-23"
+  },
+  {
+    "domain": "rss.nytimes.com",
+    "sector": "editorial",
+    "feed_url": "https://rss.nytimes.com/services/xml/rss/nyt/FashionandStyle.xml",
+    "discovered_at": "2026-09-22",
+    "source": "manual probe"
+  },
+  {
+    "domain": "scmp.com",
+    "sector": "editorial",
+    "feed_url": "https://www.scmp.com/rss/72/feed",
+    "discovered_at": "2026-09-23",
+    "style_share": 1.0,
+    "site_feed_url": "https://www.scmp.com/rss/feed",
+    "section_found_at": "2026-09-23"
+  },
+  {
+    "domain": "stylerave.com",
+    "sector": "editorial",
+    "feed_url": "https://www.stylerave.com/feed/",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "stylist.co.uk",
+    "sector": "editorial",
+    "feed_url": "https://stylist.co.uk/feed",
+    "discovered_at": "2026-09-23",
+    "style_share": 0.3,
+    "review_note": "low keyword score but headlines checked: on-topic (2026-09-22)"
+  },
+  {
+    "domain": "thezoereport.com",
+    "sector": "editorial",
+    "feed_url": "https://www.thezoereport.com/rss",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "tokyofashion.com",
+    "sector": "editorial",
+    "feed_url": "https://tokyofashion.com/feed/",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "vam.ac.uk",
+    "sector": "institutional",
+    "feed_url": "https://www.vam.ac.uk/blog/feed",
+    "discovered_at": "2026-09-22",
+    "source": "manual probe"
+  },
+  {
+    "domain": "vmagazine.com",
+    "sector": "editorial",
+    "feed_url": "https://vmagazine.com/feed/",
+    "discovered_at": "2026-09-23",
+    "style_share": 0.0,
+    "review_note": "low keyword score but headlines checked: on-topic (2026-09-22)"
+  },
+  {
+    "domain": "vogue.com",
+    "sector": "editorial",
+    "feed_url": "https://www.vogue.com/feed/rss",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "vogue.mx",
+    "sector": "editorial",
+    "feed_url": "https://www.vogue.mx/feed/rss",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "voguearabia.com",
+    "sector": "editorial",
+    "feed_url": "https://www.voguearabia.com/feed/rss",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "wallpaper.com",
+    "sector": "editorial",
+    "feed_url": "https://www.wallpaper.com/feeds/tag/fashion-beauty",
+    "discovered_at": "2026-09-23",
+    "style_share": 1.0,
+    "site_feed_url": "https://www.wallpaper.com/feeds.xml",
+    "section_found_at": "2026-09-23"
+  },
+  {
+    "domain": "wardrobeoxygen.com",
+    "sector": "independent_criticism",
+    "feed_url": "https://www.wardrobeoxygen.com/beauty/feed/",
+    "discovered_at": "2026-09-23",
+    "style_share": 0.8,
+    "site_feed_url": "https://www.wardrobeoxygen.com/feed/",
+    "section_found_at": "2026-09-23"
+  },
+  {
+    "domain": "whitewall.art",
+    "sector": "editorial",
+    "feed_url": "https://whitewall.art/category/fashion/feed/",
+    "discovered_at": "2026-09-23",
+    "style_share": 1.0,
+    "site_feed_url": "https://whitewall.art/feed/",
+    "section_found_at": "2026-09-23"
+  },
+  {
+    "domain": "whowhatwear.com",
+    "sector": "retail",
+    "feed_url": "https://www.whowhatwear.com/feeds.xml",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "wmagazine.com",
+    "sector": "editorial",
+    "feed_url": "https://www.wmagazine.com/rss",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "wwd.com",
+    "sector": "editorial",
+    "feed_url": "https://wwd.com/feed/rss/",
+    "discovered_at": "2026-09-23"
+  },
+  {
+    "domain": "yourcoffeebreak.co.uk",
+    "sector": "editorial",
+    "feed_url": "https://yourcoffeebreak.co.uk/category/fashion/feed/",
+    "discovered_at": "2026-09-23",
+    "style_share": 1.0,
+    "site_feed_url": "https://yourcoffeebreak.co.uk/feed/",
+    "section_found_at": "2026-09-23"
+  }
+]
