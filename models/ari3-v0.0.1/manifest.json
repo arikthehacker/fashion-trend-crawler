@@ -1,0 +1,64 @@
+{
+  "calibration": {
+    "method": "temperature_scaling",
+    "temperature": 0.4031364401035626
+  },
+  "classifier": {
+    "C": 1.0,
+    "penalty": "l2",
+    "solver": "lbfgs",
+    "type": "LogisticRegression"
+  },
+  "component": "perception",
+  "conformal": {
+    "alpha": 0.1,
+    "method": "split_conformal",
+    "qhat": 0.8366939207488745,
+    "score": "1 - p(true label)"
+  },
+  "embedder": {
+    "dim": 384,
+    "frozen": true,
+    "name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "normalized": true,
+    "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+  },
+  "environment": {
+    "numpy": "2.5.0",
+    "python": "3.13.2",
+    "scikit_learn": "1.9.1",
+    "sentence_transformers": "6.1.0"
+  },
+  "frozen_at": "2026-09-23T08:55:57Z",
+  "labels": {
+    "count": 145,
+    "max_label_id": 145,
+    "positives": 73,
+    "sha256": "3f09bf6fe74b66102b4a154d5a75eb607f71292fc695cb84155bebb0c2a3978f"
+  },
+  "manifest_sha256": "f9f2c44bb06dad0fc3672c29dfcacfa39d2ce503dc28c38457206dac5ccb0213",
+  "metrics_test": {
+    "conformal_test_coverage": 1.0,
+    "ece_after_scaling": 0.08808484562775894,
+    "ece_before_scaling": 0.23386190481045668,
+    "errors_outside_set": 0,
+    "n_calibration": 29,
+    "n_errors": 4,
+    "n_test": 34,
+    "n_train": 82,
+    "precision": 0.8333333333333334,
+    "recall": 0.9375,
+    "singleton_share": 0.5588235294117647,
+    "test_accuracy": 0.8823529411764706
+  },
+  "model": "ARI3",
+  "predictions_logged_as": "jev-v0.0.1-spike",
+  "sha256": {
+    "src/ari3_freeze.py": "6847217a6052d2ccddb591beb84b9e6528b250cf586cb3309e9a61d39f4e6bd8",
+    "src/jev_spike.py": "4dfd784c58abc71540fc543d50372d86c0e5d6c6c7b4192d5f0efc443050e767",
+    "weights.npz": "78ddaf3383eaa141687133e8d6993ff12a6568452a1747bd862c0955572b76be"
+  },
+  "split_rule": "sha256(item_id, task): 65% train, 15% calibration, 20% test",
+  "task": "is_style_signal",
+  "version": "ari3-v0.0.1"
+}
