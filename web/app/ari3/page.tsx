@@ -204,9 +204,10 @@ export default function Ari3Page() {
           retrained, and results are reported whether they hold or fail.
         </p>
         <p style={body}>
-          ARI3 currently does one thing: it reads a news item and judges whether it is about style,
-          and says so when it is not sure. It does not forecast, rank trends or write reports. Items
-          it flags as uncertain are meant for the editor&apos;s review.
+          ARI3 v0.0.1, the current frozen version, reads a news item&apos;s headline and feed excerpt,
+          judges whether the item is about style, and says when it is not sure. Items it flags as
+          uncertain are meant for the editor&apos;s review. ARI3 v0.0.2 is planned and not yet
+          trained. No ARI3 version forecasts, ranks trends or writes reports.
         </p>
 
         {RELEASES.map((r) => (
