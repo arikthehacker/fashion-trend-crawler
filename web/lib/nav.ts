@@ -8,6 +8,7 @@ export const PRIMARY_NAV = [
   { href: "/search", label: "Search" },
   { href: "/glossary", label: "Glossary" },
   { href: "/methodology", label: "Methodology" },
+  { href: "/ari3", label: "ARI3" },
   { href: "/taxonomy", label: "Taxonomy" },
   { href: "/sources", label: "Sources" },
   { href: "/about", label: "About" },

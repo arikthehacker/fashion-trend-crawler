@@ -34,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/archive",
     "/methodology",
+    "/ari3",
     "/taxonomy",
     "/sources",
     "/about",
