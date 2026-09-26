@@ -1,0 +1,132 @@
+{
+  "calibration": {
+    "temperature": 1.8370410934171713
+  },
+  "classifier": {
+    "C": 1.0,
+    "type": "LogisticRegression"
+  },
+  "conformal": {
+    "alpha": 0.1,
+    "qhat": 0.7500941330210475
+  },
+  "embedder": {
+    "dim": 384,
+    "name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+  },
+  "environment": {
+    "numpy": "2.5.0",
+    "os": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.2",
+    "scikit_learn": "1.9.1",
+    "sentence_transformers": "6.1.0"
+  },
+  "experiment": "EXP-003B",
+  "finding_forecast_share_of_counts": {
+    "in_items_marked_forecast": 0,
+    "items": 631,
+    "items_marked_forecast": 0,
+    "rule": "conformal set is {yes} (confident forecast)",
+    "share": 0.0,
+    "style_filtered_mentions": 976
+  },
+  "frozen_at": "2026-09-26T23:11:47Z",
+  "head": "is_forecast",
+  "hypotheses": {
+    "H4": {
+      "supported": false,
+      "test": "balanced accuracy >= 0.75 and above the majority baseline (both groups)",
+      "value": 0.5
+    },
+    "H5": {
+      "supported": true,
+      "test": "conformal coverage >= 0.90 (both groups)",
+      "value": 0.9607843137254902
+    }
+  },
+  "labels": {
+    "calibration": 38,
+    "count": 250,
+    "first_label_at": "2026-09-26T22:52:23Z",
+    "last_label_at": "2026-09-26T23:09:55Z",
+    "positives": 35,
+    "sha256": "ff36351a44866144506dddf9cf58fdf299dd61100ed49238c534f2d75633ec70",
+    "test": 51,
+    "train": 161
+  },
+  "manifest_sha256": "c39b1f601e7d2fa137a48532ceddea38bb7230cc2b7e0976e4ffcb60b93a6d77",
+  "model": "ARI3",
+  "preregistration": {
+    "commit": "2ff1c53",
+    "path": "models/ari3-v0.0.3/PREREGISTRATION.md",
+    "sha256_committed": "fa65367d3166cba52903229bfd849ce34022b536e93ae6c62341325e7911aff1"
+  },
+  "queue": {
+    "path": "data/store/queues/is_forecast_exp003.json",
+    "seed": 11,
+    "sha256": "369d56856827e08fa67862726f5c620ad3a31e90cc210a784b1676845f370081"
+  },
+  "results_test": {
+    "both_groups": {
+      "accuracy": 0.9019607843137255,
+      "accuracy_95ci": [
+        0.7902151004554693,
+        0.957392555046923
+      ],
+      "balanced_accuracy": 0.5,
+      "coverage": 0.9607843137254902,
+      "errors_outside_set": 2,
+      "majority_baseline_accuracy": 0.9019607843137255,
+      "majority_baseline_balanced": 0.5,
+      "n": 51,
+      "n_errors": 5,
+      "positives": 5,
+      "recall_forecast": 0.0,
+      "single_share": 0.6274509803921569,
+      "specificity": 1.0
+    },
+    "exp003_forecast_keyword": {
+      "accuracy": 0.9,
+      "accuracy_95ci": [
+        0.6989617935882066,
+        0.9721341060158468
+      ],
+      "balanced_accuracy": 0.5,
+      "coverage": 1.0,
+      "errors_outside_set": 0,
+      "majority_baseline_accuracy": 0.9,
+      "majority_baseline_balanced": 0.5,
+      "n": 20,
+      "n_errors": 2,
+      "positives": 2,
+      "recall_forecast": 0.0,
+      "single_share": 0.8,
+      "specificity": 1.0
+    },
+    "exp003_forecast_random": {
+      "accuracy": 0.9032258064516129,
+      "accuracy_95ci": [
+        0.7509971000182295,
+        0.966535963905356
+      ],
+      "balanced_accuracy": 0.5,
+      "coverage": 0.9354838709677419,
+      "errors_outside_set": 2,
+      "majority_baseline_accuracy": 0.9032258064516129,
+      "majority_baseline_balanced": 0.5,
+      "n": 31,
+      "n_errors": 3,
+      "positives": 3,
+      "recall_forecast": 0.0,
+      "single_share": 0.5161290322580645,
+      "specificity": 1.0
+    }
+  },
+  "runtime_seconds": 36.2,
+  "sha256": {
+    "src/ari3_exp003b_run.py": "1bc6b89530a5c56d55eb4ad406e9aeee3b26c9606755bb13a8256eb417b1f410",
+    "weights.npz": "10bb2460191fa8979a896d911082cbb6e05b08d1771f2eb559c438b527b48166"
+  },
+  "version": "ari3-v0.0.3"
+}
