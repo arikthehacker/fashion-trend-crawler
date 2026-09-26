@@ -1,247 +1,96 @@
+import Link from "next/link";
 import { pageMetadata } from "../../lib/site";
-import { RELEASES, REPO, type Release } from "../../lib/ari3";
+import { EXPERIMENTS, PROJECT_STATE, RELEASE_NAMES, REPO } from "../../lib/ari3";
+import { Page, Section, Pill, bodyText, mono } from "./ui";
 
 export const metadata = pageMetadata(
   "/ari3",
-  "ARI3 releases",
-  "The public release ledger for ARI3, the model system behind ARI3LLA INDEX. Every version is frozen, hashed and committed before its results are published, with its test results and limits."
+  "ARI3 research notebook",
+  "The research notebook for ARI3, the model system behind ARI3LLA INDEX: every experiment, its question, hypotheses, results and costs, frozen and hashed."
 );
-
-const mono = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
-
-function utc(iso: string) {
-  return iso.replace("T", " ").replace("Z", " UTC");
-}
-
-function StatusPill({ status }: { status: Release["status"] }) {
-  const frozen = status === "frozen";
-  return (
-    <span
-      style={{
-        fontFamily: mono,
-        fontSize: "0.72rem",
-        letterSpacing: "0.08em",
-        textTransform: "uppercase",
-        padding: "0.2rem 0.55rem",
-        border: `1px solid ${frozen ? "var(--black)" : "var(--red)"}`,
-        color: frozen ? "var(--black)" : "var(--red)",
-        whiteSpace: "nowrap",
-      }}
-    >
-      {frozen ? "Frozen" : "Pre-registered · pending"}
-    </span>
-  );
-}
-
-const h3: React.CSSProperties = {
-  fontFamily: "var(--font-franklin)",
-  fontSize: "0.72rem",
-  letterSpacing: "0.1em",
-  textTransform: "uppercase",
-  color: "var(--gray)",
-  margin: "1.75rem 0 0.6rem",
-  fontWeight: 600,
-};
-const body: React.CSSProperties = {
-  fontFamily: "var(--font-franklin)",
-  fontSize: "0.95rem",
-  lineHeight: "1.7",
-  color: "var(--gray)",
-  margin: "0 0 0.8rem",
-};
-const cell: React.CSSProperties = {
-  padding: "0.55rem 0.75rem 0.55rem 0",
-  borderBottom: "1px solid var(--border)",
-  verticalAlign: "top",
-  fontFamily: "var(--font-franklin)",
-  fontSize: "0.88rem",
-  lineHeight: 1.5,
-};
-
-function ReleaseCard({ r }: { r: Release }) {
-  return (
-    <article
-      id={r.version}
-      aria-labelledby={`t-${r.version}`}
-      style={{ borderTop: "2px solid var(--black)", paddingTop: "1.5rem", marginTop: "3.5rem" }}
-    >
-      <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: "0.75rem 1rem" }}>
-        <h2
-          id={`t-${r.version}`}
-          style={{ fontFamily: "var(--font-instrument)", fontSize: "2.4rem", fontWeight: 400, margin: 0 }}
-        >
-          ARI3 {r.version}
-        </h2>
-        <StatusPill status={r.status} />
-      </div>
-      <p style={{ ...body, margin: "0.4rem 0 0", color: "var(--black)" }}>{r.kind}</p>
-
-      <dl
-        style={{
-          display: "grid",
-          gridTemplateColumns: "max-content minmax(0, 1fr)",
-          gap: "0.35rem 1rem",
-          margin: "1.25rem 0 0",
-          fontSize: "0.82rem",
-        }}
-      >
-        <dt style={{ color: "var(--gray)", fontFamily: "var(--font-franklin)" }}>Committed</dt>
-        <dd style={{ margin: 0, fontFamily: mono }}>
-          <time dateTime={r.committedAt}>{utc(r.committedAt)}</time>
-        </dd>
-        <dt style={{ color: "var(--gray)", fontFamily: "var(--font-franklin)" }}>Commit</dt>
-        <dd style={{ margin: 0, fontFamily: mono, overflowWrap: "anywhere" }}>
-          <a href={`${REPO}/commit/${r.commit}`} style={{ color: "var(--black)" }}>
-            {r.commit.slice(0, 7)}
-          </a>
-        </dd>
-        {r.files.map((f) => (
-          <div key={f.path} style={{ display: "contents" }}>
-            <dt style={{ color: "var(--gray)", fontFamily: "var(--font-franklin)" }}>{f.label}</dt>
-            <dd style={{ margin: 0, fontFamily: mono, overflowWrap: "anywhere" }}>
-              <a href={`${REPO}/blob/${r.commit}/${f.path}`} style={{ color: "var(--black)" }}>
-                {f.path}
-              </a>
-              <br />
-              <span style={{ color: "var(--gray)" }}>sha256 {f.sha256}</span>
-            </dd>
-          </div>
-        ))}
-      </dl>
-
-      <div style={{ marginTop: "1.5rem" }}>
-        {r.summary.map((p, i) => (
-          <p key={i} style={body}>{p}</p>
-        ))}
-      </div>
-
-      {r.method && (
-        <>
-          <h3 style={h3}>How it works</h3>
-          <div style={{ overflowX: "auto" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
-              <tbody>
-                {r.method.map((m) => (
-                  <tr key={m.stage}>
-                    <th scope="row" style={{ ...cell, textAlign: "left", fontWeight: 600, whiteSpace: "nowrap" }}>{m.stage}</th>
-                    <td style={cell}>
-                      {m.technique}
-                      {m.source && <div style={{ color: "var(--gray)", fontSize: "0.8rem" }}>{m.source}</div>}
-                    </td>
-                    <td style={{ ...cell, fontFamily: mono, fontSize: "0.8rem" }}>{m.value}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </>
-      )}
-
-      {r.metrics && (
-        <>
-          <h3 style={h3}>Results on 34 held-out items</h3>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 190px), 1fr))", gap: "0.75rem" }}>
-            {r.metrics.map((m) => (
-              <div key={m.name} style={{ border: "1px solid var(--border)", padding: "0.9rem 1rem" }}>
-                <div style={{ fontFamily: "var(--font-franklin)", fontSize: "0.75rem", color: "var(--gray)" }}>{m.name}</div>
-                <div style={{ fontFamily: mono, fontSize: "1.35rem", margin: "0.25rem 0" }}>{m.value}</div>
-                {m.note && <div style={{ fontFamily: "var(--font-franklin)", fontSize: "0.75rem", lineHeight: 1.45, color: "var(--gray)" }}>{m.note}</div>}
-              </div>
-            ))}
-          </div>
-        </>
-      )}
-
-      {r.hypotheses && (
-        <>
-          <h3 style={h3}>Hypotheses, fixed before the experiment</h3>
-          <div style={{ overflowX: "auto" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
-              <thead>
-                <tr>
-                  {["", "Claim", "Supported if", "Result"].map((h) => (
-                    <th key={h} scope="col" style={{ ...cell, textAlign: "left", color: "var(--gray)", fontWeight: 500, fontSize: "0.75rem" }}>{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {r.hypotheses.map((h) => (
-                  <tr key={h.id}>
-                    <th scope="row" style={{ ...cell, fontFamily: mono, textAlign: "left" }}>{h.id}</th>
-                    <td style={cell}>{h.claim}</td>
-                    <td style={{ ...cell, color: "var(--gray)" }}>{h.test}</td>
-                    <td style={{ ...cell, fontFamily: mono, fontSize: "0.78rem", textTransform: "uppercase", whiteSpace: "nowrap" }}>{h.status}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </>
-      )}
-
-      <h3 style={h3}>Limits</h3>
-      <ul style={{ margin: 0, paddingLeft: "1.1rem" }}>
-        {r.limits.map((l, i) => (
-          <li key={i} style={{ ...body, margin: "0 0 0.4rem" }}>{l}</li>
-        ))}
-      </ul>
-    </article>
-  );
-}
 
 export default function Ari3Page() {
   return (
-    <main id="main-content" style={{ flex: 1, background: "var(--white)", display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <header className="page-masthead">
-        <h1 className="page-title">ARI3</h1>
-      </header>
+    <Page title="ARI3">
+      <p style={{ ...bodyText, fontSize: "1.05rem", color: "var(--black)" }}>
+        ARI3 is the model system behind ARI3LLA INDEX, run as a small research program. Each
+        experiment is a permanent notebook entry with its question, hypotheses, method, results,
+        costs and open questions. Every model version is frozen, hashed and committed to the public
+        repository before its results appear here.
+      </p>
+      <p style={bodyText}>
+        ARI3 v0.0.2, the current version, reads a news item&apos;s headline and feed excerpt,
+        judges whether the item is about style, and says when it is not sure. No ARI3 version
+        forecasts, ranks trends or writes reports. The principles behind the program are on
+        the <Link href="/ari3/philosophy" style={{ color: "var(--black)" }}>research philosophy</Link> page.
+      </p>
 
-      <section style={{ width: "100%", maxWidth: "820px", padding: "3.5rem 1rem 5rem" }}>
-        <p style={{ ...body, fontSize: "1.05rem", color: "var(--black)" }}>
-          ARI3 is the model system behind ARI3LLA INDEX. This page is its release ledger. Every
-          version is frozen, hashed and committed to the public repository before its results appear here, and
-          every experiment states its pass criteria before it runs. A frozen version is never
-          retrained, and results are reported whether they hold or fail.
-        </p>
-        <p style={body}>
-          ARI3 v0.0.1, the current frozen version, reads a news item&apos;s headline and feed excerpt,
-          judges whether the item is about style, and says when it is not sure. Items it flags as
-          uncertain are meant for the editor&apos;s review. ARI3 v0.0.2 is planned and not yet
-          trained. No ARI3 version forecasts, ranks trends or writes reports.
-        </p>
-
-        {RELEASES.map((r) => (
-          <ReleaseCard key={r.version} r={r} />
-        ))}
-
-        <div style={{ borderTop: "2px solid var(--black)", paddingTop: "1.5rem", marginTop: "3.5rem" }}>
-          <h2 style={{ fontFamily: "var(--font-instrument)", fontSize: "1.8rem", fontWeight: 400, margin: "0 0 0.75rem" }}>
-            Checking a release
-          </h2>
-          <p style={body}>
-            Each release links to its commit, whose timestamp is recorded by GitHub. To confirm a file
-            is the one committed, download it from the linked commit and compare its SHA-256 hash with
-            the one listed. The manifest entry lists the manifest&apos;s internal <code style={{ fontFamily: mono }}>manifest_sha256</code> field,
-            which the manifest file itself states.
-          </p>
-          <pre
-            style={{
-              fontFamily: mono,
-              fontSize: "0.8rem",
-              background: "var(--black)",
-              color: "var(--white)",
-              padding: "1rem",
-              overflowX: "auto",
-              margin: 0,
-            }}
-          >
-{`git clone ${REPO}.git
-cd fashion-trend-crawler
-git show 79e95bc:models/ari3-v0.0.2/PREREGISTRATION.md | sha256sum
-git show 9c296bd:models/ari3-v0.0.1/weights.npz | sha256sum`}
-          </pre>
+      <Section title="Experiment registry">
+        <p style={bodyText}>Entries are permanent. A correction is added as a dated note, never by editing the result.</p>
+        <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+          {EXPERIMENTS.map((e) => (
+            <Link key={e.id} href={`/ari3/${e.slug}`} style={{ display: "block", border: "1px solid var(--black)", padding: "1.1rem 1.2rem", color: "var(--black)", textDecoration: "none" }}>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem 0.9rem", alignItems: "baseline" }}>
+                <span style={{ fontFamily: mono, fontSize: "0.85rem" }}>{e.id}</span>
+                <span style={{ fontFamily: "var(--font-instrument)", fontSize: "1.8rem", lineHeight: 1.1 }}>
+                  {e.name} <span style={{ fontSize: "1.1rem", color: "var(--gray)" }}>{e.version}</span>
+                </span>
+                <Pill>{e.status}</Pill>
+                {e.hypotheses && <Pill tone="gray">Pre-registered</Pill>}
+              </div>
+              <div style={{ fontFamily: "var(--font-franklin)", fontStyle: "italic", color: "var(--gray)", margin: "0.3rem 0 0.5rem" }}>{e.motto}</div>
+              <div style={{ fontFamily: "var(--font-franklin)", fontSize: "0.95rem", lineHeight: 1.5 }}>{e.headline}</div>
+              <div style={{ fontFamily: "var(--font-franklin)", fontSize: "0.8rem", color: "var(--gray)", marginTop: "0.6rem", textDecoration: "underline" }}>Read the notebook entry</div>
+            </Link>
+          ))}
         </div>
-      </section>
-    </main>
+      </Section>
+
+      <Section title="State of the project">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 240px), 1fr))", gap: "1rem" }}>
+          {PROJECT_STATE.map((g) => (
+            <div key={g.status} style={{ border: "1px solid var(--border)", padding: "0.9rem 1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-franklin)", fontSize: "0.8rem", letterSpacing: "0.08em", textTransform: "uppercase", margin: "0 0 0.6rem" }}>
+                <span aria-hidden="true">{g.mark} </span>{g.status}
+              </h3>
+              {g.items.map((it) => (
+                <div key={it.area} style={{ margin: "0 0 0.6rem" }}>
+                  <div style={{ fontFamily: "var(--font-franklin)", fontSize: "0.9rem", fontWeight: 600 }}>{it.area}</div>
+                  <div style={{ fontFamily: "var(--font-franklin)", fontSize: "0.82rem", lineHeight: 1.5, color: "var(--gray)" }}>{it.detail}</div>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Release names">
+        <p style={bodyText}>Released versions link to their notebook entries. Planned names mark intent. None has a date.</p>
+        <ol style={{ listStyle: "none", margin: 0, padding: 0 }}>
+          {RELEASE_NAMES.map((r) => (
+            <li key={r.version} style={{ display: "grid", gridTemplateColumns: "4rem minmax(0, 1fr) auto", gap: "0.8rem", alignItems: "baseline", padding: "0.6rem 0", borderBottom: "1px solid var(--border)" }}>
+              <span style={{ fontFamily: mono, fontSize: "0.8rem", color: "var(--gray)" }}>{r.version}</span>
+              <span>
+                {r.exp ? (
+                  <Link href={`/ari3/${r.exp}`} style={{ fontFamily: "var(--font-instrument)", fontSize: "1.35rem", color: "var(--black)" }}>{r.name}</Link>
+                ) : (
+                  <span style={{ fontFamily: "var(--font-instrument)", fontSize: "1.35rem", color: "var(--gray)" }}>{r.name}</span>
+                )}
+                <span style={{ fontFamily: "var(--font-franklin)", fontSize: "0.85rem", color: "var(--gray)" }}> · {r.motto}</span>
+              </span>
+              <Pill tone={r.status === "Released" ? "ink" : "gray"}>{r.status}</Pill>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      <Section title="Checking a release">
+        <p style={bodyText}>
+          Every entry lists its commit, whose time GitHub records, and the SHA-256 hash of each file. A file
+          downloaded from the linked commit should produce the listed hash. The source is
+          at <a href={REPO} style={{ color: "var(--black)" }}>github.com/arikthehacker/fashion-trend-crawler</a>.
+        </p>
+      </Section>
+    </Page>
   );
 }
