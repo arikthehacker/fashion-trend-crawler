@@ -37,6 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/ari3",
     "/ari3/philosophy",
     "/ari3/models",
+    "/ari3/evaluation",
     "/ari3/data",
     "/ari3/decisions",
     "/ari3/timeline",

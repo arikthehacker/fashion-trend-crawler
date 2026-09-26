@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { pageMetadata } from "../../lib/site";
 import { EXPERIMENTS, PROJECT_STATE, RELEASE_NAMES, REPO } from "../../lib/ari3";
-import { Page, Section, Pill, bodyText, mono } from "./ui";
+import { Page, Section, Pill, StatusMark, bodyText, mono } from "./ui";
 
 export const metadata = pageMetadata(
   "/ari3",
@@ -26,7 +26,7 @@ export default function Ari3Page() {
       </p>
 
       <nav aria-label="Notebook sections" style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem", margin: "1.4rem 0 0" }}>
-        {[["/ari3/models", "Model cards"], ["/ari3/data", "Dataset cards"], ["/ari3/decisions", "Decision log"], ["/ari3/timeline", "Timeline"], ["/ari3/philosophy", "Philosophy"]].map(([href, text]) => (
+        {[["/ari3/evaluation", "Evaluation charts"], ["/ari3/models", "Model cards"], ["/ari3/data", "Dataset cards"], ["/ari3/decisions", "Decision log"], ["/ari3/timeline", "Timeline"], ["/ari3/philosophy", "Philosophy"]].map(([href, text]) => (
           <Link key={href} href={href} style={{ fontFamily: "var(--font-franklin)", fontSize: "0.9rem", color: "var(--black)", border: "1px solid var(--black)", padding: "0.5rem 0.85rem", textDecoration: "none" }}>
             {text}
           </Link>
@@ -59,7 +59,7 @@ export default function Ari3Page() {
           {PROJECT_STATE.map((g) => (
             <div key={g.status} style={{ border: "1px solid var(--border)", padding: "0.9rem 1rem" }}>
               <h3 style={{ fontFamily: "var(--font-franklin)", fontSize: "0.8rem", letterSpacing: "0.08em", textTransform: "uppercase", margin: "0 0 0.6rem" }}>
-                <span aria-hidden="true">{g.mark} </span>{g.status}
+                <StatusMark kind={g.mark} />{g.status}
               </h3>
               {g.items.map((it) => (
                 <div key={it.area} style={{ margin: "0 0 0.6rem" }}>

@@ -288,9 +288,9 @@ export const RELEASE_NAMES = [
 ];
 
 export type StateItem = { area: string; detail: string };
-export const PROJECT_STATE: { status: string; mark: string; items: StateItem[] }[] = [
+export const PROJECT_STATE: { status: string; mark: "full" | "half" | "dashed" | "empty"; items: StateItem[] }[] = [
   {
-    status: "Completed", mark: "🟢", items: [
+    status: "Completed", mark: "full", items: [
       { area: "Dated collection", detail: "97 feeds read every 4 hours into a local database, respecting robots.txt" },
       { area: "Evidence gate", detail: "No report is published without a dated article link for every claim" },
       { area: "Perception v0.0.1 and v0.0.2", detail: "Frozen, hashed and public" },
@@ -298,20 +298,20 @@ export const PROJECT_STATE: { status: string; mark: string; items: StateItem[] }
     ],
   },
   {
-    status: "In progress", mark: "🟡", items: [
+    status: "In progress", mark: "half", items: [
       { area: "Lexicon v1", detail: "73 style terms chosen by the editor, 12 with usage notes. Not yet loaded" },
       { area: "Forecast ledger", detail: "Database tables built. No forecast has been made" },
     ],
   },
   {
-    status: "Research", mark: "🔵", items: [
+    status: "Research", mark: "dashed", items: [
       { area: "Term extraction", detail: "Counting lexicon terms across stored articles, with sense checks for ambiguous words" },
       { area: "Style R₀", detail: "A Hawkes process model of how terms spread between sectors. Designed, not built" },
       { area: "Latent salience", detail: "A Kalman filter estimate of attention beneath each source's noise. Designed, not built" },
     ],
   },
   {
-    status: "Not started", mark: "⚪", items: [
+    status: "Not started", mark: "empty", items: [
       { area: "Flow between sectors", detail: "Optimal transport" },
       { area: "Event lift", detail: "Synthetic control" },
       { area: "Adaptive collection", detail: "A reinforcement learning crawler" },

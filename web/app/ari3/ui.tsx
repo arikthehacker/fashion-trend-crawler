@@ -125,3 +125,15 @@ export function Code({ children }: { children: string }) {
     </pre>
   );
 }
+
+// Status marker for the project state board, drawn in the site's ink.
+export function StatusMark({ kind }: { kind: "full" | "half" | "dashed" | "empty" }) {
+  const base = { display: "inline-block", width: "0.7rem", height: "0.7rem", marginRight: "0.5rem", verticalAlign: "-0.05rem", boxSizing: "border-box" as const };
+  const styles = {
+    full: { background: "var(--black)", border: "1.5px solid var(--black)" },
+    half: { background: "linear-gradient(90deg, var(--black) 50%, transparent 50%)", border: "1.5px solid var(--black)" },
+    dashed: { border: "1.5px dashed var(--black)" },
+    empty: { border: "1.5px solid var(--gray)" },
+  };
+  return <span aria-hidden="true" style={{ ...base, ...styles[kind] }} />;
+}
