@@ -30,9 +30,9 @@ TASKS = {
     "is_style_signal": {
         "question": "Is this item about style (what people wear, how, and what it is called)?",
         "help": ("Yes: garments, silhouettes, materials, colors, styling, aesthetic terms, "
-                 "collections, collaborations described as clothing. "
-                 "No: earnings, deals, executive moves, store openings, celebrity news "
-                 "with no clothing content. Unsure: skip."),
+                 "collections, collaborations described as clothing, nails. "
+                 "No: beauty (makeup, skincare, fragrance, hair, packaging), earnings, deals, "
+                 "executive moves, store openings, celebrity news with no clothing content. Unsure: skip."),
         "choices": [{"key": "y", "label": "Yes", "value": "yes"},
                     {"key": "n", "label": "No", "value": "no"}],
     },
