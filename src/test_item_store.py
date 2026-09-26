@@ -28,7 +28,7 @@ class ItemStoreTests(unittest.TestCase):
 
     def test_migrate_is_idempotent(self):
         self.assertEqual(store.migrate(self.con), [])
-        self.assertEqual(store.applied_versions(self.con), {1, 2})
+        self.assertEqual(store.applied_versions(self.con), {1, 2, 3})
 
     def test_same_item_twice_is_one_row(self):
         first = self.add()
