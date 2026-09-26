@@ -38,7 +38,8 @@ TASKS = {
     },
     "is_forecast": {
         "question": "Does this item predict what will happen, instead of reporting what happened?",
-        "help": "Yes: 'will be big', 'trends for 2027', 'predictions'. No: reports, reviews, releases.",
+        "help": ("Yes: forecasts, trend predictions, 'will be', 'for 2027'. "
+                 "No: reports, reviews, releases, announcements of things that exist. Unsure: skip."),
         "choices": [{"key": "y", "label": "Predicts", "value": "yes"},
                     {"key": "n", "label": "Reports", "value": "no"}],
     },
@@ -77,6 +78,66 @@ def make_queue(con, task: str, n: int, seed: int = 7) -> str:
     path = queue_path(task)
     with open(path, "w", encoding="utf-8") as f:
         json.dump({"task": task, **spec, "item_ids": picked}, f, indent=1)
+    return path
+
+
+FORECAST_WORDS = ("will", "trend", "predict", "forecast", "next season", "2027")
+
+
+def _stratified(con, candidates, n, rng):
+    """Pick n item_ids in turn from each coarse sector."""
+    sectors = dict(con.execute(
+        """SELECT i.item_id, COALESCE(h.sector_id, 'unclear') FROM items i
+           LEFT JOIN outlet_sector_history h ON h.outlet_id = i.outlet_id AND h.valid_to IS NULL"""))
+    by = {}
+    for i in candidates:
+        by.setdefault(sectors.get(i, "unclear"), []).append(i)
+    for ids in by.values():
+        rng.shuffle(ids)
+    picked, pools = [], list(by.values())
+    while len(picked) < n and any(pools):
+        for pool in pools:
+            if pool and len(picked) < n:
+                picked.append(pool.pop())
+    rng.shuffle(picked)
+    return picked
+
+
+def make_forecast_queue(con, n_random=150, n_keyword=100, seed=11):
+    """EXP-003 part B: random items plus items containing a forecast word."""
+    labeled = {r[0] for r in con.execute("SELECT item_id FROM labels WHERE task='is_forecast'")}
+    rows = con.execute("SELECT item_id, lower(coalesce(title,'') || ' ' || coalesce(text_excerpt,'')) "
+                       "FROM items WHERE text_excerpt IS NOT NULL AND syndicated_of IS NULL").fetchall()
+    rng = random.Random(seed)
+    keyword = [i for i, t in rows if i not in labeled and any(w in t for w in FORECAST_WORDS)]
+    rand = _stratified(con, [i for i, _ in rows if i not in labeled], n_random, rng)
+    kw = [i for i in _stratified(con, keyword, n_keyword + n_random, rng) if i not in rand][:n_keyword]
+    ids = rand + kw
+    rng.shuffle(ids)
+    notes = {str(i): "exp003_forecast_random" for i in rand}
+    notes.update({str(i): "exp003_forecast_keyword" for i in kw})
+    q = {"task": "is_forecast", **TASKS["is_forecast"], "item_ids": ids, "item_notes": notes,
+         "title": "Prediction or report (EXP-003)"}
+    return _write_queue("is_forecast_exp003", q)
+
+
+def make_holdout_queue(con, since, n=150, seed=13):
+    """EXP-003 part A: items fetched after a model was frozen, labeled as a time holdout."""
+    labeled = {r[0] for r in con.execute("SELECT item_id FROM labels WHERE task='is_style_signal'")}
+    cand = [r[0] for r in con.execute(
+        "SELECT item_id FROM items WHERE fetched_at > ? AND text_excerpt IS NOT NULL AND syndicated_of IS NULL",
+        (since,)) if r[0] not in labeled]
+    ids = _stratified(con, cand, n, random.Random(seed))
+    q = {"task": "is_style_signal", **TASKS["is_style_signal"], "item_ids": ids, "split": "time_holdout",
+         "note": "exp003_time_holdout", "title": "New items since v0.0.2 (EXP-003)", "fetched_after": since}
+    return _write_queue("is_style_signal_holdout_exp003", q)
+
+
+def _write_queue(name, q):
+    os.makedirs(QUEUE_DIR, exist_ok=True)
+    path = queue_path(name)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(q, f, indent=1)
     return path
 
 
@@ -185,12 +246,19 @@ def main(argv=None) -> int:
     mq = sub.add_parser("make-queue")
     mq.add_argument("task", choices=sorted(TASKS))
     mq.add_argument("--n", type=int, default=300)
+    sub.add_parser("make-forecast-queue")
+    hq = sub.add_parser("make-holdout-queue")
+    hq.add_argument("--since", required=True, help="UTC time the model was frozen")
     lb = sub.add_parser("label")
     lb.add_argument("queue")
     lb.add_argument("--labeler", default="ariella")
     args = ap.parse_args(argv)
 
     con = connect(args.db)
+    if args.cmd in ("make-forecast-queue", "make-holdout-queue"):
+        path = make_forecast_queue(con) if args.cmd == "make-forecast-queue" else make_holdout_queue(con, args.since)
+        print(f"Wrote {len(json.load(open(path, encoding='utf-8'))['item_ids'])} items to {path}")
+        return 0
     if args.cmd == "make-queue":
         path = make_queue(con, args.task, args.n)
         n = len(json.load(open(path, encoding="utf-8"))["item_ids"])

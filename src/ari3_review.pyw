@@ -88,12 +88,24 @@ def examples(con, variants, limit=3):
     return rows
 
 
-def labels_left(con, name="is_style_signal"):
+QUEUE_TITLES = {"is_style_signal": "Style labels", AL_QUEUE: "Hard cases (active learning)"}
+
+
+def load_queue(name):
     with open(label_tool.queue_path(name), encoding="utf-8") as fh:
-        q = json.load(fh)
+        return json.load(fh)
+
+
+def labels_left(con, name="is_style_signal"):
+    q = load_queue(name)
     done = {r[0] for r in con.execute(
-        "SELECT item_id FROM labels WHERE task='is_style_signal' AND source='human'")}
+        "SELECT item_id FROM labels WHERE task=? AND source='human'", (q["task"],))}
     return sum(1 for i in q["item_ids"] if i not in done), len(q["item_ids"])
+
+
+def all_queues():
+    names = sorted(f[:-5] for f in os.listdir(label_tool.QUEUE_DIR) if f.endswith(".json"))
+    return [(n, load_queue(n).get("title") or QUEUE_TITLES.get(n, n)) for n in names]
 
 
 class App:
@@ -156,30 +168,28 @@ class App:
     def menu(self):
         f = self.clear()
         self.label(f, "ARI3 review", 24, True, pady=(0, 20))
-        left, total = labels_left(self.con)
         terms = parse_draft()
         review = load_review()
         t_left = sum(1 for t in terms if t["term"] not in review["decisions"])
-        decks = [(f"Style labels\n{left} of {total} left", self.labels)]
-        if os.path.exists(label_tool.queue_path(AL_QUEUE)):
-            al_left, al_total = labels_left(self.con, AL_QUEUE)
-            decks.append((f"Hard cases (active learning)\n{al_left} of {al_total} left",
-                          lambda: self.labels(AL_QUEUE)))
+        decks = []
+        for name, title in all_queues():
+            q_left, q_total = labels_left(self.con, name)
+            decks.append((f"{title}\n{q_left} of {q_total} left", lambda n=name: self.labels(n)))
         decks.append((f"Lexicon\n{t_left} of {len(terms)} terms left", self.lexicon))
         for text, cmd in decks:
             tk.Button(f, text=text, command=cmd, font=(self.base, 20, "bold"), bg="#ffffff", fg=FG,
                       activebackground="#ffffff", relief="solid", bd=1, pady=26,
-                      cursor="hand2").pack(fill="x", pady=8)
+                      cursor="hand2").pack(fill="x", pady=6)
         self.label(f, "Keyboard: press the number of a deck (1, 2, 3).", 11, color=DIM, pady=(14, 0))
         keys = {str(i + 1): cmd for i, (_, cmd) in enumerate(decks)}
         self.root.bind("<Key>", lambda e: keys.get(e.char, lambda: None)())
 
     # Style labels deck --------------------------------------------------
     def labels(self, name="is_style_signal"):
-        with open(label_tool.queue_path(name), encoding="utf-8") as fh:
-            self.q = json.load(fh)
+        self.q = load_queue(name)
+        self.task = self.q["task"]
         done = {r[0] for r in self.con.execute(
-            "SELECT item_id FROM labels WHERE task='is_style_signal' AND source='human'")}
+            "SELECT item_id FROM labels WHERE task=? AND source='human'", (self.task,))}
         self.l_todo = [i for i in self.q["item_ids"] if i not in done]
         self.l_done0 = len(self.q["item_ids"]) - len(self.l_todo)
         self.l_hist, self.l_pos = [], 0
@@ -227,8 +237,8 @@ class App:
                VALUES (?,?,?,'human','ariella',?,?,?)
                ON CONFLICT (item_id, task, source, labeler)
                DO UPDATE SET label=excluded.label, created_at=excluded.created_at, note=excluded.note""",
-            (item, "is_style_signal", value, assign_split(item, "is_style_signal"), utc_now(),
-             self.q.get("note")))
+            (item, self.task, value, self.q.get("split") or assign_split(item, self.task), utc_now(),
+             self.q.get("item_notes", {}).get(str(item), self.q.get("note"))))
         self.con.commit()
         self.l_hist.append(item)
         self.l_pos += 1
@@ -243,8 +253,8 @@ class App:
         if not self.l_hist:
             return
         last = self.l_hist.pop()
-        self.con.execute("DELETE FROM labels WHERE item_id=? AND task='is_style_signal' "
-                         "AND source='human' AND labeler='ariella'", (last,))
+        self.con.execute("DELETE FROM labels WHERE item_id=? AND task=? "
+                         "AND source='human' AND labeler='ariella'", (last, self.task))
         self.con.commit()
         self.l_pos = self.l_todo.index(last)
         self.lab_show()
