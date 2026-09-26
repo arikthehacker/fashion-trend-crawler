@@ -50,7 +50,7 @@ export const EXPERIMENTS: Experiment[] = [
     status: "Frozen",
     headline: "35 hard cases raised confident predictions from 66% to 82% at equal training size.",
     summary: [
-      "ARI3 v0.0.2 kept every design choice of v0.0.1 and changed only the training data: 155 more random labels and 50 hard cases chosen by active learning.",
+      "ARI3 v0.0.2 kept every design choice of v0.0.1 and changed only the training data, adding 155 random labels and 50 hard cases chosen by active learning.",
       "The plan and its five pass criteria were committed publicly before any v0.0.2 label existed, so the result could not be tuned after the fact.",
       "All five hypotheses were supported. The clear gains were in confident answers and calibration, accuracy moved within noise, and the model made 2 confident mistakes where v0.0.1 made none.",
     ],
@@ -116,7 +116,7 @@ export const EXPERIMENTS: Experiment[] = [
       "Time. 276 of the 350 labeled items were published in September 2026, so the model is barely tested on older or newer language.",
       "Class balance. 55% of random labels are yes.",
       "The test set excludes hard cases, so it does not measure performance on the hardest items.",
-      "Two analysis choices were not in the pre-registration: hard cases were also kept out of calibration, and H5 was run at equal size by swapping labels. Both are listed in the manifest.",
+      "Two analysis choices were not in the pre-registration. Hard cases were also kept out of calibration, and H5 was run at equal size by swapping labels. Both are listed in the manifest.",
     ],
     compare: { a: "v0.0.1", b: "v0.0.2", n: 61 },
     metrics: [
@@ -157,7 +157,7 @@ export const EXPERIMENTS: Experiment[] = [
     lessons: [
       "Expected: hard cases would mainly raise accuracy. Observed: they mainly raised confidence.",
       "Decisiveness has a price, and it has to be reported beside the gain.",
-      "Pre-registration made the weak results visible instead of optional.",
+      "Pre-registration required the weak results to be published.",
     ],
     openQuestions: [
       "How do accuracy and confident answers change as labels grow (a learning curve)?",
@@ -185,7 +185,7 @@ python src/ari3_v002_run.py`,
     status: "Frozen",
     headline: "The first ARI3 model made no confident mistakes on its 34 held-out items.",
     summary: [
-      "ARI3 v0.0.1 is the first model trained on the editor's own judgments: 145 labels on whether a news item is about style.",
+      "ARI3 v0.0.1 is the first model trained on the editor's own judgments, 145 labels saying whether a news item is about style.",
       "It pairs a small classifier with calibrated probabilities and conformal prediction, so it can say when it is not sure.",
       "It reached 0.882 held-out accuracy against a 0.529 baseline, and all 4 of its mistakes came with a not-sure answer.",
     ],
@@ -262,7 +262,7 @@ python src/ari3_v002_run.py`,
     ],
     lessons: [
       "Expected: feed counts could stand in for style activity. Observed: style share varies nearly fourfold by sector.",
-      "A model that can abstain is more useful to an editor than one that always answers.",
+      "On the test set, the not-sure answer flagged every one of the model's mistakes for the editor.",
     ],
     openQuestions: [
       "Where does the model's boundary sit, and which items sit on it?",

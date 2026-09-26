@@ -25,6 +25,14 @@ export default function Ari3Page() {
         the <Link href="/ari3/philosophy" style={{ color: "var(--black)" }}>research philosophy</Link> page.
       </p>
 
+      <nav aria-label="Notebook sections" style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem", margin: "1.4rem 0 0" }}>
+        {[["/ari3/models", "Model cards"], ["/ari3/data", "Dataset cards"], ["/ari3/decisions", "Decision log"], ["/ari3/timeline", "Timeline"], ["/ari3/philosophy", "Philosophy"]].map(([href, text]) => (
+          <Link key={href} href={href} style={{ fontFamily: "var(--font-franklin)", fontSize: "0.9rem", color: "var(--black)", border: "1px solid var(--black)", padding: "0.5rem 0.85rem", textDecoration: "none" }}>
+            {text}
+          </Link>
+        ))}
+      </nav>
+
       <Section title="Experiment registry">
         <p style={bodyText}>Entries are permanent. A correction is added as a dated note, never by editing the result.</p>
         <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>

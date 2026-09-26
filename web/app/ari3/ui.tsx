@@ -105,12 +105,14 @@ export function Bars({ metrics, a, b }: { metrics: Metric[]; a?: string; b: stri
   );
 }
 
-export function Callout({ title, children }: { title: string; children: ReactNode }) {
+export function Callout({ title, children }: { title?: string; children: ReactNode }) {
   return (
     <aside style={{ border: "2px solid var(--black)", padding: "1rem 1.2rem", margin: "1rem 0" }}>
-      <div style={{ fontFamily: "var(--font-franklin)", fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600, marginBottom: "0.5rem" }}>
-        {title}
-      </div>
+      {title && (
+        <div style={{ fontFamily: "var(--font-franklin)", fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600, marginBottom: "0.5rem" }}>
+          {title}
+        </div>
+      )}
       {children}
     </aside>
   );

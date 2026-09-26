@@ -36,7 +36,7 @@ export default async function ExperimentPage({ params }: { params: Promise<{ slu
       </div>
       <p style={{ fontFamily: "var(--font-franklin)", fontStyle: "italic", color: "var(--gray)", margin: "0.4rem 0 1.2rem" }}>{e.motto}</p>
 
-      <Callout title="Headline">
+      <Callout>
         <p style={{ fontFamily: "var(--font-instrument)", fontSize: "1.5rem", lineHeight: 1.3, margin: 0 }}>{e.headline}</p>
       </Callout>
 
@@ -136,7 +136,7 @@ export default async function ExperimentPage({ params }: { params: Promise<{ slu
 
       <Section title="Surprising findings">
         {e.surprises.map((s, i) => (
-          <Callout key={i} title={`Finding ${i + 1}`}>
+          <Callout key={i}>
             <p style={{ ...bodyText, color: "var(--black)", margin: 0 }}>{s}</p>
           </Callout>
         ))}
