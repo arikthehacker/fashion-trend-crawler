@@ -30,8 +30,8 @@ export default async function ExperimentPage({ params }: { params: Promise<{ slu
       </p>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem 1rem", alignItems: "baseline", marginTop: "1rem" }}>
         <h2 style={{ fontFamily: "var(--font-instrument)", fontSize: "3rem", fontWeight: 400, margin: 0, lineHeight: 1 }}>{e.name}</h2>
-        <Pill>{e.status}</Pill>
-        {e.hypotheses && <Pill tone="gray">Pre-registered</Pill>}
+        <Pill tone={e.status === "Frozen" ? "ink" : "red"}>{e.status}</Pill>
+        {e.hypotheses && e.status === "Frozen" && <Pill tone="gray">Pre-registered</Pill>}
       </div>
       <p style={{ fontFamily: "var(--font-franklin)", fontStyle: "italic", color: "var(--gray)", margin: "0.4rem 0 1.2rem" }}>{e.motto}</p>
 

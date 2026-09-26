@@ -35,8 +35,8 @@ export default function Ari3Page() {
                 <span style={{ fontFamily: "var(--font-instrument)", fontSize: "1.8rem", lineHeight: 1.1 }}>
                   {e.name} <span style={{ fontSize: "1.1rem", color: "var(--gray)" }}>{e.version}</span>
                 </span>
-                <Pill>{e.status}</Pill>
-                {e.hypotheses && <Pill tone="gray">Pre-registered</Pill>}
+                <Pill tone={e.status === "Frozen" ? "ink" : "red"}>{e.status}</Pill>
+                {e.hypotheses && e.status === "Frozen" && <Pill tone="gray">Pre-registered</Pill>}
               </div>
               <div style={{ fontFamily: "var(--font-franklin)", fontStyle: "italic", color: "var(--gray)", margin: "0.3rem 0 0.5rem" }}>{e.motto}</div>
               <div style={{ fontFamily: "var(--font-franklin)", fontSize: "0.95rem", lineHeight: 1.5 }}>{e.headline}</div>
@@ -65,7 +65,7 @@ export default function Ari3Page() {
       </Section>
 
       <Section title="Release names">
-        <p style={bodyText}>Released versions link to their notebook entries. Planned names mark intent. None has a date.</p>
+        <p style={bodyText}>Released and in-progress versions link to their notebook entries. Planned names mark intent. None has a date.</p>
         <ol style={{ listStyle: "none", margin: 0, padding: 0 }}>
           {RELEASE_NAMES.map((r) => (
             <li key={r.version} style={{ display: "grid", gridTemplateColumns: "4rem minmax(0, 1fr) auto", gap: "0.8rem", alignItems: "baseline", padding: "0.6rem 0", borderBottom: "1px solid var(--border)" }}>
@@ -78,7 +78,7 @@ export default function Ari3Page() {
                 )}
                 <span style={{ fontFamily: "var(--font-franklin)", fontSize: "0.85rem", color: "var(--gray)" }}> · {r.motto}</span>
               </span>
-              <Pill tone={r.status === "Released" ? "ink" : "gray"}>{r.status}</Pill>
+              <Pill tone={r.status === "Released" ? "ink" : r.status === "In progress" ? "red" : "gray"}>{r.status}</Pill>
             </li>
           ))}
         </ol>

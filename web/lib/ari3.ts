@@ -14,7 +14,7 @@ export type Experiment = {
   version: string;
   name: string;
   motto: string;
-  status: "Frozen" | "Pre-registered";
+  status: string;
   headline: string;
   summary: string[];
   meta: { label: string; value: string; href?: string; mono?: boolean }[];
@@ -41,6 +41,119 @@ export type Experiment = {
 const ENV_001 = "Python 3.13.2, numpy 2.5.0, scikit-learn 1.9.1, sentence-transformers 6.1.0";
 
 export const EXPERIMENTS: Experiment[] = [
+  {
+    id: "EXP-003",
+    slug: "exp-003",
+    version: "v0.0.3",
+    name: "INTEGRITAS",
+    motto: "The evidence can be trusted.",
+    status: "Pre-registered · partially run · EXP-003A pending",
+    headline: "EXP-003B ran once and failed its pre-registered test: the forecast detector never flagged a forecast. EXP-003A is pending.",
+    summary: [
+      "EXP-003 asks whether the evidence ARI3 produces can be trusted, in two parts. EXP-003A will test frozen v0.0.2 on articles collected after it was frozen. EXP-003B trained a new perception head to tell a prediction from a report.",
+      "EXP-003B ran once, as pre-registered. H4 failed: the new head answered \"not a prediction\" for every test item, so its balanced accuracy was 0.50, the same as always answering no. H5 held: coverage was 0.961.",
+      "The failed head is frozen and hashed, and it is not used. Forecast articles stay in the mention counts. EXP-003A runs once enough items collected after 2026-09-26 19:25 UTC exist. v0.0.3 is not complete.",
+    ],
+    meta: [
+      { label: "Experiment", value: "EXP-003 (EXP-003A Temporal Generalization, EXP-003B Forecast Detection)" },
+      { label: "Pre-registration", value: "2ff1c53, 2026-09-26 22:30 UTC", href: `${REPO}/blob/2ff1c53/models/ari3-v0.0.3/PREREGISTRATION.md`, mono: true },
+      { label: "Pre-registration hash", value: "sha256 fa65367d3166cba52903229bfd849ce34022b536e93ae6c62341325e7911aff1", mono: true },
+      { label: "EXP-003B run", value: "2026-09-26, once" },
+      { label: "EXP-003B record", value: "bbbaaf0", href: `${REPO}/commit/bbbaaf0768515d4b37e447813036117950086adb`, mono: true },
+      { label: "EXP-003B dataset", value: "250 is_forecast labels by the editor (35 forecasts), made after the pre-registration" },
+      { label: "Dataset fingerprint", value: "sha256 ff36351a44866144506dddf9cf58fdf299dd61100ed49238c534f2d75633ec70", mono: true },
+      { label: "is_forecast head", value: "Frozen and hashed, not used. manifest_sha256 c39b1f601e7d2fa137a48532ceddea38bb7230cc2b7e0976e4ffcb60b93a6d77", mono: true },
+      { label: "Environment", value: "Recorded in the head's manifest, with a runtime of 36 s" },
+      { label: "Random seeds", value: "EXP-003B queue: 11. EXP-003A queue: 13 (not yet built). Model fitting is deterministic." },
+      { label: "EXP-003A", value: "Pending. Needs 150 labels on items fetched after 2026-09-26 19:25:40 UTC, collected over at least 3 days" },
+    ],
+    question: "Can the evidence ARI3 produces be trusted: do its judgments hold on articles it could not have seen (EXP-003A), and can it separate predictions from reports (EXP-003B)?",
+    preregistered: "Yes. Both parts, their five hypotheses, a reason for each threshold and a failure interpretation for each were committed before any EXP-003 label existed.",
+    hypotheses: [
+      { id: "H1", claim: "003A: coverage holds on new items", test: "Coverage on the time holdout ≥ 0.90", result: "Not yet run", verdict: "Pending" },
+      { id: "H2", claim: "003A: accuracy holds on new items", test: "Accuracy on the time holdout ≥ 0.85", result: "Not yet run", verdict: "Pending" },
+      { id: "H3", claim: "003A: not-sure rate matches the test set", test: "Not-sure share on the time holdout ≤ 0.35", result: "Not yet run", verdict: "Pending" },
+      { id: "H4", claim: "003B: the model learns the task", test: "Balanced accuracy ≥ 0.75 and above the majority baseline", result: "0.50, equal to the baseline", verdict: "Not supported" },
+      { id: "H5", claim: "003B: coverage holds for the new task", test: "Coverage ≥ 0.90", result: "0.961", verdict: "Supported" },
+    ],
+    why: [
+      "Every earlier test used articles collected before the model was trained. In use, the model meets articles that did not exist when it was frozen, so only post-freeze data shows how it will behave. v0.0.2 answered not-sure for 25% of its test set but 42% of the whole corpus, a first sign that this matters.",
+      "An article saying a look \"will be big next season\" is a prediction. Counted as a mention, it feeds the press's forecasts back into the evidence that later trend models will read. A forecast detector has to exist before those models run.",
+    ],
+    method: [
+      "250 is_forecast labels: 150 random, 100 containing a forecast word",
+      "Split fixed by a hash of each item: 161 train, 38 calibration, 51 test",
+      "Multilingual sentence embeddings, frozen (shared with the style task)",
+      "New logistic regression head",
+      "Temperature scaling on the calibration split",
+      "Split conformal threshold at α = 0.10",
+      "Scored on 51 test items, both groups together and separately",
+    ],
+    held: [
+      "The shared perception architecture: embedder, classifier type, calibration, conformal step",
+      "Frozen v0.0.2 for EXP-003A, not refit",
+      "Thresholds, datasets, splits, seeds and labeling rules, as committed",
+    ],
+    changed: [
+      "A second perception task, is_forecast, with its own labels and head",
+    ],
+    threats: [
+      "5 forecasts in the EXP-003B test set, so every forecast metric is highly uncertain.",
+      "One editor labels every item, with no second labeler.",
+      "The 100 forecast-word items are not a random sample.",
+      "About 87% of stored items come from editorial outlets.",
+      "Most labeled items are tagged English.",
+    ],
+    compare: { a: "Always no", b: "is_forecast", n: 51 },
+    metrics: [
+      { name: "Balanced accuracy", a: 0.5, b: 0.5, format: "pct", note: "Pre-registered pass mark 0.75. Not supported" },
+      { name: "Forecasts caught (recall)", a: 0, b: 0, format: "pct", note: "0 of 5 test forecasts" },
+      { name: "Plain accuracy", a: 0.902, b: 0.902, format: "pct", note: "Identical to always answering no" },
+      { name: "Coverage (target ≥ 0.90)", b: 0.961, format: "pct" },
+    ],
+    benefits: [
+      "Coverage held at 0.961, so the head's not-sure answers were honest about its uncertainty",
+      "The balanced-accuracy test, chosen in advance, exposed a failure that 90% plain accuracy would have hidden",
+    ],
+    costs: [
+      "No forecast was detected, so forecast articles remain in the mention counts",
+      "v0.0.3 cannot complete until EXP-003A runs",
+    ],
+    surprises: [
+      "No item scored above 0.41, so the head never reached the 0.50 point needed to answer yes. Forecasts were 11% of its training items, and temperature scaling (T = 1.84) flattened its probabilities further. Exploratory check, not pre-registered.",
+      "The head ranked forecasts almost perfectly on its training items (AUC 0.985) and weakly on test items (0.674 from 5 forecasts). It fit its 18 training forecasts more than it learned the idea. Exploratory check, not pre-registered.",
+    ],
+    engineering: [
+      "Review app runs any labeling queue, each with its own task, split and group tag",
+      "Queue builders for the forecast sample and the time holdout (src/label_tool.py)",
+      "One-shot EXP-003B runner that refuses to run twice (src/ari3_exp003b_run.py)",
+      "Manifests now record the environment, runtime and labeling queue fingerprint",
+    ],
+    log: [
+      { step: "Observation", text: "Press predictions were being counted as mentions of the looks they predicted." },
+      { step: "Idea", text: "Add a second perception task that tells a prediction from a report." },
+      { step: "Experiment", text: "EXP-003B, pre-registered, 250 labels, run once." },
+      { step: "Result", text: "H4 failed: the head never answered yes. H5 held. Forecasts stay in the counts." },
+      { step: "New question", text: "Would a head built for rare classes, with its decision point chosen in advance, find forecasts? That would be a new pre-registered experiment." },
+    ],
+    lessons: [
+      "Expected: the style task's design would transfer to forecasts. Observed: with forecasts at 11% of labels, it never predicted one.",
+      "Plain accuracy looked like 90% success. Balanced accuracy showed it was no better than always answering no.",
+      "A failed hypothesis still produced a usable record: what failed, a measured reason, and a frozen head that is kept out of the counts.",
+    ],
+    openQuestions: [
+      "EXP-003A: does v0.0.2 hold up on articles collected after it was frozen?",
+      "How many forecast labels would a head need before it separates predictions from reports on new items?",
+      "Would more context than a headline and excerpt make forecasts easier to recognize?",
+    ],
+    reproduce: {
+      text: "The pre-registration, the EXP-003B runner, the frozen head and its manifest are public. The labels are in the project's local database and not published yet, so outsiders can check the hashes but cannot rerun training. The runner refuses to run a second time.",
+      commands: `git clone ${REPO}.git
+cd fashion-trend-crawler
+git show 2ff1c53:models/ari3-v0.0.3/PREREGISTRATION.md | sha256sum
+git show bbbaaf0:models/ari3-v0.0.3/is_forecast/weights.npz | sha256sum`,
+    },
+  },
   {
     id: "EXP-002",
     slug: "exp-002",
@@ -280,7 +393,7 @@ git show 9c296bd:models/ari3-v0.0.1/weights.npz | sha256sum`,
 export const RELEASE_NAMES = [
   { version: "v0.0.1", name: "INDUSTRIA", motto: "The work begins.", status: "Released", exp: "exp-001" },
   { version: "v0.0.2", name: "DISCIPLINA", motto: "The method emerges.", status: "Released", exp: "exp-002" },
-  { version: "v0.0.3", name: "INTEGRITAS", motto: "The evidence can be trusted.", status: "Planned" },
+  { version: "v0.0.3", name: "INTEGRITAS", motto: "The evidence can be trusted.", status: "In progress", exp: "exp-003" },
   { version: "v0.0.4", name: "PROVIDENTIA", motto: "The system begins looking forward.", status: "Planned" },
   { version: "v0.0.5", name: "CONCORDIA", motto: "Independent models act in concert.", status: "Planned" },
   { version: "v1.0", name: "FIDES", motto: "The system earns trust.", status: "Planned" },
