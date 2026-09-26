@@ -22,7 +22,7 @@ export default function SiteHeader() {
         <ul className="site-nav">
           {PRIMARY_NAV.map((item) => (
             <li key={item.href}>
-              <Link href={item.href} aria-current={isCurrent(pathname, item.href) ? "page" : undefined}>
+              <Link href={item.href} className={"accent" in item && item.accent ? "site-nav-accent" : undefined} aria-current={isCurrent(pathname, item.href) ? "page" : undefined}>
                 {item.label}
               </Link>
             </li>

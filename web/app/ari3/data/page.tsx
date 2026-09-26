@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { pageMetadata } from "../../../lib/site";
 import { DATASETS } from "../../../lib/ari3_cards";
 import { Page, Section, bodyText } from "../ui";
@@ -12,9 +11,6 @@ export const metadata = pageMetadata(
 export default function Data() {
   return (
     <Page title="Dataset cards">
-      <p style={{ ...bodyText, margin: 0 }}>
-        <Link href="/ari3" style={{ color: "var(--black)" }}>ARI3 research notebook</Link>
-      </p>
       <p style={{ ...bodyText, fontSize: "1.05rem", color: "var(--black)", marginTop: "1rem" }}>
         ARI3 learns from two datasets: the items it collects, and the editor&apos;s labels on a sample
         of them. Counts are dated because the corpus grows every 4 hours.

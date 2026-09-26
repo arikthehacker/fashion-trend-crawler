@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { pageMetadata } from "../../../lib/site";
 import { EXPERIMENTS } from "../../../lib/ari3";
@@ -27,7 +26,7 @@ export default async function ExperimentPage({ params }: { params: Promise<{ slu
   return (
     <Page title={e.id}>
       <p style={{ ...bodyText, margin: 0 }}>
-        <Link href="/ari3" style={{ color: "var(--black)" }}>ARI3 research notebook</Link> · ARI3 Perception {e.version}
+        ARI3 Perception {e.version}
       </p>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem 1rem", alignItems: "baseline", marginTop: "1rem" }}>
         <h2 style={{ fontFamily: "var(--font-instrument)", fontSize: "3rem", fontWeight: 400, margin: 0, lineHeight: 1 }}>{e.name}</h2>

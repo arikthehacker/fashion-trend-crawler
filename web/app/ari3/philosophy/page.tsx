@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { pageMetadata } from "../../../lib/site";
 import { PRINCIPLES } from "../../../lib/ari3";
 import { Page, bodyText } from "../ui";
@@ -12,9 +11,6 @@ export const metadata = pageMetadata(
 export default function Philosophy() {
   return (
     <Page title="Research philosophy">
-      <p style={{ ...bodyText, margin: 0 }}>
-        <Link href="/ari3" style={{ color: "var(--black)" }}>ARI3 research notebook</Link>
-      </p>
       <p style={{ ...bodyText, fontSize: "1.05rem", color: "var(--black)", marginTop: "1rem" }}>
         These principles decide how ARI3 is built, tested and reported. Each experiment in the
         notebook can be checked against them.

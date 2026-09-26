@@ -15,9 +15,6 @@ const dd = { margin: 0, fontFamily: "var(--font-franklin)", fontSize: "0.9rem", 
 export default function Models() {
   return (
     <Page title="Model cards">
-      <p style={{ ...bodyText, margin: 0 }}>
-        <Link href="/ari3" style={{ color: "var(--black)" }}>ARI3 research notebook</Link>
-      </p>
       <p style={{ ...bodyText, fontSize: "1.05rem", color: "var(--black)", marginTop: "1rem" }}>
         One card per ARI3 version. Every version so far is ARI3 Perception, which decides whether a
         news item is about style. The full experiment behind each version is in its notebook entry.

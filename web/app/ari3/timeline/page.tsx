@@ -12,9 +12,6 @@ export const metadata = pageMetadata(
 export default function Timeline() {
   return (
     <Page title="Research timeline">
-      <p style={{ ...bodyText, margin: 0 }}>
-        <Link href="/ari3" style={{ color: "var(--black)" }}>ARI3 research notebook</Link>
-      </p>
       <p style={{ ...bodyText, fontSize: "1.05rem", color: "var(--black)", marginTop: "1rem" }}>
         Every dated step happened on that date (UTC). Planned steps carry no date.
       </p>

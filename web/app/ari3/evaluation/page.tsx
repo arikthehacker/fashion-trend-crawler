@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { pageMetadata } from "../../../lib/site";
 import charts from "../../../lib/ari3_charts.json";
 import { Page, Section, Callout, bodyText, mono } from "../ui";
@@ -127,9 +126,6 @@ export default function Evaluation() {
   const a = charts.versions["ari3-v0.0.1"], b = charts.versions["ari3-v0.0.2"];
   return (
     <Page title="Evaluation">
-      <p style={{ ...bodyText, margin: 0 }}>
-        <Link href="/ari3" style={{ color: "var(--black)" }}>ARI3 research notebook</Link>
-      </p>
       <p style={{ ...bodyText, fontSize: "1.05rem", color: "var(--black)", marginTop: "1rem" }}>
         Both frozen versions, scored on the same {charts.n_test} held-out items from EXP-002. The frozen
         weights are used as released and never refit. Each chart uses 61 items, so small differences between versions are within noise.

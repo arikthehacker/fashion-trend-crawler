@@ -3,12 +3,12 @@
 
 export const PRIMARY_NAV = [
   { href: "/", label: "Index" },
+  { href: "/ari3", label: "ARI3", accent: true },
   { href: "/archive", label: "Archive" },
   { href: "/timeline", label: "Timeline" },
   { href: "/search", label: "Search" },
   { href: "/glossary", label: "Glossary" },
   { href: "/methodology", label: "Methodology" },
-  { href: "/ari3", label: "ARI3" },
   { href: "/taxonomy", label: "Taxonomy" },
   { href: "/sources", label: "Sources" },
   { href: "/about", label: "About" },

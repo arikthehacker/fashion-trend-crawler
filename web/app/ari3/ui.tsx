@@ -2,6 +2,7 @@
 
 import type { CSSProperties, ReactNode } from "react";
 import type { Metric } from "../../lib/ari3";
+import Ari3Nav from "./Ari3Nav";
 
 export const mono = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
 
@@ -19,7 +20,7 @@ export function Page({ title, children }: { title: string; children: ReactNode }
       <header className="page-masthead">
         <h1 className="page-title">{title}</h1>
       </header>
-      <div style={{ width: "100%", maxWidth: "860px", padding: "3rem 1rem 5rem", minWidth: 0 }}>{children}</div>
+      <div style={{ width: "100%", maxWidth: "860px", padding: "2rem 1rem 5rem", minWidth: 0 }}><Ari3Nav />{children}</div>
     </main>
   );
 }

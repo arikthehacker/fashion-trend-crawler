@@ -121,11 +121,11 @@ export type Decision = { id: string; date: string; title: string; decision: stri
 
 export const DECISIONS: Decision[] = [
   {
-    id: "D-09", date: "2026-09-26", title: "Keep ambiguous lexicon terms, with sense checks",
-    decision: "Lexicon v1 keeps all 73 terms the editor reviewed. Seven words that often mean something else (western, brat, demure, lace, bow, glamour, sustainable) carry a note that each match needs a sense check.",
+    id: "D-09", date: "2026-09-26", title: "Keep ambiguous lexicon terms, but do not count them",
+    decision: "Lexicon v1 keeps all 73 terms the editor reviewed. Seven words that often mean something else (western, brat, demure, lace, bow, glamour, sustainable) are kept in the lexicon and their matches are stored, but they are excluded from every count.",
     why: "Dropping them would hide real style uses. Counting them blindly would count the wrong meanings.",
     alternatives: "Drop the ambiguous terms, or count them without notes.",
-    tradeoff: "Counts for those seven words are provisional until a sense check exists.",
+    tradeoff: "Real style uses of those seven words go uncounted until a way to tell the meanings apart exists.",
   },
   {
     id: "D-08", date: "2026-09-26", title: "Keep hard cases out of calibration as well as testing",

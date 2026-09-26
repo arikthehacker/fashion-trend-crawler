@@ -14,9 +14,6 @@ const label = { color: "var(--gray)", fontFamily: "var(--font-franklin)", fontSi
 export default function Decisions() {
   return (
     <Page title="Decision log">
-      <p style={{ ...bodyText, margin: 0 }}>
-        <Link href="/ari3" style={{ color: "var(--black)" }}>ARI3 research notebook</Link>
-      </p>
       <p style={{ ...bodyText, fontSize: "1.05rem", color: "var(--black)", marginTop: "1rem" }}>
         Decisions that shape what ARI3 collects, learns from and claims, newest first. A decision is
         replaced by a new entry, never edited.
