@@ -50,7 +50,7 @@ export function List({ items }: { items: string[] }) {
 export function Pill({ children, tone = "ink" }: { children: ReactNode; tone?: "ink" | "red" | "gray" }) {
   const color = tone === "red" ? "var(--red)" : tone === "gray" ? "var(--gray)" : "var(--black)";
   return (
-    <span style={{ fontFamily: mono, fontSize: "0.7rem", letterSpacing: "0.08em", textTransform: "uppercase", padding: "0.18rem 0.5rem", border: `1px solid ${color}`, color, whiteSpace: "nowrap" }}>
+    <span style={{ fontFamily: mono, fontSize: "0.7rem", letterSpacing: "0.08em", textTransform: "uppercase", padding: "0.18rem 0.5rem", border: `1px solid ${color}`, color, display: "inline-block", maxWidth: "100%", overflowWrap: "anywhere", lineHeight: 1.5 }}>
       {children}
     </span>
   );
