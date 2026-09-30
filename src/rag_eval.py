@@ -35,7 +35,8 @@ from rag_schema import Filters, SearchArgs
 
 QUERY_TYPES = ("term", "temporal", "source_filter", "sector_filter", "multilingual", "general")
 JUDGMENTS = ("relevant", "not_relevant", "unsure")
-POOL_METHODS = (("bm25", "words"), ("bm25", "trigram"), ("dense", None), ("hybrid", "auto"))
+# bm25:auto uses trigrams for CJK queries and words otherwise. bm25:words is the baseline it is compared with.
+POOL_METHODS = (("bm25", "words"), ("bm25", "auto"), ("dense", None), ("hybrid", "auto"))
 
 
 class Question(BaseModel):
@@ -222,9 +223,12 @@ def main(argv=None):
     dev = [q for q in questions if q.question_id in set(split["dev"])]
     relevant = gold(load_jsonl(args.judgments, Judgment))
     results = {"split": "dev", "questions": len(dev), "run_at": now, "index": index.manifest, "methods": {}}
+    groups = {"all": dev, "japanese": [q for q in dev if q.language == "ja" or q.filters.languages == ["ja"]],
+              "non_english": [q for q in dev if q.language != "en" or (q.filters.languages or ["en"]) != ["en"]]}
     for method, lexical in POOL_METHODS:
         rankings = {q.question_id: run_method(corpus, index, q, method, lexical, 10) for q in dev}
-        results["methods"][f"{method}:{lexical}" if lexical else method] = score(rankings, relevant)
+        results["methods"][f"{method}:{lexical}" if lexical else method] = {
+            g: score({q.question_id: rankings[q.question_id] for q in qs}, relevant) for g, qs in groups.items()}
     os.makedirs(args.out, exist_ok=True)
     with open(os.path.join(args.out, f"dev-retrievers-{now.replace(':', '')}.json"), "w", encoding="utf-8") as f:
         json.dump(results, f, indent=1)

@@ -1,0 +1,475 @@
+{"question_id": "q001", "item_id": 489, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q001", "item_id": 544, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q001", "item_id": 2437, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q001", "item_id": 2810, "pool_source": ["dense"]}
+{"question_id": "q001", "item_id": 2820, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q001", "item_id": 5586, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q001", "item_id": 5783, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q002", "item_id": 137, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q002", "item_id": 214, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q002", "item_id": 225, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q002", "item_id": 623, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q002", "item_id": 1914, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q002", "item_id": 4404, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q002", "item_id": 5427, "pool_source": ["dense"]}
+{"question_id": "q002", "item_id": 5981, "pool_source": ["dense"]}
+{"question_id": "q002", "item_id": 6458, "pool_source": ["dense"]}
+{"question_id": "q003", "item_id": 1161, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q003", "item_id": 2101, "pool_source": ["dense"]}
+{"question_id": "q003", "item_id": 4028, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q003", "item_id": 5233, "pool_source": ["dense"]}
+{"question_id": "q003", "item_id": 5247, "pool_source": ["hybrid:auto"]}
+{"question_id": "q003", "item_id": 5271, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q003", "item_id": 5595, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q003", "item_id": 5615, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q003", "item_id": 6468, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q004", "item_id": 698, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q004", "item_id": 706, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q004", "item_id": 708, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q004", "item_id": 1348, "pool_source": ["hybrid:auto"]}
+{"question_id": "q004", "item_id": 1882, "pool_source": ["dense"]}
+{"question_id": "q004", "item_id": 3517, "pool_source": ["dense"]}
+{"question_id": "q004", "item_id": 3742, "pool_source": ["dense"]}
+{"question_id": "q004", "item_id": 5248, "pool_source": ["dense"]}
+{"question_id": "q004", "item_id": 5762, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q004", "item_id": 6044, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q004", "item_id": 6144, "pool_source": ["hybrid:auto"]}
+{"question_id": "q005", "item_id": 531, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q005", "item_id": 1332, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q005", "item_id": 1501, "pool_source": ["dense"]}
+{"question_id": "q005", "item_id": 1877, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q005", "item_id": 2567, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q005", "item_id": 3798, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q005", "item_id": 4177, "pool_source": ["dense"]}
+{"question_id": "q005", "item_id": 5217, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q005", "item_id": 6559, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q005", "item_id": 6887, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q006", "item_id": 422, "pool_source": ["dense"]}
+{"question_id": "q006", "item_id": 2527, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q006", "item_id": 2528, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q006", "item_id": 2929, "pool_source": ["dense"]}
+{"question_id": "q006", "item_id": 3119, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q006", "item_id": 3392, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q006", "item_id": 4792, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q006", "item_id": 5201, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q006", "item_id": 7000, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q006", "item_id": 7392, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q007", "item_id": 466, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q007", "item_id": 590, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q007", "item_id": 1059, "pool_source": ["dense"]}
+{"question_id": "q007", "item_id": 3843, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q007", "item_id": 6473, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q007", "item_id": 7597, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q008", "item_id": 516, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q008", "item_id": 581, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q008", "item_id": 1060, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q008", "item_id": 3593, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q008", "item_id": 6826, "pool_source": ["dense"]}
+{"question_id": "q008", "item_id": 7196, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q008", "item_id": 7379, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q009", "item_id": 1686, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q009", "item_id": 1779, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q009", "item_id": 1863, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q009", "item_id": 1893, "pool_source": ["hybrid:auto"]}
+{"question_id": "q009", "item_id": 2370, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q009", "item_id": 3317, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q009", "item_id": 4793, "pool_source": ["dense"]}
+{"question_id": "q009", "item_id": 4887, "pool_source": ["dense"]}
+{"question_id": "q009", "item_id": 5541, "pool_source": ["dense"]}
+{"question_id": "q009", "item_id": 5998, "pool_source": ["hybrid:auto"]}
+{"question_id": "q009", "item_id": 6466, "pool_source": ["hybrid:auto"]}
+{"question_id": "q009", "item_id": 6660, "pool_source": ["dense"]}
+{"question_id": "q010", "item_id": 15, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q010", "item_id": 848, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q010", "item_id": 1872, "pool_source": ["dense"]}
+{"question_id": "q010", "item_id": 2056, "pool_source": ["dense"]}
+{"question_id": "q010", "item_id": 2359, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q010", "item_id": 3488, "pool_source": ["dense"]}
+{"question_id": "q010", "item_id": 5557, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q010", "item_id": 5630, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q010", "item_id": 5962, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q010", "item_id": 6092, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q011", "item_id": 632, "pool_source": ["dense"]}
+{"question_id": "q011", "item_id": 2653, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q011", "item_id": 2929, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q011", "item_id": 3833, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q011", "item_id": 4946, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q011", "item_id": 5263, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q011", "item_id": 5837, "pool_source": ["dense"]}
+{"question_id": "q011", "item_id": 7626, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q011", "item_id": 7662, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q011", "item_id": 7664, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q012", "item_id": 1348, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q012", "item_id": 1977, "pool_source": ["dense"]}
+{"question_id": "q012", "item_id": 2031, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q012", "item_id": 2479, "pool_source": ["dense"]}
+{"question_id": "q012", "item_id": 2810, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q012", "item_id": 3993, "pool_source": ["dense"]}
+{"question_id": "q012", "item_id": 5312, "pool_source": ["hybrid:auto"]}
+{"question_id": "q012", "item_id": 5675, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q012", "item_id": 6538, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q012", "item_id": 7849, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q013", "item_id": 586, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q013", "item_id": 1924, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q013", "item_id": 3170, "pool_source": ["dense"]}
+{"question_id": "q013", "item_id": 3317, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q013", "item_id": 3939, "pool_source": ["dense"]}
+{"question_id": "q013", "item_id": 4793, "pool_source": ["hybrid:auto"]}
+{"question_id": "q013", "item_id": 5052, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q013", "item_id": 6239, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q013", "item_id": 7592, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q014", "item_id": 783, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q014", "item_id": 842, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q014", "item_id": 1556, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q014", "item_id": 2807, "pool_source": ["hybrid:auto"]}
+{"question_id": "q014", "item_id": 4025, "pool_source": ["dense"]}
+{"question_id": "q014", "item_id": 4738, "pool_source": ["hybrid:auto"]}
+{"question_id": "q014", "item_id": 5940, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q014", "item_id": 6880, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q014", "item_id": 7187, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q014", "item_id": 7487, "pool_source": ["dense"]}
+{"question_id": "q014", "item_id": 7877, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q015", "item_id": 544, "pool_source": ["hybrid:auto"]}
+{"question_id": "q015", "item_id": 3002, "pool_source": ["dense"]}
+{"question_id": "q015", "item_id": 3697, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q015", "item_id": 3922, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q015", "item_id": 4356, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q015", "item_id": 4414, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q015", "item_id": 4597, "pool_source": ["dense"]}
+{"question_id": "q015", "item_id": 4879, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q015", "item_id": 6138, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q015", "item_id": 7356, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q015", "item_id": 8023, "pool_source": ["dense"]}
+{"question_id": "q016", "item_id": 624, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q016", "item_id": 1234, "pool_source": ["dense"]}
+{"question_id": "q016", "item_id": 1360, "pool_source": ["hybrid:auto"]}
+{"question_id": "q016", "item_id": 1873, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q016", "item_id": 3066, "pool_source": ["dense"]}
+{"question_id": "q016", "item_id": 3237, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q016", "item_id": 3252, "pool_source": ["dense"]}
+{"question_id": "q016", "item_id": 4414, "pool_source": ["dense"]}
+{"question_id": "q016", "item_id": 4609, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q016", "item_id": 4950, "pool_source": ["hybrid:auto"]}
+{"question_id": "q016", "item_id": 5000, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q016", "item_id": 5380, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q017", "item_id": 278, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q017", "item_id": 586, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q017", "item_id": 811, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q017", "item_id": 2526, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q017", "item_id": 2757, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q018", "item_id": 1271, "pool_source": ["dense"]}
+{"question_id": "q018", "item_id": 3395, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q018", "item_id": 3579, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q018", "item_id": 4404, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q018", "item_id": 4471, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q018", "item_id": 4654, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q019", "item_id": 43, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q019", "item_id": 1161, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q019", "item_id": 1167, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q019", "item_id": 2006, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q019", "item_id": 2009, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q020", "item_id": 496, "pool_source": ["dense"]}
+{"question_id": "q020", "item_id": 526, "pool_source": ["dense"]}
+{"question_id": "q020", "item_id": 1240, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q020", "item_id": 2085, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q020", "item_id": 2330, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q020", "item_id": 3203, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q020", "item_id": 3466, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q020", "item_id": 4213, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q020", "item_id": 5788, "pool_source": ["hybrid:auto"]}
+{"question_id": "q021", "item_id": 2007, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q021", "item_id": 2008, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q021", "item_id": 2009, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q021", "item_id": 2010, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q022", "item_id": 277, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q022", "item_id": 278, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q022", "item_id": 279, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q022", "item_id": 280, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q022", "item_id": 1155, "pool_source": ["dense"]}
+{"question_id": "q022", "item_id": 2063, "pool_source": ["dense"]}
+{"question_id": "q022", "item_id": 2067, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q023", "item_id": 2007, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q023", "item_id": 2008, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q023", "item_id": 2009, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q023", "item_id": 2010, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q025", "item_id": 489, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q025", "item_id": 544, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q025", "item_id": 1348, "pool_source": ["hybrid:auto"]}
+{"question_id": "q025", "item_id": 1865, "pool_source": ["dense"]}
+{"question_id": "q025", "item_id": 2437, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q025", "item_id": 2810, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q025", "item_id": 2820, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q028", "item_id": 243, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q028", "item_id": 709, "pool_source": ["dense"]}
+{"question_id": "q028", "item_id": 3173, "pool_source": ["dense"]}
+{"question_id": "q028", "item_id": 3322, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q028", "item_id": 3385, "pool_source": ["hybrid:auto"]}
+{"question_id": "q028", "item_id": 3578, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q028", "item_id": 3742, "pool_source": ["hybrid:auto"]}
+{"question_id": "q028", "item_id": 3993, "pool_source": ["dense"]}
+{"question_id": "q028", "item_id": 4365, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q028", "item_id": 5056, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q028", "item_id": 5440, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q028", "item_id": 5652, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q029", "item_id": 1332, "pool_source": ["dense"]}
+{"question_id": "q029", "item_id": 1333, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q029", "item_id": 1341, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q029", "item_id": 1352, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q029", "item_id": 3307, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q029", "item_id": 3993, "pool_source": ["dense"]}
+{"question_id": "q029", "item_id": 8022, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q030", "item_id": 1509, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q030", "item_id": 1511, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q030", "item_id": 1512, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q030", "item_id": 1514, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q030", "item_id": 1515, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q031", "item_id": 3242, "pool_source": ["dense"]}
+{"question_id": "q031", "item_id": 3484, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q031", "item_id": 4586, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q031", "item_id": 5654, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q031", "item_id": 6602, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q031", "item_id": 7616, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q032", "item_id": 2184, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q032", "item_id": 2185, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q032", "item_id": 2190, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q032", "item_id": 2191, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q032", "item_id": 2194, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q033", "item_id": 3026, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q033", "item_id": 3028, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q033", "item_id": 3030, "pool_source": ["dense"]}
+{"question_id": "q033", "item_id": 4204, "pool_source": ["dense"]}
+{"question_id": "q033", "item_id": 4689, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q033", "item_id": 4753, "pool_source": ["hybrid:auto"]}
+{"question_id": "q033", "item_id": 5279, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q033", "item_id": 6028, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q033", "item_id": 6728, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q033", "item_id": 7017, "pool_source": ["dense"]}
+{"question_id": "q033", "item_id": 7215, "pool_source": ["dense"]}
+{"question_id": "q033", "item_id": 7867, "pool_source": ["hybrid:auto"]}
+{"question_id": "q034", "item_id": 77, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q034", "item_id": 82, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q034", "item_id": 118, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q034", "item_id": 3541, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q034", "item_id": 5980, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q035", "item_id": 1508, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q035", "item_id": 1509, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q035", "item_id": 1510, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q035", "item_id": 1511, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q035", "item_id": 1514, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q036", "item_id": 1341, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q036", "item_id": 1342, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q036", "item_id": 3988, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q036", "item_id": 5046, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q036", "item_id": 5904, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q037", "item_id": 2503, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q037", "item_id": 2513, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q037", "item_id": 2514, "pool_source": ["dense"]}
+{"question_id": "q037", "item_id": 2516, "pool_source": ["hybrid:auto"]}
+{"question_id": "q037", "item_id": 2518, "pool_source": ["dense"]}
+{"question_id": "q037", "item_id": 2523, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q037", "item_id": 4506, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q037", "item_id": 5133, "pool_source": ["dense"]}
+{"question_id": "q037", "item_id": 5915, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q038", "item_id": 1508, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q038", "item_id": 1509, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q038", "item_id": 1511, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q038", "item_id": 1513, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q038", "item_id": 1514, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q039", "item_id": 415, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q039", "item_id": 2185, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q039", "item_id": 2190, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q039", "item_id": 2484, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q039", "item_id": 6405, "pool_source": ["dense"]}
+{"question_id": "q039", "item_id": 7513, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q041", "item_id": 586, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q041", "item_id": 1924, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q041", "item_id": 2820, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q041", "item_id": 3170, "pool_source": ["dense"]}
+{"question_id": "q041", "item_id": 3317, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q041", "item_id": 3939, "pool_source": ["dense"]}
+{"question_id": "q041", "item_id": 6239, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q041", "item_id": 7592, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q042", "item_id": 2516, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q042", "item_id": 3387, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q042", "item_id": 3389, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q042", "item_id": 4299, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q042", "item_id": 6418, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q043", "item_id": 2489, "pool_source": ["bm25:auto", "hybrid:auto"]}
+{"question_id": "q043", "item_id": 4057, "pool_source": ["bm25:auto"]}
+{"question_id": "q043", "item_id": 4718, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q043", "item_id": 4721, "pool_source": ["bm25:auto", "hybrid:auto"]}
+{"question_id": "q043", "item_id": 4894, "pool_source": ["hybrid:auto"]}
+{"question_id": "q043", "item_id": 5476, "pool_source": ["dense"]}
+{"question_id": "q043", "item_id": 5800, "pool_source": ["dense"]}
+{"question_id": "q043", "item_id": 6338, "pool_source": ["bm25:auto"]}
+{"question_id": "q043", "item_id": 6341, "pool_source": ["dense"]}
+{"question_id": "q043", "item_id": 6359, "pool_source": ["bm25:auto", "hybrid:auto"]}
+{"question_id": "q043", "item_id": 7260, "pool_source": ["dense"]}
+{"question_id": "q044", "item_id": 2492, "pool_source": ["hybrid:auto"]}
+{"question_id": "q044", "item_id": 3655, "pool_source": ["bm25:auto", "hybrid:auto"]}
+{"question_id": "q044", "item_id": 3676, "pool_source": ["dense"]}
+{"question_id": "q044", "item_id": 3680, "pool_source": ["dense"]}
+{"question_id": "q044", "item_id": 4043, "pool_source": ["bm25:auto"]}
+{"question_id": "q044", "item_id": 4052, "pool_source": ["bm25:auto", "hybrid:auto"]}
+{"question_id": "q044", "item_id": 4894, "pool_source": ["dense"]}
+{"question_id": "q044", "item_id": 4899, "pool_source": ["bm25:auto"]}
+{"question_id": "q044", "item_id": 7104, "pool_source": ["bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q044", "item_id": 7114, "pool_source": ["hybrid:auto"]}
+{"question_id": "q044", "item_id": 7936, "pool_source": ["dense"]}
+{"question_id": "q045", "item_id": 3073, "pool_source": ["bm25:auto"]}
+{"question_id": "q045", "item_id": 3365, "pool_source": ["bm25:auto"]}
+{"question_id": "q045", "item_id": 3681, "pool_source": ["dense"]}
+{"question_id": "q045", "item_id": 4268, "pool_source": ["bm25:auto", "hybrid:auto"]}
+{"question_id": "q045", "item_id": 4716, "pool_source": ["bm25:words"]}
+{"question_id": "q045", "item_id": 4721, "pool_source": ["bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q045", "item_id": 4897, "pool_source": ["bm25:words"]}
+{"question_id": "q045", "item_id": 5108, "pool_source": ["bm25:words"]}
+{"question_id": "q045", "item_id": 5553, "pool_source": ["bm25:words"]}
+{"question_id": "q045", "item_id": 5848, "pool_source": ["bm25:words"]}
+{"question_id": "q045", "item_id": 5850, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q045", "item_id": 6334, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q045", "item_id": 6976, "pool_source": ["bm25:auto"]}
+{"question_id": "q045", "item_id": 7932, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q046", "item_id": 2603, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q046", "item_id": 3109, "pool_source": ["dense"]}
+{"question_id": "q046", "item_id": 3115, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q046", "item_id": 4794, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q046", "item_id": 5535, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q046", "item_id": 5928, "pool_source": ["dense"]}
+{"question_id": "q046", "item_id": 6191, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q046", "item_id": 6442, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q046", "item_id": 7312, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q047", "item_id": 2609, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q047", "item_id": 3926, "pool_source": ["dense"]}
+{"question_id": "q047", "item_id": 5837, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q047", "item_id": 6041, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q047", "item_id": 6191, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q047", "item_id": 7127, "pool_source": ["dense"]}
+{"question_id": "q047", "item_id": 7315, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q048", "item_id": 2075, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q048", "item_id": 2077, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q048", "item_id": 2662, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q048", "item_id": 4967, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q048", "item_id": 6526, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q048", "item_id": 7156, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q048", "item_id": 7158, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q048", "item_id": 7159, "pool_source": ["dense"]}
+{"question_id": "q048", "item_id": 7807, "pool_source": ["dense"]}
+{"question_id": "q049", "item_id": 413, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q049", "item_id": 414, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q049", "item_id": 415, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q049", "item_id": 418, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q049", "item_id": 419, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q049", "item_id": 421, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q049", "item_id": 2080, "pool_source": ["dense"]}
+{"question_id": "q049", "item_id": 2653, "pool_source": ["hybrid:auto"]}
+{"question_id": "q049", "item_id": 3953, "pool_source": ["hybrid:auto"]}
+{"question_id": "q049", "item_id": 6054, "pool_source": ["dense"]}
+{"question_id": "q049", "item_id": 7160, "pool_source": ["dense"]}
+{"question_id": "q050", "item_id": 2470, "pool_source": ["dense"]}
+{"question_id": "q050", "item_id": 2472, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q050", "item_id": 3066, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q050", "item_id": 6961, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q050", "item_id": 6967, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q050", "item_id": 6970, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q050", "item_id": 7490, "pool_source": ["dense"]}
+{"question_id": "q050", "item_id": 7739, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q051", "item_id": 2489, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q051", "item_id": 4718, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q051", "item_id": 4721, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q051", "item_id": 5554, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q051", "item_id": 7104, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q052", "item_id": 5535, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q052", "item_id": 5928, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q052", "item_id": 6442, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q052", "item_id": 7126, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q052", "item_id": 7315, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q053", "item_id": 3604, "pool_source": ["hybrid:auto"]}
+{"question_id": "q053", "item_id": 3660, "pool_source": ["bm25:auto"]}
+{"question_id": "q053", "item_id": 3676, "pool_source": ["dense"]}
+{"question_id": "q053", "item_id": 4643, "pool_source": ["hybrid:auto"]}
+{"question_id": "q053", "item_id": 4718, "pool_source": ["dense"]}
+{"question_id": "q053", "item_id": 4894, "pool_source": ["dense"]}
+{"question_id": "q053", "item_id": 5476, "pool_source": ["bm25:auto"]}
+{"question_id": "q053", "item_id": 5552, "pool_source": ["dense"]}
+{"question_id": "q053", "item_id": 5836, "pool_source": ["bm25:auto"]}
+{"question_id": "q053", "item_id": 5992, "pool_source": ["hybrid:auto"]}
+{"question_id": "q053", "item_id": 6338, "pool_source": ["hybrid:auto"]}
+{"question_id": "q053", "item_id": 6356, "pool_source": ["bm25:auto", "hybrid:auto"]}
+{"question_id": "q053", "item_id": 6367, "pool_source": ["bm25:auto"]}
+{"question_id": "q053", "item_id": 7744, "pool_source": ["dense"]}
+{"question_id": "q054", "item_id": 2470, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q054", "item_id": 3066, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q054", "item_id": 3355, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q054", "item_id": 4030, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q054", "item_id": 4253, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q055", "item_id": 219, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q055", "item_id": 817, "pool_source": ["dense"]}
+{"question_id": "q055", "item_id": 1168, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q055", "item_id": 1244, "pool_source": ["hybrid:auto"]}
+{"question_id": "q055", "item_id": 1644, "pool_source": ["hybrid:auto"]}
+{"question_id": "q055", "item_id": 2261, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q055", "item_id": 2336, "pool_source": ["dense"]}
+{"question_id": "q055", "item_id": 2892, "pool_source": ["dense"]}
+{"question_id": "q055", "item_id": 4031, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q055", "item_id": 5044, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q055", "item_id": 5874, "pool_source": ["dense"]}
+{"question_id": "q055", "item_id": 6591, "pool_source": ["hybrid:auto"]}
+{"question_id": "q055", "item_id": 6636, "pool_source": ["dense"]}
+{"question_id": "q056", "item_id": 877, "pool_source": ["hybrid:auto"]}
+{"question_id": "q056", "item_id": 1369, "pool_source": ["dense"]}
+{"question_id": "q056", "item_id": 2085, "pool_source": ["dense"]}
+{"question_id": "q056", "item_id": 3466, "pool_source": ["hybrid:auto"]}
+{"question_id": "q056", "item_id": 3951, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q056", "item_id": 4359, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q056", "item_id": 4557, "pool_source": ["hybrid:auto"]}
+{"question_id": "q056", "item_id": 4659, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q056", "item_id": 5493, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q056", "item_id": 5807, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q056", "item_id": 5812, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q056", "item_id": 6051, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q056", "item_id": 8025, "pool_source": ["dense"]}
+{"question_id": "q057", "item_id": 577, "pool_source": ["hybrid:auto"]}
+{"question_id": "q057", "item_id": 1529, "pool_source": ["dense"]}
+{"question_id": "q057", "item_id": 2186, "pool_source": ["dense"]}
+{"question_id": "q057", "item_id": 2513, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q057", "item_id": 2740, "pool_source": ["dense"]}
+{"question_id": "q057", "item_id": 2793, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q057", "item_id": 3962, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q057", "item_id": 5303, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q057", "item_id": 5338, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q057", "item_id": 5801, "pool_source": ["dense"]}
+{"question_id": "q057", "item_id": 6202, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q057", "item_id": 7965, "pool_source": ["hybrid:auto"]}
+{"question_id": "q058", "item_id": 2346, "pool_source": ["bm25:words", "bm25:auto", "dense", "hybrid:auto"]}
+{"question_id": "q058", "item_id": 3579, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q058", "item_id": 3653, "pool_source": ["hybrid:auto"]}
+{"question_id": "q058", "item_id": 4404, "pool_source": ["dense"]}
+{"question_id": "q058", "item_id": 4471, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q058", "item_id": 4654, "pool_source": ["hybrid:auto"]}
+{"question_id": "q058", "item_id": 5599, "pool_source": ["dense"]}
+{"question_id": "q058", "item_id": 6635, "pool_source": ["dense"]}
+{"question_id": "q058", "item_id": 6717, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q058", "item_id": 7422, "pool_source": ["dense"]}
+{"question_id": "q058", "item_id": 7604, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q059", "item_id": 265, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q059", "item_id": 812, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q059", "item_id": 813, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q059", "item_id": 815, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q059", "item_id": 816, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q059", "item_id": 1346, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q059", "item_id": 1870, "pool_source": ["hybrid:auto"]}
+{"question_id": "q059", "item_id": 2584, "pool_source": ["dense"]}
+{"question_id": "q059", "item_id": 2868, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q059", "item_id": 6071, "pool_source": ["dense"]}
+{"question_id": "q059", "item_id": 7678, "pool_source": ["dense"]}
+{"question_id": "q060", "item_id": 2905, "pool_source": ["dense"]}
+{"question_id": "q060", "item_id": 3432, "pool_source": ["dense"]}
+{"question_id": "q060", "item_id": 3582, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q060", "item_id": 4467, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q060", "item_id": 5034, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}
+{"question_id": "q060", "item_id": 5779, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q060", "item_id": 6310, "pool_source": ["dense", "hybrid:auto"]}
+{"question_id": "q060", "item_id": 6675, "pool_source": ["dense"]}
+{"question_id": "q060", "item_id": 6938, "pool_source": ["bm25:words", "bm25:auto"]}
+{"question_id": "q060", "item_id": 7673, "pool_source": ["bm25:words", "bm25:auto", "hybrid:auto"]}

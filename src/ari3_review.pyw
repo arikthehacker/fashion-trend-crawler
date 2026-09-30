@@ -1,8 +1,11 @@
 """ARI3 review: one window for the owner's review work.
 
-Two decks, each usable with big touch buttons or the keyboard:
+Decks, each usable with big touch buttons or the keyboard:
   Style labels   the is_style_signal queue. Keys: Y yes, N no, Space skip,
                  Backspace undo, O open article, Esc menu
+  Relevance      EXP-004 relevance judgments (src/rag_review.py). Keys: R relevant,
+                 N not relevant, U unsure, Space skip, Backspace back, O open, Esc menu.
+                 Answers are appended to the experiment's judgment log.
   Lexicon        every term in docs/lexicon/terms_v1_draft.md, one card each,
                  with real headlines from the store that contain it
 
@@ -25,6 +28,7 @@ from tkinter import simpledialog
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from item_store import DEFAULT_DB, assign_split, connect, utc_now  # noqa: E402
 import label_tool  # noqa: E402
+import rag_review  # noqa: E402
 
 DEV = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PLANNING = os.path.dirname(DEV)
@@ -98,6 +102,8 @@ def load_queue(name):
 
 def labels_left(con, name="is_style_signal"):
     q = load_queue(name)
+    if q.get("kind") == "rag_relevance":
+        return rag_review.left(q)
     done = {r[0] for r in con.execute(
         "SELECT item_id FROM labels WHERE task=? AND source='human'", (q["task"],))}
     return sum(1 for i in q["item_ids"] if i not in done), len(q["item_ids"])
@@ -268,6 +274,86 @@ class App:
         action = {"y": lambda: self.lab_answer("yes"), "n": lambda: self.lab_answer("no"),
                   "space": self.lab_skip, "backspace": self.lab_undo, "o": self.lab_open,
                   "escape": self.menu}.get(e.keysym.lower())
+        if action:
+            action()
+
+    # Relevance deck (EXP-004) --------------------------------------------
+    def relevance(self, name):
+        self.rq = load_queue(name)
+        done = rag_review.judged(self.rq)
+        self.r_cards = [c for c in self.rq["cards"] if (c["question_id"], c["item_id"]) not in done]
+        self.r_done0 = len(self.rq["cards"]) - len(self.r_cards)
+        self.r_hist, self.r_pos = [], 0
+        f = self.clear()
+        self.buttons(f, [
+            [("RELEVANT  (R)", lambda: self.rel_answer("relevant"), "yes"),
+             ("NOT RELEVANT  (N)", lambda: self.rel_answer("not_relevant"), "no")],
+            [("Unsure  (U)", lambda: self.rel_answer("unsure"), "plain"), ("Skip", self.rel_skip, "plain"),
+             ("Back", self.rel_back, "plain")],
+            [("Open article", self.rel_open, "plain"), ("Menu", self.menu, "plain")],
+        ])
+        self.rb_prog = self.label(f, size=11, color=DIM)
+        self.rb_q = self.label(f, size=16, bold=True, pady=(6, 0))
+        self.rb_filters = self.label(f, size=10, color=DIM, pady=(0, 4))
+        self.label(f, self.rq.get("help", ""), 10, color=DIM)
+        self.rb_meta = self.label(f, size=11, color=DIM, pady=(14, 0))
+        self.rb_title = self.label(f, size=19, bold=True, pady=(4, 8))
+        self.rb_ex = self.label(f, size=13)
+        self.root.bind("<Key>", self.rel_key)
+        self.rewrap()
+        self.rel_show()
+
+    def rel_current(self):
+        return self.r_cards[self.r_pos] if self.r_pos < len(self.r_cards) else None
+
+    def rel_show(self):
+        self.rb_prog.config(text=f"{self.r_done0 + len(self.r_hist)} of {len(self.rq['cards'])} judged")
+        card = self.rel_current()
+        if card is None:
+            for w in (self.rb_q, self.rb_filters, self.rb_meta, self.rb_ex):
+                w.config(text="")
+            self.rb_title.config(text="Queue finished. Judgments are saved.")
+            return
+        t, ex, domain, day, lang = self.con.execute(
+            """SELECT i.title, i.text_excerpt, o.domain, substr(i.published_at,1,10), i.lang
+               FROM items i JOIN outlets o USING (outlet_id) WHERE i.item_id=?""", (card["item_id"],)).fetchone()
+        self.rb_q.config(text=card["question"])
+        self.rb_filters.config(text=f"Filters: {card['filters']}")
+        self.rb_meta.config(text=f"{domain}   {day}   {lang or ''}")
+        self.rb_title.config(text=t or "(no title)")
+        self.rb_ex.config(text=ex or "")
+
+    def rel_answer(self, value):
+        card = self.rel_current()
+        if card is None:
+            return
+        rag_review.record(self.con, self.rq, card, value)
+        if card not in self.r_hist:
+            self.r_hist.append(card)
+        self.r_pos += 1
+        self.rel_show()
+
+    def rel_skip(self):
+        if self.rel_current() is not None:
+            self.r_pos += 1
+            self.rel_show()
+
+    def rel_back(self):
+        """Show the previous card again. A new answer is appended and replaces the old one."""
+        if self.r_pos > 0:
+            self.r_pos -= 1
+            self.rel_show()
+
+    def rel_open(self):
+        card = self.rel_current()
+        if card is not None:
+            webbrowser.open(self.con.execute("SELECT url FROM items WHERE item_id=?",
+                                             (card["item_id"],)).fetchone()[0])
+
+    def rel_key(self, e):
+        action = {"r": lambda: self.rel_answer("relevant"), "n": lambda: self.rel_answer("not_relevant"),
+                  "u": lambda: self.rel_answer("unsure"), "space": self.rel_skip, "backspace": self.rel_back,
+                  "o": self.rel_open, "escape": self.menu}.get(e.keysym.lower())
         if action:
             action()
 
