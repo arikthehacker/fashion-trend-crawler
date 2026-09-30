@@ -15,7 +15,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install Python dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r requirements.txt -r requirements-rag.txt
 
       - name: Compile check
         run: python -m py_compile src/*.py
@@ -37,6 +37,9 @@ jobs:
 
       - name: First-seen migration and backfill tests (throwaway databases)
         run: python src/test_backfill_first_seen.py
+
+      - name: EXP-004 retrieval tests (no network, no API key)
+        run: python src/test_rag.py
 
       - name: Validate published reports (schema + publish gate + non-blocking confidence warnings)
         run: python src/validate_all_reports.py

@@ -1,0 +1,6 @@
+# Dependencies for EXP-004 grounded retrieval (src/rag_*.py).
+# The sentence encoder itself comes from requirements-ml.txt and is loaded only
+# when an index is built or a dense query is embedded. Tests use a stand-in encoder.
+
+numpy
+pydantic>=2
