@@ -1,0 +1,70 @@
+{
+ "built_at": "2026-09-30T22:36:35Z",
+ "depth": 10,
+ "methods": [
+  "bm25:words",
+  "bm25:auto",
+  "dense",
+  "hybrid:auto"
+ ],
+ "questions_sha256": "d1d17cb4cfe34196b05724dd8623ad4c94ce9c69d00420ba9af3290cf73d4ad4",
+ "index": {
+  "index_version": "exp004-index-v1",
+  "built_at": "2026-09-30T08:04:26Z",
+  "cutoff_first_seen_at": "2026-09-30T08:00:00Z",
+  "items": 7955,
+  "corpus_fingerprint": "c571670b9e98ab73c5505b934b1cbf3a8c488a31371a5eb4f1a7772e01cce1d3",
+  "text": "title + '. ' + stored excerpt, first 1,000 characters (jev_spike.text)",
+  "chunking": "none",
+  "encoder": {
+   "name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+   "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+  },
+  "dim": 384,
+  "encoded_this_build": 0,
+  "reused_from_cache": 7955,
+  "lexical_tokenizers": {
+   "words": "unicode61 remove_diacritics 2",
+   "trigram": "trigram"
+  },
+  "build_seconds": {
+   "fts": 0.51,
+   "embeddings": 0.0
+  },
+  "bytes": {
+   "fts.db": 13148160,
+   "embeddings.npz": 14320166
+  }
+ },
+ "pool_sha256": "b021d0eed87c3373d95f17a072c246e144218cb6c9b285d31d9038d84486ec6d",
+ "pool_file_sha256": "23eadd4f7e52f28c0196f5b1128a6ded97bda7994330a84f02e06005c63be588",
+ "pairs": 819,
+ "unique_items": 646,
+ "questions": 56,
+ "questions_with_zero_candidates": 4,
+ "per_question": {
+  "min": 0,
+  "median": 15.5,
+  "max": 25
+ },
+ "pairs_by_method": {
+  "bm25:words": 309,
+  "bm25:auto": 341,
+  "dense": 508,
+  "hybrid:auto": 508
+ },
+ "pairs_found_by_n_methods": {
+  "1": 246,
+  "2": 389,
+  "3": 94,
+  "4": 90
+ },
+ "jaccard_overlap": {
+  "bm25:words & bm25:auto": 0.8732,
+  "bm25:words & dense": 0.1238,
+  "bm25:words & hybrid:auto": 0.2826,
+  "bm25:auto & dense": 0.1245,
+  "bm25:auto & hybrid:auto": 0.3142,
+  "dense & hybrid:auto": 0.5052
+ }
+}

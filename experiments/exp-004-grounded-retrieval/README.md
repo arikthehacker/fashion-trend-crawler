@@ -15,13 +15,13 @@ The evaluation index is frozen at a first-seen cutoff of 2026-09-30 08:00 UTC: 7
 | Step | State |
 |---|---|
 | Retrieval layer (`src/rag_*.py`) | Built and tested. No language model is involved |
-| Draft questions (`questions_v1.jsonl`) | 60 machine drafts, unchanged since `5d4b688` |
-| Question review | Open in ARI3 Review ("Question review (EXP-004)"). No decision recorded yet |
-| Question freeze | Not frozen. `python src/rag_questions.py freeze` runs once every draft has a decision and none is ambiguous |
+| Draft questions (`questions_v1.jsonl`) | 60 machine drafts, unchanged since `5d4b688` (SHA-256 `5cd3bc10…`) |
+| Question review | Complete: 52 approved unchanged, 4 edited (q004, q011, q013, q017), 4 rejected (q007, q014, q059, q060). Log committed in `390f842` |
+| Question freeze | **Frozen** 2026-09-30 22:35 UTC: 56 questions, SHA-256 `d1d17cb4cfe34196…`. 46 drafted answerable, 10 drafted unanswerable, 13 temporal (4 replay). Languages: en 46, ja 4, it 2, fr 2, pt 2 |
 | Depth-5 pool | **Superseded before labeling** (`superseded/`). 0 judgments were ever made on it |
-| Depth-10 pool (`pool_v2.jsonl`) | Not built. It is built from the frozen questions only |
-| Relevance judgments | None. The judging deck appears after the depth-10 pool exists |
-| DEV/TEST split | Not frozen. It is frozen right after the questions, before any judgment |
+| Depth-10 pool (`pool_v2.jsonl`) | **Built** from the frozen questions: 819 pairs, 646 distinct items, median 15.5 per question (max 25), pool SHA-256 `b021d0eed87c3373…`. 4 questions have no eligible item (q024, q026, q027, q040) |
+| Relevance judgments | None yet. Deck "Evidence relevance (EXP-004)" in ARI3 Review, 819 cards |
+| DEV/TEST split | **Frozen**: 37 DEV / 19 TEST, seed 4. DEV IDs SHA-256 `fc7d5a4d…`, TEST IDs `0ed719fa…`, split `62f6a892…` |
 | Retriever comparison on DEV | Not run |
 | Generation | `ask_ari3` (`src/rag_answer.py`), the grounded-answer schema, deterministic validators, the provider interface, a DeepSeek adapter and the harness (`src/rag_gen_eval.py`) are built and tested with scripted providers. No live provider has been called. Live calls need `ARI3_LIVE_LLM=approved`, set by the owner |
 
