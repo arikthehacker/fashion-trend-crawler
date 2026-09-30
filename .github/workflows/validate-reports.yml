@@ -35,6 +35,9 @@ jobs:
       - name: Commit guard tests (secret scan, attribution, author identity)
         run: python src/test_commit_guard.py
 
+      - name: First-seen migration and backfill tests (throwaway databases)
+        run: python src/test_backfill_first_seen.py
+
       - name: Validate published reports (schema + publish gate + non-blocking confidence warnings)
         run: python src/validate_all_reports.py
 

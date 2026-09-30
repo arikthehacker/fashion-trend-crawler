@@ -7,6 +7,7 @@ record from before the freeze showing the item.
 usage: python src/test_label_tool.py
 """
 
+import glob
 import json
 import os
 import shutil
@@ -28,11 +29,22 @@ class HoldoutQueueTests(unittest.TestCase):
         self.tmp = tempfile.mkdtemp()
         self._queue_dir = lt.QUEUE_DIR
         lt.QUEUE_DIR = os.path.join(self.tmp, "queues")
+        # The selector only reads first_seen_at. Build the store as it was before migration
+        # 0004 and add a plain column, so each test can set the value it needs.
+        # test_backfill_first_seen.py tests the real 0004 triggers.
+        self._migrations_dir = store.MIGRATIONS_DIR
+        pre = os.path.join(self.tmp, "migrations")
+        os.makedirs(pre)
+        for version in ("0001", "0002", "0003"):
+            for path in glob.glob(os.path.join(self._migrations_dir, f"{version}_*.sql")):
+                shutil.copy(path, pre)
+        store.MIGRATIONS_DIR = pre
         self.con = store.connect(":memory:")
         store.migrate(self.con)
         self.n = 0
 
     def tearDown(self):
+        store.MIGRATIONS_DIR = self._migrations_dir
         lt.QUEUE_DIR = self._queue_dir
         self.con.close()
         shutil.rmtree(self.tmp)
