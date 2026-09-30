@@ -1,9 +1,3 @@
--- PROPOSED migration 0004. NOT A MIGRATION FILE.
--- src/item_store.py migrate() applies db/migrations/NNNN_*.sql on every scheduled
--- ingest. This file lives outside that folder and has a .txt suffix, so it cannot
--- run by accident. It becomes db/migrations/0004_first_seen.sql only during the
--- deployment window in the runbook.
---
 -- 0004: immutable first-seen provenance for items.
 --   published_at   when the outside world published the item (feed-reported)
 --   first_seen_at  when ARI3 first acquired the item (set once, never changed)

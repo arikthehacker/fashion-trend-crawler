@@ -1,8 +1,8 @@
 # Runbook: deploying migration 0004 (first-seen provenance)
 
-Migration 0004 adds `first_seen_at`, `first_seen_basis` and `first_seen_evidence` to `items`, with triggers that stamp new rows and make the values write-once. `src/backfill_first_seen.py` fills the rows that existed before the migration.
+Migration 0004 (`db/migrations/0004_first_seen.sql`) adds `first_seen_at`, `first_seen_basis` and `first_seen_evidence` to `items`, with triggers that stamp new rows and make the values write-once. `src/backfill_first_seen.py` fills the rows that existed before the migration.
 
-`src/run_ingest.py` applies every pending file in `db/migrations/` at the start of each scheduled run. Creating `db/migrations/0004_first_seen.sql` is therefore the deployment, and happens only at step 6 below.
+`src/run_ingest.py` applies every pending file in `db/migrations/` at the start of each scheduled run. Creating `db/migrations/0004_first_seen.sql` is therefore the deployment, and happens only at step 5 below.
 
 ## Preconditions (all must hold, or the deployment is skipped)
 
@@ -19,7 +19,7 @@ Migration 0004 adds `first_seen_at`, `first_seen_basis` and `first_seen_evidence
 4. **Dry run** against the live store, read-only:
    `python src/backfill_first_seen.py --backups data/store/first-seen-evidence-<date>`
    It must report 0 invariant failures. Note the fingerprint.
-5. **Install** the migration: copy `design/0004_first_seen_PROPOSED.sql.txt` to `db/migrations/0004_first_seen.sql`, dropping the header lines above `-- 0004:`.
+5. **Install** the migration as `db/migrations/0004_first_seen.sql`. Before deployment it was kept as `design/0004_first_seen_PROPOSED.sql.txt`, outside the folder ingestion applies.
 6. **Migrate** by hand: `python src/item_store.py init`. It must report `applied migrations [4]`.
 7. **Backfill:**
    `python src/backfill_first_seen.py --backups data/store/first-seen-evidence-<date> --apply --expect-fingerprint <step 4>`
@@ -38,3 +38,12 @@ Migration 0004 adds `first_seen_at`, `first_seen_basis` and `first_seen_evidence
 ## What the reconstructed values mean
 
 A reconstructed `first_seen_at` is the earliest surviving record that ARI3 held the item: its current `fetched_at`, a backup row matched by item ID and URL, an append-only prediction row, or a label. It can be later than the true first sighting. It is suitable for historical replay, where it can only exclude evidence ARI3 had. It is never used on its own to prove that an item arrived after a given time.
+
+## Deployment record, 2026-09-30
+
+- **Window:** 07:50 to 07:51 UTC. Scheduler `Ready`, no ingest process running, next run at 08:30 UTC.
+- **Backup:** `data/store/backups/pre-0004-first-seen-2026-09-30T0750Z.db`, integrity `ok`, 7,955 items, SHA-256 `58013f87d5a4fcad6b37baffdf09a95fa78a132acf0dfad3c454da315221bfc5`. Local, not in git.
+- **Evidence:** 15 backups copied to `data/store/first-seen-evidence-2026-09-30/`.
+- **Dry run:** 7,955 rows. Winning sources: current `fetched_at` 7,738, backups 142, prediction ledgers 69, labels 6. 0 rejected, 0 invariant failures. 217 items reconstructed earlier than their current `fetched_at`. Fingerprint `8d79deafb2f46e5d2ec60ef94f30ab25da8b13673c3b1b1a16334dac6b185835`, identical to the rehearsal on a copy.
+- **Migration:** `applied migrations [4]`. **Backfill:** applied with that fingerprint. Every post-condition held.
+- **After:** 7,955 `reconstructed`, 0 NULL, 0 ordering violations, `integrity_check` ok. Items 7,955, style events 1,463, mentions 1,182, labels 600 (SHA-256 unchanged), prediction rows 8,215: all identical to before.
