@@ -91,6 +91,29 @@ class RelevanceQueueTests(unittest.TestCase):
         self.assertEqual(rv.left(q), (2, 4))
         self.assertEqual(ev.judgments_by_question(lines)["q001"][card["item_id"]], "not_relevant")
 
+    def test_relevance_queue_is_recognized_for_routing(self):
+        self.assertTrue(rv.is_relevance_queue(self.queue()))
+        self.assertFalse(rv.is_relevance_queue({"task": "is_style_signal", "item_ids": []}))
+
+    def test_card_shows_the_frozen_question_and_its_constraints(self):
+        q = self.queue()
+        frozen, _ = rq.load_frozen(self.p["frozen"], self.p["manifest"])
+        by_id = {x.question_id: x for x in frozen}
+        for card in q["cards"]:
+            view = rv.card_view(card, by_id)
+            self.assertEqual(view["question"], by_id[card["question_id"]].question)
+            self.assertEqual(set(view), {"question_id", "question", "constraints"})
+        self.assertEqual(rv.card_view(q["cards"][-1], by_id)["constraints"], "known to ARI3 by 2026-09-24")
+
+    def test_card_that_disagrees_with_the_frozen_file_is_refused(self):
+        q = self.queue()
+        frozen, _ = rq.load_frozen(self.p["frozen"], self.p["manifest"])
+        by_id = {x.question_id: x for x in frozen}
+        with self.assertRaises(rv.CardMismatch):
+            rv.card_view(dict(q["cards"][0], question="A different question?"), by_id)
+        with self.assertRaises(rv.CardMismatch):
+            rv.card_view(dict(q["cards"][0], question_id="q999"), by_id)
+
     def test_invalid_judgment_value_is_rejected(self):
         q = self.queue()
         with self.assertRaises(ValueError):

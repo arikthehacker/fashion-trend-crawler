@@ -184,7 +184,8 @@ class App:
         decks = []
         for name, title in all_queues():
             q_left, q_total = labels_left(self.con, name)
-            decks.append((f"{title}\n{q_left} of {q_total} left", lambda n=name: self.labels(n)))
+            deck = self.relevance if rag_review.is_relevance_queue(load_queue(name)) else self.labels
+            decks.append((f"{title}\n{q_left} of {q_total} left", lambda n=name, d=deck: d(n)))
         if not os.path.exists(rag_questions.FROZEN):
             status = rag_questions.review_status()
             q_left = status["decisions"].get("unreviewed", 0) + status["decisions"].get("ambiguous", 0)
@@ -201,6 +202,9 @@ class App:
     # Style labels deck --------------------------------------------------
     def labels(self, name="is_style_signal"):
         self.q = load_queue(name)
+        if rag_review.is_relevance_queue(self.q):  # never answer relevance cards as style labels
+            messagebox.showerror("Wrong deck", "This queue is judged in the relevance deck.")
+            return self.menu()
         self.task = self.q["task"]
         done = {r[0] for r in self.con.execute(
             "SELECT item_id FROM labels WHERE task=? AND source='human'", (self.task,))}
@@ -288,6 +292,13 @@ class App:
     # Relevance deck (EXP-004) --------------------------------------------
     def relevance(self, name):
         self.rq = load_queue(name)
+        try:
+            self.r_questions = rag_review.frozen_questions()
+            for card in self.rq["cards"]:
+                rag_review.card_view(card, self.r_questions)
+        except (RuntimeError, OSError) as e:
+            messagebox.showerror("Deck not opened", str(e))
+            return self.menu()
         done = rag_review.judged(self.rq)
         self.r_cards = [c for c in self.rq["cards"] if (c["question_id"], c["item_id"]) not in done]
         self.r_done0 = len(self.rq["cards"]) - len(self.r_cards)
@@ -301,12 +312,16 @@ class App:
             [("Open article", self.rel_open, "plain"), ("Menu", self.menu, "plain")],
         ])
         self.rb_prog = self.label(f, size=11, color=DIM)
-        self.rb_q = self.label(f, size=16, bold=True, pady=(6, 0))
-        self.rb_filters = self.label(f, size=10, color=DIM, pady=(0, 4))
-        self.label(f, self.rq.get("help", ""), 10, color=DIM)
-        self.rb_meta = self.label(f, size=11, color=DIM, pady=(14, 0))
-        self.rb_title = self.label(f, size=19, bold=True, pady=(4, 8))
+        self.label(f, "QUESTION", 10, True, color=ACCENT, pady=(8, 0))
+        self.rb_q = self.label(f, size=17, bold=True, pady=(2, 0))
+        self.label(f, "FILTERS / CONSTRAINTS", 10, True, color=ACCENT, pady=(10, 0))
+        self.rb_filters = self.label(f, size=12, pady=(2, 0))
+        self.label(f, "CANDIDATE EVIDENCE", 10, True, color=ACCENT, pady=(14, 0))
+        self.rb_meta = self.label(f, size=11, color=DIM, pady=(2, 0))
+        self.rb_title = self.label(f, size=18, bold=True, pady=(2, 6))
         self.rb_ex = self.label(f, size=13)
+        self.rb_prompt = self.label(f, self.rq.get("question", ""), 14, True, pady=(14, 0))
+        self.label(f, self.rq.get("help", ""), 10, color=DIM)
         self.root.bind("<Key>", self.rel_key)
         self.rewrap()
         self.rel_show()
@@ -325,8 +340,9 @@ class App:
         t, ex, domain, day, lang = self.con.execute(
             """SELECT i.title, i.text_excerpt, o.domain, substr(i.published_at,1,10), i.lang
                FROM items i JOIN outlets o USING (outlet_id) WHERE i.item_id=?""", (card["item_id"],)).fetchone()
-        self.rb_q.config(text=card["question"])
-        self.rb_filters.config(text=f"Filters: {card['filters']}")
+        view = rag_review.card_view(card, self.r_questions)  # question text from the frozen file
+        self.rb_q.config(text=view["question"])
+        self.rb_filters.config(text=view["constraints"])
         self.rb_meta.config(text=f"{domain}   {day}   {lang or ''}")
         self.rb_title.config(text=t or "(no title)")
         self.rb_ex.config(text=ex or "")

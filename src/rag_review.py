@@ -79,6 +79,32 @@ def make_queue(pool_path=None, manifest_path=None, judgments_path=None, frozen=N
     return label_tool._write_queue(QUEUE_NAME, queue)
 
 
+def is_relevance_queue(queue):
+    """True for EXP-004 relevance queues. They open only in the relevance deck, never in
+    the style-label deck, whose YES/NO answers would be written to the labels table."""
+    return queue.get("kind") == "rag_relevance"
+
+
+class CardMismatch(RuntimeError):
+    """A card's question differs from the frozen question file. The deck refuses to open."""
+
+
+def frozen_questions():
+    """{question_id: Question} from the frozen artifact, after its fingerprint check."""
+    questions, _ = rag_questions.load_frozen()
+    return {q.question_id: q for q in questions}
+
+
+def card_view(card, questions):
+    """What a judging card shows: the frozen question text and constraints, looked up by
+    question_id. Nothing about methods, ranks, scores or DEV/TEST membership."""
+    q = questions.get(card["question_id"])
+    if q is None or q.question != card["question"]:
+        raise CardMismatch(f"card for {card['question_id']} does not match the frozen question file")
+    return {"question_id": q.question_id, "question": q.question,
+            "constraints": describe_filters(q.filters.model_dump(exclude_none=True))}
+
+
 def judgments_file(queue):
     return os.path.join(ROOT, queue["judgments_path"])
 
