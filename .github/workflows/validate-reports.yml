@@ -29,6 +29,9 @@ jobs:
       - name: RSS ingestion tests (offline fixtures)
         run: python src/test_ingest_rss.py
 
+      - name: EXP-003A time-holdout selector tests
+        run: python src/test_label_tool.py
+
       - name: Validate published reports (schema + publish gate + non-blocking confidence warnings)
         run: python src/validate_all_reports.py
 

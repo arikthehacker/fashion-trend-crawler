@@ -15,9 +15,12 @@ Progress is saved on every keypress, so quitting and resuming loses nothing.
 """
 
 import argparse
+import glob
+import hashlib
 import json
 import os
 import random
+import sqlite3
 import sys
 import webbrowser
 
@@ -121,15 +124,76 @@ def make_forecast_queue(con, n_random=150, n_keyword=100, seed=11):
     return _write_queue("is_forecast_exp003", q)
 
 
-def make_holdout_queue(con, since, n=150, seed=13):
-    """EXP-003 part A: items fetched after a model was frozen, labeled as a time holdout."""
+BACKUP_DIR = os.path.join(ROOT, "data", "store", "backups")
+
+
+class HoldoutIntegrityError(RuntimeError):
+    """The time-holdout pool failed an integrity check. No queue is written."""
+
+
+def holdout_pool(con, since):
+    """EXP-003A eligibility (amendment 2026-09-30, rules 1 and 2): published after the
+    freeze, with a stored summary, not syndicated, not already labeled for the task.
+    fetched_at is not used: it changes when an item's content changes."""
     labeled = {r[0] for r in con.execute("SELECT item_id FROM labels WHERE task='is_style_signal'")}
-    cand = [r[0] for r in con.execute(
-        "SELECT item_id FROM items WHERE fetched_at > ? AND text_excerpt IS NOT NULL AND syndicated_of IS NULL",
-        (since,)) if r[0] not in labeled]
+    return [r[0] for r in con.execute(
+        "SELECT item_id FROM items WHERE published_at > ? AND text_excerpt IS NOT NULL "
+        "AND syndicated_of IS NULL ORDER BY item_id", (since,)) if r[0] not in labeled]
+
+
+def pre_freeze_evidence(con, item_ids, since, backup_paths=()):
+    """Records timestamped at or before `since` that show an item already existed then:
+    backup rows with fetched_at <= since (matched by item ID or by URL), prediction
+    rows and labels created at or before since. Returns {item_id: [record, ...]}."""
+    ids = set(item_ids)
+    urls = {u: i for i, u in con.execute("SELECT item_id, url FROM items") if i in ids}
+    found = {}
+    for path in backup_paths:
+        b = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
+        try:
+            for iid, url in b.execute("SELECT item_id, url FROM items WHERE fetched_at <= ?", (since,)):
+                for hit in {iid if iid in ids else None, urls.get(url)} - {None}:
+                    found.setdefault(hit, []).append(f"backup:{os.path.basename(path)}")
+        finally:
+            b.close()
+    for table, label in (("label_predictions", "prediction_ledger"), ("labels", "label")):
+        for (iid,) in con.execute(f"SELECT DISTINCT item_id FROM {table} WHERE created_at <= ?", (since,)):
+            if iid in ids:
+                found.setdefault(iid, []).append(label)
+    return found
+
+
+def make_holdout_queue(con, since, n=150, seed=13, backup_paths=None):
+    """EXP-003 part A: items published after a model was frozen, labeled as a time holdout.
+
+    Follows models/ari3-v0.0.3/AMENDMENT_2026-09-30_holdout_eligibility.md. Refuses to
+    write a queue unless first_seen_at exists and is after the freeze for every eligible
+    item, and no record from before the freeze shows an eligible item."""
+    if "first_seen_at" not in {r[1] for r in con.execute("PRAGMA table_info(items)")}:
+        raise HoldoutIntegrityError("items.first_seen_at does not exist yet. Deploy migration 0004 first.")
+    cand = holdout_pool(con, since)
+    if not cand:
+        raise HoldoutIntegrityError("no eligible items")
+    marks = ",".join("?" * len(cand))
+    early = [r[0] for r in con.execute(
+        f"SELECT item_id FROM items WHERE item_id IN ({marks}) AND (first_seen_at IS NULL OR first_seen_at <= ?)",
+        (*cand, since))]
+    if early:
+        raise HoldoutIntegrityError(f"{len(early)} eligible items have first_seen_at at or before {since}: "
+                                    f"{early[:20]}")
+    if backup_paths is None:
+        backup_paths = sorted(glob.glob(os.path.join(BACKUP_DIR, "*.db")))
+    evidence = pre_freeze_evidence(con, cand, since, backup_paths)
+    if evidence:
+        raise HoldoutIntegrityError(f"{len(evidence)} eligible items existed before {since}: "
+                                    f"{dict(list(evidence.items())[:20])}")
     ids = _stratified(con, cand, n, random.Random(seed))
     q = {"task": "is_style_signal", **TASKS["is_style_signal"], "item_ids": ids, "split": "time_holdout",
-         "note": "exp003_time_holdout", "title": "New items since v0.0.2 (EXP-003)", "fetched_after": since}
+         "note": "exp003_time_holdout", "title": "New items since v0.0.2 (EXP-003)",
+         "published_after": since, "eligible_pool": len(cand),
+         "backups_checked": [os.path.basename(p) for p in backup_paths],
+         "item_ids_sha256": hashlib.sha256(json.dumps(ids).encode()).hexdigest(),
+         "rule": "models/ari3-v0.0.3/AMENDMENT_2026-09-30_holdout_eligibility.md"}
     return _write_queue("is_style_signal_holdout_exp003", q)
 
 
@@ -249,6 +313,8 @@ def main(argv=None) -> int:
     sub.add_parser("make-forecast-queue")
     hq = sub.add_parser("make-holdout-queue")
     hq.add_argument("--since", required=True, help="UTC time the model was frozen")
+    hq.add_argument("--backups-dir", action="append",
+                    help="folder of store backups to check for pre-freeze rows (repeatable; default data/store/backups)")
     lb = sub.add_parser("label")
     lb.add_argument("queue")
     lb.add_argument("--labeler", default="ariella")
@@ -256,7 +322,12 @@ def main(argv=None) -> int:
 
     con = connect(args.db)
     if args.cmd in ("make-forecast-queue", "make-holdout-queue"):
-        path = make_forecast_queue(con) if args.cmd == "make-forecast-queue" else make_holdout_queue(con, args.since)
+        if args.cmd == "make-forecast-queue":
+            path = make_forecast_queue(con)
+        else:
+            dirs = args.backups_dir or [BACKUP_DIR]
+            backups = sorted(p for d in dirs for p in glob.glob(os.path.join(d, "*.db")))
+            path = make_holdout_queue(con, args.since, backup_paths=backups)
         print(f"Wrote {len(json.load(open(path, encoding='utf-8'))['item_ids'])} items to {path}")
         return 0
     if args.cmd == "make-queue":
