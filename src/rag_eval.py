@@ -74,8 +74,10 @@ def load_jsonl(path, model):
 
 
 def sha256_file(path):
+    """SHA-256 of a text file with line endings normalized to LF, so a Windows checkout
+    (CRLF) and the committed file (LF) give the same fingerprint."""
     with open(path, "rb") as f:
-        return hashlib.sha256(f.read()).hexdigest()
+        return hashlib.sha256(f.read().replace(b"\r\n", b"\n")).hexdigest()
 
 
 # ---------- metrics ----------

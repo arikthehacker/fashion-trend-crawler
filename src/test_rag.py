@@ -252,6 +252,18 @@ class EvalTests(unittest.TestCase):
                      j(2, "relevant", "2026-10-01T00:01:00Z"), j(3, "unsure", "2026-10-01T00:02:00Z")]
         self.assertEqual(ev.gold(judgments), {"q001": {2}})
 
+    def test_file_fingerprint_ignores_line_endings(self):
+        tmp = tempfile.mkdtemp()
+        try:
+            lf, crlf = os.path.join(tmp, "lf.jsonl"), os.path.join(tmp, "crlf.jsonl")
+            with open(lf, "wb") as f:
+                f.write(b'{"a": 1}\n{"b": 2}\n')
+            with open(crlf, "wb") as f:
+                f.write(b'{"a": 1}\r\n{"b": 2}\r\n')
+            self.assertEqual(ev.sha256_file(lf), ev.sha256_file(crlf))
+        finally:
+            shutil.rmtree(tmp)
+
     def test_split_is_stratified_deterministic_and_disjoint(self):
         qs = []
         for n in range(60):

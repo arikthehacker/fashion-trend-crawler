@@ -1,0 +1,2 @@
+# Evaluation data and judgment logs are fingerprinted, so keep them byte-identical across checkouts.
+*.jsonl text eol=lf
