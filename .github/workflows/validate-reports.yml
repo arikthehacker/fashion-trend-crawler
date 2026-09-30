@@ -44,6 +44,9 @@ jobs:
       - name: EXP-004 relevance queue and judgment log tests
         run: python src/test_rag_review.py
 
+      - name: EXP-004 question review and freeze tests
+        run: python src/test_rag_questions.py
+
       - name: Validate published reports (schema + publish gate + non-blocking confidence warnings)
         run: python src/validate_all_reports.py
 

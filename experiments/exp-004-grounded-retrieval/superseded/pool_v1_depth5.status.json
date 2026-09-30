@@ -1,0 +1,11 @@
+{
+ "status": "superseded_before_labeling",
+ "superseded_at": "2026-09-30",
+ "decided_by": "owner, directive 025",
+ "reason": "Depth-5 pooling leaves ranks 6 to 10 of each method incompletely judged, which would understate Hit@10 and Recall@10.",
+ "pairs": 475,
+ "pool_sha256": "7d85e55156742a567309e089f2c1852c5b3e88d1b34fe6e878add286dfb2f0db",
+ "judgments_at_supersession": 0,
+ "built_by": "src/rag_eval.py pool --depth 5 (commit 5d4b688)",
+ "note": "Kept for provenance. Never judge it and never use it for evaluation."
+}

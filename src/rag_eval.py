@@ -1,33 +1,47 @@
 """EXP-004 retrieval evaluation: question and judgment formats, pooling, the frozen
-DEV/TEST split, and retrieval metrics.
+DEV/TEST split, retrieval metrics and the run-once TEST guard.
 
 Gold relevance comes only from the editor's judgments (judgments/*.jsonl, written by
 ARI3 Review). Machine output is a candidate pool, never gold.
 
-Metrics, binary relevance, over questions with at least one item judged relevant:
+Pool. For every frozen question, the union of the top 10 items from each candidate
+method (CANDIDATE_METHODS), so every item any candidate ranks in its top 10 is judged
+(TREC-style pooling, Voorhees and Harman 2005). Recall is relative to that pool: a
+relevant item no candidate retrieved is never judged.
+
+Unsure. Judgments are relevant, not_relevant or unsure. Metrics use condensed lists
+(Sakai 2007): unsure items are removed from a ranking before scoring and are never
+counted as relevant or as not relevant. Each result also reports the unresolved share
+(unsure items in the top 10) and the judged coverage of the top 10.
+
+Metrics, over questions with at least one item judged relevant:
   Hit@K     1 if any relevant item is in the top K, else 0
   Recall@K  relevant items in the top K / all items judged relevant
   MRR       1 / rank of the first relevant item (0 if none is retrieved)
-  nDCG@10   discounted cumulative gain of the top 10, over the ideal ordering
-Recall is measured against the judged pool, the union of each method's top results
-(TREC-style pooling, Voorhees and Harman 2005). A relevant item that no method
-retrieved is never judged, so recall is relative to the pool and is not exhaustive.
-"unsure" judgments count as not relevant.
+  nDCG@10   discounted cumulative gain of the top 10 over the ideal ordering
+
+TEST is scored once, only after a retriever has been frozen from DEV results.
 
 Usage:
-  python src/rag_eval.py pool         --questions Q.jsonl --out POOL.jsonl [--depth 10]
-  python src/rag_eval.py freeze-split --questions Q.jsonl --out SPLIT.json [--n-test 20]
-  python src/rag_eval.py eval-dev     --questions Q.jsonl --split SPLIT.json --judgments J.jsonl --out DIR
+  python src/rag_eval.py pool-preview              # sizes a pool over the draft questions; writes no deck
+  python src/rag_eval.py pool                      # builds pool_v2 from the frozen questions
+  python src/rag_eval.py freeze-split              # DEV/TEST split of the frozen questions, once
+  python src/rag_eval.py eval-dev                  # scores every candidate on DEV
+  python src/rag_eval.py freeze-retriever --method M --dev-result FILE
+  python src/rag_eval.py eval-test                 # once, for the frozen retriever only
 """
 
 import argparse
+import collections
 import hashlib
 import json
 import math
 import os
+import statistics
 import sys
+import time
 from datetime import datetime, timezone
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -35,8 +49,28 @@ from rag_schema import Filters, SearchArgs
 
 QUERY_TYPES = ("term", "temporal", "source_filter", "sector_filter", "multilingual", "general")
 JUDGMENTS = ("relevant", "not_relevant", "unsure")
-# bm25:auto uses trigrams for CJK queries and words otherwise. bm25:words is the baseline it is compared with.
-POOL_METHODS = (("bm25", "words"), ("bm25", "auto"), ("dense", None), ("hybrid", "auto"))
+# bm25:auto uses character trigrams for CJK queries and word tokens otherwise, so it
+# differs from bm25:words only on CJK queries. Both are candidates for those queries.
+CANDIDATE_METHODS = (("bm25", "words"), ("bm25", "auto"), ("dense", None), ("hybrid", "auto"))
+POOL_DEPTH = 10
+FAILURE_CATEGORIES = ("vocabulary_mismatch", "semantic_near_miss", "temporal_mismatch", "wrong_sector_or_context",
+                      "multilingual_failure", "overly_broad_query", "no_relevant_evidence_in_corpus", "other")
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+EXP = os.path.join(os.path.dirname(HERE), "experiments", "exp-004-grounded-retrieval")
+PATHS = {
+    "pool": os.path.join(EXP, "pool_v2.jsonl"),
+    "pool_manifest": os.path.join(EXP, "pool_v2.manifest.json"),
+    "split": os.path.join(EXP, "frozen", "split_v1.json"),
+    "judgments": os.path.join(EXP, "judgments", "rag_relevance_v2.jsonl"),
+    "results": os.path.join(EXP, "results"),
+    "retriever_freeze": os.path.join(EXP, "frozen", "retriever_v1.json"),
+    "test_result": os.path.join(EXP, "results", "test-retrieval-v1.json"),
+}
+
+
+def method_name(method, lexical):
+    return f"{method}:{lexical}" if lexical else method
 
 
 class Question(BaseModel):
@@ -53,19 +87,22 @@ class Question(BaseModel):
     dataset_version: str
     drafted_by: str
     notes: str = ""
+    review_status: Literal["draft", "approved", "edited"] = "draft"
 
 
 class Judgment(BaseModel):
+    """One relevance judgment. It records nothing about which method found the item."""
     model_config = ConfigDict(extra="forbid", strict=True, frozen=True)
 
+    task: Literal["rag_relevance"]
+    dataset_version: str
+    pool_sha256: str = Field(min_length=64, max_length=64)
     question_id: str
     item_id: int
     url: str
     judgment: Literal[JUDGMENTS]
     labeler: str
-    labeled_at: str
-    pool_source: List[str]
-    dataset_version: str
+    judged_at: str
 
 
 def load_jsonl(path, model):
@@ -80,7 +117,29 @@ def sha256_file(path):
         return hashlib.sha256(f.read().replace(b"\r\n", b"\n")).hexdigest()
 
 
-# ---------- metrics ----------
+def sha256_ids(ids):
+    return hashlib.sha256(json.dumps(sorted(ids)).encode()).hexdigest()
+
+
+# ---------- judgments and metrics ----------
+
+def judgments_by_question(judgments, labeler=None):
+    """{question_id: {item_id: judgment}}, latest answer per (question, item, labeler)."""
+    latest = {}
+    for j in sorted(judgments, key=lambda j: j.judged_at):
+        if labeler is None or j.labeler == labeler:
+            latest[(j.question_id, j.item_id, j.labeler)] = j.judgment
+    out = {}
+    for (qid, item, _), value in latest.items():
+        out.setdefault(qid, {})[item] = value
+    return out
+
+
+def gold(judgments, labeler=None):
+    """{question_id: set of item_ids judged relevant}."""
+    return {q: {i for i, v in items.items() if v == "relevant"}
+            for q, items in judgments_by_question(judgments, labeler).items()}
+
 
 def hit_at(ranked, relevant, k):
     return 1.0 if set(ranked[:k]) & relevant else 0.0
@@ -100,51 +159,91 @@ def ndcg_at(ranked, relevant, k=10):
     return dcg / ideal
 
 
-def gold(judgments, labeler=None):
-    """{question_id: set of item_ids judged relevant}. The latest judgment per
-    (question, item, labeler) wins."""
-    latest = {}
-    for j in sorted(judgments, key=lambda j: j.labeled_at):
-        if labeler is None or j.labeler == labeler:
-            latest[(j.question_id, j.item_id, j.labeler)] = j.judgment
-    out = {}
-    for (qid, item, _), value in latest.items():
-        out.setdefault(qid, set())
-        if value == "relevant":
-            out[qid].add(item)
+def score(rankings, judged):
+    """Mean metrics over questions with at least one relevant item, on condensed lists.
+    rankings: {qid: [item_id, ...]}. judged: {qid: {item_id: judgment}}."""
+    rows, unresolved, coverage = [], [], []
+    for q, ranking in rankings.items():
+        marks = judged.get(q, {})
+        top = ranking[:10]
+        if top:
+            unresolved.append(sum(marks.get(i) == "unsure" for i in top) / len(top))
+            coverage.append(sum(i in marks for i in top) / len(top))
+        relevant = {i for i, v in marks.items() if v == "relevant"}
+        if not relevant:
+            continue
+        condensed = [i for i in ranking if marks.get(i) != "unsure"]
+        rows.append((hit_at(condensed, relevant, 5), hit_at(condensed, relevant, 10),
+                     recall_at(condensed, relevant, 5), recall_at(condensed, relevant, 10),
+                     mrr(condensed, relevant), ndcg_at(condensed, relevant, 10)))
+    names = ("hit@5", "hit@10", "recall@5", "recall@10", "mrr", "ndcg@10")
+    out = {"questions_scored": len(rows), "questions_without_relevant": len(rankings) - len(rows),
+           "unresolved_share_top10": round(statistics.mean(unresolved), 4) if unresolved else None,
+           "judged_coverage_top10": round(statistics.mean(coverage), 4) if coverage else None}
+    if rows:
+        out.update({n: round(sum(r[i] for r in rows) / len(rows), 4) for i, n in enumerate(names)})
     return out
 
 
-def score(rankings, relevant_by_q):
-    """Mean metrics over questions with at least one relevant item."""
-    qids = [q for q, rel in relevant_by_q.items() if rel and q in rankings]
-    if not qids:
-        return {"questions": 0}
-    rows = [(hit_at(rankings[q], relevant_by_q[q], 5), hit_at(rankings[q], relevant_by_q[q], 10),
-             recall_at(rankings[q], relevant_by_q[q], 5), recall_at(rankings[q], relevant_by_q[q], 10),
-             mrr(rankings[q], relevant_by_q[q]), ndcg_at(rankings[q], relevant_by_q[q], 10)) for q in qids]
-    names = ("hit@5", "hit@10", "recall@5", "recall@10", "mrr", "ndcg@10")
-    return {"questions": len(qids), **{n: round(sum(r[i] for r in rows) / len(rows), 4) for i, n in enumerate(names)}}
+def groups(questions, judged):
+    """Question subsets reported separately."""
+    def non_en(q):
+        return q.language != "en" or (q.filters.languages or ["en"]) != ["en"]
+    return {
+        "all": questions,
+        "english": [q for q in questions if not non_en(q)],
+        "non_english": [q for q in questions if non_en(q)],
+        "japanese": [q for q in questions if q.language == "ja" or q.filters.languages == ["ja"]],
+        "temporal": [q for q in questions if stratum(q)[1]],
+        "not_temporal": [q for q in questions if not stratum(q)[1]],
+        "answerable_expected": [q for q in questions if q.answerable_expected],
+        "unanswerable_expected": [q for q in questions if not q.answerable_expected],
+        "gold_answerable": [q for q in questions if any(v == "relevant" for v in judged.get(q.question_id, {}).values())],
+    }
 
 
-# ---------- pooling ----------
+# ---------- retrieval runs and pooling ----------
 
 def run_method(corpus_con, index, question, method, lexical, k):
+    """(item_ids, seconds) for one question and one candidate method."""
     from rag_retrieve import search
     args = SearchArgs(query=question.query, filters=question.filters, method=method, k=k)
-    return [h.evidence.item_id for h in search(corpus_con, index, args, lexical or "auto").hits]
+    t0 = time.perf_counter()
+    ids = [h.evidence.item_id for h in search(corpus_con, index, args, lexical or "auto").hits]
+    return ids, time.perf_counter() - t0
 
 
-def build_pool(corpus_con, index, questions, depth=10):
-    """[{question_id, item_id, pool_source}] : the union of each method's top `depth`."""
+def build_pool(corpus_con, index, questions, depth=POOL_DEPTH, methods=CANDIDATE_METHODS):
+    """[{question_id, item_id, pool_source}]: the union of each method's top `depth`."""
     rows = []
     for q in questions:
         sources = {}
-        for method, lexical in POOL_METHODS:
-            for item_id in run_method(corpus_con, index, q, method, lexical, depth):
-                sources.setdefault(item_id, []).append(f"{method}:{lexical}" if lexical else method)
+        for method, lexical in methods:
+            for item_id in run_method(corpus_con, index, q, method, lexical, depth)[0]:
+                sources.setdefault(item_id, []).append(method_name(method, lexical))
         rows += [{"question_id": q.question_id, "item_id": i, "pool_source": s} for i, s in sorted(sources.items())]
     return rows
+
+
+def pool_stats(rows, questions, methods=CANDIDATE_METHODS):
+    per_q = collections.Counter(r["question_id"] for r in rows)
+    counts = [per_q.get(q.question_id, 0) for q in questions]
+    names = [method_name(m, lx) for m, lx in methods]
+    found = {n: {(r["question_id"], r["item_id"]) for r in rows if n in r["pool_source"]} for n in names}
+    overlap = {f"{a} & {b}": round(len(found[a] & found[b]) / max(1, len(found[a] | found[b])), 4)
+               for n, a in enumerate(names) for b in names[n + 1:]}
+    return {"pairs": len(rows), "unique_items": len({r["item_id"] for r in rows}),
+            "questions": len(questions), "questions_with_zero_candidates": sum(c == 0 for c in counts),
+            "per_question": {"min": min(counts), "median": statistics.median(counts), "max": max(counts)},
+            "pairs_by_method": {n: len(found[n]) for n in names},
+            "pairs_found_by_n_methods": dict(sorted(collections.Counter(len(r["pool_source"]) for r in rows).items())),
+            "jaccard_overlap": overlap}
+
+
+def pool_fingerprint(rows):
+    body = "\n".join(json.dumps([r["question_id"], r["item_id"]]) for r in
+                     sorted(rows, key=lambda r: (r["question_id"], r["item_id"])))
+    return hashlib.sha256(body.encode()).hexdigest()
 
 
 # ---------- split ----------
@@ -154,87 +253,185 @@ def stratum(q):
     return (q.answerable_expected, temporal, q.language != "en", q.query_type)
 
 
-def freeze_split(questions, questions_sha256, n_test=20, seed=4):
-    """Stratified DEV/TEST assignment. Within each stratum, questions are ordered by
-    SHA-256 of seed and question_id, and TEST receives its share by largest remainder."""
+def freeze_split(questions, questions_sha256, n_test=None, seed=4):
+    """Stratified DEV/TEST assignment by question. Within each stratum, questions are
+    ordered by SHA-256 of seed and question_id, and TEST receives its share by largest
+    remainder. The default TEST size is one third of the questions."""
+    total = len(questions)
+    n_test = round(total / 3) if n_test is None else n_test
     strata = {}
     for q in questions:
         strata.setdefault(stratum(q), []).append(q.question_id)
-    total = len(questions)
     quotas = {s: n_test * len(ids) / total for s, ids in strata.items()}
     alloc = {s: int(v) for s, v in quotas.items()}
     for s in sorted(quotas, key=lambda s: (-(quotas[s] - alloc[s]), str(s)))[:n_test - sum(alloc.values())]:
         alloc[s] += 1
     test = []
     for s, ids in strata.items():
-        ordered = sorted(ids, key=lambda i: hashlib.sha256(f"{seed}:{i}".encode()).hexdigest())
-        test += ordered[:alloc[s]]
+        test += sorted(ids, key=lambda i: hashlib.sha256(f"{seed}:{i}".encode()).hexdigest())[:alloc[s]]
     test = sorted(test)
     dev = sorted(q.question_id for q in questions if q.question_id not in set(test))
-    body = {"questions_sha256": questions_sha256, "seed": seed, "n_dev": len(dev), "n_test": len(test),
-            "dev": dev, "test": test,
+    return {"questions_sha256": questions_sha256, "seed": seed, "n_dev": len(dev), "n_test": len(test),
+            "dev": dev, "test": test, "dev_ids_sha256": sha256_ids(dev), "test_ids_sha256": sha256_ids(test),
+            "split_sha256": hashlib.sha256(json.dumps({"dev": dev, "test": test}).encode()).hexdigest(),
             "strata": {json.dumps(list(s)): len(ids) for s, ids in sorted(strata.items(), key=lambda x: str(x[0]))}}
-    body["split_sha256"] = hashlib.sha256(json.dumps({"dev": dev, "test": test}).encode()).hexdigest()
-    return body
+
+
+def load_split(questions_sha256, path=PATHS["split"]):
+    with open(path, encoding="utf-8") as f:
+        split = json.load(f)
+    if split["questions_sha256"] != questions_sha256:
+        raise RuntimeError("the frozen questions changed after the split was frozen")
+    if set(split["dev"]) & set(split["test"]):
+        raise RuntimeError("a question is in both DEV and TEST")
+    if sha256_ids(split["dev"]) != split["dev_ids_sha256"] or sha256_ids(split["test"]) != split["test_ids_sha256"]:
+        raise RuntimeError("the split IDs do not match their fingerprints")
+    return split
+
+
+# ---------- evaluation ----------
+
+def evaluate(corpus_con, index, questions, judged, methods=CANDIDATE_METHODS, k=10):
+    """Per-method metrics by group, latency, and the worksheet of misses for human
+    failure annotation. The caller decides which questions are passed in."""
+    out, misses = {}, []
+    for method, lexical in methods:
+        name = method_name(method, lexical)
+        rankings, seconds = {}, []
+        for q in questions:
+            rankings[q.question_id], s = run_method(corpus_con, index, q, method, lexical, k)
+            seconds.append(s)
+        out[name] = {g: score({q.question_id: rankings[q.question_id] for q in qs}, judged)
+                     for g, qs in groups(questions, judged).items()}
+        ordered = sorted(seconds)
+        out[name]["latency_ms"] = {"median": round(1000 * statistics.median(ordered), 1),
+                                   "p95": round(1000 * ordered[max(0, math.ceil(0.95 * len(ordered)) - 1)], 1)}
+        for q in questions:
+            relevant = {i for i, v in judged.get(q.question_id, {}).items() if v == "relevant"}
+            if not relevant:
+                misses.append({"question_id": q.question_id, "method": name,
+                               "category": "no_relevant_evidence_in_corpus", "assigned_by": "rule: no item judged relevant"})
+            elif not relevant & set(rankings[q.question_id][:10]):
+                misses.append({"question_id": q.question_id, "method": name, "category": None,
+                               "assigned_by": None, "allowed": list(FAILURE_CATEGORIES)})
+    return out, misses
+
+
+def _now():
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _open(args):
+    from item_store import DEFAULT_DB
+    from rag_corpus import open_corpus
+    from rag_index import Index
+    return open_corpus(args.db or DEFAULT_DB), Index(args.index)
 
 
 def main(argv=None):
+    import rag_questions as rq
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("cmd", choices=["pool", "freeze-split", "eval-dev"])
-    ap.add_argument("--questions", required=True)
-    ap.add_argument("--out", required=True)
-    ap.add_argument("--split")
-    ap.add_argument("--judgments")
-    ap.add_argument("--depth", type=int, default=10)
-    ap.add_argument("--n-test", type=int, default=20)
+    ap.add_argument("cmd", choices=["pool-preview", "pool", "freeze-split", "eval-dev", "freeze-retriever",
+                                    "eval-test"])
     ap.add_argument("--db")
-    ap.add_argument("--index")
+    ap.add_argument("--index", default=os.path.join(os.path.dirname(os.path.dirname(EXP)), "data", "index",
+                                                    "exp004-v1"))
+    ap.add_argument("--method")
+    ap.add_argument("--dev-result")
     args = ap.parse_args(argv)
-    questions = load_jsonl(args.questions, Question)
-    now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
-    if args.cmd == "freeze-split":
-        if os.path.exists(args.out):
-            print(f"{args.out} exists. A frozen split is never regenerated.", file=sys.stderr)
+    if args.cmd == "pool-preview":
+        corpus, index = _open(args)
+        drafts = load_jsonl(rq.DRAFTS, Question)
+        print(json.dumps({"preview_over": "draft questions (not frozen); no deck is written",
+                          **pool_stats(build_pool(corpus, index, drafts), drafts)}, indent=1))
+        return 0
+
+    questions, qmanifest = rq.load_frozen()
+
+    if args.cmd == "pool":
+        if os.path.exists(PATHS["pool"]):
+            print("pool_v2 exists. A pool is never rebuilt once written.", file=sys.stderr)
             return 1
-        body = freeze_split(questions, sha256_file(args.questions), args.n_test)
-        body["frozen_at"] = now
-        with open(args.out, "w", encoding="utf-8") as f:
+        corpus, index = _open(args)
+        rows = build_pool(corpus, index, questions)
+        with open(PATHS["pool"], "w", encoding="utf-8", newline="\n") as f:
+            for r in rows:
+                f.write(json.dumps(r) + "\n")
+        body = {"built_at": _now(), "depth": POOL_DEPTH, "methods": [method_name(*m) for m in CANDIDATE_METHODS],
+                "questions_sha256": qmanifest["questions_sha256"], "index": index.manifest,
+                "pool_sha256": pool_fingerprint(rows), "pool_file_sha256": sha256_file(PATHS["pool"]),
+                **pool_stats(rows, questions)}
+        with open(PATHS["pool_manifest"], "w", encoding="utf-8", newline="\n") as f:
             json.dump(body, f, indent=1)
         print(json.dumps(body, indent=1))
         return 0
 
-    from item_store import DEFAULT_DB
-    from rag_corpus import open_corpus
-    from rag_index import DEFAULT_DIR, Index
-    corpus, index = open_corpus(args.db or DEFAULT_DB), Index(args.index or DEFAULT_DIR)
-
-    if args.cmd == "pool":
-        rows = build_pool(corpus, index, questions, args.depth)
-        with open(args.out, "w", encoding="utf-8") as f:
-            for r in rows:
-                f.write(json.dumps(r) + "\n")
-        print(f"{len(rows)} candidates for {len(questions)} questions -> {args.out}")
+    if args.cmd == "freeze-split":
+        if os.path.exists(PATHS["split"]):
+            print("the split is already frozen", file=sys.stderr)
+            return 1
+        body = dict(freeze_split(questions, qmanifest["questions_sha256"]), frozen_at=_now())
+        with open(PATHS["split"], "w", encoding="utf-8", newline="\n") as f:
+            json.dump(body, f, indent=1)
+        print(json.dumps(body, indent=1))
         return 0
 
-    with open(args.split, encoding="utf-8") as f:
-        split = json.load(f)
-    if split["questions_sha256"] != sha256_file(args.questions):
-        print("the questions file changed after the split was frozen", file=sys.stderr)
+    split = load_split(qmanifest["questions_sha256"])
+    judged = judgments_by_question(load_jsonl(PATHS["judgments"], Judgment)) if os.path.exists(PATHS["judgments"]) else {}
+
+    if args.cmd == "eval-dev":
+        dev = [q for q in questions if q.question_id in set(split["dev"])]
+        corpus, index = _open(args)
+        methods, misses = evaluate(corpus, index, dev, judged)
+        body = {"split": "dev", "questions": len(dev), "run_at": _now(), "split_sha256": split["split_sha256"],
+                "judgments_sha256": sha256_file(PATHS["judgments"]) if os.path.exists(PATHS["judgments"]) else None,
+                "index": index.manifest, "methods": methods, "misses_for_annotation": misses}
+        os.makedirs(PATHS["results"], exist_ok=True)
+        path = os.path.join(PATHS["results"], f"dev-retrievers-{body['run_at'].replace(':', '')}.json")
+        with open(path, "w", encoding="utf-8", newline="\n") as f:
+            json.dump(body, f, indent=1)
+        print(json.dumps(methods, indent=1))
+        return 0
+
+    if args.cmd == "freeze-retriever":
+        if os.path.exists(PATHS["retriever_freeze"]):
+            print("the retriever is already frozen", file=sys.stderr)
+            return 1
+        if args.method not in [method_name(*m) for m in CANDIDATE_METHODS] or not args.dev_result:
+            print("--method must be a candidate and --dev-result a DEV result file", file=sys.stderr)
+            return 1
+        with open(args.dev_result, encoding="utf-8") as f:
+            dev_result = json.load(f)
+        if dev_result.get("split") != "dev":
+            print("the result file is not a DEV result", file=sys.stderr)
+            return 1
+        body = {"frozen_at": _now(), "method": args.method, "k": 10, "dev_result": os.path.basename(args.dev_result),
+                "dev_result_sha256": sha256_file(args.dev_result), "split_sha256": split["split_sha256"]}
+        with open(PATHS["retriever_freeze"], "w", encoding="utf-8", newline="\n") as f:
+            json.dump(body, f, indent=1)
+        print(json.dumps(body, indent=1))
+        return 0
+
+    # eval-test: once, for the frozen retriever only
+    if os.path.exists(PATHS["test_result"]):
+        print("TEST has already been scored. It runs once.", file=sys.stderr)
         return 1
-    dev = [q for q in questions if q.question_id in set(split["dev"])]
-    relevant = gold(load_jsonl(args.judgments, Judgment))
-    results = {"split": "dev", "questions": len(dev), "run_at": now, "index": index.manifest, "methods": {}}
-    groups = {"all": dev, "japanese": [q for q in dev if q.language == "ja" or q.filters.languages == ["ja"]],
-              "non_english": [q for q in dev if q.language != "en" or (q.filters.languages or ["en"]) != ["en"]]}
-    for method, lexical in POOL_METHODS:
-        rankings = {q.question_id: run_method(corpus, index, q, method, lexical, 10) for q in dev}
-        results["methods"][f"{method}:{lexical}" if lexical else method] = {
-            g: score({q.question_id: rankings[q.question_id] for q in qs}, relevant) for g, qs in groups.items()}
-    os.makedirs(args.out, exist_ok=True)
-    with open(os.path.join(args.out, f"dev-retrievers-{now.replace(':', '')}.json"), "w", encoding="utf-8") as f:
-        json.dump(results, f, indent=1)
-    print(json.dumps(results["methods"], indent=1))
+    if not os.path.exists(PATHS["retriever_freeze"]):
+        print("freeze a retriever from DEV results first", file=sys.stderr)
+        return 1
+    with open(PATHS["retriever_freeze"], encoding="utf-8") as f:
+        frozen = json.load(f)
+    method, _, lexical = frozen["method"].partition(":")
+    test = [q for q in questions if q.question_id in set(split["test"])]
+    corpus, index = _open(args)
+    methods, _ = evaluate(corpus, index, test, judged, methods=((method, lexical or None),))
+    body = {"split": "test", "questions": len(test), "run_at": _now(), "retriever": frozen,
+            "judgments_sha256": sha256_file(PATHS["judgments"]), "index": index.manifest, "metrics": methods}
+    os.makedirs(PATHS["results"], exist_ok=True)
+    with open(PATHS["test_result"], "x", encoding="utf-8", newline="\n") as f:
+        json.dump(body, f, indent=1)
+    print(json.dumps(body["metrics"], indent=1))
     return 0
 
 

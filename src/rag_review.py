@@ -1,15 +1,15 @@
 """EXP-004 relevance judging: the queue ARI3 Review shows, and the judgment log it writes.
 
-A relevance queue pairs each draft question with the items pooled for it. The editor
-answers relevant, not relevant or unsure. Every answer is appended to a JSONL log in the
-experiment folder, so the gold labels are a tracked, reviewable file. Nothing is ever
-rewritten: a changed answer is a new line, and the latest line for a (question, item,
-labeler) wins (rag_eval.gold).
+The queue is built only from pool_v2 (depth 10, over the frozen questions). Each card
+holds the question, its filters and the item ID, and nothing about which method found
+the item, at what rank or score, or how many methods found it. Cards are shuffled within
+each question with a fixed seed.
 
-Cards are shuffled within each question with a fixed seed, and the card never shows which
-retrieval method found the item or at what rank, so judging stays blind to the methods.
+Every answer (relevant, not_relevant or unsure) is appended to
+judgments/rag_relevance_v2.jsonl. Nothing is rewritten: a changed answer is a new line,
+and the latest line for a (question, item, labeler) wins.
 
-usage: python src/rag_review.py make-queue [--pool P] [--questions Q] [--judgments J]
+usage: python src/rag_review.py make-queue
 """
 
 import argparse
@@ -19,11 +19,11 @@ import random
 import sys
 
 from item_store import ROOT, utc_now
-from rag_eval import Judgment, Question, load_jsonl
+from rag_eval import PATHS, Judgment, sha256_file
 import label_tool
+import rag_questions
 
-EXP = os.path.join(ROOT, "experiments", "exp-004-grounded-retrieval")
-QUEUE_NAME = "rag_relevance_v1"
+QUEUE_NAME = "rag_relevance_v2"
 CHOICES = [{"key": "r", "label": "Relevant", "value": "relevant"},
            {"key": "n", "label": "Not relevant", "value": "not_relevant"},
            {"key": "u", "label": "Unsure", "value": "unsure"}]
@@ -45,25 +45,35 @@ def describe_filters(f):
     return "; ".join(parts) or "no filters"
 
 
-def make_queue(pool_path, questions_path, judgments_path, seed=20260930):
-    questions = {q.question_id: q for q in load_jsonl(questions_path, Question)}
+def make_queue(pool_path=None, manifest_path=None, judgments_path=None, frozen=None, freeze_manifest=None,
+               seed=20260930):
+    pool_path = pool_path or PATHS["pool"]
+    manifest_path = manifest_path or PATHS["pool_manifest"]
+    judgments_path = judgments_path or PATHS["judgments"]
+    questions, qmanifest = rag_questions.load_frozen(frozen, freeze_manifest)
+    with open(manifest_path, encoding="utf-8") as f:
+        pmanifest = json.load(f)
+    if pmanifest["questions_sha256"] != qmanifest["questions_sha256"]:
+        raise RuntimeError("the pool was built from a different question set")
+    if sha256_file(pool_path) != pmanifest["pool_file_sha256"]:
+        raise RuntimeError("the pool file no longer matches its manifest")
     by_q = {}
     with open(pool_path, encoding="utf-8") as f:
         for line in f:
             row = json.loads(line)
-            by_q.setdefault(row["question_id"], []).append(row)
+            by_q.setdefault(row["question_id"], []).append(row["item_id"])
+    qs = {q.question_id: q for q in questions}
     rng = random.Random(seed)
     cards = []
     for qid in sorted(by_q):
-        rows = sorted(by_q[qid], key=lambda r: r["item_id"])
-        rng.shuffle(rows)
-        q = questions[qid]
+        items = sorted(by_q[qid])
+        rng.shuffle(items)
+        q = qs[qid]
         cards += [{"question_id": qid, "question": q.question,
-                   "filters": describe_filters(q.filters.model_dump(exclude_none=True)),
-                   "item_id": r["item_id"], "pool_source": r["pool_source"]} for r in rows]
+                   "filters": describe_filters(q.filters.model_dump(exclude_none=True)), "item_id": i} for i in items]
     queue = {"kind": "rag_relevance", "task": "rag_relevance", "title": "Evidence relevance (EXP-004)",
              "question": "Does this item help answer the question?", "help": HELP, "choices": CHOICES,
-             "dataset_version": questions[next(iter(questions))].dataset_version,
+             "dataset_version": qmanifest["dataset_version"], "pool_sha256": pmanifest["pool_sha256"],
              "judgments_path": os.path.relpath(judgments_path, ROOT).replace(os.sep, "/"),
              "cards": cards, "item_ids": [c["item_id"] for c in cards]}
     return label_tool._write_queue(QUEUE_NAME, queue)
@@ -74,11 +84,13 @@ def judgments_file(queue):
 
 
 def judged(queue, labeler="ariella"):
-    """(question_id, item_id) pairs this labeler has answered."""
+    """(question_id, item_id) pairs this labeler has answered for this pool."""
+    from rag_eval import load_jsonl
     path = judgments_file(queue)
     if not os.path.exists(path):
         return set()
-    return {(j.question_id, j.item_id) for j in load_jsonl(path, Judgment) if j.labeler == labeler}
+    return {(j.question_id, j.item_id) for j in load_jsonl(path, Judgment)
+            if j.labeler == labeler and j.pool_sha256 == queue["pool_sha256"]}
 
 
 def left(queue, labeler="ariella"):
@@ -89,9 +101,9 @@ def left(queue, labeler="ariella"):
 def record(con, queue, card, value, labeler="ariella"):
     """Append one validated judgment to the log and return it."""
     url = con.execute("SELECT url FROM items WHERE item_id = ?", (card["item_id"],)).fetchone()[0]
-    j = Judgment(question_id=card["question_id"], item_id=card["item_id"], url=url, judgment=value,
-                 labeler=labeler, labeled_at=utc_now(), pool_source=card["pool_source"],
-                 dataset_version=queue["dataset_version"])
+    j = Judgment(task="rag_relevance", dataset_version=queue["dataset_version"], pool_sha256=queue["pool_sha256"],
+                 question_id=card["question_id"], item_id=card["item_id"], url=url, judgment=value,
+                 labeler=labeler, judged_at=utc_now())
     path = judgments_file(queue)
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "a", encoding="utf-8", newline="\n") as f:
@@ -102,11 +114,8 @@ def record(con, queue, card, value, labeler="ariella"):
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("cmd", choices=["make-queue"])
-    ap.add_argument("--pool", default=os.path.join(EXP, "pool_v1.jsonl"))
-    ap.add_argument("--questions", default=os.path.join(EXP, "questions_v1.jsonl"))
-    ap.add_argument("--judgments", default=os.path.join(EXP, "judgments", "rag_relevance_v1.jsonl"))
-    args = ap.parse_args(argv)
-    path = make_queue(args.pool, args.questions, args.judgments)
+    ap.parse_args(argv)
+    path = make_queue()
     with open(path, encoding="utf-8") as f:
         print(f"Wrote {len(json.load(f)['cards'])} cards to {path}")
     return 0

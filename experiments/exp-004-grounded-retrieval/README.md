@@ -8,40 +8,51 @@ EXP-004 is an experiment number, not a release. It does not imply ARI3 v0.0.4. T
 
 Each record is a headline plus the feed's summary, stored as `text_excerpt` and capped at 500 characters. The store holds no full article text. EXP-004 therefore measures retrieval and question answering over ARI3's **stored evidence**. It does not test reasoning over complete news articles, and no result from it should be described that way.
 
-At the evaluation cutoff (items first seen by 2026-09-30 08:00 UTC), the corpus holds 7,955 items from 94 outlets. 94% of items come from editorial outlets. The social sector has no items, and the resale sector has 10. Stored language tags cover English, Japanese, Italian, French and Portuguese. 14% of items have no language tag, so a language filter excludes them.
+The evaluation index is frozen at a first-seen cutoff of 2026-09-30 08:00 UTC: 7,955 items from 94 outlets, corpus fingerprint `c571670b…` (`data/index/exp004-v1/manifest.json`). 94% of items come from editorial outlets. The social sector has no items, and the resale sector has 10. Stored language tags cover English, Japanese, Italian, French and Portuguese. 14% of items have no language tag, so a language filter excludes them.
 
-## Status (2026-09-30)
+## Status
 
 | Step | State |
 |---|---|
 | Retrieval layer (`src/rag_*.py`) | Built and tested. No language model is involved |
-| Evaluation index | Built with cutoff `2026-09-30T08:00:00Z`: 7,955 items, corpus fingerprint `c571670b…` |
-| Questions (`questions_v1.jsonl`) | 60 drafts, written by `draft_questions.py` from the corpus inventory. They wait for the editor's review |
-| Candidate pool (`pool_v1.jsonl`) | 475 question and item pairs |
-| Relevance judgments | Not started. ARI3 Review has the "Evidence relevance (EXP-004)" deck |
-| DEV/TEST split | Not frozen. It is frozen after the questions are reviewed and before any retriever is scored |
+| Draft questions (`questions_v1.jsonl`) | 60 machine drafts, unchanged since `5d4b688` |
+| Question review | Open in ARI3 Review ("Question review (EXP-004)"). No decision recorded yet |
+| Question freeze | Not frozen. `python src/rag_questions.py freeze` runs once every draft has a decision and none is ambiguous |
+| Depth-5 pool | **Superseded before labeling** (`superseded/`). 0 judgments were ever made on it |
+| Depth-10 pool (`pool_v2.jsonl`) | Not built. It is built from the frozen questions only |
+| Relevance judgments | None. The judging deck appears after the depth-10 pool exists |
+| DEV/TEST split | Not frozen. It is frozen right after the questions, before any judgment |
 | Retriever comparison on DEV | Not run |
 | Generation | Not started. No provider has been called |
 
 ## Files
 
-- `draft_questions.py` writes `questions_v1.jsonl`. Every question carries `drafted_by: machine_draft` until the editor accepts or edits it. `answerable_expected` is the drafter's guess. Whether a question is answerable is decided by the judgments.
-- `pool_v1.jsonl` holds the machine-generated candidates: for each question, the union of the top 5 items from each of `bm25:words`, `bm25:auto` (trigram tokens for Japanese queries, word tokens otherwise), dense and hybrid retrieval, with the methods that found each item. These are suggestions, never gold.
-- `judgments/rag_relevance_v1.jsonl` is written by ARI3 Review: one line per answer (`relevant`, `not_relevant` or `unsure`), with the question, item, URL, labeler, time, pool source and dataset version. It is append-only. The latest answer per question and item counts. This file is the only source of gold relevance.
+- `draft_questions.py` wrote `questions_v1.jsonl`. `answerable_expected` is the drafter's guess. The judgments decide whether a question is answerable.
+- `reviews/question_reviews_v1.jsonl`: the editor's decisions (approve, edit, reject, ambiguous, duplicate), appended by ARI3 Review. Each names the fingerprint of the draft file it reviewed. The review card never shows retrieval output.
+- `frozen/questions_v1_frozen.jsonl` and `frozen/questions_v1_freeze.json`: the approved set with edits applied, its SHA-256 and counts. Written once. IDs never change, so rejected questions leave gaps.
+- `frozen/split_v1.json`: DEV and TEST question IDs with fingerprints of each list. Written once.
+- `pool_v2.jsonl` and `pool_v2.manifest.json`: the candidate pool with the methods that found each pair (for analysis only), plus sizes, overlap and fingerprints.
+- `judgments/rag_relevance_v2.jsonl`: one line per answer, with task, dataset version, pool fingerprint, question, item, URL, judgment, labeler and time. It records nothing about methods. This file is the only source of gold relevance.
+- `superseded/pool_v1_depth5.jsonl` and its status file: kept for provenance, never judged or used.
 
-## Method decisions made before any judgment
+## Evaluation design, fixed before any judgment
 
 - **Filters before ranking.** Dates, language, sector, outlet and the temporal cutoff are SQL constraints. Ranking only orders the items that pass them.
-- **Temporal modes.** Publication mode admits items published by `as_of`. Replay mode also requires `first_seen_at <= as_of`. Reconstructed first-seen values (migration 0004) can be later than the true first sighting, so replay can omit evidence ARI3 had, and never admits evidence it acquired later.
-- **No chunking.** Title plus excerpt has a median of 57 tokens. 997 items (12.5%) exceed the encoder's 128-token window, and the encoder sees only their first 128 tokens. DEV results will show whether those items are over-represented among dense-retrieval misses before chunking is considered.
-- **Pool depth 5.** It gives 475 judgments, within the planned 400 to 600. A depth of 10 would give 899. Every item a method ranks in its top 5 is judged, so metrics at K = 5 are fully judged. At K = 10, items a method ranks 6 to 10 are judged only if another method ranked them in its top 5. Unjudged items count as not relevant, which can understate Hit@10 and Recall@10.
-- **Pooled recall.** Recall is measured against the judged pool, following TREC practice (Voorhees and Harman 2005). A relevant item that no method retrieved is never judged, so recall is relative to the pool and is not exhaustive.
-- **Blind judging.** The review card shows the question, its filters and the stored item. It does not show the method or the rank that produced the item.
+- **Temporal modes.** Publication mode admits items published by `as_of`. Replay mode also requires `first_seen_at <= as_of`. Reconstructed first-seen values can be later than the true first sighting, so replay can omit evidence ARI3 had, and never admits evidence it acquired later.
+- **Candidates.** `bm25:words`, `bm25:auto` (character trigrams for Japanese queries, word tokens otherwise, so it differs from `bm25:words` only on Japanese queries), `dense` and `hybrid:auto` (reciprocal rank fusion of `bm25:auto` and `dense`).
+- **Pool depth 10.** The pool is the union of every candidate's top 10, so every item a candidate ranks in its top 10 is judged, and Hit@10 and Recall@10 are fully judged. A preview over the 60 drafts gives 899 pairs (median 16.5 per question, maximum 25), 720 distinct items and 4 questions with no eligible item. BM25 and dense overlap little (Jaccard 0.12), which is why both are pooled. The real pool is built from the frozen questions and its numbers will differ.
+- **Pooled recall.** Recall is measured against the judged pool (Voorhees and Harman 2005). A relevant item that no candidate retrieved is never judged, so recall is relative to the pool and is not exhaustive.
+- **Unsure.** Metrics use condensed lists (Sakai 2007): an item judged `unsure` is removed from a ranking before scoring and counts neither as relevant nor as not relevant. Every result also reports the share of each top 10 that is unsure and the judged coverage of the top 10.
+- **Metrics.** Hit@5, Hit@10, Recall@5, Recall@10, MRR and nDCG@10 over questions with at least one relevant item, plus query latency (median and p95). Each is reported for all questions, English and non-English, Japanese, temporal and non-temporal, drafted-answerable and drafted-unanswerable, and questions the judgments show to be answerable.
+- **Failure annotation.** Each DEV miss (no relevant item in a method's top 10) is listed for human annotation with one of: vocabulary mismatch, semantic near miss, temporal mismatch, wrong sector or context, multilingual failure, overly broad query, no relevant evidence in the corpus (assigned by rule when nothing was judged relevant), other.
+- **Split.** By question, stratified by drafted answerability, temporal constraint, non-English language and query type, one third to TEST, seed 4. TEST is never used to compare or tune retrievers. `eval-test` refuses to run without a retriever frozen from a DEV result, and refuses to run a second time.
+- **Blind judging.** A judging card shows the question, its filters and the stored item, never the method, rank, score or number of methods that found the item.
+- **No chunking.** Title plus excerpt has a median of 57 tokens. 997 items (12.5%) exceed the encoder's 128-token window. DEV results will show whether those items are over-represented among dense misses before chunking is considered.
 
 ## Next steps
 
-1. The editor reviews `questions_v1.jsonl`, editing or rejecting drafts.
-2. The DEV/TEST split (40/20, stratified) is frozen with `python src/rag_eval.py freeze-split` and committed.
-3. The editor judges the pool in ARI3 Review.
-4. BM25, dense and hybrid retrieval are compared on DEV only, with Japanese and other non-English questions reported separately.
-5. The chosen retriever, the generation provider and its settings, prompts, metrics and thresholds are pre-registered before any generation run or TEST evaluation.
+1. The editor reviews the 60 drafts in ARI3 Review.
+2. `python src/rag_questions.py freeze`, then `python src/rag_eval.py freeze-split` and `python src/rag_eval.py pool`, then `python src/rag_review.py make-queue`. All four outputs are committed before any judgment.
+3. The editor judges the depth-10 pool in ARI3 Review.
+4. `python src/rag_eval.py eval-dev` compares the candidates on DEV. The editor annotates the misses. A retriever is frozen from DEV only.
+5. Generation is pre-registered before any live provider call or TEST evaluation.

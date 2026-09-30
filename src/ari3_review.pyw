@@ -6,6 +6,9 @@ Decks, each usable with big touch buttons or the keyboard:
   Relevance      EXP-004 relevance judgments (src/rag_review.py). Keys: R relevant,
                  N not relevant, U unsure, Space skip, Backspace back, O open, Esc menu.
                  Answers are appended to the experiment's judgment log.
+  Questions      EXP-004 question review (src/rag_questions.py), shown until the set is
+                 frozen. No retrieval result is shown. Keys: A approve, E edit, R reject,
+                 M ambiguous, D duplicate, Space skip, Backspace back, Esc menu.
   Lexicon        every term in docs/lexicon/terms_v1_draft.md, one card each,
                  with real headlines from the store that contain it
 
@@ -23,11 +26,12 @@ import sys
 import tkinter as tk
 import webbrowser
 from tkinter import font as tkfont
-from tkinter import simpledialog
+from tkinter import messagebox, simpledialog
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from item_store import DEFAULT_DB, assign_split, connect, utc_now  # noqa: E402
 import label_tool  # noqa: E402
+import rag_questions  # noqa: E402
 import rag_review  # noqa: E402
 
 DEV = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -181,6 +185,10 @@ class App:
         for name, title in all_queues():
             q_left, q_total = labels_left(self.con, name)
             decks.append((f"{title}\n{q_left} of {q_total} left", lambda n=name: self.labels(n)))
+        if not os.path.exists(rag_questions.FROZEN):
+            status = rag_questions.review_status()
+            q_left = status["decisions"].get("unreviewed", 0) + status["decisions"].get("ambiguous", 0)
+            decks.append((f"Question review (EXP-004)\n{q_left} of {status['questions']} open", self.qreview))
         decks.append((f"Lexicon\n{t_left} of {len(terms)} terms left", self.lexicon))
         for text, cmd in decks:
             tk.Button(f, text=text, command=cmd, font=(self.base, 20, "bold"), bg="#ffffff", fg=FG,
@@ -354,6 +362,134 @@ class App:
         action = {"r": lambda: self.rel_answer("relevant"), "n": lambda: self.rel_answer("not_relevant"),
                   "u": lambda: self.rel_answer("unsure"), "space": self.rel_skip, "backspace": self.rel_back,
                   "o": self.rel_open, "escape": self.menu}.get(e.keysym.lower())
+        if action:
+            action()
+
+    # Question review deck (EXP-004) -------------------------------------
+    def qreview(self):
+        latest = rag_questions.latest_reviews()
+        drafts = rag_questions.load_jsonl(rag_questions.DRAFTS, rag_questions.Question)
+        open_first = [q for q in drafts if latest.get(q.question_id) is None
+                      or latest[q.question_id].action == "ambiguous"]
+        self.qr_list = open_first + [q for q in drafts if q not in open_first]
+        self.qr_pos = 0
+        f = self.clear()
+        self.buttons(f, [
+            [("APPROVE  (A)", lambda: self.qr_decide("approve"), "yes"),
+             ("REJECT  (R)", lambda: self.qr_decide("reject"), "no")],
+            [("Edit  (E)", self.qr_edit, "plain"), ("Ambiguous  (M)", lambda: self.qr_decide("ambiguous"), "plain"),
+             ("Duplicate  (D)", self.qr_duplicate, "plain")],
+            [("Skip", self.qr_skip, "plain"), ("Back", self.qr_back, "plain"), ("Menu", self.menu, "plain")],
+        ])
+        self.qb_prog = self.label(f, size=11, color=DIM)
+        self.qb_meta = self.label(f, size=11, color=DIM, pady=(6, 0))
+        self.qb_q = self.label(f, size=19, bold=True, pady=(4, 8))
+        self.qb_detail = self.label(f, size=12)
+        self.qb_note = self.label(f, size=11, color=DIM, pady=(8, 0))
+        self.qb_state = self.label(f, size=11, color=ACCENT, pady=(8, 0))
+        self.root.bind("<Key>", self.qr_key)
+        self.rewrap()
+        self.qr_show()
+
+    def qr_current(self):
+        return self.qr_list[self.qr_pos] if self.qr_pos < len(self.qr_list) else None
+
+    def qr_show(self):
+        status = rag_questions.review_status()
+        done = status["questions"] - status["decisions"].get("unreviewed", 0)
+        self.qb_prog.config(text=f"{done} of {status['questions']} reviewed")
+        q = self.qr_current()
+        if q is None:
+            for w in (self.qb_meta, self.qb_detail, self.qb_note, self.qb_state):
+                w.config(text="")
+            self.qb_q.config(text="End of the list. Decisions are saved.")
+            return
+        latest = rag_questions.latest_reviews().get(q.question_id)
+        filters = rag_review.describe_filters(q.filters.model_dump(exclude_none=True))
+        expected = "answerable" if q.answerable_expected else "unanswerable"
+        self.qb_meta.config(text=f"{q.question_id}   {q.query_type}   language {q.language}")
+        self.qb_q.config(text=q.question)
+        self.qb_detail.config(text=f"Retrieval query: {q.query}\nFilters: {filters}\nDrafted as: {expected}")
+        self.qb_note.config(text=f"Draft note: {q.notes}" if q.notes else "")
+        self.qb_state.config(text=f"Current decision: {latest.action}" if latest else "Not reviewed yet")
+
+    def qr_save(self, action, **kw):
+        q = self.qr_current()
+        if q is None:
+            return
+        try:
+            rag_questions.record_review(q.question_id, action, **kw)
+        except (ValueError, RuntimeError) as e:
+            messagebox.showerror("Not saved", str(e))
+            return
+        self.qr_pos += 1
+        self.qr_show()
+
+    def qr_decide(self, action):
+        note = ""
+        if action in ("reject", "ambiguous"):
+            note = simpledialog.askstring("Note", "Optional note (why):", parent=self.root)
+            if note is None:
+                return
+        self.qr_save(action, note=note)
+
+    def qr_duplicate(self):
+        other = simpledialog.askstring("Duplicate", "Duplicate of which question ID (for example q012)?",
+                                       parent=self.root)
+        if other:
+            self.qr_save("duplicate", duplicate_of=other.strip().lower())
+
+    def qr_edit(self):
+        q = self.qr_current()
+        if q is None:
+            return
+        text = simpledialog.askstring("Edit question", "Question:", initialvalue=q.question, parent=self.root)
+        if text is None:
+            return
+        query = simpledialog.askstring("Edit question", "Retrieval query:", initialvalue=q.query, parent=self.root)
+        if query is None:
+            return
+        answerable = messagebox.askyesnocancel("Edit question", "Should this question be answerable from the corpus?")
+        if answerable is None:
+            return
+        current = json.dumps(q.filters.model_dump(exclude_none=True, exclude_defaults=True), ensure_ascii=False)
+        filters = simpledialog.askstring("Edit question", "Filters as JSON ({} for none):", initialvalue=current,
+                                         parent=self.root)
+        if filters is None:
+            return
+        edits = {}
+        if text.strip() != q.question:
+            edits["question"] = text.strip()
+        if query.strip() != q.query:
+            edits["query"] = query.strip()
+        if answerable != q.answerable_expected:
+            edits["answerable_expected"] = answerable
+        try:
+            new_filters = json.loads(filters or "{}")
+        except ValueError:
+            messagebox.showerror("Not saved", "The filters are not valid JSON.")
+            return
+        if new_filters != json.loads(current):
+            edits["filters"] = new_filters
+        if not edits:
+            messagebox.showinfo("No change", "Nothing was changed, so nothing was saved.")
+            return
+        self.qr_save("edit", edits=edits)
+
+    def qr_skip(self):
+        if self.qr_current() is not None:
+            self.qr_pos += 1
+            self.qr_show()
+
+    def qr_back(self):
+        if self.qr_pos > 0:
+            self.qr_pos -= 1
+            self.qr_show()
+
+    def qr_key(self, e):
+        action = {"a": lambda: self.qr_decide("approve"), "r": lambda: self.qr_decide("reject"),
+                  "m": lambda: self.qr_decide("ambiguous"), "e": self.qr_edit, "d": self.qr_duplicate,
+                  "space": self.qr_skip, "backspace": self.qr_back, "escape": self.menu}.get(e.keysym.lower())
         if action:
             action()
 

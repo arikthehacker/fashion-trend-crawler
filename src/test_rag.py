@@ -242,15 +242,37 @@ class EvalTests(unittest.TestCase):
         self.assertAlmostEqual(ev.recall_at(ranked, rel, 4), 2 / 3)
         self.assertEqual(ev.mrr(ranked, rel), 0.5)
         self.assertAlmostEqual(ev.ndcg_at([3, 1, 7], rel, 10), 1.0)
-        self.assertEqual(ev.score({"q001": ranked}, {"q001": rel, "q002": set()})["questions"], 1)
 
-    def test_gold_uses_latest_human_judgment(self):
-        j = lambda item, value, at: ev.Judgment(question_id="q001", item_id=item, url="https://x.example/a",
-                                                judgment=value, labeler="ariella", labeled_at=at,
-                                                pool_source=["bm25:words"], dataset_version="v1")
-        judgments = [j(1, "relevant", "2026-10-01T00:00:00Z"), j(1, "not_relevant", "2026-10-01T00:05:00Z"),
-                     j(2, "relevant", "2026-10-01T00:01:00Z"), j(3, "unsure", "2026-10-01T00:02:00Z")]
-        self.assertEqual(ev.gold(judgments), {"q001": {2}})
+    def judgment(self, item, value, at, qid="q001"):
+        return ev.Judgment(task="rag_relevance", dataset_version="v1", pool_sha256="a" * 64, question_id=qid,
+                           item_id=item, url="https://x.example/a", judgment=value, labeler="ariella", judged_at=at)
+
+    def test_latest_judgment_wins_and_unsure_is_not_negative(self):
+        js = [self.judgment(1, "relevant", "2026-10-01T00:00:00Z"), self.judgment(1, "not_relevant", "2026-10-01T00:05:00Z"),
+              self.judgment(2, "relevant", "2026-10-01T00:01:00Z"), self.judgment(3, "unsure", "2026-10-01T00:02:00Z")]
+        self.assertEqual(ev.gold(js), {"q001": {2}})
+        self.assertEqual(ev.judgments_by_question(js), {"q001": {1: "not_relevant", 2: "relevant", 3: "unsure"}})
+
+    def test_condensed_lists_drop_unsure_items(self):
+        judged = {"q001": {3: "unsure", 1: "not_relevant", 2: "relevant"}, "q002": {9: "not_relevant"}}
+        out = ev.score({"q001": [3, 1, 2], "q002": [9]}, judged)
+        self.assertEqual(out["questions_scored"], 1)
+        self.assertEqual(out["questions_without_relevant"], 1)
+        self.assertEqual(out["mrr"], 0.5)  # rank 2 once the unsure item is removed, not rank 3
+        self.assertAlmostEqual(out["unresolved_share_top10"], (1 / 3 + 0) / 2, places=3)
+        self.assertEqual(out["judged_coverage_top10"], 1.0)
+
+    def test_pool_stats_and_fingerprint(self):
+        q = lambda qid: ev.Question(question_id=qid, question="A question?", query="q", answerable_expected=True,
+                                    language="en", query_type="term", reference_time="2026-09-30T00:00:00Z",
+                                    dataset_version="v1", drafted_by="test")
+        rows = [{"question_id": "q001", "item_id": 1, "pool_source": ["bm25:words", "dense"]},
+                {"question_id": "q001", "item_id": 2, "pool_source": ["dense"]}]
+        stats = ev.pool_stats(rows, [q("q001"), q("q002")], methods=(("bm25", "words"), ("dense", None)))
+        self.assertEqual((stats["pairs"], stats["unique_items"], stats["questions_with_zero_candidates"]), (2, 2, 1))
+        self.assertEqual(stats["pairs_found_by_n_methods"], {1: 1, 2: 1})
+        self.assertEqual(stats["jaccard_overlap"]["bm25:words & dense"], 0.5)
+        self.assertEqual(ev.pool_fingerprint(rows), ev.pool_fingerprint(list(reversed(rows))))
 
     def test_file_fingerprint_ignores_line_endings(self):
         tmp = tempfile.mkdtemp()
@@ -264,7 +286,7 @@ class EvalTests(unittest.TestCase):
         finally:
             shutil.rmtree(tmp)
 
-    def test_split_is_stratified_deterministic_and_disjoint(self):
+    def test_split_is_stratified_deterministic_disjoint_and_guarded(self):
         qs = []
         for n in range(60):
             qs.append(ev.Question(question_id=f"q{n:03d}", question="A question?", query="q",
@@ -278,6 +300,21 @@ class EvalTests(unittest.TestCase):
         self.assertFalse(set(first["dev"]) & set(first["test"]))
         unanswerable_test = sum(1 for q in qs if q.question_id in first["test"] and not q.answerable_expected)
         self.assertGreaterEqual(unanswerable_test, 3)
+        tmp = tempfile.mkdtemp()
+        try:
+            path = os.path.join(tmp, "split.json")
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(first, f)
+            self.assertEqual(ev.load_split("abc", path)["test"], first["test"])
+            with self.assertRaises(RuntimeError):
+                ev.load_split("changed", path)
+            tampered = dict(first, test=first["test"][:-1] + [first["dev"][0]])
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(tampered, f)
+            with self.assertRaises(RuntimeError):
+                ev.load_split("abc", path)
+        finally:
+            shutil.rmtree(tmp)
 
 
 if __name__ == "__main__":
