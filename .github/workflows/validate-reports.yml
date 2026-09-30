@@ -32,6 +32,9 @@ jobs:
       - name: EXP-003A time-holdout selector tests
         run: python src/test_label_tool.py
 
+      - name: Commit guard tests (secret scan, attribution, author identity)
+        run: python src/test_commit_guard.py
+
       - name: Validate published reports (schema + publish gate + non-blocking confidence warnings)
         run: python src/validate_all_reports.py
 
