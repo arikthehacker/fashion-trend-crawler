@@ -25,7 +25,7 @@ import rag_index as ri  # noqa: E402
 import rag_retrieve as rr  # noqa: E402
 import rag_tools as rt  # noqa: E402
 import rag_validate as rv  # noqa: E402
-from rag_schema import Answer, Filters, SearchArgs  # noqa: E402
+from rag_schema import Filters, GroundedAnswer, SearchArgs  # noqa: E402
 
 
 def fake_encoder(texts):
@@ -200,38 +200,52 @@ class RagTests(unittest.TestCase):
 
     def answer(self, *cited, refuse=False):
         if refuse:
-            return json.dumps({"answer_sentences": [], "insufficient_evidence": True})
-        return json.dumps({"answer_sentences": [{"text": "A claim.", "cited_item_ids": list(cited)}],
-                           "insufficient_evidence": False})
+            return json.dumps({"insufficient_evidence": True, "claims": [], "limitations": ["Nothing on this."]})
+        return json.dumps({"insufficient_evidence": False,
+                           "claims": [{"text": "A claim.", "supporting_item_ids": list(cited)}]})
 
     def test_citation_checks(self):
         a, b, old, shop, ja = self.ids
         f = Filters(as_of="2026-09-25T23:00:00Z", temporal_mode="replay")
-        retrieved = [a, b, old]
-        self.assertTrue(rv.validate_answer(self.corpus, self.answer(a, b), retrieved, f)["valid"])
-        cases = {999999: "nonexistent", shop: "not_retrieved", old: "fails_filters"}
+        context = [a, b, old]
+        self.assertTrue(rv.validate_answer(self.corpus, self.answer(a, b), context, f)["valid"])
+        cases = {999999: "nonexistent", shop: "not_in_context", old: "first_seen_after_as_of"}
         for item_id, reason in cases.items():
-            report = rv.validate_answer(self.corpus, self.answer(a, item_id), retrieved, f)
+            report = rv.validate_answer(self.corpus, self.answer(a, item_id), context, f)
             self.assertFalse(report["valid"])
-            self.assertEqual(report["violations"], [{"sentence": 0, "item_id": item_id, "reason": reason}])
-        self.assertEqual(rv.validate_answer(self.corpus, self.answer(old), retrieved, f)["temporal_leaks"], [old])
+            self.assertEqual(report["violations"], [{"claim": 0, "item_id": item_id, "reason": reason}])
+        self.assertEqual(rv.validate_answer(self.corpus, self.answer(old), context, f)["temporal_leaks"], [old])
+        lang = Filters(languages=["en"])
+        self.assertEqual(rv.validate_answer(self.corpus, self.answer(ja), [ja], lang)["violations"],
+                         [{"claim": 0, "item_id": ja, "reason": "fails_filters"}])
+        pub = Filters(as_of="2026-09-24T23:00:00Z")
+        self.assertEqual(rv.validate_answer(self.corpus, self.answer(b), [b], pub)["violations"][0]["reason"],
+                         "published_after_as_of")
+
+    def test_context_validation_catches_future_and_filtered_items(self):
+        a, b, old, shop, ja = self.ids
+        f = Filters(as_of="2026-09-24T23:00:00Z", temporal_mode="replay")
+        self.assertEqual(rv.validate_context(self.corpus, [a], f), [])
+        self.assertEqual({v["reason"] for v in rv.validate_context(self.corpus, [b, old, 999999], f)},
+                         {"published_after_as_of", "first_seen_after_as_of", "nonexistent"})
 
     def test_malformed_answers_are_rejected(self):
-        for raw in ("not json", json.dumps({"answer_sentences": [{"text": "x", "cited_item_ids": []}],
-                                            "insufficient_evidence": False}),
-                    json.dumps({"answer_sentences": [{"text": "x", "cited_item_ids": ["1"]}],
-                                "insufficient_evidence": False}),
-                    json.dumps({"answer_sentences": [{"text": "x", "cited_item_ids": [1]}],
-                                "insufficient_evidence": True}),
-                    json.dumps({"answer_sentences": [], "insufficient_evidence": False}),
-                    json.dumps({"answer_sentences": [], "insufficient_evidence": True, "extra": 1})):
+        for raw in ("not json",
+                    json.dumps({"insufficient_evidence": False, "claims": [{"text": "x", "supporting_item_ids": []}]}),
+                    json.dumps({"insufficient_evidence": False, "claims": [{"text": "x", "supporting_item_ids": ["1"]}]}),
+                    json.dumps({"insufficient_evidence": True, "claims": [{"text": "x", "supporting_item_ids": [1]}]}),
+                    json.dumps({"insufficient_evidence": False, "claims": []}),
+                    json.dumps({"insufficient_evidence": True, "claims": [], "answer": "free prose"}),
+                    json.dumps({"insufficient_evidence": False, "claims": [{"text": "x", "supporting_item_ids": [1],
+                                                                            "url": "https://made.up"}]}),
+                    json.dumps({"insufficient_evidence": True, "limitations": ["x" * 301]})):
             report = rv.validate_answer(self.corpus, raw, self.ids, Filters())
             self.assertFalse(report["valid"], raw)
-            self.assertIsNotNone(report["schema_error"], raw)
+            self.assertFalse(report["schema_valid"], raw)
         refusal = rv.validate_answer(self.corpus, self.answer(refuse=True), self.ids, Filters())
         self.assertTrue(refusal["valid"])
         self.assertTrue(refusal["insufficient_evidence"])
-        self.assertIsInstance(Answer.model_validate_json(self.answer(refuse=True)), Answer)
+        self.assertIsInstance(GroundedAnswer.model_validate_json(self.answer(refuse=True)), GroundedAnswer)
 
 
 class EvalTests(unittest.TestCase):

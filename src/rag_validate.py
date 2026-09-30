@@ -1,63 +1,94 @@
-"""Citation validation for EXP-004 answers. Deterministic, no language model.
+"""Deterministic validation for EXP-004 generation. No language model checks anything
+that code can check exactly.
 
-A cited item_id is valid only if it
-  1. exists in the evidence store,
-  2. was among the items retrieved for this query,
-  3. satisfies every filter of the query, including the temporal mode, and
-  4. still resolves to a URL and a publication time.
+validate_context runs before a provider is called. Every item offered to the model must
+exist and satisfy every filter of the query, including the temporal mode, so no future
+evidence can reach the model.
+
+validate_answer runs on the model's output. It must parse into rag_schema.GroundedAnswer,
+and every item a claim cites must
+  1. be one of the context items given to the model (membership),
+  2. exist in the evidence store (corpus),
+  3. satisfy every filter of the query (filters),
+  4. satisfy the temporal constraint: published_at <= as_of, and in replay mode also
+     first_seen_at <= as_of (temporal), and
+  5. resolve to a URL and a publication time (provenance).
 Any failure rejects the whole answer. Invalid citations are reported, never repaired.
 """
 
 from pydantic import ValidationError
 
 from rag_corpus import get_items, satisfies
-from rag_schema import Answer, Filters, upper_bound
+from rag_schema import Filters, GroundedAnswer, upper_bound
 
 
 def parse_answer(raw):
-    """(Answer or None, error message). Malformed output is rejected, not coerced."""
+    """(GroundedAnswer or None, error message). Malformed output is rejected, not coerced."""
     try:
-        return (Answer.model_validate_json(raw) if isinstance(raw, (str, bytes))
-                else Answer.model_validate(raw)), None
+        if isinstance(raw, (str, bytes)):
+            return GroundedAnswer.model_validate_json(raw), None
+        return GroundedAnswer.model_validate(raw), None
     except ValidationError as e:
-        return None, "; ".join(f"{'.'.join(map(str, err['loc']))}: {err['msg']}" for err in e.errors())
+        return None, "; ".join(f"{'.'.join(map(str, err['loc'])) or 'answer'}: {err['msg']}" for err in e.errors())
 
 
-def temporal_leaks(con, item_ids, filters: Filters):
-    """Cited items that break the temporal mode: published after as_of, or, in replay
-    mode, first seen by ARI3 after as_of."""
+def temporal_violation(evidence, filters: Filters):
+    """The reason an item breaks the temporal constraint, or None."""
     if not filters.as_of:
-        return []
+        return None
     as_of = upper_bound(filters.as_of)
-    leaks = []
-    for e in get_items(con, item_ids):
-        if e.published_at > as_of or (filters.temporal_mode == "replay" and e.first_seen_at > as_of):
-            leaks.append(e.item_id)
-    return leaks
+    if evidence.published_at > as_of:
+        return "published_after_as_of"
+    if filters.temporal_mode == "replay" and evidence.first_seen_at > as_of:
+        return "first_seen_after_as_of"
+    return None
 
 
-def validate_answer(con, raw, retrieved_ids, filters: Filters):
-    """Return a report dict: valid, schema_error, violations, citation counts and
-    temporal leaks. The answer is valid only if every citation passes every check."""
+def check_items(con, item_ids, filters: Filters):
+    """{item_id: reason} for every item that is missing, fails a filter, breaks the
+    temporal constraint or lacks provenance. Valid items are absent."""
+    ids = list(dict.fromkeys(int(i) for i in item_ids))
+    found = {e.item_id: e for e in get_items(con, ids)}
+    passing = satisfies(con, ids, filters)
+    problems = {}
+    for i in ids:
+        e = found.get(i)
+        if e is None:
+            problems[i] = "nonexistent"
+        elif temporal_violation(e, filters):
+            problems[i] = temporal_violation(e, filters)
+        elif i not in passing:
+            problems[i] = "fails_filters"
+        elif not (e.url and e.published_at):
+            problems[i] = "missing_provenance"
+    return problems
+
+
+def validate_context(con, context_ids, filters: Filters):
+    """Violations among the items about to be shown to a model. Must be empty."""
+    return [{"item_id": i, "reason": r} for i, r in check_items(con, context_ids, filters).items()]
+
+
+def validate_answer(con, raw, context_ids, filters: Filters):
+    """Return a report dict. The answer is valid only if it parses and every citation
+    passes every check."""
     answer, error = parse_answer(raw)
     if answer is None:
-        return {"valid": False, "schema_error": error, "violations": [], "citations": 0,
-                "valid_citations": 0, "temporal_leaks": []}
-    cited = [i for s in answer.answer_sentences for i in s.cited_item_ids]
-    existing = {e.item_id: e for e in get_items(con, cited)}
-    passing = satisfies(con, cited, filters)
-    retrieved = set(retrieved_ids)
+        return {"valid": False, "schema_valid": False, "schema_error": error, "violations": [], "citations": 0,
+                "valid_citations": 0, "temporal_leaks": [], "insufficient_evidence": None}
+    context = set(context_ids)
+    cited = [i for c in answer.claims for i in c.supporting_item_ids]
+    problems = check_items(con, cited, filters)
     violations = []
-    for n, sentence in enumerate(answer.answer_sentences):
-        for item_id in sentence.cited_item_ids:
-            e = existing.get(item_id)
-            reason = ("nonexistent" if e is None else
-                      "not_retrieved" if item_id not in retrieved else
-                      "fails_filters" if item_id not in passing else
-                      "missing_provenance" if not (e.url and e.published_at) else None)
+    for n, claim in enumerate(answer.claims):
+        for item_id in claim.supporting_item_ids:
+            reason = problems.get(item_id)
+            if reason != "nonexistent" and item_id not in context:
+                reason = "not_in_context"
             if reason:
-                violations.append({"sentence": n, "item_id": item_id, "reason": reason})
-    return {"valid": not violations, "schema_error": None, "violations": violations,
+                violations.append({"claim": n, "item_id": item_id, "reason": reason})
+    leaks = sorted({i for i, r in problems.items() if r in ("published_after_as_of", "first_seen_after_as_of")})
+    return {"valid": not violations, "schema_valid": True, "schema_error": None, "violations": violations,
             "citations": len(cited), "valid_citations": len(cited) - len(violations),
-            "insufficient_evidence": answer.insufficient_evidence,
-            "temporal_leaks": temporal_leaks(con, cited, filters)}
+            "insufficient_evidence": answer.insufficient_evidence, "temporal_leaks": leaks,
+            "answer": answer.model_dump(mode="json")}

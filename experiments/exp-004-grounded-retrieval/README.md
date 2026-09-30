@@ -23,7 +23,7 @@ The evaluation index is frozen at a first-seen cutoff of 2026-09-30 08:00 UTC: 7
 | Relevance judgments | None. The judging deck appears after the depth-10 pool exists |
 | DEV/TEST split | Not frozen. It is frozen right after the questions, before any judgment |
 | Retriever comparison on DEV | Not run |
-| Generation | Not started. No provider has been called |
+| Generation | `ask_ari3` (`src/rag_answer.py`), the grounded-answer schema, deterministic validators, the provider interface, a DeepSeek adapter and the harness (`src/rag_gen_eval.py`) are built and tested with scripted providers. No live provider has been called. Live calls need `ARI3_LIVE_LLM=approved`, set by the owner |
 
 ## Files
 
@@ -48,6 +48,14 @@ The evaluation index is frozen at a first-seen cutoff of 2026-09-30 08:00 UTC: 7
 - **Split.** By question, stratified by drafted answerability, temporal constraint, non-English language and query type, one third to TEST, seed 4. TEST is never used to compare or tune retrievers. `eval-test` refuses to run without a retriever frozen from a DEV result, and refuses to run a second time.
 - **Blind judging.** A judging card shows the question, its filters and the stored item, never the method, rank, score or number of methods that found the item.
 - **No chunking.** Title plus excerpt has a median of 57 tokens. 997 items (12.5%) exceed the encoder's 128-token window. DEV results will show whether those items are over-represented among dense misses before chunking is considered.
+
+## Generation boundary
+
+- **Answer schema.** The model returns only `claims` (each with one or more `supporting_item_ids`), up to five short `limitations`, and `insufficient_evidence`. There is no free prose field. URLs, outlets and dates in a response come from the store.
+- **Context.** At most 10 retrieved items, each excerpt capped at 500 characters. Before any call, every context item is checked against the question's filters and temporal cutoff. With no eligible evidence the provider is not called.
+- **Validation.** Every cited item must be in the supplied context, exist in the store, pass every filter and the temporal cutoff, and have a URL and publication time. One retry is allowed for a schema failure. A citation failure rejects the answer and withholds its claims.
+- **Provider.** `llm_provider.py` is the interface. `llm_deepseek.py` uses plain HTTP, `deepseek-flash`, temperature 0, JSON output, non-thinking mode, a 60-second timeout and at most 2 retries. The key is read from the environment only and never logged. The adapter refuses to send a request unless it was created with `allow_live=True` and `ARI3_LIVE_LLM=approved`.
+- **Evaluation.** Retrieval and generation are scored separately. The harness records an audit line per question and reports schema validity, citation validity, membership violations, temporal leaks, correct refusals on unanswerable questions and false refusals on answerable ones (separately), latency, tokens and estimated cost. Correctness, completeness, usefulness and unsupported claims come from the editor's review of each answer, never from a language model judging itself.
 
 ## Next steps
 

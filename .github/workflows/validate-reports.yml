@@ -47,6 +47,14 @@ jobs:
       - name: EXP-004 question review and freeze tests
         run: python src/test_rag_questions.py
 
+      - name: EXP-004 grounded answers, validators and harness (scripted provider, no network)
+        run: |
+          python src/test_rag_answer.py
+          python src/test_rag_gen_eval.py
+
+      - name: DeepSeek adapter tests (fake HTTP session, no key)
+        run: python src/test_llm_deepseek.py
+
       - name: Validate published reports (schema + publish gate + non-blocking confidence warnings)
         run: python src/validate_all_reports.py
 

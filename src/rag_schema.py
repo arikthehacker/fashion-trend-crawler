@@ -146,25 +146,81 @@ class SearchResult(BaseModel):
     schema_version: str = SCHEMA_VERSION
 
 
-class AnswerSentence(BaseModel):
+class Claim(BaseModel):
+    """One factual statement and the context items that support it."""
     model_config = Strict
 
-    text: str = Field(min_length=1, max_length=1000)
-    cited_item_ids: List[int] = Field(min_length=1, max_length=20)
+    text: str = Field(min_length=1, max_length=600)
+    supporting_item_ids: List[int] = Field(min_length=1, max_length=10)
 
 
-class Answer(BaseModel):
-    """A generated answer. Every sentence cites stored items, or the answer states that
-    the evidence is insufficient and has no sentences."""
+class GroundedAnswer(BaseModel):
+    """What a language model must return. There is no free prose field: every factual
+    statement is a claim with at least one supporting item from the supplied context.
+    Limitations describe what the evidence cannot show. URLs, dates and outlets are never
+    taken from the model; code fills them from the store."""
     model_config = Strict
 
-    answer_sentences: List[AnswerSentence] = Field(max_length=30)
     insufficient_evidence: bool
+    claims: List[Claim] = Field(default_factory=list, max_length=12)
+    limitations: List[str] = Field(default_factory=list, max_length=5)
+
+    @field_validator("limitations")
+    @classmethod
+    def _short(cls, v):
+        for text in v:
+            if not 1 <= len(text) <= 300:
+                raise ValueError("each limitation is 1 to 300 characters")
+        return v
 
     @model_validator(mode="after")
     def _refusal_is_empty(self):
-        if self.insufficient_evidence and self.answer_sentences:
-            raise ValueError("an insufficient-evidence answer carries no sentences")
-        if not self.insufficient_evidence and not self.answer_sentences:
-            raise ValueError("an answer without sentences must set insufficient_evidence")
+        if self.insufficient_evidence and self.claims:
+            raise ValueError("an insufficient-evidence answer carries no claims")
+        if not self.insufficient_evidence and not self.claims:
+            raise ValueError("an answer without claims must set insufficient_evidence")
         return self
+
+
+class Citation(BaseModel):
+    """A cited item as stored in ARI3, never as described by the model."""
+    model_config = Strict
+
+    item_id: int
+    url: str
+    outlet: str
+    title: Optional[str]
+    published_at: str
+    first_seen_at: str
+    first_seen_basis: Literal["live_insert", "reconstructed"]
+
+
+class TemporalScope(BaseModel):
+    model_config = Strict
+
+    temporal_mode: Literal["publication", "replay"]
+    as_of: Optional[str]
+    start_date: Optional[str]
+    end_date: Optional[str]
+    evidence_published_from: Optional[str]
+    evidence_published_to: Optional[str]
+
+
+class AskResponse(BaseModel):
+    """The result of ask_ari3. `public()` drops the debug block, which is for
+    developers and evaluation, not for end users."""
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    status: Literal["answered", "insufficient_evidence", "rejected", "error"]
+    query: str
+    filters: Filters
+    claims: List[Claim] = []
+    citations: List[Citation] = []
+    limitations: List[str] = []
+    temporal_scope: TemporalScope
+    message: str = ""
+    validation: dict = {}
+    debug: dict = {}
+
+    def public(self):
+        return self.model_dump(mode="json", exclude={"debug"})
