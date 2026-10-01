@@ -1,0 +1,200 @@
+{
+ "version": "exp005-protocol-v1",
+ "decided_by": "the owner, directive 030",
+ "provider": {
+  "provider": "deepseek",
+  "model": "deepseek-flash",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "api_format": "OpenAI-compatible chat completions",
+  "temperature": 0.0,
+  "top_p": 1.0,
+  "max_tokens": 1000,
+  "thinking": "disabled",
+  "response_format": "json_object",
+  "stream": false,
+  "generations_per_question": 1,
+  "timeout_s": 60,
+  "transport_retries": 2
+ },
+ "documentation_check": {
+  "checked_at": "2026-10-01T01:58:55Z",
+  "method": "raw HTML of the official pages fetched with curl and read directly, not through a summary",
+  "pages_sha256": {
+   "https://api-docs.deepseek.com/": "7ce9db1b1cc7e2efafe7cbfd57b9d46d240c20399f7bd87672c7e3a5250ccdd0",
+   "https://api-docs.deepseek.com/quick_start/pricing": "210f102275ccf1a6542f08a3bc9e4b4c7c83278cb74b35217bffa112df6363b2",
+   "https://api-docs.deepseek.com/guides/json_mode": "f728a4dad99c2328c9c982b08c113f400abcc1a7eba238f08738f51a951d1b30",
+   "https://api-docs.deepseek.com/api/create-chat-completion": "e7133a7c2a7c2662567cca2e2392b503f97c2fb583009ff85f878744e0a36ba7",
+   "https://api-docs.deepseek.com/quick_start/parameter_settings": "bf28223e9ed067b86fd65061731431ce7bf9032fb76c044fb414ff9aea8c195e",
+   "https://api-docs.deepseek.com/guides/thinking_mode": "35350389e59872d3733f7b7f99f5485c6cbc95f1bc2a71a47ba3ecf30bd7a060"
+  },
+  "verified": [
+   "OpenAI-format base URL https://api.deepseek.com, chat completions endpoint",
+   "model 'deepseek-flash' is served by DeepSeek-V4.1-Flash; 'deepseek-v4-pro' is the other current model",
+   "thinking {type: enabled|disabled}, default enabled, so non-thinking mode is requested explicitly",
+   "temperature <= 2 (default 1); top_p <= 1 (default 1); the docs advise changing one of them, not both",
+   "response_format {type: json_object} enables JSON output; the prompt must contain the word json and an example; the API may occasionally return empty content",
+   "max_tokens bounds generated tokens; finish_reason 'length' marks truncation",
+   "deepseek-flash prices per 1M tokens: input cache hit 0.003 off-peak / 0.006 peak, cache miss 0.15 / 0.30, output 0.60 / 1.20"
+  ],
+  "not_found": "no API control for provider-side retention of prompts or outputs; the evidence sent is public headlines and stored feed excerpts"
+ },
+ "retry_policy": "one initial generation; one retry only if the output does not parse into schema v1, with the parser error shown. No retry for wrong, weak, incomplete or abstaining answers. Transport retries (at most 2) re-send a request only when no response was received.",
+ "prompt": {
+  "path": "protocol/prompt_v1.txt",
+  "sha256": "93cc9418212606e131efc93001de07ff9d6cdb7d1ce194c4365bf6636efda176"
+ },
+ "schema": {
+  "version": "exp005-schema-v1",
+  "sha256": "1058d48d91217347e3b8372bd93ceec1e4c0887a573cd71f61b38fdf2d7d5492",
+  "max_claims": 4,
+  "claim_citations": "1 to 5",
+  "summary": "cited, reviewed like a claim",
+  "limitations": "0 to 3, at most 300 characters, reviewed for uncited facts",
+  "urls": "never produced by the model; resolved from the store"
+ },
+ "context_serializer": {
+  "version": "exp005-context-v1",
+  "max_items": 10,
+  "order": "frozen EXP-004 hybrid ranking",
+  "fields": [
+   "item_id",
+   "outlet",
+   "sector_group",
+   "published_at",
+   "first_seen_at (replay mode only)",
+   "language",
+   "headline",
+   "excerpt",
+   "url"
+  ],
+  "truncation": "headline first 300 characters, excerpt first 500 characters",
+  "max_total_chars": 12000
+ },
+ "retriever": {
+  "source": "EXP-004 frozen hybrid",
+  "retriever_v1_sha256": "3b55fcebbb08ec54b87198ab4a18e2f1b2bd0b922c6677428f525ceeadfd6b21",
+  "exp004_closed_sha256": "9ac64bb6444c9d5ae6cc24ca4c09a43d7d1fea2fc38254249bf62df8f1891a13",
+  "call": {
+   "method": "hybrid",
+   "lexical": "auto",
+   "k": 10
+  }
+ },
+ "pre_generation_validation": [
+  "every context item exists",
+  "every context item passes the question's filters",
+  "publication mode: published_at <= cutoff",
+  "replay mode: also first_seen_at <= cutoff",
+  "frozen retriever code and index unchanged",
+  "empty context: deterministic system abstention, no provider call"
+ ],
+ "post_generation_validation": [
+  "schema v1",
+  "citation membership in the supplied context",
+  "corpus membership",
+  "temporal validity",
+  "filter validity",
+  "every claim and the summary cite",
+  "provenance: every citation resolves to its stored URL"
+ ],
+ "human_rubric": {
+  "claim_support": {
+   "applies_to": "the summary and each claim of answers that passed validation",
+   "values": [
+    "SUPPORTED",
+    "UNSUPPORTED",
+    "UNSURE"
+   ]
+  },
+  "answer_completeness": {
+   "applies_to": "answered questions",
+   "values": [
+    "COMPLETE",
+    "PARTIAL",
+    "INSUFFICIENT",
+    "UNSURE"
+   ]
+  },
+  "context_sufficiency": {
+   "applies_to": "answered questions",
+   "question": "Does the supplied context hold enough evidence to answer?",
+   "values": [
+    "YES",
+    "NO",
+    "UNSURE"
+   ]
+  },
+  "abstention": {
+   "applies_to": "model abstentions",
+   "values": [
+    "CORRECT",
+    "INCORRECT",
+    "UNSURE"
+   ]
+  },
+  "limitations": {
+   "applies_to": "answers with limitations",
+   "question": "Do the limitations add an uncited factual claim?",
+   "values": [
+    "NO",
+    "YES",
+    "UNSURE"
+   ]
+  },
+  "unsure": "never counted as unsupported or incorrect; reported separately"
+ },
+ "metrics": {
+  "claim_support_precision": "SUPPORTED / (SUPPORTED + UNSUPPORTED) over reviewed claims and summaries; UNSURE reported separately",
+  "grounded_answer_rate": "over evaluable model outputs (answered, model abstention, rejected). An output is evaluable unless its context_sufficiency or abstention judgment is UNSURE or missing. Grounded when: deterministic validation passed; no claim or summary is UNSUPPORTED; and it is not an INCORRECT abstention and not an answer judged INSUFFICIENT while context_sufficiency is YES. Rejected outputs count as not grounded. System abstentions are reported separately",
+  "abstention": "correct = model abstention judged CORRECT; incorrect = judged INCORRECT; missed = answered while context_sufficiency is NO. precision = correct / (correct + incorrect); recall = correct / (correct + missed)",
+  "deterministic": [
+   "schema-valid rate (final outputs)",
+   "citation-membership-valid rate",
+   "temporal-violation count",
+   "filter-violation count",
+   "nonexistent-citation count",
+   "provenance-resolution rate"
+  ],
+  "targets": {
+   "citation_membership": 1.0,
+   "nonexistent_citations": 0,
+   "temporal_violations": 0,
+   "filter_violations": 0
+  },
+  "secondary": [
+   "claims per answer",
+   "citations per claim",
+   "insufficient-evidence rate",
+   "latency",
+   "tokens",
+   "estimated cost",
+   "completeness distribution",
+   "human unsure rate"
+  ]
+ },
+ "failure_taxonomy": {
+  "RETRIEVAL_MISS": "required evidence never entered the context (from EXP-004 DEV gold where available)",
+  "GENERATION_OMISSION": "evidence in the context was not used (completeness PARTIAL or INSUFFICIENT)",
+  "UNSUPPORTED_CLAIM": "a claim judged UNSUPPORTED",
+  "CITATION_MISMATCH": "an allowed item cited for another claim or topic (human note)",
+  "FABRICATED_CITATION": "an item not in the context (validator)",
+  "TEMPORAL_VIOLATION": "evidence outside the time boundary (validator)",
+  "FILTER_VIOLATION": "evidence outside the filters (validator)",
+  "OVERSTATEMENT": "evidence supports a weaker statement (human note)",
+  "CAUSAL_OVERREACH": "association presented as causation (human note)",
+  "INCORRECT_ABSTENTION": "abstention judged INCORRECT",
+  "MISSED_ABSTENTION": "answered while context sufficiency is NO",
+  "CONTRADICTION_HANDLING_FAILURE": "conflicting evidence collapsed (human note)",
+  "SCHEMA_FAILURE": "output rejected by schema v1 after the retry",
+  "extension_rule": "new categories only as explicitly post-hoc extensions"
+ },
+ "development_set": "EXP-004 DEV questions (37). EXP-004 TEST questions are never used: they were inspected descriptively and are not a pristine generation test. A fresh generation holdout is authored, owner-reviewed and frozen before final evaluation.",
+ "code_sha256": {
+  "exp005.py": "ce41d9211913085362c98cca872148e04d68224097cda232c4035473af21e02b",
+  "llm_provider.py": "30ae90f2854145ffc67e762f1d5dcc4024630ec7ec47e9e57f06e0f4041ce942",
+  "llm_deepseek.py": "9ecf2e968bcc0b0d742826296edd9cd27f02f98ab857e993fb5da72747f84dc8",
+  "rag_validate.py": "9a89fe693066220de4b33b1512d3cce002cea608e2cb5a8f08f73976000019a4",
+  "rag_corpus.py": "2d049fc9f27e56bad953fee0cfbf8680e195da19cb753e10ec6ba3705f3ccb8f"
+ },
+ "frozen_at": "2026-10-01T02:05:07Z"
+}

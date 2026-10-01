@@ -1,0 +1,34 @@
+{
+ "batch": "dev-batch-1",
+ "selected_before_any_output": true,
+ "rules": {
+  "term": {
+   "rule": "lowest ID: query_type term, no filters, at least one relevant item",
+   "question_id": "q003"
+  },
+  "temporal": {
+   "rule": "lowest ID: query_type temporal, at least one relevant item",
+   "question_id": "q016"
+  },
+  "filtered": {
+   "rule": "lowest ID: query_type source_filter or sector_filter, at least one relevant item",
+   "question_id": "q029"
+  },
+  "several_evidence": {
+   "rule": "most relevant items in the frozen hybrid DEV top 10 (ties: lowest ID)",
+   "question_id": "q013"
+  },
+  "abstention": {
+   "rule": "lowest ID: drafted unanswerable, no relevant item, at least one eligible item (non-empty context, so the model itself must decide)",
+   "question_id": "q015"
+  }
+ },
+ "question_ids": [
+  "q003",
+  "q016",
+  "q029",
+  "q013",
+  "q015"
+ ],
+ "selected_at": "2026-10-01T02:05:07Z"
+}
