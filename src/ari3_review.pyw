@@ -35,6 +35,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from item_store import DEFAULT_DB, assign_split, connect, utc_now  # noqa: E402
 import label_tool  # noqa: E402
 import exp005_review  # noqa: E402
+import exp005_review_v2  # noqa: E402
 import rag_questions  # noqa: E402
 import rag_review  # noqa: E402
 
@@ -113,7 +114,7 @@ def labels_left(con, name="is_style_signal"):
     if q.get("kind") == "rag_relevance":
         return rag_review.left(q)
     if q.get("kind") == "gen_review":
-        done = exp005_review.done(q)
+        done = (exp005_review_v2.done if q.get("notes") else exp005_review.done)(q)
         return sum(1 for t in q["tasks"] if t["task_id"] not in done), len(q["tasks"])
     done = {r[0] for r in con.execute(
         "SELECT item_id FROM labels WHERE task=? AND source='human'", (q["task"],))}
@@ -392,7 +393,7 @@ class App:
     # Answer review deck (EXP-005) ----------------------------------------
     def genreview(self, name):
         self.gq = load_queue(name)
-        done = exp005_review.done(self.gq)
+        done = (exp005_review_v2.done if self.gq.get("notes") else exp005_review.done)(self.gq)
         self.g_tasks = [t for t in self.gq["tasks"] if t["task_id"] not in done]
         self.g_done0 = len(self.gq["tasks"]) - len(self.g_tasks)
         self.g_pos, self.g_answered = 0, 0
@@ -444,7 +445,10 @@ class App:
             row.grid_columnconfigure(i, weight=1, uniform="g")
         nav = tk.Frame(self.g_bar, bg=BG)
         nav.pack(fill="x", pady=4)
-        for i, (text, cmd) in enumerate((("Skip", self.gen_skip), ("Back", self.gen_back), ("Menu", self.menu))):
+        navs = [("Skip", self.gen_skip), ("Back", self.gen_back), ("Menu", self.menu)]
+        if self.gq.get("notes"):
+            navs.insert(0, ("Add note  (T)", self.gen_note))
+        for i, (text, cmd) in enumerate(navs):
             tk.Button(nav, text=text, command=cmd, font=(self.base, 12), pady=8).grid(row=0, column=i, sticky="nsew",
                                                                                      padx=4)
             nav.grid_columnconfigure(i, weight=1, uniform="n")
@@ -457,6 +461,16 @@ class App:
         self.g_answered += 1
         self.g_pos += 1
         self.gen_show()
+
+    def gen_note(self):
+        """An optional reviewer note on the current card (rubric v2). Qualitative only."""
+        task = self.gen_current()
+        if task is None or not self.gq.get("notes"):
+            return
+        text = simpledialog.askstring("Reviewer note", "Note (unsupported detail, citation mismatch, omission, "
+                                                       "overstatement, causal overreach, other):", parent=self.root)
+        if text and text.strip():
+            exp005_review_v2.record_note(self.gq, task, text)
 
     def gen_skip(self):
         if self.gen_current() is not None:
@@ -475,7 +489,8 @@ class App:
             for o in task["options"]:
                 if k == o["key"]:
                     return self.gen_answer(o["value"])
-        action = {"space": self.gen_skip, "backspace": self.gen_back, "escape": self.menu}.get(k)
+        action = {"space": self.gen_skip, "backspace": self.gen_back, "escape": self.menu,
+                  "t": self.gen_note}.get(k)
         if action:
             action()
 

@@ -40,3 +40,14 @@ Prompt v1 is not edited after any output exists. Changes become prompt v2, after
 
 - `runs/dev-batch-1/`: the first live batch, 5 DEV questions chosen by fixed rules (`batch.json`) before any output existed. It runs once. Each record keeps the retrieval, every attempt's raw output, the parsed answer, the validation result, token usage, latency and estimated cost.
 - `reviews/`: the owner's review judgments, append-only.
+- `runs/dev-batch-2/`: Prompt v2. One run of q013 labelled POST-TUNING REGRESSION PROBE, which never enters fresh metrics, and five fresh DEV questions that exclude every v1 question. They are chosen by the v1 rules before any output exists.
+
+## Prompt v2
+
+Prompt v2 (`protocol/prompt_v2.txt`, `protocol/protocol_v2.json`) changes only what the Prompt v1 failures on q013 point to:
+
+- **No summary.** The model writes no summary. The answer is the validated claims, joined by code. A deterministic check cannot verify that a free-text summary adds no fact, so the summary was removed rather than restricted.
+- **Coverage.** The model reads every item, gives each distinct relevant finding a claim, groups items that support the same finding, and cites nothing irrelevant. A claim can cite up to 10 items. Answers still have at most 4 claims.
+- **Limitations.** Each limitation is `{text, supporting_item_ids}`. A limitation about a specific item must cite it and is reviewed like a claim.
+
+The retriever, serializer, provider settings and retry policy are unchanged. Rubric v2 adds optional reviewer notes, which are qualitative only. Metrics v2 keeps the v1 grounded-answer rule, so the two versions can be compared.
