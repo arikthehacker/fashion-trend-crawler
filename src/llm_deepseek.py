@@ -1,11 +1,12 @@
 """DeepSeek chat-completions adapter behind llm_provider's interface, over plain HTTP.
 
-Checked against api-docs.deepseek.com on 2026-09-30 (read through a summarizer, so
-re-check the raw pages before the first live call): OpenAI-compatible endpoint
-https://api.deepseek.com/chat/completions, models `deepseek-flash` (V4.1 Flash) and
-`deepseek-v4-pro`, JSON output mode, a `thinking` request parameter, and prices that
-differ between peak hours (01:00 to 04:00 and 06:00 to 10:00 UTC, Monday to Friday) and
-off-peak hours. Rate limits were not found.
+Checked against the raw pages of api-docs.deepseek.com on 2026-10-01: OpenAI-compatible
+endpoint https://api.deepseek.com/chat/completions; models `deepseek-flash` (served by
+DeepSeek-V4.1-Flash) and `deepseek-v4-pro`; `thinking` {"type": "enabled"|"disabled"},
+default enabled; temperature up to 2 (default 1), top_p up to 1 (default 1); JSON output via
+response_format json_object, which needs the word "json" and an example in the prompt and can
+occasionally return empty content; prices that differ between peak hours (01:00 to 04:00
+and 06:00 to 10:00 UTC, Monday to Friday) and off-peak hours.
 
 Safety:
 - The key comes only from the DEEPSEEK_API_KEY environment variable. It is never
@@ -30,7 +31,7 @@ from llm_provider import LiveCallNotAllowed, LLMResult, ProviderError
 
 BASE_URL = "https://api.deepseek.com"
 DEFAULT_MODEL = "deepseek-flash"
-DOCS_CHECKED = "2026-09-30"
+DOCS_CHECKED = "2026-10-01"
 GATE_VARIABLE = "ARI3_LIVE_LLM"
 # USD per million tokens, from the pricing page on DOCS_CHECKED: (off-peak, peak).
 PRICING = {"deepseek-flash": {"input_cache_hit": (0.003, 0.006), "input_cache_miss": (0.15, 0.30),
@@ -68,9 +69,10 @@ class DeepSeekProvider:
     name = "deepseek"
 
     def __init__(self, model=DEFAULT_MODEL, temperature=0.0, max_tokens=1200, timeout=60.0, max_retries=2,
-                 thinking="disabled", allow_live=False, session=None, sleep=time.sleep):
+                 thinking="disabled", allow_live=False, session=None, sleep=time.sleep, top_p=None):
         self.model = model
         self.temperature = temperature
+        self.top_p = top_p
         self.max_tokens = max_tokens
         self.timeout = timeout
         self.max_retries = max_retries
@@ -81,12 +83,14 @@ class DeepSeekProvider:
 
     def config(self):
         return {"provider": self.name, "model": self.model, "base_url": BASE_URL, "temperature": self.temperature,
-                "max_tokens": self.max_tokens, "timeout_s": self.timeout, "max_retries": self.max_retries,
+                "top_p": self.top_p, "max_tokens": self.max_tokens, "timeout_s": self.timeout, "max_retries": self.max_retries,
                 "thinking": self.thinking, "response_format": "json_object", "docs_checked": DOCS_CHECKED}
 
     def _payload(self, messages):
         body = {"model": self.model, "messages": messages, "temperature": self.temperature,
                 "max_tokens": self.max_tokens, "response_format": {"type": "json_object"}, "stream": False}
+        if self.top_p is not None:
+            body["top_p"] = self.top_p
         if self.thinking:
             body["thinking"] = {"type": self.thinking}
         return body

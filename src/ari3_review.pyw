@@ -6,6 +6,9 @@ Decks, each usable with big touch buttons or the keyboard:
   Relevance      EXP-004 relevance judgments (src/rag_review.py). Keys: R relevant,
                  N not relevant, U unsure, Space skip, Backspace back, O open, Esc menu.
                  Answers are appended to the experiment's judgment log.
+  Answers        EXP-005 answer review (src/exp005_review.py): one judgment per card,
+                 with the cited or supplied evidence in a scrollable panel. Keys shown on the
+                 buttons; Space skip, Backspace back, Esc menu.
   Questions      EXP-004 question review (src/rag_questions.py), shown until the set is
                  frozen. No retrieval result is shown. Keys: A approve, E edit, R reject,
                  M ambiguous, D duplicate, Space skip, Backspace back, Esc menu.
@@ -31,6 +34,7 @@ from tkinter import messagebox, simpledialog
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from item_store import DEFAULT_DB, assign_split, connect, utc_now  # noqa: E402
 import label_tool  # noqa: E402
+import exp005_review  # noqa: E402
 import rag_questions  # noqa: E402
 import rag_review  # noqa: E402
 
@@ -108,6 +112,9 @@ def labels_left(con, name="is_style_signal"):
     q = load_queue(name)
     if q.get("kind") == "rag_relevance":
         return rag_review.left(q)
+    if q.get("kind") == "gen_review":
+        done = exp005_review.done(q)
+        return sum(1 for t in q["tasks"] if t["task_id"] not in done), len(q["tasks"])
     done = {r[0] for r in con.execute(
         "SELECT item_id FROM labels WHERE task=? AND source='human'", (q["task"],))}
     return sum(1 for i in q["item_ids"] if i not in done), len(q["item_ids"])
@@ -184,7 +191,8 @@ class App:
         decks = []
         for name, title in all_queues():
             q_left, q_total = labels_left(self.con, name)
-            deck = self.relevance if rag_review.is_relevance_queue(load_queue(name)) else self.labels
+            kind = load_queue(name).get("kind")
+            deck = self.relevance if kind == "rag_relevance" else self.genreview if kind == "gen_review" else self.labels
             decks.append((f"{title}\n{q_left} of {q_total} left", lambda n=name, d=deck: d(n)))
         if not os.path.exists(rag_questions.FROZEN):
             status = rag_questions.review_status()
@@ -202,8 +210,8 @@ class App:
     # Style labels deck --------------------------------------------------
     def labels(self, name="is_style_signal"):
         self.q = load_queue(name)
-        if rag_review.is_relevance_queue(self.q):  # never answer relevance cards as style labels
-            messagebox.showerror("Wrong deck", "This queue is judged in the relevance deck.")
+        if self.q.get("kind") in ("rag_relevance", "gen_review"):  # never answer these as style labels
+            messagebox.showerror("Wrong deck", "This queue has its own deck.")
             return self.menu()
         self.task = self.q["task"]
         done = {r[0] for r in self.con.execute(
@@ -378,6 +386,96 @@ class App:
         action = {"r": lambda: self.rel_answer("relevant"), "n": lambda: self.rel_answer("not_relevant"),
                   "u": lambda: self.rel_answer("unsure"), "space": self.rel_skip, "backspace": self.rel_back,
                   "o": self.rel_open, "escape": self.menu}.get(e.keysym.lower())
+        if action:
+            action()
+
+    # Answer review deck (EXP-005) ----------------------------------------
+    def genreview(self, name):
+        self.gq = load_queue(name)
+        done = exp005_review.done(self.gq)
+        self.g_tasks = [t for t in self.gq["tasks"] if t["task_id"] not in done]
+        self.g_done0 = len(self.gq["tasks"]) - len(self.g_tasks)
+        self.g_pos, self.g_answered = 0, 0
+        f = self.clear()
+        self.g_bar = tk.Frame(f, bg=BG)
+        self.g_bar.pack(side="bottom", fill="x", pady=(10, 0))
+        self.gb_prog = self.label(f, size=11, color=DIM)
+        self.label(f, "QUESTION", 10, True, color=ACCENT, pady=(8, 0))
+        self.gb_q = self.label(f, size=15, bold=True, pady=(2, 0))
+        self.gb_prompt = self.label(f, size=14, bold=True, color=ACCENT, pady=(10, 4))
+        box = tk.Frame(f, bg=BG)
+        box.pack(fill="both", expand=True)
+        scroll = tk.Scrollbar(box)
+        scroll.pack(side="right", fill="y")
+        self.gb_body = tk.Text(box, wrap="word", font=(self.base, 12), bg="#ffffff", fg=FG, relief="solid", bd=1,
+                               padx=10, pady=8, yscrollcommand=scroll.set)
+        self.gb_body.pack(side="left", fill="both", expand=True)
+        scroll.config(command=self.gb_body.yview)
+        self.root.bind("<Key>", self.gen_key)
+        self.rewrap()
+        self.gen_show()
+
+    def gen_current(self):
+        return self.g_tasks[self.g_pos] if self.g_pos < len(self.g_tasks) else None
+
+    def gen_show(self):
+        for w in self.g_bar.winfo_children():
+            w.destroy()
+        self.gb_prog.config(text=f"{self.g_done0 + self.g_answered} of {len(self.gq['tasks'])} reviewed")
+        task = self.gen_current()
+        self.gb_body.config(state="normal")
+        self.gb_body.delete("1.0", "end")
+        if task is None:
+            self.gb_q.config(text="Queue finished. Reviews are saved.")
+            self.gb_prompt.config(text="")
+            self.gb_body.config(state="disabled")
+            tk.Button(self.g_bar, text="Menu", command=self.menu, font=(self.base, 14, "bold")).pack(fill="x")
+            return
+        self.gb_q.config(text=task["question"])
+        self.gb_prompt.config(text=task["prompt"])
+        self.gb_body.insert("1.0", task["body"])
+        self.gb_body.config(state="disabled")
+        row = tk.Frame(self.g_bar, bg=BG)
+        row.pack(fill="x", pady=4)
+        for i, o in enumerate(task["options"]):
+            tk.Button(row, text=f"{o['label']}  ({o['key'].upper()})", command=lambda v=o["value"]: self.gen_answer(v),
+                      font=(self.base, 14, "bold"), pady=12, bg="#ffffff", fg=FG, relief="solid", bd=1,
+                      cursor="hand2").grid(row=0, column=i, sticky="nsew", padx=4)
+            row.grid_columnconfigure(i, weight=1, uniform="g")
+        nav = tk.Frame(self.g_bar, bg=BG)
+        nav.pack(fill="x", pady=4)
+        for i, (text, cmd) in enumerate((("Skip", self.gen_skip), ("Back", self.gen_back), ("Menu", self.menu))):
+            tk.Button(nav, text=text, command=cmd, font=(self.base, 12), pady=8).grid(row=0, column=i, sticky="nsew",
+                                                                                     padx=4)
+            nav.grid_columnconfigure(i, weight=1, uniform="n")
+
+    def gen_answer(self, value):
+        task = self.gen_current()
+        if task is None:
+            return
+        exp005_review.record(self.gq, task, value)
+        self.g_answered += 1
+        self.g_pos += 1
+        self.gen_show()
+
+    def gen_skip(self):
+        if self.gen_current() is not None:
+            self.g_pos += 1
+            self.gen_show()
+
+    def gen_back(self):
+        if self.g_pos > 0:
+            self.g_pos -= 1
+            self.gen_show()
+
+    def gen_key(self, e):
+        k = e.keysym.lower()
+        task = self.gen_current()
+        if task is not None:
+            for o in task["options"]:
+                if k == o["key"]:
+                    return self.gen_answer(o["value"])
+        action = {"space": self.gen_skip, "backspace": self.gen_back, "escape": self.menu}.get(k)
         if action:
             action()
 
