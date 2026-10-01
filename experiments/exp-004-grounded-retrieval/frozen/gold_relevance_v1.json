@@ -1,0 +1,18 @@
+{
+ "frozen_at": "2026-10-01T01:27:50Z",
+ "dataset_version": "v1",
+ "task": "rag_relevance",
+ "labeler": "ariella",
+ "judgments": 819,
+ "relevant": 318,
+ "not_relevant": 273,
+ "unsure": 228,
+ "resolved": 591,
+ "unsure_handling": "condensed lists: unsure items are removed from rankings and never counted as relevant or not relevant; the unsure share of each top 10 is reported",
+ "log_lines": 874,
+ "log_sha256": "f7fe3fc48961a49cd7c7a780db1cb25345efeb04ae1496e6837fd4202eadbdf6",
+ "pairs_answered_more_than_once": 53,
+ "questions_sha256": "d1d17cb4cfe34196b05724dd8623ad4c94ce9c69d00420ba9af3290cf73d4ad4",
+ "pool_sha256": "b021d0eed87c3373d95f17a072c246e144218cb6c9b285d31d9038d84486ec6d",
+ "gold_sha256": "bda481d21f0b551f985d6ba05caa08a704542ec6c64c5baf7896ad9523153822"
+}

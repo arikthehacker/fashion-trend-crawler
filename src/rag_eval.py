@@ -26,6 +26,7 @@ Usage:
   python src/rag_eval.py pool-preview              # sizes a pool over the draft questions; writes no deck
   python src/rag_eval.py pool                      # builds pool_v2 from the frozen questions
   python src/rag_eval.py freeze-split              # DEV/TEST split of the frozen questions, once
+  python src/rag_eval.py freeze-gold               # the editor's final judgments for the whole pool, once
   python src/rag_eval.py eval-dev                  # scores every candidate on DEV
   python src/rag_eval.py freeze-retriever --method M --dev-result FILE
   python src/rag_eval.py eval-test                 # once, for the frozen retriever only
@@ -63,6 +64,8 @@ PATHS = {
     "pool_manifest": os.path.join(EXP, "pool_v2.manifest.json"),
     "split": os.path.join(EXP, "frozen", "split_v1.json"),
     "judgments": os.path.join(EXP, "judgments", "rag_relevance_v2.jsonl"),
+    "gold": os.path.join(EXP, "frozen", "gold_relevance_v1.jsonl"),
+    "gold_manifest": os.path.join(EXP, "frozen", "gold_relevance_v1.json"),
     "results": os.path.join(EXP, "results"),
     "retriever_freeze": os.path.join(EXP, "frozen", "retriever_v1.json"),
     "test_result": os.path.join(EXP, "results", "test-retrieval-v1.json"),
@@ -246,6 +249,39 @@ def pool_fingerprint(rows):
     return hashlib.sha256(body.encode()).hexdigest()
 
 
+# ---------- frozen gold ----------
+
+def materialize_gold(judgments, pool_rows, pool_sha256):
+    """The final judgment per pooled pair (latest answer wins), sorted by question and
+    item. Raises unless every pooled pair has exactly one final judgment and nothing
+    outside the pool was judged."""
+    if {j.pool_sha256 for j in judgments} != {pool_sha256}:
+        raise RuntimeError("judgments name a different pool")
+    labelers = {j.labeler for j in judgments}
+    if len(labelers) != 1:
+        raise RuntimeError(f"expected one labeler, found {sorted(labelers)}")
+    latest = {}
+    for j in sorted(judgments, key=lambda j: j.judged_at):
+        key = (j.question_id, j.item_id)
+        if key in latest and latest[key].judged_at == j.judged_at and latest[key].judgment != j.judgment:
+            raise RuntimeError(f"conflicting answers at the same second for {key}")
+        latest[key] = j
+    pool = {(r["question_id"], r["item_id"]) for r in pool_rows}
+    if set(latest) != pool:
+        raise RuntimeError(f"{len(pool - set(latest))} pooled pairs unjudged, {len(set(latest) - pool)} judged outside the pool")
+    return [latest[k] for k in sorted(latest)]
+
+
+def load_gold(path=None, manifest=None):
+    """{question_id: {item_id: judgment}} from the frozen gold, after its fingerprint check."""
+    path, manifest = path or PATHS["gold"], manifest or PATHS["gold_manifest"]
+    with open(manifest, encoding="utf-8") as f:
+        body = json.load(f)
+    if sha256_file(path) != body["gold_sha256"]:
+        raise RuntimeError("the frozen gold no longer matches its fingerprint")
+    return judgments_by_question(load_jsonl(path, Judgment)), body
+
+
 # ---------- split ----------
 
 def stratum(q):
@@ -331,8 +367,8 @@ def _open(args):
 def main(argv=None):
     import rag_questions as rq
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("cmd", choices=["pool-preview", "pool", "freeze-split", "eval-dev", "freeze-retriever",
-                                    "eval-test"])
+    ap.add_argument("cmd", choices=["pool-preview", "pool", "freeze-split", "freeze-gold", "eval-dev",
+                                    "freeze-retriever", "eval-test"])
     ap.add_argument("--db")
     ap.add_argument("--index", default=os.path.join(os.path.dirname(os.path.dirname(EXP)), "data", "index",
                                                     "exp004-v1"))
@@ -377,8 +413,41 @@ def main(argv=None):
         print(json.dumps(body, indent=1))
         return 0
 
+    if args.cmd == "freeze-gold":
+        if os.path.exists(PATHS["gold"]) or os.path.exists(PATHS["gold_manifest"]):
+            print("the gold is already frozen. A change needs a new version.", file=sys.stderr)
+            return 1
+        with open(PATHS["pool_manifest"], encoding="utf-8") as f:
+            pmanifest = json.load(f)
+        if sha256_file(PATHS["pool"]) != pmanifest["pool_file_sha256"] or pmanifest["questions_sha256"] != qmanifest["questions_sha256"]:
+            print("the pool does not match its manifest or the frozen questions", file=sys.stderr)
+            return 1
+        with open(PATHS["pool"], encoding="utf-8") as f:
+            pool_rows = [json.loads(line) for line in f if line.strip()]
+        judgments = load_jsonl(PATHS["judgments"], Judgment)
+        gold = materialize_gold(judgments, pool_rows, pmanifest["pool_sha256"])
+        with open(PATHS["gold"], "w", encoding="utf-8", newline="\n") as f:
+            for j in gold:
+                f.write(json.dumps(j.model_dump(mode="json"), ensure_ascii=False, sort_keys=True) + "\n")
+        counts = collections.Counter(j.judgment for j in gold)
+        body = {"frozen_at": _now(), "dataset_version": qmanifest["dataset_version"], "task": "rag_relevance",
+                "labeler": gold[0].labeler, "judgments": len(gold), "relevant": counts["relevant"],
+                "not_relevant": counts["not_relevant"], "unsure": counts["unsure"],
+                "resolved": counts["relevant"] + counts["not_relevant"],
+                "unsure_handling": "condensed lists: unsure items are removed from rankings and never counted as "
+                                   "relevant or not relevant; the unsure share of each top 10 is reported",
+                "log_lines": len(judgments), "log_sha256": sha256_file(PATHS["judgments"]),
+                "pairs_answered_more_than_once": sum(c > 1 for c in collections.Counter(
+                    (j.question_id, j.item_id) for j in judgments).values()),
+                "questions_sha256": qmanifest["questions_sha256"], "pool_sha256": pmanifest["pool_sha256"],
+                "gold_sha256": sha256_file(PATHS["gold"])}
+        with open(PATHS["gold_manifest"], "w", encoding="utf-8", newline="\n") as f:
+            json.dump(body, f, indent=1)
+        print(json.dumps(body, indent=1))
+        return 0
+
     split = load_split(qmanifest["questions_sha256"])
-    judged = judgments_by_question(load_jsonl(PATHS["judgments"], Judgment)) if os.path.exists(PATHS["judgments"]) else {}
+    judged, _ = load_gold()
 
     if args.cmd == "eval-dev":
         dev = [q for q in questions if q.question_id in set(split["dev"])]

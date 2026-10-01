@@ -267,6 +267,21 @@ class EvalTests(unittest.TestCase):
         self.assertEqual(ev.gold(js), {"q001": {2}})
         self.assertEqual(ev.judgments_by_question(js), {"q001": {1: "not_relevant", 2: "relevant", 3: "unsure"}})
 
+    def test_gold_freeze_requires_exactly_the_pool(self):
+        pool = [{"question_id": "q001", "item_id": 1}, {"question_id": "q001", "item_id": 2}]
+        js = [self.judgment(1, "relevant", "2026-10-01T00:00:00Z"), self.judgment(1, "unsure", "2026-10-01T00:03:00Z"),
+              self.judgment(2, "not_relevant", "2026-10-01T00:01:00Z")]
+        gold = ev.materialize_gold(js, pool, "a" * 64)
+        self.assertEqual([(j.item_id, j.judgment) for j in gold], [(1, "unsure"), (2, "not_relevant")])
+        with self.assertRaises(RuntimeError):  # a pooled pair is unjudged
+            ev.materialize_gold(js[:2], pool, "a" * 64)
+        with self.assertRaises(RuntimeError):  # a pair outside the pool
+            ev.materialize_gold(js + [self.judgment(3, "relevant", "2026-10-01T00:04:00Z")], pool, "a" * 64)
+        with self.assertRaises(RuntimeError):  # judgments for another pool
+            ev.materialize_gold(js, pool, "b" * 64)
+        with self.assertRaises(RuntimeError):  # two different answers in the same second
+            ev.materialize_gold(js + [self.judgment(2, "relevant", "2026-10-01T00:01:00Z")], pool, "a" * 64)
+
     def test_condensed_lists_drop_unsure_items(self):
         judged = {"q001": {3: "unsure", 1: "not_relevant", 2: "relevant"}, "q002": {9: "not_relevant"}}
         out = ev.score({"q001": [3, 1, 2], "q002": [9]}, judged)
