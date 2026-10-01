@@ -20,9 +20,9 @@ The evaluation index is frozen at a first-seen cutoff of 2026-09-30 08:00 UTC: 7
 | Question freeze | **Frozen** 2026-09-30 22:35 UTC: 56 questions, SHA-256 `d1d17cb4cfe34196…`. 46 drafted answerable, 10 drafted unanswerable, 13 temporal (4 replay). Languages: en 46, ja 4, it 2, fr 2, pt 2 |
 | Depth-5 pool | **Superseded before labeling** (`superseded/`). 0 judgments were ever made on it |
 | Depth-10 pool (`pool_v2.jsonl`) | **Built** from the frozen questions: 819 pairs, 646 distinct items, median 15.5 per question (max 25), pool SHA-256 `b021d0eed87c3373…`. 4 questions have no eligible item (q024, q026, q027, q040) |
-| Relevance judgments | None yet. Deck "Evidence relevance (EXP-004)" in ARI3 Review, 819 cards |
+| Relevance judgments | **Frozen gold**: 819 judgments (318 relevant, 273 not relevant, 228 unsure), SHA-256 `bda481d2…` (`1bbab11`) |
 | DEV/TEST split | **Frozen**: 37 DEV / 19 TEST, seed 4. DEV IDs SHA-256 `fc7d5a4d…`, TEST IDs `0ed719fa…`, split `62f6a892…` |
-| Retriever comparison on DEV | Not run |
+| Retriever comparison on DEV | **Run once** under the pre-registered rule (`8ce1b74`) and amendment 1 (`383d3c7`). Rule outcome: PRACTICAL_TIE_SELECTION, candidate `hybrid`. Results in `results/dev-retrieval-v1.json`. Retriever not frozen: the owner reviews DEV before any TEST run |
 | Generation | `ask_ari3` (`src/rag_answer.py`), the grounded-answer schema, deterministic validators, the provider interface, a DeepSeek adapter and the harness (`src/rag_gen_eval.py`) are built and tested with scripted providers. No live provider has been called. Live calls need `ARI3_LIVE_LLM=approved`, set by the owner |
 
 ## Files
