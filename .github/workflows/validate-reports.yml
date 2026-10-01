@@ -63,6 +63,9 @@ jobs:
           python src/test_exp005.py
           python src/test_exp005_v2.py
 
+      - name: EXP-005 context-only adjudication tests (throwaway corpus, no network)
+        run: python src/test_exp005_adjudicate.py
+
       - name: Validate published reports (schema + publish gate + non-blocking confidence warnings)
         run: python src/validate_all_reports.py
 

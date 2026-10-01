@@ -51,3 +51,14 @@ Prompt v2 (`protocol/prompt_v2.txt`, `protocol/protocol_v2.json`) changes only w
 - **Limitations.** Each limitation is `{text, supporting_item_ids}`. A limitation about a specific item must cite it and is reviewed like a claim.
 
 The retriever, serializer, provider settings and retry policy are unchanged. Rubric v2 adds optional reviewer notes, which are qualitative only. Metrics v2 keeps the v1 grounded-answer rule, so the two versions can be compared.
+
+## Evidence boundary (amendment 2026-10-01)
+
+Human review judges the model only against the exact evidence packet it received. Full articles, pages behind URLs and outside knowledge are not evidence. See `AMENDMENT_2026-10-01_evidence_boundary.md`.
+
+The original Prompt v2 review and scores are kept unchanged as the mixed-boundary record. The deck "Prompt v2 context-only adjudication v2" (`src/exp005_adjudicate.py`) re-asks the seven judgments that used outside content. The context-grounded score is computed from it separately.
+
+`analysis/` holds findings that are not generation metrics:
+- corpus sufficiency;
+- source-representation options;
+- schema capacity.
