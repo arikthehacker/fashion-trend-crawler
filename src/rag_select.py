@@ -19,6 +19,8 @@ Metric semantics (fixed before any DEV result):
 usage:
   python src/rag_select.py freeze-rule
   python src/rag_select.py run-dev
+  python src/rag_select.py freeze-retriever     # the DEV-selected configuration, bound to every fingerprint
+  python src/rag_select.py run-test             # once, frozen retriever only
 """
 
 import argparse
@@ -37,6 +39,14 @@ RULE_PATH = os.path.join(EXP, "frozen", "retriever_selection_rule_v1.json")
 AMENDMENT_PATH = os.path.join(EXP, "frozen", "retriever_selection_rule_v1_amendment_1.json")
 DEV_RESULT = os.path.join(EXP, "results", "dev-retrieval-v1.json")
 DEV_ROWS = os.path.join(EXP, "results", "dev-retrieval-v1.per_question.jsonl")
+RETRIEVER_PATH = os.path.join(EXP, "frozen", "retriever_v1.json")
+TEST_RESULT = os.path.join(EXP, "results", "test-retrieval-v1.json")
+TEST_ROWS = os.path.join(EXP, "results", "test-retrieval-v1.per_question.jsonl")
+SRC = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = os.path.dirname(SRC)
+INDEX_DIR = os.path.join(ROOT_DIR, "data", "index", "exp004-v1")
+CODE_FILES = ("rag_retrieve.py", "rag_corpus.py", "rag_index.py", "rag_schema.py", "rag_validate.py",
+              "rag_eval.py", "rag_select.py", "item_store.py")
 K = 10
 SEED = 20261001
 
@@ -343,10 +353,168 @@ def run_dev():
     return body
 
 
+# ---------- the frozen retriever and the one-time TEST run ----------
+
+def _sha256_bytes(path):
+    import hashlib
+    with open(path, "rb") as f:
+        return hashlib.sha256(f.read()).hexdigest()
+
+
+def current_fingerprints():
+    import rag_questions as rq
+    _, qmanifest = rq.load_frozen()
+    split = load_split(qmanifest["questions_sha256"])
+    _, gmanifest = load_gold()
+    with open(PATHS["pool_manifest"], encoding="utf-8") as f:
+        pmanifest = json.load(f)
+    return {"questions_sha256": qmanifest["questions_sha256"], "dev_ids_sha256": split["dev_ids_sha256"],
+            "test_ids_sha256": split["test_ids_sha256"], "split_sha256": split["split_sha256"],
+            "pool_sha256": pmanifest["pool_sha256"], "gold_sha256": gmanifest["gold_sha256"],
+            "selection_rule_sha256": sha256_file(RULE_PATH), "amendment_1_sha256": sha256_file(AMENDMENT_PATH),
+            "dev_result_sha256": sha256_file(DEV_RESULT), "dev_per_question_sha256": sha256_file(DEV_ROWS)}
+
+
+def code_and_index_fingerprints():
+    code = {f: sha256_file(os.path.join(SRC, f)) for f in CODE_FILES}
+    index = {f: _sha256_bytes(os.path.join(INDEX_DIR, f)) for f in ("fts.db", "embeddings.npz", "manifest.json")}
+    return code, index
+
+
+def retriever_config():
+    """Everything needed to reproduce the DEV-selected hybrid retriever."""
+    import sqlite3
+    import rag_retrieve
+    from rag_index import EMBEDDER, EMBEDDER_REVISION
+    with open(os.path.join(INDEX_DIR, "manifest.json"), encoding="utf-8") as f:
+        manifest = json.load(f)
+    versions = {"python": sys.version.split()[0], "sqlite": sqlite3.sqlite_version}
+    for mod in ("numpy", "pydantic", "sentence_transformers", "transformers", "torch"):
+        try:
+            versions[mod] = getattr(__import__(mod), "__version__", None) or getattr(__import__(mod), "VERSION")
+        except ImportError:
+            versions[mod] = None
+    return {
+        "name": "hybrid", "selected_by": "PRACTICAL_TIE_SELECTION under retriever_selection_rule_v1 (owner accepted, "
+                                         "directive 029)",
+        "call": {"method": "hybrid", "lexical": "auto", "k": K},
+        "query_preprocessing": "none beyond tokenization: the question's retrieval query is used as written",
+        "filters": "dates, language (primary subtag of the item tag), sector as of the publication day, sector group "
+                   "and outlet are SQL constraints applied before ranking; syndicated copies excluded",
+        "temporal_semantics": "publication: published_at <= as_of (a bare date means 23:59:59Z). replay: also "
+                              "first_seen_at <= as_of",
+        "candidate_set": "items passing every filter AND present in the frozen index",
+        "bm25": {"engine": "SQLite FTS5 bm25(), score = -bm25", "tables": manifest["lexical_tokenizers"],
+                 "mode": "auto: trigram table when the query contains a CJK character (regex "
+                         f"{rag_retrieve.CJK.pattern!r}), word table otherwise",
+                 "query": "lowercased \\w+ tokens; words mode keeps tokens of 2+ characters; trigram mode uses every "
+                          "3-character substring of tokens of 3+ characters; each term quoted, joined with OR",
+                 "depth": f"max(k, {rag_retrieve.FUSION_DEPTH})"},
+        "dense": {"encoder": EMBEDDER, "revision": EMBEDDER_REVISION, "max_seq_length": 128,
+                  "text": manifest["text"], "normalization": "L2-normalized embeddings (normalize_embeddings=True)",
+                  "similarity": "dot product of normalized vectors, brute force",
+                  "depth": f"max(k, {rag_retrieve.FUSION_DEPTH})"},
+        "fusion": {"type": "reciprocal rank fusion", "rrf_k": rag_retrieve.RRF_K,
+                   "fusion_depth": rag_retrieve.FUSION_DEPTH, "score": "sum of 1 / (rrf_k + rank) over bm25 and dense",
+                   "tie_break": "item_id ascending"},
+        "index": {"path": "data/index/exp004-v1", "index_version": manifest["index_version"],
+                  "cutoff_first_seen_at": manifest["cutoff_first_seen_at"], "items": manifest["items"],
+                  "corpus_fingerprint": manifest["corpus_fingerprint"], "built_at": manifest["built_at"],
+                  "chunking": manifest["chunking"]},
+        "dependency_versions": versions,
+    }
+
+
+def freeze_retriever():
+    if os.path.exists(RETRIEVER_PATH):
+        raise RuntimeError("the retriever is already frozen")
+    with open(DEV_RESULT, encoding="utf-8") as f:
+        dev = json.load(f)
+    if dev["selection"]["outcome"] not in ("CLEAR_SELECTION", "PRACTICAL_TIE_SELECTION") or \
+            dev["selection"]["selected"] != "hybrid":
+        raise RuntimeError("the DEV result does not select hybrid")
+    code, index = code_and_index_fingerprints()
+    head = _git("rev-parse", "HEAD").stdout.strip()
+    body = {"version": "exp004-retriever-v1", "frozen_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "configuration": retriever_config(), "dev_selection": dev["selection"]["outcome"],
+            "dev_recall@10": dev["summary"]["hybrid"]["all"]["recall@10"], "code_commit": head,
+            "code_sha256": code, "index_files_sha256": index, "fingerprints": current_fingerprints()}
+    with open(RETRIEVER_PATH, "x", encoding="utf-8", newline="\n") as f:
+        json.dump(body, f, indent=1)
+    return body
+
+
+def run_test():
+    import rag_questions as rq
+    from item_store import DEFAULT_DB
+    from rag_corpus import get_items, open_corpus
+    from rag_eval import run_method
+    from rag_index import Index
+
+    if os.path.exists(TEST_RESULT) or os.path.exists(TEST_ROWS):
+        raise RuntimeError("TEST has already been scored. It runs once.")
+    ok, freeze_commit = rule_is_committed_and_pushed(RETRIEVER_PATH)
+    if not ok:
+        raise RuntimeError(f"frozen retriever: {freeze_commit}")
+    with open(RETRIEVER_PATH, encoding="utf-8") as f:
+        frozen = json.load(f)
+    if frozen["fingerprints"] != current_fingerprints():
+        raise RuntimeError("a frozen artifact changed after the retriever was frozen")
+    code, index_files = code_and_index_fingerprints()
+    if code != frozen["code_sha256"] or index_files != frozen["index_files_sha256"]:
+        raise RuntimeError("retrieval code or index files changed after the retriever was frozen")
+    with open(RULE_PATH, encoding="utf-8") as f:
+        rule = json.load(f)
+    questions, qmanifest = rq.load_frozen()
+    split = load_split(qmanifest["questions_sha256"])
+    judged, _ = load_gold()
+    test = [q for q in questions if q.question_id in set(split["test"])]
+    corpus = open_corpus(DEFAULT_DB)
+    index = Index(INDEX_DIR)
+    call = frozen["configuration"]["call"]
+
+    run_method(corpus, index, test[0], call["method"], call["lexical"], call["k"])  # untimed warm-up, as on DEV
+    rows, per_q, seconds, bad = [], {}, [], []
+    for q in test:
+        ranking, sec = run_method(corpus, index, q, call["method"], call["lexical"], call["k"])
+        seconds.append(sec)
+        check = integrity(corpus, q, ranking)
+        if check["bad_items"] or check["duplicates"] or check["too_many"]:
+            bad.append({"question_id": q.question_id, **{k: v for k, v in check.items() if v}})
+        m = question_metrics(ranking, judged.get(q.question_id, {}))
+        per_q[q.question_id] = m
+        rows.append({"candidate": "hybrid", "question_id": q.question_id, "ranking": ranking,
+                     "judgments": [judged.get(q.question_id, {}).get(i, "unjudged") for i in ranking], **m})
+    ordered = sorted(seconds)
+    latency = {"median": round(1000 * statistics.median(ordered), 1),
+               "p95": round(1000 * ordered[max(0, math.ceil(0.95 * len(ordered)) - 1)], 1), "queries": len(ordered)}
+    groups = {g: aggregate([per_q[q.question_id] for q in qs]) for g, qs in subgroups(test, judged).items()}
+    test_items = {i for q in test for i in judged.get(q.question_id, {})}
+    item_lang = {e.item_id: e.lang for e in get_items(corpus, sorted(test_items))}
+
+    os.makedirs(os.path.dirname(TEST_RESULT), exist_ok=True)
+    with open(TEST_ROWS, "x", encoding="utf-8", newline="\n") as f:
+        for r in rows:
+            f.write(json.dumps(r) + "\n")
+    body = {"run_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "split": "test",
+            "retriever": "hybrid", "retriever_freeze_commit": freeze_commit,
+            "retriever_sha256": sha256_file(RETRIEVER_PATH), "test_questions": len(test),
+            "gold_answerable_test_questions": sum(1 for q in test if any(
+                v == "relevant" for v in judged.get(q.question_id, {}).values())),
+            "metrics": groups, "latency_ms": latency, "integrity_failures": bad,
+            "unsure_rate_by_language_descriptive": unsure_breakdown(test, judged, item_lang),
+            "eligibility_reference": {"p95_latency_ms_max": rule["eligibility"]["p95_latency_ms_max"]},
+            "fingerprints": frozen["fingerprints"], "per_question_file": os.path.basename(TEST_ROWS),
+            "per_question_sha256": sha256_file(TEST_ROWS)}
+    with open(TEST_RESULT, "x", encoding="utf-8", newline="\n") as f:
+        json.dump(body, f, indent=1)
+    return body
+
+
 def main(argv=None):
     import rag_questions as rq
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("cmd", choices=["freeze-rule", "run-dev"])
+    ap.add_argument("cmd", choices=["freeze-rule", "run-dev", "freeze-retriever", "run-test"])
     args = ap.parse_args(argv)
     if args.cmd == "freeze-rule":
         if os.path.exists(RULE_PATH):
@@ -364,6 +532,16 @@ def main(argv=None):
         print(json.dumps({"rule": os.path.basename(RULE_PATH), "sha256": sha256_file(RULE_PATH)}, indent=1))
         return 0
     try:
+        if args.cmd == "freeze-retriever":
+            body = freeze_retriever()
+            print(json.dumps({"retriever": os.path.basename(RETRIEVER_PATH), "sha256": sha256_file(RETRIEVER_PATH)},
+                             indent=1))
+            return 0
+        if args.cmd == "run-test":
+            body = run_test()
+            print(json.dumps({"all": body["metrics"]["all"], "latency_ms": body["latency_ms"],
+                              "integrity_failures": body["integrity_failures"]}, indent=1))
+            return 0
         body = run_dev()
     except RuntimeError as e:
         print(f"not run: {e}", file=sys.stderr)

@@ -28,8 +28,8 @@ Usage:
   python src/rag_eval.py freeze-split              # DEV/TEST split of the frozen questions, once
   python src/rag_eval.py freeze-gold               # the editor's final judgments for the whole pool, once
   python src/rag_select.py run-dev                 # DEV, once, under the frozen selection rule
-  python src/rag_eval.py freeze-retriever --method M --dev-result FILE
-  python src/rag_eval.py eval-test                 # once, for the frozen retriever only
+  python src/rag_select.py freeze-retriever         # the DEV-selected retriever
+  python src/rag_select.py run-test                 # once, for the frozen retriever only
 """
 
 import argparse
@@ -449,46 +449,9 @@ def main(argv=None):
     split = load_split(qmanifest["questions_sha256"])
     judged, _ = load_gold()
 
-    if args.cmd == "freeze-retriever":
-        if os.path.exists(PATHS["retriever_freeze"]):
-            print("the retriever is already frozen", file=sys.stderr)
-            return 1
-        if args.method not in [method_name(*m) for m in CANDIDATE_METHODS] or not args.dev_result:
-            print("--method must be a candidate and --dev-result a DEV result file", file=sys.stderr)
-            return 1
-        with open(args.dev_result, encoding="utf-8") as f:
-            dev_result = json.load(f)
-        if dev_result.get("split") != "dev":
-            print("the result file is not a DEV result", file=sys.stderr)
-            return 1
-        body = {"frozen_at": _now(), "method": args.method, "k": 10, "dev_result": os.path.basename(args.dev_result),
-                "dev_result_sha256": sha256_file(args.dev_result), "split_sha256": split["split_sha256"]}
-        with open(PATHS["retriever_freeze"], "w", encoding="utf-8", newline="\n") as f:
-            json.dump(body, f, indent=1)
-        print(json.dumps(body, indent=1))
-        return 0
-
-    # eval-test: once, for the frozen retriever only
-    if os.path.exists(PATHS["test_result"]):
-        print("TEST has already been scored. It runs once.", file=sys.stderr)
-        return 1
-    if not os.path.exists(PATHS["retriever_freeze"]):
-        print("freeze a retriever from DEV results first", file=sys.stderr)
-        return 1
-    with open(PATHS["retriever_freeze"], encoding="utf-8") as f:
-        frozen = json.load(f)
-    method, _, lexical = frozen["method"].partition(":")
-    test = [q for q in questions if q.question_id in set(split["test"])]
-    corpus, index = _open(args)
-    methods, _ = evaluate(corpus, index, test, judged, methods=((method, lexical or None),))
-    body = {"split": "test", "questions": len(test), "run_at": _now(), "retriever": frozen,
-            "judgments_sha256": sha256_file(PATHS["judgments"]), "index": index.manifest, "metrics": methods}
-    os.makedirs(PATHS["results"], exist_ok=True)
-    with open(PATHS["test_result"], "x", encoding="utf-8", newline="\n") as f:
-        json.dump(body, f, indent=1)
-    print(json.dumps(body["metrics"], indent=1))
-    return 0
-
+    print("freeze-retriever and eval-test moved to rag_select.py (same scoring as DEV); nothing was run",
+          file=sys.stderr)
+    return 1
 
 if __name__ == "__main__":
     sys.exit(main())
