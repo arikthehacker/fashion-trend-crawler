@@ -9,10 +9,10 @@ method (CANDIDATE_METHODS), so every item any candidate ranks in its top 10 is j
 (TREC-style pooling, Voorhees and Harman 2005). Recall is relative to that pool: a
 relevant item no candidate retrieved is never judged.
 
-Unsure. Judgments are relevant, not_relevant or unsure. Metrics use condensed lists
-(Sakai 2007): unsure items are removed from a ranking before scoring and are never
-counted as relevant or as not relevant. Each result also reports the unresolved share
-(unsure items in the top 10) and the judged coverage of the top 10.
+Unsure. Judgments are relevant, not_relevant or unsure. A ranking is scored exactly as
+the retriever produced it: an unsure item keeps its rank and counts as neither relevant
+nor not relevant (owner correction, directive 028, replacing condensed lists). Each
+result also reports the unsure share and the judged coverage of the top 10.
 
 Metrics, over questions with at least one item judged relevant:
   Hit@K     1 if any relevant item is in the top K, else 0
@@ -27,7 +27,7 @@ Usage:
   python src/rag_eval.py pool                      # builds pool_v2 from the frozen questions
   python src/rag_eval.py freeze-split              # DEV/TEST split of the frozen questions, once
   python src/rag_eval.py freeze-gold               # the editor's final judgments for the whole pool, once
-  python src/rag_eval.py eval-dev                  # scores every candidate on DEV
+  python src/rag_select.py run-dev                 # DEV, once, under the frozen selection rule
   python src/rag_eval.py freeze-retriever --method M --dev-result FILE
   python src/rag_eval.py eval-test                 # once, for the frozen retriever only
 """
@@ -163,8 +163,9 @@ def ndcg_at(ranked, relevant, k=10):
 
 
 def score(rankings, judged):
-    """Mean metrics over questions with at least one relevant item, on condensed lists.
-    rankings: {qid: [item_id, ...]}. judged: {qid: {item_id: judgment}}."""
+    """Mean metrics over questions with at least one relevant item, on rankings exactly as
+    produced (unsure items keep their rank). rankings: {qid: [item_id, ...]}.
+    judged: {qid: {item_id: judgment}}."""
     rows, unresolved, coverage = [], [], []
     for q, ranking in rankings.items():
         marks = judged.get(q, {})
@@ -175,10 +176,9 @@ def score(rankings, judged):
         relevant = {i for i, v in marks.items() if v == "relevant"}
         if not relevant:
             continue
-        condensed = [i for i in ranking if marks.get(i) != "unsure"]
-        rows.append((hit_at(condensed, relevant, 5), hit_at(condensed, relevant, 10),
-                     recall_at(condensed, relevant, 5), recall_at(condensed, relevant, 10),
-                     mrr(condensed, relevant), ndcg_at(condensed, relevant, 10)))
+        rows.append((hit_at(ranking, relevant, 5), hit_at(ranking, relevant, 10),
+                     recall_at(ranking, relevant, 5), recall_at(ranking, relevant, 10),
+                     mrr(ranking, relevant), ndcg_at(ranking, relevant, 10)))
     names = ("hit@5", "hit@10", "recall@5", "recall@10", "mrr", "ndcg@10")
     out = {"questions_scored": len(rows), "questions_without_relevant": len(rankings) - len(rows),
            "unresolved_share_top10": round(statistics.mean(unresolved), 4) if unresolved else None,
@@ -367,8 +367,8 @@ def _open(args):
 def main(argv=None):
     import rag_questions as rq
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("cmd", choices=["pool-preview", "pool", "freeze-split", "freeze-gold", "eval-dev",
-                                    "freeze-retriever", "eval-test"])
+    ap.add_argument("cmd", choices=["pool-preview", "pool", "freeze-split", "freeze-gold", "freeze-retriever",
+                                    "eval-test"])
     ap.add_argument("--db")
     ap.add_argument("--index", default=os.path.join(os.path.dirname(os.path.dirname(EXP)), "data", "index",
                                                     "exp004-v1"))
@@ -434,8 +434,8 @@ def main(argv=None):
                 "labeler": gold[0].labeler, "judgments": len(gold), "relevant": counts["relevant"],
                 "not_relevant": counts["not_relevant"], "unsure": counts["unsure"],
                 "resolved": counts["relevant"] + counts["not_relevant"],
-                "unsure_handling": "condensed lists: unsure items are removed from rankings and never counted as "
-                                   "relevant or not relevant; the unsure share of each top 10 is reported",
+                "unsure_handling": "fixed ranks: an unsure item keeps its rank and counts as neither relevant nor "
+                                   "not relevant; the unsure share of each top 10 is reported",
                 "log_lines": len(judgments), "log_sha256": sha256_file(PATHS["judgments"]),
                 "pairs_answered_more_than_once": sum(c > 1 for c in collections.Counter(
                     (j.question_id, j.item_id) for j in judgments).values()),
@@ -448,20 +448,6 @@ def main(argv=None):
 
     split = load_split(qmanifest["questions_sha256"])
     judged, _ = load_gold()
-
-    if args.cmd == "eval-dev":
-        dev = [q for q in questions if q.question_id in set(split["dev"])]
-        corpus, index = _open(args)
-        methods, misses = evaluate(corpus, index, dev, judged)
-        body = {"split": "dev", "questions": len(dev), "run_at": _now(), "split_sha256": split["split_sha256"],
-                "judgments_sha256": sha256_file(PATHS["judgments"]) if os.path.exists(PATHS["judgments"]) else None,
-                "index": index.manifest, "methods": methods, "misses_for_annotation": misses}
-        os.makedirs(PATHS["results"], exist_ok=True)
-        path = os.path.join(PATHS["results"], f"dev-retrievers-{body['run_at'].replace(':', '')}.json")
-        with open(path, "w", encoding="utf-8", newline="\n") as f:
-            json.dump(body, f, indent=1)
-        print(json.dumps(methods, indent=1))
-        return 0
 
     if args.cmd == "freeze-retriever":
         if os.path.exists(PATHS["retriever_freeze"]):

@@ -55,6 +55,9 @@ jobs:
       - name: DeepSeek adapter tests (fake HTTP session, no key)
         run: python src/test_llm_deepseek.py
 
+      - name: EXP-004 retriever-selection rule tests (synthetic numbers)
+        run: python src/test_rag_select.py
+
       - name: Validate published reports (schema + publish gate + non-blocking confidence warnings)
         run: python src/validate_all_reports.py
 

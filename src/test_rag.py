@@ -282,12 +282,12 @@ class EvalTests(unittest.TestCase):
         with self.assertRaises(RuntimeError):  # two different answers in the same second
             ev.materialize_gold(js + [self.judgment(2, "relevant", "2026-10-01T00:01:00Z")], pool, "a" * 64)
 
-    def test_condensed_lists_drop_unsure_items(self):
+    def test_unsure_items_keep_their_rank(self):
         judged = {"q001": {3: "unsure", 1: "not_relevant", 2: "relevant"}, "q002": {9: "not_relevant"}}
         out = ev.score({"q001": [3, 1, 2], "q002": [9]}, judged)
         self.assertEqual(out["questions_scored"], 1)
         self.assertEqual(out["questions_without_relevant"], 1)
-        self.assertEqual(out["mrr"], 0.5)  # rank 2 once the unsure item is removed, not rank 3
+        self.assertAlmostEqual(out["mrr"], 1 / 3, places=3)  # the relevant item is at rank 3 as produced
         self.assertAlmostEqual(out["unresolved_share_top10"], (1 / 3 + 0) / 2, places=3)
         self.assertEqual(out["judged_coverage_top10"], 1.0)
 

@@ -1,0 +1,87 @@
+{
+ "version": "exp004-retriever-selection-v1",
+ "decided_by": "the owner, directive 028",
+ "candidates": {
+  "bm25": {
+   "method": "bm25",
+   "lexical": "auto",
+   "note": "the production BM25: word tokens, character trigrams for CJK queries"
+  },
+  "dense": {
+   "method": "dense",
+   "lexical": null,
+   "note": "frozen paraphrase-multilingual-MiniLM-L12-v2"
+  },
+  "hybrid": {
+   "method": "hybrid",
+   "lexical": "auto",
+   "note": "reciprocal rank fusion (k = 60) of bm25 and dense"
+  }
+ },
+ "descriptive_only": {
+  "bm25_words": {
+   "method": "bm25",
+   "lexical": "words",
+   "note": "word tokens only; reported for the Japanese comparison, never selectable"
+  }
+ },
+ "k": 10,
+ "unsure_semantics": "fixed ranks: unsure keeps its position, counts as neither relevant nor not relevant. Supersedes the condensed-list note in gold_relevance_v1.json and decision 0014.",
+ "metrics": {
+  "hit@k": "1 if any relevant item at rank <= k",
+  "recall@k": "relevant at rank <= k / all relevant in frozen gold",
+  "mrr": "1 / rank of first relevant item, 0 if none",
+  "unsure@k": "unsure at rank <= k / items retrieved at rank <= k",
+  "averaging": "macro over questions",
+  "recall_denominator_questions": "DEV questions with >= 1 item judged relevant; others reported separately"
+ },
+ "eligibility": {
+  "p95_latency_ms_max": 500,
+  "latency_protocol": "one untimed warm-up query per candidate, then each DEV question timed once, in DEV question order, wall-clock around retrieval only",
+  "integrity": [
+   "every retrieved item exists",
+   "every retrieved item satisfies the question's filters",
+   "no retrieved item breaks the temporal cutoff (published_at, and first_seen_at in replay mode)",
+   "no duplicate item in a ranking",
+   "at most k items"
+  ]
+ },
+ "primary_metric": "macro Recall@10 on DEV questions with >= 1 resolved relevant item",
+ "clear_winner": {
+  "bootstrap_resamples": 10000,
+  "seed": 20261001,
+  "confidence": 0.95,
+  "method": "paired by question; resample questions with replacement; mean difference; percentile interval",
+  "condition": "the candidate's Recall@10 difference against every other eligible candidate has a 95% CI lower bound > 0"
+ },
+ "practical_tie": {
+  "recall_margin": 0.03,
+  "hit_margin": 0.03,
+  "order": [
+   "keep eligible candidates within 0.03 of the best macro Recall@10",
+   "among them, keep those within 0.03 of the best Hit@10",
+   "choose the lowest p95 latency",
+   "then the lowest median latency"
+  ]
+ },
+ "subgroup_safeguard": {
+  "min_answerable_questions": 3,
+  "condition": "HARD_STOP if the selected candidate has Hit@10 = 0 on a subgroup with >= 3 gold-answerable DEV questions while another eligible candidate has Hit@10 > 0 there",
+  "subgroups": "english, non_english, temporal, not_temporal, answerable_expected, unanswerable_expected, gold_answerable, each query_type, filtered_sector_or_source"
+ },
+ "outcomes": [
+  "CLEAR_SELECTION",
+  "PRACTICAL_TIE_SELECTION",
+  "HARD_STOP_SUBGROUP",
+  "HARD_STOP_OTHER"
+ ],
+ "fingerprints": {
+  "questions_sha256": "d1d17cb4cfe34196b05724dd8623ad4c94ce9c69d00420ba9af3290cf73d4ad4",
+  "dev_ids_sha256": "fc7d5a4d4be2e7ec6377b01a57e61130d2d1e1160208ec3409f3cc0c85bada4c",
+  "test_ids_sha256": "0ed719faf2927c5618414c9ce43b0d2833b9c119101170896650279ccbcb8ab3",
+  "split_sha256": "62f6a8928677afbe9274e07895e91392dbb40d122328277451730ca81698991b",
+  "pool_sha256": "b021d0eed87c3373d95f17a072c246e144218cb6c9b285d31d9038d84486ec6d",
+  "gold_sha256": "bda481d21f0b551f985d6ba05caa08a704542ec6c64c5baf7896ad9523153822"
+ },
+ "frozen_at": "2026-10-01T01:34:52Z"
+}
