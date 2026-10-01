@@ -1,5 +1,7 @@
 # EXP-004: grounded retrieval over the ARI3 stored evidence corpus
 
+**Closed 2026-10-01.** The final result is claim C-0010 in `CLAIM_LEDGER.md`. `CLOSED.json` lists the fingerprint of every final artifact. Any change to retrieval is a new version or a new experiment. EXP-005 uses the frozen hybrid retriever as its evidence boundary.
+
 **Question.** Can ARI3 answer questions about its corpus with a citation to a stored record for every claim, while keeping the temporal and provenance constraints?
 
 EXP-004 is an experiment number, not a release. It does not imply ARI3 v0.0.4. The release roadmap is unchanged.

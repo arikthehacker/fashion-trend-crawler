@@ -1,0 +1,25 @@
+{
+ "experiment": "EXP-004 grounded retrieval",
+ "status": "closed",
+ "closed_at": "2026-10-01",
+ "closed_by": "the owner, directive 030",
+ "final_result_claim": "C-0010 in CLAIM_LEDGER.md",
+ "fingerprints": {
+  "questions": "d1d17cb4cfe34196b05724dd8623ad4c94ce9c69d00420ba9af3290cf73d4ad4",
+  "dev_ids": "fc7d5a4d4be2e7ec6377b01a57e61130d2d1e1160208ec3409f3cc0c85bada4c",
+  "test_ids": "0ed719faf2927c5618414c9ce43b0d2833b9c119101170896650279ccbcb8ab3",
+  "split": "62f6a8928677afbe9274e07895e91392dbb40d122328277451730ca81698991b",
+  "relevance_pool": "b021d0eed87c3373d95f17a072c246e144218cb6c9b285d31d9038d84486ec6d",
+  "gold": "bda481d21f0b551f985d6ba05caa08a704542ec6c64c5baf7896ad9523153822",
+  "selection_rule": "111cd0f48990dda1b5acb25a3bd26518dd17c3963e289ef9f7a1046456168c6a",
+  "unsure_language_amendment": "01d9c1d053eaa568e391133d51ca3e5316db195b5e333661d42228570eab2089",
+  "dev_result": "ee53076b7158abc3a8deea6797e6724136fc96dcb0a2fb65e7b0d3336e556e4e",
+  "dev_per_question": "280dfa3602d4998ab086f3c405343df2ed714a481c7d28d47925fe962d4f12fb",
+  "frozen_retriever": "3b55fcebbb08ec54b87198ab4a18e2f1b2bd0b922c6677428f525ceeadfd6b21",
+  "test_result": "bf44847928dc7fd53f7c646e0c158ba3005ba1a39f6d1b01a5a6937d7fc87d19",
+  "test_per_question": "182bd03cfbc4c3a4a8a4467cd7ea7947eb0ccb5e3fceccdfefbc7be6af2a0941"
+ },
+ "frozen_retriever_code_commit": "abdf584f0ce5980f8af8f73b0e839700e1524d6c",
+ "versioning_rule": "Any change to query preprocessing, RRF k, the encoder, BM25 behaviour, the corpus or index, top-k, filters or ranking is a new retrieval version or a new experiment. The artifacts above are never edited.",
+ "downstream": "EXP-005 grounded generation uses the frozen hybrid retriever (retriever_v1.json) as its evidence boundary."
+}
