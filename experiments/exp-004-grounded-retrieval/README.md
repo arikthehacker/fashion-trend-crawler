@@ -22,7 +22,9 @@ The evaluation index is frozen at a first-seen cutoff of 2026-09-30 08:00 UTC: 7
 | Depth-10 pool (`pool_v2.jsonl`) | **Built** from the frozen questions: 819 pairs, 646 distinct items, median 15.5 per question (max 25), pool SHA-256 `b021d0eed87c3373…`. 4 questions have no eligible item (q024, q026, q027, q040) |
 | Relevance judgments | **Frozen gold**: 819 judgments (318 relevant, 273 not relevant, 228 unsure), SHA-256 `bda481d2…` (`1bbab11`) |
 | DEV/TEST split | **Frozen**: 37 DEV / 19 TEST, seed 4. DEV IDs SHA-256 `fc7d5a4d…`, TEST IDs `0ed719fa…`, split `62f6a892…` |
-| Retriever comparison on DEV | **Run once** under the pre-registered rule (`8ce1b74`) and amendment 1 (`383d3c7`). Rule outcome: PRACTICAL_TIE_SELECTION, candidate `hybrid`. Results in `results/dev-retrieval-v1.json`. Retriever not frozen: the owner reviews DEV before any TEST run |
+| Retriever comparison on DEV | **Run once** under the rule (`8ce1b74`) and amendment 1 (`383d3c7`): PRACTICAL_TIE_SELECTION, hybrid (`fca940d`) |
+| Retriever freeze | **Frozen** hybrid, `frozen/retriever_v1.json` (`44421a5`, SHA-256 `3b55fceb…`), accepted by the owner |
+| TEST | **Run once** 2026-10-01 01:44 UTC, frozen hybrid only. `results/test-retrieval-v1.json` |
 | Generation | `ask_ari3` (`src/rag_answer.py`), the grounded-answer schema, deterministic validators, the provider interface, a DeepSeek adapter and the harness (`src/rag_gen_eval.py`) are built and tested with scripted providers. No live provider has been called. Live calls need `ARI3_LIVE_LLM=approved`, set by the owner |
 
 ## Files
@@ -48,6 +50,26 @@ The evaluation index is frozen at a first-seen cutoff of 2026-09-30 08:00 UTC: 7
 - **Split.** By question, stratified by drafted answerability, temporal constraint, non-English language and query type, one third to TEST, seed 4. TEST is never used to compare or tune retrievers. `eval-test` refuses to run without a retriever frozen from a DEV result, and refuses to run a second time.
 - **Blind judging.** A judging card shows the question, its filters and the stored item, never the method, rank, score or number of methods that found the item.
 - **No chunking.** Title plus excerpt has a median of 57 tokens. 997 items (12.5%) exceed the encoder's 128-token window. DEV results will show whether those items are over-represented among dense misses before chunking is considered.
+
+## Retrieval result
+
+DEV selected the retriever. TEST was run once, on the frozen hybrid retriever only. Metrics are macro averages. Hit, Recall and MRR cover questions with at least one item judged relevant. An item judged unsure keeps its rank and counts as neither relevant nor not relevant.
+
+| Split | Questions | With a relevant item | Recall@5 | Recall@10 | Hit@5 | Hit@10 | MRR | Unsure@10 | Latency median / p95 |
+|---|---|---|---|---|---|---|---|---|---|
+| DEV, hybrid | 37 | 24 | 0.526 | 0.751 | 1.000 | 1.000 | 0.858 | 0.224 | 26.5 / 311.3 ms |
+| TEST, hybrid | 19 | 12 | 0.438 | 0.770 | 1.000 | 1.000 | 0.958 | 0.311 | 67.4 / 344.4 ms |
+
+On DEV, hybrid's Recall@10 exceeded dense's by 0.181 (95% interval 0.086 to 0.288) and BM25's by 0.169 (interval -0.006 to 0.352), so the practical-tie rule decided.
+
+### Limitations
+
+1. **Non-English retrieval is not evaluated.** Most non-English judgments are unsure (85% of non-English items on DEV, 93% on TEST), which the editor attributes largely to not reading those languages. On TEST no non-English question has a resolved relevant item. On DEV one does. Feed language tags are also unreliable: some items tagged English have Spanish or German headlines.
+2. **Some filtered questions have very small candidate sets.** When a filter leaves 10 to 16 eligible items, a retriever that returns all of them reaches high recall by construction. On DEV, leaving out the four answerable questions with 12 or fewer eligible items (a check made after the results, not part of selection) narrows hybrid's lead over BM25 to 0.045 (0.702 against 0.657).
+3. **Recall is pooled.** It is measured against the judged pool, the union of each candidate's top 10. A relevant item that no candidate retrieved was never judged.
+4. **Recall@10 has a ceiling.** For a question with more than 10 relevant items, Recall@10 cannot exceed 10 divided by the number of relevant items. Two TEST questions (q008, q028) reached that ceiling.
+5. **One drafted-unanswerable DEV question had relevant evidence.** The editor judged two items relevant for q035 (Poshmark and quiet luxury).
+6. **Samples are small.** 24 DEV and 12 TEST questions carry the recall figures, and most subgroups have fewer than 10 questions.
 
 ## Generation boundary
 
