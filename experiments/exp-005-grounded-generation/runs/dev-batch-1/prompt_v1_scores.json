@@ -1,0 +1,48 @@
+{
+ "scored_at": "2026-10-01T02:33:16Z",
+ "run": "dev-batch-1",
+ "metric_code": "exp005_review.metrics at c8bf177",
+ "metric_code_sha256": "254b6f3766803ae820818417d0805de5096b3b5b95a7d04432d1f0cdee966f51",
+ "frozen_review_commit": "7f5482cb62bf8e3590bc13d07b112b61fe0345c4",
+ "frozen_review_sha256": "57631a811d8b2fce6e32e401d5e4cd7f1ab47051424cf7e80277cbd627449d4b",
+ "metrics": {
+  "claim_support_precision": 0.9444,
+  "claims_reviewed": 18,
+  "supported": 17,
+  "unsupported": 1,
+  "claims_unsure": 0,
+  "grounded_answer_rate": 0.8,
+  "grounded": 4,
+  "evaluable_outputs": 5,
+  "system_abstentions": 0,
+  "abstention": {
+   "correct": 1,
+   "incorrect": 0,
+   "missed": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "completeness": {
+   "COMPLETE": 3,
+   "PARTIAL": 1,
+   "INSUFFICIENT": 0,
+   "UNSURE": 0
+  },
+  "limitations_with_uncited_fact": 1,
+  "human_unsure_rate": 0.0
+ },
+ "deterministic": {
+  "schema_valid_rate": 1.0,
+  "citation_membership_valid_rate": 1.0,
+  "provenance_resolution_rate": 1.0,
+  "temporal_violations": 0,
+  "filter_violations": 0,
+  "nonexistent_citations": 0,
+  "schema_retries": 0,
+  "provider_calls": 5,
+  "status_counts": {
+   "answered": 4,
+   "model_abstention": 1
+  }
+ }
+}

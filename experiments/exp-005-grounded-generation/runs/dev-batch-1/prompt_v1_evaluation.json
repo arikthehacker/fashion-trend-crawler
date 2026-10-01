@@ -1,0 +1,118 @@
+{
+ "run": "dev-batch-1",
+ "prompt": "v1",
+ "based_on": [
+  "reviews/dev-batch-1_reviews_frozen_v1.jsonl (57631a81)",
+  "prompt_v1_scores.json",
+  "outputs.jsonl (9332660c)"
+ ],
+ "per_question": {
+  "q003": {
+   "status": "answered",
+   "claims": 4,
+   "summary": "SUPPORTED",
+   "claims_supported": 4,
+   "claims_unsupported": 0,
+   "claims_unsure": 0,
+   "completeness": "COMPLETE",
+   "context_sufficiency": "YES",
+   "limitations": "NO",
+   "validator": "pass",
+   "failures": [],
+   "grounded": true
+  },
+  "q016": {
+   "status": "answered",
+   "claims": 4,
+   "summary": "SUPPORTED",
+   "claims_supported": 4,
+   "claims_unsupported": 0,
+   "claims_unsure": 0,
+   "completeness": "COMPLETE",
+   "context_sufficiency": "YES",
+   "limitations": "NO",
+   "validator": "pass",
+   "failures": [],
+   "grounded": true
+  },
+  "q029": {
+   "status": "answered",
+   "claims": 2,
+   "summary": "SUPPORTED",
+   "claims_supported": 2,
+   "claims_unsupported": 0,
+   "claims_unsure": 0,
+   "completeness": "COMPLETE",
+   "context_sufficiency": "YES",
+   "limitations": "NO",
+   "validator": "pass",
+   "failures": [],
+   "grounded": true
+  },
+  "q013": {
+   "status": "answered",
+   "claims": 4,
+   "summary": "UNSUPPORTED",
+   "claims_supported": 4,
+   "claims_unsupported": 0,
+   "claims_unsure": 0,
+   "completeness": "PARTIAL",
+   "context_sufficiency": "YES",
+   "limitations": "YES",
+   "validator": "pass",
+   "failures": [
+    "UNSUPPORTED_CLAIM",
+    "GENERATION_OMISSION",
+    "LIMITATION_UNCITED_FACT (post-hoc extension)"
+   ],
+   "grounded": false
+  },
+  "q015": {
+   "status": "model_abstention",
+   "claims": 0,
+   "abstention": "CORRECT",
+   "validator": "pass",
+   "failures": [],
+   "grounded": true
+  }
+ },
+ "failures": [
+  {
+   "question_id": "q013",
+   "task": "summary",
+   "category": "UNSUPPORTED_CLAIM",
+   "source": "owner judgment UNSUPPORTED",
+   "evidence": "summary cites 3317, 4793, 2263, 6575, 1363 and says the items cover 'clothing, footwear, nails, and hair'",
+   "observation": "none of the five cited items is about hair; the two hair items in the context (1924, 6239) are not cited. The owner's reason was not recorded."
+  },
+  {
+   "question_id": "q013",
+   "task": "completeness",
+   "category": "GENERATION_OMISSION",
+   "source": "owner judgment PARTIAL with context sufficiency YES",
+   "evidence": "all 10 context items are EXP-004 gold-relevant; 5 are not cited (586, 1924, 4801, 6239, 7592)",
+   "observation": "schema v1 allows at most 4 claims, which limits how many items an answer can cover; this is a protocol factor alongside the model's choice."
+  },
+  {
+   "question_id": "q013",
+   "task": "limitations",
+   "category": "LIMITATION_UNCITED_FACT",
+   "post_hoc_extension": true,
+   "why_extension": "the frozen taxonomy has no category for a limitation that adds an uncited fact; UNSUPPORTED_CLAIM is defined for reviewed claims only",
+   "source": "owner judgment YES on 'Do the limitations add a factual claim that no item supports?'",
+   "evidence": "limitation: \"Item 1363 mentions 'chocolate brown' only in its URL, not in the headline or excerpt\" (a factual statement about an item, outside the citation format); item 1363's stored headline does contain 'Burgundy'"
+  }
+ ],
+ "not_assigned": {
+  "RETRIEVAL_MISS": "all four answered questions were judged context-sufficient (YES); q015's context had no gold-relevant item and the abstention was judged CORRECT",
+  "CITATION_MISMATCH, OVERSTATEMENT, CAUSAL_OVERREACH, CONTRADICTION_HANDLING_FAILURE": "assigned only from human notes; rubric v1 records no notes, so none can be assigned",
+  "FABRICATED_CITATION, TEMPORAL_VIOLATION, FILTER_VIOLATION, SCHEMA_FAILURE": "0 from the deterministic validators",
+  "INCORRECT_ABSTENTION, MISSED_ABSTENTION": "0 (abstention CORRECT; no answer with context sufficiency NO)"
+ },
+ "counts": {
+  "UNSUPPORTED_CLAIM": 1,
+  "GENERATION_OMISSION": 1,
+  "LIMITATION_UNCITED_FACT (post-hoc)": 1,
+  "all other frozen categories": 0
+ }
+}
