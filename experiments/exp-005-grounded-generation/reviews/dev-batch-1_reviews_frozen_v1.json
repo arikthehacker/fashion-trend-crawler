@@ -1,0 +1,35 @@
+{
+ "frozen_at": "2026-10-01T02:32:58Z",
+ "run": "dev-batch-1",
+ "judgments": 31,
+ "by_kind": {
+  "claim_support": {
+   "SUPPORTED": 17,
+   "UNSUPPORTED": 1
+  },
+  "answer_completeness": {
+   "COMPLETE": 3,
+   "PARTIAL": 1
+  },
+  "context_sufficiency": {
+   "YES": 4
+  },
+  "limitations": {
+   "NO": 3,
+   "YES": 1
+  },
+  "abstention": {
+   "CORRECT": 1
+  }
+ },
+ "unsure": 0,
+ "reviewers": [
+  "ariella"
+ ],
+ "log_lines": 31,
+ "log_sha256": "3861e38017ab69f679d6a6e4660112253307e7522493fbb1ef3bab5cd989fd03",
+ "frozen_review_sha256": "57631a811d8b2fce6e32e401d5e4cd7f1ab47051424cf7e80277cbd627449d4b",
+ "outputs_sha256": "9332660cbed4fe3569360ae121600d65fe1b4ee68c8def4c747b15135016afa0",
+ "protocol_sha256": "864afc582c7d9212fe945da76f44236bec0ee4a8cc761cfb035f83f19ff80f6c",
+ "prompt_v1_sha256": "93cc9418212606e131efc93001de07ff9d6cdb7d1ce194c4365bf6636efda176"
+}
