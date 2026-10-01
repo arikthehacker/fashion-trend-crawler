@@ -34,6 +34,7 @@ from datetime import datetime, timezone
 from rag_eval import EXP, PATHS, load_gold, load_split, sha256_file, stratum
 
 RULE_PATH = os.path.join(EXP, "frozen", "retriever_selection_rule_v1.json")
+AMENDMENT_PATH = os.path.join(EXP, "frozen", "retriever_selection_rule_v1_amendment_1.json")
 DEV_RESULT = os.path.join(EXP, "results", "dev-retrieval-v1.json")
 DEV_ROWS = os.path.join(EXP, "results", "dev-retrieval-v1.per_question.jsonl")
 K = 10
@@ -145,6 +146,31 @@ def subgroups(questions, judged):
     return out
 
 
+def unsure_breakdown(questions, judged, item_lang):
+    """Amendment 1, descriptive only: the unsure share of the gold judgments for the given
+    questions, by question language, item language, English or not, and language match.
+    item_lang: {item_id: two-letter code or None}."""
+    cells = {"question_language": {}, "item_language": {}, "item_english_vs_non_english": {},
+             "question_item_language_match": {}}
+
+    def add(table, key, unsure):
+        n, u = table.get(key, (0, 0))
+        table[key] = (n + 1, u + unsure)
+
+    for q in questions:
+        for item, value in judged.get(q.question_id, {}).items():
+            unsure = int(value == "unsure")
+            lang = item_lang.get(item)
+            add(cells["question_language"], q.language, unsure)
+            add(cells["item_language"], lang or "unknown", unsure)
+            add(cells["item_english_vs_non_english"], "unknown" if lang is None else "en" if lang == "en" else "non-en",
+                unsure)
+            add(cells["question_item_language_match"], "unknown" if lang is None else
+                "match" if lang == q.language else "mismatch", unsure)
+    return {name: {k: {"judgments": n, "unsure": u, "unsure_rate": round(u / n, 4)}
+                   for k, (n, u) in sorted(table.items())} for name, table in cells.items()}
+
+
 # ---------- bootstrap and the rule ----------
 
 def paired_bootstrap(a, b, resamples=10000, seed=SEED):
@@ -206,6 +232,7 @@ def _git(*args):
 
 
 def rule_is_committed_and_pushed(path=RULE_PATH):
+    """(True, commit) when the file is committed, unchanged and on a remote branch."""
     rel = os.path.relpath(path, os.path.dirname(os.path.dirname(os.path.abspath(__file__)))).replace(os.sep, "/")
     if _git("ls-files", "--error-unmatch", rel).returncode != 0:
         return False, "the rule file is not committed"
@@ -235,6 +262,13 @@ def run_dev():
     ok, commit = rule_is_committed_and_pushed()
     if not ok:
         raise RuntimeError(commit)
+    ok, amendment_commit = rule_is_committed_and_pushed(AMENDMENT_PATH)
+    if not ok:
+        raise RuntimeError(f"amendment 1: {amendment_commit}")
+    with open(AMENDMENT_PATH, encoding="utf-8") as f:
+        amendment = json.load(f)
+    if amendment["amends_sha256"] != sha256_file(RULE_PATH):
+        raise RuntimeError("amendment 1 names a different rule file")
     with open(RULE_PATH, encoding="utf-8") as f:
         rule = json.load(f)
     questions, qmanifest = rq.load_frozen()
@@ -285,6 +319,10 @@ def run_dev():
             c: (statistics.mean(r["hit@10"] for r in rows if r["candidate"] == c and r["question_id"] in ids)
                 if ids else None)
             for c in CANDIDATES}}
+    from rag_corpus import get_items
+    dev_items = {i for q in dev for i in judged.get(q.question_id, {})}
+    item_lang = {e.item_id: e.lang for e in get_items(corpus, sorted(dev_items))}
+    unsure_rates = unsure_breakdown(dev, judged, item_lang)
     selectable = {c: summary[c] for c in CANDIDATES}
     outcome = apply_rule(selectable, recall_by_q, rule, subgroup_hits)
 
@@ -294,7 +332,9 @@ def run_dev():
             f.write(json.dumps(r) + "\n")
     body = {"run_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "split": "dev",
             "dev_questions": len(dev), "gold_answerable_dev_questions": len(answerable),
-            "rule_sha256": sha256_file(RULE_PATH), "rule_commit": commit, "fingerprints": actual,
+            "rule_sha256": sha256_file(RULE_PATH), "rule_commit": commit,
+            "amendment_sha256": sha256_file(AMENDMENT_PATH), "amendment_commit": amendment_commit,
+            "unsure_rate_by_language_descriptive": unsure_rates, "fingerprints": actual,
             "index": index.manifest, "summary": summary, "subgroup_hit10_for_safeguard": subgroup_hits,
             "selection": outcome, "per_question_file": os.path.basename(DEV_ROWS),
             "per_question_sha256": sha256_file(DEV_ROWS)}

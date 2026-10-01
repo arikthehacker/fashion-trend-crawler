@@ -53,6 +53,22 @@ class MetricTests(unittest.TestCase):
         self.assertAlmostEqual(reverse["mean_difference"], -first["mean_difference"])
 
 
+class UnsureBreakdownTests(unittest.TestCase):
+    def test_breakdown_by_question_and_item_language(self):
+        class Q:
+            def __init__(self, qid, lang):
+                self.question_id, self.language = qid, lang
+        judged = {"q001": {1: "unsure", 2: "relevant", 3: "unsure"}, "q002": {4: "not_relevant", 3: "unsure"}}
+        langs = {1: "ja", 2: "en", 3: None, 4: "ja"}
+        out = rs.unsure_breakdown([Q("q001", "en"), Q("q002", "ja")], judged, langs)
+        self.assertEqual(out["question_language"]["en"], {"judgments": 3, "unsure": 2, "unsure_rate": 0.6667})
+        self.assertEqual(out["item_language"]["unknown"]["judgments"], 2)
+        self.assertEqual(out["item_english_vs_non_english"]["non-en"], {"judgments": 2, "unsure": 1, "unsure_rate": 0.5})
+        match = out["question_item_language_match"]
+        self.assertEqual((match["match"]["judgments"], match["mismatch"]["judgments"], match["unknown"]["judgments"]),
+                         (2, 1, 2))
+
+
 class RuleTests(unittest.TestCase):
     def test_clear_winner(self):
         s = {"bm25": summary(0.4, 0.6, 50), "dense": summary(0.5, 0.7, 40), "hybrid": summary(0.9, 1.0, 60)}

@@ -1,0 +1,29 @@
+{
+ "version": "exp004-retriever-selection-v1-amendment-1",
+ "amends": "retriever_selection_rule_v1.json",
+ "amends_sha256": "111cd0f48990dda1b5acb25a3bd26518dd17c3963e289ef9f7a1046456168c6a",
+ "amends_commit": "8ce1b74",
+ "date": "2026-10-01",
+ "decided_by": "the owner, amendment to directive 028, issued before any DEV metric was computed or inspected",
+ "dev_metrics_existing_at_amendment": 0,
+ "clarification": "Many unsure judgments were likely caused by the reviewer not understanding the language of the question or of the candidate evidence, especially non-English material. An unsure judgment is therefore not read as evidence ambiguity or as a retrieval failure. The reason for an individual unsure judgment is never inferred unless it was recorded.",
+ "unchanged": [
+  "every frozen human judgment (gold_relevance_v1.jsonl, SHA-256 bda481d2...)",
+  "scoring semantics: an unsure item keeps its original rank and counts as neither relevant nor not relevant",
+  "the candidates, eligibility, primary metric, clear-winner test, practical-tie margins and subgroup safeguard"
+ ],
+ "added_descriptive_reporting": {
+  "per_candidate": "Unsure@5 and Unsure@10 for every subgroup, as before",
+  "unsure_rate_of_gold_judgments": {
+   "population": "frozen gold judgments for DEV questions only; TEST questions' judgments are not summarized",
+   "definition": "unsure judgments / all judgments in the cell",
+   "breakdowns": {
+    "question_language": "the question's language field",
+    "item_language": "primary subtag of the item's stored feed language tag; 'unknown' when the item has no tag",
+    "item_english_vs_non_english": "en, non-en, or unknown when the item has no tag",
+    "question_item_language_match": "match when the question language equals the item language, mismatch when both are known and differ, unknown when the item has no tag"
+   }
+  },
+  "status": "descriptive only; never an input to retriever selection"
+ }
+}
