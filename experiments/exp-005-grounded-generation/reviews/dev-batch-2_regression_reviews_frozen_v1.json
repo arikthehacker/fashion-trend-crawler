@@ -1,0 +1,28 @@
+{
+ "frozen_at": "2026-10-01T22:03:36Z",
+ "run": "dev-batch-2",
+ "review": "probe",
+ "judgments": 3,
+ "notes": 3,
+ "by_kind": {
+  "regression": {
+   "FIXED": 3
+  }
+ },
+ "unsure": 0,
+ "reviewers": [
+  "ariella"
+ ],
+ "log_sha256": "4135bc857c80c5a8412357075ab0ecf5d32a7542ad3f559c6d42de2025a102a9",
+ "frozen_review_sha256": "ae6e4dd77bf5594de392f6254f9107bf98a7def419455be9b83e1c4a62bb69c8",
+ "outputs_sha256": "26b49b0284812dd9cddbb3a354dd57c1a064e7f83194632f40d596f4a2f70fb6",
+ "prompt_v2_sha256": "efea461f8e079eb8c25a3e8f5acb371d5e01b9bf18c617aec123b01f62a7afce",
+ "schema_v2_sha256": "47b747c14b5301df9a790538205e8fdd1014019a136671e38e8d094f06c4a5ee",
+ "protocol_v2_sha256": "87e88618c83167157c7ce0102c50b9a9ca173bf82309841b3f82e3d60d2c6739",
+ "batch_sha256": "f251534e6d726ad6d951e15540cbff043c7709f2af95c8d368945feb2170efe0",
+ "probe_question_id": "q013",
+ "probe_output_sha256": "3654b75d536b697b868f48e93d7184e8f5b63f2b39a65d00cde1c4d662b3d7d8",
+ "v1_failure_record": "runs/dev-batch-1/prompt_v1_evaluation.json",
+ "v1_failure_record_sha256": "c09d81b7e6e9002b4e27302bc056f91ee90fb7f66bcd783c607d8b7e46b9b7e3",
+ "in_fresh_metrics": false
+}

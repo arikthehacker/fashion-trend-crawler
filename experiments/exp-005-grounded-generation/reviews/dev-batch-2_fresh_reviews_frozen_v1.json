@@ -1,0 +1,44 @@
+{
+ "frozen_at": "2026-10-01T22:03:36Z",
+ "run": "dev-batch-2",
+ "review": "fresh",
+ "judgments": 26,
+ "notes": 7,
+ "by_kind": {
+  "abstention": {
+   "INCORRECT": 2
+  },
+  "answer_completeness": {
+   "COMPLETE": 2,
+   "PARTIAL": 1
+  },
+  "claim_support": {
+   "SUPPORTED": 10
+  },
+  "context_sufficiency": {
+   "YES": 2,
+   "NO": 1
+  },
+  "limitation_uncited": {
+   "NO": 8
+  }
+ },
+ "unsure": 0,
+ "reviewers": [
+  "ariella"
+ ],
+ "log_sha256": "5942e51b79e18df72f5aae06fb3f8cc1be61d212973b9189fac5348af6c250dc",
+ "frozen_review_sha256": "9d0d2c7a6b8fd75df9ea4cef2f40faf96c84f59e5512302049a0b4b0d13e7102",
+ "outputs_sha256": "26b49b0284812dd9cddbb3a354dd57c1a064e7f83194632f40d596f4a2f70fb6",
+ "prompt_v2_sha256": "efea461f8e079eb8c25a3e8f5acb371d5e01b9bf18c617aec123b01f62a7afce",
+ "schema_v2_sha256": "47b747c14b5301df9a790538205e8fdd1014019a136671e38e8d094f06c4a5ee",
+ "protocol_v2_sha256": "87e88618c83167157c7ce0102c50b9a9ca173bf82309841b3f82e3d60d2c6739",
+ "batch_sha256": "f251534e6d726ad6d951e15540cbff043c7709f2af95c8d368945feb2170efe0",
+ "fresh_question_ids": [
+  "q005",
+  "q017",
+  "q020",
+  "q023",
+  "q031"
+ ]
+}
