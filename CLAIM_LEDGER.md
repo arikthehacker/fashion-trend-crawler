@@ -36,6 +36,7 @@ Experiment IDs (EXP-001, EXP-002, …) and ARI3 release versions (v0.0.1, v0.0.2
 | C-0007 | EXP-003B H4: forecast detection balanced accuracy 0.50 | not_supported | 2026-09-26 |
 | C-0008 | EXP-003B H5: forecast head conformal coverage 0.961 | supported | 2026-09-26 |
 | C-0009 | The pre-registered EXP-003A selector admitted 52 items stored before the freeze | measured | 2026-09-30 |
+| C-0010 | EXP-004 held-out TEST: frozen hybrid retriever, macro Recall@10 0.770, Hit@10 1.000 (n = 12 answerable questions) | measured | 2026-10-01 |
 
 ## Claims
 
@@ -144,5 +145,17 @@ Experiment IDs (EXP-001, EXP-002, …) and ARI3 release versions (v0.0.1, v0.0.2
 - **Result:** 52 of 2,270 items admitted by the original rule. The amended rule admits 2,141 items, and none appears in a surviving record dated at or before the freeze.
 - **First valid commit:** `3132885`
 - **Limitations:** Counted against local backups that are not in git (the snapshot's SHA-256 is in the amendment). No backup from before the freeze survives.
+- **Used in:** not yet audited
+- **Superseded by:** none
+
+### C-0010
+- **Claim:** On the frozen EXP-004 held-out TEST set, ARI3's frozen hybrid retriever achieved macro Recall@10 = 0.770 and Hit@10 = 1.000 across the 12 TEST questions with at least one resolved human-relevant item. The retriever was selected with a pre-registered DEV rule, frozen before TEST, and evaluated on TEST once.
+- **Status:** measured
+- **As of:** 2026-10-01
+- **Experiment:** EXP-004
+- **Artifact:** `experiments/exp-004-grounded-retrieval/results/test-retrieval-v1.json` (`metrics.all`), frozen retriever `frozen/retriever_v1.json` (SHA-256 `3b55fceb…`), selection rule `frozen/retriever_selection_rule_v1.json` (`111cd0f4…`) and amendment 1 (`01d9c1d0…`)
+- **Result:** Recall@10 0.770, Recall@5 0.438, Hit@10 1.000, Hit@5 1.000, MRR 0.958, Unsure@10 0.311 (18 questions with results). Latency median 67.4 ms, p95 344.4 ms. 0 integrity failures. 19 TEST questions in total, 7 of them without a resolved relevant item.
+- **First valid commit:** `b9f9e6c`
+- **Limitations:** Only 12 answerable TEST questions carry the primary metrics. Relevance is relative to the frozen judged pool (the union of each candidate's top 10), not to every relevant item in the corpus. Multilingual retrieval performance is not established: most non-English judgments are unsure, and no non-English TEST question has a resolved relevant item. Some filtered questions have small candidate sets (10 to 16 eligible items), where high recall is close to guaranteed. Recall@10 is capped for questions with more than 10 relevant items (two TEST questions reached the cap). Feed language tags contain known errors. This does not mean that ARI3 retrieves 77% of all relevant evidence.
 - **Used in:** not yet audited
 - **Superseded by:** none
