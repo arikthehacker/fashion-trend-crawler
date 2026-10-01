@@ -1,0 +1,140 @@
+{
+ "version": "exp005-protocol-v2",
+ "decided_by": "the owner, directive 032",
+ "based_on": {
+  "protocol_v1_sha256": "864afc582c7d9212fe945da76f44236bec0ee4a8cc761cfb035f83f19ff80f6c",
+  "prompt_v1_sha256": "93cc9418212606e131efc93001de07ff9d6cdb7d1ce194c4365bf6636efda176",
+  "v1_scores": "runs/dev-batch-1/prompt_v1_scores.json",
+  "v1_failures": "runs/dev-batch-1/prompt_v1_evaluation.json"
+ },
+ "unchanged_from_v1": {
+  "provider": {
+   "provider": "deepseek",
+   "model": "deepseek-flash",
+   "endpoint": "https://api.deepseek.com/chat/completions",
+   "api_format": "OpenAI-compatible chat completions",
+   "temperature": 0.0,
+   "top_p": 1.0,
+   "max_tokens": 1000,
+   "thinking": "disabled",
+   "response_format": "json_object",
+   "stream": false,
+   "generations_per_question": 1,
+   "timeout_s": 60,
+   "transport_retries": 2
+  },
+  "retry_policy": "one initial generation; one retry only if the output does not parse into schema v1, with the parser error shown. No retry for wrong, weak, incomplete or abstaining answers. Transport retries (at most 2) re-send a request only when no response was received.",
+  "context_serializer": {
+   "version": "exp005-context-v1",
+   "max_items": 10,
+   "order": "frozen EXP-004 hybrid ranking",
+   "fields": [
+    "item_id",
+    "outlet",
+    "sector_group",
+    "published_at",
+    "first_seen_at (replay mode only)",
+    "language",
+    "headline",
+    "excerpt",
+    "url"
+   ],
+   "truncation": "headline first 300 characters, excerpt first 500 characters",
+   "max_total_chars": 12000
+  },
+  "retriever": {
+   "source": "EXP-004 frozen hybrid",
+   "retriever_v1_sha256": "3b55fcebbb08ec54b87198ab4a18e2f1b2bd0b922c6677428f525ceeadfd6b21",
+   "exp004_closed_sha256": "9ac64bb6444c9d5ae6cc24ca4c09a43d7d1fea2fc38254249bf62df8f1891a13",
+   "call": {
+    "method": "hybrid",
+    "lexical": "auto",
+    "k": 10
+   }
+  },
+  "pre_generation_validation": [
+   "every context item exists",
+   "every context item passes the question's filters",
+   "publication mode: published_at <= cutoff",
+   "replay mode: also first_seen_at <= cutoff",
+   "frozen retriever code and index unchanged",
+   "empty context: deterministic system abstention, no provider call"
+  ]
+ },
+ "changes": [
+  {
+   "what": "no model-written summary; the displayed answer is the validated claims joined by code",
+   "why": "v1 q013: the summary added 'hair', which its citations did not support (UNSUPPORTED_CLAIM)",
+   "choice": "removal chosen over a 'summary may add nothing' rule, because no deterministic check can verify that a free-text summary adds no fact"
+  },
+  {
+   "what": "coverage instructions (read every item, represent each distinct relevant finding, group items that support the same finding, cite nothing irrelevant); citations per claim raised from 5 to 10; the cap of 4 claims is kept",
+   "why": "v1 q013: PARTIAL, with 5 relevant context items left out (GENERATION_OMISSION); grouping needs more citations per claim"
+  },
+  {
+   "what": "limitations become {text, supporting_item_ids}; a limitation about a specific item must cite it and is reviewed like a claim; a limitation about the evidence set as a whole cites nothing",
+   "why": "v1 q013: a limitation stated an uncited fact about item 1363 (LIMITATION_UNCITED_FACT)"
+  }
+ ],
+ "prompt": {
+  "path": "protocol/prompt_v2.txt",
+  "sha256": "efea461f8e079eb8c25a3e8f5acb371d5e01b9bf18c617aec123b01f62a7afce"
+ },
+ "schema": {
+  "version": "exp005-schema-v2",
+  "sha256": "47b747c14b5301df9a790538205e8fdd1014019a136671e38e8d094f06c4a5ee",
+  "max_claims": 4,
+  "claim_citations": "1 to 10",
+  "summary": "none",
+  "limitations": "0 to 3, each {text <= 300 chars, supporting_item_ids 0 to 10}"
+ },
+ "post_generation_validation": "as v1, over claims and cited limitations",
+ "human_rubric": {
+  "version": "rubric-v2",
+  "claim_support": "each claim, and each limitation that cites items: SUPPORTED / UNSUPPORTED / UNSURE",
+  "limitation_uncited": "each limitation that cites nothing: does it state a fact about a specific item? NO / YES / UNSURE",
+  "answer_completeness": "as v1",
+  "context_sufficiency": "as v1",
+  "abstention": "as v1",
+  "reviewer_notes": "optional free-text note on any task (unsupported detail, citation mismatch, omission, overstatement, causal overreach, other); qualitative only, never a metric input",
+  "regression_probe": "q013 only, separate deck and log: for each v1 failure FIXED / RECURRED / CHANGED_FORM / UNSURE; descriptive, never part of fresh metrics"
+ },
+ "metrics": {
+  "version": "metrics-v2",
+  "claim_support_precision": "SUPPORTED / (SUPPORTED + UNSUPPORTED) over claims and cited limitations; UNSURE separate",
+  "grounded_answer_rate": "as v1 (claims replace claims + summary); comparable with v1",
+  "uncited_item_specific_limitations": "count of uncited limitations judged YES; reported separately, as in v1",
+  "abstention": "as v1",
+  "deterministic": "as v1",
+  "scope": "fresh DEV questions only; the q013 probe is excluded"
+ },
+ "failure_taxonomy": {
+  "version": "taxonomy-v2",
+  "categories": "the 13 v1 categories, plus LIMITATION_UNCITED_FACT (a post-hoc extension in v1, now pre-registered: an uncited limitation judged YES)",
+  "notes": "CITATION_MISMATCH, OVERSTATEMENT, CAUSAL_OVERREACH and CONTRADICTION_HANDLING_FAILURE can now be assigned from reviewer notes"
+ },
+ "provider_settings_check": {
+  "provider": "deepseek",
+  "model": "deepseek-flash",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "api_format": "OpenAI-compatible chat completions",
+  "temperature": 0.0,
+  "top_p": 1.0,
+  "max_tokens": 1000,
+  "thinking": "disabled",
+  "response_format": "json_object",
+  "stream": false,
+  "generations_per_question": 1,
+  "timeout_s": 60,
+  "transport_retries": 2
+ },
+ "code_sha256": {
+  "exp005_v2.py": "e3ad86af0e332fd004383dd13e5aa4896dddfac39bccaa3c2848ced4280d973c",
+  "exp005.py": "ce41d9211913085362c98cca872148e04d68224097cda232c4035473af21e02b",
+  "llm_provider.py": "30ae90f2854145ffc67e762f1d5dcc4024630ec7ec47e9e57f06e0f4041ce942",
+  "llm_deepseek.py": "9ecf2e968bcc0b0d742826296edd9cd27f02f98ab857e993fb5da72747f84dc8",
+  "rag_validate.py": "9a89fe693066220de4b33b1512d3cce002cea608e2cb5a8f08f73976000019a4",
+  "rag_corpus.py": "2d049fc9f27e56bad953fee0cfbf8680e195da19cb753e10ec6ba3705f3ccb8f"
+ },
+ "frozen_at": "2026-10-01T02:41:52Z"
+}

@@ -1,0 +1,47 @@
+{
+ "batch": "dev-batch-2",
+ "selected_before_any_output": true,
+ "excluded": [
+  "q003",
+  "q013",
+  "q015",
+  "q016",
+  "q029"
+ ],
+ "rules": {
+  "term": {
+   "rule": "lowest ID: query_type term, no filters, at least one relevant item",
+   "question_id": "q005"
+  },
+  "temporal": {
+   "rule": "lowest ID: query_type temporal, at least one relevant item",
+   "question_id": "q017"
+  },
+  "filtered": {
+   "rule": "lowest ID: query_type source_filter or sector_filter, at least one relevant item",
+   "question_id": "q031"
+  },
+  "several_evidence": {
+   "rule": "most relevant items in the frozen hybrid DEV top 10 (ties: lowest ID)",
+   "question_id": "q020"
+  },
+  "abstention": {
+   "rule": "lowest ID: drafted unanswerable, no relevant item, at least one eligible item",
+   "question_id": "q023"
+  }
+ },
+ "fresh_question_ids": [
+  "q005",
+  "q017",
+  "q031",
+  "q020",
+  "q023"
+ ],
+ "regression_probe": {
+  "question_id": "q013",
+  "label": "POST-TUNING REGRESSION PROBE",
+  "runs": 1,
+  "in_fresh_metrics": false
+ },
+ "selected_at": "2026-10-01T02:41:53Z"
+}
