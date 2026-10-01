@@ -1,0 +1,173 @@
+{
+ "run": "dev-batch-2",
+ "prompt": "v2",
+ "based_on": [
+  "reviews/dev-batch-2_fresh_reviews_frozen_v1.jsonl (9d0d2c7a)",
+  "reviews/dev-batch-2_regression_reviews_frozen_v1.jsonl (ae6e4dd7)",
+  "prompt_v2_scores.json",
+  "outputs.jsonl (26b49b02)"
+ ],
+ "per_question_fresh": {
+  "q005": {
+   "status": "answered",
+   "retry": "yes: first output had 6 claims (cap 4)",
+   "claims": 4,
+   "supported": 4,
+   "unsupported": 0,
+   "unsure": 0,
+   "completeness": "COMPLETE",
+   "context_sufficiency": "YES",
+   "uncited_limitations": "2, both NO",
+   "validator": "pass",
+   "failures": [],
+   "grounded": true
+  },
+  "q017": {
+   "status": "model_abstention",
+   "retry": "no",
+   "abstention": "INCORRECT",
+   "uncited_limitations": "1, NO",
+   "validator": "pass",
+   "failures": [
+    "INCORRECT_ABSTENTION"
+   ],
+   "grounded": false
+  },
+  "q020": {
+   "status": "answered",
+   "retry": "yes: first output had a claim over 400 characters",
+   "claims": 4,
+   "supported": 4,
+   "unsupported": 0,
+   "unsure": 0,
+   "completeness": "COMPLETE",
+   "context_sufficiency": "YES",
+   "uncited_limitations": "2, both NO",
+   "validator": "pass",
+   "failures": [],
+   "grounded": true
+  },
+  "q023": {
+   "status": "model_abstention",
+   "retry": "yes: first output had a limitation over 300 characters",
+   "abstention": "INCORRECT",
+   "uncited_limitations": "1, NO",
+   "validator": "pass",
+   "failures": [
+    "INCORRECT_ABSTENTION"
+   ],
+   "grounded": false
+  },
+  "q031": {
+   "status": "answered",
+   "retry": "no",
+   "claims": 2,
+   "supported": 2,
+   "unsupported": 0,
+   "unsure": 0,
+   "completeness": "PARTIAL",
+   "context_sufficiency": "NO",
+   "uncited_limitations": "2, both NO",
+   "validator": "pass",
+   "failures": [
+    "MISSED_ABSTENTION",
+    "GENERATION_OMISSION"
+   ],
+   "grounded": true,
+   "grounded_note": "grounded under the frozen rule: no unsupported statement and completeness is not INSUFFICIENT; the missed abstention is reported separately, as the rule specifies"
+  }
+ },
+ "failures_fresh": [
+  {
+   "question_id": "q017",
+   "task": "abstention",
+   "category": "INCORRECT_ABSTENTION",
+   "owner_judgment": "INCORRECT",
+   "owner_note": "item 278 (Die, Workwear!, 'Excited to Wear This Fall', 2024-11-15) explicitly discusses loafers",
+   "stored_text_check": "none of the 10 context items' stored headline or excerpt contains 'loafer'; item 278's stored excerpt is about Monty Don. The model's statement that the supplied headlines and excerpts do not mention loafers is accurate for the supplied text."
+  },
+  {
+   "question_id": "q023",
+   "task": "abstention",
+   "category": "INCORRECT_ABSTENTION",
+   "owner_judgment": "INCORRECT",
+   "owner_note": "the supplied snippets alone do not mention ballet flats, but the underlying pre-2020 i-D articles contain relevant footwear discussion",
+   "stored_text_check": "none of the 4 context items' stored headline or excerpt contains 'ballet' or 'flats'."
+  },
+  {
+   "question_id": "q031",
+   "task": "context_sufficiency + answer",
+   "category": "MISSED_ABSTENTION",
+   "owner_judgment": "context_sufficiency NO while the model answered",
+   "owner_note": "the context is too thin; several Vogue entries are runway pages with almost no excerpt",
+   "stored_text_check": "5 of the 10 context items have an empty or near-empty stored excerpt (under 40 characters); one item (6602) mentions cowboy boots."
+  },
+  {
+   "question_id": "q031",
+   "task": "completeness",
+   "category": "GENERATION_OMISSION",
+   "owner_judgment": "PARTIAL",
+   "owner_note": "the answer captures the two boot items, but the runway pages' relevance cannot be determined from the supplied context",
+   "observation": "assigned by the frozen definition (completeness PARTIAL). The note attributes the gap to empty runway excerpts, not to usable evidence left out."
+  }
+ ],
+ "not_assigned_fresh": {
+  "UNSUPPORTED_CLAIM": "0 (10 of 10 statements SUPPORTED)",
+  "LIMITATION_UNCITED_FACT": "0 (8 of 8 uncited limitations judged NO)",
+  "SCHEMA_FAILURE": "0 (every output parsed after the one permitted retry; the 3 first-attempt failures are reported as format burden)",
+  "FABRICATED_CITATION, TEMPORAL_VIOLATION, FILTER_VIOLATION": "0 (validators)",
+  "RETRIEVAL_MISS": "not assigned: no abstention task asks about context sufficiency, and q031's insufficiency stems from empty stored excerpts rather than missing items",
+  "CITATION_MISMATCH, OVERSTATEMENT, CAUSAL_OVERREACH, CONTRADICTION_HANDLING_FAILURE": "0 (no note reports one)"
+ },
+ "diagnostic_post_hoc": {
+  "label": "EVIDENCE_BOUNDARY_MISMATCH (descriptive, not a taxonomy category, does not change any score)",
+  "finding": "both INCORRECT abstentions were judged against full articles outside ARI3's stored evidence (headline plus excerpt of at most 500 characters). Against the supplied text alone, both abstention statements are accurate. q031's insufficiency also comes from empty stored excerpts.",
+  "implication": "rubric v2 does not say whether reviewers judge against the supplied excerpts only or against the full articles. That choice decides whether these are generation failures or limits of the stored corpus."
+ },
+ "format_burden": {
+  "first_attempt_schema_valid_fresh": "2/5",
+  "first_attempt_schema_valid_all": "3/6",
+  "retry_rate_fresh": "3/5",
+  "violations": {
+   "q005": "6 claims, cap 4",
+   "q020": "claim 3 over 400 characters (it groups 7 items)",
+   "q023": "limitation over 300 characters"
+  },
+  "semantic_change_on_retry": "not determinable without subjective comparison; the first attempts are preserved in outputs.jsonl",
+  "hypothesis": "Prompt v2's coverage instruction may conflict with the 4-claim and length limits (HYPOTHESIS: two of three violations are claim count and claim length on evidence-rich questions)"
+ },
+ "regression_probe": {
+  "question_id": "q013",
+  "outcomes": {
+   "summary_detail": "FIXED",
+   "coverage": "FIXED",
+   "uncited_limitation": "FIXED"
+  },
+  "verdict": "FULLY_FIXED",
+  "in_fresh_metrics": false
+ },
+ "comparison_v1_v2": {
+  "note": "two different 5-question DEV batches; descriptive only",
+  "v1": {
+   "claim_support_precision": "0.944 (17/18)",
+   "grounded_answer_rate": "0.80 (4/5)",
+   "completeness": "3 COMPLETE, 1 PARTIAL",
+   "abstention": "1 correct",
+   "first_attempt_schema_valid": "5/5",
+   "final_schema_valid": "5/5",
+   "limitation_failures": 1,
+   "deterministic": "100%"
+  },
+  "v2_fresh": {
+   "claim_support_precision": "1.000 (10/10)",
+   "grounded_answer_rate": "0.60 (3/5)",
+   "completeness": "2 COMPLETE, 1 PARTIAL",
+   "abstention": "0 correct, 2 incorrect, 1 missed",
+   "first_attempt_schema_valid": "2/5",
+   "final_schema_valid": "5/5",
+   "limitation_failures": 0,
+   "deterministic": "100%"
+  }
+ },
+ "next_development_problem": "MIXED"
+}

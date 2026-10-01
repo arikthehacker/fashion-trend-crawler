@@ -1,0 +1,70 @@
+{
+ "scored_at": "2026-10-01T22:03:55Z",
+ "run": "dev-batch-2",
+ "metric_code": "exp005_review_v2.metrics_v2 at 04ea296",
+ "metric_code_sha256": "c01d19cd95529fad80d2d3511b508651b3d3e4776793de98ec85d61bc84c69b8",
+ "frozen_review_commits": {
+  "fresh": "bbe8e4661d9df9f5a82827d8ac711ae93059e1f7",
+  "probe": "bbe8e4661d9df9f5a82827d8ac711ae93059e1f7"
+ },
+ "fresh_metrics": {
+  "claim_support_precision": 1.0,
+  "statements_reviewed": 10,
+  "supported": 10,
+  "unsupported": 0,
+  "unsure": 0,
+  "grounded_answer_rate": 0.6,
+  "grounded": 3,
+  "evaluable_outputs": 5,
+  "system_abstentions": 0,
+  "abstention": {
+   "correct": 0,
+   "incorrect": 2,
+   "missed": 1,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  "completeness": {
+   "COMPLETE": 2,
+   "PARTIAL": 1,
+   "INSUFFICIENT": 0,
+   "UNSURE": 0
+  },
+  "uncited_item_specific_limitations": 0,
+  "human_unsure_rate": 0.0,
+  "notes": 7
+ },
+ "format": {
+  "first_attempt_schema_valid": "3/6",
+  "first_attempt_schema_valid_fresh": "2/5",
+  "retries": {
+   "q005": "claims: List should have at most 4 items after validation, not 6",
+   "q020": "claims.3.text: String should have at most 400 characters",
+   "q023": "limitations.0.text: String should have at most 300 characters"
+  },
+  "final_schema_valid": 1.0
+ },
+ "deterministic_fresh": {
+  "citation_membership_valid_rate": 1.0,
+  "provenance_resolution_rate": 1.0,
+  "temporal_violations": 0,
+  "filter_violations": 0,
+  "nonexistent_citations": 0,
+  "provider_calls": 8,
+  "schema_retries": 3,
+  "status_counts": {
+   "answered": 3,
+   "model_abstention": 2
+  }
+ },
+ "regression_probe": {
+  "question_id": "q013",
+  "outcomes": {
+   "coverage": "FIXED",
+   "summary_detail": "FIXED",
+   "uncited_limitation": "FIXED"
+  },
+  "verdict": "FULLY_FIXED",
+  "in_fresh_metrics": false
+ }
+}
