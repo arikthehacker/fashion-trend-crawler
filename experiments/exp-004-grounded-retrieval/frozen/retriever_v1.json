@@ -1,0 +1,91 @@
+{
+ "version": "exp004-retriever-v1",
+ "frozen_at": "2026-10-01T01:43:52Z",
+ "configuration": {
+  "name": "hybrid",
+  "selected_by": "PRACTICAL_TIE_SELECTION under retriever_selection_rule_v1 (owner accepted, directive 029)",
+  "call": {
+   "method": "hybrid",
+   "lexical": "auto",
+   "k": 10
+  },
+  "query_preprocessing": "none beyond tokenization: the question's retrieval query is used as written",
+  "filters": "dates, language (primary subtag of the item tag), sector as of the publication day, sector group and outlet are SQL constraints applied before ranking; syndicated copies excluded",
+  "temporal_semantics": "publication: published_at <= as_of (a bare date means 23:59:59Z). replay: also first_seen_at <= as_of",
+  "candidate_set": "items passing every filter AND present in the frozen index",
+  "bm25": {
+   "engine": "SQLite FTS5 bm25(), score = -bm25",
+   "tables": {
+    "words": "unicode61 remove_diacritics 2",
+    "trigram": "trigram"
+   },
+   "mode": "auto: trigram table when the query contains a CJK character (regex '[\\u3040-\u30ff\u3400-\u9fff\uac00-\\ud7af]'), word table otherwise",
+   "query": "lowercased \\w+ tokens; words mode keeps tokens of 2+ characters; trigram mode uses every 3-character substring of tokens of 3+ characters; each term quoted, joined with OR",
+   "depth": "max(k, 100)"
+  },
+  "dense": {
+   "encoder": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+   "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+   "max_seq_length": 128,
+   "text": "title + '. ' + stored excerpt, first 1,000 characters (jev_spike.text)",
+   "normalization": "L2-normalized embeddings (normalize_embeddings=True)",
+   "similarity": "dot product of normalized vectors, brute force",
+   "depth": "max(k, 100)"
+  },
+  "fusion": {
+   "type": "reciprocal rank fusion",
+   "rrf_k": 60,
+   "fusion_depth": 100,
+   "score": "sum of 1 / (rrf_k + rank) over bm25 and dense",
+   "tie_break": "item_id ascending"
+  },
+  "index": {
+   "path": "data/index/exp004-v1",
+   "index_version": "exp004-index-v1",
+   "cutoff_first_seen_at": "2026-09-30T08:00:00Z",
+   "items": 7955,
+   "corpus_fingerprint": "c571670b9e98ab73c5505b934b1cbf3a8c488a31371a5eb4f1a7772e01cce1d3",
+   "built_at": "2026-09-30T08:04:26Z",
+   "chunking": "none"
+  },
+  "dependency_versions": {
+   "python": "3.13.2",
+   "sqlite": "3.45.3",
+   "numpy": "2.5.0",
+   "pydantic": "2.13.3",
+   "sentence_transformers": "6.1.0",
+   "transformers": "5.17.0",
+   "torch": "2.14.0+cpu"
+  }
+ },
+ "dev_selection": "PRACTICAL_TIE_SELECTION",
+ "dev_recall@10": 0.7513,
+ "code_commit": "abdf584f0ce5980f8af8f73b0e839700e1524d6c",
+ "code_sha256": {
+  "rag_retrieve.py": "41d11fa1fa4192437071a7f5e42b10f08621697bae14e9b78744ed116c901d89",
+  "rag_corpus.py": "2d049fc9f27e56bad953fee0cfbf8680e195da19cb753e10ec6ba3705f3ccb8f",
+  "rag_index.py": "5fa2789b8e15a7567c048dc1aa83d5dd28bd27220fde4a98048512a37757048e",
+  "rag_schema.py": "6c3863a1b25773d35fb05d433103e2e85211adfc45debaf2a378190b458409dd",
+  "rag_validate.py": "9a89fe693066220de4b33b1512d3cce002cea608e2cb5a8f08f73976000019a4",
+  "rag_eval.py": "dc36c3b0db94a3dd1ddad1e830d5946efc5950116e5ec9a42da055fa59a9221a",
+  "rag_select.py": "cc095957c690b10ca21b0119f02878ef770d972fe428c9ec9ba6017092f70c01",
+  "item_store.py": "530b13614ba21d0a0ada744e4cd46922b1b00f9fb3d3e0ffbef58c4acb68c251"
+ },
+ "index_files_sha256": {
+  "fts.db": "ed1e007e8586e9bfd1d9792f9d2fc19ce5f3d388e5c680350494a5236f87e2ad",
+  "embeddings.npz": "7be083480958b5d21f8e372e5b93eed5a19410e87155a536d7587f478ec5e2a5",
+  "manifest.json": "cd1f9a84839f02e0e83b3f864f570dbd191706f3f2f69f703b01528f5dfc2125"
+ },
+ "fingerprints": {
+  "questions_sha256": "d1d17cb4cfe34196b05724dd8623ad4c94ce9c69d00420ba9af3290cf73d4ad4",
+  "dev_ids_sha256": "fc7d5a4d4be2e7ec6377b01a57e61130d2d1e1160208ec3409f3cc0c85bada4c",
+  "test_ids_sha256": "0ed719faf2927c5618414c9ce43b0d2833b9c119101170896650279ccbcb8ab3",
+  "split_sha256": "62f6a8928677afbe9274e07895e91392dbb40d122328277451730ca81698991b",
+  "pool_sha256": "b021d0eed87c3373d95f17a072c246e144218cb6c9b285d31d9038d84486ec6d",
+  "gold_sha256": "bda481d21f0b551f985d6ba05caa08a704542ec6c64c5baf7896ad9523153822",
+  "selection_rule_sha256": "111cd0f48990dda1b5acb25a3bd26518dd17c3963e289ef9f7a1046456168c6a",
+  "amendment_1_sha256": "01d9c1d053eaa568e391133d51ca3e5316db195b5e333661d42228570eab2089",
+  "dev_result_sha256": "ee53076b7158abc3a8deea6797e6724136fc96dcb0a2fb65e7b0d3336e556e4e",
+  "dev_per_question_sha256": "280dfa3602d4998ab086f3c405343df2ed714a481c7d28d47925fe962d4f12fb"
+ }
+}
