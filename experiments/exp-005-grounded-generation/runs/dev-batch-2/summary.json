@@ -1,0 +1,113 @@
+{
+ "run": "dev-batch-2",
+ "protocol_sha256": "87e88618c83167157c7ce0102c50b9a9ca173bf82309841b3f82e3d60d2c6739",
+ "provider": {
+  "provider": "deepseek",
+  "model": "deepseek-flash",
+  "base_url": "https://api.deepseek.com",
+  "temperature": 0.0,
+  "top_p": 1.0,
+  "max_tokens": 1000,
+  "timeout_s": 60,
+  "max_retries": 2,
+  "thinking": "disabled",
+  "response_format": "json_object",
+  "docs_checked": "2026-10-01"
+ },
+ "max_cost_estimate": {
+  "max_total_usd": 0.043727,
+  "gate_usd": 5.0,
+  "per_question": {
+   "q013": {
+    "context_items": 10,
+    "input_chars_upper_bound": 8664,
+    "max_cost_usd": 0.007598
+   },
+   "q005": {
+    "context_items": 10,
+    "input_chars_upper_bound": 8081,
+    "max_cost_usd": 0.007249
+   },
+   "q017": {
+    "context_items": 10,
+    "input_chars_upper_bound": 9539,
+    "max_cost_usd": 0.008123
+   },
+   "q031": {
+    "context_items": 10,
+    "input_chars_upper_bound": 7602,
+    "max_cost_usd": 0.006961
+   },
+   "q020": {
+    "context_items": 10,
+    "input_chars_upper_bound": 9458,
+    "max_cost_usd": 0.008075
+   },
+   "q023": {
+    "context_items": 4,
+    "input_chars_upper_bound": 5535,
+    "max_cost_usd": 0.005721
+   }
+  },
+  "assumptions": "1 token per input character, 2 attempts, full max_tokens output, peak prices"
+ },
+ "all_calls": {
+  "questions": 6,
+  "status_counts": {
+   "answered": 4,
+   "model_abstention": 2
+  },
+  "provider_calls": 9,
+  "schema_retries": 3,
+  "schema_valid_rate": 1.0,
+  "citation_membership_valid_rate": 1.0,
+  "temporal_violations": 0,
+  "filter_violations": 0,
+  "nonexistent_citations": 0,
+  "provenance_resolution_rate": 1.0,
+  "claims_per_answer": 3.5,
+  "citations": 24,
+  "tokens": {
+   "prompt_tokens": 18089,
+   "completion_tokens": 2317,
+   "total_tokens": 20406,
+   "prompt_cache_hit_tokens": 7808,
+   "prompt_cache_miss_tokens": 10281
+  },
+  "latency_ms": {
+   "median": 2262.8,
+   "max": 2687.3
+  },
+  "estimated_cost_usd": 0.005912
+ },
+ "fresh_only": {
+  "questions": 5,
+  "status_counts": {
+   "answered": 3,
+   "model_abstention": 2
+  },
+  "provider_calls": 8,
+  "schema_retries": 3,
+  "schema_valid_rate": 1.0,
+  "citation_membership_valid_rate": 1.0,
+  "temporal_violations": 0,
+  "filter_violations": 0,
+  "nonexistent_citations": 0,
+  "provenance_resolution_rate": 1.0,
+  "claims_per_answer": 3.33,
+  "citations": 18,
+  "tokens": {
+   "prompt_tokens": 15847,
+   "completion_tokens": 2064,
+   "total_tokens": 17911,
+   "prompt_cache_hit_tokens": 7808,
+   "prompt_cache_miss_tokens": 8039
+  },
+  "latency_ms": {
+   "median": 2037.45,
+   "max": 2687.3
+  },
+  "estimated_cost_usd": 0.004935
+ },
+ "outputs_sha256": "26b49b0284812dd9cddbb3a354dd57c1a064e7f83194632f40d596f4a2f70fb6"
+}
