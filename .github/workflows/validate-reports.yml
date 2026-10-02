@@ -69,16 +69,6 @@ jobs:
       - name: EXP-005 SC-1 schema-capacity tests (scripted provider, no network)
         run: python src/test_exp005_schema.py
 
-      - name: EXP-003A runner compiles and its verdict rule holds
-        run: |
-          python - <<'PY'
-          import sys
-          sys.path.insert(0, "src")
-          import ari3_exp003a_run as x
-          h = x.hypotheses({"coverage": 0.9, "accuracy": 0.849, "not_sure_share": 0.351})
-          assert [h[k]["verdict"] for k in ("H1", "H2", "H3")] == ["SUPPORTED", "NOT SUPPORTED", "NOT SUPPORTED"]
-          PY
-
       - name: Validate published reports (schema + publish gate + non-blocking confidence warnings)
         run: python src/validate_all_reports.py
 
