@@ -1,0 +1,60 @@
+{
+ "amendment": {
+  "path": "models/ari3-v0.0.3/AMENDMENT_2026-09-30_holdout_eligibility.md",
+  "sha256": "32690a8bba3d860daaa81b61335777a20017d85009d39bf4550b5b96efe40794"
+ },
+ "deck": {
+  "file_sha256": "6b72e0b37c905b7cf3a7b970c3ed27d699d9840b7e7d1e07eba2002e89e7e8b6",
+  "item_ids_sha256": "192a050a3225559ee9fb37b95d0c0724c73c7337a4a209b4db97c447c8cd67ce",
+  "path": "data/store/queues/is_style_signal_holdout_exp003.json",
+  "seed": 13
+ },
+ "experiment": "EXP-003A",
+ "frozen_at": "2026-10-02T00:50:00Z",
+ "gold": "models/ari3-v0.0.3/exp003a/gold_v1.jsonl",
+ "gold_sha256": "7e15f2a1c9595fce12dffd5558b9e38e1845a32a22052b0664649235676d9b7d",
+ "label_source": "data/store/ari3lla.db labels (task is_style_signal, split time_holdout, source human)",
+ "model": {
+  "embedder": {
+   "dim": 384,
+   "name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+   "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+  },
+  "frozen_at": "2026-09-26T19:25:40Z",
+  "manifest_file_sha256": "8dfc0a6287fed87424fda26f6d6abbc4395f349cdbc19bad03ba5ec2672bd78d",
+  "manifest_sha256_recorded": "d1cad506d6c9326e77a7729970261a0bb8a0ace3e834b0735530a98e0214e055",
+  "version": "ari3-v0.0.2",
+  "weights_sha256": "f6b25eb421e2766cc2681f9b2a6816330ab50569bae752a73b231ed7fe282f09"
+ },
+ "preregistration": {
+  "commit": "2ff1c53",
+  "path": "models/ari3-v0.0.3/PREREGISTRATION.md",
+  "sha256": "fa65367d3166cba52903229bfd849ce34022b536e93ae6c62341325e7911aff1"
+ },
+ "verification": {
+  "backups_checked": 17,
+  "deck_items": 150,
+  "deck_sha256": "192a050a3225559ee9fb37b95d0c0724c73c7337a4a209b4db97c447c8cd67ce",
+  "distribution": {
+   "no": 68,
+   "yes": 82
+  },
+  "eligibility_failures": {
+   "first_seen_after_freeze": 0,
+   "has_stored_summary": 0,
+   "not_syndicated": 0,
+   "published_after_freeze": 0
+  },
+  "first_label_at": "2026-10-02T00:22:32Z",
+  "label_rows": 150,
+  "labeled_items": 150,
+  "labelers": [
+   "ariella"
+  ],
+  "last_label_at": "2026-10-02T00:38:22Z",
+  "ok": true,
+  "pre_freeze_evidence": 0,
+  "revised_or_duplicate_rows": 0,
+  "unresolved": 0
+ }
+}
