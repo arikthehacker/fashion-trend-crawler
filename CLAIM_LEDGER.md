@@ -37,6 +37,9 @@ Experiment IDs (EXP-001, EXP-002, …) and ARI3 release versions (v0.0.1, v0.0.2
 | C-0008 | EXP-003B H5: forecast head conformal coverage 0.961 | supported | 2026-09-26 |
 | C-0009 | The pre-registered EXP-003A selector admitted 52 items stored before the freeze | measured | 2026-09-30 |
 | C-0010 | EXP-004 held-out TEST: frozen hybrid retriever, macro Recall@10 0.770, Hit@10 1.000 (n = 12 answerable questions) | measured | 2026-10-01 |
+| C-0011 | EXP-003A H1: frozen v0.0.2 conformal coverage 0.927 on post-freeze items (n = 150) | supported | 2026-10-02 |
+| C-0012 | EXP-003A H2: frozen v0.0.2 accuracy 0.833 on post-freeze items (n = 150), below the 0.85 criterion | not_supported | 2026-10-02 |
+| C-0013 | EXP-003A H3: frozen v0.0.2 not-sure share 0.327 on post-freeze items (n = 150) | supported | 2026-10-02 |
 
 ## Claims
 
@@ -157,5 +160,41 @@ Experiment IDs (EXP-001, EXP-002, …) and ARI3 release versions (v0.0.1, v0.0.2
 - **Result:** Recall@10 0.770, Recall@5 0.438, Hit@10 1.000, Hit@5 1.000, MRR 0.958, Unsure@10 0.311 (18 questions with results). Latency median 67.4 ms, p95 344.4 ms. 0 integrity failures. 19 TEST questions in total, 7 of them without a resolved relevant item.
 - **First valid commit:** `b9f9e6c`
 - **Limitations:** Only 12 answerable TEST questions carry the primary metrics. Relevance is relative to the frozen judged pool (the union of each candidate's top 10), not to every relevant item in the corpus. Multilingual retrieval performance is not established: most non-English judgments are unsure, and no non-English TEST question has a resolved relevant item. Some filtered questions have small candidate sets (10 to 16 eligible items), where high recall is close to guaranteed. Recall@10 is capped for questions with more than 10 relevant items (two TEST questions reached the cap). Feed language tags contain known errors. This does not mean that ARI3 retrieves 77% of all relevant evidence.
+- **Used in:** not yet audited
+- **Superseded by:** none
+
+### C-0011
+- **Claim:** Frozen ARI3 v0.0.2 kept its conformal coverage guarantee on 150 items published after it was frozen: the true label was inside the prediction set for 0.927 of them, against a pre-registered criterion of at least 0.90.
+- **Status:** supported
+- **As of:** 2026-10-02
+- **Experiment:** EXP-003A (ARI3 v0.0.3 INTEGRITAS)
+- **Artifact:** `models/ari3-v0.0.3/exp003a/result.json` (SHA-256 `aab0ca4a…`), gold `exp003a/gold_v1.jsonl` (`7e15f2a1…`), pre-registration `models/ari3-v0.0.3/PREREGISTRATION.md` (`fa65367d…`, commit `2ff1c53`), eligibility amendment of 2026-09-30 (`32690a8b…`)
+- **First valid commit:** `1c78f56` (gold frozen in `88eb59e` before the run)
+- **Result:** coverage 0.927 (139 of 150). Prediction sets: 57 {yes}, 44 {no}, 49 {yes, no}, 0 empty.
+- **Limitations:** One editor labeled every item, with no second labeler. 150 items published over about 3.4 days after the freeze (2026-09-26 to 2026-09-30), from 80 outlets, mostly editorial. Domain shift is measured, not explained. `published_at` is feed-reported. Model and decision rule unchanged: no refit, recalibration or threshold change.
+- **Used in:** not yet audited
+- **Superseded by:** none
+
+### C-0012
+- **Claim:** Frozen ARI3 v0.0.2 reached accuracy 0.833 on 150 items published after it was frozen. The pre-registered criterion was at least 0.85, so H2 is not supported. Its accuracy on its own test set was 0.902 (C-0004).
+- **Status:** not_supported
+- **As of:** 2026-10-02
+- **Experiment:** EXP-003A (ARI3 v0.0.3 INTEGRITAS)
+- **Artifact:** `models/ari3-v0.0.3/exp003a/result.json` (SHA-256 `aab0ca4a…`), gold `exp003a/gold_v1.jsonl` (`7e15f2a1…`), pre-registration `models/ari3-v0.0.3/PREREGISTRATION.md` (`fa65367d…`, commit `2ff1c53`), eligibility amendment of 2026-09-30 (`32690a8b…`)
+- **First valid commit:** `1c78f56` (gold frozen in `88eb59e` before the run)
+- **Result:** accuracy 0.833 (125 of 150, Wilson 95% interval 0.766 to 0.884). Precision 0.861, recall 0.829 for style items. 25 errors, 11 of them confident (a single-label set that excludes the true label).
+- **Limitations:** One editor labeled every item, with no second labeler. 150 items published over about 3.4 days after the freeze (2026-09-26 to 2026-09-30), from 80 outlets, mostly editorial. Domain shift is measured, not explained. `published_at` is feed-reported. Model and decision rule unchanged: no refit, recalibration or threshold change.
+- **Used in:** not yet audited
+- **Superseded by:** none
+
+### C-0013
+- **Claim:** On 150 items published after it was frozen, frozen ARI3 v0.0.2 answered "not sure" ({yes, no}) for 0.327 of them, within the pre-registered limit of 0.35. The share lies between its test-set rate (0.25) and its whole-corpus rate (0.42).
+- **Status:** supported
+- **As of:** 2026-10-02
+- **Experiment:** EXP-003A (ARI3 v0.0.3 INTEGRITAS)
+- **Artifact:** `models/ari3-v0.0.3/exp003a/result.json` (SHA-256 `aab0ca4a…`), gold `exp003a/gold_v1.jsonl` (`7e15f2a1…`), pre-registration `models/ari3-v0.0.3/PREREGISTRATION.md` (`fa65367d…`, commit `2ff1c53`), eligibility amendment of 2026-09-30 (`32690a8b…`)
+- **First valid commit:** `1c78f56` (gold frozen in `88eb59e` before the run)
+- **Result:** not-sure share 0.327 (49 of 150). Decisive share 0.673.
+- **Limitations:** One editor labeled every item, with no second labeler. 150 items published over about 3.4 days after the freeze (2026-09-26 to 2026-09-30), from 80 outlets, mostly editorial. Domain shift is measured, not explained. `published_at` is feed-reported. Model and decision rule unchanged: no refit, recalibration or threshold change.
 - **Used in:** not yet audited
 - **Superseded by:** none
