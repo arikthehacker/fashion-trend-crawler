@@ -276,6 +276,13 @@ def compare_test(con, holdout):
                 "excerpt_class_share": {k: share(lambda x, k=k: x["excerpt_class"] == k)
                                         for k in ("empty", "very_short", "normal")},
                 "wording_share": {k: share(lambda x, k=k: x["wording"] == k) for k in ("explicit", "mixed", "indirect")},
+                "errors_by_sector_group": {k: [sum(not x["correct"] for x in xs if x["sector_group"] == k),
+                                               sum(x["sector_group"] == k for x in xs)]
+                                           for k in sorted({x["sector_group"] for x in xs})},
+                "errors_by_language": {k: [sum(not x["correct"] for x in xs if x["lang"] == k),
+                                           sum(x["lang"] == k for x in xs)] for k in sorted({x["lang"] for x in xs})},
+                "errors_by_wording": {k: [sum(not x["correct"] for x in xs if x["wording"] == k),
+                                          sum(x["wording"] == k for x in xs)] for k in ("explicit", "mixed", "indirect")},
                 "any_term_share": share(lambda x: bool(x["terms"])),
                 "countable_term_share": share(lambda x: bool(x["countable_terms"]))}
     with open(os.path.join(ROOT, "models", "ari3-v0.0.2", "manifest.json"), encoding="utf-8") as f:
