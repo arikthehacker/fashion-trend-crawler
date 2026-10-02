@@ -171,7 +171,7 @@ Experiment IDs (EXP-001, EXP-002, …) and ARI3 release versions (v0.0.1, v0.0.2
 - **Artifact:** `models/ari3-v0.0.3/exp003a/result.json` (SHA-256 `aab0ca4a…`), gold `exp003a/gold_v1.jsonl` (`7e15f2a1…`), pre-registration `models/ari3-v0.0.3/PREREGISTRATION.md` (`fa65367d…`, commit `2ff1c53`), eligibility amendment of 2026-09-30 (`32690a8b…`)
 - **First valid commit:** `1c78f56` (gold frozen in `88eb59e` before the run)
 - **Result:** coverage 0.927 (139 of 150). Prediction sets: 57 {yes}, 44 {no}, 49 {yes, no}, 0 empty.
-- **Limitations:** One editor labeled every item, with no second labeler. 150 items published over about 3.4 days after the freeze (2026-09-26 to 2026-09-30), from 80 outlets, mostly editorial. Domain shift is measured, not explained. `published_at` is feed-reported. Model and decision rule unchanged: no refit, recalibration or threshold change.
+- **Limitations:** One editor labeled every item, with no second labeler. 150 items published 2026-09-26 20:00 to 2026-09-30 04:03 UTC (about 3.3 days after the freeze), from 39 outlets, mostly editorial. Domain shift is measured, not explained. `published_at` is feed-reported. Model and decision rule unchanged: no refit, recalibration or threshold change.
 - **Used in:** not yet audited
 - **Superseded by:** none
 
@@ -183,7 +183,7 @@ Experiment IDs (EXP-001, EXP-002, …) and ARI3 release versions (v0.0.1, v0.0.2
 - **Artifact:** `models/ari3-v0.0.3/exp003a/result.json` (SHA-256 `aab0ca4a…`), gold `exp003a/gold_v1.jsonl` (`7e15f2a1…`), pre-registration `models/ari3-v0.0.3/PREREGISTRATION.md` (`fa65367d…`, commit `2ff1c53`), eligibility amendment of 2026-09-30 (`32690a8b…`)
 - **First valid commit:** `1c78f56` (gold frozen in `88eb59e` before the run)
 - **Result:** accuracy 0.833 (125 of 150, Wilson 95% interval 0.766 to 0.884). Precision 0.861, recall 0.829 for style items. 25 errors, 11 of them confident (a single-label set that excludes the true label).
-- **Limitations:** One editor labeled every item, with no second labeler. 150 items published over about 3.4 days after the freeze (2026-09-26 to 2026-09-30), from 80 outlets, mostly editorial. Domain shift is measured, not explained. `published_at` is feed-reported. Model and decision rule unchanged: no refit, recalibration or threshold change.
+- **Limitations:** One editor labeled every item, with no second labeler. 150 items published 2026-09-26 20:00 to 2026-09-30 04:03 UTC (about 3.3 days after the freeze), from 39 outlets, mostly editorial. Domain shift is measured, not explained. `published_at` is feed-reported. Model and decision rule unchanged: no refit, recalibration or threshold change.
 - **Used in:** not yet audited
 - **Superseded by:** none
 
@@ -195,6 +195,6 @@ Experiment IDs (EXP-001, EXP-002, …) and ARI3 release versions (v0.0.1, v0.0.2
 - **Artifact:** `models/ari3-v0.0.3/exp003a/result.json` (SHA-256 `aab0ca4a…`), gold `exp003a/gold_v1.jsonl` (`7e15f2a1…`), pre-registration `models/ari3-v0.0.3/PREREGISTRATION.md` (`fa65367d…`, commit `2ff1c53`), eligibility amendment of 2026-09-30 (`32690a8b…`)
 - **First valid commit:** `1c78f56` (gold frozen in `88eb59e` before the run)
 - **Result:** not-sure share 0.327 (49 of 150). Decisive share 0.673.
-- **Limitations:** One editor labeled every item, with no second labeler. 150 items published over about 3.4 days after the freeze (2026-09-26 to 2026-09-30), from 80 outlets, mostly editorial. Domain shift is measured, not explained. `published_at` is feed-reported. Model and decision rule unchanged: no refit, recalibration or threshold change.
+- **Limitations:** One editor labeled every item, with no second labeler. 150 items published 2026-09-26 20:00 to 2026-09-30 04:03 UTC (about 3.3 days after the freeze), from 39 outlets, mostly editorial. Domain shift is measured, not explained. `published_at` is feed-reported. Model and decision rule unchanged: no refit, recalibration or threshold change.
 - **Used in:** not yet audited
 - **Superseded by:** none
