@@ -1,0 +1,126 @@
+{
+ "version": "exp005-sc1-protocol-v1",
+ "experiment": "EXP-005 SC-1 schema-capacity DEV comparison",
+ "decided_by": "the owner, directive 036",
+ "question": "Does stating the existing schema v2 size limits in the prompt raise first-attempt schema validity without new integrity failures or a material loss of grounding or completeness?",
+ "conditions": {
+  "A": {
+   "name": "Prompt v2 baseline",
+   "path": "protocol/prompt_v2.txt",
+   "sha256": "efea461f8e079eb8c25a3e8f5acb371d5e01b9bf18c617aec123b01f62a7afce"
+  },
+  "B": {
+   "name": "Prompt v2.1 explicit caps",
+   "path": "schema-capacity/protocol/prompt_v2_1.txt",
+   "sha256": "103011d78ed3abfc2a4734415f6cc501daad54e448c0a89be39e681ed9e017b4"
+  }
+ },
+ "prompt_difference": {
+  "kind": "appended section only",
+  "appended_text": "\nSize limits:\n- At most 4 claims.\n- Each claim text: at most 400 characters.\n- Each limitation text: at most 300 characters.\n- An output that exceeds any of these limits is invalid. Do not exceed them.\n- If the evidence holds more than 4 distinct findings, combine semantically related evidence into one claim and cite all of its items.\n- Keep materially distinct evidence. Do not drop evidence only to fit a limit when it can be combined with related evidence.\n- Prefer concise wording. Do not invent extra claims.\n",
+  "prefix_identical_bytes": 3040
+ },
+ "schema": {
+  "version": "exp005-schema-v2",
+  "sha256": "47b747c14b5301df9a790538205e8fdd1014019a136671e38e8d094f06c4a5ee",
+  "changed": false,
+  "caps": {
+   "claims": 4,
+   "claim_text_chars": 400,
+   "limitations": 3,
+   "limitation_text_chars": 300,
+   "citations_per_statement": "1 to 10"
+  }
+ },
+ "provider_settings": {
+  "provider": "deepseek",
+  "model": "deepseek-flash",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "api_format": "OpenAI-compatible chat completions",
+  "temperature": 0.0,
+  "top_p": 1.0,
+  "max_tokens": 1000,
+  "thinking": "disabled",
+  "response_format": "json_object",
+  "stream": false,
+  "generations_per_question": 1,
+  "timeout_s": 60,
+  "transport_retries": 2
+ },
+ "serializer": {
+  "version": "exp005-context-v1",
+  "max_items": 10,
+  "max_headline": 300,
+  "max_excerpt": 500,
+  "max_context_chars": 12000
+ },
+ "retriever": {
+  "path": "experiments/exp-004-grounded-retrieval/frozen/retriever_v1.json",
+  "sha256": "3b55fcebbb08ec54b87198ab4a18e2f1b2bd0b922c6677428f525ceeadfd6b21",
+  "method": "hybrid, auto mode, top 10"
+ },
+ "retry_policy": "one initial generation; one retry only if the output does not parse into schema v2, with the parser error shown. No retry for wrong, weak, incomplete or abstaining answers. Transport retries (at most 2) re-send a request only when no response was received.",
+ "pairing": "Each question goes through the frozen v2 pipeline once per condition, A then B. Retrieval is run twice per question before any call and must agree. After both calls, the two records must have the same retrieval item IDs in the same order and the same context_sha256, or the run stops. Only the system prompt differs.",
+ "batch": {
+  "path": "schema-capacity/runs/sc-batch-1/batch.json",
+  "sha256": "2edc6e3053cb4d2aafc01d1fd737322ec6301d94ae70de9347bae45174408174"
+ },
+ "metrics": {
+  "primary": "first-attempt schema validity: schema-valid initial responses / all initial responses, per condition. Never replaced by final validity. A system abstention (empty context) has no initial response and is excluded from the denominator.",
+  "secondary": [
+   "first-attempt valid count",
+   "retry count",
+   "final schema-valid count",
+   "claim_count, claim_length, limitation_length and other violations on first attempts (from the parser error; one attempt can have several)",
+   "tokens",
+   "latency",
+   "estimated cost",
+   "deterministic validation as in v2"
+  ],
+  "semantic": "rubric v2 under the context-only evidence boundary (amendment 2026-10-01): claim support, completeness, context sufficiency, abstention, limitations. metrics_v2 per condition, after the owner's blind review is complete and frozen."
+ },
+ "comparison_rule": {
+  "order": "the first rule that applies",
+  "definitions": {
+   "first_valid": "first-attempt schema-valid count",
+   "cap_violations_B": "B first attempts with at least one claim_count, claim_length or limitation_length violation",
+   "integrity_failures": "outputs with any deterministic validation violation, or status rejected_citation or context_invalid",
+   "material_human_regression (impl)": "B is worse than A by at least 2 on any of: grounded outputs, UNSUPPORTED statements, PARTIAL or INSUFFICIENT completeness judgments, incorrect or missed abstentions (8 questions, so a difference of 1 is treated as noise)"
+  },
+  "rules": [
+   "FORMAT_GROUNDING_TRADEOFF: first_valid B > A, and a material human regression",
+   "SCHEMA_AWARENESS: first_valid B > A, cap_violations_B <= 1, integrity_failures B <= A, and no material human regression",
+   "SCHEMA_CAPACITY_CONFIRMED: cap_violations_B >= 3 of 8 (B still often breaks the caps it was told)",
+   "INCONCLUSIVE: otherwise"
+  ],
+  "frozen": "not changed after any output exists"
+ },
+ "live_call_scope": {
+  "questions": 8,
+  "conditions": 2,
+  "max_initial_generations": 16,
+  "max_schema_retries": 16,
+  "semantic_retries": 0,
+  "test_calls": 0,
+  "authorization": "directive 036, LIVE DEV GENERATION AUTHORIZED",
+  "cost_gate_usd": 5.0
+ },
+ "blind_review": {
+  "deck": "Schema-capacity blind review (EXP-005 SC-1)",
+  "seed": "exp005-sc1-blind-v1",
+  "log": "schema-capacity/reviews/sc-batch-1_blind_reviews.jsonl",
+  "hidden": "condition, prompt name, call order and format outcome"
+ },
+ "code_sha256": {
+  "exp005_v2.py": "e3ad86af0e332fd004383dd13e5aa4896dddfac39bccaa3c2848ced4280d973c",
+  "exp005.py": "ce41d9211913085362c98cca872148e04d68224097cda232c4035473af21e02b",
+  "llm_provider.py": "30ae90f2854145ffc67e762f1d5dcc4024630ec7ec47e9e57f06e0f4041ce942",
+  "llm_deepseek.py": "9ecf2e968bcc0b0d742826296edd9cd27f02f98ab857e993fb5da72747f84dc8",
+  "rag_validate.py": "9a89fe693066220de4b33b1512d3cce002cea608e2cb5a8f08f73976000019a4",
+  "rag_corpus.py": "2d049fc9f27e56bad953fee0cfbf8680e195da19cb753e10ec6ba3705f3ccb8f",
+  "exp005_review_v2.py": "c01d19cd95529fad80d2d3511b508651b3d3e4776793de98ec85d61bc84c69b8",
+  "exp005_adjudicate.py": "778d5a5386171247037922115a59cd009b74e8dc7e2c56d03332c4444c894450",
+  "exp005_schema.py": "5f79634971e0d14caf29d5ed600fac35a20b9599963c2694c416291bb93927cc"
+ },
+ "frozen_at": "2026-10-02T00:56:48Z"
+}

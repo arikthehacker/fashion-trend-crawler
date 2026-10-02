@@ -1,0 +1,61 @@
+{
+ "batch": "sc-batch-1",
+ "selected_before_any_output": true,
+ "excluded_used": [
+  "q003",
+  "q013",
+  "q015",
+  "q016",
+  "q029",
+  "q005",
+  "q017",
+  "q020",
+  "q023",
+  "q031"
+ ],
+ "rules": {
+  "likely_abstention": {
+   "rule": "lowest ID: drafted unanswerable, no relevant item, at least one eligible item",
+   "question_id": "q054"
+  },
+  "temporal": {
+   "rule": "lowest ID: query_type temporal, at least one relevant item",
+   "question_id": "q019"
+  },
+  "filtered": {
+   "rule": "lowest ID: query_type source_filter or sector_filter, at least one relevant item",
+   "question_id": "q035"
+  },
+  "low_evidence": {
+   "rule": "fewest relevant items in the frozen hybrid DEV top 10, at least one (ties: lowest ID)",
+   "question_id": "q043"
+  },
+  "evidence_rich_1": {
+   "rule": "most relevant items in the frozen hybrid DEV top 10 (ties: lowest ID)",
+   "question_id": "q056"
+  },
+  "evidence_rich_2": {
+   "rule": "most relevant items in the frozen hybrid DEV top 10 (ties: lowest ID)",
+   "question_id": "q057"
+  },
+  "term_1": {
+   "rule": "lowest ID: query_type term or general, no filters, at least one relevant item",
+   "question_id": "q009"
+  },
+  "term_2": {
+   "rule": "lowest ID: query_type term or general, no filters, at least one relevant item",
+   "question_id": "q010"
+  }
+ },
+ "question_ids": [
+  "q054",
+  "q019",
+  "q035",
+  "q043",
+  "q056",
+  "q057",
+  "q009",
+  "q010"
+ ],
+ "selected_at": "2026-10-02T00:56:28Z"
+}
