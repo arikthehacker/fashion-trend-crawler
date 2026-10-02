@@ -1,0 +1,70 @@
+{
+ "key": {
+  "ans-0b5d78": {
+   "condition": "B",
+   "question_id": "q010"
+  },
+  "ans-1407c5": {
+   "condition": "A",
+   "question_id": "q010"
+  },
+  "ans-16cc57": {
+   "condition": "A",
+   "question_id": "q054"
+  },
+  "ans-1f3a8b": {
+   "condition": "B",
+   "question_id": "q054"
+  },
+  "ans-1fc2a3": {
+   "condition": "B",
+   "question_id": "q043"
+  },
+  "ans-436071": {
+   "condition": "B",
+   "question_id": "q035"
+  },
+  "ans-4f81b8": {
+   "condition": "B",
+   "question_id": "q019"
+  },
+  "ans-50a6ae": {
+   "condition": "A",
+   "question_id": "q035"
+  },
+  "ans-827c35": {
+   "condition": "B",
+   "question_id": "q009"
+  },
+  "ans-94d76b": {
+   "condition": "A",
+   "question_id": "q057"
+  },
+  "ans-c0eacc": {
+   "condition": "A",
+   "question_id": "q009"
+  },
+  "ans-d415ba": {
+   "condition": "A",
+   "question_id": "q019"
+  },
+  "ans-ddea0a": {
+   "condition": "A",
+   "question_id": "q043"
+  },
+  "ans-e9c540": {
+   "condition": "B",
+   "question_id": "q056"
+  },
+  "ans-f41123": {
+   "condition": "A",
+   "question_id": "q056"
+  },
+  "ans-ff90b2": {
+   "condition": "B",
+   "question_id": "q057"
+  }
+ },
+ "note": "do not open before the blind review is frozen",
+ "seed": "exp005-sc1-blind-v1"
+}
