@@ -69,6 +69,9 @@ jobs:
       - name: EXP-005 SC-1 schema-capacity tests (scripted provider, no network)
         run: python src/test_exp005_schema.py
 
+      - name: Lexicon v1 sense-check deck tests (throwaway store)
+        run: python src/test_lexicon_sense.py
+
       - name: Validate published reports (schema + publish gate + non-blocking confidence warnings)
         run: python src/validate_all_reports.py
 
