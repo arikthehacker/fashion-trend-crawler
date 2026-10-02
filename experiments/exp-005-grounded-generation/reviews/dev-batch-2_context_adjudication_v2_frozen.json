@@ -1,0 +1,33 @@
+{
+ "frozen_at": "2026-10-02T00:15:31Z",
+ "run": "dev-batch-2",
+ "review": "Prompt v2 context-only adjudication v2",
+ "judgments": 7,
+ "notes": 0,
+ "values": {
+  "q017:abstention": "CORRECT",
+  "q017:limitation 0": "NO",
+  "q023:abstention": "CORRECT",
+  "q031:claim 1": "SUPPORTED",
+  "q031:completeness": "COMPLETE",
+  "q031:sufficiency": "YES",
+  "q013:regression:summary_detail": "FIXED"
+ },
+ "reviewers": [
+  "ariella"
+ ],
+ "log_sha256": "50b49518c26e3caa311b3b4407c113937da2c0e742aa14c9b4bf03b9c5845213",
+ "frozen_sha256": "806a898d0b76361b5c6f94ecd2f41f4c92b3e9f2074de1c6e2ec1a84cdb8fc9e",
+ "amendment_sha256": "d33f4b21b2851a8fc5d7b020fa97b2a289afd3e2e3a994294e0e7d07fffd6b75",
+ "outputs_sha256": "26b49b0284812dd9cddbb3a354dd57c1a064e7f83194632f40d596f4a2f70fb6",
+ "original_reviews_sha256": {
+  "fresh": "9d0d2c7a6b8fd75df9ea4cef2f40faf96c84f59e5512302049a0b4b0d13e7102",
+  "probe": "ae6e4dd77bf5594de392f6254f9107bf98a7def419455be9b83e1c4a62bb69c8"
+ },
+ "packets_sha256": {
+  "q013": "80dd1e2d1a79d1bdf58c820482e66772874cdb365c9ebdb8c9f5d6fe3d1586a6",
+  "q017": "90724eb6195c2aa4357589977b53c6348a926228089a27bb8764307fe6f139be",
+  "q031": "7ffe7ee527a3dd63f9b90ceb370a39cd8fc035cd2819c7aa1d67cf1af8064269",
+  "q023": "f1d7310205358912992a4509db73a8a63c4e5c59246c1b7c8279b65803c9437d"
+ }
+}
