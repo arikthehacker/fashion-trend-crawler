@@ -58,6 +58,8 @@ Human review judges the model only against the exact evidence packet it received
 
 The original Prompt v2 review and scores are kept unchanged as the mixed-boundary record. The deck "Prompt v2 context-only adjudication v2" (`src/exp005_adjudicate.py`) re-asks the seven judgments that used outside content. The context-grounded score is computed from it separately.
 
+The canonical context-grounded score is in `runs/dev-batch-2/prompt_v2_context_grounded_scores.json` and the evaluation is in `prompt_v2_context_grounded_evaluation.json`. Grounded answer rate went from 0.60 (mixed boundary) to 1.00 (context only) on 5 fresh DEV questions. The next problem is classified as schema capacity.
+
 `analysis/` holds findings that are not generation metrics:
 - corpus sufficiency;
 - source-representation options;

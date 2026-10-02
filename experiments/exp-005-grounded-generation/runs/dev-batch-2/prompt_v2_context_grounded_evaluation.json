@@ -1,0 +1,57 @@
+{
+ "run": "dev-batch-2",
+ "prompt": "v2",
+ "evidence_boundary": "context_only (AMENDMENT_2026-10-01_evidence_boundary.md, d33f4b21)",
+ "canonical": true,
+ "based_on": [
+  "prompt_v2_context_grounded_scores.json",
+  "reviews/dev-batch-2_context_adjudication_v2_frozen.jsonl (806a898d, commit 446f7e6)",
+  "reviews/dev-batch-2_fresh_reviews_frozen_v1.jsonl (9d0d2c7a, unchanged)",
+  "outputs.jsonl (26b49b02, unchanged)"
+ ],
+ "mixed_boundary_record": "prompt_v2_scores.json and prompt_v2_evaluation.json, unchanged",
+ "headline": {
+  "mixed_boundary": {"claim_support": "1.000 (10/10)", "grounded_answer_rate": "0.60 (3/5)", "abstention": "0 correct, 2 incorrect, 1 missed", "completeness": "2 COMPLETE, 1 PARTIAL"},
+  "context_grounded": {"claim_support": "1.000 (10/10)", "grounded_answer_rate": "1.00 (5/5)", "abstention": "2 correct, 0 incorrect, 0 missed", "completeness": "3 COMPLETE"},
+  "sample": "5 fresh DEV questions. A development result, not a generalization."
+ },
+ "changed_judgments": [
+  {"task_id": "q017:abstention", "mixed_boundary": "INCORRECT", "context_only": "CORRECT",
+   "why": "The mixed judgment rested on item 278's full article, which discusses loafers. No headline or excerpt in the packet mentions loafers, so abstaining was correct for what the model received."},
+  {"task_id": "q023:abstention", "mixed_boundary": "INCORRECT", "context_only": "CORRECT",
+   "why": "The mixed judgment rested on the underlying i-D articles. None of the four packet items mentions ballet flats, so abstaining was correct for what the model received."},
+  {"task_id": "q031:completeness", "mixed_boundary": "PARTIAL", "context_only": "COMPLETE",
+   "why": "The mixed judgment weighed runway pages whose content the packet does not hold (empty excerpts) and cited an outside page. Within the packet, the answer covers both items that mention boots (6602, 7616)."},
+  {"task_id": "q031:sufficiency", "mixed_boundary": "NO", "context_only": "YES",
+   "why": "The mixed judgment cited an outside page. The packet holds enough to answer what Vogue published about cowboy boots, within its stated limits. This removes the missed abstention."}
+ ],
+ "unchanged_judgments": {
+  "q017:limitation 0": "NO",
+  "q031:claim 1": "SUPPORTED",
+  "q013:regression:summary_detail": "FIXED (probe only, verdict stays FULLY_FIXED)"
+ },
+ "why_note": "The owner recorded no notes in the adjudication. Each 'why' states which outside content the mixed judgment used (from the amendment) and what the packet contains. It is not a quotation of the owner's reasoning.",
+ "per_question_fresh": {
+  "q005": {"status": "answered", "grounded": true, "failures": [], "schema_retry": "6 claims (cap 4)"},
+  "q017": {"status": "model_abstention", "abstention": "CORRECT", "grounded": true, "failures": [], "schema_retry": "none"},
+  "q020": {"status": "answered", "grounded": true, "failures": [], "schema_retry": "claim of 722 characters (cap 400)"},
+  "q023": {"status": "model_abstention", "abstention": "CORRECT", "grounded": true, "failures": [], "schema_retry": "limitation of 333 characters (cap 300)"},
+  "q031": {"status": "answered", "completeness": "COMPLETE", "context_sufficiency": "YES", "grounded": true, "failures": [], "schema_retry": "none"}
+ },
+ "generation_failures_context_only": [],
+ "format_failures": {"first_attempt_schema_valid_fresh": "2/5", "first_attempt_schema_valid_all": "3/6", "final_schema_valid": "6/6",
+                     "detail": "analysis/schema_capacity_finding.md"},
+ "corpus_sufficiency": {
+  "kept_separate": true,
+  "in_generation_metrics": false,
+  "summary": "q017 STORED_TEXT_INSUFFICIENT, q023 STORED_TEXT_SUFFICIENT (open to correction), q031 SOURCE_CONTENT_UNAVAILABLE. An evidence-layer finding, not a generation failure.",
+  "detail": "analysis/corpus_sufficiency_dev-batch-2.json"
+ },
+ "next_problem": {
+  "classification": "SCHEMA_CAPACITY",
+  "categories_considered": ["SCHEMA_CAPACITY", "PROMPT_GROUNDING", "ABSTENTION", "MIXED"],
+  "reason": "Under the context-only rule, no fresh output has a grounding failure (10/10 statements supported, 5/5 grounded) and no abstention error (2/2 correct, 0 missed). The one generation-side problem still measured is format: 3 of 5 fresh first attempts broke a schema cap and needed the retry. Two of the three broke caps that Prompt v2 never states.",
+  "not_next": "q017's limitation is STORED_TEXT_INSUFFICIENT, an evidence-layer issue. It is not a generation problem, and no prompt change addresses it.",
+  "caveat": "Five fresh questions. A clean score on five does not show the absence of grounding or abstention failures. A later batch may change the classification."
+ }
+}
