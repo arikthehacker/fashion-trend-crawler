@@ -369,6 +369,9 @@ class Report:
     # what software or AI did for this report, written by the editor. optional:
     # a report without it is shown as "not recorded" on the site.
     ai_assistance: str = ""
+    # SHA-256 of the frozen evidence review snapshot this report was reviewed against
+    # (src/evidence_manifest.py). Required by the publish gate for new reports.
+    evidence_snapshot_sha256: str = ""
 
     def to_dict(self) -> dict:
         d = asdict(self)
@@ -665,6 +668,11 @@ def validate_report(data: dict) -> None:
             raise SchemaValidationError(
                 f"ai_assistance must be a non-empty string when present, got {ai_assistance!r}"
             )
+
+    snap = data.get("evidence_snapshot_sha256", "")
+    if snap and not (isinstance(snap, str) and len(snap) == SHA256_HEX_LENGTH
+                     and all(c in "0123456789abcdef" for c in snap)):
+        raise SchemaValidationError(f"evidence_snapshot_sha256 must be a lowercase 64-char hex digest, got {snap!r}")
 
     content_hash = data.get("content_hash", "")
     if content_hash:

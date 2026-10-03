@@ -40,7 +40,7 @@ EXP003A = {"accuracy": 0.833, "criterion": 0.85, "n": 150, "artifact": "models/a
 
 ITEM_SQL = """
 SELECT i.item_id, i.url, i.title, i.published_at, i.fetched_at, i.first_seen_at, i.first_seen_basis, i.lang,
-       o.domain, coalesce(s.sector_id, 'unclear'), coalesce(s.coarse_group, 'unclear')
+       o.domain, coalesce(s.sector_id, 'unclear'), coalesce(s.coarse_group, 'unclear'), i.content_hash
 FROM items i
 JOIN outlets o ON o.outlet_id = i.outlet_id
 LEFT JOIN outlet_sector_history h ON h.outlet_id = i.outlet_id
@@ -62,7 +62,7 @@ def load_window(con, start, end):
     for r in con.execute(ITEM_SQL, (lo, hi)):
         items[r[0]] = {"item_id": r[0], "url": r[1], "title": r[2] or "", "published_at": r[3], "retrieved_at": r[4],
                        "first_seen_at": r[5], "first_seen_basis": r[6], "lang": r[7] or "unknown",
-                       "outlet_domain": r[8], "sector": r[9], "sector_group": r[10]}
+                       "outlet_domain": r[8], "sector": r[9], "sector_group": r[10], "content_hash": r[11]}
     if not items:
         return items, {}
     marks = ",".join("?" * len(items))
@@ -114,7 +114,7 @@ def term_table(items, terms):
 
 
 EVIDENCE_KEYS = ["item_id", "url", "title", "outlet_domain", "sector", "sector_group", "published_at", "retrieved_at",
-                 "first_seen_at", "first_seen_basis", "lang", "style_set", "p_style", "terms"]
+                 "first_seen_at", "first_seen_basis", "content_hash", "lang", "style_set", "p_style", "terms"]
 
 
 def candidate_signals(items, terms, table):

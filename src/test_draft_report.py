@@ -83,7 +83,7 @@ class DraftTests(unittest.TestCase):
     def test_evidence_comes_from_the_store_with_provenance(self):
         e = self.draft()["top_signals"][0]["evidence_items"][0]
         for k in ("item_id", "url", "title", "outlet_domain", "sector", "published_at", "retrieved_at",
-                  "first_seen_at", "first_seen_basis", "style_set", "p_style", "terms"):
+                  "first_seen_at", "first_seen_basis", "content_hash", "style_set", "p_style", "terms"):
             self.assertIn(k, e)
         self.assertEqual(e["style_set"], ["yes"])
         self.assertEqual(e["first_seen_basis"], "live_insert")
@@ -124,7 +124,7 @@ class DraftTests(unittest.TestCase):
         errors = publish_gate_errors(r, "2026-10-05", None, None)
         self.assertTrue(any("review_status" in e for e in errors))
         self.assertTrue(any("human_editor_note" in e for e in errors))
-        self.assertTrue(any("evidence manifest missing" in e for e in errors))
+        self.assertTrue(any("evidence review snapshot missing" in e for e in errors))
 
     def test_drafter_never_writes_to_the_store(self):
         before = os.path.getmtime(self.db), os.path.getsize(self.db)

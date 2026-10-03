@@ -13,10 +13,11 @@
 # Reports dated after HISTORICAL_CUTOFF (every report from the item-store
 # pipeline on) must also be reviewed, carry an editor note on every signal,
 # and cite only items in the item store (owner decision Q21, 2026-10-03).
-# Proof of the last rule is a committed evidence manifest
-# (data/evidence/<report_date>.json, src/evidence_manifest.py). CI checks the
-# report against the manifest. Locally, the manifest is also checked against
-# the real store. --store-optional never waives the manifest.
+# Proof of the last rule is the committed, frozen evidence review snapshot
+# (data/evidence/<report_date>.snapshot.json, src/evidence_manifest.py) that
+# the report is bound to by evidence_snapshot_sha256. CI checks the snapshot's
+# fingerprint, binding and coverage. Locally, its identity fields are also
+# checked against the live store. --store-optional never waives the snapshot.
 #############################################################
 
 import argparse
@@ -27,7 +28,7 @@ from urllib.parse import urlparse
 
 import json
 
-from evidence_manifest import load_store_index, manifest_path, shape_errors, store_errors
+from evidence_manifest import load_store_index, snapshot_errors, snapshot_path, store_errors
 
 from report_schema import (
     SchemaValidationError,
@@ -63,38 +64,40 @@ def find_high_confidence_warnings(report_date, data):
 # The last report published before the item-store pipeline. Reports dated on or
 # before it are checked under the rules they were published under.
 HISTORICAL_CUTOFF = "2026-05-18"
-SKIP_STORE = object()  # the item store is knowingly unavailable (CI): the manifest is still required
+SKIP_STORE = object()  # the item store is knowingly unavailable (CI): the snapshot is still required
 
 
-def load_manifest(report_date):
-    path = manifest_path(report_date)
+def load_snapshot(report_date):
+    path = snapshot_path(report_date)
     if not os.path.exists(path):
         return None
     with open(path, encoding="utf-8") as f:
         return json.load(f)
 
 
-def new_report_errors(data, store, manifest):
-    """Owner decision Q21 and the step-3 review: rules for reports dated after
-    HISTORICAL_CUTOFF. The committed evidence manifest is required everywhere. Where the
-    item store exists, the manifest is also checked against it."""
+def new_report_errors(data, store, snapshot):
+    """Owner decision Q21 and the step-3 reviews: rules for reports dated after
+    HISTORICAL_CUTOFF. The frozen evidence review snapshot the report is bound to is
+    required everywhere. Where the item store exists, the snapshot's identity fields are
+    also checked against it. Later changes to fetched_at or content_hash in the live store
+    do not invalidate the snapshot."""
     errors = []
     if data.get("review_status") != "reviewed":
         errors.append(f"review_status is {data.get('review_status')!r}, and a new report needs 'reviewed' to publish")
     for i, signal in enumerate(data.get("top_signals", [])):
         if not (signal.get("human_editor_note") or "").strip():
             errors.append(f"top_signals[{i}] {signal.get('name', '')!r} has no human_editor_note")
-    errors.extend(shape_errors(manifest, data))
-    if store is SKIP_STORE or manifest is None:
+    errors.extend(snapshot_errors(snapshot, data))
+    if store is SKIP_STORE or snapshot is None:
         return errors
     if store is None:
-        errors.append("the item store is not available, so the evidence manifest could not be checked against it")
+        errors.append("the item store is not available, so the evidence snapshot could not be checked against it")
         return errors
-    errors.extend(store_errors(manifest, store))
+    errors.extend(store_errors(snapshot, store))
     return errors
 
 
-def publish_gate_errors(data, today, store=None, manifest=None):
+def publish_gate_errors(data, today, store=None, snapshot=None):
     """Integrity rules for anything in data/reports/ (the published archive).
     Schema validity is not enough: a report may exist only if it describes a
     week that has happened and every claim links to a specific fetched item.
@@ -126,7 +129,7 @@ def publish_gate_errors(data, today, store=None, manifest=None):
             if published and report_date and published > report_date:
                 errors.append(f"{label} evidence_items[{j}] published {published}, after the report date")
     if report_date > HISTORICAL_CUTOFF:
-        errors.extend(new_report_errors(data, store, manifest))
+        errors.extend(new_report_errors(data, store, snapshot))
     return errors
 
 
@@ -134,7 +137,7 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description="Validate every report in data/reports/.")
     ap.add_argument("--store-optional", action="store_true",
                     help="when the item store is missing (CI), skip only the store check; new reports still "
-                         "need a committed evidence manifest that covers their evidence")
+                         "need the committed evidence review snapshot they are bound to")
     args = ap.parse_args(argv)
     dates = list_report_dates()
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -143,7 +146,7 @@ def main(argv=None) -> int:
         store = SKIP_STORE
         if any(d > HISTORICAL_CUTOFF for d in dates):
             print("NOTE: item store not available. New reports were checked against their committed evidence "
-                  "manifests only.")
+                  "review snapshots only.")
 
     if not dates:
         print("No reports found in data/reports/ — nothing to validate.")
@@ -165,7 +168,7 @@ def main(argv=None) -> int:
             failures.append((report_date, str(exc)))
             continue
 
-        gate = publish_gate_errors(data, today, store, load_manifest(report_date))
+        gate = publish_gate_errors(data, today, store, load_snapshot(report_date))
         if gate:
             failures.append((report_date, "publish gate: " + "; ".join(gate)))
             continue
