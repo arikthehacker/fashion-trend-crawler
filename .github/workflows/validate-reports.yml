@@ -89,6 +89,9 @@ jobs:
       - name: EXP-005 holdout question and sufficiency-deck tests (no store, no network)
         run: python src/test_exp005_holdout.py
 
+      - name: EXP-005 holdout C2 runner tests (parity with answer_question, throwaway corpus, no network)
+        run: python src/test_exp005_holdout_c2.py
+
       - name: Validate published reports (schema + publish gate + non-blocking confidence warnings)
         run: python src/validate_all_reports.py --store-optional
 

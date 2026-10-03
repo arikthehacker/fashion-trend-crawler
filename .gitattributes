@@ -25,3 +25,6 @@
 /src/rag_validate.py text eol=lf
 /experiments/exp-005-grounded-generation/holdout/AMENDMENT_2026-10-03_sufficiency_instructions.md text eol=lf
 /experiments/exp-005-grounded-generation/holdout/reviews/sufficiency_reviews_v1_frozen.json text eol=lf
+/experiments/exp-005-grounded-generation/holdout/runs/c2-v1/preflight.json text eol=lf
+/experiments/exp-005-grounded-generation/holdout/runs/c2-v1/run_manifest.json text eol=lf
+/src/exp005_holdout_c2.py text eol=lf
