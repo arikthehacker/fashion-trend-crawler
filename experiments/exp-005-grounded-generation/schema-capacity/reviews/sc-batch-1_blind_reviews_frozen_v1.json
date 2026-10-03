@@ -1,0 +1,40 @@
+{
+ "batch_sha256": "2edc6e3053cb4d2aafc01d1fd737322ec6301d94ae70de9347bae45174408174",
+ "blind_key_opened": false,
+ "blind_key_sha256": "6ce36e5af843747809116456a91e39a1e98040f8fb4d398907b7f3cefde185c2",
+ "by_kind": {
+  "abstention": 6,
+  "answer_completeness": 10,
+  "claim_support": 41,
+  "context_sufficiency": 8,
+  "limitation_uncited": 22
+ },
+ "comparison_rule_sha256": "6d7db204c3ef16733295cc88dae4c21471c96b2e29b3e59fccd0b27e7809d54a",
+ "first_judgment_at": "2026-10-03T05:22:28Z",
+ "frozen_at": "2026-10-03T06:27:20Z",
+ "frozen_review_sha256": "14cf96ba406fc54fb7da73ad7324509ec12ec98044d0147a3b86bbc9dd8954da",
+ "judgments": 87,
+ "last_judgment_at": "2026-10-03T06:14:28Z",
+ "log_rows": 90,
+ "log_sha256": "6c602f01ffe94048a90b248346d8e0d31de4b8612010fe7ab68bf2abb3eb1904",
+ "metric_code_sha256": {
+  "exp005_review_v2.py": "c01d19cd95529fad80d2d3511b508651b3d3e4776793de98ec85d61bc84c69b8",
+  "exp005_schema.py": "5f79634971e0d14caf29d5ed600fac35a20b9599963c2694c416291bb93927cc"
+ },
+ "metrics_definition_sha256": "d6f67839d1a6b757775e6f109a20e73acd03e75769e470764a4f5aa54653ea06",
+ "notes": 0,
+ "outputs_sha256": "c94127877047110c7c83d876322a0af1f5cb5d5a55d16be39a6dd4673b2d3829",
+ "packets_verified": 8,
+ "prompt_v2_1_sha256": "103011d78ed3abfc2a4734415f6cc501daad54e448c0a89be39e681ed9e017b4",
+ "prompt_v2_sha256": "efea461f8e079eb8c25a3e8f5acb371d5e01b9bf18c617aec123b01f62a7afce",
+ "protocol_sha256": "1350b3a6b57701639bbc140fa0248a0be7b03d3c2135d481012a4eeed5c38cdd",
+ "review": "Schema-capacity blind review (EXP-005 SC-1)",
+ "reviewers": [
+  "ariella"
+ ],
+ "run": "sc-batch-1",
+ "schema_v2_sha256": "47b747c14b5301df9a790538205e8fdd1014019a136671e38e8d094f06c4a5ee",
+ "tasks": 87,
+ "tasks_answered_more_than_once": 3,
+ "unresolved": 0
+}
