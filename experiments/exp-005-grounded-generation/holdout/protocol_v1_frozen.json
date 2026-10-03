@@ -1,0 +1,171 @@
+{
+ "status": "FROZEN 2026-10-03 by owner approval (directive C1 and the h010 ruling), before any retrieval for the holdout questions. Changing anything here after retrieval makes the holdout a new experiment.",
+ "version": "exp005-holdout-protocol-v1",
+ "experiment": "EXP-005 final generation holdout (C1 design and packet sufficiency, C2 one-time evaluation)",
+ "decided_by": "the owner, directive C1 (2026-10-03)",
+ "identity": {
+  "retriever": {
+   "version": "exp004-retriever-v1",
+   "file": "experiments/exp-004-grounded-retrieval/frozen/retriever_v1.json",
+   "sha256": "3b55fcebbb08ec54b87198ab4a18e2f1b2bd0b922c6677428f525ceeadfd6b21",
+   "call": {
+    "method": "hybrid",
+    "lexical": "auto",
+    "k": 10
+   }
+  },
+  "index": {
+   "path": "data/index/exp004-v1",
+   "cutoff_first_seen_at": "2026-09-30T08:00:00Z",
+   "items": 7955,
+   "refresh": "none for C1 or C2; a refreshed index is C3 and a new retrieval version"
+  },
+  "generation_protocol": {
+   "file": "experiments/exp-005-grounded-generation/protocol/protocol_v2.json",
+   "sha256": "87e88618c83167157c7ce0102c50b9a9ca173bf82309841b3f82e3d60d2c6739"
+  },
+  "prompt_v2_sha256": "efea461f8e079eb8c25a3e8f5acb371d5e01b9bf18c617aec123b01f62a7afce",
+  "schema_v2_sha256": "47b747c14b5301df9a790538205e8fdd1014019a136671e38e8d094f06c4a5ee",
+  "application": {
+   "entry_point": "src/rag_answer.py ask_ari3 (aligned in b808419)",
+   "sha256": "03bf28697adddf97f68f50ddb727a79924b3628259c01f9e753f69e171c0a4f4",
+   "guards": "verify_identity() fails closed on any mismatch of the fingerprints above, the evaluated code, the provider settings, the retriever code and the index files"
+  },
+  "provider_settings": "as protocol_v2.json provider_settings_check: deepseek-flash, temperature 0, top_p 1, max_tokens 1000, thinking disabled, JSON output, 60 s timeout, at most 2 transport retries",
+  "holdout_code": {
+   "file": "src/exp005_holdout.py",
+   "sha256": "7d850de13a4c7261ac799d650fc7034e1cb5ce18bb4a4b8596f23c2417493f29",
+   "role": "question records, store snapshot, retrieval-only packets, parity check and the sufficiency deck"
+  }
+ },
+ "retrieval_query_policy": {
+  "rule": "retrieval_query == question, byte for byte. No curated query, hidden keywords, rewriting or expansion, and no per-question override.",
+  "enforced_by": "src/exp005_holdout.py HoldoutQuestion validator; checked again when questions are frozen and when packets are built",
+  "why": "the holdout evaluates what a user of ask_ari3 would get. Query rewriting, if ever wanted, is a separate evaluated component."
+ },
+ "questions": {
+  "count": 30,
+  "categories_primary": {
+   "direct": 8,
+   "synthesis": 7,
+   "temporal": 5,
+   "filtered": 5,
+   "stress": 5
+  },
+  "freshness": "no overlap with the 60 EXP-004 drafts, the 56 frozen EXP-004 questions (which include every EXP-005 DEV and SC-1 question) or any earlier generation deck. Fresh means a new subject or a new requested fact, not a paraphrase. The owner rules on every flagged pair.",
+  "record_fields": [
+   "question_id",
+   "question",
+   "retrieval_query",
+   "filters",
+   "categories",
+   "primary_category",
+   "probes"
+  ],
+  "forbidden_fields": "no expected answer, no expected citations, no answerability label (the record model rejects unknown fields)",
+  "authoring_blindness": "questions were written before any retrieval or store search for them. Earlier question TEXT was read only to avoid duplicates. The drafter had incidental exposure from earlier work to aggregate lexicon term counts in the 2026-09-28 report dry run and to some item titles from the EXP-003A error review, and steered subjects away from them.",
+  "file": "experiments/exp-005-grounded-generation/holdout/questions_v1_frozen.jsonl",
+  "sha256": "a6b789672fe2ac25f76f07fd7f571a3dfcb8e0a2c6d1b32ba7745d04754236ac",
+  "any_category": {
+   "temporal": 6,
+   "note": "h025 is filtered (primary) and temporal"
+  }
+ },
+ "c1_sequence_after_question_approval": [
+  "freeze this protocol and questions_v1_frozen.jsonl, record their SHA-256, commit and push before any retrieval",
+  "snapshot: copy the item store once with SQLite's online backup to data/store/exp005_holdout/store_snapshot_c1.db (local, never committed, never overwritten) and record its SHA-256",
+  "retrieval only (src/exp005_holdout.py packets, run once): for each question, verify_identity(), then the calls exp005_v2.answer_question makes before its provider step: frozen hybrid retrieval (k 10) with the question text as the query, the context check, serializer exp005-context-v1 and the Prompt v2 messages. No provider is constructed and nothing is generated. No question is edited because retrieval looks weak",
+  "integrity per question: query equals question; retrieval deterministic (run twice); at most 10 items; every item in the frozen index and first seen before the cutoff; context valid; and parity with ask_ari3 itself, run with a local ScriptedProvider holding no response (same item IDs, same context_sha256, same messages, stopped before any attempt). Also: the snapshot hash is unchanged after the run and the live provider module was never loaded",
+  "packet bodies stay local (data/store/exp005_holdout/packets_v1.jsonl). The manifest packets_v1_manifest.json holds item IDs and fingerprints only, no headline or excerpt text, and is committed no later than the frozen sufficiency review",
+  "packet-sufficiency review in ARI3 Review (queue exp005_holdout_sufficiency), blind to any output",
+  "freeze the sufficiency review, fingerprint it, commit and push, and verify no generation has occurred. C1 ends here. C2 needs separate owner authorization"
+ ],
+ "packet_construction": {
+  "serializer": "exp005-context-v1 (unchanged): at most 10 items in frozen hybrid ranking order; item_id, outlet, sector_group, published_at, first_seen_at (replay only), language, headline (first 300 characters), excerpt (first 500 characters), url; at most 12,000 characters",
+  "empty_packet": "system_abstention: the provider is not called. The question stays in the deck and is reported.",
+  "fingerprints": "context_sha256 = SHA-256 of json.dumps(context, ensure_ascii=False), exactly as exp005_v2.answer_question records it; messages_sha256 = the same over the Prompt v2 messages; packets_sha256 = the same over the manifest's packet rows",
+  "corpus": "the C1 store snapshot, opened read-only; the frozen EXP-004 index"
+ },
+ "review_boundary": "Every human judgment (C1 sufficiency, C2 semantic review) uses only the exact evidence packet supplied to the model. No full articles, opened URLs, outside search or outside knowledge. Corpus or source sufficiency is a separate analysis and is never mixed into these metrics.",
+ "c2": {
+  "run_once": "use the frozen C1 questions and packets, Prompt v2, AnswerV2 and the existing one-retry schema rule, with the approved provider, once. No prompt change, no question deletion and no rerun after any output exists.",
+  "packet_identity": "before any provider call, every packet is rebuilt from the C1 store snapshot (its SHA-256 must match the manifest) and must match its frozen context_sha256 and messages_sha256. Any mismatch stops C2 before the first call and is reported as a technical failure for the owner.",
+  "cost_cap_usd": 0.5,
+  "cost_rule": "Operational safety bound, not a performance hypothesis. Pre-run: the conservative projected total for the complete one-time C2 run (every input character counted as a token, two attempts per question, full max_tokens output, peak prices, computed from the frozen packets) must be <= 0.50 USD; if it exceeds 0.50 USD, C2 does not start. During the run: cumulative actual provider spend must not exceed 0.50 USD; if the next call could exceed it, the run stops and is recorded as NOT EVALUABLE under this protocol. No response to the cap may reduce the question count, change model parameters, alter Prompt v2, alter retry behavior, delete expensive questions or change the protocol after outputs are seen.",
+  "technical_failures": "a provider_error after the transport retries is recorded, not retried, and counted as a failure under H5 and H6. No question is rerun.",
+  "review": "a single-condition review deck in ARI3 Review, judged against the exact packet: claim_support (SUPPORTED / UNSUPPORTED / UNSURE) for every claim and every cited limitation; limitation_uncited (NO / YES / UNSURE) for every uncited limitation; answer_completeness (COMPLETE / PARTIAL / INSUFFICIENT / UNSURE) for every answered question. Abstention correctness is derived from the frozen C1 sufficiency label, not judged again. The review log is append-only and frozen before scoring."
+ },
+ "metrics": {
+  "sufficiency": "the frozen C1 packet label per question: SUFFICIENT, INSUFFICIENT or UNSURE. A packet labelled UNSURE is excluded from both the H2 (SUFFICIENT) and H3 (INSUFFICIENT) denominators, is never translated into either label, and is reported separately.",
+  "claim_support_precision": "SUPPORTED / all factual statements reviewed (every claim and every cited limitation in every output that passed validation). A statement judged UNSURE counts as not supported for this metric. The raw UNSURE judgment is preserved in the review record and never rewritten to UNSUPPORTED; UNSURE counts are reported separately.",
+  "grounded_answer_rate": "among SUFFICIENT questions: the share that were answered (status answered) with every claim and cited limitation judged SUPPORTED and no uncited limitation judged YES. A statement judged UNSURE means the answer is not fully grounded. An abstention, a rejected output or a provider error on a SUFFICIENT question counts as not grounded.",
+  "abstention": "among INSUFFICIENT questions: correct = abstained (model_abstention or system_abstention); missed = answered. Incorrect abstentions = abstained on a SUFFICIENT question, reported separately. correct_abstention_rate = correct / INSUFFICIENT questions.",
+  "complete_answer_rate": "among SUFFICIENT questions that were answered: COMPLETE / (all answered SUFFICIENT questions with a non-UNSURE completeness judgment). UNSURE judgments are reported.",
+  "deterministic_integrity_failures": "count of outputs with status rejected_citation or context_invalid, any validation violation (citation outside the packet, nonexistent item, filter or temporal violation, missing provenance), an output still invalid after the schema retry (rejected_schema), or a provider_error.",
+  "final_schema_validity": "outputs that parse into AnswerV2 after at most one schema retry / questions with at least one provider call. First-attempt validity is reported separately.",
+  "secondary": [
+   "first-attempt schema validity",
+   "schema retries",
+   "uncited item-specific limitations",
+   "claims per answer",
+   "answered vs abstained",
+   "sufficiency distribution",
+   "retrieval latency",
+   "generation latency",
+   "prompt and completion tokens",
+   "estimated cost",
+   "answer length",
+   "citations per answer"
+  ]
+ },
+ "hypotheses": {
+  "rule": "point-estimate criteria. A confidence interval that crosses a threshold does not rescue a failed criterion. Intervals are reported descriptively.",
+  "H1": "claim_support_precision >= 0.95",
+  "H2": "grounded_answer_rate >= 0.90 (SUFFICIENT questions)",
+  "H3": "correct_abstention_rate >= 0.90 (INSUFFICIENT questions); correct, incorrect and missed abstentions reported separately",
+  "H4": "complete_answer_rate >= 0.80 (answered SUFFICIENT questions)",
+  "H5": "deterministic_integrity_failures == 0",
+  "H6": "final_schema_validity == 1.00",
+  "not_evaluable": "a hypothesis whose denominator is 0 (for example, no INSUFFICIENT question) is reported as NOT EVALUABLE, not as supported"
+ },
+ "failure_classification": [
+  "UNSUPPORTED_CLAIM",
+  "UNSUPPORTED_CITED_LIMITATION",
+  "UNCITED_ITEM_LIMITATION",
+  "INCORRECT_ABSTENTION",
+  "MISSED_ABSTENTION",
+  "GENERATION_OMISSION (PARTIAL or INSUFFICIENT completeness)",
+  "SCHEMA_FAILURE",
+  "CITATION_VALIDATION_FAILURE",
+  "PROVIDER_ERROR",
+  "PACKET_IDENTITY_FAILURE (C2 stopped before any call)",
+  "COST_CAP_STOP"
+ ],
+ "owner_rulings_c1": {
+  "date": "2026-10-03",
+  "questions": "h001-h009 and h011-h030 approved. h010 replaced twice: the men's spring/summer 2027 question (too close to q037) and then a knitwear question (same subject as q036) were withdrawn; the owner's scarves question was screened (no shared content words, no exact duplicate) and approved.",
+  "overlaps_accepted_as_fresh": [
+   "h007 vs q005",
+   "h028 vs q038",
+   "h016-h020 temporal question forms",
+   "h023 French-language form",
+   "h009 autumn form",
+   "h021/h024 outlet forms",
+   "common-word-only flags"
+  ],
+  "freshness_rule": "question-template reuse alone is not leakage; freshness concerns the substantive subject, the requested information and the constraints",
+  "unsure": "packet-sufficiency UNSURE and claim-support UNSURE are distinct; see metrics.sufficiency and metrics.claim_support_precision",
+  "cost": "hard actual-spend cap 0.50 USD replaces 0.25 USD; see c2.cost_rule"
+ },
+ "sufficiency_review": {
+  "prompt": "Does this evidence packet hold enough evidence to answer the question, within its constraints? Judge only what is shown here.",
+  "labels": {
+   "SUFFICIENT": "the packet alone holds enough evidence to answer the question within its constraints",
+   "INSUFFICIENT": "it does not; abstaining is the correct response",
+   "UNSURE": "the reviewer cannot decide; excluded from the H2 and H3 denominators and reported separately"
+  },
+  "card": "the question, the constraints description and every packet item as serialized (outlet, sector group, published_at, first_seen_at in replay mode, language, headline, excerpt, URL text). Categories and probe text are not shown. Cards come in a fixed shuffled order (seed 20261003). Empty packets get a card too",
+  "log": "experiments/exp-005-grounded-generation/holdout/reviews/sufficiency_reviews_v1.jsonl, append-only, latest answer wins; optional notes are qualitative and preserved",
+  "boundary": "no opened URLs, no search, no outside knowledge; the reviewer scores, never the machine"
+ }
+}

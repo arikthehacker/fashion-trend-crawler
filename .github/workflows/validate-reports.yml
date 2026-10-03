@@ -86,6 +86,9 @@ jobs:
       - name: Lexicon v1 sense-check deck tests (throwaway store)
         run: python src/test_lexicon_sense.py
 
+      - name: EXP-005 holdout question and sufficiency-deck tests (no store, no network)
+        run: python src/test_exp005_holdout.py
+
       - name: Validate published reports (schema + publish gate + non-blocking confidence warnings)
         run: python src/validate_all_reports.py --store-optional
 
