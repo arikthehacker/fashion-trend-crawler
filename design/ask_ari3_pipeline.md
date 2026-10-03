@@ -1,6 +1,6 @@
 # ask_ari3 pipeline identity
 
-**Aligned 2026-10-03.** Application orchestration is now aligned to the Prompt v2 pipeline evaluated on EXP-005 development data (dev-batch-2 and SC-1 condition A). Final generation holdout evaluation has not yet run. Nothing here is a claim about answer quality.
+**Aligned 2026-10-03 in commit `b808419`.** Application orchestration is now aligned to the Prompt v2 pipeline evaluated on EXP-005 development data (dev-batch-2 and SC-1 condition A). Final generation holdout evaluation has not yet run. Nothing here is a claim about answer quality.
 
 ## What `ask_ari3` runs
 
