@@ -1,2 +1,25 @@
 # Evaluation data and judgment logs are fingerprinted, so keep them byte-identical across checkouts.
 *.jsonl text eol=lf
+
+# EXP-005 holdout (C1): files whose SHA-256 the frozen C1 protocol, protocol v2, the frozen retriever
+# or the C1 packet manifest pins. LF on every checkout, so raw bytes match the recorded fingerprints.
+/experiments/exp-004-grounded-retrieval/frozen/retriever_v1.json text eol=lf
+/experiments/exp-005-grounded-generation/holdout/packets_v1_manifest.json text eol=lf
+/experiments/exp-005-grounded-generation/holdout/protocol_v1_frozen.json text eol=lf
+/experiments/exp-005-grounded-generation/holdout/questions_v1_frozen.jsonl text eol=lf
+/experiments/exp-005-grounded-generation/protocol/prompt_v2.txt text eol=lf
+/experiments/exp-005-grounded-generation/protocol/protocol_v2.json text eol=lf
+/src/exp005.py text eol=lf
+/src/exp005_holdout.py text eol=lf
+/src/exp005_v2.py text eol=lf
+/src/item_store.py text eol=lf
+/src/llm_deepseek.py text eol=lf
+/src/llm_provider.py text eol=lf
+/src/rag_answer.py text eol=lf
+/src/rag_corpus.py text eol=lf
+/src/rag_eval.py text eol=lf
+/src/rag_index.py text eol=lf
+/src/rag_retrieve.py text eol=lf
+/src/rag_schema.py text eol=lf
+/src/rag_select.py text eol=lf
+/src/rag_validate.py text eol=lf
