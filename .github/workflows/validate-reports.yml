@@ -57,8 +57,11 @@ jobs:
 
       - name: EXP-004 grounded answers, validators and harness (scripted provider, no network)
         run: |
-          python src/test_rag_answer.py
+          python src/test_rag_answer_exp004.py
           python src/test_rag_gen_eval.py
+
+      - name: ask_ari3 aligned to the evaluated Prompt v2 pipeline (scripted provider, no network)
+        run: python src/test_ask_ari3.py
 
       - name: DeepSeek adapter tests (fake HTTP session, no key)
         run: python src/test_llm_deepseek.py

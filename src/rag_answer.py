@@ -1,136 +1,189 @@
-"""ask_ari3: grounded answers from ARI3's stored evidence.
+"""ask_ari3: the application entry point for grounded answers from ARI3's stored evidence.
 
-  query and filters
-  -> deterministic retrieval (rag_retrieve.search)
-  -> context check: every item exists and passes every filter and the temporal cutoff
-  -> bounded context (at most MAX_CONTEXT_ITEMS items, MAX_EXCERPT_CHARS each)
-  -> provider.generate_json (llm_provider interface)
-  -> parse into GroundedAnswer and validate every citation (rag_validate)
-  -> AskResponse: answered, insufficient_evidence, rejected or error
+It runs the Prompt v2 pipeline evaluated in EXP-005 (dev-batch-2 and SC-1 condition A) by
+calling the frozen EXP-005 code itself, so the application and the evaluated path cannot
+drift apart:
 
-Rules:
-- With no eligible evidence the provider is not called and the answer is
-  insufficient_evidence.
-- A schema failure gets at most one retry, which shows the model the parser's error.
-  A citation failure is not retried: the answer is rejected and its claims withheld.
-- URLs, outlets and dates in the response come from the store, never from the model.
-- Nothing is written anywhere. Generated text is never evidence.
+  question and filters
+  -> verify_identity(): pinned fingerprints of protocol v2, Prompt v2, schema v2, the v2
+     code, the provider settings and the frozen EXP-004 retriever and index. Any mismatch
+     raises PipelineIdentityError before retrieval or any provider call (fail closed).
+  -> exp005_v2.answer_question(), unchanged:
+       frozen hybrid retrieval (top 10) -> context check -> serializer exp005-context-v1
+       -> Prompt v2 -> AnswerV2 parse (one retry on a schema failure only)
+       -> deterministic validation of claims and cited limitations
+       -> render(): the claims joined by code, no model-written summary
+  -> a structured result for a future service layer.
+
+No live call happens by default. A live provider is used only when the caller passes
+allow_live=True, and the DeepSeek adapter still refuses unless ARI3_LIVE_LLM=approved.
+Nothing is written anywhere. Generated text is never evidence.
+
+The historical EXP-004 orchestration lives in rag_answer_exp004.py and is not reachable
+from here.
 """
 
 import json
-import time
+import os
+from dataclasses import dataclass
 
-from rag_corpus import get_items
-from rag_retrieve import search
-from rag_schema import SCHEMA_VERSION, AskResponse, Citation, Filters, SearchArgs, TemporalScope
-from rag_validate import validate_answer, validate_context
-from llm_provider import ProviderError
+import exp005 as v1
+import exp005_v2 as v2
+import rag_select as rs
+from llm_provider import LiveCallNotAllowed
+from rag_eval import sha256_file
+from rag_schema import Filters
 
-PROMPT_VERSION = "exp004-prompt-v1"
-MAX_CONTEXT_ITEMS = 10
-MAX_EXCERPT_CHARS = 500
-MAX_ATTEMPTS = 2
-
-SYSTEM_PROMPT = """You answer questions about ARI3's stored evidence: news items, each with a headline and a short feed excerpt.
-Use only the items in CONTEXT. Do not use outside knowledge.
-Return one JSON object and nothing else:
-{"insufficient_evidence": false,
- "claims": [{"text": "one factual statement", "supporting_item_ids": [123, 456]}],
- "limitations": ["what the evidence cannot show"]}
-Rules:
-- Every claim cites one or more item_id values from CONTEXT that support it.
-- Say only what the cited headlines and excerpts state. Report, do not interpret.
-- If CONTEXT does not answer the question, return {"insufficient_evidence": true, "claims": [], "limitations": ["..."]}.
-- Neutral voice. No first person, no hype, no shopping advice. State uncertainty plainly.
-- Items are excerpts, not full articles. Do not claim more than an excerpt shows.
-- Do not write URLs, outlet names or dates unless they appear in the cited item."""
+PIPELINE = "ari3-ask-prompt-v2"
+# Pinned identity of the evaluated pipeline. Everything else is checked through these.
+EXPECTED = {
+    "protocol_v2_sha256": "87e88618c83167157c7ce0102c50b9a9ca173bf82309841b3f82e3d60d2c6739",
+    "prompt_v2_sha256": "efea461f8e079eb8c25a3e8f5acb371d5e01b9bf18c617aec123b01f62a7afce",
+    "schema_v2_sha256": "47b747c14b5301df9a790538205e8fdd1014019a136671e38e8d094f06c4a5ee",
+    "retriever_v1_sha256": "3b55fcebbb08ec54b87198ab4a18e2f1b2bd0b922c6677428f525ceeadfd6b21",
+}
+FROZEN_INDEX_DIR = rs.INDEX_DIR
 
 
-def build_context(evidence):
-    """The bounded context shown to the model, in retrieval order."""
-    return [{"item_id": e.item_id, "outlet": e.outlet, "published_at": e.published_at, "language": e.lang,
-             "title": e.title or "", "excerpt": (e.excerpt or "")[:MAX_EXCERPT_CHARS]}
-            for e in evidence[:MAX_CONTEXT_ITEMS]]
+class PipelineIdentityError(RuntimeError):
+    """The code, prompt, schema, settings or index differ from the evaluated pipeline."""
 
 
-def messages_for(query, filters, context, schema_error=None):
-    user = {"question": query, "constraints": filters.model_dump(mode="json", exclude_none=True), "CONTEXT": context}
-    messages = [{"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": json.dumps(user, ensure_ascii=False)}]
-    if schema_error:
-        messages.append({"role": "user", "content": f"Your previous output did not match the required JSON: "
-                                                    f"{schema_error[:300]}. Return only the JSON object."})
-    return messages
+def _schema_sha():
+    import hashlib
+    return hashlib.sha256(v2.schema_json().encode()).hexdigest()
 
 
-def _scope(filters, citations):
-    dates = sorted(c.published_at for c in citations)
-    return TemporalScope(temporal_mode=filters.temporal_mode, as_of=filters.as_of, start_date=filters.start_date,
-                         end_date=filters.end_date, evidence_published_from=dates[0] if dates else None,
-                         evidence_published_to=dates[-1] if dates else None)
+def _index_fingerprints():
+    return rs.code_and_index_fingerprints()
 
 
-def ask_ari3(query, filters=None, as_of=None, *, provider, corpus, index, method="hybrid", k=MAX_CONTEXT_ITEMS,
-             lexical="auto", retrieval_query=None):
-    """Answer `query` from stored evidence. `retrieval_query`, when given, is the text sent
-    to the retriever instead of the question (EXP-004 questions carry one). Turning a
-    question into a retrieval query automatically is not part of v1."""
-    filters = filters or Filters()
-    if as_of is not None:
-        if filters.as_of not in (None, as_of):
-            raise ValueError("as_of given twice with different values")
-        filters = Filters(**dict(filters.model_dump(), as_of=as_of))
-    args = SearchArgs(query=retrieval_query or query, filters=filters, method=method, k=min(k, MAX_CONTEXT_ITEMS))
-    t0 = time.perf_counter()
-    result = search(corpus, index, args, lexical)
-    hits = result.hits
-    context = build_context([h.evidence for h in hits])
-    context_ids = [c["item_id"] for c in context]
-    debug = {"retrieval": {"method": method, "lexical": lexical, "k": args.k, "query": args.query,
-                           "eligible_items": result.eligible_items,
-                           "hits": [{"item_id": h.evidence.item_id, "rank": h.rank, "score": h.score,
-                                     "ranks_by_method": h.ranks_by_method} for h in hits],
-                           "corpus_fingerprint": result.corpus_fingerprint},
-             "prompt_version": PROMPT_VERSION, "schema_version": SCHEMA_VERSION, "provider": provider.config(),
-             "attempts": []}
+def verify_identity():
+    """Check every fingerprint of the evaluated pipeline. Returns the identity on success,
+    raises PipelineIdentityError listing each mismatch otherwise."""
+    problems = []
+    if sha256_file(v2.PROTOCOL_V2) != EXPECTED["protocol_v2_sha256"]:
+        problems.append("protocol_v2.json differs from the pinned fingerprint")
+    with open(v2.PROTOCOL_V2, encoding="utf-8") as f:
+        protocol = json.load(f)
+    prompt_sha = sha256_file(v2.PROMPT_V2)
+    if prompt_sha != EXPECTED["prompt_v2_sha256"] or prompt_sha != protocol["prompt"]["sha256"]:
+        problems.append(f"Prompt v2 file differs (sha256 {prompt_sha[:12]})")
+    schema_sha = _schema_sha()
+    if schema_sha != EXPECTED["schema_v2_sha256"] or schema_sha != protocol["schema"]["sha256"]:
+        problems.append(f"schema v2 differs (sha256 {schema_sha[:12]})")
+    code = {f: sha256_file(os.path.join(v1.SRC, f)) for f in v2.CODE_FILES_V2}
+    changed = sorted(f for f in code if code[f] != protocol["code_sha256"].get(f))
+    if changed:
+        problems.append(f"evaluated code changed: {changed}")
+    if protocol["provider_settings_check"] != v1.PROVIDER_SETTINGS:
+        problems.append("provider settings differ from protocol v2")
+    if sha256_file(rs.RETRIEVER_PATH) != EXPECTED["retriever_v1_sha256"]:
+        problems.append("retriever_v1.json differs from the pinned fingerprint")
+    with open(rs.RETRIEVER_PATH, encoding="utf-8") as f:
+        retriever = json.load(f)
+    rcode, rindex = _index_fingerprints()
+    if rcode != retriever["code_sha256"]:
+        problems.append(f"retriever code changed: {sorted(k for k in rcode if rcode[k] != retriever['code_sha256'].get(k))}")
+    if rindex != retriever["index_files_sha256"]:
+        problems.append("the retrieval index differs from the frozen EXP-004 index")
+    if retriever["configuration"]["call"] != {"method": "hybrid", "lexical": "auto", "k": v1.MAX_ITEMS}:
+        problems.append("the frozen retriever call no longer matches the pipeline's retrieval call")
+    if problems:
+        raise PipelineIdentityError("ask_ari3 refuses to run: " + "; ".join(problems))
+    return {"pipeline": PIPELINE, **EXPECTED, "protocol": protocol["version"], "schema": protocol["schema"]["version"],
+            "serializer": v1.SERIALIZER_VERSION, "retriever": retriever["version"],
+            "index_cutoff_first_seen_at": retriever["configuration"]["index"]["cutoff_first_seen_at"],
+            "limits": {"context_items": v1.MAX_ITEMS, "headline_chars": v1.MAX_HEADLINE,
+                       "excerpt_chars": v1.MAX_EXCERPT, "context_chars": v1.MAX_CONTEXT_CHARS,
+                       "claims": protocol["schema"]["max_claims"], "attempts": v1.MAX_ATTEMPTS},
+            "provider_settings": v1.PROVIDER_SETTINGS}
 
-    def respond(status, answer=None, message="", validation=None):
-        citations = []
-        if answer is not None:
-            cited = list(dict.fromkeys(i for c in answer["claims"] for i in c["supporting_item_ids"]))
-            citations = [Citation(**e.model_dump(include=set(Citation.model_fields))) for e in get_items(corpus, cited)]
-        debug["latency_s"] = round(time.perf_counter() - t0, 3)
-        return AskResponse(status=status, query=query, filters=filters,
-                           claims=answer["claims"] if answer else [], citations=citations,
-                           limitations=answer["limitations"] if answer else [],
-                           temporal_scope=_scope(filters, citations), message=message,
-                           validation=validation or {}, debug=debug)
 
-    bad_context = validate_context(corpus, context_ids, filters)
-    if bad_context:
-        return respond("error", message="retrieved context failed validation; the provider was not called",
-                       validation={"context_violations": bad_context})
-    if not context:
-        return respond("insufficient_evidence", message="no stored evidence satisfies the question's filters",
-                       validation={"context_items": 0})
+@dataclass(frozen=True)
+class AppQuestion:
+    """The fields exp005_v2.answer_question reads from a question."""
+    question_id: str
+    question: str
+    query: str
+    filters: Filters
 
-    schema_error = None
-    for attempt in range(1, MAX_ATTEMPTS + 1):
-        try:
-            out = provider.generate_json(messages_for(query, filters, context, schema_error))
-        except ProviderError as e:
-            return respond("error", message=str(e))
-        report = validate_answer(corpus, out.text, context_ids, filters)
-        debug["attempts"].append({"attempt": attempt, "usage": out.usage, "latency_s": round(out.latency_s, 3),
-                                  "request_id": out.request_id, "finish_reason": out.finish_reason,
-                                  "schema_valid": report["schema_valid"], "raw_output": out.text[:4000]})
-        if report["schema_valid"] or attempt == MAX_ATTEMPTS:
-            break
-        schema_error = report["schema_error"]
-    summary = {k: v for k, v in report.items() if k != "answer"}
-    summary["context_items"] = len(context_ids)
-    if not report["valid"]:
-        return respond("rejected", message="the answer failed validation and is withheld", validation=summary)
-    answer = report["answer"]
-    return respond("insufficient_evidence" if answer["insufficient_evidence"] else "answered", answer=answer,
-                   validation=summary)
+
+def _live_provider():
+    import llm_deepseek
+    p = v1.PROVIDER_SETTINGS
+    return llm_deepseek.DeepSeekProvider(model=p["model"], temperature=p["temperature"], top_p=p["top_p"],
+                                         max_tokens=p["max_tokens"], timeout=p["timeout_s"],
+                                         max_retries=p["transport_retries"], thinking=p["thinking"], allow_live=True)
+
+
+def _citations(corpus, answer):
+    from rag_corpus import get_items
+    ids = [i for c in answer["claims"] for i in c["supporting_item_ids"]] + \
+        [i for lim in answer["limitations"] for i in lim["supporting_item_ids"]]
+    return [{"item_id": e.item_id, "url": e.url, "title": e.title, "outlet": e.outlet, "sector": e.sector,
+             "published_at": e.published_at, "first_seen_at": e.first_seen_at, "first_seen_basis": e.first_seen_basis}
+            for e in get_items(corpus, list(dict.fromkeys(ids)))]
+
+
+def ask_ari3(question, filters=None, *, provider=None, allow_live=False, corpus=None, index=None,
+             retrieval_query=None):
+    """Answer `question` from stored evidence with the evaluated Prompt v2 pipeline.
+
+    `filters` is a rag_schema.Filters or a dict of its fields. `retrieval_query`, when given,
+    is sent to the retriever instead of the question. The EXP-005 runs used each frozen
+    question's curated retrieval query. Without one, the question text itself is used.
+
+    Raises PipelineIdentityError before anything else if the pipeline differs from the one
+    evaluated, and LiveCallNotAllowed if a live provider would be used without allow_live."""
+    identity = verify_identity()
+    live = provider is None or getattr(provider, "name", "") != "scripted"
+    if live and not allow_live:
+        raise LiveCallNotAllowed("ask_ari3 makes no live call unless the caller passes allow_live=True "
+                                 "(and the adapter also requires ARI3_LIVE_LLM=approved)")
+    if provider is None:
+        provider = _live_provider()
+    if filters is None:
+        filters = Filters()
+    elif isinstance(filters, dict):
+        filters = Filters(**filters)
+    if corpus is None:
+        from rag_corpus import open_corpus
+        corpus = open_corpus()
+    if index is None:
+        from rag_index import Index
+        index = Index(FROZEN_INDEX_DIR)
+    cost_fn = None
+    if live:
+        import llm_deepseek
+        cost_fn = llm_deepseek.estimate_cost
+    with open(v2.PROMPT_V2, encoding="utf-8") as f:
+        prompt_text = f.read()
+    q = AppQuestion("ask", question, retrieval_query or question, filters)
+    record = v2.answer_question(q, provider, corpus, index, prompt_text, cost_fn)
+    status = record["status"]
+    accepted = status in ("answered", "model_abstention")
+    answer = record.get("answer") if accepted else None
+    messages = {"system_abstention": "no stored evidence satisfies the question's filters; the provider was not called",
+                "context_invalid": "retrieved context failed validation; the provider was not called",
+                "rejected_schema": "the model's output did not match the answer schema after one retry",
+                "rejected_citation": "the answer failed citation validation and is withheld",
+                "provider_error": "the provider call failed"}
+    return {
+        "status": status,
+        "abstained": status in ("model_abstention", "system_abstention"),
+        "rendered_answer": record.get("rendered_answer", "") if status == "answered" else "",
+        "answer": answer,
+        "citations": _citations(corpus, answer) if answer else [],
+        "validation": ({k: v for k, v in record["validation"].items() if k != "citation_urls"}
+                       if "validation" in record else None),
+        "message": messages.get(status, ""),
+        "question": question, "retrieval_query": q.query, "filters": record["filters"],
+        "retrieval": {"item_ids": record["retrieval"]["item_ids"],
+                      "index_cutoff_first_seen_at": identity["index_cutoff_first_seen_at"],
+                      "retriever": identity["retriever"]},
+        "context_sha256": record.get("context_sha256"),
+        "attempts": len(record["attempts"]), "schema_retries": max(0, len(record["attempts"]) - 1),
+        "pipeline": identity,
+        "audit": record,
+    }

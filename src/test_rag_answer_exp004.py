@@ -1,6 +1,7 @@
-"""Tests for ask_ari3 (src/rag_answer.py) with a scripted provider. No network, no key.
+"""Tests for the historical EXP-004 orchestration (src/rag_answer_exp004.py) with a scripted
+provider. No network, no key.
 
-usage: python src/test_rag_answer.py
+usage: python src/test_rag_answer_exp004.py
 """
 
 import json
@@ -14,7 +15,7 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import item_store as store  # noqa: E402
-import rag_answer as ra  # noqa: E402
+import rag_answer_exp004 as ra  # noqa: E402
 import rag_corpus as rc  # noqa: E402
 import rag_index as ri  # noqa: E402
 from llm_provider import ProviderError, ScriptedProvider  # noqa: E402

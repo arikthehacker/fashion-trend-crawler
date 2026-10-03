@@ -36,7 +36,7 @@ import statistics
 import sys
 from datetime import datetime, timezone
 
-from rag_answer import ask_ari3
+from rag_answer_exp004 import ask_ari3  # historical EXP-004 path, not the application path
 from rag_eval import EXP, PATHS, Judgment, judgments_by_question, load_jsonl, load_split
 from llm_provider import ScriptedProvider
 
