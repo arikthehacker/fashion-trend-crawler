@@ -161,10 +161,12 @@ export default function About() {
               marginBottom: "1rem",
             }}
           >
-            AI assists with collection, extraction, and first drafts. It does not decide what
-            matters. Every claim in a report links to a specific, dated source, and a report is
-            published only after human review. The human-editor note on each signal is written by
-            the editor, never by software. See{" "}
+            Software collects items and extracts style terms, and ARI3, a machine-learning model,
+            flags which items are about style. Software does not decide what matters. Every claim in
+            a report links to a specific, dated source, and a report is published only after human
+            review. Each report states its recorded software or AI assistance, or says when those
+            details were not recorded. The human-editor note on each signal is written by the editor,
+            never by software. See{" "}
             <Link href="/methodology" style={{ color: "var(--gray)" }}>methodology</Link> for the
             full process.
           </p>

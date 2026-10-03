@@ -15,8 +15,8 @@ export default function Decisions() {
   return (
     <Page title="Decision log">
       <p style={{ ...bodyText, fontSize: "1.05rem", color: "var(--black)", marginTop: "1rem" }}>
-        Decisions that shape what ARI3 collects, learns from and claims, newest first. A decision is
-        replaced by a new entry, never edited.
+        Decisions that shape what ARI3 collects, learns from and claims, newest first. Published
+        decisions run through 2026-09-26. A decision is replaced by a new entry, never edited.
       </p>
       <ol style={{ listStyle: "none", margin: "1.5rem 0 0", padding: 0 }}>
         {DECISIONS.map((d) => (

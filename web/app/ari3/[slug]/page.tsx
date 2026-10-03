@@ -26,14 +26,18 @@ export default async function ExperimentPage({ params }: { params: Promise<{ slu
   return (
     <Page title={e.id}>
       <p style={{ ...bodyText, margin: 0 }}>
-        ARI3 Perception {e.version}
+        {e.kicker ?? `ARI3 Perception ${e.version}`}
       </p>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem 1rem", alignItems: "baseline", marginTop: "1rem" }}>
         <h2 style={{ fontFamily: "var(--font-instrument)", fontSize: "3rem", fontWeight: 400, margin: 0, lineHeight: 1 }}>{e.name}</h2>
-        <Pill tone={e.status === "Frozen" ? "ink" : "red"}>{e.status}</Pill>
-        {e.hypotheses && e.status === "Frozen" && <Pill tone="gray">Pre-registered</Pill>}
+        <Pill tone={["Frozen", "Closed", "Released"].includes(e.status) ? "ink" : "red"}>{e.status}</Pill>
+        {e.hypotheses && ["Frozen", "Released"].includes(e.status) && <Pill tone="gray">Pre-registered</Pill>}
       </div>
-      <p style={{ fontFamily: "var(--font-franklin)", fontStyle: "italic", color: "var(--gray)", margin: "0.4rem 0 1.2rem" }}>{e.motto}</p>
+      {e.motto ? (
+        <p style={{ fontFamily: "var(--font-franklin)", fontStyle: "italic", color: "var(--gray)", margin: "0.4rem 0 1.2rem" }}>{e.motto}</p>
+      ) : (
+        <div style={{ height: "1.2rem" }} />
+      )}
 
       <Callout>
         <p style={{ fontFamily: "var(--font-instrument)", fontSize: "1.5rem", lineHeight: 1.3, margin: 0 }}>{e.headline}</p>
@@ -113,9 +117,10 @@ export default async function ExperimentPage({ params }: { params: Promise<{ slu
 
       <Section title="Results">
         <p style={bodyText}>
-          {e.compare
-            ? `${e.compare.a} and ${e.compare.b} scored on the same ${e.compare.n} held-out items.`
-            : "Scored on held-out items the model never trained on."}
+          {e.resultsIntro
+            ?? (e.compare
+              ? `${e.compare.a} and ${e.compare.b} scored on the same ${e.compare.n} held-out items.`
+              : "Scored on held-out items the model never trained on.")}
         </p>
         <Bars metrics={e.metrics} a={e.compare?.a} b={e.compare?.b ?? e.version} />
       </Section>

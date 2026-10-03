@@ -122,6 +122,12 @@ class PublishGateTests(unittest.TestCase):
                                                     "retrieved_at": "2026-09-20"}]))
         self.assertTrue(any("homepage" in e for e in publish_gate_errors(d, TODAY)))
 
+    def test_ai_assistance_is_optional_but_never_empty(self):
+        validate_report(dict(GOOD, ai_assistance="Software collected the items and matched the terms."))
+        for value in ("", "   ", 3):
+            with self.assertRaises(SchemaValidationError):
+                validate_report(dict(GOOD, ai_assistance=value))
+
     def test_main_fails_on_bad_archive_and_passes_on_good(self):
         with tempfile.TemporaryDirectory() as tmp:
             with mock.patch.object(report_schema, "REPORTS_DIR", tmp):

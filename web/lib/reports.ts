@@ -67,6 +67,7 @@ export interface Report {
   thin_week_note?: string;
   review_status?: string;
   reviewed_by?: string;
+  ai_assistance?: string;
 }
 
 export interface RevisionEntry {

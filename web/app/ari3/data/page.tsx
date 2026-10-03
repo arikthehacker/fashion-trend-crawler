@@ -5,15 +5,15 @@ import { Page, Section, bodyText } from "../ui";
 export const metadata = pageMetadata(
   "/ari3/data",
   "ARI3 dataset cards",
-  "Dataset cards for the ARI3 item corpus and the editor's style labels: sources, collection, labeling, biases, access and versions."
+  "Dataset cards for the ARI3 item corpus and the editor's labels: sources, collection, labeling, biases, access and versions."
 );
 
 export default function Data() {
   return (
     <Page title="Dataset cards">
       <p style={{ ...bodyText, fontSize: "1.05rem", color: "var(--black)", marginTop: "1rem" }}>
-        ARI3 learns from two datasets: the items it collects, and the editor&apos;s labels on a sample
-        of them. Counts are dated because the corpus grows every 4 hours.
+        ARI3 learns from, and is tested on, the items it collects and the editor&apos;s labels on
+        samples of them. Counts are dated because the corpus grows every 4 hours.
       </p>
       {DATASETS.map((d) => (
         <Section key={d.name} title={d.name}>

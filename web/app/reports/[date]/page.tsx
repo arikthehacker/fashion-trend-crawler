@@ -262,7 +262,7 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
             color: "var(--gray)",
             margin: 0,
           }}>
-            AI assisted with collection, extraction and drafting.{" "}
+            {report.ai_assistance ?? "AI-assistance details for this report were not recorded."}{" "}
             {report.review_status === "draft"
               ? "Not yet reviewed by the editor."
               : report.reviewed_by

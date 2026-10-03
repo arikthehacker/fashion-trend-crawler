@@ -41,19 +41,19 @@ const sections: { title: string; body: string[] }[] = [
   {
     title: "Human and Machine",
     body: [
-      "Software collects, extracts, and drafts. It does not decide what matters. Interpretation, naming, and the human-editor note on each signal belong to the editor. Social platforms are sampled through official reports and APIs or by hand, never by scraping, and runway images are linked, never rehosted.",
+      "Software collects items and extracts style terms. It does not decide what matters. Interpretation, naming, and the human-editor note on each signal belong to the editor. Social platforms will be sampled only through official APIs or by hand, never by scraping, and none is sampled yet. Runway images are linked, never rehosted.",
     ],
   },
   {
     title: "Current Limitations",
     body: [
-      "The published archive is empty. Drafting a weekly report from the item store is not built yet. Most collected sources are editorial, because brand, retail and resale sites rarely publish dated feeds. Social data waits on access to official platform APIs.",
+      "The archive holds one report, dated 2026-05-18. It resumes only with reports whose every claim links to a dated, fetched source. Drafting a weekly report from the item store is not built yet. Most collected sources are editorial, because brand, retail and resale sites rarely publish dated feeds. Social data waits on access to official platform APIs.",
     ],
   },
   {
     title: "Next",
     body: [
-      "Extracting style terms from stored items, drafting each weekly report from that evidence for the editor to review, and per-term pages that show where a term first appeared and how it moved between sectors.",
+      "Style terms are already extracted from stored items with Lexicon v1, last run over items stored up to 2026-09-26. Style scoring and term extraction have fallen behind collection and have to catch up before a new report window. Next is a drafter that builds each weekly report from that evidence for the editor to review, then per-term pages that show where a term first appeared and how it moved between sectors.",
     ],
   },
 ];

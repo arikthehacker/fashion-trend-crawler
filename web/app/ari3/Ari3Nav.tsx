@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 const TABS = [
   { href: "/ari3", label: "Overview" },
   { href: "/ari3/evaluation", label: "Evaluation" },
+  { href: "/ari3/claims", label: "Claims" },
   { href: "/ari3/models", label: "Model cards" },
   { href: "/ari3/data", label: "Dataset cards" },
   { href: "/ari3/decisions", label: "Decisions" },

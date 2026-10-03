@@ -92,6 +92,20 @@ export default function Home() {
             : "No reports on file."}
         </p>
 
+        {latest && (
+          <p style={{
+            fontFamily: "var(--font-franklin)",
+            fontSize: "0.9rem",
+            lineHeight: "1.6",
+            color: "var(--gray)",
+            maxWidth: "560px",
+            margin: "1rem auto 0",
+          }}>
+            The archive is paused until a new report meets the evidence standard, which requires a
+            dated, fetched source for every claim.
+          </p>
+        )}
+
 
 
       </header>
@@ -99,7 +113,7 @@ export default function Home() {
       {/* this week's index — condensed metrics module, doc section 27/28 */}
       {index && (
         <section
-          aria-label="This week's index"
+          aria-label="Latest index"
           style={{
             width: "100%",
             maxWidth: "800px",
@@ -116,7 +130,7 @@ export default function Home() {
             marginBottom: "1.25rem",
             textAlign: "center",
           }}>
-            This Week&rsquo;s Index, {index.reportDate}
+            Latest Index, {index.reportDate}
           </h2>
 
           <dl style={{

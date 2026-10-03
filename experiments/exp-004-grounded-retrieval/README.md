@@ -27,7 +27,7 @@ The evaluation index is frozen at a first-seen cutoff of 2026-09-30 08:00 UTC: 7
 | Retriever comparison on DEV | **Run once** under the rule (`8ce1b74`) and amendment 1 (`383d3c7`): PRACTICAL_TIE_SELECTION, hybrid (`fca940d`) |
 | Retriever freeze | **Frozen** hybrid, `frozen/retriever_v1.json` (`44421a5`, SHA-256 `3b55fceb…`), accepted by the owner |
 | TEST | **Run once** 2026-10-01 01:44 UTC, frozen hybrid only. `results/test-retrieval-v1.json` |
-| Generation | `ask_ari3` (`src/rag_answer.py`), the grounded-answer schema, deterministic validators, the provider interface, a DeepSeek adapter and the harness (`src/rag_gen_eval.py`) are built and tested with scripted providers. No live provider has been called. Live calls need `ARI3_LIVE_LLM=approved`, set by the owner |
+| Generation | `ask_ari3` (`src/rag_answer.py`), the grounded-answer schema, deterministic validators, the provider interface, a DeepSeek adapter and the harness (`src/rag_gen_eval.py`) are built and tested with scripted providers. EXP-004 itself made no call to a generation provider. Live calls need `ARI3_LIVE_LLM=approved`, set by the owner. Grounded generation continued in EXP-005 (`../exp-005-grounded-generation/`) |
 
 ## Files
 
@@ -46,7 +46,7 @@ The evaluation index is frozen at a first-seen cutoff of 2026-09-30 08:00 UTC: 7
 - **Candidates.** `bm25:words`, `bm25:auto` (character trigrams for Japanese queries, word tokens otherwise, so it differs from `bm25:words` only on Japanese queries), `dense` and `hybrid:auto` (reciprocal rank fusion of `bm25:auto` and `dense`).
 - **Pool depth 10.** The pool is the union of every candidate's top 10, so every item a candidate ranks in its top 10 is judged, and Hit@10 and Recall@10 are fully judged. A preview over the 60 drafts gives 899 pairs (median 16.5 per question, maximum 25), 720 distinct items and 4 questions with no eligible item. BM25 and dense overlap little (Jaccard 0.12), which is why both are pooled. The real pool is built from the frozen questions and its numbers will differ.
 - **Pooled recall.** Recall is measured against the judged pool (Voorhees and Harman 2005). A relevant item that no candidate retrieved is never judged, so recall is relative to the pool and is not exhaustive.
-- **Unsure.** Metrics use condensed lists (Sakai 2007): an item judged `unsure` is removed from a ranking before scoring and counts neither as relevant nor as not relevant. Every result also reports the share of each top 10 that is unsure and the judged coverage of the top 10.
+- **Unsure.** Original rule, superseded before the DEV run: an `unsure` item would have been removed before scoring (condensed lists, Sakai 2007). Amendment 1 replaced that rule before any DEV result: an unsure item keeps its original rank and counts as neither relevant nor not relevant. All reported EXP-004 results use the amended rule. Every result also reports the share of each top 10 that is unsure and the judged coverage of the top 10.
 - **Metrics.** Hit@5, Hit@10, Recall@5, Recall@10, MRR and nDCG@10 over questions with at least one relevant item, plus query latency (median and p95). Each is reported for all questions, English and non-English, Japanese, temporal and non-temporal, drafted-answerable and drafted-unanswerable, and questions the judgments show to be answerable.
 - **Failure annotation.** Each DEV miss (no relevant item in a method's top 10) is listed for human annotation with one of: vocabulary mismatch, semantic near miss, temporal mismatch, wrong sector or context, multilingual failure, overly broad query, no relevant evidence in the corpus (assigned by rule when nothing was judged relevant), other.
 - **Split.** By question, stratified by drafted answerability, temporal constraint, non-English language and query type, one third to TEST, seed 4. TEST is never used to compare or tune retrievers. `eval-test` refuses to run without a retriever frozen from a DEV result, and refuses to run a second time.
@@ -81,7 +81,9 @@ On DEV, hybrid's Recall@10 exceeded dense's by 0.181 (95% interval 0.086 to 0.28
 - **Provider.** `llm_provider.py` is the interface. `llm_deepseek.py` uses plain HTTP, `deepseek-flash`, temperature 0, JSON output, non-thinking mode, a 60-second timeout and at most 2 retries. The key is read from the environment only and never logged. The adapter refuses to send a request unless it was created with `allow_live=True` and `ARI3_LIVE_LLM=approved`.
 - **Evaluation.** Retrieval and generation are scored separately. The harness records an audit line per question and reports schema validity, citation validity, membership violations, temporal leaks, correct refusals on unanswerable questions and false refusals on answerable ones (separately), latency, tokens and estimated cost. Correctness, completeness, usefulness and unsupported claims come from the editor's review of each answer, never from a language model judging itself.
 
-## Next steps
+## Next steps (historical)
+
+These were the steps planned before judging began. All were completed or superseded when EXP-004 closed on 2026-10-01. The Status table and `CLOSED.json` record the outcome, and grounded generation continued in EXP-005.
 
 1. The editor reviews the 60 drafts in ARI3 Review.
 2. `python src/rag_questions.py freeze`, then `python src/rag_eval.py freeze-split` and `python src/rag_eval.py pool`, then `python src/rag_review.py make-queue`. All four outputs are committed before any judgment.

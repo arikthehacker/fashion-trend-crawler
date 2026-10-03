@@ -8,7 +8,7 @@ ARI3LLA INDEX is not a trend forecaster, a shopping guide or a brand analytics p
 
 ## Status
 
-The published archive is empty. It restarts with the first weekly report whose every claim links to a dated, fetched source.
+The published archive holds one report, dated 2026-05-18. It resumes only with reports whose every claim links to a dated, fetched source.
 
 The 94 reports published before 2026-09-22 were written by an autonomous agent loop that advanced a simulated weekly calendar. 92 of them were written before their own report date, and none linked a claim to a specific article. They are kept, unpublished, in [`data/archive/simulated/`](data/archive/simulated/), and the publish gate described below rejects all of them.
 
@@ -26,7 +26,7 @@ Drafting a report from the item store is not built yet. `src/summarize.py` and `
 
 Sources are grouped by sector because each sector has different incentives. The sectors are designer origin, runway, editorial, independent criticism, trade intelligence, institutional, visual archive, retail, resale, social, and street or user-generated.
 
-`data/feeds.json` currently lists 66 feeds: 52 editorial, 7 independent criticism, 3 institutional, and 1 each for retail, resale, trade intelligence and visual archive. Coverage leans heavily toward editorial. Brand, retail and resale sites rarely publish dated feeds, and social platforms are never scraped. Social data will come from official APIs (Reddit, Google Trends, Pinterest), with signals from TikTok and similar platforms added by hand through `src/manual_sample.py`. Runway images are linked and never rehosted.
+On 2026-10-03, `data/feeds.json` listed 97 feeds. Coverage leans heavily toward editorial. Brand, retail and resale sites rarely publish dated feeds, and social platforms are never scraped. Social data will come from official APIs (Reddit, Google Trends, Pinterest), with signals from TikTok and similar platforms added by hand through `src/manual_sample.py`. Runway images are linked and never rehosted.
 
 ## Classification
 
@@ -71,7 +71,7 @@ npm run build        # static export to web/out, then the Pagefind search index
 
 ## MCP server
 
-`src/server.py` is an MCP server with five tools: `crawl_fashion_trends`, `get_cached_trends`, `search_trends`, `list_reports` and `get_report`. The report tools read `data/reports/`, which is empty. The crawl and search tools use `trends_raw.json`, a cache from the old crawler, and return an error until the crawler has run. None of the tools read the item store yet.
+`src/server.py` is an MCP server with five tools: `crawl_fashion_trends`, `get_cached_trends`, `search_trends`, `list_reports` and `get_report`. The report tools read `data/reports/`. The crawl and search tools use `trends_raw.json`, a cache from the old crawler, and return an error until the crawler has run. None of the tools read the item store yet.
 
 ## Repository layout
 
@@ -80,7 +80,7 @@ src/            Python: ingestion, item store, taxonomy, report schema, checks, 
 db/migrations/  SQLite schema for the item store
 data/
   feeds.json        the feeds collection reads
-  reports/          published reports (empty)
+  reports/          published reports
   archive/simulated/  the withdrawn simulated reports, unpublished
 web/            Next.js site (app/ pages, lib/ data layer, vercel.json headers)
 docs/           concept document, methodology notes, historical agent logs

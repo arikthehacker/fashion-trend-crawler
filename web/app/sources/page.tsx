@@ -112,8 +112,25 @@ export default function Sources() {
           }}
         >
           Sources are not treated as equally authoritative. Each outlet type carries a distinct
-          incentive structure, and reports note which sector a signal was observed in. The list
-          below is not exhaustive and expands as coverage grows.
+          incentive structure, and reports note which sector a signal was observed in. The sectors
+          below are the kinds of source the taxonomy can represent. They do not describe what ARI3
+          currently collects, and the lists of examples are not exhaustive.
+        </p>
+        <p
+          style={{
+            fontFamily: "var(--font-franklin)",
+            fontSize: "1rem",
+            lineHeight: "1.8",
+            color: "var(--black)",
+            marginBottom: "3.5rem",
+            marginTop: "-2.5rem",
+          }}
+        >
+          On 2026-10-03 the store held 10,642 items from 97 feeds. 88.6% came from the editorial
+          sector, and 94.2% from the editorial group (editorial, trade intelligence and independent
+          criticism together). The resale sector had 10 items. The social sector had none, because
+          no social platform is collected yet. The corpus does not represent style discourse as a
+          whole.
         </p>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "3rem" }}>

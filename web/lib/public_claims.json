@@ -1,0 +1,18 @@
+{
+  "note": "Claim IDs approved for the public claims page. A claim not listed here never renders, whatever CLAIM_LEDGER.md contains. Adding an ID needs an explicit owner decision.",
+  "decided": "Owner, site update plan Q14 A, 2026-10-02",
+  "public_claim_ids": [
+    "C-0001",
+    "C-0002",
+    "C-0003",
+    "C-0004",
+    "C-0005",
+    "C-0006",
+    "C-0007",
+    "C-0008",
+    "C-0010",
+    "C-0011",
+    "C-0012",
+    "C-0013"
+  ]
+}

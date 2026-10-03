@@ -1,0 +1,120 @@
+{
+  "amendments": {
+    "AMENDMENT_2026-09-26_findings.md": {
+      "commit": "bbbaaf0",
+      "sha256": "843a3edb9f0a706537fb59239a275418a8a404fb7c7c363be4ba171f7d73eb68"
+    },
+    "AMENDMENT_2026-09-30_holdout_eligibility.md": {
+      "commit": "3132885",
+      "sha256": "32690a8bba3d860daaa81b61335777a20017d85009d39bf4550b5b96efe40794"
+    },
+    "AMENDMENT_2026-10-02_exp003a_diagnostics.md": {
+      "commit": "9ca0cd1",
+      "sha256": "e201ea3bb354801ddec8f75524ff07102db8b9187a3c77b5d9deb3e6aa608922"
+    }
+  },
+  "analysis_choices_not_in_preregistration": [
+    "EXP-003A eligibility amended before any label existed: publish time and first-seen time after the freeze, plus a check against every surviving pre-freeze record (amendment 2026-09-30).",
+    "EXP-003A metrics use evaluate() from src/ari3_v002_run.py, the function behind v0.0.2's own results. The not-sure share counts prediction sets equal to {yes, no}.",
+    "EXP-003B probability-ceiling and AUC checks were made after the result (amendment 2026-09-26, post-hoc).",
+    "EXP-003A diagnostics were chosen after the result and are descriptive only (amendment 2026-10-02, post-hoc)."
+  ],
+  "claims": [
+    "C-0007",
+    "C-0008",
+    "C-0011",
+    "C-0012",
+    "C-0013"
+  ],
+  "datasets": {
+    "exp003a_time_holdout": {
+      "deck_item_ids_sha256": "192a050a3225559ee9fb37b95d0c0724c73c7337a4a209b4db97c447c8cd67ce",
+      "distribution": {
+        "no": 68,
+        "yes": 82
+      },
+      "n": 150,
+      "path": "models/ari3-v0.0.3/exp003a/gold_v1.jsonl",
+      "seed": 13,
+      "sha256": "7e15f2a1c9595fce12dffd5558b9e38e1845a32a22052b0664649235676d9b7d"
+    },
+    "exp003b_is_forecast": {
+      "n": 250,
+      "seed": 11,
+      "sha256": "ff36351a44866144506dddf9cf58fdf299dd61100ed49238c534f2d75633ec70"
+    }
+  },
+  "heads": {
+    "is_forecast": {
+      "manifest_sha256": "c39b1f601e7d2fa137a48532ceddea38bb7230cc2b7e0976e4ffcb60b93a6d77",
+      "path": "models/ari3-v0.0.3/is_forecast/",
+      "used_in_counts": false,
+      "weights_sha256": "10bb2460191fa8979a896d911082cbb6e05b08d1771f2eb559c438b527b48166"
+    },
+    "is_style_signal": {
+      "changed": false,
+      "manifest_sha256": "d1cad506d6c9326e77a7729970261a0bb8a0ace3e834b0735530a98e0214e055",
+      "version": "ari3-v0.0.2",
+      "weights_sha256": "f6b25eb421e2766cc2681f9b2a6816330ab50569bae752a73b231ed7fe282f09"
+    }
+  },
+  "hypotheses": {
+    "H1": {
+      "test": "conformal coverage on the time holdout >= 0.90",
+      "value": 0.9266666666666666,
+      "verdict": "SUPPORTED"
+    },
+    "H2": {
+      "test": "accuracy on the time holdout >= 0.85",
+      "value": 0.8333333333333334,
+      "verdict": "NOT SUPPORTED"
+    },
+    "H3": {
+      "test": "share of {yes, no} sets on the time holdout <= 0.35",
+      "value": 0.32666666666666666,
+      "verdict": "SUPPORTED"
+    },
+    "H4": {
+      "test": "balanced accuracy >= 0.75 and above the majority baseline (both groups)",
+      "value": 0.5,
+      "verdict": "NOT SUPPORTED"
+    },
+    "H5": {
+      "test": "conformal coverage >= 0.90 (both groups)",
+      "value": 0.9607843137254902,
+      "verdict": "SUPPORTED"
+    }
+  },
+  "manifest_sha256": "846b249dfaa46c0aec920998d8f83e0cc50c10de7974793516fa60fcd894ebc1",
+  "model": "ARI3",
+  "motto": "The evidence can be trusted.",
+  "name": "INTEGRITAS",
+  "preregistration": {
+    "commit": "2ff1c53",
+    "path": "models/ari3-v0.0.3/PREREGISTRATION.md",
+    "sha256": "fa65367d3166cba52903229bfd849ce34022b536e93ae6c62341325e7911aff1"
+  },
+  "release_criteria": {
+    "1": "pre-registration committed before any label, text unchanged (checked above)",
+    "2": "EXP-003A run once",
+    "3": "EXP-003B run once, head frozen and hashed",
+    "4": "all five hypotheses reported",
+    "5": "results published at the notebook entry",
+    "6": "is_forecast changes no count"
+  },
+  "released_at": "2026-10-03T07:00:21Z",
+  "results": {
+    "exp003a": {
+      "commit": "1c78f56",
+      "path": "models/ari3-v0.0.3/exp003a/result.json",
+      "sha256": "aab0ca4ac7879759e196535229475ba3d8bde01f2e1d3180259eaea5835b66bf"
+    },
+    "exp003b": {
+      "commit": "bbbaaf0",
+      "path": "models/ari3-v0.0.3/is_forecast/manifest.json"
+    }
+  },
+  "results_notebook_entry": "https://ari3lla.com/ari3/exp-003",
+  "version": "ari3-v0.0.3",
+  "what_changed": "No new style model. The style head stays frozen ari3-v0.0.2. v0.0.3 adds a frozen is_forecast head that is not used in any count, and the results of EXP-003A and EXP-003B."
+}

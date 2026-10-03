@@ -19,9 +19,13 @@ export default function Ari3Page() {
         repository before its results appear here.
       </p>
       <p style={bodyText}>
-        ARI3 v0.0.2, the current version, reads a news item&apos;s headline and feed excerpt,
-        judges whether the item is about style, and says when it is not sure. No ARI3 version
-        forecasts, ranks trends or writes reports. The principles behind the program are on
+        ARI3 v0.0.3 INTEGRITAS is the current research release. The style classifier is still the
+        frozen v0.0.2 model. v0.0.3 adds that classifier&apos;s evaluation on articles published after
+        its freeze, the integrity and provenance work behind that test, and a frozen
+        forecast-detection head that did not meet its criterion and is not used in any count. The
+        style classifier reads a news item&apos;s headline and feed excerpt, judges whether the item is
+        about style, and says when it is not sure. No ARI3 version forecasts, ranks trends or writes
+        reports. The principles behind the program are on
         the <Link href="/ari3/philosophy" style={{ color: "var(--black)" }}>research philosophy</Link> page.
       </p>
 
@@ -33,12 +37,12 @@ export default function Ari3Page() {
               <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem 0.9rem", alignItems: "baseline" }}>
                 <span style={{ fontFamily: mono, fontSize: "0.85rem" }}>{e.id}</span>
                 <span style={{ fontFamily: "var(--font-instrument)", fontSize: "1.8rem", lineHeight: 1.1 }}>
-                  {e.name} <span style={{ fontSize: "1.1rem", color: "var(--gray)" }}>{e.version}</span>
+                  {e.name}{e.version && <span style={{ fontSize: "1.1rem", color: "var(--gray)" }}> {e.version}</span>}
                 </span>
-                <Pill tone={e.status === "Frozen" ? "ink" : "red"}>{e.status}</Pill>
-                {e.hypotheses && e.status === "Frozen" && <Pill tone="gray">Pre-registered</Pill>}
+                <Pill tone={["Frozen", "Closed", "Released"].includes(e.status) ? "ink" : "red"}>{e.status}</Pill>
+                {e.hypotheses && ["Frozen", "Released"].includes(e.status) && <Pill tone="gray">Pre-registered</Pill>}
               </div>
-              <div style={{ fontFamily: "var(--font-franklin)", fontStyle: "italic", color: "var(--gray)", margin: "0.3rem 0 0.5rem" }}>{e.motto}</div>
+              {e.motto && <div style={{ fontFamily: "var(--font-franklin)", fontStyle: "italic", color: "var(--gray)", margin: "0.3rem 0 0.5rem" }}>{e.motto}</div>}
               <div style={{ fontFamily: "var(--font-franklin)", fontSize: "0.95rem", lineHeight: 1.5 }}>{e.headline}</div>
               <div style={{ fontFamily: "var(--font-franklin)", fontSize: "0.8rem", color: "var(--gray)", marginTop: "0.6rem", textDecoration: "underline" }}>Read the notebook entry</div>
             </Link>

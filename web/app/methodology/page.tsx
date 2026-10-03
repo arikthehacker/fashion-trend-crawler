@@ -25,6 +25,7 @@ const sections: { title: string; body: string[] }[] = [
     title: "Source sectors",
     body: [
       "Sources are grouped into sectors: designer origin, runway, editorial, independent criticism, trade intelligence, institutional, visual archive, retail, resale, social, and street or user-generated. Each sector has its own incentives, and every signal names the sectors it was drawn from. The outlets are listed on the Sources page.",
+      "These are the sectors the taxonomy can represent, and ARI3's coverage of them is uneven. On 2026-10-03, 88.6% of stored items came from the editorial sector, the resale sector had 10 items, and the social sector had none.",
       "A domain that has not been mapped to a sector is classified as unclear instead of being guessed into one. Unclear is not counted as a separate sector for confidence, and it says nothing against the source. It marks a gap in the index's coverage.",
     ],
   },
@@ -69,7 +70,7 @@ const sections: { title: string; body: string[] }[] = [
   {
     title: "AI and the editor",
     body: [
-      "Software collects source material, extracts recurring language, clusters related terms and drafts summaries. It does not decide what matters.",
+      "Software collects source material, extracts recurring language and flags which items are about style. Report drafting from collected items is not built yet. Software does not decide what matters.",
       "The editor decides whether terms belong together, assigns classification and origin, removes hype and connects signals to historical context. The human-editor note on each signal is written by the editor, never by software. No report is published without the editor's review.",
     ],
   },

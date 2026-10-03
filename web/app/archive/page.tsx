@@ -225,10 +225,6 @@ export default function Archive() {
             marginBottom: "1.25rem",
           }}>
             Signals appearing in four or more separate reporting windows.
-            All entries currently in this list are unresolved factual or
-            institutional tracking items rather than recurring style
-            aesthetics -- a distinction the archive continues to track
-            separately rather than treat as equivalent.
           </p>
           <div style={{ display: "flex", flexDirection: "column" }}>
             {recurringSignals.map((s) => (

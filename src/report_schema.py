@@ -366,6 +366,9 @@ class Report:
     # "loop-consolidation" or a human name. optional metadata, not enforced
     # non-empty — see docs/agent-logs/review-status-field.md.
     reviewed_by: str = ""
+    # what software or AI did for this report, written by the editor. optional:
+    # a report without it is shown as "not recorded" on the site.
+    ai_assistance: str = ""
 
     def to_dict(self) -> dict:
         d = asdict(self)
@@ -654,6 +657,14 @@ def validate_report(data: dict) -> None:
         raise SchemaValidationError(
             f"reviewed_by must be a string, got {reviewed_by!r}"
         )
+
+    # optional field: when present it must say something.
+    if "ai_assistance" in data:
+        ai_assistance = data["ai_assistance"]
+        if not isinstance(ai_assistance, str) or not ai_assistance.strip():
+            raise SchemaValidationError(
+                f"ai_assistance must be a non-empty string when present, got {ai_assistance!r}"
+            )
 
     content_hash = data.get("content_hash", "")
     if content_hash:

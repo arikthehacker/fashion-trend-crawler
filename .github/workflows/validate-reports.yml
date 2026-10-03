@@ -96,3 +96,7 @@ jobs:
       - name: ESLint (includes jsx-a11y accessibility rules)
         run: npx eslint .
         working-directory: web
+
+      - name: Public claim allowlist tests (an unapproved claim never renders)
+        run: node --test lib/claims_parse.test.mjs
+        working-directory: web

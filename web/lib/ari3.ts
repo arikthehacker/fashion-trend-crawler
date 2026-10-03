@@ -5,13 +5,14 @@
 
 export const REPO = "https://github.com/arikthehacker/fashion-trend-crawler";
 
-export type Metric = { name: string; a?: number; b: number; format: "pct" | "num"; lowerIsBetter?: boolean; note?: string };
+export type Metric = { name: string; a?: number; b: number; label?: string; format: "pct" | "num"; lowerIsBetter?: boolean; note?: string };
 export type Hypothesis = { id: string; claim: string; test: string; result: string; verdict: "Supported" | "Not supported" | "Pending" };
 
 export type Experiment = {
   id: string;
   slug: string;
   version: string;
+  kicker?: string;
   name: string;
   motto: string;
   status: string;
@@ -27,6 +28,7 @@ export type Experiment = {
   changed: string[];
   threats: string[];
   compare?: { a: string; b: string; n: number };
+  resultsIntro?: string;
   metrics: Metric[];
   benefits: string[];
   costs: string[];
@@ -42,37 +44,146 @@ const ENV_001 = "Python 3.13.2, numpy 2.5.0, scikit-learn 1.9.1, sentence-transf
 
 export const EXPERIMENTS: Experiment[] = [
   {
+    id: "EXP-004",
+    slug: "exp-004",
+    version: "",
+    kicker: "ARI3 retrieval experiment, with no release version",
+    name: "Grounded retrieval",
+    motto: "",
+    status: "Closed",
+    headline: "On the 12 held-out test questions with a resolved relevant item, the frozen hybrid retriever reached macro Recall@10 0.770 and Hit@10 1.000.",
+    summary: [
+      "EXP-004 asks whether ARI3 can find the stored records that answer a question, inside the question's date, language, sector and outlet limits. Each record is a headline and the feed's own summary, capped at 500 characters. No full article text is stored, so EXP-004 measures retrieval over ARI3's stored evidence, not over complete articles.",
+      "Four retrieval methods were compared on 37 development questions under a selection rule committed before any result. The hybrid method, which combines keyword search and sentence embeddings by reciprocal rank fusion, was chosen and frozen, then run once on 19 held-out test questions.",
+      "On the 12 test questions with at least one item the editor judged relevant, macro Recall@10 was 0.770 and Hit@10 was 1.000. This does not mean ARI3 finds 77% of all relevant evidence. Recall is measured against the pool of items the methods retrieved and the editor judged.",
+    ],
+    meta: [
+      { label: "Experiment", value: "EXP-004. It does not imply ARI3 v0.0.4" },
+      { label: "Closed", value: "2026-10-01" },
+      { label: "Ledger claim", value: "C-0010", href: "/ari3/claims#c-0010" },
+      { label: "Questions", value: "56, drafted and reviewed by the editor, frozen 2026-09-30. 37 development, 19 test (seed 4)" },
+      { label: "Questions fingerprint", value: "sha256 d1d17cb4cfe34196b05724dd8623ad4c94ce9c69d00420ba9af3290cf73d4ad4", mono: true },
+      { label: "Relevance judgments", value: "819 question and item pairs judged by the editor, blind to method, rank and score: 318 relevant, 273 not relevant, 228 unsure" },
+      { label: "Judgments fingerprint", value: "sha256 bda481d21f0b551f985d6ba05caa08a704542ec6c64c5baf7896ad9523153822", mono: true },
+      { label: "Index", value: "7,955 stored items first seen before 2026-09-30 08:00 UTC, from 94 outlets" },
+      { label: "Frozen retriever", value: "44421a5, sha256 3b55fcebbb08ec54b87198ab4a18e2f1b2bd0b922c6677428f525ceeadfd6b21", href: `${REPO}/blob/44421a59654974f803c288f52d9cd52b3a60fde7/experiments/exp-004-grounded-retrieval/frozen/retriever_v1.json`, mono: true },
+      { label: "Test result", value: "b9f9e6c, sha256 bf44847928dc7fd53f7c646e0c158ba3005ba1a39f6d1b01a5a6937d7fc87d19", href: `${REPO}/blob/b9f9e6c23275edde98f47c8f7518597df693ba84/experiments/exp-004-grounded-retrieval/results/test-retrieval-v1.json`, mono: true },
+      { label: "Embedder", value: "paraphrase-multilingual-MiniLM-L12-v2 @ e8f8c21", mono: true },
+    ],
+    question: "Can ARI3 find the stored records that answer a question, within the question's date, language, sector and outlet limits?",
+    preregistered: "Partly. The rule for choosing a retriever on development questions, and the single run on test questions, were committed before any result. The rule was amended once, before the development run. EXP-004 had no pass criteria.",
+    method: [
+      "56 questions, reviewed and frozen by the editor",
+      "Each method's top 10 pooled and judged by the editor, blind to method, rank and score",
+      "Questions split into 37 development and 19 test",
+      "Four methods compared on development questions: keyword search with two tokenizers, sentence embeddings, and a hybrid of the two",
+      "Hybrid chosen by the committed rule and frozen",
+      "Frozen hybrid run once on the test questions",
+    ],
+    held: [
+      "Filters applied before ranking: dates, language, sector, outlet and the time cutoff",
+      "The frozen index of 7,955 items",
+      "The retriever configuration, frozen before the test run",
+    ],
+    changed: ["First retrieval experiment. No earlier version to compare against."],
+    threats: [
+      "Only 12 answerable test questions carry the main metrics.",
+      "Recall is measured against the judged pool, the union of each method's top 10, not against every relevant item in the corpus.",
+      "Recall@10 is capped for questions with more than 10 relevant items. Two test questions reached the cap.",
+      "Retrieval in languages other than English is not established. Most non-English judgments are unsure, and no non-English test question has a resolved relevant item.",
+      "Some filtered questions have small candidate sets, 10 to 16 eligible items, where high recall comes close to being guaranteed.",
+      "One person judged relevance, and 228 of the 819 judgments are unsure.",
+      "Feed language tags contain known errors.",
+    ],
+    resultsIntro: "The frozen hybrid retriever, run once on the 19 test questions. Hit, recall and reciprocal rank cover the 12 questions with at least one item judged relevant.",
+    metrics: [
+      { name: "Recall@10", b: 0.77, label: "hybrid", format: "pct", note: "Macro average over 12 questions" },
+      { name: "Recall@5", b: 0.438, label: "hybrid", format: "pct" },
+      { name: "Hit@10", b: 1.0, label: "hybrid", format: "pct", note: "12 of 12 questions" },
+      { name: "Hit@5", b: 1.0, label: "hybrid", format: "pct", note: "12 of 12 questions" },
+      { name: "Mean reciprocal rank", b: 0.958, label: "hybrid", format: "num" },
+      { name: "Unsure share of the top 10", b: 0.311, label: "hybrid", format: "pct", lowerIsBetter: true, note: "18 questions with results" },
+    ],
+    benefits: [
+      "Each of the 12 answerable test questions had a relevant item in its top 5",
+      "Median retrieval time 67.4 ms over the 19 test queries on a local CPU (p95 344.4 ms), retrieval only",
+      "No result broke a filter or the time cutoff",
+    ],
+    costs: [
+      "Recall@5 was 0.438, so on average fewer than half of each question's judged relevant items reached the top 5",
+      "31% of top-10 results were judged unsure",
+    ],
+    surprises: [
+      "On development questions, hybrid led keyword search by 0.169 in Recall@10, but the 95% interval ran from -0.006 to 0.352. The selection rule's practical-tie clause decided.",
+      "Keyword search and sentence embeddings found mostly different items. In the judging pool their top-10 sets have a Jaccard overlap of 0.12, which is why both were pooled and why the hybrid combines them.",
+    ],
+    engineering: [
+      "Read-only retrieval over the SQLite store, with FTS5 keyword search and stored sentence embeddings (src/rag_*.py)",
+      "A blind relevance-judging deck in the ARI3 review app",
+      "Guards on the test run, which refuses to start without a frozen retriever and refuses to run twice",
+    ],
+    log: [
+      { step: "Observation", text: "Answering questions about the corpus needs the right stored records first, inside each question's limits." },
+      { step: "Idea", text: "Combine keyword search and sentence embeddings, and choose between methods by a rule fixed in advance." },
+      { step: "Experiment", text: "EXP-004: 56 frozen questions, 819 blind judgments, selection on development questions, one test run." },
+      { step: "Result", text: "Hybrid frozen. Test Recall@10 0.770 and Hit@10 1.000 on 12 answerable questions." },
+      { step: "New question", text: "Can a language model answer from these records without claiming more than they say? That is EXP-005, in development." },
+    ],
+    lessons: [
+      "Expected: one method would clearly win. Observed: hybrid led, but its lead over keyword search on development questions was within noise.",
+      "Non-English relevance could not be judged reliably, so retrieval in other languages stays unmeasured.",
+    ],
+    openQuestions: [
+      "How does retrieval do in languages other than English, judged by someone who reads them?",
+      "How should the index be refreshed as the corpus grows? A refreshed index is a new retrieval version with its own check.",
+    ],
+    reproduce: {
+      text: "The questions, judgments, split, frozen retriever and both results are public. The item store and index stay local, so outsiders can check the hashes but cannot rerun retrieval.",
+      commands: `git clone ${REPO}.git
+cd fashion-trend-crawler
+git show 44421a5:experiments/exp-004-grounded-retrieval/frozen/retriever_v1.json | sha256sum
+git show b9f9e6c:experiments/exp-004-grounded-retrieval/results/test-retrieval-v1.json | sha256sum`,
+    },
+  },
+  {
     id: "EXP-003",
     slug: "exp-003",
     version: "v0.0.3",
     name: "INTEGRITAS",
     motto: "The evidence can be trusted.",
-    status: "Pre-registered · partially run · EXP-003A pending",
-    headline: "EXP-003B ran once and failed its pre-registered test: the forecast detector never flagged a forecast. EXP-003A is pending.",
+    status: "Released",
+    headline: "Both parts ran once. Frozen v0.0.2 kept its coverage on later articles but missed its accuracy pass mark, 0.833 against 0.85. The forecast detector never flagged a forecast.",
     summary: [
-      "EXP-003 asks whether the evidence ARI3 produces can be trusted, in two parts. EXP-003A will test frozen v0.0.2 on articles collected after it was frozen. EXP-003B trained a new perception head to tell a prediction from a report.",
+      "EXP-003 asks whether the evidence ARI3 produces can be trusted, in two parts. EXP-003A tested frozen v0.0.2 on articles published after it was frozen. EXP-003B trained a new perception head to tell a prediction from a report.",
+      "EXP-003A ran once on 150 items published after the freeze and labeled by the editor. The prediction sets held the right answer for 0.927 of them and the not-sure share was 0.327, so H1 and H3 were supported. Accuracy was 0.833 against a pass mark of 0.85, so H2 was not supported. The model was not refit, recalibrated or retuned, and the evaluation was not rerun.",
       "EXP-003B ran once, as pre-registered. H4 failed: the new head answered \"not a prediction\" for every test item, so its balanced accuracy was 0.50, the same as always answering no. H5 held: coverage was 0.961.",
-      "The failed head is frozen and hashed, and it is not used. Forecast articles stay in the mention counts. EXP-003A runs once enough items collected after 2026-09-26 19:25 UTC exist. v0.0.3 is not complete.",
+      "The failed forecast head is frozen and hashed, and it is not used. Forecast articles stay in the mention counts. v0.0.3 was released on 2026-10-03 with a release manifest. The style classifier is still the frozen v0.0.2 model.",
     ],
     meta: [
       { label: "Experiment", value: "EXP-003 (EXP-003A Temporal Generalization, EXP-003B Forecast Detection)" },
       { label: "Pre-registration", value: "2ff1c53, 2026-09-26 22:30 UTC", href: `${REPO}/blob/2ff1c53/models/ari3-v0.0.3/PREREGISTRATION.md`, mono: true },
       { label: "Pre-registration hash", value: "sha256 fa65367d3166cba52903229bfd849ce34022b536e93ae6c62341325e7911aff1", mono: true },
+      { label: "EXP-003A run", value: "2026-10-02, once" },
+      { label: "EXP-003A record", value: "1c78f56", href: `${REPO}/commit/1c78f56e865a34d044cd092d81a8adb4623233fc`, mono: true },
+      { label: "EXP-003A dataset", value: "150 time-holdout labels by the editor (82 yes, 68 no), frozen and committed before the run" },
+      { label: "EXP-003A gold fingerprint", value: "sha256 7e15f2a1c9595fce12dffd5558b9e38e1845a32a22052b0664649235676d9b7d", mono: true },
+      { label: "EXP-003A model", value: "ari3-v0.0.2, unchanged. Weights sha256 f6b25eb421e2766cc2681f9b2a6816330ab50569bae752a73b231ed7fe282f09", mono: true },
+      { label: "EXP-003A eligibility", value: "Amended 2026-09-30, before any label existed", href: `${REPO}/blob/3132885c0e90406e8296f2bfbf98aeeb12f89997/models/ari3-v0.0.3/AMENDMENT_2026-09-30_holdout_eligibility.md` },
       { label: "EXP-003B run", value: "2026-09-26, once" },
       { label: "EXP-003B record", value: "bbbaaf0", href: `${REPO}/commit/bbbaaf0768515d4b37e447813036117950086adb`, mono: true },
       { label: "EXP-003B dataset", value: "250 is_forecast labels by the editor (35 forecasts), made after the pre-registration" },
       { label: "Dataset fingerprint", value: "sha256 ff36351a44866144506dddf9cf58fdf299dd61100ed49238c534f2d75633ec70", mono: true },
       { label: "is_forecast head", value: "Frozen and hashed, not used. manifest_sha256 c39b1f601e7d2fa137a48532ceddea38bb7230cc2b7e0976e4ffcb60b93a6d77", mono: true },
-      { label: "Environment", value: "Recorded in the head's manifest, with a runtime of 36 s" },
-      { label: "Random seeds", value: "EXP-003B queue: 11. EXP-003A queue: 13 (not yet built). Model fitting is deterministic." },
-      { label: "EXP-003A", value: "Pending. Needs 150 labels on items fetched after 2026-09-26 19:25:40 UTC, collected over at least 3 days" },
+      { label: "Release manifest", value: "2026-10-03, manifest_sha256 846b249dfaa46c0aec920998d8f83e0cc50c10de7974793516fa60fcd894ebc1", href: `${REPO}/blob/master/models/ari3-v0.0.3/manifest.json`, mono: true },
+      { label: "Environment", value: "Recorded in the forecast head's manifest and in the EXP-003A result file" },
+      { label: "Random seeds", value: "EXP-003B queue: 11. EXP-003A queue: 13. Model fitting is deterministic." },
     ],
     question: "Can the evidence ARI3 produces be trusted: do its judgments hold on articles it could not have seen (EXP-003A), and can it separate predictions from reports (EXP-003B)?",
     preregistered: "Yes. Both parts, their five hypotheses, a reason for each threshold and a failure interpretation for each were committed before any EXP-003 label existed.",
     hypotheses: [
-      { id: "H1", claim: "003A: coverage holds on new items", test: "Coverage on the time holdout ≥ 0.90", result: "Not yet run", verdict: "Pending" },
-      { id: "H2", claim: "003A: accuracy holds on new items", test: "Accuracy on the time holdout ≥ 0.85", result: "Not yet run", verdict: "Pending" },
-      { id: "H3", claim: "003A: not-sure rate matches the test set", test: "Not-sure share on the time holdout ≤ 0.35", result: "Not yet run", verdict: "Pending" },
+      { id: "H1", claim: "003A: coverage holds on new items", test: "Coverage on the time holdout ≥ 0.90", result: "0.927 (139 of 150)", verdict: "Supported" },
+      { id: "H2", claim: "003A: accuracy holds on new items", test: "Accuracy on the time holdout ≥ 0.85", result: "0.833 (125 of 150)", verdict: "Not supported" },
+      { id: "H3", claim: "003A: not-sure rate matches the test set", test: "Not-sure share on the time holdout ≤ 0.35", result: "0.327 (49 of 150)", verdict: "Supported" },
       { id: "H4", claim: "003B: the model learns the task", test: "Balanced accuracy ≥ 0.75 and above the majority baseline", result: "0.50, equal to the baseline", verdict: "Not supported" },
       { id: "H5", claim: "003B: coverage holds for the new task", test: "Coverage ≥ 0.90", result: "0.961", verdict: "Supported" },
     ],
@@ -81,17 +192,18 @@ export const EXPERIMENTS: Experiment[] = [
       "An article saying a look \"will be big next season\" is a prediction. Counted as a mention, it feeds the press's forecasts back into the evidence that later trend models will read. A forecast detector has to exist before those models run.",
     ],
     method: [
-      "250 is_forecast labels: 150 random, 100 containing a forecast word",
-      "Split fixed by a hash of each item: 161 train, 38 calibration, 51 test",
-      "Multilingual sentence embeddings, frozen (shared with the style task)",
-      "New logistic regression head",
-      "Temperature scaling on the calibration split",
-      "Split conformal threshold at α = 0.10",
-      "Scored on 51 test items, both groups together and separately",
+      "003A: 150 items published after the v0.0.2 freeze, drawn in turn from each sector",
+      "003A: labeled by the editor, then frozen and committed",
+      "003A: frozen v0.0.2 scored them once, unchanged",
+      "003B: 250 is_forecast labels, 150 random and 100 containing a forecast word",
+      "003B: split fixed by a hash of each item, 161 train, 38 calibration, 51 test",
+      "003B: new logistic regression head on the shared, frozen sentence embeddings",
+      "003B: temperature scaling, then a split conformal threshold at α = 0.10",
+      "003B: scored on 51 test items, both groups together and separately",
     ],
     held: [
       "The shared perception architecture: embedder, classifier type, calibration, conformal step",
-      "Frozen v0.0.2 for EXP-003A, not refit",
+      "Frozen v0.0.2 for EXP-003A, not refit, recalibrated or retuned",
       "Thresholds, datasets, splits, seeds and labeling rules, as committed",
     ],
     changed: [
@@ -101,57 +213,72 @@ export const EXPERIMENTS: Experiment[] = [
       "5 forecasts in the EXP-003B test set, so every forecast metric is highly uncertain.",
       "One editor labels every item, with no second labeler.",
       "The 100 forecast-word items are not a random sample.",
-      "About 87% of stored items come from editorial outlets.",
+      "The EXP-003A sample covers 39 outlets and about 3.3 days of publication, so a later period may behave differently.",
+      "EXP-003A measures how v0.0.2 does on newer articles. It does not explain why accuracy fell.",
+      "Publish times are the times feeds report, and a feed can report them wrongly.",
+      "88.6% of stored items came from the editorial sector on 2026-10-03. The EXP-003A draw rotates through sectors, so its sample is less editorial than the corpus.",
       "Most labeled items are tagged English.",
     ],
     compare: { a: "Always no", b: "is_forecast", n: 51 },
+    resultsIntro: "EXP-003A: frozen v0.0.2 scored once on the 150 time-holdout items. EXP-003B: the is_forecast head and always answering no, scored on the same 51 held-out items.",
     metrics: [
-      { name: "Balanced accuracy", a: 0.5, b: 0.5, format: "pct", note: "Pre-registered pass mark 0.75. Not supported" },
-      { name: "Forecasts caught (recall)", a: 0, b: 0, format: "pct", note: "0 of 5 test forecasts" },
-      { name: "Plain accuracy", a: 0.902, b: 0.902, format: "pct", note: "Identical to always answering no" },
-      { name: "Coverage (target ≥ 0.90)", b: 0.961, format: "pct" },
+      { name: "003A coverage (target ≥ 0.90)", b: 0.927, label: "v0.0.2", format: "pct", note: "139 of 150. Supported" },
+      { name: "003A accuracy (pass mark 0.85)", b: 0.833, label: "v0.0.2", format: "pct", note: "125 of 150, 95% interval 0.766 to 0.884. Not supported" },
+      { name: "003A not-sure share (limit 0.35)", b: 0.327, label: "v0.0.2", format: "pct", lowerIsBetter: true, note: "49 of 150. Supported" },
+      { name: "003B balanced accuracy", a: 0.5, b: 0.5, format: "pct", note: "Pre-registered pass mark 0.75. Not supported" },
+      { name: "003B forecasts caught (recall)", a: 0, b: 0, format: "pct", note: "0 of 5 test forecasts" },
+      { name: "003B plain accuracy", a: 0.902, b: 0.902, format: "pct", note: "Identical to always answering no" },
+      { name: "003B coverage (target ≥ 0.90)", b: 0.961, format: "pct" },
     ],
     benefits: [
-      "Coverage held at 0.961, so the head's not-sure answers were honest about its uncertainty",
-      "The balanced-accuracy test, chosen in advance, exposed a failure that 90% plain accuracy would have hidden",
+      "003A: on newer articles, v0.0.2's prediction sets still held the right answer 92.7% of the time",
+      "003A: the not-sure share (0.327) stayed closer to the test set (0.25) than to the whole corpus (0.42)",
+      "003B: conformal coverage was 0.961 and met H5, despite the head failing to identify any forecasts. Coverage therefore does not establish useful forecast discrimination",
+      "003B: the balanced-accuracy test, chosen in advance, exposed a failure that 90% plain accuracy would have hidden",
     ],
     costs: [
-      "No forecast was detected, so forecast articles remain in the mention counts",
-      "v0.0.3 cannot complete until EXP-003A runs",
+      "003A: accuracy fell from 0.902 on v0.0.2's own test set to 0.833 on newer articles, below the pre-registered 0.85",
+      "003A: 11 confident mistakes on 150 items, against 2 on the 61-item test set",
+      "003B: no forecast was detected, so forecast articles remain in the mention counts",
     ],
     surprises: [
-      "No item scored above 0.41, so the head never reached the 0.50 point needed to answer yes. Forecasts were 11% of its training items, and temperature scaling (T = 1.84) flattened its probabilities further. Exploratory check, not pre-registered.",
-      "The head ranked forecasts almost perfectly on its training items (AUC 0.985) and weakly on test items (0.674 from 5 forecasts). It fit its 18 training forecasts more than it learned the idea. Exploratory check, not pre-registered.",
+      "No item scored above 0.41, so the head never reached the 0.50 point needed to answer yes. Forecasts were 11% of its training items, and temperature scaling (T = 1.84) flattened its probabilities further. Post-hoc check, not pre-registered.",
+      "The head ranked forecasts almost perfectly on its training items (AUC 0.985) and weakly on test items (0.674 from 5 forecasts). It fit its 18 training forecasts more than it learned the idea. Post-hoc check, not pre-registered.",
     ],
     engineering: [
       "Review app runs any labeling queue, each with its own task, split and group tag",
       "Queue builders for the forecast sample and the time holdout (src/label_tool.py)",
       "One-shot EXP-003B runner that refuses to run twice (src/ari3_exp003b_run.py)",
+      "EXP-003A runner that checks every label and eligibility rule, freezes the gold labels, and refuses to score before they are committed and public (src/ari3_exp003a_run.py)",
+      "Database migration 0004: write-once first-seen times, so a holdout can show when each item arrived",
       "Manifests now record the environment, runtime and labeling queue fingerprint",
     ],
     log: [
       { step: "Observation", text: "Press predictions were being counted as mentions of the looks they predicted." },
       { step: "Idea", text: "Add a second perception task that tells a prediction from a report." },
-      { step: "Experiment", text: "EXP-003B, pre-registered, 250 labels, run once." },
-      { step: "Result", text: "H4 failed: the head never answered yes. H5 held. Forecasts stay in the counts." },
-      { step: "New question", text: "Would a head built for rare classes, with its decision point chosen in advance, find forecasts? That would be a new pre-registered experiment." },
+      { step: "Experiment", text: "EXP-003B (250 labels) and EXP-003A (150 time-holdout labels), pre-registered, each run once." },
+      { step: "Result", text: "003B: H4 failed, the head never answered yes, and H5 held. 003A: coverage and the not-sure share held, and accuracy missed its pass mark." },
+      { step: "New question", text: "Which newer articles does v0.0.2 get wrong, and would labels from newer periods fix them? Any fix is a new pre-registered experiment." },
     ],
     lessons: [
       "Expected: the style task's design would transfer to forecasts. Observed: with forecasts at 11% of labels, it never predicted one.",
       "Plain accuracy looked like 90% success. Balanced accuracy showed it was no better than always answering no.",
-      "A failed hypothesis still produced a usable record: what failed, a measured reason, and a frozen head that is kept out of the counts.",
+      "A failed hypothesis still produced a usable record: what failed, the observed failure pattern, and a frozen head that is kept out of the counts.",
+      "Expected: v0.0.2 would keep its accuracy on newer articles. Observed: accuracy fell to 0.833 while coverage held at 0.927.",
     ],
     openQuestions: [
-      "EXP-003A: does v0.0.2 hold up on articles collected after it was frozen?",
+      "Which kinds of newer articles does v0.0.2 get wrong, and why?",
       "How many forecast labels would a head need before it separates predictions from reports on new items?",
       "Would more context than a headline and excerpt make forecasts easier to recognize?",
     ],
     reproduce: {
-      text: "The pre-registration, the EXP-003B runner, the frozen head and its manifest are public. The labels are in the project's local database and not published yet, so outsiders can check the hashes but cannot rerun training. The runner refuses to run a second time.",
+      text: "The pre-registration, both runners, the frozen forecast head, the EXP-003A gold labels (item IDs and labels) and the EXP-003A result are public. The items' text stays in the project's local database, so outsiders can check the hashes but cannot rerun the scoring. Both runners refuse to run a second time.",
       commands: `git clone ${REPO}.git
 cd fashion-trend-crawler
 git show 2ff1c53:models/ari3-v0.0.3/PREREGISTRATION.md | sha256sum
-git show bbbaaf0:models/ari3-v0.0.3/is_forecast/weights.npz | sha256sum`,
+git show bbbaaf0:models/ari3-v0.0.3/is_forecast/weights.npz | sha256sum
+git show 88eb59e:models/ari3-v0.0.3/exp003a/gold_v1.jsonl | sha256sum
+git show 1c78f56:models/ari3-v0.0.3/exp003a/result.json | sha256sum`,
     },
   },
   {
@@ -224,7 +351,7 @@ git show bbbaaf0:models/ari3-v0.0.3/is_forecast/weights.npz | sha256sum`,
     threats: [
       "Small test set. 61 items, so a 2-item difference is within noise.",
       "One annotator. Every label reflects one editor's judgment, and no agreement rate between labelers exists yet.",
-      "Source bias. About 87% of stored items come from editorial outlets, so small sectors have few examples.",
+      "Source bias. About 87% of stored items came from the editorial sector when EXP-002 ran (2026-09-26), so small sectors had few examples.",
       "Language. By feed metadata, 300 of the 350 labeled items are tagged English and 10 French, so accuracy on other languages is essentially untested.",
       "Time. 276 of the 350 labeled items were published in September 2026, so the model is barely tested on older or newer language.",
       "Class balance. 55% of random labels are yes.",
@@ -335,7 +462,7 @@ python src/ari3_v002_run.py`,
     threats: [
       "Very small test set. 34 items, so accuracy has a 22-point interval.",
       "One annotator, one pass.",
-      "Source bias. About 85% of stored items came from editorial outlets at the time.",
+      "Source bias. Editorial sources already dominated the stored corpus when EXP-001 ran.",
       "Only 29 calibration items, which makes the conformal threshold cautious.",
       "Not pre-registered. The analysis was chosen by the people who ran it.",
     ],
@@ -393,7 +520,7 @@ git show 9c296bd:models/ari3-v0.0.1/weights.npz | sha256sum`,
 export const RELEASE_NAMES = [
   { version: "v0.0.1", name: "INDUSTRIA", motto: "The work begins.", status: "Released", exp: "exp-001" },
   { version: "v0.0.2", name: "DISCIPLINA", motto: "The method emerges.", status: "Released", exp: "exp-002" },
-  { version: "v0.0.3", name: "INTEGRITAS", motto: "The evidence can be trusted.", status: "In progress", exp: "exp-003" },
+  { version: "v0.0.3", name: "INTEGRITAS", motto: "The evidence can be trusted.", status: "Released", exp: "exp-003" },
   { version: "v0.0.4", name: "PROVIDENTIA", motto: "The system begins looking forward.", status: "Planned" },
   { version: "v0.0.5", name: "CONCORDIA", motto: "Independent models act in concert.", status: "Planned" },
   { version: "v1.0", name: "FIDES", motto: "The system earns trust.", status: "Planned" },
@@ -407,12 +534,15 @@ export const PROJECT_STATE: { status: string; mark: "full" | "half" | "dashed" |
       { area: "Dated collection", detail: "97 feeds read every 4 hours into a local database, respecting robots.txt" },
       { area: "Evidence gate", detail: "No report is published without a dated article link for every claim" },
       { area: "Perception v0.0.1 and v0.0.2", detail: "Frozen, hashed and public" },
-      { area: "Pre-registration", detail: "First experiment with public pass criteria committed before its data" },
+      { area: "Pre-registration", detail: "Every experiment that compares versions commits its pass criteria before its data" },
+      { area: "Grounded retrieval (EXP-004)", detail: "A frozen retriever, tested once on held-out questions" },
+      { area: "INTEGRITAS (v0.0.3)", detail: "Released 2026-10-03. Both parts of EXP-003 ran once, and the results include a failed accuracy criterion and a failed forecast detector" },
     ],
   },
   {
     status: "In progress", mark: "half", items: [
-      { area: "Lexicon v1", detail: "73 style terms chosen by the editor, 12 with usage notes. Not yet loaded" },
+      { area: "Lexicon v1", detail: "73 style terms chosen by the editor, loaded 2026-09-26 and matched in items stored up to then. Seven ambiguous terms are kept but left out of every count until their uses are checked one by one" },
+      { area: "Grounded answers (EXP-005)", detail: "A prompt and answer schema that answer questions only from retrieved ARI3 items are in development. In the two latest development batches, of five and eight questions, every claim was supported by its cited items, judged only against the evidence each answer was given. A side-by-side test of a prompt that states the schema's size limits found no difference from the current prompt, so the current prompt stays. These are development results, not an estimate of general performance. No final evaluation has run" },
       { area: "Forecast ledger", detail: "Database tables built. No forecast has been made" },
     ],
   },

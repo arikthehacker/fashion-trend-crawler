@@ -2,7 +2,7 @@
 
 This is the published archive. Every `<report_date>.json` file here is built into the public site at ari3lla.com.
 
-**Status (2026-09-22):** empty. The archive restarts here with the first report that meets the evidence standard below.
+**Status (2026-10-03):** one report, dated 2026-05-18. A new report is added only when it meets the evidence standard below.
 
 ## What a report needs before it can go here
 

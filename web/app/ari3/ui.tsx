@@ -82,7 +82,7 @@ export function Bars({ metrics, a, b }: { metrics: Metric[]; a?: string; b: stri
     <div style={{ display: "flex", flexDirection: "column", gap: "1.2rem" }}>
       {metrics.map((m) => {
         const max = m.format === "pct" ? 1 : Math.max(m.b, m.a ?? 0) * 1.15;
-        const rows: [string, number][] = m.a !== undefined && a ? [[a, m.a], [b, m.b]] : [[b, m.b]];
+        const rows: [string, number][] = m.a !== undefined && a ? [[a, m.a], [b, m.b]] : [[m.label ?? b, m.b]];
         return (
           <div key={m.name}>
             <div style={{ fontFamily: "var(--font-franklin)", fontSize: "0.85rem", marginBottom: "0.3rem" }}>
