@@ -23,6 +23,14 @@ jobs:
       - name: Publish gate tests (bad fixtures must fail)
         run: python src/test_publish_gate.py
 
+      - name: Report drafter tests (throwaway store, no model)
+        run: python src/test_draft_report.py
+
+      - name: Lexicon matcher and window-boundary tests
+        run: |
+          pip install pytest
+          python -m pytest src/test_lexicon.py -q
+
       - name: Item store tests (schema, triggers, idempotent upserts)
         run: python src/test_item_store.py
 
@@ -76,7 +84,7 @@ jobs:
         run: python src/test_lexicon_sense.py
 
       - name: Validate published reports (schema + publish gate + non-blocking confidence warnings)
-        run: python src/validate_all_reports.py
+        run: python src/validate_all_reports.py --store-optional
 
   lint-web:
     runs-on: ubuntu-latest

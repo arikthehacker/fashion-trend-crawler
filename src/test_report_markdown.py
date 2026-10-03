@@ -19,6 +19,7 @@ class ReportMarkdownTests(unittest.TestCase):
     def setUp(self):
         self.report = copy.deepcopy(GOOD)
         self.report["review_status"] = "draft"
+        self.report["top_signals"][0]["human_editor_note"] = ""  # a fresh draft has no editor note
 
     def test_round_trip_without_edits_changes_nothing(self):
         new, changes, approved = rm.apply_markdown(rm.export_markdown(self.report), self.report)

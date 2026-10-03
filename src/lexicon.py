@@ -4,6 +4,8 @@ Commands (run in order the first time):
     python src/lexicon.py load <terms_v1_review.json>   # terms, variants, editor rules
     python src/lexicon.py score                         # ARI3 v0.0.2 on every unscored item
     python src/lexicon.py extract                       # lexicon-match mentions
+    python src/lexicon.py score --from 2026-09-28 --to 2026-10-04    # only items published in a window
+    python src/lexicon.py extract --from 2026-09-28 --to 2026-10-04
     python src/lexicon.py report                        # counts per term
 
 Extraction is deterministic word matching, not a model. A variant matches at a
@@ -23,6 +25,7 @@ from item_store import DEFAULT_DB, ROOT, connect, migrate, utc_now
 LEXICON_VERSION = 1
 EXTRACTOR_VERSION = "lexicon-match-v1"
 STYLE_MODEL = "ari3-v0.0.2"
+STYLE_TASK = "is_style_signal"  # the same task name as jev_spike.TASK
 
 SIGNAL_TYPES = {
     "Aesthetic and style names": "aesthetic_term",
@@ -102,15 +105,38 @@ def cmd_load(con, path):
           f"{con.execute('SELECT count(*) FROM term_rules WHERE needs_sense_check=1').fetchone()[0]} flagged for sense checks.")
 
 
-def cmd_score(con):
+def window_bounds(start, end):
+    """Inclusive report dates as a half-open UTC interval:
+    start 00:00:00Z <= published_at < (end + 1 day) 00:00:00Z."""
+    from datetime import date, timedelta
+    after = date.fromisoformat(end) + timedelta(days=1)
+    return f"{date.fromisoformat(start).isoformat()}T00:00:00Z", f"{after.isoformat()}T00:00:00Z"
+
+
+def window_clause(start=None, end=None):
+    """SQL and params limiting items to a publication window (see window_bounds)."""
+    if not start and not end:
+        return "", ()
+    if not (start and end):
+        raise ValueError("give both --from and --to, or neither")
+    return " AND published_at >= ? AND published_at < ?", window_bounds(start, end)
+
+
+def unscored_items(con, start=None, end=None):
+    """Items with no ARI3 v0.0.2 style prediction, optionally limited to a publication window."""
+    where, params = window_clause(start, end)
+    return con.execute(
+        """SELECT item_id, title, text_excerpt FROM items
+           WHERE item_id NOT IN (SELECT item_id FROM label_predictions WHERE model_version=? AND task=?)""" + where,
+        (STYLE_MODEL, STYLE_TASK, *params)).fetchall()
+
+
+def cmd_score(con, start=None, end=None):
     import numpy as np
     import jev_spike as J
     from ari3_freeze import EMBEDDER_REVISION
     from sentence_transformers import SentenceTransformer
-    rows = con.execute(
-        """SELECT item_id, title, text_excerpt FROM items
-           WHERE item_id NOT IN (SELECT item_id FROM label_predictions WHERE model_version=? AND task=?)""",
-        (STYLE_MODEL, J.TASK)).fetchall()
+    rows = unscored_items(con, start, end)
     if not rows:
         print("Every item already has an ARI3 v0.0.2 prediction.")
         return
@@ -133,9 +159,10 @@ def cmd_score(con):
           f"{sets.count(json.dumps(['no']))} not style, {sets.count(json.dumps(['yes', 'no']))} not sure.")
 
 
-def cmd_extract(con):
+def cmd_extract(con, start=None, end=None):
     lexicon = compile_lexicon(con)
-    rows = con.execute("SELECT item_id, title, text_excerpt FROM items").fetchall()
+    where, params = window_clause(start, end)
+    rows = con.execute("SELECT item_id, title, text_excerpt FROM items WHERE 1=1" + where, params).fetchall()
     before = con.execute("SELECT count(*) FROM mentions WHERE extractor_version=?", (EXTRACTOR_VERSION,)).fetchone()[0]
     batch = [(item_id, term_id, start, EXTRACTOR_VERSION)
              for item_id, title, ex in rows for term_id, start in find_mentions(item_text(title, ex), lexicon)]
@@ -162,13 +189,16 @@ def main(argv=None) -> int:
     ap.add_argument("--db", default=DEFAULT_DB)
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("load").add_argument("review")
-    for c in ("score", "extract", "report"):
-        sub.add_parser(c)
+    for c in ("score", "extract"):
+        sp = sub.add_parser(c)
+        sp.add_argument("--from", dest="start", help="first publication date, YYYY-MM-DD (with --to)")
+        sp.add_argument("--to", dest="end", help="last publication date, YYYY-MM-DD, inclusive")
+    sub.add_parser("report")
     args = ap.parse_args(argv)
     con = connect(args.db)
     migrate(con)
-    {"load": lambda: cmd_load(con, args.review), "score": lambda: cmd_score(con),
-     "extract": lambda: cmd_extract(con), "report": lambda: cmd_report(con)}[args.cmd]()
+    {"load": lambda: cmd_load(con, args.review), "score": lambda: cmd_score(con, args.start, args.end),
+     "extract": lambda: cmd_extract(con, args.start, args.end), "report": lambda: cmd_report(con)}[args.cmd]()
     return 0
 
 

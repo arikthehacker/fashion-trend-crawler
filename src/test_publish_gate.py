@@ -34,6 +34,7 @@ GOOD = {
     **{k: [] for k in ("repeated_keywords", "garments", "silhouettes", "materials", "colors",
                        "aesthetic_terms", "cultural_references", "archive_tags")},
     "limitations": ["Fixture."],
+    "review_status": "reviewed",
     "top_signals": [
         {
             "name": "Fixture signal",
@@ -44,6 +45,7 @@ GOOD = {
             "origin_classification": "unclear",
             "evidence": "One dated article.",
             "index_note": "Fixture.",
+            "human_editor_note": "Fixture editor note.",
             "source_domains": ["example.com"],
             "evidence_items": [
                 {
@@ -57,6 +59,15 @@ GOOD = {
 }
 
 
+# The fixture's evidence item "in the item store", and its committed evidence manifest.
+STORED = {"item_id": 7, "url": "https://example.com/2026/09/18/fixture-article", "published_at": "2026-09-18T09:00:00Z",
+          "retrieved_at": "2026-09-20T10:00:00Z", "first_seen_at": "2026-09-20T10:00:00Z",
+          "first_seen_basis": "live_insert", "content_hash": "abc"}
+STORE = {STORED["url"]: dict(STORED)}
+MANIFEST = {"manifest_version": "evidence-manifest-v1", "report_date": "2026-09-21",
+            "collection_window": {"start": "2026-09-15", "end": "2026-09-21"}, "items": [dict(STORED)]}
+
+
 def bad(mutate):
     d = copy.deepcopy(GOOD)
     mutate(d)
@@ -66,24 +77,24 @@ def bad(mutate):
 class PublishGateTests(unittest.TestCase):
     def test_good_fixture_passes_schema_and_gate(self):
         validate_report(GOOD)
-        self.assertEqual(publish_gate_errors(GOOD, TODAY), [])
+        self.assertEqual(publish_gate_errors(GOOD, TODAY, STORE, MANIFEST), [])
 
     def test_future_report_date_fails(self):
         d = bad(lambda d: d.update(report_date="2028-04-17"))
-        self.assertTrue(any("after today" in e for e in publish_gate_errors(d, TODAY)))
+        self.assertTrue(any("after today" in e for e in publish_gate_errors(d, TODAY, STORE, MANIFEST)))
 
     def test_signal_without_evidence_fails(self):
         d = bad(lambda d: d["top_signals"][0].pop("evidence_items"))
-        self.assertTrue(any("no evidence_items" in e for e in publish_gate_errors(d, TODAY)))
+        self.assertTrue(any("no evidence_items" in e for e in publish_gate_errors(d, TODAY, STORE, MANIFEST)))
 
     def test_empty_evidence_list_fails(self):
         d = bad(lambda d: d["top_signals"][0].update(evidence_items=[]))
-        self.assertTrue(publish_gate_errors(d, TODAY))
+        self.assertTrue(publish_gate_errors(d, TODAY, STORE, MANIFEST))
 
     def test_homepage_url_fails(self):
         for url in ("https://vogue.com", "https://www.vogue.com/"):
             d = bad(lambda d, u=url: d["top_signals"][0]["evidence_items"][0].update(url=u))
-            self.assertTrue(any("homepage" in e for e in publish_gate_errors(d, TODAY)), url)
+            self.assertTrue(any("homepage" in e for e in publish_gate_errors(d, TODAY, STORE, MANIFEST)), url)
 
     def test_bare_domain_url_fails_schema(self):
         d = bad(lambda d: d["top_signals"][0]["evidence_items"][0].update(url="vogue.com"))
@@ -93,7 +104,7 @@ class PublishGateTests(unittest.TestCase):
     def test_evidence_published_after_report_fails(self):
         d = bad(lambda d: d["top_signals"][0]["evidence_items"][0].update(
             published_at="2026-09-22", retrieved_at="2026-09-22"))
-        self.assertTrue(any("after the report date" in e for e in publish_gate_errors(d, TODAY)))
+        self.assertTrue(any("after the report date" in e for e in publish_gate_errors(d, TODAY, STORE, MANIFEST)))
 
     def test_missing_dates_fail_schema(self):
         for key in ("published_at", "retrieved_at"):
@@ -109,18 +120,18 @@ class PublishGateTests(unittest.TestCase):
 
     def test_thin_report_without_evidence_fails(self):
         d = bad(lambda d: d.update(top_signals=[]))
-        self.assertTrue(any("no signals" in e for e in publish_gate_errors(d, TODAY)))
+        self.assertTrue(any("no signals" in e for e in publish_gate_errors(d, TODAY, STORE, MANIFEST)))
 
     def test_thin_report_with_report_level_evidence_passes(self):
         item = copy.deepcopy(GOOD["top_signals"][0]["evidence_items"][0])
         d = bad(lambda d: d.update(top_signals=[], evidence_items=[item]))
         validate_report(d)
-        self.assertEqual(publish_gate_errors(d, TODAY), [])
+        self.assertEqual(publish_gate_errors(d, TODAY, STORE, MANIFEST), [])
 
     def test_report_level_homepage_fails(self):
         d = bad(lambda d: d.update(evidence_items=[{"url": "https://wwd.com/", "published_at": "2026-09-18",
                                                     "retrieved_at": "2026-09-20"}]))
-        self.assertTrue(any("homepage" in e for e in publish_gate_errors(d, TODAY)))
+        self.assertTrue(any("homepage" in e for e in publish_gate_errors(d, TODAY, STORE, MANIFEST)))
 
     def test_ai_assistance_is_optional_but_never_empty(self):
         validate_report(dict(GOOD, ai_assistance="Software collected the items and matched the terms."))
@@ -130,17 +141,108 @@ class PublishGateTests(unittest.TestCase):
 
     def test_main_fails_on_bad_archive_and_passes_on_good(self):
         with tempfile.TemporaryDirectory() as tmp:
-            with mock.patch.object(report_schema, "REPORTS_DIR", tmp):
+            with mock.patch.object(report_schema, "REPORTS_DIR", tmp),                     mock.patch.object(validate_all_reports, "load_store_index", lambda: STORE),                     mock.patch.object(validate_all_reports, "load_manifest", lambda date: MANIFEST):
                 path = os.path.join(tmp, "2026-09-21.json")
                 with open(path, "w", encoding="utf-8") as f:
                     json.dump(GOOD, f)
-                self.assertEqual(validate_all_reports.main(), 0)
+                self.assertEqual(validate_all_reports.main([]), 0)
 
                 d = bad(lambda d: d["top_signals"][0]["evidence_items"][0].update(url="https://vogue.com"))
                 with open(path, "w", encoding="utf-8") as f:
                     json.dump(d, f)
-                self.assertEqual(validate_all_reports.main(), 1)
+                self.assertEqual(validate_all_reports.main([]), 1)
 
+
+
+class NewReportGateTests(unittest.TestCase):
+    """Owner decision Q21: reports dated after HISTORICAL_CUTOFF."""
+
+    def test_historical_report_keeps_its_rules(self):
+        old = bad(lambda d: d.update(report_date="2026-05-18",
+                                     collection_window={"start": "2026-05-12", "end": "2026-05-18"}))
+        old["top_signals"][0].update(human_editor_note="")
+        old["top_signals"][0]["evidence_items"][0].update(published_at="2026-05-14", retrieved_at="2026-09-23")
+        old.pop("review_status")
+        self.assertEqual(publish_gate_errors(old, TODAY, None), [])
+        real = report_schema.load_report("2026-05-18")
+        validate_report(real)
+        self.assertEqual(publish_gate_errors(real, "2026-10-03", None), [])
+
+    def test_draft_fails_for_the_expected_reasons(self):
+        d = bad(lambda d: d.update(review_status="draft"))
+        d["top_signals"][0]["human_editor_note"] = ""
+        errors = publish_gate_errors(d, TODAY, STORE, MANIFEST)
+        self.assertTrue(any("review_status" in e for e in errors))
+        self.assertTrue(any("human_editor_note" in e for e in errors))
+        self.assertEqual(len(errors), 2)
+
+    def test_missing_review_status_fails(self):
+        d = bad(lambda d: d.pop("review_status"))
+        self.assertTrue(any("review_status" in e for e in publish_gate_errors(d, TODAY, STORE, MANIFEST)))
+
+    def test_reviewed_report_with_note_and_stored_evidence_passes(self):
+        self.assertEqual(publish_gate_errors(GOOD, TODAY, STORE, MANIFEST), [])
+
+    def test_evidence_absent_from_the_manifest_fails(self):
+        d = bad(lambda d: d["top_signals"][0]["evidence_items"][0].update(url="https://example.com/2026/09/18/other"))
+        self.assertTrue(any("not in the evidence manifest" in e for e in publish_gate_errors(d, TODAY, STORE, MANIFEST)))
+
+    def test_store_url_matching_uses_the_store_canonical_form(self):
+        d = bad(lambda d: d["top_signals"][0]["evidence_items"][0].update(
+            url="https://EXAMPLE.com/2026/09/18/fixture-article/?utm_source=x"))
+        self.assertEqual(publish_gate_errors(d, TODAY, STORE, MANIFEST), [])
+
+    def test_missing_manifest_fails_even_when_the_store_check_is_skipped(self):
+        errors = publish_gate_errors(GOOD, TODAY, validate_all_reports.SKIP_STORE, None)
+        self.assertTrue(any("evidence manifest missing" in e for e in errors))
+
+    def test_ci_mode_passes_with_a_matching_manifest(self):
+        self.assertEqual(publish_gate_errors(GOOD, TODAY, validate_all_reports.SKIP_STORE, MANIFEST), [])
+
+    def test_malformed_or_duplicate_manifest_entries_fail(self):
+        dup = copy.deepcopy(MANIFEST)
+        dup["items"].append(dict(STORED))
+        self.assertTrue(any("repeats" in e for e in publish_gate_errors(GOOD, TODAY, STORE, dup)))
+        broken = copy.deepcopy(MANIFEST)
+        broken["items"][0].pop("first_seen_basis")
+        self.assertTrue(any("malformed" in e for e in publish_gate_errors(GOOD, TODAY, STORE, broken)))
+        wrong_date = dict(copy.deepcopy(MANIFEST), report_date="2026-09-28")
+        self.assertTrue(any("report_date" in e for e in publish_gate_errors(GOOD, TODAY, STORE, wrong_date)))
+        not_canonical = copy.deepcopy(MANIFEST)
+        not_canonical["items"][0]["url"] += "/"
+        self.assertTrue(any("canonical" in e for e in publish_gate_errors(GOOD, TODAY, STORE, not_canonical)))
+
+    def test_report_and_manifest_disagreeing_on_the_item_fails(self):
+        d = bad(lambda d: d["top_signals"][0]["evidence_items"][0].update(item_id=8))
+        self.assertTrue(any("disagree on the item" in e for e in publish_gate_errors(d, TODAY, STORE, MANIFEST)))
+
+    def test_local_check_compares_the_manifest_with_the_real_store(self):
+        moved = {STORED["url"]: dict(STORED, first_seen_at="2026-09-21T00:00:00Z")}
+        self.assertTrue(any("differs from the item store" in e for e in publish_gate_errors(GOOD, TODAY, moved, MANIFEST)))
+        self.assertTrue(any("not in the item store" in e for e in publish_gate_errors(GOOD, TODAY, {}, MANIFEST)))
+        updated = {STORED["url"]: dict(STORED, retrieved_at="2026-09-25T00:00:00Z", content_hash="def")}
+        self.assertEqual(publish_gate_errors(GOOD, TODAY, updated, MANIFEST), [])  # fetch time may change
+
+    def test_unavailable_store_fails_locally(self):
+        self.assertTrue(any("item store is not available" in e for e in publish_gate_errors(GOOD, TODAY, None, MANIFEST)))
+
+    def test_main_in_ci_mode_requires_the_committed_manifest(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            with mock.patch.object(report_schema, "REPORTS_DIR", tmp),                     mock.patch.object(validate_all_reports, "load_store_index", lambda: None):
+                with open(os.path.join(tmp, "2026-09-21.json"), "w", encoding="utf-8") as f:
+                    json.dump(GOOD, f)
+                with mock.patch.object(validate_all_reports, "load_manifest", lambda date: None):
+                    self.assertEqual(validate_all_reports.main(["--store-optional"]), 1)
+                with mock.patch.object(validate_all_reports, "load_manifest", lambda date: MANIFEST):
+                    self.assertEqual(validate_all_reports.main(["--store-optional"]), 0)
+
+    def test_manifest_builder_writes_only_identity_and_dates(self):
+        import evidence_manifest as em
+        m = em.build_manifest(GOOD, STORE)
+        self.assertEqual(m["items"], [STORED])
+        self.assertEqual(em.shape_errors(m, GOOD), [])
+        with self.assertRaises(ValueError):
+            em.build_manifest(bad(lambda d: d["top_signals"][0]["evidence_items"][0].update(url="https://x.example/a")), STORE)
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
