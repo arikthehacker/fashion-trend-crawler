@@ -14,6 +14,11 @@ Decks, each usable with big touch buttons or the keyboard:
                  M ambiguous, D duplicate, Space skip, Backspace back, Esc menu.
   Lexicon        every term in docs/lexicon/terms_v1_draft.md, one card each,
                  with real headlines from the store that contain it
+  Report         a prepared weekly report (src/report_prepare.py). "Report decisions": one card
+                 per candidate signal with its evidence; choose keep, drop, merge or watchlist,
+                 set the labels, list items to remove and write your thoughts. Ctrl+Enter saves.
+                 "Report approval" (after Claude applies the decisions) uses the Answers deck:
+                 A approve, C change, T to say what should change.
 
 Lexicon keys: K keep, D drop, U unsure, N add a note, A add a new term,
 Backspace undo, O open the first example article, Esc back to the menu.
@@ -29,7 +34,7 @@ import sys
 import tkinter as tk
 import webbrowser
 from tkinter import font as tkfont
-from tkinter import messagebox, simpledialog
+from tkinter import messagebox, simpledialog, ttk
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from item_store import DEFAULT_DB, assign_split, connect, utc_now  # noqa: E402
@@ -38,6 +43,7 @@ import exp005_review  # noqa: E402
 import exp005_review_v2  # noqa: E402
 import rag_questions  # noqa: E402
 import rag_review  # noqa: E402
+import report_review  # noqa: E402
 
 DEV = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PLANNING = os.path.dirname(DEV)
@@ -116,6 +122,8 @@ def labels_left(con, name="is_style_signal"):
     if q.get("kind") == "gen_review":
         done = (exp005_review_v2.done if q.get("notes") else exp005_review.done)(q)
         return sum(1 for t in q["tasks"] if t["task_id"] not in done), len(q["tasks"])
+    if q.get("kind") == "report_decisions":
+        return report_review.left(q)
     done = {r[0] for r in con.execute(
         "SELECT item_id FROM labels WHERE task=? AND source='human'", (q["task"],))}
     return sum(1 for i in q["item_ids"] if i not in done), len(q["item_ids"])
@@ -145,6 +153,7 @@ class App:
         if self.frame:
             self.frame.destroy()
         self.root.unbind("<Key>")
+        self.root.unbind("<Control-Return>")
         self.wrapped = []
         self.frame = tk.Frame(self.root, bg=BG)
         self.frame.pack(fill="both", expand=True, padx=24, pady=18)
@@ -193,7 +202,8 @@ class App:
         for name, title in all_queues():
             q_left, q_total = labels_left(self.con, name)
             kind = load_queue(name).get("kind")
-            deck = self.relevance if kind == "rag_relevance" else self.genreview if kind == "gen_review" else self.labels
+            deck = {"rag_relevance": self.relevance, "gen_review": self.genreview,
+                    "report_decisions": self.reportdeck}.get(kind, self.labels)
             decks.append((f"{title}\n{q_left} of {q_total} left", lambda n=name, d=deck: d(n)))
         if not os.path.exists(rag_questions.FROZEN):
             status = rag_questions.review_status()
@@ -493,6 +503,148 @@ class App:
                   "t": self.gen_note}.get(k)
         if action:
             action()
+
+    # Report decisions deck ------------------------------------------------
+    def reportdeck(self, name):
+        self.rq = load_queue(name)
+        done = report_review.latest(self.rq)
+        cards = self.rq["cards"]
+        self.r_pos = next((i for i, c in enumerate(cards) if c["kind"] != "report" and c["card_id"] not in done), 0)
+        f = self.clear()
+        self.r_form = tk.Frame(f, bg=BG)
+        self.r_form.pack(side="bottom", fill="x", pady=(8, 0))
+        self.r_prog = self.label(f, size=11, color=DIM)
+        self.r_title = self.label(f, size=17, bold=True, pady=(4, 4))
+        box = tk.Frame(f, bg=BG)
+        box.pack(fill="both", expand=True)
+        scroll = tk.Scrollbar(box)
+        scroll.pack(side="right", fill="y")
+        self.r_body = tk.Text(box, wrap="word", font=(self.base, 11), bg="#ffffff", fg=FG, relief="solid", bd=1,
+                              padx=10, pady=8, height=10, yscrollcommand=scroll.set)
+        self.r_body.pack(side="left", fill="both", expand=True)
+        scroll.config(command=self.r_body.yview)
+        self.root.bind("<Control-Return>", lambda _e: self.rep_save())
+        self.rep_show()
+
+    def rep_current(self):
+        cards = self.rq["cards"]
+        return cards[self.r_pos] if 0 <= self.r_pos < len(cards) else None
+
+    def rep_field(self, row, col, text, widget):
+        tk.Label(self.r_form, text=text, bg=BG, fg=DIM, font=(self.base, 10)).grid(row=row, column=col, sticky="w", padx=4)
+        widget.grid(row=row + 1, column=col, sticky="ew", padx=4, pady=(0, 6))
+        return widget
+
+    def rep_show(self):
+        for w in self.r_form.winfo_children():
+            w.destroy()
+        left, total = report_review.left(self.rq)
+        card = self.rep_current()
+        self.r_body.config(state="normal")
+        self.r_body.delete("1.0", "end")
+        if card is None:
+            self.r_prog.config(text=f"{total - left} of {total} decided")
+            self.r_title.config(text="End of the deck." if left else "Every card is decided. Tell Claude the report decisions are in.")
+            self.r_body.config(state="disabled")
+            for i, (text, cmd) in enumerate((("Back", self.rep_back), ("Menu", self.menu))):
+                tk.Button(self.r_form, text=text, command=cmd, font=(self.base, 13), pady=8).grid(row=0, column=i, sticky="ew", padx=4)
+                self.r_form.grid_columnconfigure(i, weight=1)
+            return
+        prior = report_review.latest(self.rq).get(card["card_id"], {})
+        self.r_prog.config(text=f"Card {self.r_pos + 1} of {len(self.rq['cards'])}  |  {total - left} of {total} decided"
+                                + ("  |  saved" if prior else ""))
+        self.r_title.config(text={"signal": card.get("name", ""), "duplicate": "Possible duplicates",
+                                  "report": "Report-level thoughts"}[card["kind"]])
+        self.r_body.insert("1.0", report_review.card_text(card))
+        self.r_body.config(state="disabled")
+        for c in range(3):
+            self.r_form.grid_columnconfigure(c, weight=1, uniform="r")
+        box = lambda values, value: ttk.Combobox(self.r_form, values=values, state="readonly", font=(self.base, 11))
+        self.r_w = {}
+        row = 0
+        if card["kind"] == "signal":
+            others = [c["signal_id"] for c in self.rq["cards"] if c["kind"] == "signal" and c["signal_id"] != card["signal_id"]]
+            baseline = f"baseline ({card['baseline_confidence']})"
+            fields = [("decision", "Decision", report_review.DECISIONS, prior.get("decision", "")),
+                      ("merge_into", "Merge into (only for merge)", [""] + others, prior.get("merge_into") or ""),
+                      ("type", "Type", report_review.SIGNAL_TYPES, prior.get("type") or card["type"]),
+                      ("confidence", "Confidence", [baseline] + report_review.CONFIDENCE, prior.get("confidence") or baseline),
+                      ("volatility", "Volatility (needed to keep)", report_review.VOLATILITY_LABELS, prior.get("volatility", "")),
+                      ("origin", "Origin", report_review.ORIGIN_CLASSIFICATIONS, prior.get("origin") or "unclear")]
+            for n, (key, text, values, value) in enumerate(fields):
+                w = self.rep_field(row + 2 * (n // 3), n % 3, text, box(values, value))
+                w.set(value)
+                self.r_w[key] = w
+            row += 4
+            name = tk.Entry(self.r_form, font=(self.base, 11))
+            name.insert(0, prior.get("name") or card["name"])
+            self.r_w["name"] = self.rep_field(row, 0, "Name as published", name)
+            remove = tk.Entry(self.r_form, font=(self.base, 11))
+            remove.insert(0, ", ".join(str(i) for i in prior.get("remove_item_ids") or []))
+            self.r_w["remove"] = self.rep_field(row, 1, "Item IDs to remove (comma-separated)", remove)
+            row += 2
+        elif card["kind"] == "duplicate":
+            values = ["one story: count once", "separate pieces: count each"]
+            w = self.rep_field(row, 0, "Decision", box(values, ""))
+            if "collapse" in prior:
+                w.set(values[0] if prior["collapse"] else values[1])
+            self.r_w["collapse"] = w
+            row += 2
+        hint = {"signal": "Your thoughts (for a kept signal they become your editor note)", "duplicate": "Your thoughts (optional)",
+                "report": "Your thoughts about the week as a whole (optional)"}[card["kind"]]
+        tk.Label(self.r_form, text=hint, bg=BG, fg=DIM, font=(self.base, 10)).grid(row=row, column=0, columnspan=3, sticky="w", padx=4)
+        thoughts = tk.Text(self.r_form, wrap="word", font=(self.base, 12), height=5, relief="solid", bd=1, padx=8, pady=6)
+        thoughts.insert("1.0", prior.get("thoughts", ""))
+        thoughts.grid(row=row + 1, column=0, columnspan=3, sticky="ew", padx=4, pady=(0, 8))
+        self.r_w["thoughts"] = thoughts
+        nav = tk.Frame(self.r_form, bg=BG)
+        nav.grid(row=row + 2, column=0, columnspan=3, sticky="ew")
+        for i, (text, cmd, bold) in enumerate((("Save and next  (Ctrl+Enter)", self.rep_save, True), ("Skip", self.rep_skip, False),
+                                               ("Back", self.rep_back, False), ("Menu", self.menu, False))):
+            tk.Button(nav, text=text, command=cmd, font=(self.base, 13, "bold" if bold else "normal"), pady=10,
+                      bg=FG if bold else "#ffffff", fg="#ffffff" if bold else FG, relief="solid", bd=1,
+                      cursor="hand2").grid(row=0, column=i, sticky="ew", padx=4)
+            nav.grid_columnconfigure(i, weight=2 if bold else 1)
+
+    def rep_save(self):
+        card = self.rep_current()
+        if card is None:
+            return
+        w = self.r_w
+        payload = {"thoughts": w["thoughts"].get("1.0", "end").strip()}
+        if card["kind"] == "signal":
+            try:
+                remove = [int(x) for x in w["remove"].get().replace(";", ",").split(",") if x.strip()]
+            except ValueError:
+                messagebox.showerror("Not saved", "Item IDs to remove must be numbers separated by commas.")
+                return
+            name = w["name"].get().strip()
+            payload.update({"decision": w["decision"].get(), "merge_into": w["merge_into"].get() or None,
+                            "name": "" if name == card["name"] else name,
+                            "type": "" if w["type"].get() == card["type"] else w["type"].get(),
+                            "confidence": "" if w["confidence"].get().startswith("baseline") else w["confidence"].get(),
+                            "volatility": w["volatility"].get(), "origin": "" if w["origin"].get() == "unclear" else w["origin"].get(),
+                            "remove_item_ids": remove})
+        elif card["kind"] == "duplicate":
+            choice = w["collapse"].get()
+            payload["collapse"] = None if not choice else choice.startswith("one story")
+        try:
+            report_review.record(self.rq, card["card_id"], payload)
+        except ValueError as e:
+            messagebox.showerror("Not saved", str(e).replace("; ", "\n"))
+            return
+        self.r_pos += 1
+        self.rep_show()
+
+    def rep_skip(self):
+        if self.rep_current() is not None:
+            self.r_pos += 1
+            self.rep_show()
+
+    def rep_back(self):
+        if self.r_pos > 0:
+            self.r_pos -= 1
+            self.rep_show()
 
     # Question review deck (EXP-004) -------------------------------------
     def qreview(self):
