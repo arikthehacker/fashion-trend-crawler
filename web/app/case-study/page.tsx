@@ -47,7 +47,7 @@ const sections: { title: string; body: string[] }[] = [
   {
     title: "Current Limitations",
     body: [
-      "The archive holds one report, dated 2026-05-18. It resumes only with reports whose every claim links to a dated, fetched source. Drafting a weekly report from the item store is not built yet. Most collected sources are editorial, because brand, retail and resale sites rarely publish dated feeds. Social data waits on access to official platform APIs.",
+      "The archive holds two reports, dated 2026-05-18 and 2026-10-04. It grows only with reports whose every claim links to a dated, fetched source. Drafting a weekly report from the item store is not built yet. Most collected sources are editorial, because brand, retail and resale sites rarely publish dated feeds. Social data waits on access to official platform APIs.",
     ],
   },
   {

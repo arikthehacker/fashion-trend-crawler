@@ -8,7 +8,7 @@ ARI3LLA INDEX is not a trend forecaster, a shopping guide or a brand analytics p
 
 ## Status
 
-The published archive holds one report, dated 2026-05-18. It resumes only with reports whose every claim links to a dated, fetched source.
+The published archive holds two reports, dated 2026-05-18 and 2026-10-04. It grows only with reports whose every claim links to a dated, fetched source.
 
 The 94 reports published before 2026-09-22 were written by an autonomous agent loop that advanced a simulated weekly calendar. 92 of them were written before their own report date, and none linked a claim to a specific article. They are kept, unpublished, in [`data/archive/simulated/`](data/archive/simulated/), and the publish gate described below rejects all of them.
 
