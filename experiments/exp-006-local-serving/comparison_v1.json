@@ -1,0 +1,54 @@
+{
+ "computed_at": "2026-10-07T21:53:56Z",
+ "inputs": {
+  "deepseek_c2_outputs_sha256": "9e6fc79639508a28996a3661ade649ab3e29adf4f8932529894fc7ef71440703",
+  "vllm_v1_outputs_sha256": "7636e8290a87a878ec2a6f0b5f22145003952a8de94d97fe3038f405a3c1a810",
+  "packets_sha256": "ad67316abfa8306c66ed002036fe4438883409a813bc3a0dfdc0af8eb3d5bc6a"
+ },
+ "deepseek_c2": {
+  "model": "deepseek-flash (hosted API)",
+  "questions": 30,
+  "called": 30,
+  "first_attempt_latency_ms": {
+   "median": 1658.7,
+   "p95": 2624.0
+  },
+  "per_question_latency_ms_with_retries": {
+   "median": 1721.1,
+   "p95": 3258.6
+  },
+  "output_tokens_per_s_median": 145.1,
+  "first_attempt_schema_valid": "26/30",
+  "final_schema_valid": "30/30",
+  "schema_retries": 4,
+  "statuses": {
+   "answered": 24,
+   "model_abstention": 6
+  },
+  "integrity_failures": 0
+ },
+ "vllm_v1": {
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "gpu": "NVIDIA GeForce RTX 2080, 8192 MiB, 616.92",
+  "vllm_version": "0.31.0",
+  "questions": 30,
+  "called": 30,
+  "first_attempt_latency_ms": {
+   "median": 4644.9,
+   "p95": 5975.7
+  },
+  "per_question_latency_ms_with_retries": {
+   "median": 4644.9,
+   "p95": 7005.8
+  },
+  "output_tokens_per_s_median": 26.6,
+  "first_attempt_schema_valid": "29/30",
+  "final_schema_valid": "30/30",
+  "schema_retries": 1,
+  "statuses": {
+   "answered": 30
+  },
+  "integrity_failures": 0
+ },
+ "note": "latency is wall time per provider call, measured the same way in both runs. The hosted figure includes the network and the provider's hardware, the local figure one consumer GPU, and the two models differ in size. Answer quality is not compared here and needs human review."
+}

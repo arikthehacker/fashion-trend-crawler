@@ -1,0 +1,24 @@
+{
+ "checked_at": "2026-10-07T21:51:17Z",
+ "passed": true,
+ "checks": {
+  "packets_match_c2_manifest": true,
+  "local_packets_unchanged": true,
+  "store_snapshot_sha256": true,
+  "first_attempt_messages_rebuild_from_frozen_context": true,
+  "c2_run_exists": true,
+  "protocol_committed_and_pushed": true,
+  "not_run_before": true,
+  "server_up_and_serving_model": true
+ },
+ "server": {
+  "served_models": [
+   "Qwen/Qwen2.5-1.5B-Instruct"
+  ],
+  "vllm_version": "0.31.0"
+ },
+ "gpu": "NVIDIA GeForce RTX 2080, 8192 MiB, 616.92",
+ "base_url": "http://localhost:8000/v1",
+ "model": "Qwen/Qwen2.5-1.5B-Instruct",
+ "protocol_sha256": "bcdc5f1d5f40e67ac2d915db2a87ba9d53babfefdd0f23f6b1be1ac6e29a3854"
+}

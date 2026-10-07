@@ -1,0 +1,53 @@
+{
+ "version": "exp006-vllm-run-v1",
+ "run": "vllm-v1",
+ "started_at": "2026-10-07T21:51:17Z",
+ "ended_at": "2026-10-07T21:53:41Z",
+ "inputs": {
+  "packets_sha256": "ad67316abfa8306c66ed002036fe4438883409a813bc3a0dfdc0af8eb3d5bc6a",
+  "prompt_v2_sha256": "efea461f8e079eb8c25a3e8f5acb371d5e01b9bf18c617aec123b01f62a7afce",
+  "schema_v2_sha256": "47b747c14b5301df9a790538205e8fdd1014019a136671e38e8d094f06c4a5ee",
+  "preflight_sha256": "ee045252ecfc3a1bdb272f2c687e01af76f0e2c6c049bd579268dd592ac47596",
+  "protocol_sha256": "bcdc5f1d5f40e67ac2d915db2a87ba9d53babfefdd0f23f6b1be1ac6e29a3854"
+ },
+ "provider": {
+  "provider": "vllm",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "base_url": "http://localhost:8000/v1",
+  "temperature": 0.0,
+  "top_p": 1.0,
+  "max_tokens": 1000,
+  "timeout_s": 120.0,
+  "max_retries": 2,
+  "response_format": "json_object"
+ },
+ "server": {
+  "served_models": [
+   "Qwen/Qwen2.5-1.5B-Instruct"
+  ],
+  "vllm_version": "0.31.0"
+ },
+ "gpu": "NVIDIA GeForce RTX 2080, 8192 MiB, 616.92",
+ "summary": {
+  "questions": 30,
+  "status_counts": {
+   "answered": 30
+  },
+  "provider_calls": 31,
+  "attempts_recorded": 31,
+  "schema_retries": 1,
+  "first_attempt_schema_valid": "29/30",
+  "final_schema_valid": "30/30",
+  "deterministic_integrity_failures": {},
+  "tokens": {
+   "prompt_tokens": 73248,
+   "total_tokens": 77070,
+   "completion_tokens": 3822
+  },
+  "estimated_cost_usd": 0,
+  "budget_spent_usd": 0.0,
+  "cost_cap_stop": false,
+  "evaluable": true
+ },
+ "outputs_sha256": "7636e8290a87a878ec2a6f0b5f22145003952a8de94d97fe3038f405a3c1a810"
+}
