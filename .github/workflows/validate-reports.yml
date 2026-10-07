@@ -95,6 +95,11 @@ jobs:
       - name: Weekly report workflow tests (decisions, dedup, text checks, approval; no store)
         run: python src/test_report_finalize.py
 
+      - name: vLLM adapter and EXP-006 statistics tests (fake session, no server)
+        run: |
+          python src/test_llm_vllm.py
+          python src/test_exp006_vllm.py
+
       - name: Validate published reports (schema + publish gate + non-blocking confidence warnings)
         run: python src/validate_all_reports.py --store-optional
 
