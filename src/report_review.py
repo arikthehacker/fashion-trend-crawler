@@ -38,6 +38,7 @@ class Paths:
                 os.path.join(base, d) for d in ("drafts", "evidence", "queues", "editing", "app", "backups", "reports"))
             self.log = os.path.join(base, "report-prep-log.jsonl")
             self.ingest_log = os.path.join(base, "ingest-log.jsonl")
+            self.ingest_running = os.path.join(base, "ingest.running")
         else:
             self.drafts = os.path.join(store, "drafts")
             self.evidence = os.path.join(ROOT, "data", "evidence")
@@ -48,6 +49,7 @@ class Paths:
             self.reports = os.path.join(ROOT, "data", "reports")
             self.log = os.path.join(store, "report-prep-log.jsonl")
             self.ingest_log = os.path.join(store, "ingest-log.jsonl")
+            self.ingest_running = os.path.join(store, "ingest.running")
 
     def draft(self, end):
         return os.path.join(self.drafts, f"{end}.final.draft.json")

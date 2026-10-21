@@ -25,6 +25,7 @@ import sys
 from datetime import datetime, timezone
 
 import report_review as rr
+from mirrors import source_of
 
 MIN_ITEMS, MIN_OUTLETS = 2, 2
 AI_HEAD = ("ARI3’s deterministic pipeline surfaced candidate signals and bound the report to a frozen evidence snapshot. An AI "
@@ -65,7 +66,7 @@ def _recount(signal):
     from report_schema import derive_confidence
     ev = signal["evidence_items"]
     signal["source_sectors"] = sorted({e["sector"] for e in ev})
-    signal["source_domains"] = sorted({e["outlet_domain"] for e in ev})
+    signal["source_domains"] = sorted({source_of(e["outlet_domain"]) for e in ev})
     signal["source_corroboration_count"] = len(signal["source_domains"])
     if signal["confidence_source"] == "derived":
         signal["confidence"] = derive_confidence({**signal, "confidence": ""})
@@ -75,7 +76,7 @@ def _recount(signal):
         "sector_groups": sorted({e["sector_group"] for e in ev}),
         "cross_sector": len(signal["source_sectors"]) > 1, "cross_sector_group": len({e["sector_group"] for e in ev}) > 1,
         "reconstructed_first_seen_items": sum(e["first_seen_basis"] == "reconstructed" for e in ev),
-        "max_items_from_one_outlet": max(collections.Counter(e["outlet_domain"] for e in ev).values()) if ev else 0})
+        "max_items_from_one_outlet": max(collections.Counter(source_of(e["outlet_domain"]) for e in ev).values()) if ev else 0})
 
 
 def duplicate_groups(queue, decisions, audit, records, extra=None):
@@ -335,8 +336,8 @@ def gate(paths, end, report=None):
         "every_item_is_frozen_evidence_unchanged": all(e["item_id"] in snap_by_id and frozen.get(e["item_id"]) == e
                                                        and snap_by_id[e["item_id"]]["content_hash"] == e["content_hash"] for e in ev),
         "only_exact_yes_items": all(e["style_set"] == ["yes"] for e in ev),
-        "counts_match_the_evidence": all(s["source_corroboration_count"] == len({e["outlet_domain"] for e in s["evidence_items"]})
-                                         and s["source_domains"] == sorted({e["outlet_domain"] for e in s["evidence_items"]})
+        "counts_match_the_evidence": all(s["source_corroboration_count"] == len({source_of(e["outlet_domain"]) for e in s["evidence_items"]})
+                                         and s["source_domains"] == sorted({source_of(e["outlet_domain"]) for e in s["evidence_items"]})
                                          for s in report["top_signals"]),
         "schema_valid": schema is True,
         "text_complete_and_consistent": text_errors(report, text_of(report)) == [],

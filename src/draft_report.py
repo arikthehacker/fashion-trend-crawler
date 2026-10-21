@@ -13,6 +13,9 @@ Candidate rule (draft-report-v1): a lexicon term without a sense-check flag that
 at least MIN_ITEMS style-positive items from at least MIN_OUTLETS distinct outlets in the
 window. Terms below the rule are listed for the editor, not dropped silently.
 
+Outlets are counted as sources (mirrors.py): a mirror domain counts as its publisher's main
+domain, and mirrored copies are already excluded (items.syndicated_of).
+
 usage:
   python src/draft_report.py --start 2026-09-28 --end 2026-10-04
       [--out data/store/drafts/2026-10-04.draft.json] [--review PATH.md]
@@ -26,6 +29,7 @@ import sys
 from datetime import datetime, timezone
 
 from item_store import ROOT
+from mirrors import source_of
 
 DRAFTER_VERSION = "draft-report-v1"
 STYLE_MODEL = "ari3-v0.0.2"
@@ -62,7 +66,8 @@ def load_window(con, start, end):
     for r in con.execute(ITEM_SQL, (lo, hi)):
         items[r[0]] = {"item_id": r[0], "url": r[1], "title": r[2] or "", "published_at": r[3], "retrieved_at": r[4],
                        "first_seen_at": r[5], "first_seen_basis": r[6], "lang": r[7] or "unknown",
-                       "outlet_domain": r[8], "sector": r[9], "sector_group": r[10], "content_hash": r[11]}
+                       "outlet_domain": r[8], "source": source_of(r[8]), "sector": r[9], "sector_group": r[10],
+                       "content_hash": r[11]}
     if not items:
         return items, {}
     marks = ",".join("?" * len(items))
@@ -107,9 +112,9 @@ def term_table(items, terms):
                      "not_sure_items": sum(1 for it in hits if it["style_set"] == ["yes", "no"]),
                      "not_style_items": sum(1 for it in hits if it["style_set"] == ["no"]),
                      "unscored_items": sum(1 for it in hits if it["style_set"] is None),
-                     "style_positive_outlets": len({it["outlet_domain"] for it in pos}),
+                     "style_positive_outlets": len({it["source"] for it in pos}),
                      "meets_candidate_rule": (not t["needs_sense_check"] and len(pos) >= MIN_ITEMS
-                                              and len({it["outlet_domain"] for it in pos}) >= MIN_OUTLETS)})
+                                              and len({it["source"] for it in pos}) >= MIN_OUTLETS)})
     return sorted(rows, key=lambda r: (-r["style_positive_items"], r["term_id"]))
 
 
@@ -127,7 +132,7 @@ def candidate_signals(items, terms, table):
         ev = sorted((it for it in items.values() if it["style_positive"] and tid in it["terms"]),
                     key=lambda it: (it["published_at"], it["item_id"]))
         sectors = sorted({it["sector"] for it in ev})
-        outlets = sorted({it["outlet_domain"] for it in ev})
+        outlets = sorted({it["source"] for it in ev})
         signal = {"signal_id": tid, "name": terms[tid]["canonical"], "type": terms[tid]["signal_type"],
                   "source_sectors": sectors, "source_domains": outlets, "source_corroboration_count": len(outlets),
                   "confidence": "", "confidence_source": "derived", "volatility": "", "origin_classification": "unclear",
@@ -147,7 +152,7 @@ def candidate_signals(items, terms, table):
                                                if tid in it["terms"] and it["style_set"] == ["yes", "no"]),
             "not_style_items_with_term": sorted(it["item_id"] for it in items.values()
                                                 if tid in it["terms"] and it["style_set"] == ["no"]),
-            "max_items_from_one_outlet": max(collections.Counter(it["outlet_domain"] for it in ev).values())}
+            "max_items_from_one_outlet": max(collections.Counter(it["source"] for it in ev).values())}
         out.append(signal)
     return out
 
@@ -162,7 +167,7 @@ def composition(items):
             "sector": share(list(items.values()), "sector"), "sector_group": share(list(items.values()), "sector_group"),
             "style_positive_sector": share(pos, "sector"),
             "first_seen_basis": dict(collections.Counter(it["first_seen_basis"] for it in items.values())),
-            "outlets": len({it["outlet_domain"] for it in items.values()}),
+            "outlets": len({it["source"] for it in items.values()}),
             "languages": dict(collections.Counter(it["lang"] for it in items.values()).most_common())}
 
 

@@ -95,6 +95,9 @@ jobs:
       - name: Weekly report workflow tests (decisions, dedup, text checks, approval; no store)
         run: python src/test_report_finalize.py
 
+      - name: Report prep waits for ingest, catches up missed weeks; mirrored feeds (throwaway store)
+        run: python src/test_report_prep_wait.py
+
       - name: vLLM adapter and EXP-006 statistics tests (fake session, no server)
         run: |
           python src/test_llm_vllm.py

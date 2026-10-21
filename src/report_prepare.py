@@ -1,8 +1,10 @@
 """Weekly report preparation, run unattended after a collection window closes (Windows task
 "ARI3LLA report prep"). No model call beyond the frozen style classifier, no network, no AI.
 
-For the most recent closed Monday-to-Sunday window it:
-  1. refuses unless the window has closed and an ingest run has finished after the close;
+For every closed Monday-to-Sunday window since FIRST_WINDOW_END that is not prepared yet,
+oldest first, it:
+  1. waits (up to WAIT_MINUTES) until the window has closed, an ingest run has finished after
+     the close and no ingest is running, and otherwise stops so a later trigger can retry;
   2. backs up the item store and checks its health;
   3. scores and extracts only the window's remaining items (append-only);
   4. verifies nothing existing was rewritten and nothing outside the window was touched;
@@ -16,7 +18,7 @@ If the store changes while it runs (an ingest was active), it removes what it wr
 later run can start clean. A window that is already prepared is left alone.
 
 usage:
-  python src/report_prepare.py                 # the most recent closed window
+  python src/report_prepare.py                 # every closed window not prepared yet, oldest first
   python src/report_prepare.py --start 2026-10-05 --end 2026-10-11
   python src/report_prepare.py --check         # say what would happen, change nothing
 """
@@ -31,12 +33,17 @@ import os
 import re
 import sqlite3
 import sys
+import time
 import unicodedata
 from datetime import date, datetime, timedelta, timezone
 
 import report_review as rr
 
 STYLE_SQL = "model_version='ari3-v0.0.2' and task='is_style_signal'"
+FIRST_WINDOW_END = "2026-10-11"   # the first window this job is responsible for (the 2026-10-04 report was made by hand)
+WAIT_MINUTES = 45                 # how long to wait for a running or overdue ingest before giving up until the next trigger
+POLL_SECONDS = 60
+STALE_RUNNING_MINUTES = 60        # an ingest.running marker older than this is left over from a crash
 ITEM_COLS = ("item_id,url,title,text_excerpt,published_at,fetched_at,first_seen_at,first_seen_basis,content_hash,"
              "syndicated_of,outlet_id,lang")
 
@@ -68,15 +75,55 @@ def last_ingest(path):
     return json.loads(lines[-1]) if lines else None
 
 
+def ingest_running(paths, now):
+    """The start time of an ingest that is running now, or None. A marker older than
+    STALE_RUNNING_MINUTES is a leftover from a crash and does not count."""
+    try:
+        with open(paths.ingest_running, encoding="utf-8") as f:
+            started = f.read().strip()
+        age = (now - datetime.fromisoformat(started.replace("Z", "+00:00"))).total_seconds() / 60
+    except (OSError, ValueError):
+        return None
+    return started if age < STALE_RUNNING_MINUTES else None
+
+
 def readiness(paths, start, end, now):
-    """(ready, reason). Ready means the window is closed and a later ingest run has finished."""
+    """(ready, reason). Ready means the window is closed, an ingest run started after the close
+    has finished, and no ingest is running now."""
     close = bounds(start, end)[1]
     if stamp(now) < close:
         return False, f"the window closes at {close}"
+    running = ingest_running(paths, now)
+    if running:
+        return False, f"an ingest is running (started {running})"
     run = last_ingest(paths.ingest_log)
     if run is None or run.get("started_at", "") < close:
         return False, f"no ingest run has started and finished since the window closed at {close}"
     return True, f"last ingest finished {run['finished_at']}"
+
+
+def wait_until_ready(paths, start, end, max_minutes=WAIT_MINUTES, poll=POLL_SECONDS, clock=None, sleep=time.sleep):
+    """Readiness, waiting while an ingest is running or has not yet run since the close (after a
+    wake or a restart, ingest and preparation start together). An open window is not waited for."""
+    clock = clock or now_utc
+    deadline = clock() + timedelta(minutes=max_minutes)
+    while True:
+        now = clock()
+        ready, reason = readiness(paths, start, end, now)
+        if ready or stamp(now) < bounds(start, end)[1] or now >= deadline:
+            return ready, reason
+        sleep(poll)
+
+
+def pending_windows(paths, now):
+    """Closed windows from FIRST_WINDOW_END on that have no draft and no published report, oldest first."""
+    out, end = [], date.fromisoformat(FIRST_WINDOW_END)
+    while bounds(end.isoformat(), end.isoformat())[1] <= stamp(now):
+        e = end.isoformat()
+        if not (os.path.exists(paths.draft(e)) or os.path.exists(paths.published(e))):
+            out.append(((end - timedelta(days=6)).isoformat(), e))
+        end += timedelta(days=7)
+    return out
 
 
 def _sha(con, sql, params=()):
@@ -322,20 +369,36 @@ def main(argv=None):
         ap.error("give both --start and --end, or neither")
     paths = rr.Paths(args.base, args.db)
     now = now_utc()
-    start, end = (args.start, args.end) if args.start else default_window(now)
     if args.check:
-        ready, reason = readiness(paths, start, end, now)
-        result = {"status": "check", "window": [start, end], "ready": ready, "reason": reason,
-                  "already_prepared": os.path.exists(paths.draft(end))}
-    else:
-        result = prepare(paths, start, end, now)
-    result["ran_at"] = stamp(now)
-    if not args.check:
-        os.makedirs(os.path.dirname(paths.log), exist_ok=True)
-        with open(paths.log, "a", encoding="utf-8", newline="\n") as f:
-            f.write(json.dumps(result, ensure_ascii=False) + "\n")
-    print(json.dumps(result, indent=1, ensure_ascii=False))
-    return {"prepared": 0, "already_prepared": 0, "check": 0, "not_ready": 2}.get(result["status"], 1)
+        windows = [(args.start, args.end)] if args.start else (pending_windows(paths, now) or [default_window(now)])
+        results = [{"status": "check", "window": [s, e], "ready": readiness(paths, s, e, now)[0],
+                    "reason": readiness(paths, s, e, now)[1], "already_prepared": os.path.exists(paths.draft(e))}
+                   for s, e in windows]
+        print(json.dumps(results, indent=1, ensure_ascii=False))
+        return 0
+    windows = [(args.start, args.end)] if args.start else pending_windows(paths, now)
+    if not windows:
+        result = {"status": "nothing_pending", "ran_at": stamp(now)}
+        _log(paths, result)
+        print(json.dumps(result, indent=1))
+        return 0
+    code = 0
+    for start, end in windows:
+        ready, reason = wait_until_ready(paths, start, end)
+        result = prepare(paths, start, end, now_utc()) if ready else {"status": "not_ready", "window": [start, end], "reason": reason}
+        result["ran_at"] = stamp(now_utc())
+        _log(paths, result)
+        print(json.dumps(result, indent=1, ensure_ascii=False))
+        code = {"prepared": 0, "already_prepared": 0, "not_ready": 2}.get(result["status"], 1)
+        if code:
+            break  # later windows wait for the next trigger, so they are prepared in order
+    return code
+
+
+def _log(paths, result):
+    os.makedirs(os.path.dirname(paths.log), exist_ok=True)
+    with open(paths.log, "a", encoding="utf-8", newline="\n") as f:
+        f.write(json.dumps(result, ensure_ascii=False) + "\n")
 
 
 if __name__ == "__main__":
