@@ -126,6 +126,15 @@ def build_decision_queue(draft, audit, reviews_path):
             "exact_mirrors": audit.get("exact", []), "cards": cards, "item_ids": []}
 
 
+def merge_choices(queue, card):
+    """[(shown text, signal_id)] for the merge list: every other signal of the week, by name."""
+    out = [(c["name"], c["signal_id"]) for c in queue["cards"]
+           if c["kind"] == "signal" and c["signal_id"] != card["signal_id"]]
+    if len({name for name, _ in out}) != len(out):  # two candidates with one name: show the IDs too
+        out = [(f"{name} [{sid}]", sid) for name, sid in out]
+    return out
+
+
 def log_path(queue):
     return os.path.join(ROOT, queue["reviews_path"])  # an absolute reviews_path wins on its own
 

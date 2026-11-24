@@ -43,6 +43,7 @@ import exp005_review  # noqa: E402
 import exp005_review_v2  # noqa: E402
 import rag_questions  # noqa: E402
 import rag_review  # noqa: E402
+import report_definitions  # noqa: E402
 import report_review  # noqa: E402
 
 DEV = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -124,6 +125,10 @@ def labels_left(con, name="is_style_signal"):
         return sum(1 for t in q["tasks"] if t["task_id"] not in done), len(q["tasks"])
     if q.get("kind") == "report_decisions":
         return report_review.left(q)
+    if q.get("kind") == "definitions":
+        return report_definitions.left()
+    if q.get("kind") == "definitions_approval":
+        return report_definitions.approval_left()
     done = {r[0] for r in con.execute(
         "SELECT item_id FROM labels WHERE task=? AND source='human'", (q["task"],))}
     return sum(1 for i in q["item_ids"] if i not in done), len(q["item_ids"])
@@ -154,6 +159,7 @@ class App:
             self.frame.destroy()
         self.root.unbind("<Key>")
         self.root.unbind("<Control-Return>")
+        self.root.unbind_all("<MouseWheel>")
         self.wrapped = []
         self.frame = tk.Frame(self.root, bg=BG)
         self.frame.pack(fill="both", expand=True, padx=24, pady=18)
@@ -203,7 +209,8 @@ class App:
             q_left, q_total = labels_left(self.con, name)
             kind = load_queue(name).get("kind")
             deck = {"rag_relevance": self.relevance, "gen_review": self.genreview,
-                    "report_decisions": self.reportdeck}.get(kind, self.labels)
+                    "report_decisions": self.reportdeck, "definitions": self.defdeck,
+                    "definitions_approval": self.defapprove}.get(kind, self.labels)
             decks.append((f"{title}\n{q_left} of {q_total} left", lambda n=name, d=deck: d(n)))
         if not os.path.exists(rag_questions.FROZEN):
             status = rag_questions.review_status()
@@ -517,12 +524,27 @@ class App:
         self.r_title = self.label(f, size=17, bold=True, pady=(4, 4))
         box = tk.Frame(f, bg=BG)
         box.pack(fill="both", expand=True)
+        # The editor's definitions, beside every card. The EXP-007 prompt shows the same file word for word.
+        side = tk.Frame(box, bg=BG)
+        side.pack(side="right", fill="y", padx=(8, 0))
+        dscroll = tk.Scrollbar(side)
+        self.r_defs = tk.Text(side, wrap="word", font=(self.base, 10), bg="#fafafa", fg=FG, relief="solid", bd=1,
+                              padx=8, pady=8, width=38, height=4, yscrollcommand=dscroll.set)
+        dscroll.config(command=self.r_defs.yview)
+        dscroll.pack(side="right", fill="y")
+        self.r_defs.pack(side="left", fill="y")
         scroll = tk.Scrollbar(box)
         scroll.pack(side="right", fill="y")
         self.r_body = tk.Text(box, wrap="word", font=(self.base, 11), bg="#ffffff", fg=FG, relief="solid", bd=1,
                               padx=10, pady=8, height=10, yscrollcommand=scroll.set)
         self.r_body.pack(side="left", fill="both", expand=True)
         scroll.config(command=self.r_body.yview)
+        try:
+            defs = report_definitions.panel_text()
+        except OSError:
+            defs = "No definitions file yet (editorial/report_definitions.md)."
+        self.r_defs.insert("1.0", "DEFINITIONS (your words)\n\n" + defs)
+        self.r_defs.config(state="disabled")
         self.root.bind("<Control-Return>", lambda _e: self.rep_save())
         self.rep_show()
 
@@ -563,10 +585,12 @@ class App:
         self.r_w = {}
         row = 0
         if card["kind"] == "signal":
-            others = [c["signal_id"] for c in self.rq["cards"] if c["kind"] == "signal" and c["signal_id"] != card["signal_id"]]
+            self.r_merge = dict(report_review.merge_choices(self.rq, card))  # shown name -> signal_id
+            others = list(self.r_merge)
+            shown = {v: k for k, v in self.r_merge.items()}
             baseline = f"baseline ({card['baseline_confidence']})"
             fields = [("decision", "Decision", report_review.DECISIONS, prior.get("decision", "")),
-                      ("merge_into", "Merge into (only for merge)", [""] + others, prior.get("merge_into") or ""),
+                      ("merge_into", "Merge into (only for merge)", [""] + others, shown.get(prior.get("merge_into"), "")),
                       ("type", "Type", report_review.SIGNAL_TYPES, prior.get("type") or card["type"]),
                       ("confidence", "Confidence", [baseline] + report_review.CONFIDENCE, prior.get("confidence") or baseline),
                       ("volatility", "Volatility (needed to keep)", report_review.VOLATILITY_LABELS, prior.get("volatility", "")),
@@ -619,7 +643,7 @@ class App:
                 messagebox.showerror("Not saved", "Item IDs to remove must be numbers separated by commas.")
                 return
             name = w["name"].get().strip()
-            payload.update({"decision": w["decision"].get(), "merge_into": w["merge_into"].get() or None,
+            payload.update({"decision": w["decision"].get(), "merge_into": self.r_merge.get(w["merge_into"].get()) or None,
                             "name": "" if name == card["name"] else name,
                             "type": "" if w["type"].get() == card["type"] else w["type"].get(),
                             "confidence": "" if w["confidence"].get().startswith("baseline") else w["confidence"].get(),
@@ -645,6 +669,186 @@ class App:
         if self.r_pos > 0:
             self.r_pos -= 1
             self.rep_show()
+
+    # Report definitions deck: her own words for every option, one free text box per card ------
+    def defdeck(self, _name=None):
+        self.d_cards = report_definitions.cards()
+        done = report_definitions.latest()
+        self.d_pos = next((i for i, c in enumerate(self.d_cards) if not (done.get(c["card_id"]) or "").strip()), 0)
+        f = self.clear()
+        nav = tk.Frame(f, bg=BG)
+        nav.pack(side="bottom", fill="x", pady=(8, 0))
+        for i, (text, cmd, bold) in enumerate((("Save and next  (Ctrl+Enter)", self.def_save, True),
+                                               ("Skip", lambda: self.def_move(1), False),
+                                               ("Back", lambda: self.def_move(-1), False), ("Menu", self.menu, False))):
+            tk.Button(nav, text=text, command=cmd, font=(self.base, 13, "bold" if bold else "normal"), pady=10,
+                      bg=FG if bold else "#ffffff", fg="#ffffff" if bold else FG, relief="solid", bd=1,
+                      cursor="hand2").grid(row=0, column=i, sticky="ew", padx=4)
+            nav.grid_columnconfigure(i, weight=2 if bold else 1)
+        self.d_prog = self.label(f, size=11, color=DIM)
+        self.d_section = self.label(f, size=12, bold=True, color=ACCENT, pady=(8, 0))
+        self.d_title = self.label(f, size=22, bold=True, pady=(2, 4))
+        self.d_where = self.label(f, size=11, color=DIM)
+        self.d_what = self.label(f, size=11, pady=(4, 0))
+        self.d_help = self.label(f, size=12, bold=True, pady=(10, 6))
+        box = tk.Frame(f, bg=BG)
+        box.pack(fill="both", expand=True)
+        # A screenshot of the Report decisions card with this field boxed in red (example candidate).
+        self.d_shot = tk.Label(box, bg=BG, anchor="n")
+        self.d_shot.pack(side="left", fill="y", padx=(0, 10))
+        scroll = tk.Scrollbar(box)
+        scroll.pack(side="right", fill="y")
+        self.d_text = tk.Text(box, wrap="word", font=(self.base, 13), relief="solid", bd=1, padx=10, pady=8,
+                              yscrollcommand=scroll.set)
+        self.d_text.pack(side="left", fill="both", expand=True)
+        scroll.config(command=self.d_text.yview)
+        self.root.bind("<Control-Return>", lambda _e: self.def_save())
+        self.rewrap()
+        self.def_show()
+
+    def def_show(self):
+        done = report_definitions.latest()
+        left, total = report_definitions.left()
+        if self.d_pos >= len(self.d_cards):
+            self.d_prog.config(text=f"{total - left} of {total} written")
+            self.d_section.config(text="")
+            self.d_title.config(text="End of the deck." if left else "Every definition is written. Tell Claude.")
+            for w in (self.d_where, self.d_what, self.d_help):
+                w.config(text="")
+            self.d_shot.config(image="", text="")
+            self.d_text.delete("1.0", "end")
+            return
+        c = self.d_cards[self.d_pos]
+        self.d_prog.config(text=f"Card {self.d_pos + 1} of {total}  |  {total - left} of {total} written"
+                                + ("  |  saved" if (done.get(c["card_id"]) or "").strip() else ""))
+        self.d_section.config(text=c["section"].upper())
+        self.d_title.config(text=c["key"] or "Your rules")
+        self.d_where.config(text=f"Used in {c['where']} (boxed in red in the picture).")
+        self.d_what.config(text="What the software does with it today: " + report_definitions.WHAT[c["section"]])
+        self.d_shot.config(image="", text="")
+        try:
+            from PIL import Image, ImageTk
+            import report_definitions_screens as shots
+            img = Image.open(shots.path_for(c["section"]))
+            img.thumbnail((440, 400))
+            self.d_shot_img = ImageTk.PhotoImage(img)  # keep a reference so Tk does not drop it
+            self.d_shot.config(image=self.d_shot_img)
+        except (OSError, ImportError):
+            self.d_shot.config(text="(no screenshot yet)", fg=DIM)
+        self.d_help.config(text=("How would you define this? Write freely, as long or short as you like. Exactly what you "
+                                 "write here appears in the definitions panel beside every report card, and the AI in "
+                                 "EXP-007 reads the same words." if c["key"] else
+                                 "The rules you decide by, one per line. Each line becomes one rule."))
+        self.d_text.delete("1.0", "end")
+        self.d_text.insert("1.0", done.get(c["card_id"], ""))
+        self.d_text.focus_set()
+
+    def def_save(self):
+        if self.d_pos >= len(self.d_cards):
+            return
+        report_definitions.record(self.d_cards[self.d_pos]["card_id"], self.d_text.get("1.0", "end"))
+        self.def_move(1)
+
+    def def_move(self, step):
+        self.d_pos = max(0, min(len(self.d_cards), self.d_pos + step))
+        self.def_show()
+
+    # Report definitions approval: every card on one page, her words beside the copyedit ------
+    def defapprove(self, _name=None, keep_scroll=False):
+        top = self.da_canvas.yview()[0] if keep_scroll and getattr(self, "da_canvas", None) else 0.0
+        f = self.clear()
+        rows = report_definitions.approval_rows()
+        left, total = report_definitions.approval_left()
+        head = tk.Frame(f, bg=BG)
+        head.pack(fill="x")
+        tk.Label(head, text=f"Definitions approval   {total - left} of {total} approved", bg=BG, fg=FG,
+                 font=(self.base, 16, "bold")).pack(side="left")
+        tk.Button(head, text="Menu", command=self.menu, font=(self.base, 12), pady=4).pack(side="right")
+        if not any(r["copyedit"] is not None or r["flag"] for r in rows):
+            self.label(f, "Claude has not written the copyedits yet. Finish the brain-dump deck and tell Claude.",
+                       13, pady=(20, 0))
+            return
+        self.label(f, "Left: your words. Right: the copyedit (spelling, punctuation, broken sentences only). "
+                      "Approve the copyedit, keep yours, or rewrite it. Only what you choose goes into the file.",
+                   11, color=DIM, pady=(4, 8))
+        box = tk.Frame(f, bg=BG)
+        box.pack(fill="both", expand=True)
+        canvas = tk.Canvas(box, bg=BG, highlightthickness=0)
+        bar = tk.Scrollbar(box, orient="vertical", command=canvas.yview)
+        canvas.configure(yscrollcommand=bar.set)
+        bar.pack(side="right", fill="y")
+        canvas.pack(side="left", fill="both", expand=True)
+        inner = tk.Frame(canvas, bg=BG)
+        window = canvas.create_window((0, 0), window=inner, anchor="nw")
+        inner.bind("<Configure>", lambda _e: canvas.configure(scrollregion=canvas.bbox("all")))
+        canvas.bind("<Configure>", lambda e: canvas.itemconfigure(window, width=e.width))
+        self.root.bind_all("<MouseWheel>", lambda e: canvas.yview_scroll(int(-e.delta / 120) or (-1 if e.delta > 0 else 1),
+                                                                         "units"))
+        self.da_canvas = canvas
+        inner.grid_columnconfigure(0, weight=1, uniform="d")
+        inner.grid_columnconfigure(1, weight=1, uniform="d")
+        r = 0
+        for row in rows:
+            title = f"{row['section'].upper()}   {row['key'] or 'Your rules'}"
+            a = row["approval"]
+            status = ("APPROVED: " + {"copyedit": "copyedit", "original": "your words", "rewrite": "your rewrite"}[a["choice"]]
+                      if a else "not decided")
+            tk.Label(inner, text=f"{title}      [{status}]", bg=BG, fg=ACCENT if a else FG, anchor="w",
+                     font=(self.base, 12, "bold")).grid(row=r, column=0, columnspan=2, sticky="ew", pady=(14, 2), padx=4)
+            r += 1
+            right = row["copyedit"]
+            if row["flag"]:
+                right = f"NOT CLEAR, NOT GUESSED: {row['flag']}" + (f"\n\n{right}" if right else "")
+            elif right is None:
+                right = ("Your text changed after the copyedit. Ask Claude for a new one." if row["stale_copyedit"]
+                         else "(no copyedit)")
+            elif right == row["original"]:
+                right = f"{right}\n\n(no change needed)"
+            for col, body in ((0, row["original"] or "(not written)"), (1, right)):
+                t = tk.Text(inner, wrap="word", font=(self.base, 11), height=max(2, min(12, body.count("\n") + 1 + len(body) // 60)),
+                            relief="solid", bd=1, padx=6, pady=4, bg="#ffffff" if col == 0 else "#fafafa")
+                t.insert("1.0", body)
+                t.config(state="disabled")
+                t.grid(row=r, column=col, sticky="nsew", padx=4)
+            r += 1
+            btns = tk.Frame(inner, bg=BG)
+            btns.grid(row=r, column=0, columnspan=2, sticky="w", padx=4, pady=(4, 0))
+            cid = row["card_id"]
+            options = [("Keep mine", lambda c=cid: self.def_approve(c, "original"))]
+            if row["copyedit"] is not None:
+                options.insert(0, ("Approve copyedit", lambda c=cid: self.def_approve(c, "copyedit")))
+            options.append(("Rewrite...", lambda c=cid, o=row["original"]: self.def_rewrite(c, o)))
+            for i, (text, cmd) in enumerate(options):
+                tk.Button(btns, text=text, command=cmd, font=(self.base, 11, "bold" if i == 0 else "normal"),
+                          padx=10, pady=4).pack(side="left", padx=(0, 6))
+            r += 1
+        self.root.update_idletasks()
+        canvas.configure(scrollregion=canvas.bbox("all"))
+        canvas.yview_moveto(top)
+
+    def def_approve(self, card_id, choice, rewrite=None):
+        try:
+            report_definitions.record_approval(card_id, choice, rewrite)
+        except ValueError as e:
+            messagebox.showerror("Not saved", str(e))
+            return
+        self.defapprove(keep_scroll=True)
+
+    def def_rewrite(self, card_id, original):
+        win = tk.Toplevel(self.root)
+        win.title("Rewrite")
+        win.geometry("640x360")
+        tk.Label(win, text="Your new wording. It goes into the file exactly as written.", font=(self.base, 11)).pack(
+            anchor="w", padx=10, pady=(10, 4))
+        t = tk.Text(win, wrap="word", font=(self.base, 12), relief="solid", bd=1, padx=8, pady=6)
+        t.insert("1.0", original)
+        t.pack(fill="both", expand=True, padx=10)
+
+        def save():
+            body = t.get("1.0", "end")
+            win.destroy()
+            self.def_approve(card_id, "rewrite", body)
+        tk.Button(win, text="Save rewrite", command=save, font=(self.base, 12, "bold"), pady=6).pack(fill="x", padx=10, pady=10)
 
     # Question review deck (EXP-004) -------------------------------------
     def qreview(self):
