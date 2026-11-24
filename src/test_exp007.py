@@ -114,13 +114,32 @@ class RunTests(unittest.TestCase):
             return real_open(path, *a, **k)
         provider = ScriptedProvider([keep(), keep(), keep(decision="drop"), keep(decision="drop"), DUP, DUP])
         with mock.patch("builtins.open", guarded):
-            body = x.run(provider, self.out, self.man)
+            body = x.run("thinking_off", provider, self.out, self.man)
         self.assertEqual((body["records"], body["calls"], body["first_attempt_valid"]), (6, 6, 6))
         sealed = json.dumps(body)
         for word in ("keep", "drop", "payload", "seasonal", "fall shoe"):
             self.assertNotIn(word, sealed)  # the manifest reveals no decision
         with self.assertRaises(RuntimeError):
-            x.run(ScriptedProvider([]), self.out, self.man)  # runs once
+            x.run("thinking_off", ScriptedProvider([]), self.out, self.man)  # runs once
+
+    def test_thinking_on_runs_app_order_only_and_keeps_reasoning(self):
+        class Thinking(ScriptedProvider):
+            def generate_json(self, messages):
+                r = super().generate_json(messages)
+                r.reasoning_content = "weighing the evidence"
+                r.usage["reasoning_tokens"] = 7
+                return r
+        body = x.run("thinking_on", Thinking([keep(), keep(decision="drop"), DUP]), self.out, self.man)
+        self.assertEqual((body["records"], body["tokens"]["reasoning"]), (3, 21))
+        records = x.load_records(self.out)
+        self.assertEqual({r["order"] for r in records}, {"original"})
+        self.assertEqual(records[0]["attempts"][0]["reasoning_content"], "weighing the evidence")
+        self.assertNotIn("weighing", json.dumps(body))
+
+    def test_auth_failure_stops_the_run(self):
+        from llm_provider import ProviderError
+        with self.assertRaises(RuntimeError):
+            x.run("thinking_off", ScriptedProvider([ProviderError("DeepSeek HTTP 401: invalid key")]), self.out, self.man)
 
 
 class CompareTests(unittest.TestCase):
@@ -152,6 +171,41 @@ class CompareTests(unittest.TestCase):
         self.assertEqual({r["why"] for r in m["reported_separately"]}, {"decided before the plan", "looked up"})
         self.assertEqual(m["duplicates"]["agreement"], 1.0)
         self.assertEqual(m["position_bias"]["changed_under_swap"], 1)
+
+    def test_thinking_off_against_thinking_on_uses_app_order(self):
+        w = "2026-11-08"
+        q = queue(w)
+        rec = lambda cid, order, payload: {"week": w, "card_id": cid, "order": order, "status": "decided",
+                                           "payload": payload, "attempts": [{}]}
+        k = {"decision": "keep", "volatility": "seasonal"}
+        off = [rec("signal:loafer", "original", k), rec("signal:loafer", "swapped", dict(k, decision="drop")),
+               rec("signal:ballet-flat", "original", dict(k, decision="drop")), rec("duplicate:1", "original", {"collapse": True})]
+        on = [rec("signal:loafer", "original", k), rec("signal:ballet-flat", "original", k),
+              rec("duplicate:1", "original", {"collapse": False})]
+        with mock.patch.object(x, "WEEKS", (w,)), mock.patch.object(x, "load_week", lambda wk, queues=None: q):
+            m = x.compare_ai(off, on)
+        self.assertEqual((m["decision"]["n"], m["decision"]["agreement"], m["changed_by_thinking"]), (2, 0.5, 1))
+        self.assertEqual(m["duplicates"]["agreement"], 0.0)
+        self.assertEqual(m["per_week"][w]["kept_jaccard"], 0.5)
+
+
+class ThinkingAdapterTests(unittest.TestCase):
+    def test_reasoning_text_and_tokens_are_kept(self):
+        import llm_deepseek_thinking as t
+
+        class Resp:
+            status_code = 200
+
+            def json(self):
+                return {"model": "deepseek-flash", "id": "r1",
+                        "choices": [{"finish_reason": "stop",
+                                     "message": {"content": "{}", "reasoning_content": "think sk-SECRET"}}],
+                        "usage": {"prompt_tokens": 5, "completion_tokens": 9,
+                                  "completion_tokens_details": {"reasoning_tokens": 6}}}
+        p = t.DeepSeekThinkingProvider(model="deepseek-flash", allow_live=False)
+        self.assertEqual(p._payload([])["thinking"], {"type": "enabled"})
+        r = p._result(Resp(), 1, 0.1, "sk-SECRET")
+        self.assertEqual((r.reasoning_content, r.usage["reasoning_tokens"]), ("think [redacted]", 6))
 
 
 if __name__ == "__main__":
