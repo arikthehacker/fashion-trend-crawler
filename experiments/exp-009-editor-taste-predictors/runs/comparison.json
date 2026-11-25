@@ -1,0 +1,632 @@
+{
+ "n_cards": 185,
+ "skipped": {
+  "excluded": 0,
+  "ai_invalid_or_missing": 0
+ },
+ "editor_kept": 130,
+ "methods": {
+  "M0_always_keep": {
+   "keep_vs_not": {
+    "n": 185,
+    "agreement": 0.7027,
+    "kappa": 0.0,
+    "majority_baseline": 0.7027,
+    "majority_label": true
+   },
+   "kept": 185,
+   "four_way": {
+    "n": 185,
+    "agreement": 0.7027,
+    "kappa": 0.0,
+    "majority_baseline": 0.7027,
+    "majority_label": "keep"
+   },
+   "per_week": {
+    "2026-10-18": {
+     "n": 30,
+     "agreement": 0.7333,
+     "kappa": 0.0,
+     "majority_baseline": 0.7333,
+     "majority_label": true
+    },
+    "2026-10-25": {
+     "n": 32,
+     "agreement": 0.8438,
+     "kappa": 0.0,
+     "majority_baseline": 0.8438,
+     "majority_label": true
+    },
+    "2026-11-01": {
+     "n": 29,
+     "agreement": 0.6552,
+     "kappa": 0.0,
+     "majority_baseline": 0.6552,
+     "majority_label": true
+    },
+    "2026-11-08": {
+     "n": 34,
+     "agreement": 0.6471,
+     "kappa": 0.0,
+     "majority_baseline": 0.6471,
+     "majority_label": true
+    },
+    "2026-11-15": {
+     "n": 31,
+     "agreement": 0.6452,
+     "kappa": 0.0,
+     "majority_baseline": 0.6452,
+     "majority_label": true
+    },
+    "2026-11-22": {
+     "n": 29,
+     "agreement": 0.6897,
+     "kappa": 0.0,
+     "majority_baseline": 0.6897,
+     "majority_label": true
+    }
+   },
+   "terms_seen_before": {
+    "n": 170,
+    "agreement": 0.7294,
+    "kappa": 0.0,
+    "majority_baseline": 0.7294,
+    "majority_label": true
+   },
+   "new_terms": {
+    "n": 15,
+    "agreement": 0.4,
+    "kappa": 0.0,
+    "majority_baseline": 0.6,
+    "majority_label": false
+   }
+  },
+  "M1_same_as_last_time": {
+   "keep_vs_not": {
+    "n": 185,
+    "agreement": 0.8216,
+    "kappa": 0.5418,
+    "majority_baseline": 0.7027,
+    "majority_label": true
+   },
+   "kept": 143,
+   "four_way": {
+    "n": 185,
+    "agreement": 0.7838,
+    "kappa": 0.4741,
+    "majority_baseline": 0.7027,
+    "majority_label": "keep"
+   },
+   "per_week": {
+    "2026-10-18": {
+     "n": 30,
+     "agreement": 0.8,
+     "kappa": 0.4444,
+     "majority_baseline": 0.7333,
+     "majority_label": true
+    },
+    "2026-10-25": {
+     "n": 32,
+     "agreement": 0.75,
+     "kappa": 0.1847,
+     "majority_baseline": 0.8438,
+     "majority_label": true
+    },
+    "2026-11-01": {
+     "n": 29,
+     "agreement": 0.7241,
+     "kappa": 0.2468,
+     "majority_baseline": 0.6552,
+     "majority_label": true
+    },
+    "2026-11-08": {
+     "n": 34,
+     "agreement": 0.8529,
+     "kappa": 0.6586,
+     "majority_baseline": 0.6471,
+     "majority_label": true
+    },
+    "2026-11-15": {
+     "n": 31,
+     "agreement": 0.9355,
+     "kappa": 0.8531,
+     "majority_baseline": 0.6452,
+     "majority_label": true
+    },
+    "2026-11-22": {
+     "n": 29,
+     "agreement": 0.8621,
+     "kappa": 0.6778,
+     "majority_baseline": 0.6897,
+     "majority_label": true
+    }
+   },
+   "terms_seen_before": {
+    "n": 170,
+    "agreement": 0.8588,
+    "kappa": 0.6323,
+    "majority_baseline": 0.7294,
+    "majority_label": true
+   },
+   "new_terms": {
+    "n": 15,
+    "agreement": 0.4,
+    "kappa": 0.0,
+    "majority_baseline": 0.6,
+    "majority_label": false
+   }
+  },
+  "M2_taste_model": {
+   "keep_vs_not": {
+    "n": 185,
+    "agreement": 0.8216,
+    "kappa": 0.5145,
+    "majority_baseline": 0.7027,
+    "majority_label": true
+   },
+   "kept": 153,
+   "per_week": {
+    "2026-10-18": {
+     "n": 30,
+     "agreement": 0.7,
+     "kappa": 0.129,
+     "majority_baseline": 0.7333,
+     "majority_label": true
+    },
+    "2026-10-25": {
+     "n": 32,
+     "agreement": 0.9062,
+     "kappa": 0.6129,
+     "majority_baseline": 0.8438,
+     "majority_label": true
+    },
+    "2026-11-01": {
+     "n": 29,
+     "agreement": 0.6552,
+     "kappa": 0.0,
+     "majority_baseline": 0.6552,
+     "majority_label": true
+    },
+    "2026-11-08": {
+     "n": 34,
+     "agreement": 0.8529,
+     "kappa": 0.6444,
+     "majority_baseline": 0.6471,
+     "majority_label": true
+    },
+    "2026-11-15": {
+     "n": 31,
+     "agreement": 0.9032,
+     "kappa": 0.7748,
+     "majority_baseline": 0.6452,
+     "majority_label": true
+    },
+    "2026-11-22": {
+     "n": 29,
+     "agreement": 0.8966,
+     "kappa": 0.7507,
+     "majority_baseline": 0.6897,
+     "majority_label": true
+    }
+   },
+   "terms_seen_before": {
+    "n": 170,
+    "agreement": 0.8294,
+    "kappa": 0.5033,
+    "majority_baseline": 0.7294,
+    "majority_label": true
+   },
+   "new_terms": {
+    "n": 15,
+    "agreement": 0.7333,
+    "kappa": 0.5,
+    "majority_baseline": 0.6,
+    "majority_label": false
+   }
+  },
+  "M3_deepseek": {
+   "keep_vs_not": {
+    "n": 185,
+    "agreement": 0.7351,
+    "kappa": 0.1815,
+    "majority_baseline": 0.7027,
+    "majority_label": true
+   },
+   "kept": 173,
+   "four_way": {
+    "n": 185,
+    "agreement": 0.6865,
+    "kappa": 0.0796,
+    "majority_baseline": 0.7027,
+    "majority_label": "keep"
+   },
+   "per_week": {
+    "2026-10-18": {
+     "n": 30,
+     "agreement": 0.7667,
+     "kappa": 0.1732,
+     "majority_baseline": 0.7333,
+     "majority_label": true
+    },
+    "2026-10-25": {
+     "n": 32,
+     "agreement": 0.8438,
+     "kappa": 0.0,
+     "majority_baseline": 0.8438,
+     "majority_label": true
+    },
+    "2026-11-01": {
+     "n": 29,
+     "agreement": 0.6552,
+     "kappa": 0.0584,
+     "majority_baseline": 0.6552,
+     "majority_label": true
+    },
+    "2026-11-08": {
+     "n": 34,
+     "agreement": 0.6765,
+     "kappa": 0.1053,
+     "majority_baseline": 0.6471,
+     "majority_label": true
+    },
+    "2026-11-15": {
+     "n": 31,
+     "agreement": 0.7097,
+     "kappa": 0.2599,
+     "majority_baseline": 0.6452,
+     "majority_label": true
+    },
+    "2026-11-22": {
+     "n": 29,
+     "agreement": 0.7586,
+     "kappa": 0.3344,
+     "majority_baseline": 0.6897,
+     "majority_label": true
+    }
+   },
+   "terms_seen_before": {
+    "n": 170,
+    "agreement": 0.7529,
+    "kappa": 0.1698,
+    "majority_baseline": 0.7294,
+    "majority_label": true
+   },
+   "new_terms": {
+    "n": 15,
+    "agreement": 0.5333,
+    "kappa": 0.186,
+    "majority_baseline": 0.6,
+    "majority_label": false
+   }
+  },
+  "M4_deepseek_memory": {
+   "keep_vs_not": {
+    "n": 185,
+    "agreement": 0.8,
+    "kappa": 0.4355,
+    "majority_baseline": 0.7027,
+    "majority_label": true
+   },
+   "kept": 159,
+   "four_way": {
+    "n": 185,
+    "agreement": 0.7135,
+    "kappa": 0.246,
+    "majority_baseline": 0.7027,
+    "majority_label": "keep"
+   },
+   "per_week": {
+    "2026-10-18": {
+     "n": 30,
+     "agreement": 0.8333,
+     "kappa": 0.4681,
+     "majority_baseline": 0.7333,
+     "majority_label": true
+    },
+    "2026-10-25": {
+     "n": 32,
+     "agreement": 0.8125,
+     "kappa": 0.2889,
+     "majority_baseline": 0.8438,
+     "majority_label": true
+    },
+    "2026-11-01": {
+     "n": 29,
+     "agreement": 0.6897,
+     "kappa": 0.1271,
+     "majority_baseline": 0.6552,
+     "majority_label": true
+    },
+    "2026-11-08": {
+     "n": 34,
+     "agreement": 0.7647,
+     "kappa": 0.3929,
+     "majority_baseline": 0.6471,
+     "majority_label": true
+    },
+    "2026-11-15": {
+     "n": 31,
+     "agreement": 0.871,
+     "kappa": 0.6931,
+     "majority_baseline": 0.6452,
+     "majority_label": true
+    },
+    "2026-11-22": {
+     "n": 29,
+     "agreement": 0.8276,
+     "kappa": 0.5566,
+     "majority_baseline": 0.6897,
+     "majority_label": true
+    }
+   },
+   "terms_seen_before": {
+    "n": 170,
+    "agreement": 0.8176,
+    "kappa": 0.4518,
+    "majority_baseline": 0.7294,
+    "majority_label": true
+   },
+   "new_terms": {
+    "n": 15,
+    "agreement": 0.6,
+    "kappa": 0.2857,
+    "majority_baseline": 0.6,
+    "majority_label": false
+   }
+  }
+ },
+ "hypotheses": {
+  "H1": {
+   "kappa_a": 0.5145,
+   "kappa_b": 0.1815,
+   "delta": 0.333,
+   "ci": [
+    0.136,
+    0.5237
+   ],
+   "verdict": "supported",
+   "resampled_with_kappa": 10000,
+   "a": "M2_taste_model",
+   "b": "M3_deepseek"
+  },
+  "H2": {
+   "kappa_a": 0.4355,
+   "kappa_b": 0.1815,
+   "delta": 0.254,
+   "ci": [
+    0.0633,
+    0.4403
+   ],
+   "verdict": "supported",
+   "resampled_with_kappa": 10000,
+   "a": "M4_deepseek_memory",
+   "b": "M3_deepseek"
+  },
+  "H3": {
+   "kappa_a": 0.5145,
+   "kappa_b": 0.5418,
+   "delta": -0.0273,
+   "ci": [
+    -0.1879,
+    0.1346
+   ],
+   "verdict": "not supported",
+   "resampled_with_kappa": 10000,
+   "a": "M2_taste_model",
+   "b": "M1_same_as_last_time"
+  }
+ },
+ "all_pairs_descriptive": {
+  "M1_same_as_last_time - M2_taste_model": {
+   "kappa_a": 0.5418,
+   "kappa_b": 0.5145,
+   "delta": 0.0273,
+   "ci": [
+    -0.1344,
+    0.188
+   ],
+   "verdict": "not supported",
+   "resampled_with_kappa": 10000
+  },
+  "M1_same_as_last_time - M3_deepseek": {
+   "kappa_a": 0.5418,
+   "kappa_b": 0.1815,
+   "delta": 0.3603,
+   "ci": [
+    0.1556,
+    0.5622
+   ],
+   "verdict": "supported",
+   "resampled_with_kappa": 10000
+  },
+  "M1_same_as_last_time - M4_deepseek_memory": {
+   "kappa_a": 0.5418,
+   "kappa_b": 0.4355,
+   "delta": 0.1063,
+   "ci": [
+    -0.0347,
+    0.2475
+   ],
+   "verdict": "not supported",
+   "resampled_with_kappa": 10000
+  },
+  "M2_taste_model - M3_deepseek": {
+   "kappa_a": 0.5145,
+   "kappa_b": 0.1815,
+   "delta": 0.333,
+   "ci": [
+    0.136,
+    0.5237
+   ],
+   "verdict": "supported",
+   "resampled_with_kappa": 10000
+  },
+  "M2_taste_model - M4_deepseek_memory": {
+   "kappa_a": 0.5145,
+   "kappa_b": 0.4355,
+   "delta": 0.079,
+   "ci": [
+    -0.0667,
+    0.2246
+   ],
+   "verdict": "not supported",
+   "resampled_with_kappa": 10000
+  },
+  "M3_deepseek - M4_deepseek_memory": {
+   "kappa_a": 0.1815,
+   "kappa_b": 0.4355,
+   "delta": -0.254,
+   "ci": [
+    -0.4402,
+    -0.0627
+   ],
+   "verdict": "reversed",
+   "resampled_with_kappa": 10000
+  }
+ },
+ "taste_model_weights": {
+  "2026-10-18": {
+   "trained_on_cards": 33,
+   "bias": 0.9187,
+   "weights": {
+    "log_items": 0.0917,
+    "log_outlets": 0.1031,
+    "sectors": 0.0745,
+    "days": 0.22,
+    "weaknesses": 0.174,
+    "baseline_confidence": 0.4198,
+    "type_aesthetic_term": -0.1814,
+    "type_color_print": -0.2084,
+    "type_commerce_language": -0.4439,
+    "type_footwear": 0.3377,
+    "type_garment_silhouette": 0.2564,
+    "type_material": 0.3619,
+    "seen_before": 0.0,
+    "last_kept": 0.0,
+    "keep_rate_before": 0.0,
+    "times_seen_before": 0.0
+   }
+  },
+  "2026-10-25": {
+   "trained_on_cards": 63,
+   "bias": 1.1097,
+   "weights": {
+    "log_items": 0.258,
+    "log_outlets": 0.2621,
+    "sectors": 0.0074,
+    "days": 0.1846,
+    "weaknesses": 0.0147,
+    "baseline_confidence": 0.2552,
+    "type_aesthetic_term": -0.2157,
+    "type_color_print": -0.0593,
+    "type_commerce_language": -0.1844,
+    "type_footwear": 0.3553,
+    "type_garment_silhouette": 0.1323,
+    "type_material": 0.0081,
+    "seen_before": -0.0711,
+    "last_kept": 0.2776,
+    "keep_rate_before": 0.2776,
+    "times_seen_before": -0.0711
+   }
+  },
+  "2026-11-01": {
+   "trained_on_cards": 95,
+   "bias": 1.4797,
+   "weights": {
+    "log_items": 0.2687,
+    "log_outlets": 0.1882,
+    "sectors": 0.1481,
+    "days": 0.1766,
+    "weaknesses": 0.2467,
+    "baseline_confidence": 0.3195,
+    "type_aesthetic_term": -0.1639,
+    "type_color_print": -0.0994,
+    "type_commerce_language": -0.1449,
+    "type_footwear": 0.3645,
+    "type_garment_silhouette": 0.0926,
+    "type_material": -0.04,
+    "seen_before": -0.0338,
+    "last_kept": 0.2191,
+    "keep_rate_before": 0.2701,
+    "times_seen_before": 0.2323
+   }
+  },
+  "2026-11-08": {
+   "trained_on_cards": 124,
+   "bias": 1.3475,
+   "weights": {
+    "log_items": 0.3067,
+    "log_outlets": 0.2762,
+    "sectors": 0.1725,
+    "days": 0.2122,
+    "weaknesses": 0.0639,
+    "baseline_confidence": 0.3109,
+    "type_aesthetic_term": -0.1749,
+    "type_color_print": -0.0867,
+    "type_commerce_language": -0.1588,
+    "type_footwear": 0.2542,
+    "type_garment_silhouette": 0.1927,
+    "type_material": -0.0414,
+    "seen_before": -0.0455,
+    "last_kept": 0.1349,
+    "keep_rate_before": 0.3187,
+    "times_seen_before": 0.0072
+   }
+  },
+  "2026-11-15": {
+   "trained_on_cards": 158,
+   "bias": 1.2722,
+   "weights": {
+    "log_items": 0.2994,
+    "log_outlets": 0.2484,
+    "sectors": 0.1936,
+    "days": 0.2269,
+    "weaknesses": -0.0396,
+    "baseline_confidence": 0.2996,
+    "type_aesthetic_term": -0.1649,
+    "type_color_print": -0.0941,
+    "type_commerce_language": -0.1008,
+    "type_footwear": 0.194,
+    "type_garment_silhouette": 0.2435,
+    "type_material": -0.1085,
+    "seen_before": -0.1106,
+    "last_kept": 0.2483,
+    "keep_rate_before": 0.3755,
+    "times_seen_before": -0.0018
+   }
+  },
+  "2026-11-22": {
+   "trained_on_cards": 189,
+   "bias": 1.2281,
+   "weights": {
+    "log_items": 0.3277,
+    "log_outlets": 0.2763,
+    "sectors": 0.1533,
+    "days": 0.2694,
+    "weaknesses": -0.0349,
+    "baseline_confidence": 0.1849,
+    "type_aesthetic_term": -0.1766,
+    "type_color_print": -0.0955,
+    "type_commerce_language": -0.0749,
+    "type_footwear": 0.2254,
+    "type_garment_silhouette": 0.267,
+    "type_material": -0.1775,
+    "seen_before": -0.1734,
+    "last_kept": 0.3676,
+    "keep_rate_before": 0.41,
+    "times_seen_before": -0.0042
+   }
+  }
+ },
+ "compared_at": "2026-11-25T03:28:18Z",
+ "code_sha256": {
+  "exp007.py": "c385e4f1d2e9f67840ecb644ea73ab34d8a90e383822b407788213b2cef21115",
+  "report_review.py": "19baa88443100e6e169ec675ed84597d65118bebb68bda10de86acc964895cc1",
+  "report_definitions.py": "8829fd608250bff1179a11a252fc687633858ac0ac31c18a0d84dab917857a18",
+  "llm_deepseek.py": "9ecf2e968bcc0b0d742826296edd9cd27f02f98ab857e993fb5da72747f84dc8",
+  "llm_provider.py": "30ae90f2854145ffc67e762f1d5dcc4024630ec7ec47e9e57f06e0f4041ce942",
+  "llm_deepseek_thinking.py": "c2a525147e2323726598190811420f0427952d5d6379d4aebf6746c6e5a57e30",
+  "exp008.py": "0e43275bfc298f6689b35a2fea8f224ba772375d2221a0fcc7187df5d900f206",
+  "exp009.py": "cb8f8187503dd8970a2ee2e20843f0dd7b305cb220517b375a34a630d2ad2065"
+ }
+}
