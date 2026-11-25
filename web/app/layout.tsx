@@ -3,8 +3,6 @@ import { Hedvig_Letters_Serif, Funnel_Sans } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION, OG_IMAGE, LLMS_TXT } from "../lib/site";
-import { getLatestReport } from "../lib/reports";
-import { shortWindow } from "../lib/editorial";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
 
@@ -28,8 +26,6 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { themeColor: "#f1f0ec", width: "device-width", initialScale: 1 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const latest = getLatestReport();
-  const status = latest ? { date: latest.report_date, label: `Latest report: week of ${shortWindow(latest)}` } : null;
   return (
     <html lang="en" className={`${hedvig.variable} ${funnel.variable}`}>
       <body>
@@ -52,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </svg>
         <div className="sheet">
           <div className="page">
-            <SiteHeader status={status} />
+            <SiteHeader />
             {children}
             <SiteFooter />
           </div>

@@ -11,15 +11,12 @@ function isCurrent(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`) || (href === "/archive" && pathname.startsWith("/reports/"));
 }
 
-export default function SiteHeader({ status }: { status: { date: string; label: string } | null }) {
+export default function SiteHeader() {
   const pathname = (usePathname() || "/").replace(/\/$/, "") || "/";
   const big = pathname === "/";
   return (
     <>
       <div className="topnav">
-        <p className="status">
-          {status ? <Link href={`/reports/${status.date}`}>{status.label}</Link> : "No report has been published yet."}
-        </p>
         <nav aria-label="Sections">
           <ul>
             {PRIMARY_NAV.map((item) => (
