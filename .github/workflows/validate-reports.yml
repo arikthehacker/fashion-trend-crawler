@@ -86,11 +86,12 @@ jobs:
       - name: Lexicon v1 sense-check deck tests (throwaway store)
         run: python src/test_lexicon_sense.py
 
-      - name: Report definitions EXP-007 labeler-alignment and EXP-008 taste-profile tests (scripted provider, no network)
+      - name: Report definitions EXP-007, EXP-008 and EXP-009 labeler tests (scripted provider, no network)
         run: |
           python src/test_report_definitions.py
           python src/test_exp007.py
           python src/test_exp008.py
+          python src/test_exp009.py
 
       - name: EXP-005 holdout question and sufficiency-deck tests (no store, no network)
         run: python src/test_exp005_holdout.py
