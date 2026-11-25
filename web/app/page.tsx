@@ -1,8 +1,8 @@
 // The front page: the newest report's headline and story, and its index of signals.
 
 import Link from "next/link";
-import { getLatestReport, getAllReports } from "../lib/reports";
-import { headline, ranked, items, slugOf, sentences, standfirst } from "../lib/editorial";
+import { getLatestReport } from "../lib/reports";
+import { headline, ranked, items, slugOf, sentences, standfirst, plusFinds } from "../lib/editorial";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION, pageMetadata } from "../lib/site";
 import { Dateline, Byline, Folio } from "./components/Chrome";
 
@@ -34,16 +34,18 @@ export default function Home() {
   const S = ranked(r);
   const ss = sentences(r.executive_summary);
   const body = ss.length > 5 ? [ss.slice(3, 5).join(" "), ss.slice(5, 8).join(" ")] : [ss.join(" ")];
-  const count = getAllReports().length;
   return (
     <main id="main-content">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\u003c") }} />
       <Dateline report={r} />
-      <Folio left="This week" right={<Link href="/archive">{count} report{count === 1 ? "" : "s"} in the archive</Link>} />
       <div className="front">
         <article>
           <h1 className="hed toner">{headline(r)}</h1>
-          <p className="deck">{standfirst(r)}</p>
+          {plusFinds(r).length ? (
+            <p className="deck">Plus: {plusFinds(r).map((s, i, all) => (
+              <span key={slugOf(s)}>{i ? (i === all.length - 1 ? " and " : ", ") : ""}<Link href={`/signals/${slugOf(s)}`}>{s.name}</Link></span>
+            ))}.</p>
+          ) : <p className="deck">{standfirst(r)}</p>}
           <Byline />
           <div className="cols drop">{body.filter(Boolean).map((p, i) => <p key={i}>{p}</p>)}</div>
           <nav className="inside" aria-label="Inside">

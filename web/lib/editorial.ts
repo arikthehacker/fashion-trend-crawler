@@ -70,6 +70,20 @@ export function standfirst(r: Report): string {
   return `${n(r.items_collected)} items collected from ${r.sources_scanned} sources${r.collection_status === "thin" ? ", a thin week" : ""}.`;
 }
 
+// Volatility labels that mark a signal as a find rather than a fixture, in no particular order.
+const NOTABLE = new Set(["emerging", "revival", "flash", "microtrend", "volatile", "long_tail"]);
+
+/** "Plus:" finds under the headline (the editor's choice, 2026-11-25): up to four signals the headline
+ *  does not name, labelled emerging, revival, flash, microtrend, volatile or long tail, largest first. */
+export function plusFinds(r: Report, max = 4): TopSignal[] {
+  const hed = headline(r).toLowerCase();
+  const named = (s: TopSignal) => {
+    const n = s.name.toLowerCase();
+    return hed.includes(n) || hed.includes(`${n}s`) || hed.includes(n.replace(/-/g, " "));
+  };
+  return ranked(r).filter((s) => !named(s) && NOTABLE.has(s.volatility)).slice(0, max);
+}
+
 /** A plain description for search results and share cards, 70 to 160 characters. */
 export function describe(r: Report): string {
   const top = ranked(r).slice(0, 3).map((s) => s.name).join(", ");

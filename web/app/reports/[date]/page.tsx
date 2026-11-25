@@ -7,7 +7,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllReportDates, getReportByDate, getLatestReport, type Report, type TopSignal } from "../../../lib/reports";
 import {
-  headline, standfirst, describe, ranked, items, outlets, slugOf, typeLabel, volLabel, editorNote, sectorLabel,
+  headline, standfirst, plusFinds, describe, ranked, items, outlets, slugOf, typeLabel, volLabel, editorNote, sectorLabel,
   whoDidWhat, footnotes, SUMMARY_ANCHORS, summaryParagraphs, editorialShare, titleWindow, longWindow, n, type Footnote,
 } from "../../../lib/editorial";
 import { SITE_URL, SITE_NAME, EDITOR_LABEL, pageMetadata } from "../../../lib/site";
@@ -153,7 +153,11 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
         <div className="rtop">
           <div>
             <h1 className="hed rp toner">{hed}</h1>
-            <p className="deck">{standfirst(report)}</p>
+            {plusFinds(report).length ? (
+              <p className="deck">Plus: {plusFinds(report).map((s, i, all) => (
+                <span key={slugOf(s)}>{i ? (i === all.length - 1 ? " and " : ", ") : ""}<a href={`#signal-${slugOf(s)}`}>{s.name}</a></span>
+              ))}.</p>
+            ) : <p className="deck">{standfirst(report)}</p>}
             <Byline><Marks notes={notes} place="byline" /></Byline>
             {report.thin_week_note ? <div className="box"><h2>A thin week</h2><p>{report.thin_week_note}</p></div> : null}
           </div>

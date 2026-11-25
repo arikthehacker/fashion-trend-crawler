@@ -59,6 +59,7 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0
 .dateline { text-align: center; font-family: var(--serif); font-size: clamp(17px, 2vw, 22px); letter-spacing: 0.02em; padding: 8px 0 7px; border-top: 3px double var(--ink); border-bottom: 3px double var(--ink); margin-bottom: 4px; }
 .dateline small { display: block; font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.02em; color: var(--muted); margin-top: 1px; }
 .dateline + .folio { border-top: 0; }
+.dateline + .front { margin-top: 26px; }
 
 /* footnotes */
 sup.fn { white-space: nowrap; font-family: var(--sans); font-size: 0.74em; font-weight: 700; line-height: 0; vertical-align: 0.55em; margin-left: 1px; text-indent: 0; letter-spacing: 0; text-transform: none; font-style: normal; }
