@@ -65,10 +65,9 @@ export function headline(r: Report): string {
   return top.length === 1 ? `${names} was the largest signal of the week` : `${names} were the largest signals of the week`;
 }
 
-/** "4,250 items collected from 78 sources. 20 signals kept." */
+/** "4,250 items collected from 78 sources." One line under the headline (the editor's choice, 2026-11-25). */
 export function standfirst(r: Report): string {
-  const k = r.top_signals.length;
-  return `${n(r.items_collected)} items collected from ${r.sources_scanned} sources${r.collection_status === "thin" ? ", a thin week" : ""}. ${k} signal${k === 1 ? "" : "s"} kept.`;
+  return `${n(r.items_collected)} items collected from ${r.sources_scanned} sources${r.collection_status === "thin" ? ", a thin week" : ""}.`;
 }
 
 /** A plain description for search results and share cards, 70 to 160 characters. */

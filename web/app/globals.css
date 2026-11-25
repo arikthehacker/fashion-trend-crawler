@@ -83,7 +83,7 @@ sup.fn a:hover { text-decoration: underline; }
 .hed { font-family: var(--serif); font-weight: 400; font-size: clamp(40px, 5.6vw, 72px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 14px; text-wrap: balance; }
 .hed.md { font-size: clamp(36px, 4.6vw, 58px); }
 .hed.rp { font-size: clamp(38px, 5vw, 64px); }
-.deck { font-family: var(--serif); font-style: italic; font-size: 21px; line-height: 1.35; margin-bottom: 12px; max-width: 38ch; }
+.deck { font-family: var(--serif); font-style: italic; font-size: 21px; line-height: 1.35; margin-bottom: 12px; max-width: 60ch; }
 .byline { font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; padding: 8px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); margin-bottom: 16px; color: var(--muted); }
 .cols { columns: 2; column-gap: 26px; column-rule: 1px solid var(--rule); font-family: var(--serif); font-size: 16.5px; line-height: 1.5; text-align: justify; hyphens: auto; -webkit-hyphens: auto; text-wrap: pretty; }
 .cols.three { columns: 3; }
