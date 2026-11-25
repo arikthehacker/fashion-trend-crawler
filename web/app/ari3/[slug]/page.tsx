@@ -47,7 +47,7 @@ export default async function ExperimentPage({ params }: { params: Promise<{ slu
     <Ari3Page label="Notebook entry" folioH1={false}>
       <div className="entry">
         <div>
-          <p className="kicker">{e.id}{e.version ? ` · ${e.version}` : ""}{e.kicker ? ` · ${e.kicker}` : ""}</p>
+          <p className="kicker">{e.id}</p>
           <h1 className="hed toner" style={{ fontSize: "clamp(40px,5.4vw,70px)" }}>{e.name}</h1>
           {e.motto ? <p className="deck">{e.motto}</p> : null}
           <p style={{ margin: "6px 0 16px", display: "flex", gap: "10px", flexWrap: "wrap" }}>
