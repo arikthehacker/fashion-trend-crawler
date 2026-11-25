@@ -312,10 +312,12 @@ figure svg { width: 100%; height: auto; display: block; }
 .princ p { font-family: var(--serif); font-size: 16.5px; line-height: 1.45; }
 
 /* ---------- footer ---------- */
-.foot { margin-top: 48px; border-top: 3px double var(--ink); padding-top: 10px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px 30px; font-size: 13px; color: var(--muted); }
-.foot ul { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 16px; }
-.foot a { color: var(--ink); text-decoration: none; display: inline-block; padding: 2px 0; } .foot a:hover { text-decoration: underline; }
-.foot p { line-height: 1.5; }
+/* the footer: an even grid of links, two rows edge to edge, then one line; the same on every device */
+.foot { margin-top: 48px; border-top: 3px double var(--ink); padding-top: 8px; font-size: clamp(8.5px, 2.3vw, 13px); color: var(--muted); }
+.foot ul { list-style: none; display: grid; grid-template-columns: repeat(6, max-content); justify-content: space-between; gap: 0 8px; }
+.foot li { white-space: nowrap; }
+.foot a { color: var(--ink); text-decoration: none; display: inline-block; padding: 6px 0; } .foot a:hover { text-decoration: underline; }
+.foot-line { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-top: 4px; padding-top: 4px; border-top: 1px solid var(--rule); line-height: 1.5; }
 
 @media (max-width: 860px) {
   /* Phones keep the desktop's newspaper layout, scaled down with the screen (the editor's call, 2026-11-25).
@@ -330,7 +332,7 @@ figure svg { width: 100%; height: auto; display: block; }
   .dateline + .front { margin-top: 14px; }
 
   /* every grid keeps its desktop columns; children may shrink */
-  .front > *, .rtop > *, .sig > *, .colophon > *, .reg article > *, .entry > *, .pair > *, .rulings article > *, .chron li > *, .issue > *, .foot > *, .cards > *, .figs > * { min-width: 0; }
+  .front > *, .rtop > *, .sig > *, .colophon > *, .reg article > *, .entry > *, .pair > *, .rulings article > *, .chron li > *, .issue > *, .cards > *, .figs > * { min-width: 0; }
   .front, .rtop, .colophon, .entry { grid-template-columns: minmax(0, 1.85fr) minmax(0, 1fr); gap: 10px 12px; }
   .sig { grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); gap: 8px 12px; padding: 12px 0 14px; }
   .issue { grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.7fr) minmax(0, 0.9fr); gap: 6px 10px; padding: 10px 0; }
@@ -339,8 +341,6 @@ figure svg { width: 100%; height: auto; display: block; }
   .chron li { grid-template-columns: 5.6em minmax(0, 1fr); gap: 4px 12px; padding: 8px 0; }
   .pair { gap: 0 14px; }
   .cards, .figs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  .foot { grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; font-size: 8.07px; }
-  .foot ul { gap: 0 10px; }
   .state, .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .state > div { padding: 6px 6px 0 0; }
   .state > div + div { padding-left: 6px; }

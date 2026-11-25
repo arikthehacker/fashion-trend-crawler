@@ -17,8 +17,9 @@ export default function SiteFooter() {
           )}
         </ul>
       </nav>
-      <p>
-        Corrections: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> · <a href={REPO_URL}>Source code</a>
+      <p className="foot-line">
+        <span>Corrections: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></span>
+        <a href={REPO_URL}>Source code</a>
       </p>
     </footer>
   );
