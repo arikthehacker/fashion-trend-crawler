@@ -18,7 +18,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { background: var(--paper); -webkit-text-size-adjust: 100%; }
-body { font-family: var(--sans); color: var(--ink); -webkit-font-smoothing: antialiased; background: var(--paper); }
+body { font-family: var(--sans); color: var(--ink); -webkit-font-smoothing: antialiased; background: var(--paper); overflow-wrap: break-word; }
 a { color: inherit; text-underline-offset: 3px; }
 img, svg { max-width: 100%; }
 code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.88em; }
@@ -214,9 +214,9 @@ details.more summary { cursor: pointer; font-size: 13.5px; text-decoration: unde
 .stamp.neg { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .stamp.soft { opacity: 0.55; }
 .reg { border-top: 1px solid var(--ink); }
-.reg article { display: grid; grid-template-columns: 150px minmax(0, 1fr) 170px; gap: 8px 28px; padding: 16px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+.reg article { display: grid; grid-template-columns: 200px minmax(0, 1fr) 170px; gap: 8px 28px; padding: 16px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
 .reg .id { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; }
-.reg h2, .reg h3 { font-family: var(--serif); font-weight: 400; font-size: 32px; line-height: 1; letter-spacing: -0.02em; }
+.reg h2, .reg h3 { font-family: var(--serif); font-weight: 400; font-size: 40px; line-height: 1; letter-spacing: -0.02em; white-space: nowrap; }
 .reg h2 a, .reg h3 a { text-decoration: none; } .reg h2 a:hover, .reg h3 a:hover { text-decoration: underline; }
 .reg .motto { font-family: var(--serif); font-style: italic; font-size: 17px; margin: 4px 0 6px; }
 .reg p.hl { font-family: var(--serif); font-size: 16.5px; line-height: 1.45; }
@@ -300,7 +300,8 @@ figure svg { width: 100%; height: auto; display: block; }
 @media (max-width: 860px) {
   .page { padding: 10px 18px 32px; transform: none; }
   .name, .plate.small .name { font-size: 10.2vw; white-space: nowrap; letter-spacing: 0.02em; }
-  .front, .rtop, .sig, .colophon, .reg article, .entry, .cards, .figs, .pair, .rulings article, .chron li, .issue, .foot { grid-template-columns: 1fr; }
+  .front, .rtop, .sig, .colophon, .reg article, .entry, .cards, .figs, .pair, .rulings article, .chron li, .issue, .foot { grid-template-columns: minmax(0, 1fr); }
+  .front > *, .rtop > *, .sig > *, .colophon > *, .reg article > *, .entry > *, .cards > *, .figs > *, .pair > *, .rulings article > *, .chron li > *, .issue > *, .foot > * { min-width: 0; }
   .side { border-left: 0; padding-left: 0; }
   .cols, .cols.three, .limits, .notes, .princ, .classifieds, .bindex { columns: 1; }
   .state, .steps { grid-template-columns: 1fr 1fr; }

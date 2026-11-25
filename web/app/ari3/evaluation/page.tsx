@@ -10,7 +10,7 @@ export const metadata = pageMetadata(
 
 type V = (typeof charts.versions)["ari3-v0.0.1"];
 type LC = typeof charts.learning_curve;
-const VNAME: Record<string, string> = { "ari3-v0.0.1": "v0.0.1 INDUSTRIA", "ari3-v0.0.2": "v0.0.2 DISCIPLINA" };
+const VNAME: Record<string, string> = { "ari3-v0.0.1": "v0.0.1", "ari3-v0.0.2": "v0.0.2" };
 const INK = "#0f0f10";
 const pct = (v: number) => `${Math.round(v * 100)}%`;
 const serif = { fontFamily: "var(--serif)" };

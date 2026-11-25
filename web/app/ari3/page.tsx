@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { pageMetadata } from "../../lib/site";
-import { EXPERIMENTS, PROJECT_STATE, RELEASE_NAMES, REPO } from "../../lib/ari3";
+import { EXPERIMENTS, PROJECT_STATE, REPO } from "../../lib/ari3";
 import { Stamp } from "../components/Chrome";
 import { Ari3Page } from "./ui";
 
@@ -23,13 +23,11 @@ export default function Ari3Overview() {
       <div className="reg">
         {EXPERIMENTS.map((e) => (
           <article key={e.id}>
-            <p className="id">
-              {e.id}
-              {e.version ? <><br /><span style={{ fontWeight: 400 }}>{e.version}</span></> : null}
-            </p>
             <div>
-              <h3><Link href={`/ari3/${e.slug}`}>{e.name}</Link></h3>
-              {e.motto ? <p className="motto">{e.motto}</p> : null}
+              <h3><Link href={`/ari3/${e.slug}`}>{e.id}</Link></h3>
+              {e.version ? <p className="id">Release {e.version}</p> : null}
+            </div>
+            <div>
               <p className="hl">{e.headline}</p>
             </div>
             <div className="stamps">
@@ -49,25 +47,6 @@ export default function Ari3Overview() {
             {g.items.map((i) => <p key={i.area}><b>{i.area}</b>{i.detail}</p>)}
           </div>
         ))}
-      </div>
-
-      <h2 className="sec">Release names</h2>
-      <div className="table-wrap">
-        <table className="ledger">
-          <thead>
-            <tr><th scope="col">Version</th><th scope="col">Name</th><th scope="col">Motto</th><th scope="col"><span className="sr-only">Status</span></th></tr>
-          </thead>
-          <tbody>
-            {RELEASE_NAMES.map((r) => (
-              <tr key={r.version}>
-                <td>{r.version}</td>
-                <td className="s">{r.exp && r.status !== "Planned" ? <Link href={`/ari3/${r.exp}`}>{r.name}</Link> : r.name}</td>
-                <td className="s" style={{ fontStyle: "italic" }}>{r.motto}</td>
-                <td className="r"><Stamp>{r.status}</Stamp></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </div>
       <p className="caption">
         Planned names mark intent. None has a date. Every entry lists its commit and the SHA-256 hash of each file, so a

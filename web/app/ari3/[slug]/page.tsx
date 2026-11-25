@@ -14,9 +14,9 @@ export function generateStaticParams() {
 
 // Search descriptions, 70 to 160 characters each, written from each entry's own results.
 const DESCRIPTIONS: Record<string, string> = {
-  "exp-001": "ARI3 v0.0.1 INDUSTRIA, the first style classifier: 145 editor labels, 0.882 held-out accuracy and no confident mistakes on 34 test items.",
-  "exp-002": "ARI3 v0.0.2 DISCIPLINA: 35 hard cases chosen by active learning raised confident answers from 66% to 82% at equal training size. Pre-registered.",
-  "exp-003": "ARI3 v0.0.3 INTEGRITAS: v0.0.2 on newer articles kept its coverage but missed its accuracy mark, 0.833 against 0.85. The forecast detector failed.",
+  "exp-001": "ARI3 v0.0.1, the first style classifier: 145 editor labels, 0.882 held-out accuracy and no confident mistakes on 34 test items.",
+  "exp-002": "ARI3 v0.0.2: 35 hard cases chosen by active learning raised confident answers from 66% to 82% at equal training size. Pre-registered.",
+  "exp-003": "ARI3 v0.0.3: v0.0.2 on newer articles kept its coverage but missed its accuracy mark, 0.833 against 0.85. The forecast detector failed.",
   "exp-004": "EXP-004 grounded retrieval: a frozen hybrid retriever reached Recall@10 0.770 and Hit@10 1.000 on 12 held-out questions with a relevant item.",
   "exp-007": "EXP-007: can an LLM stand in for the editor on weekly report decisions? DeepSeek reached kappa 0.079 on 216 cards, and thinking first did not help.",
   "exp-008": "EXP-008: a taste profile of the editor, written by a Claude subagent, did not raise DeepSeek's agreement with her report decisions. Kappa 0.086.",
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const e = EXPERIMENTS.find((x) => x.slug === slug);
   if (!e) return {};
-  return pageMetadata(`/ari3/${e.slug}`, `${e.id} ${e.name}`, describe(e));
+  return pageMetadata(`/ari3/${e.slug}`, e.version ? `${e.id}, release ${e.version}` : `${e.id}: ${e.name}`, describe(e));
 }
 
 export default async function ExperimentPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -49,10 +49,9 @@ export default async function ExperimentPage({ params }: { params: Promise<{ slu
         <div>
           <h1 className="hed toner" style={{ fontSize: "clamp(56px,8vw,104px)", marginBottom: "6px" }}>
             <span style={{ whiteSpace: "nowrap" }}>{e.id}</span>
-            <span className="sr-only">: {e.name}</span>
+            <span className="sr-only">: {e.version ? `release ${e.version}` : e.name}</span>
           </h1>
-          <p aria-hidden="true" style={{ fontFamily: "var(--serif)", fontSize: "clamp(24px,2.6vw,34px)", lineHeight: 1.1, letterSpacing: "-0.015em", margin: "0 0 10px" }}>{e.name}</p>
-          {e.motto ? <p className="deck">{e.motto}</p> : null}
+          <p aria-hidden="true" style={{ fontFamily: "var(--serif)", fontSize: "clamp(24px,2.6vw,34px)", lineHeight: 1.1, letterSpacing: "-0.015em", margin: "0 0 10px" }}>{e.version ? `Release ${e.version}` : e.name}</p>
           <p style={{ margin: "6px 0 16px", display: "flex", gap: "10px", flexWrap: "wrap" }}>
             <Stamp>{e.status}</Stamp>
             {preregistered ? <Stamp>Pre-registered</Stamp> : null}

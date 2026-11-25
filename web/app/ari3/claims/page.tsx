@@ -32,7 +32,7 @@ export default function Claims() {
                   <td style={{ whiteSpace: "nowrap" }}>{c.id}<br /><span className="note">{c.asOf}</span></td>
                   <td className="s">
                     <Tx text={c.claim} />
-                    {c.experiment ? <><br /><span className="note">{c.experiment}</span></> : null}
+                    {c.experiment ? <><br /><span className="note">{c.experiment.replace(/\s*(INDUSTRIA|DISCIPLINA|INTEGRITAS)/g, "")}</span></> : null}
                   </td>
                   <td>
                     <Tx text={c.result} />

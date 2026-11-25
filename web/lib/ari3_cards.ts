@@ -21,7 +21,7 @@ export type ModelCard = {
 export const MODEL_CARDS: ModelCard[] = [
   {
     version: "v0.0.2",
-    name: "DISCIPLINA",
+    name: "ARI3",
     exp: "exp-002",
     status: "Current",
     purpose: "Decide whether a news item is about style, and say when it is not sure.",
@@ -50,7 +50,7 @@ export const MODEL_CARDS: ModelCard[] = [
   },
   {
     version: "v0.0.1",
-    name: "INDUSTRIA",
+    name: "ARI3",
     exp: "exp-001",
     status: "Superseded by v0.0.2, kept frozen",
     purpose: "Decide whether a news item is about style, and say when it is not sure.",
@@ -220,15 +220,15 @@ export const TIMELINE: TimelineEvent[] = [
   { date: "2026-05-18", title: "First real crawl", detail: "96 headlines from two outlets. It later became the first published report." },
   { date: "2026-09-23", title: "Dated collection begins", detail: "RSS collection every 4 hours into a local database. The evidence gate runs on every change." },
   { date: "2026-09-23", title: "First sourced report", detail: "The 2026-05-18 crawl, re-checked against the articles behind it, published with every claim linked.", href: "/reports/2026-05-18" },
-  { date: "2026-09-23", title: "First human labels, INDUSTRIA trained", detail: "145 labels by the editor. v0.0.1 reaches 0.882 held-out accuracy.", href: "/ari3/exp-001" },
-  { date: "2026-09-24", title: "INDUSTRIA committed, EXP-002 pre-registered", detail: "v0.0.1 (frozen the day before) and the next experiment's pass criteria committed publicly, one second apart.", href: "/ari3/exp-002" },
-  { date: "2026-09-26", title: "DISCIPLINA frozen", detail: "350 labels, 50 of them hard cases. All five pre-registered hypotheses supported.", href: "/ari3/exp-002" },
+  { date: "2026-09-23", title: "First human labels, v0.0.1 trained", detail: "145 labels by the editor. v0.0.1 reaches 0.882 held-out accuracy.", href: "/ari3/exp-001" },
+  { date: "2026-09-24", title: "v0.0.1 committed, EXP-002 pre-registered", detail: "v0.0.1 (frozen the day before) and the next experiment's pass criteria committed publicly, one second apart.", href: "/ari3/exp-002" },
+  { date: "2026-09-26", title: "v0.0.2 frozen", detail: "350 labels, 50 of them hard cases. All five pre-registered hypotheses supported.", href: "/ari3/exp-002" },
   { date: "2026-09-26", title: "Lexicon v1 loaded", detail: "73 style terms chosen by the editor, loaded and matched against stored items. Seven ambiguous terms are kept but left out of every count." },
   { date: "2026-09-26", title: "EXP-003B: forecast detection fails its test", detail: "The new head never flagged a forecast (balanced accuracy 0.50, pass mark 0.75). It is frozen and not used.", href: "/ari3/exp-003" },
   { date: "2026-09-30", title: "First-seen times recorded as they happen", detail: "From this point the store records when ARI3 first holds each item. Earlier items carry reconstructed times, labeled as such." },
   { date: "2026-10-01", title: "EXP-004: grounded retrieval tested once", detail: "The frozen hybrid retriever reached Recall@10 0.770 and Hit@10 1.000 on 12 answerable held-out questions.", href: "/ari3/exp-004" },
   { date: "2026-10-02", title: "EXP-003A: v0.0.2 on newer articles", detail: "Coverage 0.927 and not-sure share 0.327 met their pass marks. Accuracy 0.833 missed its pass mark of 0.85.", href: "/ari3/exp-003" },
-  { date: "2026-10-03", title: "INTEGRITAS released (v0.0.3)", detail: "The release records both EXP-003 results and a frozen forecast head that is not used. The style classifier is still the frozen v0.0.2 model.", href: "/ari3/exp-003" },
+  { date: "2026-10-03", title: "v0.0.3 released", detail: "The release records both EXP-003 results and a frozen forecast head that is not used. The style classifier is still the frozen v0.0.2 model.", href: "/ari3/exp-003" },
   { date: "Later", title: "PROVIDENTIA", detail: "The system begins looking forward.", planned: true },
   { date: "Later", title: "CONCORDIA", detail: "Independent models act in concert.", planned: true },
 ];

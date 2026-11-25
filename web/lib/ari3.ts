@@ -894,7 +894,7 @@ export const PROJECT_STATE: { status: string; mark: "full" | "half" | "dashed" |
       { area: "Perception v0.0.1 and v0.0.2", detail: "Frozen, hashed and public" },
       { area: "Pre-registration", detail: "Every experiment that compares versions commits its pass criteria before its data" },
       { area: "Grounded retrieval (EXP-004)", detail: "A frozen retriever, tested once on held-out questions" },
-      { area: "INTEGRITAS (v0.0.3)", detail: "Released 2026-10-03. Both parts of EXP-003 ran once, and the results include a failed accuracy criterion and a failed forecast detector" },
+      { area: "v0.0.3", detail: "Released 2026-10-03. Both parts of EXP-003 ran once, and the results include a failed accuracy criterion and a failed forecast detector" },
     ],
   },
   {
