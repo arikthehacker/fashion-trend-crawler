@@ -73,6 +73,7 @@ class AuditTests(unittest.TestCase):
         self.assertTrue(any("Grep" in p for p in problems))
         self.assertTrue(any("not read" in p for p in problems))
 
+    @mock.patch.object(x, "vocabulary", lambda: VOCAB)  # CI has no decks; the leak check needs a vocabulary
     def test_handback_with_only_the_word_count_is_allowed(self):
         ok = [("Read", p) for p in x.input_paths(self.held).values()] + [
             ("Write", os.path.join(x.PROFILES, f"{self.held}.md"))]
