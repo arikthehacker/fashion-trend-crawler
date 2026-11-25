@@ -42,6 +42,8 @@ PREREG = os.path.join(EXP, "PREREGISTRATION.md")
 INSTRUCTIONS = os.path.join(EXP, "protocol", "profile_instructions_v1.md")
 PROMPT_SPEC = os.path.join(EXP, "protocol", "prompt_v2.md")
 PROFILE_MANIFEST = os.path.join(EXP, "runs", "sealed_profiles.json")
+AMENDMENT = os.path.join(EXP, "AMENDMENT_2026-11-25_handback.md")
+AMENDMENT_JSON = os.path.join(EXP, "protocol", "amendment_1.json")
 MANIFEST = os.path.join(EXP, "runs", "sealed_manifest.json")
 RESULT = os.path.join(EXP, "runs", "comparison.json")
 BLIND = os.path.join(ROOT, "data", "store", "blind", "exp008")
@@ -66,6 +68,9 @@ OPENING_TO = "followed by the editor's definitions and a profile of how the edit
 # outlet name parts that are also ordinary English words; only their full domains are checked
 COMMON_WORDS = {"complex", "stylist", "nylon", "wallpaper", "numero"}
 WORD = re.compile(r"[a-z0-9']+")
+# amendment 1: the harness's own reply channel, allowed only when the reply is just the word count
+HANDBACK_TOOL = "SubagentHandback"
+HANDBACK_REPLY = re.compile(r"\s*\d+(\s+words?)?\s*\.?\s*", re.I)
 GENERIC_LABELS = {"www", "en", "m", "com", "co", "uk", "it", "de", "fr", "es", "me", "net", "org", "mx", "au",
                   "id", "in", "jp", "kr", "br", "ca", "ae", "cn"}
 
@@ -234,6 +239,9 @@ def audit_transcript(path, held):
                         continue
                     if name == "Write" and target == allowed_write:
                         continue
+                    if name == HANDBACK_TOOL and HANDBACK_REPLY.fullmatch(str(inp.get("message", ""))):
+                        calls[-1]["reply"] = str(inp.get("message"))
+                        continue
                     problems.append(f"tool call not allowed: {name} {target or ''}".strip())
     if not any(c["tool"] == "Write" for c in calls):
         problems.append("the profile was not written with the Write tool")
@@ -360,6 +368,13 @@ def check_frozen():
             "leak_vocabulary", "definitions", "weeks", "editor_logs_manifest_sha256",
             "exp007_thinking_off_outputs_sha256", "reader", "code_sha256")
     changed = [k for k in keys if p[k] != now[k]]
+    if changed == ["code_sha256"] and os.path.exists(AMENDMENT_JSON):
+        with open(AMENDMENT_JSON, encoding="utf-8") as f:
+            a = json.load(f)
+        if (a["amends_protocol_sha256"] == e7.sha_file(PROTOCOL) and a["amendment_sha256"] == e7.sha_file(AMENDMENT)
+                and a["code_sha256"] == now["code_sha256"]):
+            return p
+        raise RuntimeError("the code matches neither the protocol nor amendment 1")
     if changed:
         raise RuntimeError(f"a frozen input changed: {changed}")
     return p
@@ -391,7 +406,7 @@ def run(provider=None, out_path=OUT, manifest_path=MANIFEST):
     live = provider is None
     if live:
         import rag_select as rs
-        for path in (PROTOCOL, PROFILE_MANIFEST):
+        for path in (PROTOCOL, AMENDMENT_JSON, PROFILE_MANIFEST):
             ok, info = rs.rule_is_committed_and_pushed(path)
             if not ok:
                 raise RuntimeError(f"{os.path.basename(path)}: {info}")
@@ -536,7 +551,7 @@ def run_compare():
     import rag_select as rs
     if os.path.exists(RESULT):
         raise RuntimeError("the comparison already exists")
-    for path in (PROTOCOL, PROFILE_MANIFEST, MANIFEST):
+    for path in (PROTOCOL, AMENDMENT_JSON, PROFILE_MANIFEST, MANIFEST):
         ok, info = rs.rule_is_committed_and_pushed(path)
         if not ok:
             raise RuntimeError(f"{os.path.basename(path)}: {info}")
@@ -580,7 +595,7 @@ def write_detail(rec7, rec8, editor):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("cmd", choices=["build-inputs", "freeze-protocol", "instructions", "check-profile",
+    ap.add_argument("cmd", choices=["build-inputs", "freeze-protocol", "freeze-amendment", "instructions", "check-profile",
                                     "seal-profiles", "estimate-cost", "render-example", "run", "status", "compare"])
     ap.add_argument("--week", default=WEEKS[0])
     ap.add_argument("--card", default=None)
@@ -594,6 +609,12 @@ def main(argv=None):
             with open(PROTOCOL, "x", encoding="utf-8", newline="\n") as f:
                 json.dump(protocol_body(), f, indent=1, ensure_ascii=False)
             body = {"protocol_sha256": e7.sha_file(PROTOCOL)}
+        elif args.cmd == "freeze-amendment":
+            with open(AMENDMENT_JSON, "x", encoding="utf-8", newline="\n") as f:
+                json.dump({"amendment": os.path.basename(AMENDMENT), "amendment_sha256": e7.sha_file(AMENDMENT),
+                           "amends_protocol_sha256": e7.sha_file(PROTOCOL), "code_sha256": code_sha(),
+                           "frozen_at": _now()}, f, indent=1)
+            body = {"amendment_1_sha256": e7.sha_file(AMENDMENT_JSON)}
         elif args.cmd == "instructions":
             print(instructions(args.week))
             return 0

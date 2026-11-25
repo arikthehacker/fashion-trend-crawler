@@ -45,7 +45,8 @@ class LeakTests(unittest.TestCase):
 
 def transcript(calls):
     lines = [json.dumps({"message": {"role": "assistant", "content": [
-        {"type": "tool_use", "name": n, "input": {"file_path": p}}]}}) for n, p in calls]
+        {"type": "tool_use", "name": n, "input": {"message": p} if n == "SubagentHandback" else {"file_path": p}}]}})
+        for n, p in calls]
     f = tempfile.NamedTemporaryFile("w", suffix=".jsonl", delete=False, encoding="utf-8")
     f.write("\n".join(lines))
     f.close()
@@ -71,6 +72,14 @@ class AuditTests(unittest.TestCase):
         problems = x.audit_transcript(path, self.held)[1]
         self.assertTrue(any("Grep" in p for p in problems))
         self.assertTrue(any("not read" in p for p in problems))
+
+    def test_handback_with_only_the_word_count_is_allowed(self):
+        ok = [("Read", p) for p in x.input_paths(self.held).values()] + [
+            ("Write", os.path.join(x.PROFILES, f"{self.held}.md"))]
+        for reply in ("532", "453 words", " 504 "):
+            self.assertEqual(x.audit_transcript(transcript(ok + [("SubagentHandback", reply)]), self.held)[1], [])
+        problems = x.audit_transcript(transcript(ok + [("SubagentHandback", "532. The editor keeps...")]), self.held)[1]
+        self.assertTrue(any("SubagentHandback" in p for p in problems))
 
     def test_held_out_week_is_never_an_input(self):
         for w in x.WEEKS:
