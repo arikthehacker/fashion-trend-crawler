@@ -1,0 +1,47 @@
+{
+ "fingerprinted_at": "2026-11-25T01:41:32Z",
+ "weeks": {
+  "2026-10-11": {
+   "log_sha256": "115f91ee5baa78d2f9333520b7c890431b84c138b165e5694f8c8603435e0ef1",
+   "rows": 36,
+   "decided": 34,
+   "required": 34
+  },
+  "2026-10-18": {
+   "log_sha256": "917df265808c3929ad4566089dd8fd466cbe7875f7167da77f0c0b121133dcb4",
+   "rows": 33,
+   "decided": 32,
+   "required": 32
+  },
+  "2026-10-25": {
+   "log_sha256": "bfebc01bbe3fc6d1019802616bdb6233524a7844c70cfce660a3899d0764cfa3",
+   "rows": 34,
+   "decided": 33,
+   "required": 33
+  },
+  "2026-11-01": {
+   "log_sha256": "ac660c58a54706b4d90ba686876a9cd916098f653664c9f97ac91457d2c94f4e",
+   "rows": 31,
+   "decided": 30,
+   "required": 30
+  },
+  "2026-11-08": {
+   "log_sha256": "0a5420e9a320a604e240ad8aecd91f8ed112d25afbe792bca2e583c2c260c360",
+   "rows": 35,
+   "decided": 34,
+   "required": 34
+  },
+  "2026-11-15": {
+   "log_sha256": "8ee06907a7182b0d0729ee96a7c853ac8033f3a19f084dc5efea37f72d821753",
+   "rows": 32,
+   "decided": 31,
+   "required": 31
+  },
+  "2026-11-22": {
+   "log_sha256": "b747c231f41743f1f95bf24e585332a001ac87bae88157d34387e19d2d871ccf",
+   "rows": 35,
+   "decided": 32,
+   "required": 32
+  }
+ }
+}
