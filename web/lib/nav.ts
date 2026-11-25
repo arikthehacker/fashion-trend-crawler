@@ -22,9 +22,11 @@ export const FOOTER_NAV = [
   { href: "/privacy", label: "Privacy" },
   { href: "/terms", label: "Terms" },
   { href: "/rss.xml", label: "RSS" },
-  { href: "/llms.txt", label: "For AI agents" },
-  { href: "/data/reports/index.json", label: "Data (JSON)" },
-  { href: "https://github.com/arikthehacker/fashion-trend-crawler/blob/master/CONTRIBUTING.md", label: "How to contribute" },
+  { href: "/llms.txt", label: "AI agents" },
+  { href: "/data/reports/index.json", label: "JSON" },
+  { href: "https://github.com/arikthehacker/fashion-trend-crawler/blob/master/CONTRIBUTING.md", label: "Contribute" },
+  { href: "https://github.com/arikthehacker/fashion-trend-crawler/issues", label: "Corrections" },
+  { href: "https://github.com/arikthehacker/fashion-trend-crawler", label: "Source code" },
 ] as const;
 
 export const CONTACT_EMAIL = "ariella@duck.com";

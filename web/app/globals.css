@@ -312,12 +312,11 @@ figure svg { width: 100%; height: auto; display: block; }
 .princ p { font-family: var(--serif); font-size: 16.5px; line-height: 1.45; }
 
 /* ---------- footer ---------- */
-/* the footer: an even grid of links, two rows edge to edge, then one line; the same on every device */
-.foot { margin-top: 36px; border-top: 1px solid var(--rule); padding-top: 4px; font-size: clamp(7px, 1.8vw, 11px); color: var(--muted); }
-.foot ul { list-style: none; display: grid; grid-template-columns: repeat(6, max-content); justify-content: space-between; gap: 0 6px; }
+/* the footer: every link on one line, edge to edge, on every screen; the type scales to fit */
+.foot { margin-top: 36px; border-top: 1px solid var(--rule); padding-top: 4px; font-size: clamp(4px, 1.36vw, 11px); color: var(--muted); }
+.foot ul { list-style: none; display: flex; justify-content: space-between; align-items: baseline; gap: 0 0.45em; flex-wrap: nowrap; }
 .foot li { white-space: nowrap; }
-.foot a { color: var(--muted); text-decoration: none; display: inline-block; padding: 3px 0; } .foot a:hover { color: var(--ink); text-decoration: underline; }
-.foot-line { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-top: 2px; padding-top: 2px; line-height: 1.4; }
+.foot a { color: var(--muted); text-decoration: none; display: inline-block; padding: 4px 0; } .foot a:hover { color: var(--ink); text-decoration: underline; }
 
 @media (max-width: 860px) {
   /* Phones keep the desktop's newspaper layout, scaled down with the screen (the editor's call, 2026-11-25).
