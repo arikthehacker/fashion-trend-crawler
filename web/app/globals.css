@@ -322,10 +322,14 @@ figure svg { width: 100%; height: auto; display: block; }
   .rulings article { grid-template-columns: 70px minmax(0, 1fr); gap: 4px 12px; padding: 12px 0; }
   .chron li { grid-template-columns: 5.6em minmax(0, 1fr); gap: 4px 12px; padding: 8px 0; }
   .pair { gap: 0 14px; }
-  .cards, .figs { grid-template-columns: minmax(0, 1fr); gap: 16px; }
-  .foot { grid-template-columns: minmax(0, 1fr); font-size: 11px; }
-  .state, .steps { grid-template-columns: 1fr 1fr; }
-  .state > div:nth-child(odd), .steps div:nth-child(odd) { padding-left: 0; border-left: 0; }
+  .cards, .figs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .foot { grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; font-size: 10.5px; }
+  .foot ul { gap: 0 10px; }
+  .state, .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .state > div { padding: 6px 6px 0 0; }
+  .state > div + div { padding-left: 6px; }
+  .steps div { padding: 8px 6px 8px 0; }
+  .steps div + div { padding-left: 6px; }
 
   /* type */
   .kicker, h2.sec, .who h2, .who h3, .side h2, .side h3, .box h2, .box h3, .pull small, .inside b, .pair h3, .state h3, .state h4, .ledger th, .weeks th, figure .ft, .prov dt, .entry .facts dt, .rulings dt, .staff dt { font-size: 9.5px; }
@@ -338,7 +342,7 @@ figure svg { width: 100%; height: auto; display: block; }
   .caption { font-size: 11.5px; }
   .note { font-size: 10.5px; }
   .cols { columns: 2; column-gap: 10px; font-size: clamp(11px, 3vw, 16.5px); line-height: 1.45; }
-  .cols.three { columns: 2; }
+  .cols.three { columns: 3; column-gap: 8px; font-size: clamp(10px, 2.65vw, 16.5px); }
   .cols.one { columns: 1; }
   .cols p { margin-bottom: 6px; }
   .inside { font-size: 11px; gap: 2px 10px; margin-top: 10px; }
@@ -371,22 +375,22 @@ figure svg { width: 100%; height: auto; display: block; }
   .prov { grid-template-columns: 7em minmax(0, 1fr); font-size: 11px; }
 
   /* signal file, back issues, index */
-  .classifieds { columns: 2; column-gap: 12px; }
+  .classifieds { columns: 3; column-gap: 8px; }
   .classifieds .day h3, .classifieds .day h4 { font-size: 9.5px; }
   .weeks { font-size: 11px; }
   .weeks td.s, .weeks td.q { font-size: 12px; }
   .issue .when { font-size: clamp(14px, 4.2vw, 30px); }
   .issue .what { font-size: clamp(13px, 3.8vw, 24px); }
   .issue .names { font-size: clamp(11px, 3.1vw, 20px); margin-top: 4px; }
-  .bindex { columns: 2; column-gap: 12px; }
+  .bindex { columns: 3; column-gap: 8px; }
   .bindex .letter h2, .bindex .letter h4 { font-size: 20px; }
   .bindex p { font-size: 10.5px; }
   .bindex p a.n { font-size: 13px; }
 
   /* how it works, about, prose */
-  .steps b { font-size: 17px; }
-  .steps p { font-size: 11px; }
-  .method h2, .method h3 { font-size: 15px; }
+  .steps b { font-size: 13px; }
+  .steps p { font-size: 9.5px; }
+  .method h2, .method h3 { font-size: 12.5px; }
   .staff { padding: 8px 10px; }
   .staff dd { font-size: 12px; }
   .prose { font-size: 14.5px; }
@@ -398,8 +402,8 @@ figure svg { width: 100%; height: auto; display: block; }
   .reg p.hl { font-size: 11.5px; }
   .reg .stamps { gap: 5px; }
   .stamp { font-size: 8.5px; padding: 1px 5px 0; border-width: 1.5px; }
-  .state p { font-size: 11px; }
-  .state p b { font-size: 13px; }
+  .state p { font-size: 9.5px; padding: 4px 0; }
+  .state p b { font-size: 11px; }
   table.ledger, .ledger td, .cm { font-size: 11px; }
   .ledger td.s { font-size: 12.5px; }
   .entry .facts dl { grid-template-columns: minmax(0, 1fr); font-size: 11px; }
@@ -407,7 +411,31 @@ figure svg { width: 100%; height: auto; display: block; }
   .chron b { font-size: 15px; }
   .chron .d { font-size: 10.5px; }
   .rulings h2, .rulings h3 { font-size: 18px; }
-  .princ { columns: 1; }
+  .princ { columns: 2; column-gap: 12px; }
+  .princ li::before { font-size: 28px; margin-right: 6px; }
+  .princ b { font-size: 14px; }
+  .princ p { font-size: 11px; }
+  .spec header { padding: 6px 8px; }
+  .spec header b, .spec header h2 { font-size: 16px; }
+  .spec header span { font-size: 10px; }
+  .spec header .stamp { white-space: normal; transform: none; }
+  .spec header b, .spec header h2 { overflow-wrap: anywhere; min-width: 0; }
+  .spec .purpose { font-size: 12px; padding: 8px; }
+  .spec dl { grid-template-columns: minmax(0, 1fr); }
+  .spec dt { padding: 5px 8px 0; font-size: 9px; border-bottom: 0; }
+  .spec dd { padding: 0 8px 5px; font-size: 10.5px; }
+  .spec .metrics td, .spec .metrics td.v { font-size: 10.5px; }
+  .spec .metrics td:first-child { width: 52%; overflow-wrap: normal; hyphens: auto; -webkit-hyphens: auto; }
+  .spec .metrics td.v { white-space: normal; }
+  .spec footer { font-size: 10px; padding: 6px 8px; }
+  figure figcaption { font-size: 10.5px; }
+  .cm th, .cm td { padding: 4px; }
+  .cm td { font-size: 16px; }
+  .bindex .letter h2, .bindex .letter h4 { font-size: 17px; }
+  .bindex p { font-size: 9.5px; }
+  .bindex p a.n { font-size: 11.5px; }
+  .classifieds .srcs a { font-size: 10px; }
+  .classifieds .srcs span { font-size: 9px; }
 }
 
 @media print {
