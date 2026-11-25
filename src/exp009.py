@@ -38,7 +38,8 @@ from item_store import ROOT
 
 EXP = os.path.join(ROOT, "experiments", "exp-009-editor-taste-predictors")
 PREREG = os.path.join(EXP, "PREREGISTRATION.md")
-PROTOCOL = os.path.join(EXP, "protocol", "protocol_v1.json")
+PROTOCOL_V1 = os.path.join(EXP, "protocol", "protocol_v1.json")
+PROTOCOL = os.path.join(EXP, "protocol", "protocol_v2.json")
 MANIFEST = os.path.join(EXP, "runs", "sealed_manifest.json")
 RESULT = os.path.join(EXP, "runs", "comparison.json")
 BLIND = os.path.join(ROOT, "data", "store", "blind", "exp009")
@@ -212,8 +213,12 @@ def code_sha():
 
 
 def protocol_body():
-    return {"experiment": "EXP-009 editor-taste predictors, walk-forward", "version": "exp009-protocol-v1",
-            "decided_by": "the owner, 2026-11-25", "preregistration_sha256": e7.sha_file(PREREG),
+    return {"experiment": "EXP-009 editor-taste predictors, walk-forward", "version": "exp009-protocol-v2",
+            "decided_by": "the owner, 2026-11-25",
+            "supersedes": "protocol/protocol_v1.json. No call or score ever ran under it: its freeze check compared "
+                          "the hypotheses as tuples against the same values read back from JSON as lists, and refused "
+                          "the run. v2 fixes only that comparison; every method, feature and setting is unchanged.",
+            "protocol_v1_sha256": e7.sha_file(PROTOCOL_V1), "preregistration_sha256": e7.sha_file(PREREG),
             "target_weeks": list(TARGET_WEEKS), "methods": list(METHODS), "hypotheses": HYPOTHESES,
             "model": MODEL, "features": FEATURES, "m1_fallback": "keep",
             "memory": "the editor's decision, volatility and confidence on the same term in earlier weeks",
@@ -228,7 +233,7 @@ def protocol_body():
 def check_frozen():
     with open(PROTOCOL, encoding="utf-8") as f:
         p = json.load(f)
-    now = protocol_body()
+    now = json.loads(json.dumps(protocol_body()))  # compare as stored: tuples become lists
     changed = [k for k in p if k != "frozen_at" and p[k] != now.get(k)]
     if changed:
         raise RuntimeError(f"a frozen input changed: {changed}")

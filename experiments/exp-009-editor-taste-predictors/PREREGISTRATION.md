@@ -1,6 +1,6 @@
 # EXP-009: what predicts the editor's report decisions best?
 
-**Status:** pre-registered 2026-11-25, before any score is computed and before any new model call. The frozen details (fingerprints of this file, the code, the decks, the definitions, the editor's fingerprinted decision logs and EXP-007's sealed outputs) are in `protocol/protocol_v1.json`. The runner is `src/exp009.py`.
+**Status:** pre-registered 2026-11-25, before any score is computed and before any new model call. The frozen details (fingerprints of this file, the code, the decks, the definitions, the editor's fingerprinted decision logs and EXP-007's sealed outputs) are in `protocol/protocol_v2.json`. It supersedes `protocol_v1.json`, under which nothing ran, because v1's freeze check refused the run on a type mismatch. The runner is `src/exp009.py`.
 
 ## Question
 

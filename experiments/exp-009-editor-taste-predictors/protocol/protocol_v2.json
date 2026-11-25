@@ -1,0 +1,153 @@
+{
+ "experiment": "EXP-009 editor-taste predictors, walk-forward",
+ "version": "exp009-protocol-v2",
+ "decided_by": "the owner, 2026-11-25",
+ "supersedes": "protocol/protocol_v1.json. No call or score ever ran under it: its freeze check compared the hypotheses as tuples against the same values read back from JSON as lists, and refused the run. v2 fixes only that comparison; every method, feature and setting is unchanged.",
+ "protocol_v1_sha256": "162d1de0dfad0c940e516bb7d482c1e7ac73c07dca8f7af69ebde659e560deeb",
+ "preregistration_sha256": "ca6fe79786c94fd95b42f755b2f2c77e5b20c27c8db9ee7a4b43e65d62c9d8e5",
+ "target_weeks": [
+  "2026-10-18",
+  "2026-10-25",
+  "2026-11-01",
+  "2026-11-08",
+  "2026-11-15",
+  "2026-11-22"
+ ],
+ "methods": [
+  "M0_always_keep",
+  "M1_same_as_last_time",
+  "M2_taste_model",
+  "M3_deepseek",
+  "M4_deepseek_memory"
+ ],
+ "hypotheses": {
+  "H1": [
+   "M2_taste_model",
+   "M3_deepseek"
+  ],
+  "H2": [
+   "M4_deepseek_memory",
+   "M3_deepseek"
+  ],
+  "H3": [
+   "M2_taste_model",
+   "M1_same_as_last_time"
+  ]
+ },
+ "model": {
+  "kind": "logistic regression, batch gradient descent on standardized features",
+  "l2": 0.1,
+  "learning_rate": 0.5,
+  "iterations": 2000,
+  "threshold": 0.5,
+  "target": "keep (1) against drop, watchlist or merge (0)"
+ },
+ "features": [
+  "log_items",
+  "log_outlets",
+  "sectors",
+  "days",
+  "weaknesses",
+  "baseline_confidence",
+  "type_aesthetic_term",
+  "type_color_print",
+  "type_commerce_language",
+  "type_footwear",
+  "type_garment_silhouette",
+  "type_material",
+  "seen_before",
+  "last_kept",
+  "keep_rate_before",
+  "times_seen_before"
+ ],
+ "m1_fallback": "keep",
+ "memory": "the editor's decision, volatility and confidence on the same term in earlier weeks",
+ "definitions": {
+  "sha256": "418de57119ad837eb9aa66777a9de579794b1ac3a250d801ed13f4fcb0451c00",
+  "panel_text_sha256": "3431c72bb4bd26c7110f08d896042ba83af7488646b96db3bfdb222ccbba6879"
+ },
+ "weeks": {
+  "2026-10-11": {
+   "deck_sha256": "44abc91bfb6ef27700008be6659a7a076aa7b1e1ccd1569faf0c0694703a4463",
+   "evidence_snapshot_sha256": "c104b24313b0b1e2a3071bf90f1a87330fca9e4ddae83f63804b959f36a3c552",
+   "signal_cards": 33,
+   "duplicate_cards": 1
+  },
+  "2026-10-18": {
+   "deck_sha256": "b0894b0c986a66b0a029888888692390c639928b7001c2724d0ad85e66411ca5",
+   "evidence_snapshot_sha256": "3ca948b445408b4103bbd56218b801f92c578f4ea88aabb5f1ab1bac0eeef894",
+   "signal_cards": 30,
+   "duplicate_cards": 2
+  },
+  "2026-10-25": {
+   "deck_sha256": "d7ea0daa37f1d6cd5afe1d7c42a586f3d6b8f2d7ef129b3973e2ad1620fe1479",
+   "evidence_snapshot_sha256": "ce9dc578c37513dff98b8ea3f9b72d3c93becedce2aed8a59e674107a3516b7c",
+   "signal_cards": 32,
+   "duplicate_cards": 1
+  },
+  "2026-11-01": {
+   "deck_sha256": "b3b1818b0ce77ca14e9a373f03954127f75f05f9d212964696e0c76c6586b23b",
+   "evidence_snapshot_sha256": "8b2e8a53049176893dd8742964d7c11a3ba0d8ccac2fca2b623679c87f142bf3",
+   "signal_cards": 29,
+   "duplicate_cards": 1
+  },
+  "2026-11-08": {
+   "deck_sha256": "1bca9ee407914269c5ed7d9d261331d91149c8bcfabe54bc47722f5a6986af41",
+   "evidence_snapshot_sha256": "76771d7e515026eecd297d34d08838e154082d837766e5b9961626b1b612d798",
+   "signal_cards": 34,
+   "duplicate_cards": 0
+  },
+  "2026-11-15": {
+   "deck_sha256": "b071be5963b14d74326b5cb748c3dd29145f4ab4775d6c21d8173a428ddb1265",
+   "evidence_snapshot_sha256": "09296429c9529e4e9fd0e0bb01119a41be2d17a9e1d4588f34dd03e283f3fc9b",
+   "signal_cards": 31,
+   "duplicate_cards": 0
+  },
+  "2026-11-22": {
+   "deck_sha256": "103b37e7946110e365c1df393c43b09454111d0dca285f50428e8e264f55804b",
+   "evidence_snapshot_sha256": "cb643b3a0f6f62ea1fb78f3f37cc65813f524e3a333f9d55e872764ad48f0996",
+   "signal_cards": 29,
+   "duplicate_cards": 3
+  }
+ },
+ "editor_logs_manifest_sha256": "048c79978aa2ac80061073002ec4b8847420519ff60566edfb8c8b136aec9e87",
+ "exp007_thinking_off_outputs_sha256": "52365bd9c072c328170def446586a8c3bb63e9d55a002d9de73dc59908c71879",
+ "reader": {
+  "orders": [
+   "original"
+  ],
+  "settings": {
+   "provider": "deepseek",
+   "model": "deepseek-flash",
+   "endpoint": "https://api.deepseek.com/chat/completions",
+   "api_format": "OpenAI-compatible chat completions",
+   "temperature": 0.0,
+   "top_p": 1.0,
+   "max_tokens": 1000,
+   "thinking": "disabled",
+   "response_format": "json_object",
+   "stream": false,
+   "generations_per_question": 1,
+   "timeout_s": 60,
+   "transport_retries": 2
+  }
+ },
+ "running_cost_cap_usd": 0.5,
+ "bootstrap": {
+  "resamples": 10000,
+  "seed": 9009,
+  "unit": "signal card",
+  "interval": "percentile 95%"
+ },
+ "code_sha256": {
+  "exp007.py": "c385e4f1d2e9f67840ecb644ea73ab34d8a90e383822b407788213b2cef21115",
+  "report_review.py": "19baa88443100e6e169ec675ed84597d65118bebb68bda10de86acc964895cc1",
+  "report_definitions.py": "8829fd608250bff1179a11a252fc687633858ac0ac31c18a0d84dab917857a18",
+  "llm_deepseek.py": "9ecf2e968bcc0b0d742826296edd9cd27f02f98ab857e993fb5da72747f84dc8",
+  "llm_provider.py": "30ae90f2854145ffc67e762f1d5dcc4024630ec7ec47e9e57f06e0f4041ce942",
+  "llm_deepseek_thinking.py": "c2a525147e2323726598190811420f0427952d5d6379d4aebf6746c6e5a57e30",
+  "exp008.py": "0e43275bfc298f6689b35a2fea8f224ba772375d2221a0fcc7187df5d900f206",
+  "exp009.py": "cb8f8187503dd8970a2ee2e20843f0dd7b305cb220517b375a34a630d2ad2065"
+ },
+ "frozen_at": "2026-11-25T03:21:41Z"
+}
