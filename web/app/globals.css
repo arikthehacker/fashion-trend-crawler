@@ -41,9 +41,12 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0
 .toner { filter: url(#roughpatchy); text-shadow: 0 0 0.6px var(--ink), 0 0 0.6px var(--ink); }
 .toner-lite { filter: url(#rough); }
 
-.topnav { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px 22px; font-size: 13.5px; padding-bottom: 10px; }
-.topnav ul { display: flex; gap: 6px 20px; flex-wrap: wrap; list-style: none; }
-.topnav a { text-decoration: none; display: inline-block; padding: 2px 0; }
+/* the section bar: one line, links spread evenly edge to edge, the same on every device */
+.topnav { display: block; padding: 4px 0 6px; }
+.topnav nav { width: 100%; }
+.topnav ul { display: flex; justify-content: space-between; align-items: center; gap: 0 6px; flex-wrap: nowrap; list-style: none; }
+.topnav li { white-space: nowrap; }
+.topnav a { text-decoration: none; display: inline-block; padding: 8px 0; font-size: clamp(9px, 2.6vw, 14px); letter-spacing: 0; }
 .topnav a:hover { text-decoration: underline; }
 .topnav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 4px; }
 .status { color: var(--muted); }
@@ -311,9 +314,6 @@ figure svg { width: 100%; height: auto; display: block; }
   .page { padding: 8px 10px 28px; transform: none; }
   .name, .plate.small .name { font-size: 10.2vw; white-space: nowrap; letter-spacing: 0.02em; }
   .plate { padding: 8px 0 6px; }
-  .topnav { font-size: 8.5px; gap: 2px 12px; padding-bottom: 6px; }
-  .topnav ul { gap: 0 11px; }
-  .topnav a { padding: 4px 0; }
   .dateline { font-size: clamp(8.5px, 2.46vw, 18.7px); padding: 5px 0 4px; }
   .dateline small { font-size: 8.5px; }
   .folio { font-size: 8.92px; padding: 5px 0; margin-bottom: 14px; }
