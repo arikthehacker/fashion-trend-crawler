@@ -11,18 +11,12 @@ export const metadata = pageMetadata(
 );
 
 export default function Ari3Overview() {
-  const current = RELEASE_NAMES.filter((r) => r.status === "Released").slice(-1)[0];
   return (
     <Ari3Page label="Overview" current="/ari3">
       <p className="lede-intro">
         ARI3 is the model system behind ARI3LLA INDEX, run as a small research program. Each experiment is a permanent
         notebook entry with its question, hypotheses, method, results, costs and open questions. Every model version is
         frozen, hashed and committed to the public repository before its results appear here.
-      </p>
-      <p className="caption" style={{ maxWidth: "62ch" }}>
-        Current release: {current.version} {current.name}. Its style classifier is still the frozen v0.0.2 model. No ARI3
-        version forecasts, ranks trends or writes reports. The principles behind the program are on
-        the <Link href="/ari3/philosophy">philosophy</Link> page.
       </p>
 
       <h2 className="sec" id="experiment-registry">Experiment registry</h2>
