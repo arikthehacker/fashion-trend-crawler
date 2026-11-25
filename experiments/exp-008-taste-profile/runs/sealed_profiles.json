@@ -1,0 +1,105 @@
+{
+ "sealed_at": "2026-11-25T02:36:52Z",
+ "writer": "claude-opus-5-5 (Claude Code general-purpose subagent, fresh context)",
+ "weeks": {
+  "2026-10-11": {
+   "profile_sha256": "44b018ee4254456263c36d1bd43b89ba1bd9ca043c8f12b5bfaa9f78582d570f",
+   "words": 569,
+   "attempts": 2,
+   "checks_run": 3,
+   "audit_rules": "amendment 2",
+   "transcript_sha256": "fee361b9e69b8892a6762658285d91fd4c55ae50d1c3e6f21f2f402c579c5f55",
+   "failed_attempts": [
+    {
+     "attempt": 1,
+     "audit_problems": [
+      "tool call not allowed: Edit c:/users/user/desktop/fashion-trend-crawler/dev/data/store/blind/exp008/profiles/2026-10-11.md",
+      "tool call not allowed: Edit c:/users/user/desktop/fashion-trend-crawler/dev/data/store/blind/exp008/profiles/2026-10-11.md",
+      "tool call not allowed: Edit c:/users/user/desktop/fashion-trend-crawler/dev/data/store/blind/exp008/profiles/2026-10-11.md",
+      "tool call not allowed: Edit c:/users/user/desktop/fashion-trend-crawler/dev/data/store/blind/exp008/profiles/2026-10-11.md",
+      "tool call not allowed: Read c:/users/user/desktop/fashion-trend-crawler/dev/data/store/blind/exp008/profiles/2026-10-11.md",
+      "input files not read: 0"
+     ],
+     "leak_problems": []
+    }
+   ]
+  },
+  "2026-10-18": {
+   "profile_sha256": "0809fbe1efc41a5d9669ccd1a8280965915ba84fe64e02e8944c51d89716ebe5",
+   "words": 546,
+   "attempts": 1,
+   "checks_run": 2,
+   "audit_rules": "amendment 2",
+   "transcript_sha256": "15f365904865381ade1f99c4eb50d9c26a723bf70d3bc3614c9fe0befeb59841",
+   "failed_attempts": []
+  },
+  "2026-10-25": {
+   "profile_sha256": "16e64a77652f054dffddf5ebfa1e24fd646f9b01d90291c30e692669d6561f5d",
+   "words": 462,
+   "attempts": 1,
+   "checks_run": 2,
+   "audit_rules": "amendment 2",
+   "transcript_sha256": "3bcc7e627f8ae9aeb37ab7ba4c0b9036f256e30231400cf5e4ccd3c441b33560",
+   "failed_attempts": []
+  },
+  "2026-11-01": {
+   "profile_sha256": "69e52c283f0733a615838bebe53235903e1f555f0129820e3cbd31492dc3fd73",
+   "words": 490,
+   "attempts": 1,
+   "checks_run": 2,
+   "audit_rules": "amendment 2",
+   "transcript_sha256": "e7f5ac2a886bc86acf43e5e73c2314215dab4bcb2c2ab7aea143af3517adbf34",
+   "failed_attempts": []
+  },
+  "2026-11-08": {
+   "profile_sha256": "bae551c06bf19ccb2aba330788b242a523dae9f4951d1d9b16cbd5fea808c5a1",
+   "words": 546,
+   "attempts": 2,
+   "checks_run": 3,
+   "audit_rules": "amendment 2",
+   "transcript_sha256": "c7f82bb37e413b39f00e04babe62ba46636b35f5e5e739a7f6866ebdfcc9af4f",
+   "failed_attempts": [
+    {
+     "attempt": 1,
+     "audit_problems": [
+      "tool call not allowed: Edit c:/users/user/desktop/fashion-trend-crawler/dev/data/store/blind/exp008/profiles/2026-11-08.md",
+      "tool call not allowed: Edit c:/users/user/desktop/fashion-trend-crawler/dev/data/store/blind/exp008/profiles/2026-11-08.md",
+      "tool call not allowed: Edit c:/users/user/desktop/fashion-trend-crawler/dev/data/store/blind/exp008/profiles/2026-11-08.md",
+      "tool call not allowed: Edit c:/users/user/desktop/fashion-trend-crawler/dev/data/store/blind/exp008/profiles/2026-11-08.md",
+      "tool call not allowed: Edit c:/users/user/desktop/fashion-trend-crawler/dev/data/store/blind/exp008/profiles/2026-11-08.md",
+      "tool call not allowed: Edit c:/users/user/desktop/fashion-trend-crawler/dev/data/store/blind/exp008/profiles/2026-11-08.md",
+      "tool call not allowed: Edit c:/users/user/desktop/fashion-trend-crawler/dev/data/store/blind/exp008/profiles/2026-11-08.md",
+      "tool call not allowed: Edit c:/users/user/desktop/fashion-trend-crawler/dev/data/store/blind/exp008/profiles/2026-11-08.md",
+      "tool call not allowed: Edit c:/users/user/desktop/fashion-trend-crawler/dev/data/store/blind/exp008/profiles/2026-11-08.md",
+      "tool call not allowed: Edit c:/users/user/desktop/fashion-trend-crawler/dev/data/store/blind/exp008/profiles/2026-11-08.md",
+      "tool call not allowed: Edit c:/users/user/desktop/fashion-trend-crawler/dev/data/store/blind/exp008/profiles/2026-11-08.md",
+      "tool call not allowed: Edit c:/users/user/desktop/fashion-trend-crawler/dev/data/store/blind/exp008/profiles/2026-11-08.md",
+      "tool call not allowed: Edit c:/users/user/desktop/fashion-trend-crawler/dev/data/store/blind/exp008/profiles/2026-11-08.md",
+      "tool call not allowed: Edit c:/users/user/desktop/fashion-trend-crawler/dev/data/store/blind/exp008/profiles/2026-11-08.md",
+      "tool call not allowed: Edit c:/users/user/desktop/fashion-trend-crawler/dev/data/store/blind/exp008/profiles/2026-11-08.md",
+      "tool call not allowed: Edit c:/users/user/desktop/fashion-trend-crawler/dev/data/store/blind/exp008/profiles/2026-11-08.md"
+     ],
+     "leak_problems": []
+    }
+   ]
+  },
+  "2026-11-15": {
+   "profile_sha256": "1808be5c5ba0b79505a1552787105c26eefbe3f32394cd24c1bd71be71336f69",
+   "words": 541,
+   "attempts": 1,
+   "checks_run": 2,
+   "audit_rules": "amendment 2",
+   "transcript_sha256": "1fe1f0736e8daf72f51c70c4fb0ee54fc96cece9c60f5c135327098565d51f4e",
+   "failed_attempts": []
+  },
+  "2026-11-22": {
+   "profile_sha256": "182c340b216039c88af7ba8d8755e1af37689590e05adb674c573df63feb0134",
+   "words": 511,
+   "attempts": 1,
+   "checks_run": 2,
+   "audit_rules": "amendment 2",
+   "transcript_sha256": "0e2717cedc31b3dc6f40f81edf7f2b3c14d3a6348d6f5b48243e4a6bfed16830",
+   "failed_attempts": []
+  }
+ }
+}
