@@ -150,26 +150,23 @@ export default async function ReportPage({ params }: { params: Promise<{ date: s
       <Folio left="The full report" right={latest && latest.report_date !== report.report_date ? <Link href="/">Latest report</Link> : <Link href="/archive">Back issues</Link>} />
 
       <article>
-        <div className="rtop">
-          <div>
-            <h1 className="hed rp toner">{hed}</h1>
-            {plusFinds(report).length ? (
-              <p className="deck">Plus: {plusFinds(report).map((s, i, all) => (
-                <span key={slugOf(s)}>{i ? (i === all.length - 1 ? " and " : ", ") : ""}<a href={`#signal-${slugOf(s)}`}>{s.name}</a></span>
-              ))}.</p>
-            ) : <p className="deck">{standfirst(report)}</p>}
-            <Byline><Marks notes={notes} place="byline" /></Byline>
-            {report.thin_week_note ? <div className="box"><h2>A thin week</h2><p>{report.thin_week_note}</p></div> : null}
-          </div>
-          <aside className="who" aria-labelledby="who-h">
-            <h2 id="who-h">Who did what</h2>
-            {who ? (
-              <dl>{who.map((r) => <div key={r.who} style={{ display: "contents" }}><dt>{r.who}</dt><dd>{r.did}</dd></div>)}</dl>
-            ) : (
-              <p className="note">{report.ai_assistance ?? "AI-assistance details for this report were not recorded."}</p>
-            )}
-          </aside>
+        <div className="rhead">
+          <h1 className="hed rp toner">{hed}</h1>
+          {plusFinds(report).length ? (
+            <p className="deck">Plus: {plusFinds(report).map((s, i, all) => (
+              <span key={slugOf(s)}>{i ? (i === all.length - 1 ? " and " : ", ") : ""}<a href={`#signal-${slugOf(s)}`}>{s.name}</a></span>
+            ))}.</p>
+          ) : <p className="deck">{standfirst(report)}</p>}
+          <Byline><Marks notes={notes} place="byline" /></Byline>
+          {report.thin_week_note ? <div className="box"><h2>A thin week</h2><p>{report.thin_week_note}</p></div> : null}
         </div>
+        <aside className="whostrip" aria-label="Who did what">
+          {who ? (
+            <dl>{who.map((r) => <div key={r.who}><dt>{r.who}</dt><dd>{r.did}</dd></div>)}</dl>
+          ) : (
+            <p className="note">{report.ai_assistance ?? "AI-assistance details for this report were not recorded."}</p>
+          )}
+        </aside>
 
         <section aria-labelledby="summary-h">
           <h2 className="sec" id="summary-h">Summary</h2>

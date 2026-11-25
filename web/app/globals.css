@@ -112,6 +112,13 @@ h2.sec { font-size: 12.5px; font-weight: 600; letter-spacing: 0.08em; text-trans
 
 /* ---------- report ---------- */
 .rtop { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 20px 40px; }
+.rhead .hed { max-width: 22ch; }
+.rhead .byline { margin-bottom: 0; }
+.whostrip { border-bottom: 1px solid var(--ink); padding: 8px 0 10px; }
+.whostrip dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 22px; }
+.whostrip dl > div + div { border-left: 1px solid var(--rule); padding-left: 22px; }
+.whostrip dt { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2px; }
+.whostrip dd { font-family: var(--serif); font-size: 14px; line-height: 1.4; color: var(--muted); }
 .box { border: 1px solid var(--ink); padding: 12px 14px; font-size: 13.5px; line-height: 1.5; margin: 4px 0 14px; }
 .box h2, .box h3 { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
 .bars { display: grid; grid-template-columns: 11rem minmax(0, 1fr) 4rem; gap: 6px 14px; align-items: center; font-size: 14px; }
@@ -361,6 +368,11 @@ figure svg { width: 100%; height: auto; display: block; }
   .who dt { font-size: 8.5px; padding: 5px 0 0; border-bottom: 0; }
   .who dd { font-size: 9.5px; padding: 0 0 5px; }
   .box { font-size: 11px; padding: 8px 10px; }
+  .whostrip { padding: 5px 0 6px; }
+  .whostrip dl { gap: 0 8px; }
+  .whostrip dl > div + div { padding-left: 8px; }
+  .whostrip dt { font-size: 8.5px; }
+  .whostrip dd { font-size: 9px; line-height: 1.35; }
   .bars { grid-template-columns: 5.4rem minmax(0, 1fr) 2.4rem; gap: 2px 8px; font-size: 9.5px; }
   .bars .track { height: 9px; }
   .contents { font-size: 11px; gap: 2px 10px; }
