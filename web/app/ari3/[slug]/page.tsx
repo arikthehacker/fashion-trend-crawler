@@ -47,8 +47,11 @@ export default async function ExperimentPage({ params }: { params: Promise<{ slu
     <Ari3Page label="Notebook entry" folioH1={false}>
       <div className="entry">
         <div>
-          <p className="kicker">{e.id}</p>
-          <h1 className="hed toner" style={{ fontSize: "clamp(40px,5.4vw,70px)" }}>{e.name}</h1>
+          <h1 className="hed toner" style={{ fontSize: "clamp(56px,8vw,104px)", marginBottom: "6px" }}>
+            <span style={{ whiteSpace: "nowrap" }}>{e.id}</span>
+            <span className="sr-only">: {e.name}</span>
+          </h1>
+          <p aria-hidden="true" style={{ fontFamily: "var(--serif)", fontSize: "clamp(24px,2.6vw,34px)", lineHeight: 1.1, letterSpacing: "-0.015em", margin: "0 0 10px" }}>{e.name}</p>
           {e.motto ? <p className="deck">{e.motto}</p> : null}
           <p style={{ margin: "6px 0 16px", display: "flex", gap: "10px", flexWrap: "wrap" }}>
             <Stamp>{e.status}</Stamp>
