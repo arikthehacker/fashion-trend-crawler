@@ -28,7 +28,7 @@ export function Dateline({ report, children }: { report: Report; children?: Reac
 }
 
 export function Byline({ children }: { children?: ReactNode }) {
-  return <p className="byline">Edited by the {EDITOR_LABEL.toLowerCase()}{children} · Compiled with ARI3</p>;
+  return <p className="byline">From the {EDITOR_LABEL.toLowerCase()}{children} · Compiled with ARI3</p>;
 }
 
 export function Mark({ n }: { n: number }) {
