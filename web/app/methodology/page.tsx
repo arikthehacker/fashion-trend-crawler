@@ -1,12 +1,22 @@
+// app/methodology/page.tsx
+// "How it works" in the photocopy edition: the four-step strip, then the method in three columns.
+
+import type { ReactNode } from "react";
+import Link from "next/link";
 import { pageMetadata } from "../../lib/site";
+import { CONTACT_EMAIL, ISSUES_URL } from "../../lib/nav";
+import { Folio } from "../components/Chrome";
 
 export const metadata = pageMetadata("/methodology", "Methodology", "How ARI3LLA INDEX collects, classifies and cites style signals: source sectors, confidence, volatility, citations, corrections and AI involvement.");
 
-// page.tsx
-// methodology page for ARI3LLA INDEX — weekly style signal report
+const STEPS: { name: string; text: string }[] = [
+  { name: "Collect", text: "Articles are gathered from public fashion outlets during a stated week." },
+  { name: "Sort", text: "ARI3, a machine-learning model, flags which articles are about style." },
+  { name: "Edit", text: "The editor groups recurring terms into signals, sets confidence and writes a note on each." },
+  { name: "Publish", text: "A dated report goes out with every claim linked to its source, and is never silently edited." },
+];
 
-
-const sections: { title: string; body: string[] }[] = [
+const sections: { title: string; body: ReactNode[] }[] = [
   {
     title: "What the index records",
     body: [
@@ -24,7 +34,7 @@ const sections: { title: string; body: string[] }[] = [
   {
     title: "Source sectors",
     body: [
-      "Sources are grouped into sectors: designer origin, runway, editorial, independent criticism, trade intelligence, institutional, visual archive, retail, resale, social, and street or user-generated. Each sector has its own incentives, and every signal names the sectors it was drawn from. The outlets are listed on the Sources page.",
+      <>Sources are grouped into sectors: designer origin, runway, editorial, independent criticism, trade intelligence, institutional, visual archive, retail, resale, social, and street or user-generated. Each sector has its own incentives, and every signal names the sectors it was drawn from. The outlets are listed on the <Link href="/sources">Sources</Link> page.</>,
       "These are the sectors the taxonomy can represent, and ARI3's coverage of them is uneven. On 2026-10-03, 88.6% of stored items came from the editorial sector, the resale sector had 10 items, and the social sector had none.",
       "A domain that has not been mapped to a sector is classified as unclear instead of being guessed into one. Unclear is not counted as a separate sector for confidence, and it says nothing against the source. It marks a gap in the index's coverage.",
     ],
@@ -42,7 +52,7 @@ const sections: { title: string; body: string[] }[] = [
       "Confidence reflects how many distinct source sectors report a signal and how consistent the language is across them. Low confidence means the signal comes from one noisy source type. High confidence requires recurrence across several distinct sectors.",
       "A computed baseline is checked against the evidence and is never applied automatically. Two sources with different sector labels do not count as independent if one reprints the other's announcement.",
       "A single source from a high-reliability sector (designer origin, editorial, institutional or independent criticism) can lift a signal above the single-source floor, but only if that source did its own reporting. A source that repeats signals already in the archive without citing new evidence gets no such credit, whatever its sector.",
-      "Confidence definitions are listed on the Taxonomy page.",
+      <>Confidence definitions are listed on the <Link href="/taxonomy">Taxonomy</Link> page.</>,
     ],
   },
   {
@@ -70,7 +80,7 @@ const sections: { title: string; body: string[] }[] = [
   {
     title: "AI and the editor",
     body: [
-      "Software collects source material, extracts recurring language and flags which items are about style. Report drafting from collected items is not built yet. Software does not decide what matters.",
+      "Software collects source material, extracts recurring language and flags which items are about style. Each week, software prepares candidate signals and a draft; an AI assistant drafts the summary, evidence text and index notes from the locked evidence only. Software does not decide what matters.",
       "The editor decides whether terms belong together, assigns classification and origin, removes hype and connects signals to historical context. The human-editor note on each signal is written by the editor, never by software. No report is published without the editor's review.",
     ],
   },
@@ -79,7 +89,7 @@ const sections: { title: string; body: string[] }[] = [
     body: [
       "Every claim links to the specific, dated article, post or record it rests on. An outlet's homepage or section page does not count as a citation, and a claim without a link is not published.",
       "Each cited item records its URL, its publication date and the date it was retrieved, so a reader can check the claim against the original and see when it was said.",
-      "Attribution matches the evidence. A signal from one outlet is never described as coming from \"sources\" in the plural.",
+      "Attribution matches the evidence. A signal from one outlet is never described as coming from “sources” in the plural.",
       "Sources in languages other than English are named as such, and translated terms are marked as translations.",
     ],
   },
@@ -104,7 +114,7 @@ const sections: { title: string; body: string[] }[] = [
       "A published report is never silently edited. When a classification or a stated fact turns out to be wrong, a dated correction note is added to the report, saying what was wrong and what changed.",
       "The original entry is kept beside the correction, so the archive shows what was published at the time.",
       "Each correction also records which signals were added, removed or changed, and which fields changed. A hash of the earlier signal content is kept, so the archive can prove the content changed even if a correction note were incomplete.",
-      "Suspected errors can be reported by email to ariella@duck.com or as an issue on the project's public repository (github.com/arikthehacker/fashion-trend-crawler/issues). Response time is not guaranteed.",
+      <>Suspected errors can be reported by email to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> or as an issue on the project&apos;s <a href={ISSUES_URL} rel="noopener noreferrer">public repository</a>. Response time is not guaranteed.</>,
     ],
   },
   {
@@ -131,74 +141,23 @@ const sections: { title: string; body: string[] }[] = [
 
 export default function Methodology() {
   return (
-    <main id="main-content"
-      style={{
-        flex: 1,
-        background: "var(--white)",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      <header className="page-masthead">
-        <h1 className="page-title">
-          Methodology
-        </h1>
-      </header>
-
-      <section
-        style={{
-          width: "100%",
-          maxWidth: "760px",
-          padding: "4rem 2rem",
-        }}
-      >
-        <p
-          style={{
-            fontFamily: "var(--font-franklin)",
-            fontSize: "1rem",
-            lineHeight: "1.8",
-            color: "var(--gray)",
-            marginBottom: "3.5rem",
-          }}
-        >
-          How ARI3LLA INDEX collects sources, classifies signals, cites evidence and corrects
-          mistakes, and where the method has limits.
-        </p>
-
-        <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
-          {sections.map((s) => (
-            <div key={s.title} style={{ borderTop: "1px solid var(--border)", paddingTop: "1.5rem" }}>
-              <h2
-                style={{
-                  fontFamily: "var(--font-instrument)",
-                  fontSize: "1.5rem",
-                  fontWeight: "400",
-                  marginBottom: "0.75rem",
-                }}
-              >
-                {s.title}
-              </h2>
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.9rem" }}>
-                {s.body.map((p, i) => (
-                  <p
-                    key={i}
-                    style={{
-                      fontFamily: "var(--font-franklin)",
-                      fontSize: "0.95rem",
-                      lineHeight: "1.7",
-                      color: "var(--gray)",
-                    }}
-                  >
-                    {p}
-                  </p>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
+    <main id="main-content">
+      <Folio left="How it works" right={<Link href="/taxonomy">Definitions: Taxonomy</Link>} />
+      <h1 className="hed md toner">How a week of fashion coverage becomes a report</h1>
+      <p className="deck">How ARI3LLA INDEX collects sources, classifies signals, cites evidence and corrects mistakes, and where the method has limits.</p>
+      <div className="steps">
+        {STEPS.map((s) => (
+          <div key={s.name}><b>{s.name}</b><p>{s.text}</p></div>
+        ))}
+      </div>
+      <div className="cols three method" style={{ marginTop: 18 }}>
+        {sections.map((s) => (
+          <section key={s.title}>
+            <h2>{s.title}</h2>
+            {s.body.map((p, i) => <p key={i}>{p}</p>)}
+          </section>
+        ))}
+      </div>
     </main>
   );
 }

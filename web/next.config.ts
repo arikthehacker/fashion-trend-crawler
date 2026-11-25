@@ -11,7 +11,7 @@ import path from "path";
 // path; importing that ESM module directly here breaks Next's config
 // bundling, so the logic is duplicated inline — keep both in sync).
 (function copyReportsForConfig() {
-  const srcDir = path.join(__dirname, "..", "data", "reports");
+  const srcDir = process.env.ARI3_REPORTS_DIR || path.join(__dirname, "..", "data", "reports");
   const destDir = path.join(__dirname, "public", "data", "reports");
   fs.mkdirSync(destDir, { recursive: true });
   // Clear old copies so a report removed from data/reports/ can't linger as a public download.

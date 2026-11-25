@@ -1,187 +1,171 @@
+import { Fragment } from "react";
 import { notFound } from "next/navigation";
 import { pageMetadata } from "../../../lib/site";
-import { EXPERIMENTS } from "../../../lib/ari3";
-import { Page, Section, List, Pill, Flow, Bars, Callout, Code, bodyText, mono } from "../ui";
+import { EXPERIMENTS, type Experiment } from "../../../lib/ari3";
+import { Stamp } from "../../components/Chrome";
+import { Ari3Page, Bul, ListSection, Tx, fmtVal } from "../ui";
 
+// Only the listed experiments exist. Any other slug is a 404, never another entry.
 export const dynamicParams = false;
 
 export function generateStaticParams() {
   return EXPERIMENTS.map((e) => ({ slug: e.slug }));
 }
 
+// Search descriptions, 70 to 160 characters each, written from each entry's own results.
+const DESCRIPTIONS: Record<string, string> = {
+  "exp-001": "ARI3 v0.0.1 INDUSTRIA, the first style classifier: 145 editor labels, 0.882 held-out accuracy and no confident mistakes on 34 test items.",
+  "exp-002": "ARI3 v0.0.2 DISCIPLINA: 35 hard cases chosen by active learning raised confident answers from 66% to 82% at equal training size. Pre-registered.",
+  "exp-003": "ARI3 v0.0.3 INTEGRITAS: v0.0.2 on newer articles kept its coverage but missed its accuracy mark, 0.833 against 0.85. The forecast detector failed.",
+  "exp-004": "EXP-004 grounded retrieval: a frozen hybrid retriever reached Recall@10 0.770 and Hit@10 1.000 on 12 held-out questions with a relevant item.",
+  "exp-007": "EXP-007: can an LLM stand in for the editor on weekly report decisions? DeepSeek reached kappa 0.079 on 216 cards, and thinking first did not help.",
+  "exp-008": "EXP-008: a taste profile of the editor, written by a Claude subagent, did not raise DeepSeek's agreement with her report decisions. Kappa 0.086.",
+  "exp-009": "EXP-009: the editor's past decisions predict her report calls best. Kappa 0.542 for same as last time, 0.515 for a taste model, 0.182 for DeepSeek.",
+};
+
+function describe(e: Experiment) {
+  const d = DESCRIPTIONS[e.slug] ?? `ARI3 ${e.id} ${e.name}: ${e.headline}`;
+  return d.length <= 160 ? d : `${d.slice(0, 157).replace(/\s+\S*$/, "")}...`;
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const e = EXPERIMENTS.find((x) => x.slug === slug);
   if (!e) return {};
-  return pageMetadata(`/ari3/${e.slug}`, `${e.id} ${e.name}`, `ARI3 ${e.version} ${e.name}: ${e.headline}`);
+  return pageMetadata(`/ari3/${e.slug}`, `${e.id} ${e.name}`, describe(e));
 }
-
-const cell = { padding: "0.55rem 0.75rem 0.55rem 0", borderBottom: "1px solid var(--border)", verticalAlign: "top" as const, fontFamily: "var(--font-franklin)", fontSize: "0.88rem", lineHeight: 1.5 };
 
 export default async function ExperimentPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const e = EXPERIMENTS.find((x) => x.slug === slug);
   if (!e) notFound();
 
+  const hasA = e.metrics.some((m) => m.a !== undefined);
+  const preregistered = /^Yes/.test(e.preregistered);
+
   return (
-    <Page title={e.id}>
-      <p style={{ ...bodyText, margin: 0 }}>
-        {e.kicker ?? `ARI3 Perception ${e.version}`}
-      </p>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem 1rem", alignItems: "baseline", marginTop: "1rem" }}>
-        <h2 style={{ fontFamily: "var(--font-instrument)", fontSize: "3rem", fontWeight: 400, margin: 0, lineHeight: 1 }}>{e.name}</h2>
-        <Pill tone={["Frozen", "Closed", "Released"].includes(e.status) ? "ink" : "red"}>{e.status}</Pill>
-        {e.hypotheses && ["Frozen", "Released"].includes(e.status) && <Pill tone="gray">Pre-registered</Pill>}
+    <Ari3Page label="Notebook entry" folioH1={false}>
+      <div className="entry">
+        <div>
+          <p className="kicker">{e.id}{e.version ? ` · ${e.version}` : ""}{e.kicker ? ` · ${e.kicker}` : ""}</p>
+          <h1 className="hed toner" style={{ fontSize: "clamp(40px,5.4vw,70px)" }}>{e.name}</h1>
+          {e.motto ? <p className="deck">{e.motto}</p> : null}
+          <p style={{ margin: "6px 0 16px", display: "flex", gap: "10px", flexWrap: "wrap" }}>
+            <Stamp>{e.status}</Stamp>
+            {preregistered ? <Stamp>Pre-registered</Stamp> : null}
+          </p>
+          <p className="lede-intro" style={{ fontSize: "22px" }}>{e.headline}</p>
+          <div className="cols drop" style={{ marginTop: "16px" }}>
+            {e.summary.map((p, i) => <p key={i}><Tx text={p} /></p>)}
+          </div>
+        </div>
+        <aside className="facts" aria-labelledby="record-h">
+          <h2 className="sec" id="record-h" style={{ marginTop: 0 }}>The record</h2>
+          <dl>
+            {e.meta.map((m) => (
+              <Fragment key={m.label}>
+                <dt>{m.label}</dt>
+                <dd>{m.href ? <a href={m.href}>{m.value}</a> : m.value}</dd>
+              </Fragment>
+            ))}
+          </dl>
+        </aside>
       </div>
-      {e.motto ? (
-        <p style={{ fontFamily: "var(--font-franklin)", fontStyle: "italic", color: "var(--gray)", margin: "0.4rem 0 1.2rem" }}>{e.motto}</p>
-      ) : (
-        <div style={{ height: "1.2rem" }} />
-      )}
 
-      <Callout>
-        <p style={{ fontFamily: "var(--font-instrument)", fontSize: "1.5rem", lineHeight: 1.3, margin: 0 }}>{e.headline}</p>
-      </Callout>
+      <h2 className="sec">The question</h2>
+      <p className="lede-intro">{e.question}</p>
+      {e.preregistered ? <p className="caption">Pre-registered: {e.preregistered}</p> : null}
 
-      <Section title="Summary">
-        {e.summary.map((p, i) => <p key={i} style={bodyText}>{p}</p>)}
-      </Section>
-
-      <Section title="Metadata">
-        <dl style={{ display: "grid", gridTemplateColumns: "max-content minmax(0, 1fr)", gap: "0.45rem 1rem", margin: 0, fontSize: "0.82rem" }}>
-          {e.meta.map((m) => (
-            <div key={m.label} style={{ display: "contents" }}>
-              <dt style={{ color: "var(--gray)", fontFamily: "var(--font-franklin)" }}>{m.label}</dt>
-              <dd style={{ margin: 0, fontFamily: m.mono ? mono : "var(--font-franklin)", overflowWrap: "anywhere" }}>
-                {m.href ? <a href={m.href} style={{ color: "var(--black)" }}>{m.value}</a> : m.value}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </Section>
-
-      <Section title="Research question">
-        <p style={{ ...bodyText, color: "var(--black)", fontSize: "1.05rem" }}>{e.question}</p>
-        <p style={bodyText}>Pre-registered: {e.preregistered}</p>
-      </Section>
-
-      {e.hypotheses && (
-        <Section title="Hypotheses and results">
-          <div style={{ overflowX: "auto" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
+      {e.hypotheses ? (
+        <>
+          <h2 className="sec">Hypotheses</h2>
+          <div className="table-wrap">
+            <table className="ledger">
               <thead>
                 <tr>
-                  {["", "Claim", "Supported if", "Result", "Verdict"].map((h) => (
-                    <th key={h} scope="col" style={{ ...cell, textAlign: "left", color: "var(--gray)", fontWeight: 500, fontSize: "0.75rem" }}>{h}</th>
-                  ))}
+                  <th scope="col"><span className="sr-only">Hypothesis</span></th>
+                  <th scope="col">Claim</th>
+                  <th scope="col">Test</th>
+                  <th scope="col">Result</th>
+                  <th scope="col"><span className="sr-only">Verdict</span></th>
                 </tr>
               </thead>
               <tbody>
                 {e.hypotheses.map((h) => (
                   <tr key={h.id}>
-                    <th scope="row" style={{ ...cell, fontFamily: mono, textAlign: "left" }}>{h.id}</th>
-                    <td style={cell}>{h.claim}</td>
-                    <td style={{ ...cell, color: "var(--gray)" }}>{h.test}</td>
-                    <td style={{ ...cell, fontFamily: mono, fontSize: "0.8rem" }}>{h.result}</td>
-                    <td style={{ ...cell, fontFamily: mono, fontSize: "0.75rem", textTransform: "uppercase" }}>{h.verdict}</td>
+                    <td>{h.id}</td>
+                    <td className="s">{h.claim}</td>
+                    <td>{h.test}</td>
+                    <td>{h.result}</td>
+                    <td className="r"><Stamp>{h.verdict}</Stamp></td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-        </Section>
-      )}
+        </>
+      ) : null}
 
-      {e.why && (
-        <Section title="Why these hypotheses">
-          {e.why.map((p, i) => <p key={i} style={bodyText}>{p}</p>)}
-        </Section>
-      )}
-
-      <Section title="Method">
-        <Flow steps={e.method} />
-      </Section>
-
-      <Section title="Experimental controls">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: "1.2rem" }}>
-          <div>
-            <h3 style={{ fontFamily: "var(--font-franklin)", fontSize: "0.85rem", margin: "0 0 0.5rem" }}>Held constant</h3>
-            <List items={e.held} />
-          </div>
-          <div>
-            <h3 style={{ fontFamily: "var(--font-franklin)", fontSize: "0.85rem", margin: "0 0 0.5rem" }}>Changed</h3>
-            <List items={e.changed} />
-          </div>
+      <ListSection title="Why run it" items={e.why} />
+      <ListSection title="Method" items={e.method} />
+      {e.held.length || e.changed.length ? (
+        <div className="pair" style={{ marginTop: "28px" }}>
+          <div><h3>Held fixed</h3><Bul items={e.held} /></div>
+          <div><h3>Changed</h3><Bul items={e.changed} /></div>
         </div>
-      </Section>
+      ) : null}
 
-      <Section title="Results">
-        <p style={bodyText}>
-          {e.resultsIntro
-            ?? (e.compare
-              ? `${e.compare.a} and ${e.compare.b} scored on the same ${e.compare.n} held-out items.`
-              : "Scored on held-out items the model never trained on.")}
-        </p>
-        <Bars metrics={e.metrics} a={e.compare?.a} b={e.compare?.b ?? e.version} />
-      </Section>
+      <h2 className="sec">Results</h2>
+      {e.resultsIntro ? <p className="caption" style={{ margin: "0 0 10px" }}>{e.resultsIntro}</p> : null}
+      <div className="table-wrap">
+        <table className="ledger num">
+          <thead>
+            <tr>
+              <th scope="col">Measure</th>
+              {hasA ? <th scope="col" className="r">{e.compare?.a ?? "Before"}</th> : null}
+              <th scope="col" className="r">{e.compare?.b ?? e.metrics[0]?.label ?? "Result"}</th>
+              <th scope="col">Note</th>
+            </tr>
+          </thead>
+          <tbody>
+            {e.metrics.map((m) => (
+              <tr key={m.name}>
+                <td className="s">{m.name}</td>
+                {hasA ? <td className="r s">{m.a !== undefined ? fmtVal(m.a, m.format) : ""}</td> : null}
+                <td className="r s">{fmtVal(m.b, m.format)}</td>
+                <td>{m.note ?? ""}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-      <Section title="Cost of improvement">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: "1.2rem" }}>
-          <div>
-            <h3 style={{ fontFamily: "var(--font-franklin)", fontSize: "0.85rem", margin: "0 0 0.5rem" }}>Gained</h3>
-            <List items={e.benefits} />
-          </div>
-          <div>
-            <h3 style={{ fontFamily: "var(--font-franklin)", fontSize: "0.85rem", margin: "0 0 0.5rem" }}>Cost</h3>
-            <List items={e.costs} />
-          </div>
-        </div>
-      </Section>
+      <div className="pair" style={{ marginTop: "28px" }}>
+        <div><h3>What it gained</h3><Bul items={e.benefits} /></div>
+        <div><h3>What it cost</h3><Bul items={e.costs} /></div>
+      </div>
 
-      <Section title="Surprising findings">
-        {e.surprises.map((s, i) => (
-          <Callout key={i}>
-            <p style={{ ...bodyText, color: "var(--black)", margin: 0 }}>{s}</p>
-          </Callout>
-        ))}
-      </Section>
+      <ListSection title="Surprises" items={e.surprises} />
+      <ListSection title="Threats to the result" items={e.threats} />
+      <ListSection title="What was built" items={e.engineering} />
 
-      <Section title="Threats to validity">
-        <List items={e.threats} />
-      </Section>
+      {e.log.length ? (
+        <>
+          <h2 className="sec">From idea to result</h2>
+          <ol className="steps-log">
+            {e.log.map((l) => <li key={l.step}><b>{l.step}</b><span><Tx text={l.text} /></span></li>)}
+          </ol>
+        </>
+      ) : null}
 
-      <Section title="Engineering changes">
-        <List items={e.engineering} />
-      </Section>
+      <ListSection title="Lessons" items={e.lessons} />
+      <ListSection title="Open questions" items={e.openQuestions} />
 
-      <Section title="Research log">
-        <ol style={{ listStyle: "none", margin: 0, padding: 0 }}>
-          {e.log.map((l, i) => (
-            <li key={l.step}>
-              <div style={{ display: "grid", gridTemplateColumns: "7.5rem minmax(0, 1fr)", gap: "0.8rem" }}>
-                <span style={{ fontFamily: mono, fontSize: "0.75rem", textTransform: "uppercase", color: "var(--gray)", paddingTop: "0.2rem" }}>{l.step}</span>
-                <span style={{ ...bodyText, color: "var(--black)", margin: 0 }}>{l.text}</span>
-              </div>
-              {i < e.log.length - 1 && <div aria-hidden="true" style={{ color: "var(--gray)", paddingLeft: "2.5rem" }}>↓</div>}
-            </li>
-          ))}
-        </ol>
-      </Section>
-
-      <Section title="Lessons">
-        <List items={e.lessons} />
-      </Section>
-
-      <Section title="Open questions">
-        <ol style={{ margin: 0, paddingLeft: "1.3rem" }}>
-          {e.openQuestions.map((q, i) => <li key={i} style={{ ...bodyText, margin: "0 0 0.45rem" }}>{q}</li>)}
-        </ol>
-      </Section>
-
-      <Section title="Reproducibility">
-        <p style={bodyText}>{e.reproduce.text}</p>
-        <Code>{e.reproduce.commands}</Code>
-      </Section>
-    </Page>
+      <h2 className="sec">Reproducing it</h2>
+      <p className="lede-intro" style={{ fontSize: "17px" }}><Tx text={e.reproduce.text} /></p>
+      <div className="table-wrap">
+        <pre><code>{e.reproduce.commands}</code></pre>
+      </div>
+    </Ari3Page>
   );
 }

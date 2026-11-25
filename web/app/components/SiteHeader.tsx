@@ -1,6 +1,6 @@
 "use client";
-// Shared site header: wordmark + primary navigation, identical on every page.
-// The current section is marked with aria-current so screen readers announce it.
+// The photocopy edition's chrome: status line, section links and the nameplate.
+// The nameplate is large on the front page and small everywhere else.
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -8,27 +8,31 @@ import { PRIMARY_NAV } from "../../lib/nav";
 
 function isCurrent(pathname: string, href: string): boolean {
   if (href === "/") return pathname === "/";
-  return pathname === href || pathname.startsWith(`${href}/`);
+  return pathname === href || pathname.startsWith(`${href}/`) || (href === "/archive" && pathname.startsWith("/reports/"));
 }
 
-export default function SiteHeader() {
-  const pathname = usePathname() || "/";
+export default function SiteHeader({ status }: { status: { date: string; label: string } | null }) {
+  const pathname = (usePathname() || "/").replace(/\/$/, "") || "/";
+  const big = pathname === "/";
   return (
-    <header className="site-header no-print">
-      <Link href="/" className="site-wordmark" aria-label="ARI3LLA INDEX, home">
-        ARI3LLA INDEX
-      </Link>
-      <nav aria-label="Primary">
-        <ul className="site-nav">
-          {PRIMARY_NAV.map((item) => (
-            <li key={item.href}>
-              <Link href={item.href} className={"accent" in item && item.accent ? "site-nav-accent" : undefined} aria-current={isCurrent(pathname, item.href) ? "page" : undefined}>
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </header>
+    <>
+      <div className="topnav">
+        <p className="status">
+          {status ? <Link href={`/reports/${status.date}`}>{status.label}</Link> : "No report has been published yet."}
+        </p>
+        <nav aria-label="Sections">
+          <ul>
+            {PRIMARY_NAV.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} aria-current={isCurrent(pathname, item.href) ? "page" : undefined}>{item.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+      <header className={big ? "plate" : "plate small"}>
+        <Link className="name toner" href="/" aria-label="ARI3LLA INDEX, front page">ARI3LLA INDEX</Link>
+      </header>
+    </>
   );
 }

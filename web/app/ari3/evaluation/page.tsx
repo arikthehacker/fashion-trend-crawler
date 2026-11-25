@@ -1,6 +1,6 @@
 import { pageMetadata } from "../../../lib/site";
 import charts from "../../../lib/ari3_charts.json";
-import { Page, Section, Callout, bodyText, mono } from "../ui";
+import { Ari3Page, day } from "../ui";
 
 export const metadata = pageMetadata(
   "/ari3/evaluation",
@@ -9,208 +9,200 @@ export const metadata = pageMetadata(
 );
 
 type V = (typeof charts.versions)["ari3-v0.0.1"];
-const VERSIONS: [string, string][] = [["ari3-v0.0.1", "v0.0.1 INDUSTRIA"], ["ari3-v0.0.2", "v0.0.2 DISCIPLINA"]];
-const pct = (x: number) => `${Math.round(x * 100)}%`;
-const small = { fontFamily: "var(--font-franklin)", fontSize: "0.8rem", color: "var(--gray)", lineHeight: 1.5 };
-const twoUp = { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))", gap: "1.5rem" };
+type LC = typeof charts.learning_curve;
+const VNAME: Record<string, string> = { "ari3-v0.0.1": "v0.0.1 INDUSTRIA", "ari3-v0.0.2": "v0.0.2 DISCIPLINA" };
+const INK = "#0f0f10";
+const pct = (v: number) => `${Math.round(v * 100)}%`;
+const serif = { fontFamily: "var(--serif)" };
 
 function Reliability({ v, label }: { v: V; label: string }) {
-  const S = 230, P = 44, T = 14;
-  const x = (t: number) => P + t * S;
-  const y = (t: number) => T + (1 - t) * S;
-  const pts = v.reliability.filter((b) => b.n > 0 && b.mean_p !== null && b.observed !== null);
+  const W = 300, H = 260, P = 34;
+  const x = (p: number) => P + p * (W - P - 8);
+  const y = (p: number) => H - P - p * (H - P - 8);
+  const pts = v.reliability.filter((b) => b.n > 0 && b.mean_p !== null && b.observed !== null) as { n: number; mean_p: number; observed: number }[];
+  const desc = pts.map((b) => `predicted ${pct(b.mean_p)}, right ${pct(b.observed)}, ${b.n} items`).join("; ");
   return (
-    <figure style={{ margin: 0 }}>
-      <svg viewBox={`0 0 ${S + P + 26} ${S + T + 46}`} style={{ width: "100%", maxWidth: "340px", display: "block" }} role="img"
-        aria-label={`${label} reliability: ${pts.map((b) => `predicted ${pct(b.mean_p as number)}, observed ${pct(b.observed as number)}, ${b.n} items`).join("; ")}`}>
-        <line x1={x(0)} y1={y(0)} x2={x(1)} y2={y(1)} stroke="var(--gray)" strokeDasharray="4 4" />
-        <line x1={x(0)} y1={y(0)} x2={x(1)} y2={y(0)} stroke="var(--black)" />
-        <line x1={x(0)} y1={y(0)} x2={x(0)} y2={y(1)} stroke="var(--black)" />
-        {[0, 0.5, 1].map((t) => (
-          <g key={t}>
-            <text x={x(t)} y={y(0) + 16} fontSize="12" textAnchor="middle" fill="var(--gray)">{pct(t)}</text>
-            <text x={x(0) - 6} y={y(t) + 4} fontSize="12" textAnchor="end" fill="var(--gray)">{pct(t)}</text>
-          </g>
-        ))}
-        <polyline fill="none" stroke="var(--black)" strokeWidth="2" points={pts.map((b) => `${x(b.mean_p as number)},${y(b.observed as number)}`).join(" ")} />
-        {pts.map((b, i) => (
-          <circle key={i} cx={x(b.mean_p as number)} cy={y(b.observed as number)} r={4 + Math.sqrt(b.n) * 1.4} fill="var(--black)" opacity="0.85" />
-        ))}
-        <text x={x(0.5)} y={y(0) + 38} fontSize="12" textAnchor="middle" fill="var(--black)">Predicted probability of style</text>
-      </svg>
-      <div style={{ fontFamily: "var(--font-franklin)", fontSize: "0.9rem" }}>{label}</div>
-    </figure>
+    <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`${label} reliability diagram, predicted chance an item is style against how often the editor said style. Groups: ${desc}.`}>
+      <line x1={x(0)} y1={y(0)} x2={x(1)} y2={y(1)} stroke={INK} strokeDasharray="4 4" strokeWidth="1" />
+      <line x1={x(0)} y1={y(0)} x2={x(1)} y2={y(0)} stroke={INK} />
+      <line x1={x(0)} y1={y(0)} x2={x(0)} y2={y(1)} stroke={INK} />
+      {[0, 0.5, 1].map((t) => (
+        <g key={t}>
+          <text x={x(t)} y={H - P + 16} fontSize="11" textAnchor="middle">{t * 100}%</text>
+          <text x={P - 6} y={y(t) + 4} fontSize="11" textAnchor="end">{t * 100}%</text>
+        </g>
+      ))}
+      {pts.map((b, i) => <circle key={i} cx={x(b.mean_p)} cy={y(b.observed)} r={3 + Math.sqrt(b.n) * 1.6} fill={INK} fillOpacity="0.85" />)}
+      <text x={(W + P) / 2} y={H - 2} fontSize="11" textAnchor="middle">predicted chance it&apos;s style</text>
+    </svg>
   );
 }
 
-function Confusion({ v, label }: { v: V; label: string }) {
-  const c = v.confusion;
-  const cellS = { border: "1px solid var(--black)", padding: "0.8rem", textAlign: "center" as const, fontFamily: mono, fontSize: "1.3rem" };
-  const head = { ...small, padding: "0.3rem", textAlign: "center" as const };
+function Histogram({ v, label, id }: { v: V; label: string; id: string }) {
+  const W = 300, H = 170, P = 22;
+  const bw = (W - 2 * P) / v.histogram.length;
+  const mx = Math.max(...v.histogram.map((b) => b.yes + b.no), 1);
+  const sy = (c: number) => (c / mx) * (H - 2 * P);
+  const desc = v.histogram.map((b) => `${pct(b.lo)} to ${pct(b.lo + 0.1)}: ${b.yes} style, ${b.no} not style`).join("; ");
   return (
-    <div>
-      <div style={{ fontFamily: "var(--font-franklin)", fontSize: "0.9rem", marginBottom: "0.5rem" }}>{label}</div>
-      <table style={{ borderCollapse: "collapse", width: "100%", maxWidth: "320px" }}>
-        <thead>
-          <tr><td /><th scope="col" style={head}>Model: style</th><th scope="col" style={head}>Model: not style</th></tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row" style={{ ...head, textAlign: "left" }}>Editor: style</th><td style={cellS}>{c.tp}</td><td style={{ ...cellS, color: "var(--red)" }}>{c.fn}</td></tr>
-          <tr><th scope="row" style={{ ...head, textAlign: "left" }}>Editor: not style</th><td style={{ ...cellS, color: "var(--red)" }}>{c.fp}</td><td style={cellS}>{c.tn}</td></tr>
-        </tbody>
-      </table>
-      <p style={{ ...small, marginTop: "0.5rem" }}>
-        Confident and right {v.single_answer.right}, confident and wrong {v.single_answer.wrong}, not sure {v.single_answer.not_sure}.
-      </p>
-    </div>
+    <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`${label} confidence histogram, test items by predicted chance of style, in tenths. ${desc}.`}>
+      <defs>
+        <pattern id={id} width="3.4" height="3.4" patternUnits="userSpaceOnUse"><circle cx="1.7" cy="1.7" r="0.95" fill={INK} /></pattern>
+      </defs>
+      {v.histogram.map((b, i) => {
+        const x0 = P + i * bw + 1, hy = sy(b.yes), hn = sy(b.no);
+        return (
+          <g key={i}>
+            <rect x={x0} y={H - P - hy} width={bw - 2} height={hy} fill={INK} />
+            <rect x={x0} y={H - P - hy - hn} width={bw - 2} height={hn} fill={`url(#${id})`} />
+          </g>
+        );
+      })}
+      <line x1={P} y1={H - P} x2={W - P} y2={H - P} stroke={INK} />
+      {[0, 0.5, 1].map((t) => <text key={t} x={P + t * (W - 2 * P)} y={H - 6} fontSize="11" textAnchor="middle">{t * 100}%</text>)}
+    </svg>
   );
 }
 
-function Histogram({ v, label }: { v: V; label: string }) {
-  const max = Math.max(...v.histogram.map((b) => b.yes + b.no), 1);
+function LearningCurve({ lc }: { lc: LC }) {
+  const W = 640, H = 260, L = 44, B = 34, T = 10, Rr = 12;
+  const xs = lc.map((p) => p.n_train), x0 = Math.min(...xs), x1 = Math.max(...xs);
+  const x = (v: number) => L + ((v - x0) / (x1 - x0)) * (W - L - Rr);
+  const y = (v: number) => H - B - ((v - 0.3) / 0.7) * (H - B - T);
+  type K = "accuracy_min" | "accuracy_max" | "single_min" | "single_max" | "accuracy_mean" | "single_mean";
+  const band = (lo: K, hi: K) =>
+    `M${lc.map((p) => `${x(p.n_train)},${y(p[hi])}`).join(" L")} L${[...lc].reverse().map((p) => `${x(p.n_train)},${y(p[lo])}`).join(" L")} Z`;
+  const line = (k: K) => lc.map((p) => `${x(p.n_train)},${y(p[k])}`).join(" ");
+  const mid = lc.find((p) => p.n_train >= 125) ?? lc[lc.length - 1];
+  const desc = lc.map((p) => `${p.n_train} labels: accuracy ${pct(p.accuracy_mean)}, confident answers ${pct(p.single_mean)}`).join("; ");
   return (
-    <div>
-      <div style={{ fontFamily: "var(--font-franklin)", fontSize: "0.9rem", marginBottom: "0.5rem" }}>{label}</div>
-      <div style={{ display: "flex", alignItems: "flex-end", gap: "3px", height: "140px", borderBottom: "1px solid var(--black)" }}
-        role="img" aria-label={`${label} probability histogram: ${v.histogram.map((b) => `${pct(b.lo)} to ${pct(b.lo + 0.1)}: ${b.yes} style, ${b.no} not style`).join("; ")}`}>
-        {v.histogram.map((b) => (
-          <div key={b.lo} style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "flex-end", height: "100%" }}>
-            <div style={{ height: `${(b.no / max) * 100}%`, background: "var(--gray)" }} />
-            <div style={{ height: `${(b.yes / max) * 100}%`, background: "var(--red)" }} />
-          </div>
-        ))}
-      </div>
-      <div style={{ ...small, display: "flex", justifyContent: "space-between" }}><span>0%</span><span>50%</span><span>100%</span></div>
-    </div>
-  );
-}
-
-function LearningCurve() {
-  const pts = charts.learning_curve;
-  const W = 320, H = 200, P = 40;
-  const maxN = pts[pts.length - 1].n_train;
-  const x = (n: number) => P + (n / maxN) * (W - P - 10);
-  const y = (t: number) => 10 + (1 - (t - 0.3) / 0.7) * (H - 40);
-  const series = [
-    { key: "accuracy", color: "var(--black)", mean: (p: (typeof pts)[number]) => p.accuracy_mean, lo: (p: (typeof pts)[number]) => p.accuracy_min, hi: (p: (typeof pts)[number]) => p.accuracy_max },
-    { key: "confident", color: "var(--red)", mean: (p: (typeof pts)[number]) => p.single_mean, lo: (p: (typeof pts)[number]) => p.single_min, hi: (p: (typeof pts)[number]) => p.single_max },
-  ];
-  return (
-    <figure style={{ margin: 0 }}>
-      <svg viewBox={`0 0 ${W} ${H + 20}`} style={{ width: "100%", maxWidth: "520px", display: "block" }} role="img"
-        aria-label={`Learning curve: ${pts.map((p) => `${p.n_train} labels, accuracy ${pct(p.accuracy_mean)}, confident ${pct(p.single_mean)}`).join("; ")}`}>
-        {[0.4, 0.6, 0.8, 1].map((t) => (
-          <g key={t}>
-            <line x1={P} x2={W - 10} y1={y(t)} y2={y(t)} stroke="var(--border)" />
-            <text x={P - 6} y={y(t) + 4} fontSize="11" textAnchor="end" fill="var(--gray)">{pct(t)}</text>
-          </g>
-        ))}
-        {pts.map((p) => <text key={p.n_train} x={x(p.n_train)} y={H - 12} fontSize="10" textAnchor="middle" fill="var(--gray)">{p.n_train}</text>)}
-        <text x={(W + P) / 2} y={H + 8} fontSize="11" textAnchor="middle" fill="var(--black)">Random training labels</text>
-        {series.map((s) => (
-          <g key={s.key}>
-            <polygon fill={s.color} opacity="0.12" points={[...pts.map((p) => `${x(p.n_train)},${y(s.hi(p))}`), ...[...pts].reverse().map((p) => `${x(p.n_train)},${y(s.lo(p))}`)].join(" ")} />
-            <polyline fill="none" stroke={s.color} strokeWidth="2" points={pts.map((p) => `${x(p.n_train)},${y(s.mean(p))}`).join(" ")} />
-          </g>
-        ))}
-        <circle cx={x(maxN)} cy={y(0.82)} r="5" fill="none" stroke="var(--red)" strokeWidth="2" />
-        <text x={x(pts[1].n_train)} y={y(pts[1].accuracy_mean) - 8} fontSize="11" fill="var(--black)">accuracy</text>
-        <text x={x(pts[3].n_train)} y={y(pts[3].single_mean) + 16} fontSize="11" fill="var(--red)">confident answers</text>
-        <text x={x(maxN) - 8} y={y(0.82) + 4} fontSize="11" textAnchor="end" fill="var(--red)">with hard cases</text>
-      </svg>
-    </figure>
+    <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`Learning curve, mean accuracy and confident-answer share against the number of random training labels. ${desc}. With 35 hard cases at 194 labels, confident answers reached 82%.`}>
+      <defs>
+        <pattern id="ht-lc" width="3.6" height="3.6" patternUnits="userSpaceOnUse"><circle cx="1.8" cy="1.8" r="0.8" fill={INK} fillOpacity="0.6" /></pattern>
+      </defs>
+      <path d={band("accuracy_min", "accuracy_max")} fill="url(#ht-lc)" opacity="0.55" />
+      <path d={band("single_min", "single_max")} fill="url(#ht-lc)" opacity="0.3" />
+      <polyline points={line("accuracy_mean")} fill="none" stroke={INK} strokeWidth="2.2" />
+      <polyline points={line("single_mean")} fill="none" stroke={INK} strokeWidth="2.2" strokeDasharray="6 4" />
+      <circle cx={x(194)} cy={y(0.82)} r="7" fill="none" stroke={INK} strokeWidth="2" />
+      <text x={x(194) - 12} y={y(0.82) + 4} fontSize="12" textAnchor="end" fontStyle="italic" style={serif}>with 35 hard cases</text>
+      <text x={x(125)} y={y(mid.accuracy_mean) - 8} fontSize="12" textAnchor="middle" style={serif}>accuracy</text>
+      <text x={x(125)} y={y(mid.single_mean) + 18} fontSize="12" textAnchor="middle" style={serif}>confident answers</text>
+      <line x1={L} y1={H - B} x2={W - Rr} y2={H - B} stroke={INK} />
+      {[0.4, 0.6, 0.8, 1].map((v) => (
+        <g key={v}>
+          <text x={L - 6} y={y(v) + 4} fontSize="11" textAnchor="end">{Math.round(v * 100)}%</text>
+          <line x1={L} x2={W - Rr} y1={y(v)} y2={y(v)} stroke={INK} strokeOpacity="0.12" />
+        </g>
+      ))}
+      {xs.map((v) => <text key={v} x={x(v)} y={H - B + 16} fontSize="11" textAnchor="middle">{v}</text>)}
+      <text x={(W + L) / 2} y={H - 2} fontSize="11" textAnchor="middle">random training labels</text>
+    </svg>
   );
 }
 
 export default function Evaluation() {
-  const a = charts.versions["ari3-v0.0.1"], b = charts.versions["ari3-v0.0.2"];
+  const C = charts;
+  const V = Object.entries(C.versions) as [string, V][];
+  const short = (k: string) => (VNAME[k] ?? k).split(" ")[0];
   return (
-    <Page title="Evaluation">
-      <p style={{ ...bodyText, fontSize: "1.05rem", color: "var(--black)", marginTop: "1rem" }}>
-        Both frozen versions, scored on the same {charts.n_test} held-out items from EXP-002. The frozen
-        weights are used as released and never refit. Each chart uses 61 items, so small differences between versions are within noise.
+    <Ari3Page label="Evaluation" current="/ari3/evaluation">
+      <p className="lede-intro">
+        Both frozen versions, scored on the same {C.n_test} held-out items from EXP-002. The frozen weights are used as
+        released and never refit. Each chart uses {C.n_test} items, so small differences between versions are within noise.
       </p>
 
-      <Section title="Reliability diagrams">
-        <p style={bodyText}>
-          When the model says 80%, is it right about 80% of the time? Points on the dashed line mean yes. Each dot is a group of items with similar predictions, and bigger dots hold more items.
-          Temperature scaling (Guo et al. 2017) is what moves the points toward the line.
-        </p>
-        <div style={twoUp}>
-          <Reliability v={a} label={VERSIONS[0][1]} />
-          <Reliability v={b} label={VERSIONS[1][1]} />
-        </div>
-      </Section>
+      <h2 className="sec">Fig. 1 · When it says 80%, is it right 80% of the time?</h2>
+      <div className="figs">
+        {V.map(([k, v]) => (
+          <figure key={k}><p className="ft">{VNAME[k] ?? k}</p><Reliability v={v} label={VNAME[k] ?? k} /></figure>
+        ))}
+      </div>
+      <p className="caption">
+        Each dot is a group of items with similar predictions; bigger dots hold more items. Dots on the dashed line mean
+        the stated chance matches how often it was right.
+      </p>
 
-      <Section title="Confusion matrices">
-        <p style={bodyText}>Rows are the editor&apos;s answer, columns the model&apos;s, at a 50% threshold. Red cells are mistakes.</p>
-        <div style={twoUp}>
-          <Confusion v={a} label={VERSIONS[0][1]} />
-          <Confusion v={b} label={VERSIONS[1][1]} />
-        </div>
-      </Section>
+      <h2 className="sec">Fig. 2 · Right and wrong, against the editor</h2>
+      <div className="figs">
+        {V.map(([k, v]) => {
+          const c = v.confusion, s = v.single_answer;
+          return (
+            <figure key={k}>
+              <p className="ft">{VNAME[k] ?? k}</p>
+              <table className="cm num">
+                <caption className="sr-only">{VNAME[k] ?? k}: the editor&apos;s answers in rows, the model&apos;s in columns</caption>
+                <thead>
+                  <tr><td /><th scope="col">Model: style</th><th scope="col">Model: not style</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Editor: style</th><td>{c.tp}</td><td className="miss">{c.fn}</td></tr>
+                  <tr><th scope="row">Editor: not style</th><td className="miss">{c.fp}</td><td>{c.tn}</td></tr>
+                </tbody>
+              </table>
+              <figcaption>Confident and right {s.right}, confident and wrong {s.wrong}, not sure {s.not_sure}.</figcaption>
+            </figure>
+          );
+        })}
+      </div>
+      <p className="caption">Rows are the editor&apos;s answer, columns the model&apos;s, at a 50% threshold. Dotted cells are mistakes.</p>
 
-      <Section title="Confidence histograms">
-        <p style={bodyText}>
-          How the predicted probabilities spread across the test items. Red is items the editor labeled style, grey
-          is not style. Items piled at the edges are confident. Items in the middle are the not-sure ones.
-        </p>
-        <div style={twoUp}>
-          <Histogram v={a} label={VERSIONS[0][1]} />
-          <Histogram v={b} label={VERSIONS[1][1]} />
-        </div>
-      </Section>
+      <h2 className="sec">Fig. 3 · How sure it was</h2>
+      <div className="figs">
+        {V.map(([k, v]) => (
+          <figure key={k}><p className="ft">{VNAME[k] ?? k}</p><Histogram v={v} label={VNAME[k] ?? k} id={`ht-${k.replace(/\W/g, "")}`} /></figure>
+        ))}
+      </div>
+      <p className="caption">
+        Solid is items the editor labeled style, dotted is not style. Items piled at the edges are confident; items in the
+        middle are the not-sure ones.
+      </p>
 
-      <Section title="Coverage against confidence">
-        <p style={bodyText}>
-          Conformal prediction trades coverage for confident answers through one setting, α. A lower α promises the
-          right answer more often and gives more not-sure answers. Released versions use α = 0.10.
-        </p>
-        <div style={{ overflowX: "auto" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: mono, fontSize: "0.82rem" }}>
-            <thead>
-              <tr>
-                {["α", "Target", "v0.0.1 coverage", "v0.0.1 confident", "v0.0.2 coverage", "v0.0.2 confident"].map((h) => (
-                  <th key={h} scope="col" style={{ textAlign: "left", padding: "0.45rem 0.6rem 0.45rem 0", borderBottom: "1px solid var(--black)", fontFamily: "var(--font-franklin)", fontWeight: 500, fontSize: "0.78rem" }}>{h}</th>
-                ))}
+      <h2 className="sec">Table 1 · Coverage against confidence</h2>
+      <div className="table-wrap">
+        <table className="ledger num">
+          <thead>
+            <tr>
+              <th scope="col">α</th>
+              <th scope="col" className="r">Target</th>
+              {V.map(([k]) => [
+                <th key={`${k}-c`} scope="col" className="r">{short(k)} coverage</th>,
+                <th key={`${k}-s`} scope="col" className="r">{short(k)} confident</th>,
+              ])}
+            </tr>
+          </thead>
+          <tbody>
+            {V[0][1].coverage_vs_alpha.map((row, i) => (
+              <tr key={row.alpha}>
+                <td>{row.alpha.toFixed(2)}</td>
+                <td className="r">{pct(1 - row.alpha)}</td>
+                {V.map(([k, v]) => [
+                  <td key={`${k}-c`} className="r s">{pct(v.coverage_vs_alpha[i].coverage)}</td>,
+                  <td key={`${k}-s`} className="r s">{pct(v.coverage_vs_alpha[i].single_share)}</td>,
+                ])}
               </tr>
-            </thead>
-            <tbody>
-              {a.coverage_vs_alpha.map((r, i) => (
-                <tr key={r.alpha} style={{ fontWeight: r.alpha === 0.1 ? 700 : 400 }}>
-                  <td style={{ padding: "0.4rem 0.6rem 0.4rem 0", borderBottom: "1px solid var(--border)" }}>{r.alpha.toFixed(2)}</td>
-                  <td style={{ padding: "0.4rem 0.6rem 0.4rem 0", borderBottom: "1px solid var(--border)" }}>{pct(1 - r.alpha)}</td>
-                  <td style={{ padding: "0.4rem 0.6rem 0.4rem 0", borderBottom: "1px solid var(--border)" }}>{pct(r.coverage)}</td>
-                  <td style={{ padding: "0.4rem 0.6rem 0.4rem 0", borderBottom: "1px solid var(--border)" }}>{pct(r.single_share)}</td>
-                  <td style={{ padding: "0.4rem 0.6rem 0.4rem 0", borderBottom: "1px solid var(--border)" }}>{pct(b.coverage_vs_alpha[i].coverage)}</td>
-                  <td style={{ padding: "0.4rem 0.6rem 0.4rem 0", borderBottom: "1px solid var(--border)" }}>{pct(b.coverage_vs_alpha[i].single_share)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p style={{ ...small, marginTop: "0.6rem" }}>Thresholds recomputed for each α on the {charts.n_calibration} calibration labels.</p>
-      </Section>
-
-      <Section title="Learning curve (exploratory)">
-        <p style={bodyText}>
-          Fresh models trained on growing numbers of random labels, with the released design, 20 random subsets per
-          size. The two lines are labeled on the chart. Shaded bands span the 20 subsets, and the red ring marks the 82% reached with 35 hard cases in EXP-002. This analysis was not pre-registered, and these are not released models.
-        </p>
-        <LearningCurve />
-        <Callout>
-          <p style={{ ...bodyText, color: "var(--black)", margin: 0 }}>
-            With random labels only, accuracy levels off near 88% after about 100 labels, and confident answers stay
-            near 66% from 75 labels to 194. Swapping 35 random labels for hard cases raised confident answers to 82%.
-            More random labeling alone was not moving that number.
-          </p>
-        </Callout>
-      </Section>
-
-      <p style={{ ...small, marginTop: "2.5rem" }}>
-        Computed {charts.generated_at.slice(0, 10)} by src/ari3_charts.py in {charts.runtime_seconds} s (Python {charts.environment.python},
-        scikit-learn {charts.environment.scikit_learn}).
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="caption">
+        A lower α promises the right answer more often and gives more not-sure answers. Released versions use α = 0.10.
+        Thresholds recomputed for each α on the {C.n_calibration} calibration labels.
       </p>
-    </Page>
+
+      <h2 className="sec">Fig. 4 · Learning curve (exploratory)</h2>
+      <figure>
+        <LearningCurve lc={C.learning_curve} />
+        <figcaption>
+          Fresh models trained on growing numbers of random labels, 20 random subsets per size; dotted bands span the
+          subsets. Accuracy levels off near 88% after about 100 labels, and confident answers stay near 66%. Swapping 35
+          random labels for hard cases raised confident answers to 82%. Not pre-registered, and not released models.
+        </figcaption>
+      </figure>
+      <p className="note" style={{ marginTop: "14px" }}>
+        Computed {day(C.generated_at.slice(0, 10))} in {C.runtime_seconds} s (Python {C.environment.python}, scikit-learn{" "}
+        {C.environment.scikit_learn}).
+      </p>
+    </Ari3Page>
   );
 }

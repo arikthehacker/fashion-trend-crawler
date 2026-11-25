@@ -190,6 +190,7 @@ def structure(report):
     """Everything except the prose fields and the revision log."""
     x = json.loads(json.dumps(report))
     x["executive_summary"] = ""
+    x.pop("headline", None)  # prose, like the summary
     for s in x["top_signals"]:
         s["evidence"], s["index_note"], s["human_editor_note"] = "", "", ""
     x["draft_meta"]["editor_decisions"].pop("revisions", None)
@@ -198,8 +199,13 @@ def structure(report):
 
 
 def text_of(report):
-    return {"executive_summary": report["executive_summary"],
+    return {"headline": report.get("headline", ""), "executive_summary": report["executive_summary"],
             "signals": {s["signal_id"]: {k: s[k] for k in ("evidence", "index_note", "human_editor_note")} for s in report["top_signals"]}}
+
+
+HEADLINE_MAX = 100  # characters; design/SITE_SPEC_photocopy.md §3.2
+HEADLINE_WHERE = ("\n\nShown at the top of the report, on the front page, in back issues, "
+                  "on the share card and in the RSS feed.")
 
 
 def text_errors(report, text):
@@ -209,6 +215,13 @@ def text_errors(report, text):
     summary = text.get("executive_summary") or ""
     if not summary.strip():
         errors.append("executive_summary is empty")
+    headline = (text.get("headline") or "").strip()
+    if not headline:
+        errors.append("headline is empty (one plain sentence, the week's main fact, approved on its own card)")
+    elif len(headline) > HEADLINE_MAX:
+        errors.append(f"headline is {len(headline)} characters, the limit is {HEADLINE_MAX}")
+    elif headline.endswith("."):
+        errors.append("headline ends with a full stop")
     if set(text.get("signals") or {}) != set(counts):
         errors.append(f"text must cover exactly these signals: {sorted(counts)}")
         return errors
@@ -230,7 +243,7 @@ def text_errors(report, text):
     raw = f"{report['items_collected']:,} raw source records from {report['sources_scanned']} outlet domains"
     if raw not in summary:
         errors.append(f"the summary must state the collection as: '{raw}'")
-    machine = [("executive_summary", summary)] + [(f"{sid}.{f}", text["signals"][sid].get(f) or "")
+    machine = [("headline", headline), ("executive_summary", summary)] + [(f"{sid}.{f}", text["signals"][sid].get(f) or "")
                                                   for sid in counts for f in ("evidence", "index_note")]
     notes = [(f"{sid}.human_editor_note", text["signals"][sid].get("human_editor_note") or "") for sid in counts]
     for where, value in machine:
@@ -250,11 +263,12 @@ def set_text(report, text):
     if errors:
         raise ValueError("\n".join(errors))
     out = json.loads(json.dumps(report))
+    out["headline"] = text["headline"].strip()
     out["executive_summary"] = text["executive_summary"].strip()
     for s in out["top_signals"]:
         for field in ("evidence", "index_note", "human_editor_note"):
             s[field] = text["signals"][s["signal_id"]][field].strip()
-    out["draft_meta"]["editor_decisions"]["revisions"].append({"at": _now(), "what": "evidence text, index notes, summary and copyedited editor notes set"})
+    out["draft_meta"]["editor_decisions"]["revisions"].append({"at": _now(), "what": "headline, evidence text, index notes, summary and copyedited editor notes set"})
     assert sha_obj(structure(out)) == before
     return out
 
@@ -270,6 +284,8 @@ def approval_queue(report, reviews_path):
                       "kind": kind, "target": key, "prompt": "Approve this as it will be published, or ask for a change.", "body": body,
                       "options": [{"key": k, "label": label, "value": v} for k, label, v in rr.APPROVAL_OPTIONS]})
 
+    if report.get("headline"):
+        add("headline", "Headline", "report_text", report["headline"] + HEADLINE_WHERE)
     add("summary", "Executive summary", "report_text", report["executive_summary"])
     for s in report["top_signals"]:
         a = s["draft_audit"]

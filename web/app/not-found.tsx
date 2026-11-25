@@ -1,31 +1,27 @@
 // not-found.tsx
-// Custom 404 for the App Router (convention: app/not-found.tsx). Without this file
-// Next.js renders its generic unstyled default — off-brand, no nav, no route back
-// into the archive. Voice per doc section 2: no hype, plain statement of fact.
+// Custom 404 for the App Router (convention: app/not-found.tsx). The layout
+// renders the header and footer; this page states the fact and offers routes back.
 
+import type { Metadata } from "next";
 import Link from "next/link";
+import { Folio } from "./components/Chrome";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Page not found",
   robots: { index: false },
 };
 
 export default function NotFound() {
   return (
-    <main id="main-content" style={{ flex: 1, width: "100%" }}>
-      <header className="page-masthead">
-        <p className="page-eyebrow">Page not found</p>
-        <h1 className="page-title">404</h1>
-        <p className="page-intro">
-          No record exists at this address. It may have been mistyped, or the report it
-          pointed to has not been archived.
-        </p>
-        <p className="page-intro">
-          <Link href="/" style={{ color: "var(--black)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
-            Return to the index
-          </Link>
-        </p>
-      </header>
+    <main id="main-content">
+      <Folio h1 left="Page not found" />
+      <p className="lede-intro">This page does not exist or has moved.</p>
+      <nav className="inside" aria-label="Places to go instead">
+        <b>Instead</b>
+        <Link href="/">The latest report</Link>
+        <Link href="/archive">Back issues</Link>
+        <Link href="/search">Search</Link>
+      </nav>
     </main>
   );
 }

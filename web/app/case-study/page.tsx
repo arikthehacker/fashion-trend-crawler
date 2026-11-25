@@ -1,11 +1,10 @@
-// page.tsx
-// last edited: 09/22/2026
-// case study — ARI3LLA INDEX: Building a Weekly Style Signal Report
+// app/case-study/page.tsx
+// Case study in the photocopy edition: one long article in a single column.
 
 import { pageMetadata } from "../../lib/site";
+import { Folio } from "../components/Chrome";
 
-export const metadata = pageMetadata("/case-study", "Case Study", "How ARI3LLA INDEX is built: the evidence standard, the data pipeline, the report schema and the static site, including current limitations.");
-
+export const metadata = pageMetadata("/case-study", "Case study", "How ARI3LLA INDEX is built: the evidence standard, the data pipeline, the report schema and the static site, including current limitations.");
 
 const sections: { title: string; body: string[] }[] = [
   {
@@ -21,123 +20,58 @@ const sections: { title: string; body: string[] }[] = [
     ],
   },
   {
-    title: "What Exists",
+    title: "What exists",
     body: [
       "A robots.txt-respecting ingester that reads outlet RSS and Atom feeds and stores each item with its URL, publish date and a content hash in a SQLite item store. A source taxonomy that maps more than 125 outlets to sectors, including publications outside the English-speaking press. A report schema with controlled vocabularies, and a publish gate in CI that rejects future-dated reports and any claim without a linked article. A static Next.js site with an archive, a timeline, per-signal histories, full-text search, RSS and structured data.",
     ],
   },
   {
-    title: "Design System",
+    title: "Design system",
     body: [
       "Editorial tone, restrained typography, clear hierarchy and an index-like structure. Report pages carry structured data, a stable citation line and real heading markup for screen readers.",
     ],
   },
   {
-    title: "Evidence Standard",
+    title: "Evidence standard",
     body: [
       "A claim is published only with a link to a specific, dated article or record. An outlet's homepage is not evidence. A report may not be dated after the day it is published. Signals are weighed by recurrence, source diversity, source incentive, visual coherence, and historical continuity, and confidence is stated plainly, including when it is low.",
     ],
   },
   {
-    title: "Human and Machine",
+    title: "Human and machine",
     body: [
       "Software collects items and extracts style terms. It does not decide what matters. Interpretation, naming, and the human-editor note on each signal belong to the editor. Social platforms will be sampled only through official APIs or by hand, never by scraping, and none is sampled yet. Runway images are linked, never rehosted.",
     ],
   },
   {
-    title: "Current Limitations",
+    title: "Current limitations",
     body: [
-      "The archive holds two reports, dated 2026-05-18 and 2026-10-04. It grows only with reports whose every claim links to a dated, fetched source. Drafting a weekly report from the item store is not built yet. Most collected sources are editorial, because brand, retail and resale sites rarely publish dated feeds. Social data waits on access to official platform APIs.",
+      "The archive grows only with reports whose every claim links to a dated, fetched source. Since 2026-10-07 a scheduled job prepares each week's candidates and draft from the item store, and the editor decides and approves every report. Most collected sources are editorial, because brand, retail and resale sites rarely publish dated feeds. Social data waits on access to official platform APIs.",
     ],
   },
   {
     title: "Next",
     body: [
-      "Style terms are already extracted from stored items with Lexicon v1, last run over items stored up to 2026-09-26. Style scoring and term extraction have fallen behind collection and have to catch up before a new report window. Next is a drafter that builds each weekly report from that evidence for the editor to review, then per-term pages that show where a term first appeared and how it moved between sectors.",
+      "Style terms are extracted from stored items with Lexicon v1, and each weekly window is scored and extracted when it closes. Next are per-term pages that show where a term first appeared and how it moved between sectors.",
     ],
   },
 ];
 
+const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+
 export default function CaseStudy() {
   return (
-    <main id="main-content"
-      style={{
-        flex: 1,
-        background: "var(--white)",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      {/* masthead */}
-      <header className="page-masthead">
-        <p className="page-eyebrow">Case Study</p>
-        <h1 className="page-title">
-          Building a Weekly<br />Style Signal Report
-        </h1>
-
-      </header>
-
-      {/* case study sections */}
-      <section
-        aria-label="Case study"
-        style={{
-          width: "100%",
-          maxWidth: "800px",
-          padding: "5rem 2rem",
-        }}
-      >
-        <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
-          {sections.map((s, i) => (
-            <div className="stack-sm"
-              key={s.title}
-              style={{
-                display: "grid",
-                gridTemplateColumns: "160px 1fr",
-                gap: "2rem",
-                padding: "2.5rem 0",
-                borderBottom:
-                  i === sections.length - 1
-                    ? "none"
-                    : "1px solid var(--border)",
-                alignItems: "start",
-              }}
-            >
-              <h2
-                style={{
-                  fontFamily: "var(--font-franklin)",
-                  fontSize: "0.75rem",
-                  fontWeight: "400",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "var(--black)",
-                  paddingTop: "0.2rem",
-                  margin: 0,
-                }}
-              >
-                {String(i + 1).padStart(2, "0")}&nbsp;&nbsp;{s.title}
-              </h2>
-              <div>
-                {s.body.map((p, j) => (
-                  <p
-                    key={j}
-                    style={{
-                      fontFamily: "var(--font-franklin)",
-                      fontSize: "1rem",
-                      lineHeight: "1.8",
-                      color: "var(--gray)",
-                      marginBottom: j === s.body.length - 1 ? 0 : "1rem",
-                    }}
-                  >
-                    {p}
-                  </p>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
+    <main id="main-content">
+      <Folio left="Case study" right={`${sections.length} sections`} />
+      <h1 className="hed md toner">Building a weekly style signal report</h1>
+      <article className="prose">
+        {sections.map((s) => (
+          <section key={s.title} aria-labelledby={`h-${slug(s.title)}`}>
+            <h2 id={`h-${slug(s.title)}`}>{s.title}</h2>
+            {s.body.map((p, j) => <p key={j}>{p}</p>)}
+          </section>
+        ))}
+      </article>
     </main>
   );
 }

@@ -130,7 +130,8 @@ class WorkflowTests(unittest.TestCase):
         return rf.apply_decisions(draft(), self.queue, d, AUDIT, draft_sha="x")
 
     def text(self, **over):
-        t = {"executive_summary": "ARI3 collected 1,234 raw source records from 9 outlet domains. The largest signal is alpha (3 items from 3 outlets).",
+        t = {"headline": "Alpha was the largest signal of a short week",
+             "executive_summary": "ARI3 collected 1,234 raw source records from 9 outlet domains. The largest signal is alpha (3 items from 3 outlets).",
              "signals": {"alpha": {"evidence": "Headlines cover the term.", "index_note": "The signal has 3 items from 3 outlets.",
                                    "human_editor_note": "Editorial view: this reads as seasonal."}}}
         t["signals"]["alpha"].update(over)
@@ -149,6 +150,12 @@ class WorkflowTests(unittest.TestCase):
             errors = rf.text_errors(r, self.text(**over))
             self.assertTrue(any(expect in e for e in errors), (over, errors))
         self.assertEqual(rf.text_errors(r, self.text(evidence="A surprising and comprising mix.")), [])  # whole words only
+        for hed, expect in (("", "headline is empty"), ("Alpha is rising", "rising"), ("A plain headline.", "full stop"),
+                            ("I saw alpha everywhere", "first person"), ("x" * 101, "limit")):
+            t = self.text()
+            t["headline"] = hed
+            self.assertTrue(any(expect in e for e in rf.text_errors(r, t)), (hed, rf.text_errors(r, t)))
+        self.assertEqual(out["headline"], "Alpha was the largest signal of a short week")
         bad_summary = self.text()
         bad_summary["executive_summary"] = "ARI3 collected 1,234 raw source records from 9 outlet domains. Alpha (5 items from 3 outlets)."
         self.assertTrue(any("matches no signal" in e for e in rf.text_errors(r, bad_summary)))
@@ -156,16 +163,16 @@ class WorkflowTests(unittest.TestCase):
     def test_approval_cards_change_id_when_their_text_changes(self):
         r = rf.set_text(self.report(), self.text())
         q1 = rf.approval_queue(r, os.path.join(self.tmp, "approvals.jsonl"))
-        self.assertEqual([t["question_id"] for t in q1["tasks"]], ["summary", "signal:alpha", "duplicates", "limitations"])
-        self.assertIn("YOUR THOUGHTS AS YOU WROTE THEM\nA note.", q1["tasks"][1]["body"])
+        self.assertEqual([t["question_id"] for t in q1["tasks"]], ["headline", "summary", "signal:alpha", "duplicates", "limitations"])
+        self.assertIn("YOUR THOUGHTS AS YOU WROTE THEM\nA note.", q1["tasks"][2]["body"])
         import exp005_review
         for t in q1["tasks"]:
             exp005_review.record(q1, t, "APPROVE")
-        self.assertEqual(len(rf.approval_status(q1)["approved"]), 4)
+        self.assertEqual(len(rf.approval_status(q1)["approved"]), 5)
         r2 = rf.set_text(self.report(), self.text(evidence="Headlines cover the term in two contexts."))
         q2 = rf.approval_queue(r2, os.path.join(self.tmp, "approvals.jsonl"))
         status = rf.approval_status(q2)
-        self.assertEqual(len(status["approved"]), 3)  # the unchanged cards stay approved
+        self.assertEqual(len(status["approved"]), 4)  # the unchanged cards stay approved
         self.assertEqual(len(status["open"]), 1)      # the changed signal needs a fresh look
 
     def test_published_form_is_approved_and_has_no_draft_sections(self):

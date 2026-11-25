@@ -4,6 +4,7 @@
 
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "../lib/site";
+import { EXPERIMENTS } from "../lib/ari3";
 import { getAllReportDates, getAllSignalSlugs, getLatestReport } from "../lib/reports";
 
 export const dynamic = "force-static";
@@ -28,6 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/timeline",
     "/search",
     "/glossary",
+    "/signals",
   ]);
 
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -42,10 +44,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/ari3/decisions",
     "/ari3/timeline",
     "/ari3/claims",
-    "/ari3/exp-001",
-    "/ari3/exp-002",
-    "/ari3/exp-003",
-    "/ari3/exp-004",
+    ...EXPERIMENTS.map((e) => `/ari3/${e.slug}`),
+    "/signals",
     "/taxonomy",
     "/sources",
     "/about",

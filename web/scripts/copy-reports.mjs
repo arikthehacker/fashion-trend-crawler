@@ -24,7 +24,7 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export function copyReports() {
-  const srcDir = path.join(__dirname, "..", "..", "data", "reports");
+  const srcDir = process.env.ARI3_REPORTS_DIR || path.join(__dirname, "..", "..", "data", "reports");
   const destDir = path.join(__dirname, "..", "public", "data", "reports");
 
   fs.mkdirSync(destDir, { recursive: true });

@@ -1,8 +1,7 @@
-"use client";
-// Section tabs shared by every ARI3 notebook page, with a back link on inner pages.
+// Section tabs shared by every ARI3 notebook page. A server component: each page
+// says which tab it is, so the static export needs no client code for this.
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 const TABS = [
   { href: "/ari3", label: "Overview" },
@@ -13,26 +12,21 @@ const TABS = [
   { href: "/ari3/decisions", label: "Decisions" },
   { href: "/ari3/timeline", label: "Timeline" },
   { href: "/ari3/philosophy", label: "Philosophy" },
-];
+] as const;
 
-export default function Ari3Nav() {
-  const path = (usePathname() || "/ari3").replace(/\/$/, "").replace(/\.html$/, "");
-  const isExperiment = /^\/ari3\/exp-\d+/.test(path);
-  const current = isExperiment ? "/ari3" : path;
+export type Ari3Tab = (typeof TABS)[number]["href"];
+
+/** `current` is the tab for this page. Experiment entries pass none, since no tab is that page. */
+export default function Ari3Nav({ current }: { current?: Ari3Tab }) {
   return (
-    <>
-      {path !== "/ari3" && (
-        <Link href={isExperiment ? "/ari3#h-experiment-registry" : "/ari3"} className="ari3-back">
-          ← {isExperiment ? "All experiments" : "ARI3 overview"}
-        </Link>
-      )}
-      <nav aria-label="ARI3 sections" className="ari3-tabs">
+    <nav aria-label="ARI3 sections">
+      <ul className="tabs">
         {TABS.map((t) => (
-          <Link key={t.href} href={t.href} aria-current={current === t.href ? "page" : undefined}>
-            {t.label}
-          </Link>
+          <li key={t.href}>
+            <Link href={t.href} aria-current={current === t.href ? "page" : undefined}>{t.label}</Link>
+          </li>
         ))}
-      </nav>
-    </>
+      </ul>
+    </nav>
   );
 }

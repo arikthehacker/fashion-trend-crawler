@@ -40,6 +40,10 @@ export interface TopSignal {
 
 export interface Report {
   report_date: string;
+  // The week's headline, drafted under the voice rules and approved by the editor
+  // (design/SITE_SPEC_photocopy.md §3.2). Older reports have none; lib/editorial.ts
+  // then generates one from the largest signals.
+  headline?: string;
   collection_window: CollectionWindow;
   sources_scanned: number;
   items_collected: number;
@@ -68,6 +72,7 @@ export interface Report {
   review_status?: string;
   reviewed_by?: string;
   ai_assistance?: string;
+  evidence_snapshot_sha256?: string;
 }
 
 export interface RevisionEntry {
@@ -87,7 +92,9 @@ export interface RevisionEntry {
 }
 
 function reportsDir(): string {
-  return path.join(process.cwd(), "..", "data", "reports");
+  // ARI3_REPORTS_DIR lets a test build read unpublished reports from elsewhere,
+  // without placing them in data/reports/ (design/SITE_SPEC_photocopy.md §6).
+  return process.env.ARI3_REPORTS_DIR || path.join(process.cwd(), "..", "data", "reports");
 }
 
 // Module-level cache: every helper below calls getAllReports(), and a single

@@ -1,25 +1,29 @@
 // lib/nav.ts
 // One source of truth for site navigation, used by the shared header and footer.
+// The photocopy edition's seven sections (design/SITE_SPEC_photocopy.md §2).
 
 export const PRIMARY_NAV = [
-  { href: "/", label: "Index" },
-  { href: "/ari3", label: "ARI3", accent: true },
-  { href: "/archive", label: "Archive" },
-  { href: "/timeline", label: "Timeline" },
-  { href: "/search", label: "Search" },
-  { href: "/glossary", label: "Glossary" },
-  { href: "/methodology", label: "Methodology" },
-  { href: "/taxonomy", label: "Taxonomy" },
-  { href: "/sources", label: "Sources" },
+  { href: "/", label: "Latest" },
+  { href: "/archive", label: "Back issues" },
+  { href: "/signals", label: "Signals" },
+  { href: "/ari3", label: "ARI3" },
+  { href: "/methodology", label: "How it works" },
   { href: "/about", label: "About" },
+  { href: "/search", label: "Search" },
 ] as const;
 
 export const FOOTER_NAV = [
-  { href: "/case-study", label: "Case Study" },
+  { href: "/glossary", label: "Glossary" },
+  { href: "/taxonomy", label: "Taxonomy" },
+  { href: "/sources", label: "Sources" },
+  { href: "/timeline", label: "Timeline" },
+  { href: "/case-study", label: "Case study" },
+  { href: "/accessibility", label: "Accessibility" },
   { href: "/privacy", label: "Privacy" },
   { href: "/terms", label: "Terms" },
-  { href: "/accessibility", label: "Accessibility" },
   { href: "/rss.xml", label: "RSS" },
+  { href: "/llms.txt", label: "For AI agents" },
+  { href: "/data/reports/index.json", label: "Data (JSON)" },
 ] as const;
 
 export const CONTACT_EMAIL = "ariella@duck.com";

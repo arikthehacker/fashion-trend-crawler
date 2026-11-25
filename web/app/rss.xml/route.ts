@@ -5,6 +5,7 @@
 
 import { getAllReports } from "../../lib/reports";
 import { SITE_URL, SITE_NAME } from "../../lib/site";
+import { headline, titleWindow } from "../../lib/editorial";
 
 export const dynamic = "force-static";
 
@@ -53,14 +54,8 @@ export async function GET() {
       // bare date repeated across every item. Lead with the top tracked
       // signals for the window, falling back to the date if a report has
       // none (thin week).
-      const signalNames = (report.top_signals ?? [])
-        .slice(0, 3)
-        .map((s) => s.name)
-        .filter(Boolean);
-      const title =
-        signalNames.length > 0
-          ? `${report.report_date}: ${signalNames.join(", ")}`
-          : report.report_date;
+      // The week's approved headline (design/SITE_SPEC_photocopy.md §3.2), led by the week.
+      const title = `Week of ${titleWindow(report)}: ${headline(report)}`;
       // Optional <category> per item (rssboard.org profile) surfaces the
       // source-sector taxonomy already tracked in the schema, so readers/
       // aggregators can filter by sector instead of only by date.

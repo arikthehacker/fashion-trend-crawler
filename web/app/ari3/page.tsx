@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { pageMetadata } from "../../lib/site";
 import { EXPERIMENTS, PROJECT_STATE, RELEASE_NAMES, REPO } from "../../lib/ari3";
-import { Page, Section, Pill, StatusMark, bodyText, mono } from "./ui";
+import { Stamp } from "../components/Chrome";
+import { Ari3Page } from "./ui";
 
 export const metadata = pageMetadata(
   "/ari3",
@@ -9,92 +10,75 @@ export const metadata = pageMetadata(
   "The research notebook for ARI3, the model system behind ARI3LLA INDEX: every experiment, its question, hypotheses, results and costs, frozen and hashed."
 );
 
-export default function Ari3Page() {
+export default function Ari3Overview() {
+  const current = RELEASE_NAMES.filter((r) => r.status === "Released").slice(-1)[0];
   return (
-    <Page title="ARI3">
-      <p style={{ ...bodyText, fontSize: "1.05rem", color: "var(--black)" }}>
-        ARI3 is the model system behind ARI3LLA INDEX, run as a small research program. Each
-        experiment is a permanent notebook entry with its question, hypotheses, method, results,
-        costs and open questions. Every model version is frozen, hashed and committed to the public
-        repository before its results appear here.
+    <Ari3Page label="Overview" current="/ari3">
+      <p className="lede-intro">
+        ARI3 is the model system behind ARI3LLA INDEX, run as a small research program. Each experiment is a permanent
+        notebook entry with its question, hypotheses, method, results, costs and open questions. Every model version is
+        frozen, hashed and committed to the public repository before its results appear here.
       </p>
-      <p style={bodyText}>
-        ARI3 v0.0.3 INTEGRITAS is the current research release. The style classifier is still the
-        frozen v0.0.2 model. v0.0.3 adds that classifier&apos;s evaluation on articles published after
-        its freeze, the integrity and provenance work behind that test, and a frozen
-        forecast-detection head that did not meet its criterion and is not used in any count. The
-        style classifier reads a news item&apos;s headline and feed excerpt, judges whether the item is
-        about style, and says when it is not sure. No ARI3 version forecasts, ranks trends or writes
-        reports. The principles behind the program are on
-        the <Link href="/ari3/philosophy" style={{ color: "var(--black)" }}>research philosophy</Link> page.
+      <p className="caption" style={{ maxWidth: "62ch" }}>
+        Current release: {current.version} {current.name}. Its style classifier is still the frozen v0.0.2 model. No ARI3
+        version forecasts, ranks trends or writes reports. The principles behind the program are on
+        the <Link href="/ari3/philosophy">philosophy</Link> page.
       </p>
 
-      <Section title="Experiment registry">
-        <p style={bodyText}>Entries are permanent. A correction is added as a dated note, never by editing the result.</p>
-        <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-          {EXPERIMENTS.map((e) => (
-            <Link key={e.id} href={`/ari3/${e.slug}`} style={{ display: "block", border: "1px solid var(--black)", padding: "1.1rem 1.2rem", color: "var(--black)", textDecoration: "none" }}>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem 0.9rem", alignItems: "baseline" }}>
-                <span style={{ fontFamily: mono, fontSize: "0.85rem" }}>{e.id}</span>
-                <span style={{ fontFamily: "var(--font-instrument)", fontSize: "1.8rem", lineHeight: 1.1 }}>
-                  {e.name}{e.version && <span style={{ fontSize: "1.1rem", color: "var(--gray)" }}> {e.version}</span>}
-                </span>
-                <Pill tone={["Frozen", "Closed", "Released"].includes(e.status) ? "ink" : "red"}>{e.status}</Pill>
-                {e.hypotheses && ["Frozen", "Released"].includes(e.status) && <Pill tone="gray">Pre-registered</Pill>}
-              </div>
-              {e.motto && <div style={{ fontFamily: "var(--font-franklin)", fontStyle: "italic", color: "var(--gray)", margin: "0.3rem 0 0.5rem" }}>{e.motto}</div>}
-              <div style={{ fontFamily: "var(--font-franklin)", fontSize: "0.95rem", lineHeight: 1.5 }}>{e.headline}</div>
-              <div style={{ fontFamily: "var(--font-franklin)", fontSize: "0.8rem", color: "var(--gray)", marginTop: "0.6rem", textDecoration: "underline" }}>Read the notebook entry</div>
-            </Link>
-          ))}
-        </div>
-      </Section>
-
-      <Section title="State of the project">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 240px), 1fr))", gap: "1rem" }}>
-          {PROJECT_STATE.map((g) => (
-            <div key={g.status} style={{ border: "1px solid var(--border)", padding: "0.9rem 1rem" }}>
-              <h3 style={{ fontFamily: "var(--font-franklin)", fontSize: "0.8rem", letterSpacing: "0.08em", textTransform: "uppercase", margin: "0 0 0.6rem" }}>
-                <StatusMark kind={g.mark} />{g.status}
-              </h3>
-              {g.items.map((it) => (
-                <div key={it.area} style={{ margin: "0 0 0.6rem" }}>
-                  <div style={{ fontFamily: "var(--font-franklin)", fontSize: "0.9rem", fontWeight: 600 }}>{it.area}</div>
-                  <div style={{ fontFamily: "var(--font-franklin)", fontSize: "0.82rem", lineHeight: 1.5, color: "var(--gray)" }}>{it.detail}</div>
-                </div>
-              ))}
+      <h2 className="sec" id="experiment-registry">Experiment registry</h2>
+      <div className="reg">
+        {EXPERIMENTS.map((e) => (
+          <article key={e.id}>
+            <p className="id">
+              {e.id}
+              {e.version ? <><br /><span style={{ fontWeight: 400 }}>{e.version}</span></> : null}
+            </p>
+            <div>
+              <h3><Link href={`/ari3/${e.slug}`}>{e.name}</Link></h3>
+              {e.motto ? <p className="motto">{e.motto}</p> : null}
+              <p className="hl">{e.headline}</p>
             </div>
-          ))}
-        </div>
-      </Section>
+            <div className="stamps">
+              <Stamp>{e.status}</Stamp>
+              {/^Yes/.test(e.preregistered) ? <Stamp>Pre-registered</Stamp> : null}
+            </div>
+          </article>
+        ))}
+      </div>
+      <p className="caption">Entries are permanent. A correction is added as a dated note, never by editing the result.</p>
 
-      <Section title="Release names">
-        <p style={bodyText}>Released and in-progress versions link to their notebook entries. Planned names mark intent. None has a date.</p>
-        <ol style={{ listStyle: "none", margin: 0, padding: 0 }}>
-          {RELEASE_NAMES.map((r) => (
-            <li key={r.version} style={{ display: "grid", gridTemplateColumns: "4rem minmax(0, 1fr) auto", gap: "0.8rem", alignItems: "baseline", padding: "0.6rem 0", borderBottom: "1px solid var(--border)" }}>
-              <span style={{ fontFamily: mono, fontSize: "0.8rem", color: "var(--gray)" }}>{r.version}</span>
-              <span>
-                {r.exp ? (
-                  <Link href={`/ari3/${r.exp}`} style={{ fontFamily: "var(--font-instrument)", fontSize: "1.35rem", color: "var(--black)" }}>{r.name}</Link>
-                ) : (
-                  <span style={{ fontFamily: "var(--font-instrument)", fontSize: "1.35rem", color: "var(--gray)" }}>{r.name}</span>
-                )}
-                <span style={{ fontFamily: "var(--font-franklin)", fontSize: "0.85rem", color: "var(--gray)" }}> · {r.motto}</span>
-              </span>
-              <Pill tone={r.status === "Released" ? "ink" : r.status === "In progress" ? "red" : "gray"}>{r.status}</Pill>
-            </li>
-          ))}
-        </ol>
-      </Section>
+      <h2 className="sec">State of the project</h2>
+      <div className="state">
+        {PROJECT_STATE.map((g) => (
+          <div key={g.status}>
+            <h3>{g.status}</h3>
+            {g.items.map((i) => <p key={i.area}><b>{i.area}</b>{i.detail}</p>)}
+          </div>
+        ))}
+      </div>
 
-      <Section title="Checking a release">
-        <p style={bodyText}>
-          Every entry lists its commit, whose time GitHub records, and the SHA-256 hash of each file. A file
-          downloaded from the linked commit should produce the listed hash. The source is
-          at <a href={REPO} style={{ color: "var(--black)" }}>github.com/arikthehacker/fashion-trend-crawler</a>.
-        </p>
-      </Section>
-    </Page>
+      <h2 className="sec">Release names</h2>
+      <div className="table-wrap">
+        <table className="ledger">
+          <thead>
+            <tr><th scope="col">Version</th><th scope="col">Name</th><th scope="col">Motto</th><th scope="col"><span className="sr-only">Status</span></th></tr>
+          </thead>
+          <tbody>
+            {RELEASE_NAMES.map((r) => (
+              <tr key={r.version}>
+                <td>{r.version}</td>
+                <td className="s">{r.exp && r.status !== "Planned" ? <Link href={`/ari3/${r.exp}`}>{r.name}</Link> : r.name}</td>
+                <td className="s" style={{ fontStyle: "italic" }}>{r.motto}</td>
+                <td className="r"><Stamp>{r.status}</Stamp></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="caption">
+        Planned names mark intent. None has a date. Every entry lists its commit and the SHA-256 hash of each file, so a
+        downloaded file can be checked. The source is at <a href={REPO}>github.com/arikthehacker/fashion-trend-crawler</a>.
+      </p>
+    </Ari3Page>
   );
 }

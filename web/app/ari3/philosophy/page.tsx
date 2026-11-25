@@ -1,6 +1,6 @@
 import { pageMetadata } from "../../../lib/site";
 import { PRINCIPLES } from "../../../lib/ari3";
-import { Page, bodyText } from "../ui";
+import { Ari3Page } from "../ui";
 
 export const metadata = pageMetadata(
   "/ari3/philosophy",
@@ -10,22 +10,11 @@ export const metadata = pageMetadata(
 
 export default function Philosophy() {
   return (
-    <Page title="Research philosophy">
-      <p style={{ ...bodyText, fontSize: "1.05rem", color: "var(--black)", marginTop: "1rem" }}>
-        These principles decide how ARI3 is built, tested and reported. Each experiment in the
-        notebook can be checked against them.
-      </p>
-      <ol style={{ listStyle: "none", margin: "2rem 0 0", padding: 0 }}>
-        {PRINCIPLES.map((p, i) => (
-          <li key={p.title} style={{ borderTop: "1px solid var(--border)", padding: "1.2rem 0", display: "grid", gridTemplateColumns: "2.5rem minmax(0, 1fr)", gap: "0.8rem" }}>
-            <span style={{ fontFamily: "var(--font-instrument)", fontSize: "1.6rem", color: "var(--gray)", lineHeight: 1 }}>{i + 1}</span>
-            <div>
-              <h2 style={{ fontFamily: "var(--font-instrument)", fontSize: "1.5rem", fontWeight: 400, margin: "0 0 0.4rem" }}>{p.title}</h2>
-              <p style={{ ...bodyText, margin: 0 }}>{p.body}</p>
-            </div>
-          </li>
-        ))}
+    <Ari3Page label="Philosophy" current="/ari3/philosophy" folioH1={false}>
+      <h1 className="hed toner" style={{ fontSize: "clamp(36px,4.6vw,58px)", marginBottom: "22px" }}>The principles behind the program</h1>
+      <ol className="princ">
+        {PRINCIPLES.map((p) => <li key={p.title}><b>{p.title}</b><p>{p.body}</p></li>)}
       </ol>
-    </Page>
+    </Ari3Page>
   );
 }

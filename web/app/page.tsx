@@ -1,316 +1,70 @@
-// page.tsx
-// last edited: 08/10/2026
-// homepage for ARI3LLA INDEX — weekly style signal report.
-// Rewritten to pull from the archived-report data layer (reports.ts) instead of
-// the retired live-crawl view (trends.ts), which rendered a stale, un-versioned
-// crawl snapshot inconsistent with every other page. See
-// docs/agent-logs/trends-ts-fate-proposal.md and docs/agent-logs/homepage-rewrite.md.
+// The front page: the newest report's headline and story, and its index of signals.
 
 import Link from "next/link";
-import { getLatestReport, getThisWeeksIndex } from "../lib/reports";
-import { SITE_URL, SITE_NAME } from "../lib/site";
-import { CONTACT_EMAIL, REPO_URL } from "../lib/nav";
+import { getLatestReport, getAllReports } from "../lib/reports";
+import { headline, ranked, items, slugOf, sentences, standfirst } from "../lib/editorial";
+import { SITE_URL, SITE_NAME, SITE_DESCRIPTION, pageMetadata } from "../lib/site";
+import { Dateline, Byline, Folio } from "./components/Chrome";
 
-// Identifies the site and its publisher to search engines.
-const siteJsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    { "@type": "WebSite", "@id": `${SITE_URL}/#website`, url: SITE_URL, name: SITE_NAME, publisher: { "@id": `${SITE_URL}/#org` } },
-    { "@type": "Organization", "@id": `${SITE_URL}/#org`, name: SITE_NAME, url: SITE_URL, email: CONTACT_EMAIL, sameAs: [REPO_URL] },
-  ],
-};
-
-export const metadata = {
-  alternates: { canonical: SITE_URL, types: { "application/rss+xml": "/rss.xml" } },
-};
+export function generateMetadata() {
+  const r = getLatestReport();
+  const desc = r ? `The front page of a weekly, source-linked record of style language. This week: ${headline(r)}.` : SITE_DESCRIPTION;
+  const base = pageMetadata("/", r ? headline(r) : "A weekly, source-linked record of style language", desc.length > 160 ? SITE_DESCRIPTION : desc);
+  return { ...base, title: { absolute: `${SITE_NAME}: a weekly, source-linked record of style language` } };
+}
 
 export default function Home() {
-  const latest = getLatestReport();
-  const index = getThisWeeksIndex();
-
+  const r = getLatestReport();
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "WebSite", "@id": `${SITE_URL}#website`, name: SITE_NAME, url: SITE_URL, description: SITE_DESCRIPTION, inLanguage: "en",
+        potentialAction: { "@type": "SearchAction", target: `${SITE_URL}/search?q={search_term_string}`, "query-input": "required name=search_term_string" } },
+      { "@type": "Organization", "@id": `${SITE_URL}#org`, name: SITE_NAME, url: SITE_URL, logo: `${SITE_URL}/icon` },
+    ],
+  };
+  if (!r) {
+    return (
+      <main id="main-content">
+        <Folio h1 left="No report yet" />
+        <p className="lede-intro">The first weekly report has not been published yet.</p>
+      </main>
+    );
+  }
+  const S = ranked(r);
+  const ss = sentences(r.executive_summary);
+  const body = ss.length > 5 ? [ss.slice(3, 5).join(" "), ss.slice(5, 8).join(" ")] : [ss.join(" ")];
+  const count = getAllReports().length;
   return (
-    <main id="main-content" style={{
-      flex: 1,
-      background: "var(--white)",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-    }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }} />
-
-      {/* masthead */}
-      <header style={{
-        width: "100%",
-        borderBottom: "3px solid var(--black)",
-        padding: "4rem 2rem 3rem",
-        textAlign: "center",
-      }}>
-        <h1 style={{
-          fontFamily: "var(--font-instrument)",
-          fontSize: "clamp(3rem, 12vw, 10rem)",
-          fontWeight: "400",
-          lineHeight: "0.9",
-          letterSpacing: "-0.03em",
-          textTransform: "uppercase",
-          color: "var(--black)",
-        }}>
-          ARI3LLA<br />Index
-        </h1>
-
-        <p style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.85rem",
-          letterSpacing: "0.15em",
-          textTransform: "uppercase",
-          color: "var(--black)",
-          marginTop: "1.5rem",
-        }}>
-          Weekly Style Signal Report
-        </p>
-
-        <p style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "1rem",
-          lineHeight: "1.7",
-          color: "var(--gray)",
-          maxWidth: "560px",
-          margin: "1.5rem auto 0",
-        }}>
-          A source-linked index tracking recurring style language, silhouettes, materials, aesthetics, and cultural signals across the web.
-        </p>
-
-        <p style={{
-          fontFamily: "var(--font-franklin)",
-          fontSize: "0.75rem",
-          color: "var(--gray)",
-          marginTop: "2.5rem",
-          letterSpacing: "0.15em",
-          textTransform: "uppercase",
-        }}>
-          {latest
-            ? <>Latest report issued {latest.report_date} &nbsp;·&nbsp; {latest.items_collected} items collected across {latest.sources_scanned} sources</>
-            : "No reports on file."}
-        </p>
-
-        {latest && (
-          <p style={{
-            fontFamily: "var(--font-franklin)",
-            fontSize: "0.9rem",
-            lineHeight: "1.6",
-            color: "var(--gray)",
-            maxWidth: "560px",
-            margin: "1rem auto 0",
-          }}>
-            The archive is paused until a new report meets the evidence standard, which requires a
-            dated, fetched source for every claim.
-          </p>
-        )}
-
-
-
-      </header>
-
-      {/* this week's index — condensed metrics module, doc section 27/28 */}
-      {index && (
-        <section
-          aria-label="Latest index"
-          style={{
-            width: "100%",
-            maxWidth: "800px",
-            padding: "2.5rem 2rem",
-            borderBottom: "1px solid var(--border)",
-          }}
-        >
-          <h2 style={{
-            fontFamily: "var(--font-franklin)",
-            fontSize: "0.75rem",
-            letterSpacing: "0.15em",
-            textTransform: "uppercase",
-            color: "var(--black)",
-            marginBottom: "1.25rem",
-            textAlign: "center",
-          }}>
-            Latest Index, {index.reportDate}
-          </h2>
-
-          <dl style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-            gap: "1.25rem 2rem",
-            margin: 0,
-          }}>
-            {[
-              { label: "Sources scanned", value: String(index.sourcesScanned) },
-              { label: "Items collected", value: String(index.itemsCollected) },
-              { label: "Top signal", value: index.topSignal ?? "None logged this window" },
-              {
-                label: "Rising term (new since last report)",
-                value: index.risingTerm ?? "No new term this window",
-              },
-              {
-                label: "Recurring material",
-                value: index.recurringMaterial ?? "No material recurring across recent reports",
-              },
-              {
-                label: "Dominant mood",
-                value: index.dominantMood
-                  ? index.dominantMoodSourceDate
-                    ? `${index.dominantMood} (carried from ${index.dominantMoodSourceDate}, none logged this window)`
-                    : index.dominantMood
-                  : index.dominantMoodTooStale
-                    ? "No distinct mood signal in recent weeks"
-                    : "None logged this window",
-              },
-              {
-                label: "Highest-volatility sector",
-                value: index.highestVolatilitySector ?? "No sector showing elevated volatility this window",
-              },
-              { label: "Overall confidence", value: index.overallConfidence ?? "Not enough signals to score" },
-            ].map((row) => (
-              <div key={row.label}>
-                <dt style={{
-                  fontFamily: "var(--font-franklin)",
-                  fontSize: "0.75rem",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "var(--gray)",
-                  marginBottom: "0.35rem",
-                }}>
-                  {row.label}
-                </dt>
-                <dd style={{
-                  fontFamily: "var(--font-franklin)",
-                  fontSize: "0.9rem",
-                  lineHeight: "1.5",
-                  color: "var(--black)",
-                  margin: 0,
-                }}>
-                  {row.value}
-                </dd>
-              </div>
+    <main id="main-content">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\u003c") }} />
+      <Dateline report={r} />
+      <Folio left="This week" right={<Link href="/archive">{count} report{count === 1 ? "" : "s"} in the archive</Link>} />
+      <div className="front">
+        <article>
+          <h1 className="hed toner">{headline(r)}</h1>
+          <p className="deck">{standfirst(r)}</p>
+          <Byline />
+          <div className="cols drop">{body.filter(Boolean).map((p, i) => <p key={i}>{p}</p>)}</div>
+          <nav className="inside" aria-label="Inside">
+            <b>Inside</b>
+            <Link href={`/reports/${r.report_date}`}>The full report</Link>
+            <Link href="/archive">Back issues</Link>
+            <Link href="/signals">Every signal</Link>
+            <Link href="/methodology">How the index works</Link>
+          </nav>
+        </article>
+        <aside className="side" aria-labelledby="idx-h">
+          <h2 id="idx-h">Latest index <span>articles</span></h2>
+          <ol>
+            {S.map((s, i) => (
+              <li key={slugOf(s)}>
+                <Link href={`/signals/${slugOf(s)}`}><span className="w">{i + 1}. {s.name}</span><span className="c num">{items(s).length}</span></Link>
+              </li>
             ))}
-          </dl>
-        </section>
-      )}
-
-      {/* latest report teaser */}
-      {latest && (
-        <section
-          aria-label="Latest report"
-          style={{
-            width: "100%",
-            maxWidth: "800px",
-            padding: "5rem 2rem",
-            textAlign: "center",
-            borderBottom: "1px solid var(--border)",
-          }}
-        >
-          <h2 style={{
-            fontFamily: "var(--font-franklin)",
-            fontSize: "0.75rem",
-            letterSpacing: "0.15em",
-            textTransform: "uppercase",
-            color: "var(--red)",
-            marginBottom: "1rem",
-          }}>
-            Latest Report, {latest.report_date}
-          </h2>
-
-          <p style={{
-            fontFamily: "var(--font-franklin)",
-            fontSize: "1.05rem",
-            lineHeight: "1.8",
-            color: "var(--gray)",
-            maxWidth: "650px",
-            margin: "0 auto 4rem",
-          }}>
-            {latest.executive_summary}
-          </p>
-
-          {latest.collection_status === "thin" && (
-            <p style={{
-              fontFamily: "var(--font-franklin)",
-              fontSize: "0.75rem",
-              lineHeight: "1.7",
-              color: "var(--gray)",
-              maxWidth: "650px",
-              margin: "-2.5rem auto 4rem",
-              borderTop: "1px solid var(--border)",
-              paddingTop: "1.5rem",
-            }}>
-              This window is classified thin. A quiet week is recorded as it is and is never
-              padded to a target count. See{" "}
-              <Link
-                href="/methodology"
-                style={{ color: "var(--gray)", textDecoration: "underline", textUnderlineOffset: "3px" }}
-              >
-                methodology
-              </Link>.
-              {latest.thin_week_note && <> {latest.thin_week_note}</>}
-            </p>
-          )}
-
-          {/* top signal cards */}
-          <div style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.5rem",
-            textAlign: "left",
-          }}>
-            {latest.top_signals.slice(0, 5).map((s, i) => (
-              <div
-                key={i}
-                role="article"
-                style={{
-                  padding: "1.5rem",
-                  border: "1px solid var(--border)",
-                  display: "grid",
-                  gridTemplateColumns: "1fr 2fr",
-                  gap: "1.5rem",
-                  alignItems: "start",
-                }}
-              >
-                <h3 style={{
-                  fontFamily: "var(--font-instrument)",
-                  fontSize: "1.2rem",
-                  fontWeight: "400",
-                  lineHeight: "1.3",
-                  margin: 0,
-                }}>
-                  {s.name}
-                </h3>
-                <p style={{
-                  fontFamily: "var(--font-franklin)",
-                  fontSize: "0.9rem",
-                  lineHeight: "1.6",
-                  color: "var(--gray)",
-                }}>
-                  {s.evidence}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <p style={{ marginTop: "3rem" }}>
-            <Link
-              href={`/reports/${latest.report_date}`}
-              style={{
-                fontFamily: "var(--font-franklin)",
-                fontSize: "0.75rem",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                color: "var(--black)",
-                textDecoration: "underline",
-                textUnderlineOffset: "3px",
-              }}
-            >
-              Read the full report
-            </Link>
-          </p>
-        </section>
-      )}
-
-
+          </ol>
+        </aside>
+      </div>
     </main>
   );
 }

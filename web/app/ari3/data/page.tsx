@@ -1,6 +1,7 @@
+import { Fragment } from "react";
 import { pageMetadata } from "../../../lib/site";
 import { DATASETS } from "../../../lib/ari3_cards";
-import { Page, Section, bodyText } from "../ui";
+import { Ari3Page, Tx } from "../ui";
 
 export const metadata = pageMetadata(
   "/ari3/data",
@@ -10,24 +11,22 @@ export const metadata = pageMetadata(
 
 export default function Data() {
   return (
-    <Page title="Dataset cards">
-      <p style={{ ...bodyText, fontSize: "1.05rem", color: "var(--black)", marginTop: "1rem" }}>
-        ARI3 learns from, and is tested on, the items it collects and the editor&apos;s labels on
-        samples of them. Counts are dated because the corpus grows every 4 hours.
-      </p>
-      {DATASETS.map((d) => (
-        <Section key={d.name} title={d.name}>
-          <p style={{ ...bodyText, fontFamily: "ui-monospace, Menlo, Consolas, monospace", fontSize: "0.8rem" }}>{d.version}</p>
-          <dl style={{ display: "grid", gridTemplateColumns: "max-content minmax(0, 1fr)", gap: "0.6rem 1rem", margin: 0 }}>
-            {d.rows.map((r) => (
-              <div key={r.k} style={{ display: "contents" }}>
-                <dt style={{ color: "var(--gray)", fontFamily: "var(--font-franklin)", fontSize: "0.82rem" }}>{r.k}</dt>
-                <dd style={{ margin: 0, fontFamily: "var(--font-franklin)", fontSize: "0.9rem", lineHeight: 1.55 }}>{r.v}</dd>
-              </div>
-            ))}
-          </dl>
-        </Section>
-      ))}
-    </Page>
+    <Ari3Page label="Dataset cards" current="/ari3/data">
+      <div className="cards">
+        {DATASETS.map((d) => (
+          <article className="spec" key={d.name}>
+            <header><h2 style={{ fontSize: "24px", letterSpacing: "0.01em" }}>{d.name}</h2><span>{d.version}</span></header>
+            <dl>
+              {d.rows.map((r) => (
+                <Fragment key={r.k}>
+                  <dt>{r.k}</dt>
+                  <dd><Tx text={r.v} /></dd>
+                </Fragment>
+              ))}
+            </dl>
+          </article>
+        ))}
+      </div>
+    </Ari3Page>
   );
 }

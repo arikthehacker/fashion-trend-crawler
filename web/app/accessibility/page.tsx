@@ -12,13 +12,14 @@ export default function Accessibility() {
   return (
     <ProsePage
       title="Accessibility"
-      updated="2026-09-22"
+      updated="2026-11-24"
       sections={[
         { title: "Standard", body: [
           <>ARI3LLA INDEX aims to meet the <a href="https://www.w3.org/TR/WCAG22/" rel="noopener noreferrer">Web Content Accessibility Guidelines (WCAG) 2.2</a> at level AA.</>,
         ]},
         { title: "What is in place", body: [
-          "Every page has a skip link to the main content and the same navigation, with the current page announced to screen readers. Keyboard focus is always visible. Text colors meet AA contrast in light and dark mode. Layouts reflow to a single column on small screens. Nothing autoplays or animates, and reports can be read and printed as plain text.",
+          "Pages are set in near-black text on a paper-coloured background, in one serif for reading and one sans-serif for labels. Text contrast is at least 4.5:1. The photocopy texture is decorative and carries no content.",
+          "Every page has a skip link to the main content and the same navigation, with the current page announced to screen readers. Keyboard focus is shown with a visible outline. Long source lists are folded into ordinary disclosure elements (HTML details), which open with a keyboard or a screen reader like any other control. Layouts reflow to a single column on small screens. Nothing autoplays or animates, and reports can be read and printed as plain text.",
           "Accessibility rules are checked automatically on every change to the site's code.",
         ]},
         { title: "Known limitations", body: [
