@@ -1,0 +1,397 @@
+{
+ "editor_vs_thinking_off": {
+  "excluded": {},
+  "per_week": {
+   "2026-10-11": {
+    "n": 31,
+    "agreement": 0.6452,
+    "kappa": 0.0759,
+    "majority_baseline": 0.6452,
+    "majority_label": "keep",
+    "kept_editor": 20,
+    "kept_ai": 29,
+    "kept_jaccard": 0.6897
+   },
+   "2026-10-18": {
+    "n": 30,
+    "agreement": 0.7333,
+    "kappa": 0.0769,
+    "majority_baseline": 0.7333,
+    "majority_label": "keep",
+    "kept_editor": 22,
+    "kept_ai": 29,
+    "kept_jaccard": 0.7586
+   },
+   "2026-10-25": {
+    "n": 32,
+    "agreement": 0.8438,
+    "kappa": 0.0,
+    "majority_baseline": 0.8438,
+    "majority_label": "keep",
+    "kept_editor": 27,
+    "kept_ai": 32,
+    "kept_jaccard": 0.8438
+   },
+   "2026-11-01": {
+    "n": 29,
+    "agreement": 0.6207,
+    "kappa": 0.0245,
+    "majority_baseline": 0.6552,
+    "majority_label": "keep",
+    "kept_editor": 19,
+    "kept_ai": 27,
+    "kept_jaccard": 0.6429
+   },
+   "2026-11-08": {
+    "n": 34,
+    "agreement": 0.6471,
+    "kappa": 0.0445,
+    "majority_baseline": 0.6471,
+    "majority_label": "keep",
+    "kept_editor": 22,
+    "kept_ai": 33,
+    "kept_jaccard": 0.6667
+   },
+   "2026-11-15": {
+    "n": 31,
+    "agreement": 0.6129,
+    "kappa": 0.1164,
+    "majority_baseline": 0.6452,
+    "majority_label": "keep",
+    "kept_editor": 20,
+    "kept_ai": 27,
+    "kept_jaccard": 0.6786
+   },
+   "2026-11-22": {
+    "n": 29,
+    "agreement": 0.6552,
+    "kappa": 0.1496,
+    "majority_baseline": 0.6897,
+    "majority_label": "keep",
+    "kept_editor": 20,
+    "kept_ai": 25,
+    "kept_jaccard": 0.7308
+   }
+  },
+  "decision": {
+   "n": 216,
+   "agreement": 0.6806,
+   "kappa": 0.0793,
+   "majority_baseline": 0.6944,
+   "majority_label": "keep"
+  },
+  "keep_vs_not": {
+   "n": 216,
+   "agreement": 0.7315,
+   "kappa": 0.1882,
+   "majority_baseline": 0.6944,
+   "majority_label": true
+  },
+  "volatility_on_both_kept": {
+   "n": 147,
+   "agreement": 0.3605,
+   "kappa": 0.2255,
+   "majority_baseline": 0.3401,
+   "majority_label": "seasonal"
+  },
+  "merge_target_on_both_merged": {
+   "n": 0
+  },
+  "duplicates": {
+   "n": 8,
+   "agreement": 0.625,
+   "kappa": 0.1429,
+   "majority_baseline": 0.75,
+   "majority_label": true
+  },
+  "position_bias": {
+   "cards_decided_in_both_orders": 226,
+   "changed_under_swap": 26,
+   "share_changed": 0.115
+  },
+  "reported_separately": [
+   {
+    "week": "2026-10-11",
+    "card_id": "signal:sneaker",
+    "editor": "keep",
+    "ai": "keep",
+    "why": "decided before the plan"
+   },
+   {
+    "week": "2026-10-11",
+    "card_id": "signal:denim",
+    "editor": "keep",
+    "ai": "keep",
+    "why": "decided before the plan"
+   }
+  ],
+  "confusion": {
+   "drop->keep": 42,
+   "drop->merge": 1,
+   "drop->watchlist": 10,
+   "keep->keep": 147,
+   "keep->watchlist": 3,
+   "watchlist->keep": 13
+  }
+ },
+ "editor_vs_thinking_on": {
+  "excluded": {},
+  "per_week": {
+   "2026-10-11": {
+    "n": 31,
+    "agreement": 0.6129,
+    "kappa": 0.1206,
+    "majority_baseline": 0.6452,
+    "majority_label": "keep",
+    "kept_editor": 20,
+    "kept_ai": 26,
+    "kept_jaccard": 0.7037
+   },
+   "2026-10-18": {
+    "n": 30,
+    "agreement": 0.6667,
+    "kappa": 0.026,
+    "majority_baseline": 0.7333,
+    "majority_label": "keep",
+    "kept_editor": 22,
+    "kept_ai": 26,
+    "kept_jaccard": 0.6552
+   },
+   "2026-10-25": {
+    "n": 32,
+    "agreement": 0.8125,
+    "kappa": -0.0323,
+    "majority_baseline": 0.8438,
+    "majority_label": "keep",
+    "kept_editor": 27,
+    "kept_ai": 31,
+    "kept_jaccard": 0.8125
+   },
+   "2026-11-01": {
+    "n": 29,
+    "agreement": 0.6207,
+    "kappa": -0.0031,
+    "majority_baseline": 0.6552,
+    "majority_label": "keep",
+    "kept_editor": 19,
+    "kept_ai": 27,
+    "kept_jaccard": 0.6429
+   },
+   "2026-11-08": {
+    "n": 34,
+    "agreement": 0.6176,
+    "kappa": 0.009,
+    "majority_baseline": 0.6471,
+    "majority_label": "keep",
+    "kept_editor": 22,
+    "kept_ai": 32,
+    "kept_jaccard": 0.6364
+   },
+   "2026-11-15": {
+    "n": 31,
+    "agreement": 0.7097,
+    "kappa": 0.2639,
+    "majority_baseline": 0.6452,
+    "majority_label": "keep",
+    "kept_editor": 20,
+    "kept_ai": 28,
+    "kept_jaccard": 0.7143
+   },
+   "2026-11-22": {
+    "n": 29,
+    "agreement": 0.6207,
+    "kappa": -0.0224,
+    "majority_baseline": 0.6897,
+    "majority_label": "keep",
+    "kept_editor": 20,
+    "kept_ai": 26,
+    "kept_jaccard": 0.6429
+   }
+  },
+  "decision": {
+   "n": 216,
+   "agreement": 0.6667,
+   "kappa": 0.0711,
+   "majority_baseline": 0.6944,
+   "majority_label": "keep"
+  },
+  "keep_vs_not": {
+   "n": 216,
+   "agreement": 0.7037,
+   "kappa": 0.1325,
+   "majority_baseline": 0.6944,
+   "majority_label": true
+  },
+  "volatility_on_both_kept": {
+   "n": 141,
+   "agreement": 0.3475,
+   "kappa": 0.2349,
+   "majority_baseline": 0.3333,
+   "majority_label": "seasonal"
+  },
+  "merge_target_on_both_merged": {
+   "n": 0
+  },
+  "duplicates": {
+   "n": 8,
+   "agreement": 0.75,
+   "kappa": 0.5,
+   "majority_baseline": 0.75,
+   "majority_label": true
+  },
+  "position_bias": {
+   "cards_decided_in_both_orders": 0,
+   "changed_under_swap": 0,
+   "share_changed": null
+  },
+  "reported_separately": [
+   {
+    "week": "2026-10-11",
+    "card_id": "signal:sneaker",
+    "editor": "keep",
+    "ai": "keep",
+    "why": "decided before the plan"
+   },
+   {
+    "week": "2026-10-11",
+    "card_id": "signal:denim",
+    "editor": "keep",
+    "ai": "keep",
+    "why": "decided before the plan"
+   }
+  ],
+  "confusion": {
+   "drop->drop": 3,
+   "drop->keep": 43,
+   "drop->merge": 1,
+   "drop->watchlist": 6,
+   "keep->drop": 4,
+   "keep->keep": 141,
+   "keep->watchlist": 5,
+   "watchlist->keep": 12,
+   "watchlist->merge": 1
+  }
+ },
+ "thinking_off_vs_thinking_on": {
+  "decision": {
+   "n": 218,
+   "agreement": 0.8807,
+   "kappa": 0.1888,
+   "majority_baseline": 0.9358,
+   "majority_label": "keep"
+  },
+  "keep_vs_not": {
+   "n": 218,
+   "agreement": 0.8807,
+   "kappa": 0.1728,
+   "majority_baseline": 0.9358,
+   "majority_label": true
+  },
+  "volatility_on_both_kept": {
+   "n": 188,
+   "agreement": 0.6064,
+   "kappa": 0.4898,
+   "majority_baseline": 0.3511,
+   "majority_label": "seasonal"
+  },
+  "duplicates": {
+   "n": 8,
+   "agreement": 0.875,
+   "kappa": 0.75,
+   "majority_baseline": 0.625,
+   "majority_label": true
+  },
+  "per_week": {
+   "2026-10-11": {
+    "n": 33,
+    "agreement": 0.8485,
+    "kappa": 0.2326,
+    "majority_baseline": 0.9394,
+    "majority_label": "keep",
+    "kept_thinking_off": 31,
+    "kept_thinking_on": 28,
+    "kept_jaccard": 0.8438
+   },
+   "2026-10-18": {
+    "n": 30,
+    "agreement": 0.8333,
+    "kappa": -0.0345,
+    "majority_baseline": 0.9667,
+    "majority_label": "keep",
+    "kept_thinking_off": 29,
+    "kept_thinking_on": 26,
+    "kept_jaccard": 0.8333
+   },
+   "2026-10-25": {
+    "n": 32,
+    "agreement": 0.9688,
+    "kappa": 0.0,
+    "majority_baseline": 1.0,
+    "majority_label": "keep",
+    "kept_thinking_off": 32,
+    "kept_thinking_on": 31,
+    "kept_jaccard": 0.9688
+   },
+   "2026-11-01": {
+    "n": 29,
+    "agreement": 0.8621,
+    "kappa": -0.045,
+    "majority_baseline": 0.931,
+    "majority_label": "keep",
+    "kept_thinking_off": 27,
+    "kept_thinking_on": 27,
+    "kept_jaccard": 0.8621
+   },
+   "2026-11-08": {
+    "n": 34,
+    "agreement": 0.9706,
+    "kappa": 0.6531,
+    "majority_baseline": 0.9706,
+    "majority_label": "keep",
+    "kept_thinking_off": 33,
+    "kept_thinking_on": 32,
+    "kept_jaccard": 0.9697
+   },
+   "2026-11-15": {
+    "n": 31,
+    "agreement": 0.8387,
+    "kappa": 0.2289,
+    "majority_baseline": 0.871,
+    "majority_label": "keep",
+    "kept_thinking_off": 27,
+    "kept_thinking_on": 28,
+    "kept_jaccard": 0.8333
+   },
+   "2026-11-22": {
+    "n": 29,
+    "agreement": 0.8276,
+    "kappa": 0.2077,
+    "majority_baseline": 0.8621,
+    "majority_label": "keep",
+    "kept_thinking_off": 25,
+    "kept_thinking_on": 26,
+    "kept_jaccard": 0.8214
+   }
+  },
+  "excluded": {},
+  "changed_by_thinking": 26,
+  "confusion": {
+   "keep->drop": 7,
+   "keep->keep": 188,
+   "keep->merge": 2,
+   "keep->watchlist": 7,
+   "merge->keep": 1,
+   "watchlist->keep": 9,
+   "watchlist->watchlist": 4
+  }
+ },
+ "compared_at": "2026-11-25T01:41:46Z",
+ "code_sha256": {
+  "exp007.py": "c385e4f1d2e9f67840ecb644ea73ab34d8a90e383822b407788213b2cef21115",
+  "report_review.py": "19baa88443100e6e169ec675ed84597d65118bebb68bda10de86acc964895cc1",
+  "report_definitions.py": "8829fd608250bff1179a11a252fc687633858ac0ac31c18a0d84dab917857a18",
+  "llm_deepseek.py": "9ecf2e968bcc0b0d742826296edd9cd27f02f98ab857e993fb5da72747f84dc8",
+  "llm_provider.py": "30ae90f2854145ffc67e762f1d5dcc4024630ec7ec47e9e57f06e0f4041ce942",
+  "llm_deepseek_thinking.py": "c2a525147e2323726598190811420f0427952d5d6379d4aebf6746c6e5a57e30"
+ }
+}
