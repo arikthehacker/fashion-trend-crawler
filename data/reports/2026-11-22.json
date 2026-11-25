@@ -1,0 +1,4576 @@
+{
+  "report_date": "2026-11-22",
+  "collection_window": {
+    "start": "2026-11-16",
+    "end": "2026-11-22"
+  },
+  "sources_scanned": 78,
+  "items_collected": 4250,
+  "source_sector_breakdown": {
+    "editorial": 3811,
+    "trade_intelligence": 223,
+    "retail": 155,
+    "runway": 27,
+    "independent_criticism": 20,
+    "institutional": 10,
+    "resale": 4
+  },
+  "executive_summary": "In the window from 2026-11-16 to 2026-11-22, ARI3 collected 4,250 raw source records from 78 outlet domains. Final signal evidence was deduplicated so exact mirrors and syndicated or translated versions of the same publication count as one report evidence unit. The editor retained 20 signals. The largest by item count are sneaker (53 items from 12 outlets), denim (24 from 16) and vintage (20 from 16). Sneaker is concentrated, with 25 of its items from two outlets, and Mary Jane sneakers and 1990s styles recur within it. Denim and vintage are widely spread: denim leans on party-season coverage, and vintage on celebrity and royal dressing.\n\nLoafer (11 items from 7 outlets) centres on one BEAMS and adidas loafer, tailoring (11 from 11) appears one item per outlet, and minimalism has 11 items from 9 outlets. Burgundy, trench, streetwear and suede have 6 to 9 items each. The smaller clusters, with 2 to 4 items, are Gen Z, Mary Jane, wide-leg, bomber, leather jacket, leopard, maximalism, oversized, ballet flat and barrel leg. These are patterns in the sources ARI3 collects, which were 89.7% editorial in this window. They do not measure consumer adoption or what people wear.",
+  "top_signals": [
+    {
+      "signal_id": "sneaker",
+      "name": "sneaker",
+      "type": "footwear",
+      "source_sectors": [
+        "editorial",
+        "retail"
+      ],
+      "source_domains": [
+        "complex.com",
+        "gqitalia.it",
+        "highsnobiety.com",
+        "hypebae.com",
+        "hypebeast.com",
+        "marieclaire.com",
+        "stylerave.com",
+        "vogue.co.uk",
+        "vogue.de",
+        "vogue.it",
+        "whowhatwear.com",
+        "wwd.com"
+      ],
+      "source_corroboration_count": 12,
+      "confidence": "high",
+      "confidence_source": "derived",
+      "volatility": "stable",
+      "origin_classification": "unclear",
+      "evidence": "Release coverage dominates: Nike Air Max and Air Force 1 releases, Travis Scott's GTA 6 Air Force 1 in two items, Air Jordans including a Sashiko Air Jordan 1 with Social Status, NOCTA's Air Modmax, Nike with Zellerfeld, New Balance releases and Rosalía at a 990v7 launch, Golden Goose with D'YAVOL X and KITH with Star Wars and ASICS. Mary Jane sneakers from adidas and Nike recur. Trend items cover slimline and statement sneakers, 1990s sneakers in Italian-language Vogue Italia and German-language Vogue Germany headlines, and Black Friday Nike picks in Vogue Italia (translated). Princess Diana's Superga sneakers at auction and a guide for readers over sneakers complete the set.",
+      "index_note": "The signal has 53 items from 12 outlets, editorial 52 and retail 1, on every day of the window. highsnobiety.com contributes 16 items and hypebeast.com 9, so 25 of the 53 come from two outlets. The editor labeled it stable.",
+      "human_editor_note": "Editorial view: sneakers = forever.",
+      "evidence_items": [
+        {
+          "item_id": 36386,
+          "url": "https://hypebeast.com/2026/11/nocta-nike-air-modmax-pink-spell-iq6711-600-official-release-date",
+          "title": "Drake and Nike NOCTA's New Air Modmax Has an Official Release Date",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T01:34:34Z",
+          "retrieved_at": "2026-11-16T04:31:57Z",
+          "first_seen_at": "2026-11-16T04:31:57Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "ebc230480cc9d07816758c7dc0c7f3710ff62af0d7660e57729ba1ceb9ff723b",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8061,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 36791,
+          "url": "https://hypebeast.com/2026/11/one-block-down-nike-air-max-95-lux-italy-release-info",
+          "title": "Nike and One Block Down Elevate an Icon With the Air Max 95 Lux “Italy”",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T10:01:19Z",
+          "retrieved_at": "2026-11-16T20:31:25Z",
+          "first_seen_at": "2026-11-16T20:31:25Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "5d35432e7e0672450c69abf0e665042c0a6423f77099dd47c9e5fad129f807e6",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9354,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 36774,
+          "url": "https://hypebae.com/2026/11/nikeskims-retro-sport-collection-waffle-racer-campaign-activewear-veneda-carter-info-where-to-buy",
+          "title": "NikeSKIMS Launches the Retro Sport Collection",
+          "outlet_domain": "hypebae.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T17:45:26Z",
+          "retrieved_at": "2026-11-16T20:31:24Z",
+          "first_seen_at": "2026-11-16T20:31:24Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "c979178caa0cc6941e7fdf1cea42f63332d94582dec5ac76d03dd9dfbf12d84e",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9426,
+          "terms": [
+            "sneaker",
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 36764,
+          "url": "https://www.highsnobiety.com/p/nike-air-rift-hemp-camo",
+          "title": "Even in Camo, Nike’s Split-Toe Sneaker Refuses to Blend In",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T19:13:33Z",
+          "retrieved_at": "2026-11-16T20:31:22Z",
+          "first_seen_at": "2026-11-16T20:31:22Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "625c283d0c34ee959018008e3f3c99cbc0ab48564e796c3348dfd78cab422359",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9373,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 37044,
+          "url": "https://wwd.com/footwear-news/sneaker-news/beams-adidas-loafer-release-date-ki9246-hq0913-1239419501",
+          "title": "Beams and Adidas Made an Original Loafer That’s Practically No Part Sneaker",
+          "outlet_domain": "wwd.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T21:26:55Z",
+          "retrieved_at": "2026-11-17T00:30:52Z",
+          "first_seen_at": "2026-11-17T00:30:52Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "ad964ca89e52a7bb7657eff92c1de7c88bf42ff0bb665fc8725b7f1dea1f6bab",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9482,
+          "terms": [
+            "loafer",
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 37062,
+          "url": "https://www.highsnobiety.com/p/jordan-strada-sneakers",
+          "title": "Jordan’s Sporty-Casual Sneaker Belongs in the Skate Park",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T22:38:36Z",
+          "retrieved_at": "2026-11-17T00:31:18Z",
+          "first_seen_at": "2026-11-17T00:31:18Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "a6997eb01df4836cea8401ffba828aada1e04ac1105c8ffb1a6a06c6af8a8198",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9089,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 37063,
+          "url": "https://www.highsnobiety.com/p/adidas-anfu-mary-jane-shoes",
+          "title": "adidas’ Floral Mary Jane Sneaker Is a Work of Balletcore Art",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T22:51:13Z",
+          "retrieved_at": "2026-11-17T00:31:18Z",
+          "first_seen_at": "2026-11-17T00:31:18Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "5e399fead4cf0fa656c393a2687ef5102ae2c3223296d70f278b8bdab4b0db89",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8911,
+          "terms": [
+            "balletcore",
+            "mary-jane",
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 37136,
+          "url": "https://hypebeast.com/2026/11/atlantic-drift-new-balance-numeric-tom-knox-600-black-team-teal-un600atc-release-info",
+          "title": "Atlantic Drift and New Balance Unveil the Numeric Tom Knox 600",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T03:15:41Z",
+          "retrieved_at": "2026-11-17T04:31:22Z",
+          "first_seen_at": "2026-11-17T04:31:22Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "7a84b43396baa7466bdb9148e35855d0234a4b98ba0729536d297e94842310af",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8217,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 37135,
+          "url": "https://hypebeast.com/2026/11/social-status-air-jordan-1-low-og-sashiko-iu4982-600-first-look-release-info",
+          "title": "Social Status and Jordan Brand Reimagine the Air Jordan 1 Low OG With Sashiko Fabric",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T03:40:28Z",
+          "retrieved_at": "2026-11-17T04:31:22Z",
+          "first_seen_at": "2026-11-17T04:31:22Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "27e5830b03d0a293a46dffdfba5161c7e5e6f684c59b98ba0d4b4164aa1292ad",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8396,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 37473,
+          "url": "https://www.highsnobiety.com/p/the-seven-best-sneakers-to-cop-this-week-november-week-3",
+          "title": "From ASICS to adidas, the Seven Best Sneakers to Cop This Week",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T14:54:33Z",
+          "retrieved_at": "2026-11-17T16:31:18Z",
+          "first_seen_at": "2026-11-17T16:31:18Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "e92d4f510331d73c07a85483b47ec6db49fb2501cd4bacf16691e7564038fce4",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8572,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 37629,
+          "url": "https://wwd.com/footwear-news/sneaker-news/new-balance-204l-satin-pack-u204l9nj-u204l84r-1239421296",
+          "title": "New Balance’s Low-Profile 204L Sneaker Just Got a New Satin Update — but Not Everyone Can Buy It",
+          "outlet_domain": "wwd.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T18:51:27Z",
+          "retrieved_at": "2026-11-17T20:30:51Z",
+          "first_seen_at": "2026-11-17T20:30:51Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "34c51087abd24251c0c5d6317038a8fac6c14f2ff7b5112ee8b339d33c2bbc7a",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.884,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 37647,
+          "url": "https://www.highsnobiety.com/p/adidas-samba-og-mule-preloved-brown",
+          "title": "adidas' Formidable Samba Has Lost Its Heel but Found Its Fluff",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T19:58:01Z",
+          "retrieved_at": "2026-11-17T20:31:17Z",
+          "first_seen_at": "2026-11-17T20:31:17Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "2f233c4d21f58db0fd5ca8baf8dd90a7f9436bb9760ecc6290b61d8d0c45e802",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8165,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 37627,
+          "url": "https://wwd.com/footwear-news/sneaker-news/jordan-strada-skate-shoe-release-date-1239421379",
+          "title": "Jordan Brand Created a New Sneaker That Looks Like an Air Jordan 1 Low Remixed by Nike SB",
+          "outlet_domain": "wwd.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T20:11:06Z",
+          "retrieved_at": "2026-11-17T20:30:51Z",
+          "first_seen_at": "2026-11-17T20:30:51Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "caeabc5d12d275a4c6533d8b2761635654649d95772b63922bdca4fdd4e4df09",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9531,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 37778,
+          "url": "https://www.highsnobiety.com/p/adidas-handball-spezial-winter",
+          "title": "adidas’ Winterized Sneaker Is Part Hiker, All Spezial",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T22:32:55Z",
+          "retrieved_at": "2026-11-18T00:31:23Z",
+          "first_seen_at": "2026-11-18T00:31:23Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "e937c7778b0024a1b6c7fa7e75baf3a663a0d05775688a6436d1cfdac85314f9",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9108,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 37776,
+          "url": "https://www.highsnobiety.com/p/needles-vans-mountain-edition-vibram-shoes",
+          "title": "Vans’ Reborn Outdoor Sneaker Looks Good in Needles Streetwear",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T22:36:33Z",
+          "retrieved_at": "2026-11-18T00:31:23Z",
+          "first_seen_at": "2026-11-18T00:31:23Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "cae9a1903c0d3244bf7d055f656019f6d65f4c4c6d7be9fbee76722e21505799",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9742,
+          "terms": [
+            "sneaker",
+            "streetwear"
+          ]
+        },
+        {
+          "item_id": 37880,
+          "url": "https://wwd.com/footwear-news/sneaker-news/gta-6-travis-scott-nike-collection-release-date-1239421828",
+          "title": "Travis Scott’s ‘GTA 6’ x Nike Air Force 1s Will Release With Two Different Chances to Purchase",
+          "outlet_domain": "wwd.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T02:23:21Z",
+          "retrieved_at": "2026-11-18T04:30:52Z",
+          "first_seen_at": "2026-11-18T04:30:52Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "f6e5aab6abc426d4828ff8140b83685972c11f39233b71ce1d48104bc56d96f2",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8209,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 37937,
+          "url": "https://hypebeast.com/2026/11/travis-scott-gta-6-nike-air-force-1-low-apparel-collaboration-teaser-official-images-release-info",
+          "title": "Official Images of Collaborative Travis Scott and 'GTA 6'Nike Air Force 1 Low Plus Apparel Merch Leaked",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T07:10:29Z",
+          "retrieved_at": "2026-11-18T08:31:14Z",
+          "first_seen_at": "2026-11-18T08:31:14Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "45c52226e0d55062ddaaa10c4244296384662f30bad12ce4edc63e5af3a4006c",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9367,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 38451,
+          "url": "https://wwd.com/footwear-news/sneaker-news/new-balance-1890t-release-date-u18902da-u189090u-u18908mt-1239425059",
+          "title": "New Balance Is Remixing One of Its Newest Sneakers With a Medieval Aesthetic",
+          "outlet_domain": "wwd.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T16:24:19Z",
+          "retrieved_at": "2026-11-18T20:30:48Z",
+          "first_seen_at": "2026-11-18T20:30:48Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "063933313aa3eb39ec7bbd052630d5301164d415cf13ee3a744847e8a06b6045",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9796,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 38544,
+          "url": "https://www.vogue.co.uk/article/statement-trainer-trend",
+          "title": "The Statement Sneakers That Might Tempt You Away From White Trainers",
+          "outlet_domain": "vogue.co.uk",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T17:01:39Z",
+          "retrieved_at": "2026-11-18T20:32:22Z",
+          "first_seen_at": "2026-11-18T20:32:22Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "dc81e4a44244e1f33bdf750fb74dd7fc3f080b9afaecd60cc88adfc797478713",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9024,
+          "terms": [
+            "leopard",
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 38409,
+          "url": "https://www.complex.com/sneakers/a/victor-deng/nike-air-max-1000-by-you-november-2026-update",
+          "title": "New Customization Options Are Coming to the Nike Air Max 1000",
+          "outlet_domain": "complex.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T18:41:17Z",
+          "retrieved_at": "2026-11-18T20:30:18Z",
+          "first_seen_at": "2026-11-18T20:30:18Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "9136d0a41280c6b5c6c3fdf17b479aa5f14e99f038b62c2498cfe8b469511bba",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9194,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 38656,
+          "url": "https://www.stylerave.com/nnew-balance-1890t-retro-sneaker",
+          "title": "New Balance 1890T Reworks the Retro Sneaker With Medieval-Inspired Details",
+          "outlet_domain": "stylerave.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T21:42:12Z",
+          "retrieved_at": "2026-11-19T00:32:09Z",
+          "first_seen_at": "2026-11-19T00:32:09Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "9ebbb5b3de799ec156aea1083434d30d0576b342098d0987f7a3153ecf08ce86",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9678,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 38671,
+          "url": "https://www.whowhatwear.com/fashion/celebrity-style/flared-leggings-and-sneakers-winter-outfit-bella-hadid",
+          "title": "It Girls Are Wearing These Leggings With This Sneaker Color and This Jacket in Winter 2026",
+          "outlet_domain": "whowhatwear.com",
+          "sector": "retail",
+          "sector_group": "retail",
+          "published_at": "2026-11-18T23:38:50Z",
+          "retrieved_at": "2026-11-19T16:32:54Z",
+          "first_seen_at": "2026-11-19T00:32:44Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "2a41d9b3da01011b82e46b6cff0ecf548155b38ea52c99342b83b8c03e342704",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.996,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 38728,
+          "url": "https://hypebeast.com/2026/11/new-balance-992-black-turtledove-u992lb-release-info",
+          "title": "New Balance Adds Exposed Leather Trim to the 992 \"Black/Turtledove\"",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T01:35:08Z",
+          "retrieved_at": "2026-11-19T04:31:40Z",
+          "first_seen_at": "2026-11-19T04:31:40Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "ab847b4ea205c989e1eda45058bb6644cfcdfbf3def797d81d5051c95f7632ad",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9413,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 38930,
+          "url": "https://hypebeast.com/2026/11/air-jordan-11-low-golf-the-masters-first-look-release-info",
+          "title": "First Look at the Air Jordan 11 Low Golf \"The Masters\"",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T08:45:39Z",
+          "retrieved_at": "2026-11-19T12:31:30Z",
+          "first_seen_at": "2026-11-19T12:31:30Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "b43c3af173a6592ada7eb5426d4e8f3b633a444f984a81cfe1bb05f2dbf91658",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8705,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 38927,
+          "url": "https://hypebeast.com/2026/11/golden-goose-shah-rukh-khans-dyavol-x-debut-collaboration-release-info",
+          "title": "Golden Goose and Shah Rukh Khan's D'YAVOL X Unveil Debut Collaboration",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T11:30:39Z",
+          "retrieved_at": "2026-11-19T12:31:30Z",
+          "first_seen_at": "2026-11-19T12:31:30Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "e6d95df249b74b73ad20e6c4ec1555dccf0e60c247f193d6f9a231511b7b6044",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8203,
+          "terms": [
+            "sneaker",
+            "workwear"
+          ]
+        },
+        {
+          "item_id": 39207,
+          "url": "https://www.vogue.it/article/nike-black-friday-2026-migliori-offerte-sneakers-abbigliamento-sportivo",
+          "title": "Nike al Black Friday 2026: 20 must-have (non solo per la palestra) tra sneakers iconiche e capi sporty",
+          "outlet_domain": "vogue.it",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T12:44:09Z",
+          "retrieved_at": "2026-11-19T16:32:39Z",
+          "first_seen_at": "2026-11-19T16:32:39Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "9f524835abc36d13295866f5df020ef1ad05241df0b073c4988181e41a72534d",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9763,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 39131,
+          "url": "https://www.highsnobiety.com/p/nike-air-max-95-big-bubble-gore-tex",
+          "title": "Nike’s GORE-TEX Air Max Is Ready to Retire Your Winter Boots",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T13:20:00Z",
+          "retrieved_at": "2026-11-19T16:31:26Z",
+          "first_seen_at": "2026-11-19T16:31:26Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "910f17da00693bac88b519e33481f8faf71810528a72fe4d2775260f2e5e026d",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9843,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 39149,
+          "url": "https://www.marieclaire.com/fashion/winter-2026-sneaker-trends",
+          "title": "Your Winter Wardrobe Is Missing These 6 Sneaker Trends",
+          "outlet_domain": "marieclaire.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T14:00:00Z",
+          "retrieved_at": "2026-11-19T16:31:50Z",
+          "first_seen_at": "2026-11-19T16:31:50Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "ed37a2e785bbb89a7ffa4abcb7289360ed4d8d6c66aa25d378def9fc80b988a6",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9908,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 39176,
+          "url": "https://www.vogue.co.uk/article/slimline-sneaker-trend-winter-2026",
+          "title": "The Slimline Sneaker Will Survive The Winter",
+          "outlet_domain": "vogue.co.uk",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T14:41:04Z",
+          "retrieved_at": "2026-11-19T16:32:33Z",
+          "first_seen_at": "2026-11-19T16:32:33Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "fc6b908723919a2076a0d4b347229650dddf291c8c3a9d7bac093ddb3940ee2a",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9127,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 39130,
+          "url": "https://www.highsnobiety.com/p/nike-sneaker-releases-november-week-3",
+          "title": "The Best Nike Sneaker Releases This Week",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T15:19:22Z",
+          "retrieved_at": "2026-11-19T16:31:26Z",
+          "first_seen_at": "2026-11-19T16:31:26Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "abaebbc4f32a05461c82175c55ea7c94beb91b393b2325e3da10d0741ced3085",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8107,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 39158,
+          "url": "https://www.stylerave.com/kith-star-wars-asics-gel-lyte-iii-vader",
+          "title": "KITH, Star Wars, and ASICS Revive the 2008 GEL-Lyte III “Vader” Sneaker",
+          "outlet_domain": "stylerave.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T15:24:07Z",
+          "retrieved_at": "2026-11-20T08:31:42Z",
+          "first_seen_at": "2026-11-19T16:32:06Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "f1cde993837a08d789685e415673b56cbf800805a7bb87d85af8fb2263937d06",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8338,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 39344,
+          "url": "https://hypebae.com/2026/11/indie-footwear-brands-boots-heels-flats-ballet-shoes-miista-dirt-where-to-buy",
+          "title": "The Indie Footwear Brands to Know If You're Over Sneakers",
+          "outlet_domain": "hypebae.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T17:16:54Z",
+          "retrieved_at": "2026-11-19T20:31:22Z",
+          "first_seen_at": "2026-11-19T20:31:22Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "6d2d870c8fde4edd62e66ac283812cf683c9bd3a112b2da09db91d806a3a7109",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9672,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 39342,
+          "url": "https://hypebae.com/2026/11/nike-zellerfeld-3d-printed-airmax-1000-by-you-sneakers-where-to-buy",
+          "title": "Nike and Zellerfeld Are Back With More 3D-Printed AIRMAX 1000",
+          "outlet_domain": "hypebae.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T19:54:01Z",
+          "retrieved_at": "2026-11-19T20:31:22Z",
+          "first_seen_at": "2026-11-19T20:31:22Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "21daf28cf9782eea1f25615821744ec4a45c1d9bc37b7cdb414b559fe5eecbb7",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9242,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 39725,
+          "url": "https://www.highsnobiety.com/p/nike-caitlin-1-cave-stone",
+          "title": "Caitlin Clark's Nike Baller Gets a Textured Take on Neutrals",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T11:00:01Z",
+          "retrieved_at": "2026-11-20T12:31:09Z",
+          "first_seen_at": "2026-11-20T12:31:09Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "e231e288bbeacdb9775f134ab6690729011c750b79e6ac42504c0527dc9f0fd0",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9088,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 39912,
+          "url": "https://hypebeast.com/2026/11/new-arrivals-from-hbx-adidas-originals-8",
+          "title": "New Arrivals From HBX: adidas Originals",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T14:08:28Z",
+          "retrieved_at": "2026-11-20T16:31:37Z",
+          "first_seen_at": "2026-11-20T16:31:37Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "f5e0f20461c9b1902cd7653eab6ae05498feeb9506abbb6565ce06905979ee1b",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8188,
+          "terms": [
+            "sneaker",
+            "streetwear"
+          ]
+        },
+        {
+          "item_id": 39906,
+          "url": "https://www.highsnobiety.com/p/adidas-sneaker-releases-november-week-3",
+          "title": "The Seven Best adidas Sneaker Releases This Week",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T16:13:39Z",
+          "retrieved_at": "2026-11-20T16:31:34Z",
+          "first_seen_at": "2026-11-20T16:31:34Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "ddd058d1f710e8dd0a162246410b1a647ade9ddd79880cf7400bedb41c25e2b4",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8861,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 40025,
+          "url": "https://www.complex.com/sneakers/a/victor-deng/best-sneakers-available-at-foot-locker-right-now-nov-20-2026",
+          "title": "Best Sneakers Available on Foot Locker Right Now",
+          "outlet_domain": "complex.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T17:15:01Z",
+          "retrieved_at": "2026-11-20T20:30:24Z",
+          "first_seen_at": "2026-11-20T20:30:24Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "0ef263e67dc8cf61c76b280cf49b3fb2e277e7add64d68c0c92613862284e615",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9428,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 40057,
+          "url": "https://www.gqitalia.it/article/brioni-como-1907-guardaroba-stagione-2026/27",
+          "title": "Brioni fa ancora il tifo per il Como 1907 e firma il guardaroba della nuova stagione",
+          "outlet_domain": "gqitalia.it",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T17:38:06Z",
+          "retrieved_at": "2026-11-20T20:30:57Z",
+          "first_seen_at": "2026-11-20T20:30:57Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "dc819abd0407be84a2a2aa8a290bed6561175030ee809b85f3ff0b81de5ee7a0",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9818,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 40048,
+          "url": "https://wwd.com/footwear-news/sneaker-news/new-balance-990v7-rosalia-event-1239460428",
+          "title": "New Balance Surprised Fans With Rosalía Appearance at Launch Event for Its Sold-Out 990v7 Sneaker",
+          "outlet_domain": "wwd.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T18:31:01Z",
+          "retrieved_at": "2026-11-20T20:30:53Z",
+          "first_seen_at": "2026-11-20T20:30:53Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "8ddacccdd068af70cad106edec247a24214b97b26aae576a30b4fa278024e14f",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8428,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 40112,
+          "url": "https://www.stylerave.com/men-german-army-trainers",
+          "title": "10 Best German Army Trainers for Men Who Appreciate Understated Sneakers",
+          "outlet_domain": "stylerave.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T18:46:40Z",
+          "retrieved_at": "2026-11-21T04:31:51Z",
+          "first_seen_at": "2026-11-20T20:31:54Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "66c0d2a66487b004ce5bba464c9aa23c55c09d7e1864a2ebfeb0d06e7c3422e3",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9229,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 40132,
+          "url": "https://www.vogue.it/article/sneakers-anni-90-modelli-tendenza",
+          "title": "4 sneakers anni '90 che tornano nell'autunno 2026, eternamente cool",
+          "outlet_domain": "vogue.it",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T18:54:48Z",
+          "retrieved_at": "2026-11-20T20:32:26Z",
+          "first_seen_at": "2026-11-20T20:32:26Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "882fd506db486ceb67f5129df39fbbb23854f44927d023f07ab2aab686ef29fb",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.992,
+          "terms": [
+            "gen-z",
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 40047,
+          "url": "https://wwd.com/footwear-news/sneaker-news/nike-air-force-1-air-max-90-comfort-classics-1239460760",
+          "title": "Nike’s Iconic Air Force 1 and Air Max Sneakers Are Getting Upgraded in New Comfort Classics Line",
+          "outlet_domain": "wwd.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T20:01:22Z",
+          "retrieved_at": "2026-11-20T20:30:53Z",
+          "first_seen_at": "2026-11-20T20:30:53Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "d78ddda7ba9638feae0e3ee0a04a201c72b03843169b398875bb9008c13e0073",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9401,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 40074,
+          "url": "https://www.highsnobiety.com/p/jordan-11-space-jam-2026",
+          "title": "Nike’s OG \"Space Jam\" Air Jordans Still Hit After 30 Years",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T20:24:01Z",
+          "retrieved_at": "2026-11-21T00:31:19Z",
+          "first_seen_at": "2026-11-20T20:31:17Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "68326619a4272c58dd9e671e757bc6c0ddd5d6e012ecbdce2af5870f410e9b03",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8754,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 40189,
+          "url": "https://wwd.com/footwear-news/sneaker-news/air-jordan-release-date-calendar-december-2026-1239460421",
+          "title": "Every Air Jordan Sneaker Releasing in December",
+          "outlet_domain": "wwd.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T21:15:29Z",
+          "retrieved_at": "2026-11-21T00:30:54Z",
+          "first_seen_at": "2026-11-21T00:30:54Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "dd8413298e64785a2491601acc2cbfa14372923ab8ac9748dbf2d58ea05810da",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8619,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 40200,
+          "url": "https://www.highsnobiety.com/p/nike-air-force-1-quilted-black",
+          "title": "Nike’s Luxe Air Forces Are \"Chanel\" Bags for Your Feet",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T22:44:48Z",
+          "retrieved_at": "2026-11-21T00:31:19Z",
+          "first_seen_at": "2026-11-21T00:31:19Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "17116dc7c1699273745870977171704742ce35865973c7d1b8ed9a3863989b8d",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9682,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 40335,
+          "url": "https://www.vogue.it/article/sneakers-nike-scontate-black-friday-2026-modelli-da-comprare",
+          "title": "Sneakers Nike al Black Friday 2026, 7 modelli tra iconici e nuove proposte già indossate dalle celebrities",
+          "outlet_domain": "vogue.it",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-21T05:30:00Z",
+          "retrieved_at": "2026-11-21T08:32:30Z",
+          "first_seen_at": "2026-11-21T08:32:30Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "091fa4368c11132db775a9c64f3c4c6355befb27bf02a2100b78f3c4bb32fe5e",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9851,
+          "terms": [
+            "sneaker",
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 40352,
+          "url": "https://www.gqitalia.it/article/nike-ha-reso-le-air-max-goadome-delle-sneaker-invernali",
+          "title": "Nike ha reso le Air Max Goadome delle sneaker invernali",
+          "outlet_domain": "gqitalia.it",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-21T11:00:00Z",
+          "retrieved_at": "2026-11-21T12:30:52Z",
+          "first_seen_at": "2026-11-21T12:30:52Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "2624526111ec2a60eed9a6515ff2cb92bd27f0a6b5d246fbfb13a3bde911daf0",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9772,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 40368,
+          "url": "https://www.marieclaire.com/celebrity/royals/princess-diana-princess-kate-superga-sneakers-auction",
+          "title": "Princess Diana's Superga Sneakers Are Going Up for Auction",
+          "outlet_domain": "marieclaire.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-21T11:00:00Z",
+          "retrieved_at": "2026-11-21T12:31:28Z",
+          "first_seen_at": "2026-11-21T12:31:28Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "17b054cc2f72ca710439e6f2248e8ac4028aaaad37057a42fe3691e873427106",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9727,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 40461,
+          "url": "https://wwd.com/footwear-news/sneaker-news/air-jordan-4-retro-punk-release-date-jv3877-104-1239461510",
+          "title": "Michael Jordan’s Most Popular Air Jordan Sneaker Is Getting a New Punk Rock-Inspired Update",
+          "outlet_domain": "wwd.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-21T18:57:31Z",
+          "retrieved_at": "2026-11-21T20:30:51Z",
+          "first_seen_at": "2026-11-21T20:30:51Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "19665182df26c9aba16b3a0686f2efc730e359750599e8731db9ef0e601abe5b",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8873,
+          "terms": [
+            "punk",
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 40469,
+          "url": "https://www.highsnobiety.com/p/nike-shox-z-calistra-black-velvet",
+          "title": "Nike's Velvet Mary Jane Is a Cozy Lil' Ballerina Sneaker",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-21T20:04:39Z",
+          "retrieved_at": "2026-11-22T00:31:15Z",
+          "first_seen_at": "2026-11-21T20:31:19Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "bb29f71cd597a0e1e0c5688b6103fc5df28422ee51da8fb76a2b7a1423139625",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.953,
+          "terms": [
+            "mary-jane",
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 40563,
+          "url": "https://www.vogue.de/artikel/sneaker-90er-trend-herbst-winter-2026",
+          "title": "5 Sneaker aus den 90er-Jahren, die im Herbst/Winter wieder im Trend liegen",
+          "outlet_domain": "vogue.de",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-22T06:56:00Z",
+          "retrieved_at": "2026-11-22T08:32:08Z",
+          "first_seen_at": "2026-11-22T08:32:08Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "5c59fa76aab92c0c61bafd2b927e36a813fba752ea27e2f998b4ad3f45d70294",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9929,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 40685,
+          "url": "https://www.highsnobiety.com/p/nike-ovolo-2-black",
+          "title": "A Weird '00s Nike Runner Returns as a Proper Sneaker-Heel",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-22T18:11:30Z",
+          "retrieved_at": "2026-11-22T20:31:15Z",
+          "first_seen_at": "2026-11-22T20:31:15Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "2f91f22a6b3c028ec936aa3f31d747e531d514f37517f19c037d9b57bd4ec1ed",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9128,
+          "terms": [
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 40732,
+          "url": "https://www.highsnobiety.com/p/nati-lopez-adidas-superstar-ii-shoes",
+          "title": "adidas’ Steel-Toe Superstar Works Hard, Flexes Harder",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-22T21:10:37Z",
+          "retrieved_at": "2026-11-23T00:31:13Z",
+          "first_seen_at": "2026-11-23T00:31:13Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "43f14843ba569f6c682e8d5299265f35da8f19c771d57dd76f5475613d51a450",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9092,
+          "terms": [
+            "sneaker",
+            "vintage"
+          ]
+        }
+      ]
+    },
+    {
+      "signal_id": "denim",
+      "name": "denim",
+      "type": "material",
+      "source_sectors": [
+        "editorial",
+        "retail",
+        "runway",
+        "trade_intelligence"
+      ],
+      "source_domains": [
+        "apparelresources.com",
+        "complex.com",
+        "elle.com",
+        "fashionweekonline.com",
+        "gq.com",
+        "graziadaily.co.uk",
+        "harpersbazaar.com",
+        "hellomagazine.com",
+        "hypebeast.com",
+        "marieclaire.com",
+        "robbreport.com",
+        "stylist.co.uk",
+        "vogue.co.uk",
+        "vogue.mx",
+        "whowhatwear.com",
+        "wwd.com"
+      ],
+      "source_corroboration_count": 16,
+      "confidence": "high",
+      "confidence_source": "derived",
+      "volatility": "stable",
+      "origin_classification": "unclear",
+      "evidence": "Several items tie denim to party season: party jeans, denim with party trends and festive trends. Skirts, colours and cuts recur in denim skirts for winter, denim midi skirts, espresso and brown denim, dark indigo jeans, bootcut jeans and cocoon jeans presented as replacing barrel jeans. Double denim appears in Bella Hadid's look, a trade item on the fitted denim jacket and Hublot watches with Canadian tuxedos, and denim also appears at the CMA Awards. Brand items cover Slam Jam with Levi's, Levi's with L'Art de L'Automobile, Engineered Garments with NANGA, an Air Jordan 1 for Japanese-denim fans and a Spanish-language Vogue Mexico piece on Levi's Denim Reimagined with Mexican designers (translated).",
+      "index_note": "The signal has 24 items from 16 outlets, editorial 20, retail 2, trade intelligence 1 and runway 1, on every day of the window, with hypebeast.com contributing 4. The editor labeled it stable.",
+      "human_editor_note": "Editorial view: denim = forever.",
+      "evidence_items": [
+        {
+          "item_id": 36743,
+          "url": "https://www.harpersbazaar.com/uk/fashion/a74437311/best-embellished-party-jeans",
+          "title": "'Party' jeans will replace your little black dress: shop 12 easy, flattering pairs now",
+          "outlet_domain": "harpersbazaar.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T12:39:00Z",
+          "retrieved_at": "2026-11-16T20:31:13Z",
+          "first_seen_at": "2026-11-16T20:31:13Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "0d54d7bf2e36bc69196b5ba00fa4532531020c23345193c4ebff67e7f081332f",
+          "lang": "unknown",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9872,
+          "terms": [
+            "denim"
+          ]
+        },
+        {
+          "item_id": 36855,
+          "url": "https://www.stylist.co.uk/fashion/all-decked-out-3-fashion-festive-trends-were-shopping-this-season/1127097",
+          "title": "All Decked Out: 3 fashion festive trends we’re shopping this season",
+          "outlet_domain": "stylist.co.uk",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T15:18:51Z",
+          "retrieved_at": "2026-11-16T20:32:03Z",
+          "first_seen_at": "2026-11-16T20:32:03Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "53feacbf6ee8de02cfe6f3de3c8cf06a0629b282fec1c1644460df18eff7e864",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9854,
+          "terms": [
+            "denim"
+          ]
+        },
+        {
+          "item_id": 37307,
+          "url": "https://hypebeast.com/2026/11/slam-jam-levis-star-studded-custom-denim-collaboration-collection-release-info",
+          "title": "Slam Jam and Levi’s Reunite for a Star-Studded Custom Denim Collection",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T09:05:33Z",
+          "retrieved_at": "2026-11-17T12:31:24Z",
+          "first_seen_at": "2026-11-17T12:31:24Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "2430edf3fd6f24cfebf674f2b063e48403baab9617b5014ea0be11bd22950ba0",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8495,
+          "terms": [
+            "denim"
+          ]
+        },
+        {
+          "item_id": 37471,
+          "url": "https://www.hellomagazine.com/shopping/935490/cat-deeley-cord-boden-shirt-get-the-look",
+          "title": "Bored of denim? Cat Deeley's pumpkin spice shirt is your cold weather alternative",
+          "outlet_domain": "hellomagazine.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T12:32:27Z",
+          "retrieved_at": "2026-11-17T16:31:17Z",
+          "first_seen_at": "2026-11-17T16:31:17Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "7ff668dd612a3df476d71f4afcd412410ea95e5755a32d3731b6f5cb1dcb09de",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9329,
+          "terms": [
+            "denim"
+          ]
+        },
+        {
+          "item_id": 37505,
+          "url": "https://www.vogue.co.uk/article/how-to-wear-a-denim-skirt",
+          "title": "I’ll Be Wearing A Denim Skirt All Winter –  Here's How To Style One Now",
+          "outlet_domain": "vogue.co.uk",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T14:54:55Z",
+          "retrieved_at": "2026-11-17T16:32:23Z",
+          "first_seen_at": "2026-11-17T16:32:23Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "bfce0cf2176228c28b120e7320a63b54341083c53d802c4b24648b9c7a599182",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9949,
+          "terms": [
+            "denim"
+          ]
+        },
+        {
+          "item_id": 37449,
+          "url": "https://graziadaily.co.uk/fashion/trends/expresso-brown-jeans",
+          "title": "Espresso Jeans Are Brewing Up A Fashion Moment This Autumn",
+          "outlet_domain": "graziadaily.co.uk",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T15:06:17Z",
+          "retrieved_at": "2026-11-17T16:31:04Z",
+          "first_seen_at": "2026-11-17T16:31:04Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "457071dca29b8d08f5a2a9fd91faee437a585cb727d4faa30d80955419e0f41e",
+          "lang": "en-gb",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9147,
+          "terms": [
+            "denim"
+          ]
+        },
+        {
+          "item_id": 37426,
+          "url": "https://www.gq.com/story/social-status-air-jordan-1-low-sashiko-11-17-2026",
+          "title": "Nike Made an Air Jordan 1 for Guys Who Love Japanese Denim",
+          "outlet_domain": "gq.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T15:51:57Z",
+          "retrieved_at": "2026-11-17T16:30:54Z",
+          "first_seen_at": "2026-11-17T16:30:54Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "03b4cdabe472b35ad9c068f83fc7d3688dfcb402dbeb2466cdc86214e69689fc",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8781,
+          "terms": [
+            "denim"
+          ]
+        },
+        {
+          "item_id": 37664,
+          "url": "https://www.marieclaire.com/fashion/cocoon-leg-jeans-trend",
+          "title": "Cocoon Jeans Are About to Make Barrel Jeans Obsolete",
+          "outlet_domain": "marieclaire.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T19:03:02Z",
+          "retrieved_at": "2026-11-17T20:31:36Z",
+          "first_seen_at": "2026-11-17T20:31:36Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "058ffe0c6fb3f8029d5e3cad2831361bf7a90e030fe764d4d0f291b458ee49e2",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9868,
+          "terms": [
+            "barrel-leg",
+            "denim"
+          ]
+        },
+        {
+          "item_id": 37979,
+          "url": "https://www.whowhatwear.com/fashion/outfit-ideas/party-outfits-with-jeans-2026",
+          "title": "Not \"Jeans and a Nice Top\": 5 Trends Fashion Types Are Wearing With Denim This Party Season",
+          "outlet_domain": "whowhatwear.com",
+          "sector": "retail",
+          "sector_group": "retail",
+          "published_at": "2026-11-18T08:00:00Z",
+          "retrieved_at": "2026-11-18T08:32:29Z",
+          "first_seen_at": "2026-11-18T08:32:29Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "d5f3b307fb10637dcc228afab090d4e01ac45bbcd3cf67465da652f8181911ec",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9931,
+          "terms": [
+            "denim"
+          ]
+        },
+        {
+          "item_id": 38319,
+          "url": "https://robbreport.com/style/watch-collector/hublot-denim-big-bang-watch-collection-1238845708",
+          "title": "Hublot’s Newest Big Bang Watches Rock Canadian Tuxedos",
+          "outlet_domain": "robbreport.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T13:00:00Z",
+          "retrieved_at": "2026-11-18T16:32:30Z",
+          "first_seen_at": "2026-11-18T16:32:30Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "a76e77eaec4bea60ff4002b899d91ed6113460768aec19c00ccaf433930677f4",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9666,
+          "terms": [
+            "denim"
+          ]
+        },
+        {
+          "item_id": 39019,
+          "url": "https://apparelresources.com/fashion-news/trends/denim-denim-fitted-jacket-takes-charge-w-26",
+          "title": "Denim on Denim: The Fitted Jacket Takes Charge in A/W 26",
+          "outlet_domain": "apparelresources.com",
+          "sector": "trade_intelligence",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T12:30:14Z",
+          "retrieved_at": "2026-11-19T16:30:06Z",
+          "first_seen_at": "2026-11-19T16:30:06Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "ab356cb095a981007ba6f2c9ab8975b61ec818b09e47165858ee3b39982369ef",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.988,
+          "terms": [
+            "denim"
+          ]
+        },
+        {
+          "item_id": 39140,
+          "url": "https://hypebeast.com/2026/11/best-drops-november-week-2-supreme-dickies-palace-bape-beams-gta-6-nike",
+          "title": "8 Drops You Don't Want to Miss This Week",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T13:30:50Z",
+          "retrieved_at": "2026-11-19T16:31:29Z",
+          "first_seen_at": "2026-11-19T16:31:29Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "dca30cdf37f98dc829bc6db8177cb60fc1d845433d30b70e9192c7de02ebeee8",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8998,
+          "terms": [
+            "denim",
+            "loafer"
+          ]
+        },
+        {
+          "item_id": 39162,
+          "url": "https://www.stylist.co.uk/fashion/best-brown-denim/1127869",
+          "title": "From caramel to coffee, brown denim is everywhere right now. These are the 8 items to have on your radar",
+          "outlet_domain": "stylist.co.uk",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T13:35:01Z",
+          "retrieved_at": "2026-11-19T16:32:12Z",
+          "first_seen_at": "2026-11-19T16:32:12Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "f4cb4a3b1d4ceb3df0de375cef080c2aa8c3228517a7a4bb2cb8901e585f894c",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.864,
+          "terms": [
+            "denim"
+          ]
+        },
+        {
+          "item_id": 39088,
+          "url": "https://fashionweekonline.com/how-to-build-a-timeless-wardrobe-without-overspending-this-black-friday",
+          "title": "How to Build a Timeless Wardrobe Without Overspending This Black Friday",
+          "outlet_domain": "fashionweekonline.com",
+          "sector": "runway",
+          "sector_group": "designer_runway",
+          "published_at": "2026-11-19T13:37:12Z",
+          "retrieved_at": "2026-11-19T16:30:42Z",
+          "first_seen_at": "2026-11-19T16:30:42Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "361f1eed5542b4c73129eb160f9e7c752a394217cfbf49e7352063bc5d797364",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9871,
+          "terms": [
+            "denim"
+          ]
+        },
+        {
+          "item_id": 39055,
+          "url": "https://www.elle.com/fashion/shopping/a74455647/best-indigo-jeans-trend",
+          "title": "Dark Indigo Jeans Are Making a Chic Comeback",
+          "outlet_domain": "elle.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T14:00:00Z",
+          "retrieved_at": "2026-11-19T16:30:29Z",
+          "first_seen_at": "2026-11-19T16:30:29Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "b3451cb71628a54318f5b909707b94fb1a41ab577f56a8b884b9491f37cfb2c7",
+          "lang": "unknown",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9505,
+          "terms": [
+            "denim"
+          ]
+        },
+        {
+          "item_id": 39173,
+          "url": "https://www.vogue.co.uk/article/how-to-style-bootcut-jeans-street-style",
+          "title": "How To Style Bootcut Jeans In 2026, Inspired By The Street-Style Set",
+          "outlet_domain": "vogue.co.uk",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T15:32:03Z",
+          "retrieved_at": "2026-11-19T16:32:33Z",
+          "first_seen_at": "2026-11-19T16:32:33Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "c6ccb1d0d0b417ceefd27d0e749075955c8342b4072ac0a3cead5857c9811ba4",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9799,
+          "terms": [
+            "denim"
+          ]
+        },
+        {
+          "item_id": 39421,
+          "url": "https://wwd.com/sourcing-journal/sj-denim/cma-awards-2026-hot-pants-double-denim-statement-jeans-1239428185",
+          "title": "Denim Makes a Bold Statement at the 2026 CMA Awards",
+          "outlet_domain": "wwd.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T20:00:00Z",
+          "retrieved_at": "2026-11-19T20:32:45Z",
+          "first_seen_at": "2026-11-19T20:32:45Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "eb9321a06fa393398716fa0e9b1ca97c535a6f21a85411987d199c5d7e3a939b",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.92,
+          "terms": [
+            "denim"
+          ]
+        },
+        {
+          "item_id": 39454,
+          "url": "https://www.complex.com/style/a/mike-destefano/best-elevated-essentials-gift-guide-holiday-2026",
+          "title": "The Best Elevated Essentials to Gift This Holiday Season",
+          "outlet_domain": "complex.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T20:43:26Z",
+          "retrieved_at": "2026-11-20T00:30:19Z",
+          "first_seen_at": "2026-11-20T00:30:19Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "e2d835bfd395ec0360cf311ebf857f6debd39a40f2681e994bc79d301c0fff3a",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8979,
+          "terms": [
+            "denim"
+          ]
+        },
+        {
+          "item_id": 39556,
+          "url": "https://hypebeast.com/2026/11/levis-lart-de-lautomobile-new-capsule-release-info",
+          "title": "Levi's and L'Art de L'Automobile Merge Car Culture and Denim in New Collection",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T03:14:01Z",
+          "retrieved_at": "2026-11-20T04:31:25Z",
+          "first_seen_at": "2026-11-20T04:31:25Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "a25fe6df5c91edba6f02a0fbf9ebcbfdfba63f57d1afb920cb8c7c235920f599",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8287,
+          "terms": [
+            "denim"
+          ]
+        },
+        {
+          "item_id": 39897,
+          "url": "https://www.harpersbazaar.com/celebrity/latest/a74490189/bella-hadid-double-denim-outfit-aspen-colorado-nathan-lacy-photos",
+          "title": "Bella Hadid Is the Coolest Mountain Girl in a Double-Denim Getup",
+          "outlet_domain": "harpersbazaar.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T16:03:25Z",
+          "retrieved_at": "2026-11-20T16:31:06Z",
+          "first_seen_at": "2026-11-20T16:31:06Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "801343f90b704dded74700d9d1c9dcf347c9ccaa435281a89bd8f63e614458d4",
+          "lang": "unknown",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9091,
+          "terms": [
+            "chocolate-brown",
+            "denim"
+          ]
+        },
+        {
+          "item_id": 40304,
+          "url": "https://hypebeast.com/2026/11/engineered-garments-nanga-fall-winter-fw-2026-collaboration-collection-release-info",
+          "title": "Engineered Garments x NANGA Stuff 770-Fill Down Into Denim and Corduroy for FW26",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-21T06:00:44Z",
+          "retrieved_at": "2026-11-21T08:31:26Z",
+          "first_seen_at": "2026-11-21T08:31:26Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "721c7ded84c4f31bebcb9695ece26acf13e213b2b070d3fd3824ed9f0e785c87",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9894,
+          "terms": [
+            "denim"
+          ]
+        },
+        {
+          "item_id": 40361,
+          "url": "https://www.harpersbazaar.com/uk/fashion/a74463954/best-long-denim-skirts-winter",
+          "title": "Denim midi skirts will replace all of your jeans this winter: here are 6 of the best to buy now",
+          "outlet_domain": "harpersbazaar.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-21T09:00:00Z",
+          "retrieved_at": "2026-11-21T12:31:07Z",
+          "first_seen_at": "2026-11-21T12:31:07Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "f1ec1d268446969d837ee9d6106076d7477e19dcd0d8a24b3f5031890ad654db",
+          "lang": "unknown",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9979,
+          "terms": [
+            "denim"
+          ]
+        },
+        {
+          "item_id": 40578,
+          "url": "https://www.whowhatwear.com/fashion/denim/jeans-trends-winter-2026",
+          "title": "Your Outfits Aren’t Boring, But *Maybe* Your Jeans Are—5 New Denim Trends That'll Change Everything",
+          "outlet_domain": "whowhatwear.com",
+          "sector": "retail",
+          "sector_group": "retail",
+          "published_at": "2026-11-22T07:30:00Z",
+          "retrieved_at": "2026-11-22T08:32:22Z",
+          "first_seen_at": "2026-11-22T08:32:22Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "ba8fd7bfc3b9379c693d18aec7c920f67b2182e778b8bf56a1b2c207c731a546",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9338,
+          "terms": [
+            "denim"
+          ]
+        },
+        {
+          "item_id": 40712,
+          "url": "https://www.vogue.mx/galeria/levis-denim-reimagined-disenadores",
+          "title": "Así es como 13 diseñadores mexicanos transformaron la mezclilla en el desfile de  Levi's Denim Reimagined",
+          "outlet_domain": "vogue.mx",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-22T18:06:47Z",
+          "retrieved_at": "2026-11-22T20:32:02Z",
+          "first_seen_at": "2026-11-22T20:32:02Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "5f81a67979cc3fb7d7bf1427722825805114646ace5eef0a5e0b2d723eb3e308",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8868,
+          "terms": [
+            "denim"
+          ]
+        }
+      ]
+    },
+    {
+      "signal_id": "vintage",
+      "name": "vintage",
+      "type": "commerce_language",
+      "source_sectors": [
+        "editorial",
+        "independent_criticism"
+      ],
+      "source_domains": [
+        "blackbirdspyplane.com",
+        "elle.com",
+        "gqitalia.it",
+        "hellomagazine.com",
+        "highsnobiety.com",
+        "hypebae.com",
+        "hypebeast.com",
+        "marieclaire.com",
+        "refinery29.com",
+        "vogue.co.uk",
+        "vogue.com",
+        "vogue.de",
+        "vogue.it",
+        "voguearabia.com",
+        "wallpaper.com",
+        "wwd.com"
+      ],
+      "source_corroboration_count": 16,
+      "confidence": "high",
+      "confidence_source": "derived",
+      "volatility": "emerging",
+      "origin_classification": "unclear",
+      "evidence": "Celebrity and royal dressing recur: Zendaya's revived 2000s gold dress at the Governors Awards, Chloë Sevigny's vintage looks in Vogue UK and a separate German-language Vogue Germany photo story (translated), photos of a young Meg Ryan, and three Kate Middleton items, one in Italian-language Vogue Italia (translated). A bride's vintage Jil Sander look appears in a German-language Vogue Germany headline (translated). Brand items cover J.Crew's Miles Davis collection, NikeSKIMS's retro collection, Fear of God's fall 2027 collection and an adidas Superstar, and gift guides, T-strap sandals and party jeans complete the set. One item is about hair and one about a car.",
+      "index_note": "The signal has 20 items from 16 outlets, editorial 19 and independent criticism 1, on every day of the window, with no outlet contributing more than 2. The editor labeled it emerging.",
+      "human_editor_note": "Editorial view: interesting emergence this winter???? Huh, soooo digging it???",
+      "evidence_items": [
+        {
+          "item_id": 36470,
+          "url": "https://www.vogue.co.uk/article/zendaya-governors-awards-2026",
+          "title": "Zendaya Revives A 2000s Golden Dress At The 2026 Governors Awards",
+          "outlet_domain": "vogue.co.uk",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T07:15:32Z",
+          "retrieved_at": "2026-11-16T08:31:58Z",
+          "first_seen_at": "2026-11-16T08:31:58Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "bce1081e123c4491f03f1fc0f45616667f03a2279dbd74398d79893a0ea030eb",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9216,
+          "terms": [
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 36603,
+          "url": "https://www.elle.com/beauty/a74273007/vintage-curls-for-mature-hair-styling-tips",
+          "title": "Vintage Curls Are Back, and They’re Perfect for Adding Volume and Thickness to 50+ Hair",
+          "outlet_domain": "elle.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T12:58:18Z",
+          "retrieved_at": "2026-11-16T20:30:32Z",
+          "first_seen_at": "2026-11-16T20:30:32Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "372cba5c19e2d3007a01b98eb05f594deda3836fa443ee3841fb977f503ca5ba",
+          "lang": "unknown",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8526,
+          "terms": [
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 36907,
+          "url": "https://www.vogue.de/galerie/diese-braut-trug-einen-vintage-look-von-jil-sander-und-verband-bei-ihrer-hochzeit-bengalische-traditionen-mit-90er-minimalismus",
+          "title": "Diese Braut trug einen Vintage-Look von Jil Sander – und verband bei ihrer Hochzeit bengalische Traditionen mit 90er-Minimalismus",
+          "outlet_domain": "vogue.de",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T13:50:00Z",
+          "retrieved_at": "2026-11-16T20:32:30Z",
+          "first_seen_at": "2026-11-16T20:32:30Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "d72633c837c22487bb4a68bc4ae430ebdef05dfb6da655547eda37a67390fd7a",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8759,
+          "terms": [
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 36774,
+          "url": "https://hypebae.com/2026/11/nikeskims-retro-sport-collection-waffle-racer-campaign-activewear-veneda-carter-info-where-to-buy",
+          "title": "NikeSKIMS Launches the Retro Sport Collection",
+          "outlet_domain": "hypebae.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T17:45:26Z",
+          "retrieved_at": "2026-11-16T20:31:24Z",
+          "first_seen_at": "2026-11-16T20:31:24Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "c979178caa0cc6941e7fdf1cea42f63332d94582dec5ac76d03dd9dfbf12d84e",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9426,
+          "terms": [
+            "sneaker",
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 37221,
+          "url": "https://www.voguearabia.com/article/t-straps-vintage-inspired-shoe",
+          "title": "T–Strap Sandals: The Vintage–Inspired Shoe Style to Know This Season",
+          "outlet_domain": "voguearabia.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T06:01:54Z",
+          "retrieved_at": "2026-11-17T08:32:16Z",
+          "first_seen_at": "2026-11-17T08:32:16Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "7d5ed556c2840cd8ff06c18f0175becb598867760fb2716adc5d1d4e289fd102",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.993,
+          "terms": [
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 37698,
+          "url": "https://www.vogue.it/article/kate-middleton-abito-royal-blue-borsa-demellier-marrone-caffe-outfit-17-11-2026",
+          "title": "Kate Middleton aggiorna l'abito Royal Blue con la mini borsa DeMellier color caffè",
+          "outlet_domain": "vogue.it",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T17:47:49Z",
+          "retrieved_at": "2026-11-17T20:32:26Z",
+          "first_seen_at": "2026-11-17T20:32:26Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "9f5a7396139b446501dd4850ea061a17df6ad0c6aefd9db2ac2d60585f829762",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9404,
+          "terms": [
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 37952,
+          "url": "https://www.refinery29.com/en-us/yes-these-jeans-are-perfect-for-every-holiday-party",
+          "title": "Yes, Party Jeans Are A Thing — And These $54 Ones Are Cool-Girl Approved",
+          "outlet_domain": "refinery29.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T17:51:07Z",
+          "retrieved_at": "2026-11-18T08:31:36Z",
+          "first_seen_at": "2026-11-18T08:31:36Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "0b994a16f8183f3de969ed66e537b608cdd5e7effcabfa670704dfeb874144f9",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9884,
+          "terms": [
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 37967,
+          "url": "https://www.vogue.co.uk/gallery/chloe-sevigny-vintage-looks",
+          "title": "11 Of Chloë Sevigny’s Best Vintage Looks To Date",
+          "outlet_domain": "vogue.co.uk",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T07:00:00Z",
+          "retrieved_at": "2026-11-18T08:32:08Z",
+          "first_seen_at": "2026-11-18T08:32:08Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "9909c0d21746b4903763dcadc128e2b22543f023b7ed1f5e675ae041638fc591",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9786,
+          "terms": [
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 38342,
+          "url": "https://www.vogue.de/galerie/chloe-sevigny-vintage-fotos",
+          "title": "Chloë Sevigny: Die 50 schönsten Vintage-Fotos der Schauspielerin",
+          "outlet_domain": "vogue.de",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T15:41:09Z",
+          "retrieved_at": "2026-11-18T16:33:22Z",
+          "first_seen_at": "2026-11-18T16:33:22Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "857a9cbd2336d264d3790442fa12b04c978fd3caa78bd1f509005792292ca024",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8049,
+          "terms": [
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 38264,
+          "url": "https://www.gqitalia.it/article/gq-men-of-the-year-2026-migliori-orologi",
+          "title": "GQ Men of the Year 2026, ecco i 21 migliori orologi indossati per l'evento",
+          "outlet_domain": "gqitalia.it",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T15:50:51Z",
+          "retrieved_at": "2026-11-18T16:31:00Z",
+          "first_seen_at": "2026-11-18T16:31:00Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "95291bbe67e3b1c5f64d6fb00792cf4148379bf8b1b0c76520cbf2b0ee5525c9",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9357,
+          "terms": [
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 38505,
+          "url": "https://www.marieclaire.com/celebrity/royals/princess-kate-indian-trouser-suit-red-emilia-wickstead-dress",
+          "title": "Princess Kate Trades Her Bollywood Bling for a Vintage-Inspired Dress",
+          "outlet_domain": "marieclaire.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T16:58:23Z",
+          "retrieved_at": "2026-11-18T20:31:40Z",
+          "first_seen_at": "2026-11-18T20:31:40Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "2f4c141058886f3f89afe132a589d4d05ec9226fd82a30e928f0e61ff2fe7b9c",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9363,
+          "terms": [
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 38842,
+          "url": "https://wwd.com/runway/fall-2027/milan/fear-of-god/review",
+          "title": "Fear of God Fall 2027: Easy Does It",
+          "outlet_domain": "wwd.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T05:01:00Z",
+          "retrieved_at": "2026-11-19T08:32:39Z",
+          "first_seen_at": "2026-11-19T08:32:39Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "bb6db3d6fd96aec6bb2ffecfc650c747f38e74d080ae5b1021d52f705b2b0a56",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.846,
+          "terms": [
+            "tailoring",
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 38969,
+          "url": "https://www.vogue.com/slideshow/vintage-pictures-of-meg-ryan",
+          "title": "29 Vintage Photos of a Young Meg Ryan, Fall Style Icon",
+          "outlet_domain": "vogue.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T11:00:00Z",
+          "retrieved_at": "2026-11-19T12:32:32Z",
+          "first_seen_at": "2026-11-19T12:32:32Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "1bceddc0b94e0b20a66cdf98b216b44cc8bb3036a30afb155d9f3a4ff10a7bcb",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8865,
+          "terms": [
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 38853,
+          "url": "https://www.blackbirdspyplane.com/p/the-gifts-list-2026-rare-gems",
+          "title": "The G.I.F.T.S. List 2026 | Rare Gems",
+          "outlet_domain": "blackbirdspyplane.com",
+          "sector": "independent_criticism",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T11:50:36Z",
+          "retrieved_at": "2026-11-19T12:30:14Z",
+          "first_seen_at": "2026-11-19T12:30:14Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "ca842c6a705dd770390e95f12be34e57c466283e357d8c9ad041823165bd52aa",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8434,
+          "terms": [
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 39609,
+          "url": "https://hypebeast.com/2026/11/miles-davis-j-crew-collaboration-collection-release-info",
+          "title": "J.Crew Pulls Miles Davis off the Album Cover for Its “Centennial Collection”",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T07:59:28Z",
+          "retrieved_at": "2026-11-20T08:31:15Z",
+          "first_seen_at": "2026-11-20T08:31:15Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "35bba4afedc4e6a8bff434e09662fa1e50b4b86ad2d8a3c1b0649639e5d0366e",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8839,
+          "terms": [
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 39727,
+          "url": "https://hypebeast.com/2026/11/vintage-modern-vintage-fastback-release-info",
+          "title": "Vintage Modern Reimagines Classic Muscle With the 840-HP Vintage Fastback",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T10:01:18Z",
+          "retrieved_at": "2026-11-20T12:31:12Z",
+          "first_seen_at": "2026-11-20T12:31:12Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "4e229794177daf83196e5b5a522fa539c9755a2d7c5a610e6331bdd64edff9a7",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8088,
+          "terms": [
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 40335,
+          "url": "https://www.vogue.it/article/sneakers-nike-scontate-black-friday-2026-modelli-da-comprare",
+          "title": "Sneakers Nike al Black Friday 2026, 7 modelli tra iconici e nuove proposte già indossate dalle celebrities",
+          "outlet_domain": "vogue.it",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-21T05:30:00Z",
+          "retrieved_at": "2026-11-21T08:32:30Z",
+          "first_seen_at": "2026-11-21T08:32:30Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "091fa4368c11132db775a9c64f3c4c6355befb27bf02a2100b78f3c4bb32fe5e",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9851,
+          "terms": [
+            "sneaker",
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 40338,
+          "url": "https://www.wallpaper.com/fashion-beauty/jack-moss-fashion-features-director-style-gift-guide",
+          "title": "Fashion features director Jack Moss’ gift guide for the style aficionado",
+          "outlet_domain": "wallpaper.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-21T06:00:00Z",
+          "retrieved_at": "2026-11-21T08:32:33Z",
+          "first_seen_at": "2026-11-21T08:32:33Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "6c6ee0f9f5fc49440afdd07c6a64f543352bbf447ece67657a0b90417bcd4faa",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9507,
+          "terms": [
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 40302,
+          "url": "https://www.hellomagazine.com/fashion/936279/suzannah-london-exclusive-interview-kate-middletons-most-worn-dress",
+          "title": "Inside the British label behind Kate Middletonâs most-reworn dress: 'I didn't imagine any of this'",
+          "outlet_domain": "hellomagazine.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-21T08:00:00Z",
+          "retrieved_at": "2026-11-21T08:31:21Z",
+          "first_seen_at": "2026-11-21T08:31:21Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "355297539dafe1ab093d088d064767eedf7e542b22671dacadadfcee8478249f",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9386,
+          "terms": [
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 40732,
+          "url": "https://www.highsnobiety.com/p/nati-lopez-adidas-superstar-ii-shoes",
+          "title": "adidas’ Steel-Toe Superstar Works Hard, Flexes Harder",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-22T21:10:37Z",
+          "retrieved_at": "2026-11-23T00:31:13Z",
+          "first_seen_at": "2026-11-23T00:31:13Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "43f14843ba569f6c682e8d5299265f35da8f19c771d57dd76f5475613d51a450",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9092,
+          "terms": [
+            "sneaker",
+            "vintage"
+          ]
+        }
+      ]
+    },
+    {
+      "signal_id": "loafer",
+      "name": "loafer",
+      "type": "footwear",
+      "source_sectors": [
+        "editorial",
+        "retail"
+      ],
+      "source_domains": [
+        "highsnobiety.com",
+        "hypebeast.com",
+        "stylerave.com",
+        "stylist.co.uk",
+        "vogue.de",
+        "whowhatwear.com",
+        "wwd.com"
+      ],
+      "source_corroboration_count": 7,
+      "confidence": "high",
+      "confidence_source": "derived",
+      "volatility": "seasonal",
+      "origin_classification": "unclear",
+      "evidence": "Three items cover BEAMS and adidas's anniversary loafer, and two more cover adidas loafers. Two cover Queen Letizia's loafers, one of them in a German-language Vogue Germany headline (translated). Others cover ERL's loafer and mule, silver shoes and weekly drops, and one headline presents another shoe instead of loafers.",
+      "index_note": "The signal has 11 items from 7 outlets, editorial 10 and retail 1, on every day of the window. Three items concern one loafer and two concern one person. The editor labeled it seasonal.",
+      "human_editor_note": "Editorial view: loving the loafer love.",
+      "evidence_items": [
+        {
+          "item_id": 36860,
+          "url": "https://www.stylist.co.uk/fashion/silver-shoes/775191",
+          "title": "Shine this season – 11 pairs of silver shoes, boots and trainers to add to every outfit",
+          "outlet_domain": "stylist.co.uk",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T10:00:30Z",
+          "retrieved_at": "2026-11-16T20:32:03Z",
+          "first_seen_at": "2026-11-16T20:32:03Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "6bce50929adc1d50e14d69612df16720e13123d73139e95839ee0914bbb7ecbe",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9907,
+          "terms": [
+            "cowboy-boot",
+            "loafer"
+          ]
+        },
+        {
+          "item_id": 37044,
+          "url": "https://wwd.com/footwear-news/sneaker-news/beams-adidas-loafer-release-date-ki9246-hq0913-1239419501",
+          "title": "Beams and Adidas Made an Original Loafer That’s Practically No Part Sneaker",
+          "outlet_domain": "wwd.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T21:26:55Z",
+          "retrieved_at": "2026-11-17T00:30:52Z",
+          "first_seen_at": "2026-11-17T00:30:52Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "ad964ca89e52a7bb7657eff92c1de7c88bf42ff0bb665fc8725b7f1dea1f6bab",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9482,
+          "terms": [
+            "loafer",
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 37132,
+          "url": "https://hypebeast.com/2026/11/beams-50th-anniversary-adidas-loafer-apparel-pack-collaboration-release-info",
+          "title": "BEAMS and adidas Unveil a Collaborative Loafer and Apparel Pack for Retailer's 50th Anniversary",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T04:12:15Z",
+          "retrieved_at": "2026-11-17T04:31:22Z",
+          "first_seen_at": "2026-11-17T04:31:22Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "9d3fbccf3f2a94828ce0c8a7813bebd5ea0dbef67a7809653490fe11659d6d53",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9699,
+          "terms": [
+            "loafer",
+            "preppy"
+          ]
+        },
+        {
+          "item_id": 37485,
+          "url": "https://www.stylerave.com/beams-adidas-50th-anniversary-loafer",
+          "title": "Beams and Adidas Mark 50th Anniversary with a Classic Loafer",
+          "outlet_domain": "stylerave.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T16:15:28Z",
+          "retrieved_at": "2026-11-18T00:31:55Z",
+          "first_seen_at": "2026-11-17T16:31:57Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "e583acbb85704f6d0829130756cbac5163c70c72b5b2709b63d55f5f28c9a3d0",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8854,
+          "terms": [
+            "loafer"
+          ]
+        },
+        {
+          "item_id": 38674,
+          "url": "https://www.whowhatwear.com/fashion/celebrity-style/baggy-jeans-low-profile-white-sneakers-outfit-bruna-marquezine-2026",
+          "title": "Not Loafers: The Anti-Trend Shoe Fashion People at the Airport Are Wearing With Baggy Jeans",
+          "outlet_domain": "whowhatwear.com",
+          "sector": "retail",
+          "sector_group": "retail",
+          "published_at": "2026-11-18T21:30:00Z",
+          "retrieved_at": "2026-11-19T00:32:44Z",
+          "first_seen_at": "2026-11-19T00:32:44Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "037f13d8f92ad3850802de647a95a40f59eb7419398a7e09b992f654d5a1e277",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9674,
+          "terms": [
+            "loafer"
+          ]
+        },
+        {
+          "item_id": 39140,
+          "url": "https://hypebeast.com/2026/11/best-drops-november-week-2-supreme-dickies-palace-bape-beams-gta-6-nike",
+          "title": "8 Drops You Don't Want to Miss This Week",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T13:30:50Z",
+          "retrieved_at": "2026-11-19T16:31:29Z",
+          "first_seen_at": "2026-11-19T16:31:29Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "dca30cdf37f98dc829bc6db8177cb60fc1d845433d30b70e9192c7de02ebeee8",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8998,
+          "terms": [
+            "denim",
+            "loafer"
+          ]
+        },
+        {
+          "item_id": 39734,
+          "url": "https://hypebeast.com/2026/11/erl-launches-new-wall-street-loafer-mule-release-info",
+          "title": "ERL Launches the New Wall Street Loafer and Mule",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T08:33:56Z",
+          "retrieved_at": "2026-11-20T12:31:12Z",
+          "first_seen_at": "2026-11-20T12:31:12Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "781285c01f44b0d07ae95a44ef4e948620df015ea7750d6902fdd8f4e6da9dd2",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8953,
+          "terms": [
+            "loafer"
+          ]
+        },
+        {
+          "item_id": 39960,
+          "url": "https://www.vogue.de/artikel/konigin-letizia-bringt-fuer-den-winter-2026-den-monk-strap-loafer-als-schuhtrend-zuruck-und-stylt-ihn-zu-lederblazer-und-grauer-hose",
+          "title": "Königin Letizia bringt für den Winter 2026 den Monk-Strap-Loafer als Schuhtrend zurück – und stylt ihn zum schwarzen Lederblazer",
+          "outlet_domain": "vogue.de",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T13:15:07Z",
+          "retrieved_at": "2026-11-20T16:32:37Z",
+          "first_seen_at": "2026-11-20T16:32:37Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "5c2394341fe1937cfe74e7194c4180aab67cca94140f8ff150c9040690e35f7e",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9571,
+          "terms": [
+            "loafer"
+          ]
+        },
+        {
+          "item_id": 40196,
+          "url": "https://www.highsnobiety.com/p/adidas-handball-spezial-loafer-brown-suede",
+          "title": "adidas’ Great-Looking Loafer Got a Promotion",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T22:48:43Z",
+          "retrieved_at": "2026-11-21T00:31:19Z",
+          "first_seen_at": "2026-11-21T00:31:19Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "6d0fd5fb4f9f57f347ba14c7b9d6ef4e6095b7ff5cfac714971cf955a831e30b",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8695,
+          "terms": [
+            "loafer"
+          ]
+        },
+        {
+          "item_id": 40460,
+          "url": "https://wwd.com/footwear-news/shoe-trends/queen-letizia-massimo-dutti-derby-loafers-madrid-1239461529",
+          "title": "Queen Letizia of Spain Wears Massimo Dutti Derby Loafers While Visiting Madrid Artistic Residency",
+          "outlet_domain": "wwd.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-21T20:08:48Z",
+          "retrieved_at": "2026-11-21T20:30:51Z",
+          "first_seen_at": "2026-11-21T20:30:51Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "6bd9d96066a6975a3e2d8a8d94e85a631e11b33b775cf503f507bfb94a1a65bc",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9143,
+          "terms": [
+            "fringe",
+            "loafer"
+          ]
+        },
+        {
+          "item_id": 40683,
+          "url": "https://www.highsnobiety.com/p/adidas-handball-loafer-freizeit",
+          "title": "adidas’ Handball Loafer Matured into a Wonderfully Elderly Moc",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-22T19:50:15Z",
+          "retrieved_at": "2026-11-22T20:31:15Z",
+          "first_seen_at": "2026-11-22T20:31:15Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "b2c88bf388448728f0cc9ff70ad10cd3c076864ae9c1ae469c0e4a166cf9a767",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8435,
+          "terms": [
+            "loafer"
+          ]
+        }
+      ]
+    },
+    {
+      "signal_id": "minimalism",
+      "name": "minimalism",
+      "type": "aesthetic_term",
+      "source_sectors": [
+        "editorial",
+        "retail",
+        "runway",
+        "trade_intelligence"
+      ],
+      "source_domains": [
+        "apparelresources.com",
+        "fashionweekonline.com",
+        "harpersbazaar.com",
+        "hypebae.com",
+        "hypebeast.com",
+        "vogue.co.uk",
+        "vogue.com",
+        "whowhatwear.com",
+        "wwd.com"
+      ],
+      "source_corroboration_count": 9,
+      "confidence": "high",
+      "confidence_source": "derived",
+      "volatility": "emerging",
+      "origin_classification": "unclear",
+      "evidence": "The items cover minimalist formulas for winter, a minimalist holiday style guide, Lily Collins's minimalist manicure, minimalist mules, Sienna Miller's off-duty outfits and a bride joining 1990s minimalism with Bengali traditions. Others cover autumn/winter 2026 beyond quiet luxury, an Hermès watch, an UGG gift guide, heavyweight hardware in menswear and charm bracelets.",
+      "index_note": "The signal has 11 items from 9 outlets, editorial 7, runway 2, retail 1 and trade intelligence 1, with no outlet contributing more than 2. The editor labeled it emerging.",
+      "human_editor_note": "Editorial view: ok. Fine. Minimalism is making its emergence again.",
+      "evidence_items": [
+        {
+          "item_id": 36512,
+          "url": "https://apparelresources.com/fashion-news/trends/beyond-quiet-luxury-w-26-stacks-tailoring-embellishment-texture",
+          "title": "Beyond Quiet Luxury: A/W 26 Stacks Tailoring, Embellishment and Texture",
+          "outlet_domain": "apparelresources.com",
+          "sector": "trade_intelligence",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T11:36:51Z",
+          "retrieved_at": "2026-11-16T20:30:06Z",
+          "first_seen_at": "2026-11-16T20:30:06Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "0e5afc9e2690efeff8151708f18d63afe6a9f8d31900ab2d10fbd49e1079f6ae",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9605,
+          "terms": [
+            "minimalism",
+            "quiet-luxury",
+            "tailoring"
+          ]
+        },
+        {
+          "item_id": 37294,
+          "url": "https://www.harpersbazaar.com/uk/beauty/make-up-nails/a71350350/muted-french-biab",
+          "title": "Lily Collins' minimalist 'milky BIAB' manicure is perfect for winter: where to find her exact polish",
+          "outlet_domain": "harpersbazaar.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T11:32:00Z",
+          "retrieved_at": "2026-11-17T12:31:12Z",
+          "first_seen_at": "2026-11-17T12:31:12Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "4462e61fd3bae21c96023408ffbca7d056c6224c0b1e017cfa9d8afd1271b368",
+          "lang": "unknown",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.893,
+          "terms": [
+            "minimalism"
+          ]
+        },
+        {
+          "item_id": 37939,
+          "url": "https://hypebeast.com/2026/11/hermes-slim-dhermes-sous-le-charme-dorphee-limited-edition-release-info",
+          "title": "The Slim d’Hermès “Sous le charme d’Orphée” Brings the Myth of Orpheus to the Wrist",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T07:02:06Z",
+          "retrieved_at": "2026-11-18T08:31:14Z",
+          "first_seen_at": "2026-11-18T08:31:14Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "90b710766bf66548dd2f4fd490988759bf9c7ce0ac832526c91db3a992ddada1",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.83,
+          "terms": [
+            "minimalism"
+          ]
+        },
+        {
+          "item_id": 38123,
+          "url": "https://www.vogue.com/article/sienna-miller-outfit-ideas",
+          "title": "Shop Sienna Miller’s Best Off-Duty Fall Outfits",
+          "outlet_domain": "vogue.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T11:00:00Z",
+          "retrieved_at": "2026-11-18T12:32:10Z",
+          "first_seen_at": "2026-11-18T12:32:10Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "a722dba5a263e1e92d69df3aa61a0749fb82b2c98aa15eb6e9ac3352c79de147",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9575,
+          "terms": [
+            "minimalism"
+          ]
+        },
+        {
+          "item_id": 38491,
+          "url": "https://hypebae.com/2026/11/holiday-gift-guide-ugg-boots-wish-list-classic-tall-mini-elea-where-to-buy",
+          "title": "Hypebae Gift Guide 2026: The UGG Styles on Everyone’s Holiday Wish List",
+          "outlet_domain": "hypebae.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T16:00:38Z",
+          "retrieved_at": "2026-11-18T20:31:18Z",
+          "first_seen_at": "2026-11-18T20:31:18Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "65abca518322d41bd1bfb560606cc27a4d05ef2835ca36ec6f54097f7aae5587",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9727,
+          "terms": [
+            "minimalism"
+          ]
+        },
+        {
+          "item_id": 38561,
+          "url": "https://wwd.com/footwear-news/shoe-trends/reasonable-doubt-emayatzy-corinealdi-high-minimalist-mules-1239425598",
+          "title": "‘Reasonable Doubt’ Star Emayatzy Corinealdi Defies the Laws of Physics in Impossibly High Minimalist Mules",
+          "outlet_domain": "wwd.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T20:10:11Z",
+          "retrieved_at": "2026-11-18T20:32:45Z",
+          "first_seen_at": "2026-11-18T20:32:45Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "bd5798053024b6b81f075e6cf74781c496236fe162117ee2279243cddc800a84",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8161,
+          "terms": [
+            "minimalism"
+          ]
+        },
+        {
+          "item_id": 39376,
+          "url": "https://www.vogue.co.uk/gallery/pia-ahmed-wedding-vintage-jil-sander",
+          "title": "This Bride Wore Vintage Jil Sander While Marrying ’90s Minimalism With Bengali Traditions",
+          "outlet_domain": "vogue.co.uk",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T16:32:32Z",
+          "retrieved_at": "2026-11-19T20:32:20Z",
+          "first_seen_at": "2026-11-19T20:32:20Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "7cc7ba5595c4600a9b248821d31e8c9fcecddc67d4a4e1b2d8eee8a1bdace186",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9346,
+          "terms": [
+            "minimalism",
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 39648,
+          "url": "https://www.whowhatwear.com/minimalist-winter-outfits-2026",
+          "title": "Looking Polished This Winter Will Be Easy, *If* You Follow These 5 Minimalist Formulas",
+          "outlet_domain": "whowhatwear.com",
+          "sector": "retail",
+          "sector_group": "retail",
+          "published_at": "2026-11-20T07:10:00Z",
+          "retrieved_at": "2026-11-20T08:32:27Z",
+          "first_seen_at": "2026-11-20T08:32:27Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "bdd3f3d92f88c96a3ff462459dcba4dc19ea687871585f36f20e947e697abfa4",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8753,
+          "terms": [
+            "minimalism"
+          ]
+        },
+        {
+          "item_id": 39876,
+          "url": "https://fashionweekonline.com/from-the-runway-to-the-street-how-heavyweight-hardware-defined-modern-menswear",
+          "title": "From the Runway to the Street: How Heavyweight Hardware Defined Modern Menswear",
+          "outlet_domain": "fashionweekonline.com",
+          "sector": "runway",
+          "sector_group": "designer_runway",
+          "published_at": "2026-11-20T14:46:45Z",
+          "retrieved_at": "2026-11-20T16:30:46Z",
+          "first_seen_at": "2026-11-20T16:30:46Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "478fb739f000229532c08210b9b491d8a86bedf907f698c8427fb7515c6aca27",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8438,
+          "terms": [
+            "minimalism"
+          ]
+        },
+        {
+          "item_id": 40229,
+          "url": "https://www.vogue.com/article/minimalist-holiday-outfits",
+          "title": "The Minimalist’s Holiday Style Guide",
+          "outlet_domain": "vogue.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T20:47:53Z",
+          "retrieved_at": "2026-11-21T08:32:22Z",
+          "first_seen_at": "2026-11-21T00:32:18Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "89e6c7bee7aa170fa0e3ead6f2e7e81259b98c55c64c3344e537056de02ae416",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9836,
+          "terms": [
+            "minimalism"
+          ]
+        },
+        {
+          "item_id": 40457,
+          "url": "https://fashionweekonline.com/how-to-style-charm-bracelets-for-a-modern-effortless-look",
+          "title": "How to Style Charm Bracelets for a Modern, Effortless Look",
+          "outlet_domain": "fashionweekonline.com",
+          "sector": "runway",
+          "sector_group": "designer_runway",
+          "published_at": "2026-11-21T17:23:29Z",
+          "retrieved_at": "2026-11-21T20:30:44Z",
+          "first_seen_at": "2026-11-21T20:30:44Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "665de6f4c178c84a39430e38cfb1b16af3c688271fe3896eea186235b13a26e7",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9599,
+          "terms": [
+            "minimalism"
+          ]
+        }
+      ]
+    },
+    {
+      "signal_id": "tailoring",
+      "name": "tailoring",
+      "type": "garment_silhouette",
+      "source_sectors": [
+        "editorial",
+        "trade_intelligence"
+      ],
+      "source_domains": [
+        "apparelresources.com",
+        "chicstylecollective.com",
+        "dewimagazine.com",
+        "fashionunited.com",
+        "hellomagazine.com",
+        "hypebae.com",
+        "hypebeast.com",
+        "scmp.com",
+        "stylerave.com",
+        "thezoereport.com",
+        "wwd.com"
+      ],
+      "source_corroboration_count": 11,
+      "confidence": "high",
+      "confidence_source": "derived",
+      "volatility": "recurring",
+      "origin_classification": "unclear",
+      "evidence": "The items cover tailoring as accessible to Gen Z, Ronny Kobo reworking Brooks Brothers codes for womenswear, Bloomingdale's men's dressing, Fear of God's fall 2027 collection, tailoring with embellishment for autumn/winter 2026, SEASE womenswear, Chanel and Celine Dion, Kate Middleton's India wardrobe, Christmas party outfits, lapel pins and an Indonesian-language Dewi Magazine piece on KLÉ (translated).",
+      "index_note": "The signal has 11 items from 11 outlets, editorial 10 and trade intelligence 1, one item per outlet. The editor labeled it recurring.",
+      "human_editor_note": "Editorial view: tailoring is almost about to mark itself as a stable artifact if it keeps going, oooh girl.",
+      "evidence_items": [
+        {
+          "item_id": 36397,
+          "url": "https://www.scmp.com/magazines/style/fashion/fashion-news/article/3374087/style-edit-chanel-revisits-celine-dions-oscars-glam-her-2026-paris-finale",
+          "title": "Style Edit: Chanel revisits Celine Dion’s Oscars glam for her 2026 Paris finale",
+          "outlet_domain": "scmp.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T02:00:20Z",
+          "retrieved_at": "2026-11-16T04:32:34Z",
+          "first_seen_at": "2026-11-16T04:32:34Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "e414961e81f2cce74970faca2c841b0bcafb695d6daf08cd84fde893067ff108",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9614,
+          "terms": [
+            "tailoring"
+          ]
+        },
+        {
+          "item_id": 36512,
+          "url": "https://apparelresources.com/fashion-news/trends/beyond-quiet-luxury-w-26-stacks-tailoring-embellishment-texture",
+          "title": "Beyond Quiet Luxury: A/W 26 Stacks Tailoring, Embellishment and Texture",
+          "outlet_domain": "apparelresources.com",
+          "sector": "trade_intelligence",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T11:36:51Z",
+          "retrieved_at": "2026-11-16T20:30:06Z",
+          "first_seen_at": "2026-11-16T20:30:06Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "0e5afc9e2690efeff8151708f18d63afe6a9f8d31900ab2d10fbd49e1079f6ae",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9605,
+          "terms": [
+            "minimalism",
+            "quiet-luxury",
+            "tailoring"
+          ]
+        },
+        {
+          "item_id": 36778,
+          "url": "https://hypebae.com/2026/11/sease-womenswear-ski-fw26-loro-piana-brothers-release-where-to-buy",
+          "title": "SEASE Is Taking Its Womenswear From the Slopes to the Streets",
+          "outlet_domain": "hypebae.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T15:28:08Z",
+          "retrieved_at": "2026-11-16T20:31:24Z",
+          "first_seen_at": "2026-11-16T20:31:24Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "76fa1fd80687801772ab62a960dd8d2e478673a53181e6948d60d8874313ddac",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9732,
+          "terms": [
+            "tailoring"
+          ]
+        },
+        {
+          "item_id": 36525,
+          "url": "https://www.chicstylecollective.com/outfit-for-a-xmas-party",
+          "title": "The Christmas Party Outfits I’d Actually Wear This Festive Season",
+          "outlet_domain": "chicstylecollective.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T18:13:42Z",
+          "retrieved_at": "2026-11-16T20:30:17Z",
+          "first_seen_at": "2026-11-16T20:30:17Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "61c74ef6adaa6248523b4d4a18a4d1094a614db33c86e30d076db93f547740d8",
+          "lang": "en-gb",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9939,
+          "terms": [
+            "tailoring"
+          ]
+        },
+        {
+          "item_id": 36783,
+          "url": "https://hypebeast.com/2026/11/bloomingdales-fall-winter-2026-editorial",
+          "title": "Bloomingdale’s Casual Roots and Refined Tailoring Collide to Build the Blueprint for Modern Men’s Dressing",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T19:00:58Z",
+          "retrieved_at": "2026-11-16T20:31:25Z",
+          "first_seen_at": "2026-11-16T20:31:25Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "facde3d3162adceaa57436df49f2aa90bdee6c8d6282d85915ad2329da1596fd",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9677,
+          "terms": [
+            "streetwear",
+            "tailoring"
+          ]
+        },
+        {
+          "item_id": 38241,
+          "url": "https://fashionunited.com/news/fashion/ronny-kobo-reworks-brooks-brothers-tailoring-codes-for-womenswear/2026111875824",
+          "title": "Ronny Kobo reworks Brooks Brothers tailoring codes for womenswear",
+          "outlet_domain": "fashionunited.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T10:29:43Z",
+          "retrieved_at": "2026-11-18T16:30:45Z",
+          "first_seen_at": "2026-11-18T16:30:45Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "bcce7f9a4c13ebeb8671a1e2b415fad55b540cb1a773bf16ebc5de0ce1f573dd",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9542,
+          "terms": [
+            "tailoring"
+          ]
+        },
+        {
+          "item_id": 38531,
+          "url": "https://www.thezoereport.com/fashion/tailoring-gen-z-millennials",
+          "title": "Tailoring Is No Longer An Out Of Reach Luxury, According To Gen Z",
+          "outlet_domain": "thezoereport.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T20:31:12Z",
+          "retrieved_at": "2026-11-18T20:32:03Z",
+          "first_seen_at": "2026-11-18T20:32:03Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "b20ba06e256694c19e4382307dd90f7e88ac9ed376198c56b11f161b9f2734cc",
+          "lang": "unknown",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8606,
+          "terms": [
+            "gen-z",
+            "tailoring"
+          ]
+        },
+        {
+          "item_id": 38842,
+          "url": "https://wwd.com/runway/fall-2027/milan/fear-of-god/review",
+          "title": "Fear of God Fall 2027: Easy Does It",
+          "outlet_domain": "wwd.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T05:01:00Z",
+          "retrieved_at": "2026-11-19T08:32:39Z",
+          "first_seen_at": "2026-11-19T08:32:39Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "bb6db3d6fd96aec6bb2ffecfc650c747f38e74d080ae5b1021d52f705b2b0a56",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.846,
+          "terms": [
+            "tailoring",
+            "vintage"
+          ]
+        },
+        {
+          "item_id": 38753,
+          "url": "https://www.dewimagazine.com/uncategorized/kle-fall-winter-2026-2027-wiraga-wirama-wirasa",
+          "title": "KLÉ dan Wiraga Wirama Wirasa: Perlawanan Sartorial yang Berakar pada Tradisi",
+          "outlet_domain": "dewimagazine.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T06:44:30Z",
+          "retrieved_at": "2026-11-19T08:30:23Z",
+          "first_seen_at": "2026-11-19T08:30:23Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "745bdfca5ae3ab55700fc4d39e6183c1e60a9b98f78703d756e528fe58f967ae",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8801,
+          "terms": [
+            "tailoring"
+          ]
+        },
+        {
+          "item_id": 40113,
+          "url": "https://www.stylerave.com/best-men-lapel-pins",
+          "title": "10 Lapel Pins for Men Who Want to Add More Personality to Their Outfits",
+          "outlet_domain": "stylerave.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T18:45:40Z",
+          "retrieved_at": "2026-11-21T04:31:51Z",
+          "first_seen_at": "2026-11-20T20:31:54Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "483bf306e1b9e9a02b4c41b2e8cebb2b586f95c83ce2b80f208ab57f05ea0e24",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9664,
+          "terms": [
+            "tailoring"
+          ]
+        },
+        {
+          "item_id": 40468,
+          "url": "https://www.hellomagazine.com/fashion/royal-style/936438/kate-middleton-india-outfits-wardrobe-analysis",
+          "title": "Princess Diana's dresser decodes Kate Middleton's surprising India wardrobe - and the details you might have missed",
+          "outlet_domain": "hellomagazine.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-21T18:00:00Z",
+          "retrieved_at": "2026-11-21T20:31:17Z",
+          "first_seen_at": "2026-11-21T20:31:17Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "00e070810f801f422c2f617aec58e26c39397768ac0dd16b9f4c6004d4d74d2d",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9175,
+          "terms": [
+            "tailoring"
+          ]
+        }
+      ]
+    },
+    {
+      "signal_id": "burgundy",
+      "name": "burgundy",
+      "type": "color_print",
+      "source_sectors": [
+        "editorial",
+        "trade_intelligence"
+      ],
+      "source_domains": [
+        "allure.com",
+        "apparelresources.com",
+        "harpersbazaar.com",
+        "hypebae.com",
+        "hypebeast.com",
+        "vogue.co.uk",
+        "vogue.com",
+        "wwd.com"
+      ],
+      "source_corroboration_count": 8,
+      "confidence": "high",
+      "confidence_source": "derived",
+      "volatility": "seasonal",
+      "origin_classification": "unclear",
+      "evidence": "Burgundy appears in boots, including Zara Tindall's burgundy boots, a Vogue piece calling burgundy winter's top boot colour and a Timberland boot in a new colour, and in Jennifer Lopez's matching manicure. Other items cover Rhode's first clothing piece, ASICS NOVALIS colours and festive wardrobe staples. Two items on Hailey Bieber's blue nails matched the term in the excerpt.",
+      "index_note": "The signal has 9 items from 8 outlets, editorial 8 and trade intelligence 1, and 2 of the 9 concern nails in another colour. The editor labeled it seasonal.",
+      "human_editor_note": "Editorial view: fall and winter color!",
+      "evidence_items": [
+        {
+          "item_id": 36459,
+          "url": "https://hypebeast.com/2026/11/gel-teremoa-ii-asics-novalis-season-6-release-info",
+          "title": "ASICS NOVALIS by Kiko Kostadinov Drops \"Season 6\" Featuring New Colors of the GEL-TEREMOA II",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T06:06:07Z",
+          "retrieved_at": "2026-11-16T08:31:21Z",
+          "first_seen_at": "2026-11-16T08:31:21Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "e494b6a8aca10feb2939f73622f9bb84ccf7a74ea1b3bdb2f4d8a6b1d73d12b6",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9448,
+          "terms": [
+            "burgundy"
+          ]
+        },
+        {
+          "item_id": 36880,
+          "url": "https://www.vogue.co.uk/article/jennifer-lopez-burgundy-colour-coordination",
+          "title": "Jennifer Lopez Matches Her Manicure (And Her Make-Up) To Her Outfit",
+          "outlet_domain": "vogue.co.uk",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T12:29:05Z",
+          "retrieved_at": "2026-11-16T20:32:29Z",
+          "first_seen_at": "2026-11-16T20:32:29Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "c836925a6b581a309f542ce8dd922506cef9ca384a7b89ee4dddec7590493882",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8929,
+          "terms": [
+            "burgundy"
+          ]
+        },
+        {
+          "item_id": 36775,
+          "url": "https://hypebae.com/2026/11/rhode-hailey-bieber-birthday-navy-capsule-collection-windbreaker-where-to-buy",
+          "title": "Rhode Is Celebrating Hailey Bieber's Birthday With Its First Piece of Clothing",
+          "outlet_domain": "hypebae.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T17:18:20Z",
+          "retrieved_at": "2026-11-16T20:31:24Z",
+          "first_seen_at": "2026-11-16T20:31:24Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "31a28a78065362afcfc2cc92d63602e29c2938ec806c62a217f94c38fea8897d",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9037,
+          "terms": [
+            "burgundy"
+          ]
+        },
+        {
+          "item_id": 37462,
+          "url": "https://www.harpersbazaar.com/uk/fashion/shopping/a74453256/zara-tindall-boots",
+          "title": "Zara Tindall's new burgundy boots are winter's most tasteful style: shop the sophisticated trend now",
+          "outlet_domain": "harpersbazaar.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T16:26:00Z",
+          "retrieved_at": "2026-11-17T16:31:12Z",
+          "first_seen_at": "2026-11-17T16:31:12Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "72facb64d703b1794d0486ad8434c73bc8b5f2da57ae23beff1805eeed4bd1b0",
+          "lang": "unknown",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9888,
+          "terms": [
+            "burgundy"
+          ]
+        },
+        {
+          "item_id": 37995,
+          "url": "https://apparelresources.com/fashion-news/trends/classic-reworked-w-26-puts-festive-spin-wardrobe-staples",
+          "title": "Classic, Reworked: How A/W 26 Puts a Festive Spin on the Wardrobe Staples",
+          "outlet_domain": "apparelresources.com",
+          "sector": "trade_intelligence",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T12:18:34Z",
+          "retrieved_at": "2026-11-18T12:30:07Z",
+          "first_seen_at": "2026-11-18T12:30:07Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "2fdd7a36d482fe9590757f6278e792359b0f506965890d87c163343650ec2da2",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9939,
+          "terms": [
+            "burgundy"
+          ]
+        },
+        {
+          "item_id": 38178,
+          "url": "https://www.allure.com/story/hailey-bieber-bright-blue-jelly-nails",
+          "title": "Hailey Bieber's Bright Blue Jelly Nails Are So Unexpected for Fall—See the Photos",
+          "outlet_domain": "allure.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T14:20:58Z",
+          "retrieved_at": "2026-11-18T16:30:04Z",
+          "first_seen_at": "2026-11-18T16:30:04Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "96dc7d2704b14e34c097ec6cab808b5699a6f1ad8c7587bf5cc9eec5afe58357",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.837,
+          "terms": [
+            "burgundy"
+          ]
+        },
+        {
+          "item_id": 38449,
+          "url": "https://wwd.com/footwear-news/sneaker-news/timberland-premium-6-inch-waterproof-woven-boot-black-burgundy-1239425162",
+          "title": "Timberland Just Brought Back Its Fan-Favorite 6-Inch Boots in Luxe Woven Leather — and a New Color Is Included",
+          "outlet_domain": "wwd.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T18:35:59Z",
+          "retrieved_at": "2026-11-18T20:30:48Z",
+          "first_seen_at": "2026-11-18T20:30:48Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "f5e3bdc94f0380c773056f7325f88c28634375fd48ef7c379f47ef805d726b65",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9749,
+          "terms": [
+            "burgundy"
+          ]
+        },
+        {
+          "item_id": 39330,
+          "url": "https://www.harpersbazaar.com/beauty/nails/a74477823/hailey-bieber-blue-slushy-manicure-nail-trend",
+          "title": "Hailey Bieber’s “Blue Slushy Manicure” Is Fall’s Most Unexpected Nail Trend",
+          "outlet_domain": "harpersbazaar.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T19:41:47Z",
+          "retrieved_at": "2026-11-19T20:31:06Z",
+          "first_seen_at": "2026-11-19T20:31:06Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "a52e37a75037e2a742bd6dfdc682f6cdb0a031c1fd7c150d0921fd6214761254",
+          "lang": "unknown",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8933,
+          "terms": [
+            "burgundy"
+          ]
+        },
+        {
+          "item_id": 40228,
+          "url": "https://www.vogue.com/article/burgundy-boots-winter-trend",
+          "title": "Winter’s Top Boot Color Isn’t Brown or Black—It’s Burgundy",
+          "outlet_domain": "vogue.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T21:03:37Z",
+          "retrieved_at": "2026-11-21T00:32:18Z",
+          "first_seen_at": "2026-11-21T00:32:18Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "cfa83d0abc4413fdb0b7d19d05af4b6472c118c05a361cbedda4210c96be6261",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9109,
+          "terms": [
+            "burgundy"
+          ]
+        }
+      ]
+    },
+    {
+      "signal_id": "trench",
+      "name": "trench",
+      "type": "garment_silhouette",
+      "source_sectors": [
+        "editorial"
+      ],
+      "source_domains": [
+        "marieclaire.com",
+        "scmp.com",
+        "stylerave.com",
+        "vogue.com",
+        "wwd.com"
+      ],
+      "source_corroboration_count": 5,
+      "confidence": "medium",
+      "confidence_source": "derived",
+      "volatility": "seasonal",
+      "origin_classification": "unclear",
+      "evidence": "The items cover wearing a leather trench with everything, three trench coats from Burberry to Saint Laurent, Vogue editors' coats for the season, Hailey Bieber's jackets, Sheryl Lee Ralph's trench coat dress, Hunter Schafer's press-tour look and ways to wear scarves.",
+      "index_note": "The signal has 7 items from 5 outlets, all editorial, over three days. The editor labeled it seasonal.",
+      "human_editor_note": "Editorial view: fall jacket!",
+      "evidence_items": [
+        {
+          "item_id": 39157,
+          "url": "https://www.stylerave.com/ways-to-wear-a-scarf",
+          "title": "6 Stylish Ways Women Are Wearing Scarves This Fall",
+          "outlet_domain": "stylerave.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T15:29:28Z",
+          "retrieved_at": "2026-11-20T08:31:42Z",
+          "first_seen_at": "2026-11-19T16:32:06Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "7a286aae157df441992cfb444b6e475b1f5063387d93684e798fb629323085b6",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9938,
+          "terms": [
+            "trench"
+          ]
+        },
+        {
+          "item_id": 39418,
+          "url": "https://wwd.com/pop-culture/celebrity-news/hunter-schafer-clear-pvc-jacket-prada-blade-runner-2099-1239427675",
+          "title": "Hunter Schafer’s Latest ‘Blade Runner 2099’ Press Tour Look Revives a 44-Year-Old Vision of Future Fashion",
+          "outlet_domain": "wwd.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T20:05:25Z",
+          "retrieved_at": "2026-11-19T20:32:45Z",
+          "first_seen_at": "2026-11-19T20:32:45Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "48a8240ea0d71d650bc92c8f9554aadb508614073385d23118faeb4d139365e5",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9228,
+          "terms": [
+            "trench"
+          ]
+        },
+        {
+          "item_id": 39917,
+          "url": "https://www.marieclaire.com/fashion/how-to-style-leather-trench-coat-julia-gall",
+          "title": "I Wear My Leather Trench With Everything, Including Sweatpants",
+          "outlet_domain": "marieclaire.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T15:00:00Z",
+          "retrieved_at": "2026-11-20T16:31:54Z",
+          "first_seen_at": "2026-11-20T16:31:54Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "fd6e685944929f2483bcbba457099961d436b7e6edc62b61509d6948474f8be2",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.973,
+          "terms": [
+            "trench"
+          ]
+        },
+        {
+          "item_id": 40123,
+          "url": "https://www.vogue.com/article/winter-coat-predictions-2026",
+          "title": "Vogue Editors Predict the Hottest Coats of the Coldest Season",
+          "outlet_domain": "vogue.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T17:58:13Z",
+          "retrieved_at": "2026-11-20T20:32:24Z",
+          "first_seen_at": "2026-11-20T20:32:24Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "a4cf85bd50b94bd993f6df1146e76299f886c5379cd7a6b54f2b955c00921fa0",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9453,
+          "terms": [
+            "trench"
+          ]
+        },
+        {
+          "item_id": 40374,
+          "url": "https://www.vogue.com/article/hailey-biebers-it-jacket-wardrobe-is-becoming-untenable-2026-11-21",
+          "title": "Hailey Bieber’s It-Jacket Wardrobe Is Becoming Untenable",
+          "outlet_domain": "vogue.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-21T11:18:46Z",
+          "retrieved_at": "2026-11-21T12:32:10Z",
+          "first_seen_at": "2026-11-21T12:32:10Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "2b684d1fc6c53955716b32f4c839060bd0412f4c4b9c853ed8461cce9b3b3724",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9783,
+          "terms": [
+            "quiet-luxury",
+            "trench"
+          ]
+        },
+        {
+          "item_id": 40496,
+          "url": "https://wwd.com/pop-culture/celebrity-news/sheryl-lee-ralph-sergio-hudson-abbott-elementary-100-event-1239461421",
+          "title": "Sheryl Lee Ralph Turns Heads in Bright Blue Sergio Hudson Trench Coat Dress at ‘Abbott Elementary’ 100th Episode Event",
+          "outlet_domain": "wwd.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-21T17:01:11Z",
+          "retrieved_at": "2026-11-21T20:32:35Z",
+          "first_seen_at": "2026-11-21T20:32:35Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "18734d99220858f32975d9e846ff147ec428036ebb92a46258a064bec59469dc",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9486,
+          "terms": [
+            "trench"
+          ]
+        },
+        {
+          "item_id": 40513,
+          "url": "https://www.scmp.com/magazines/style/fashion/trends/article/3375218/3-trench-coats-wear-fall-classic-burberry-saint-laurents-unconventional-take",
+          "title": "3 trench coats to wear this fall – from classic Burberry to Saint Laurent’s unconventional take",
+          "outlet_domain": "scmp.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-21T22:00:28Z",
+          "retrieved_at": "2026-11-22T00:31:45Z",
+          "first_seen_at": "2026-11-22T00:31:45Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "7d4742bc6da3731f512c9f9a0f1ca8a27e9de1bcf50f3f9277a39748500389e2",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9931,
+          "terms": [
+            "trench"
+          ]
+        }
+      ]
+    },
+    {
+      "signal_id": "streetwear",
+      "name": "streetwear",
+      "type": "commerce_language",
+      "source_sectors": [
+        "editorial"
+      ],
+      "source_domains": [
+        "fashionunited.com",
+        "highsnobiety.com",
+        "hypebeast.com"
+      ],
+      "source_corroboration_count": 3,
+      "confidence": "medium",
+      "confidence_source": "derived",
+      "volatility": "recurring",
+      "origin_classification": "unclear",
+      "evidence": "The items are brand coverage: ARK/8's Metal Gear Solid drop, Umbro with G2 Esports, Bloomingdale's men's dressing, a supercar brake maker's clothing, Vans with Needles and adidas Originals arrivals.",
+      "index_note": "The signal has 6 items from 3 outlets, all editorial, with hypebeast.com contributing 4. The editor labeled it recurring.",
+      "human_editor_note": "Editorial view: recurring for many style outlets :-)",
+      "evidence_items": [
+        {
+          "item_id": 36783,
+          "url": "https://hypebeast.com/2026/11/bloomingdales-fall-winter-2026-editorial",
+          "title": "Bloomingdale’s Casual Roots and Refined Tailoring Collide to Build the Blueprint for Modern Men’s Dressing",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T19:00:58Z",
+          "retrieved_at": "2026-11-16T20:31:25Z",
+          "first_seen_at": "2026-11-16T20:31:25Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "facde3d3162adceaa57436df49f2aa90bdee6c8d6282d85915ad2329da1596fd",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9677,
+          "terms": [
+            "streetwear",
+            "tailoring"
+          ]
+        },
+        {
+          "item_id": 37784,
+          "url": "https://hypebeast.com/2026/11/brembro-launches-first-full-lifestyle-collection",
+          "title": "The Company Behind Your Favorite Supercar's Brakes Is Making Clothes Now",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T22:11:14Z",
+          "retrieved_at": "2026-11-18T00:31:26Z",
+          "first_seen_at": "2026-11-18T00:31:26Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "6be5e48967562f3ced328102c32b352efb54142defd4e34ee81f30f13c6ca061",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9629,
+          "terms": [
+            "streetwear"
+          ]
+        },
+        {
+          "item_id": 37776,
+          "url": "https://www.highsnobiety.com/p/needles-vans-mountain-edition-vibram-shoes",
+          "title": "Vans’ Reborn Outdoor Sneaker Looks Good in Needles Streetwear",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T22:36:33Z",
+          "retrieved_at": "2026-11-18T00:31:23Z",
+          "first_seen_at": "2026-11-18T00:31:23Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "cae9a1903c0d3244bf7d055f656019f6d65f4c4c6d7be9fbee76722e21505799",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9742,
+          "terms": [
+            "sneaker",
+            "streetwear"
+          ]
+        },
+        {
+          "item_id": 38897,
+          "url": "https://fashionunited.com/news/fashion/british-sportswear-label-umbro-collaborates-with-g2-esports-on-streetwear-range/2026111975843",
+          "title": "British Sportswear label Umbro collaborates with G2 Esports on streetwear range",
+          "outlet_domain": "fashionunited.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T07:28:32Z",
+          "retrieved_at": "2026-11-19T12:30:45Z",
+          "first_seen_at": "2026-11-19T12:30:45Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "131f243c875321ffbc098ca016216dcb948e8b3a03320f6242c4e66c80ce449d",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9484,
+          "terms": [
+            "streetwear"
+          ]
+        },
+        {
+          "item_id": 39559,
+          "url": "https://hypebeast.com/2026/11/ark-8-konami-metal-gear-solid-snake-eater-collaboration-collection-lookbooks-release-info",
+          "title": "ARK/8 Turns ‘Metal Gear Solid Δ: Snake Eater’ Into a 20-Piece Streetwear Drop",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T01:30:03Z",
+          "retrieved_at": "2026-11-20T04:31:25Z",
+          "first_seen_at": "2026-11-20T04:31:25Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "b4bd251dac9e714fc1ccaacf292b97561246c356d36c67f78dcbf58f856496c4",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.875,
+          "terms": [
+            "streetwear"
+          ]
+        },
+        {
+          "item_id": 39912,
+          "url": "https://hypebeast.com/2026/11/new-arrivals-from-hbx-adidas-originals-8",
+          "title": "New Arrivals From HBX: adidas Originals",
+          "outlet_domain": "hypebeast.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T14:08:28Z",
+          "retrieved_at": "2026-11-20T16:31:37Z",
+          "first_seen_at": "2026-11-20T16:31:37Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "f5e0f20461c9b1902cd7653eab6ae05498feeb9506abbb6565ce06905979ee1b",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8188,
+          "terms": [
+            "sneaker",
+            "streetwear"
+          ]
+        }
+      ]
+    },
+    {
+      "signal_id": "suede",
+      "name": "suede",
+      "type": "material",
+      "source_sectors": [
+        "editorial",
+        "retail"
+      ],
+      "source_domains": [
+        "complex.com",
+        "stylerave.com",
+        "vogue.co.uk",
+        "whowhatwear.com",
+        "wwd.com"
+      ],
+      "source_corroboration_count": 5,
+      "confidence": "high",
+      "confidence_source": "derived",
+      "volatility": "seasonal",
+      "origin_classification": "unclear",
+      "evidence": "The items cover Michelle Pfeiffer's suede boots, knee-high boots, winter bag trends, men's jackets and coats and a Vans release. A piece on satin heels matched the term in the excerpt.",
+      "index_note": "The signal has 6 items from 5 outlets, editorial 5 and retail 1. The editor labeled it seasonal.",
+      "human_editor_note": "Editorial view: fall-time material, imo! And winter time!",
+      "evidence_items": [
+        {
+          "item_id": 36403,
+          "url": "https://www.whowhatwear.com/fashion/handbags/winter-handbag-trends-2026",
+          "title": "The 5 Winter Bag Trends That Will Remain Relevant Through 2027 (and '28 and '29)",
+          "outlet_domain": "whowhatwear.com",
+          "sector": "retail",
+          "sector_group": "retail",
+          "published_at": "2026-11-16T02:38:42Z",
+          "retrieved_at": "2026-11-16T04:33:34Z",
+          "first_seen_at": "2026-11-16T04:33:34Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "ac428881dd39eb966a48b8a20272598a7a5a483cdcf310287c6e00e3a262c770",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8307,
+          "terms": [
+            "suede"
+          ]
+        },
+        {
+          "item_id": 36843,
+          "url": "https://www.stylerave.com/best-jackets-coats-cold-waether",
+          "title": "11 Jackets and Coats the Cool Guys Are Wearing to Stay Warm This Season",
+          "outlet_domain": "stylerave.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T18:46:42Z",
+          "retrieved_at": "2026-11-17T04:31:48Z",
+          "first_seen_at": "2026-11-16T20:31:58Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "66f1b518e169d1eae16e31219900936194cbdd4d6aad30612ccf9d678251e69c",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.991,
+          "terms": [
+            "suede"
+          ]
+        },
+        {
+          "item_id": 39178,
+          "url": "https://www.vogue.co.uk/article/best-knee-high-boots",
+          "title": "The Best Knee-High Boots To Ground Your Winter Outfits",
+          "outlet_domain": "vogue.co.uk",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T14:22:33Z",
+          "retrieved_at": "2026-11-19T16:32:33Z",
+          "first_seen_at": "2026-11-19T16:32:33Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "b81f537112c361099722de5ddae9b22c5d9d088456f1f300cdccdc15a82416f5",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9792,
+          "terms": [
+            "suede"
+          ]
+        },
+        {
+          "item_id": 39262,
+          "url": "https://www.complex.com/sneakers/a/oruny-choi/vans-old-skool-36-pearlized-racing-red",
+          "title": "Vans LX Old Skool 36 Pearlized \"Racing Red\" Now Available on Complex",
+          "outlet_domain": "complex.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T16:35:57Z",
+          "retrieved_at": "2026-11-19T20:30:23Z",
+          "first_seen_at": "2026-11-19T20:30:23Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "9d875eb4ec39c4dc2351efbeaf7a298cbd3d9e3196a495a3ae22b3192ce3eb4b",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9365,
+          "terms": [
+            "suede"
+          ]
+        },
+        {
+          "item_id": 40002,
+          "url": "https://wwd.com/footwear-news/shoe-trends/jennifer-lopez-brittany-snow-satin-pumps-shoe-trend-1239429285",
+          "title": "Jennifer Lopez, Brittany Snow and More Stars Are Leading Late Fall’s Satin Heels Trend",
+          "outlet_domain": "wwd.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T15:09:22Z",
+          "retrieved_at": "2026-11-20T16:32:55Z",
+          "first_seen_at": "2026-11-20T16:32:55Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "3f28d9e8af02d71dcc2510218af6b5a46d07cf21c35a98c8e9b5ce2f321a5775",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9905,
+          "terms": [
+            "suede"
+          ]
+        },
+        {
+          "item_id": 40494,
+          "url": "https://wwd.com/footwear-news/shoe-trends/michelle-pfeiffer-suede-boots-margos-got-money-troubles-1239461479",
+          "title": "Michelle Pfeiffer Participates in the Biggest Fall Footwear Trend in Classic Suede Boots at the Screening & Q&A of ‘Margo’s Got Money Troubles’",
+          "outlet_domain": "wwd.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-21T18:11:29Z",
+          "retrieved_at": "2026-11-21T20:32:35Z",
+          "first_seen_at": "2026-11-21T20:32:35Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "3cdfe28e43e682908565ba0959e1f03cfd673918a55a0fec989e247658ab4532",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9163,
+          "terms": [
+            "suede"
+          ]
+        }
+      ]
+    },
+    {
+      "signal_id": "gen-z",
+      "name": "Gen Z",
+      "type": "commerce_language",
+      "source_sectors": [
+        "editorial"
+      ],
+      "source_domains": [
+        "theguardian.com",
+        "thezoereport.com",
+        "vogue.it"
+      ],
+      "source_corroboration_count": 3,
+      "confidence": "medium",
+      "confidence_source": "derived",
+      "volatility": "flash",
+      "origin_classification": "unclear",
+      "evidence": "The items cover tailoring as accessible to Gen Z, the butterfly as a symbol of Gen Z resilience and anxiety, and an Italian-language Vogue Italia piece on 1990s sneakers (translated).",
+      "index_note": "The signal has 3 items from 3 outlets, all editorial, over two days. The editor labeled it flash.",
+      "human_editor_note": "Editorial view: interesting, in relation to the coverage about tailoring. Gen Z really marks what is or isn't IT.",
+      "evidence_items": [
+        {
+          "item_id": 38531,
+          "url": "https://www.thezoereport.com/fashion/tailoring-gen-z-millennials",
+          "title": "Tailoring Is No Longer An Out Of Reach Luxury, According To Gen Z",
+          "outlet_domain": "thezoereport.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T20:31:12Z",
+          "retrieved_at": "2026-11-18T20:32:03Z",
+          "first_seen_at": "2026-11-18T20:32:03Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "b20ba06e256694c19e4382307dd90f7e88ac9ed376198c56b11f161b9f2734cc",
+          "lang": "unknown",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8606,
+          "terms": [
+            "gen-z",
+            "tailoring"
+          ]
+        },
+        {
+          "item_id": 39752,
+          "url": "https://www.theguardian.com/fashion/2026/nov/19/beautiful-insects-how-the-butterfly-became-a-symbol-of-gen-z-girlhood-defiance-and-anxiety",
+          "title": "In a flap: how the butterfly became a symbol of gen Z resilience – and anxiety",
+          "outlet_domain": "theguardian.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T07:00:24Z",
+          "retrieved_at": "2026-11-20T12:31:48Z",
+          "first_seen_at": "2026-11-20T12:31:48Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "cbac556582d8fea23b12adf493ec95e5f284f5485f1955a1ea26d9857ffcb00e",
+          "lang": "en-gb",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8884,
+          "terms": [
+            "gen-z"
+          ]
+        },
+        {
+          "item_id": 40132,
+          "url": "https://www.vogue.it/article/sneakers-anni-90-modelli-tendenza",
+          "title": "4 sneakers anni '90 che tornano nell'autunno 2026, eternamente cool",
+          "outlet_domain": "vogue.it",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T18:54:48Z",
+          "retrieved_at": "2026-11-20T20:32:26Z",
+          "first_seen_at": "2026-11-20T20:32:26Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "882fd506db486ceb67f5129df39fbbb23854f44927d023f07ab2aab686ef29fb",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.992,
+          "terms": [
+            "gen-z",
+            "sneaker"
+          ]
+        }
+      ]
+    },
+    {
+      "signal_id": "mary-jane",
+      "name": "Mary Jane",
+      "type": "footwear",
+      "source_sectors": [
+        "editorial",
+        "retail"
+      ],
+      "source_domains": [
+        "highsnobiety.com",
+        "vogue.mx",
+        "whowhatwear.com"
+      ],
+      "source_corroboration_count": 3,
+      "confidence": "high",
+      "confidence_source": "derived",
+      "volatility": "revival",
+      "origin_classification": "unclear",
+      "evidence": "Two items cover Mary Jane sneakers from adidas and Nike. The others are Queen Letizia's office look in a Spanish-language Vogue Mexico headline (translated) and a heels trend presented as the alternative to Mary Janes.",
+      "index_note": "The signal has 4 items from 3 outlets, editorial 3 and retail 1, and 2 of the 4 are Mary Jane sneakers. The editor labeled it revival.",
+      "human_editor_note": "Editorial view: the revival here is an interesting story to tell.",
+      "evidence_items": [
+        {
+          "item_id": 37063,
+          "url": "https://www.highsnobiety.com/p/adidas-anfu-mary-jane-shoes",
+          "title": "adidas’ Floral Mary Jane Sneaker Is a Work of Balletcore Art",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T22:51:13Z",
+          "retrieved_at": "2026-11-17T00:31:18Z",
+          "first_seen_at": "2026-11-17T00:31:18Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "5e399fead4cf0fa656c393a2687ef5102ae2c3223296d70f278b8bdab4b0db89",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8911,
+          "terms": [
+            "balletcore",
+            "mary-jane",
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 39214,
+          "url": "https://www.vogue.mx/articulo/como-llevar-zapatos-mary-jane-y-chaleco-como-la-reina-letizia-a-la-oficina",
+          "title": "Zapatos Mary Jane, pantalones acampanados y chaleco, la reina Letizia tiene el look de oficina perfecto",
+          "outlet_domain": "vogue.mx",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T14:30:21Z",
+          "retrieved_at": "2026-11-19T16:32:41Z",
+          "first_seen_at": "2026-11-19T16:32:41Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "5685161c5a1136760a909e3d74aae45de4519f6645c831b41fb1be678b95b8a5",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.948,
+          "terms": [
+            "mary-jane"
+          ]
+        },
+        {
+          "item_id": 39988,
+          "url": "https://www.whowhatwear.com/fashion/celebrity-style/two-tone-heels-trend-sarah-pidegon-2026",
+          "title": "Instead of Mary Janes, Celebrities in Their 30s Keep Wearing This Elegant Heels Trend",
+          "outlet_domain": "whowhatwear.com",
+          "sector": "retail",
+          "sector_group": "retail",
+          "published_at": "2026-11-20T12:29:09Z",
+          "retrieved_at": "2026-11-20T16:32:53Z",
+          "first_seen_at": "2026-11-20T16:32:53Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "79f41e88e3fe835c4b53102a7fb9839af73f5eb244789ef1e926a9117edf6a70",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.973,
+          "terms": [
+            "mary-jane"
+          ]
+        },
+        {
+          "item_id": 40469,
+          "url": "https://www.highsnobiety.com/p/nike-shox-z-calistra-black-velvet",
+          "title": "Nike's Velvet Mary Jane Is a Cozy Lil' Ballerina Sneaker",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-21T20:04:39Z",
+          "retrieved_at": "2026-11-22T00:31:15Z",
+          "first_seen_at": "2026-11-21T20:31:19Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "bb29f71cd597a0e1e0c5688b6103fc5df28422ee51da8fb76a2b7a1423139625",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.953,
+          "terms": [
+            "mary-jane",
+            "sneaker"
+          ]
+        }
+      ]
+    },
+    {
+      "signal_id": "wide-leg",
+      "name": "wide-leg",
+      "type": "garment_silhouette",
+      "source_sectors": [
+        "editorial"
+      ],
+      "source_domains": [
+        "grazia.it",
+        "vogue.com",
+        "vogue.mx"
+      ],
+      "source_corroboration_count": 3,
+      "confidence": "medium",
+      "confidence_source": "derived",
+      "volatility": "microtrend",
+      "origin_classification": "unclear",
+      "evidence": "The items cover the wide-leg jeans French women and Kate Moss own, styling wide-leg jeans from street style, a Spanish-language Vogue Mexico piece on wide-leg jeans and an Italian-language Grazia piece on wide trousers (both translated).",
+      "index_note": "The signal has 4 items from 3 outlets, all editorial, and 2 of the 4 headlines are not in English. The editor labeled it microtrend.",
+      "human_editor_note": "Editorial view: keeping this as a microtrend.",
+      "evidence_items": [
+        {
+          "item_id": 36887,
+          "url": "https://www.vogue.com/article/wide-leg-french-girl-jeans",
+          "title": "The Wide-Leg Jeans That Every French Girl (And Kate Moss) Owns",
+          "outlet_domain": "vogue.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T17:40:10Z",
+          "retrieved_at": "2026-11-16T20:32:30Z",
+          "first_seen_at": "2026-11-16T20:32:30Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "c70af7a9cfb3b8fe5ab2b46417338e462c5e8ad752a1eadd8c217c4581a09354",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9772,
+          "terms": [
+            "wide-leg"
+          ]
+        },
+        {
+          "item_id": 37545,
+          "url": "https://www.vogue.mx/articulo/como-llevar-jeans-wide-leg-con-botines-zapatos-de-tacon-y-mocasines-en-noviembre-2026",
+          "title": "Los jeans wide leg en tendencia se llevan con botines, zapatos de tacón y mocasines en noviembre 2026",
+          "outlet_domain": "vogue.mx",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T14:32:38Z",
+          "retrieved_at": "2026-11-17T16:32:27Z",
+          "first_seen_at": "2026-11-17T16:32:27Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "61d400b60b7ccfcc38c546d7774ec6d0d22ab10c62957fe5e47afe11fb96f794",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9946,
+          "terms": [
+            "wide-leg"
+          ]
+        },
+        {
+          "item_id": 38781,
+          "url": "https://www.grazia.it/moda/tendenze-moda/pantaloni-larghi-a-chi-stanno-bene-come-abbinare-modelli-wide-leg-quali-scegliere-zara-mango-autunno-inverno-2026-1014839",
+          "title": "Passione pantaloni larghi? Li adoriamo anche noi e questi sono i modelli più cool che troverete in circolazione",
+          "outlet_domain": "grazia.it",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T06:30:00Z",
+          "retrieved_at": "2026-11-19T08:30:56Z",
+          "first_seen_at": "2026-11-19T08:30:56Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "5fff639cac615af6ec0488392c4089e8772eb5e8a932c5325be5e882f36c420d",
+          "lang": "it-it",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9803,
+          "terms": [
+            "wide-leg"
+          ]
+        },
+        {
+          "item_id": 40230,
+          "url": "https://www.vogue.com/article/how-to-style-wide-leg-jeans",
+          "title": "How to Style Wide-Leg Jeans, According to the Street Style Set",
+          "outlet_domain": "vogue.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T20:30:12Z",
+          "retrieved_at": "2026-11-21T00:32:18Z",
+          "first_seen_at": "2026-11-21T00:32:18Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "26e3f419eaac363902ca88ef1640d86599dc5f5d8de06c0a6851cf9c3cab8998",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.946,
+          "terms": [
+            "denim",
+            "wide-leg"
+          ]
+        }
+      ]
+    },
+    {
+      "signal_id": "bomber",
+      "name": "bomber",
+      "type": "garment_silhouette",
+      "source_sectors": [
+        "editorial"
+      ],
+      "source_domains": [
+        "stylerave.com",
+        "stylist.co.uk",
+        "vogue.com"
+      ],
+      "source_corroboration_count": 3,
+      "confidence": "medium",
+      "confidence_source": "derived",
+      "volatility": "seasonal",
+      "origin_classification": "unclear",
+      "evidence": "The items cover the best bomber jackets for women and rugged leather jackets for men. A piece on rainwear matched the term in the excerpt.",
+      "index_note": "The signal has 3 items from 3 outlets, all editorial. The editor labeled it seasonal.",
+      "human_editor_note": "Editorial view: fall-time jacket as well as winter-time jacket style!",
+      "evidence_items": [
+        {
+          "item_id": 37490,
+          "url": "https://www.stylist.co.uk/fashion/best-waterproof-bombers/1127270",
+          "title": "Every stylish woman is wearing this waterproof essential for rainy season – here are 7 to shop now",
+          "outlet_domain": "stylist.co.uk",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T15:52:50Z",
+          "retrieved_at": "2026-11-17T16:32:04Z",
+          "first_seen_at": "2026-11-17T16:32:04Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "ae61ea53d98ebe7cb75bb6b61460ff02d358daac38e6c6531864f51fe83badfa",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9695,
+          "terms": [
+            "bomber"
+          ]
+        },
+        {
+          "item_id": 38322,
+          "url": "https://www.stylerave.com/best-leather-jackets-men",
+          "title": "10 Rugged Leather Jackets for Men That Stand the Test of Time",
+          "outlet_domain": "stylerave.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T13:54:28Z",
+          "retrieved_at": "2026-11-18T16:32:33Z",
+          "first_seen_at": "2026-11-18T16:32:33Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "eaf9c45bc4a54c787fb0d2b36b221498878ab88d6f958fa8a47648aeb337874d",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9728,
+          "terms": [
+            "bomber",
+            "leather-jacket",
+            "shearling"
+          ]
+        },
+        {
+          "item_id": 39388,
+          "url": "https://www.vogue.com/slideshow/bomber-jacket-outfits",
+          "title": "The Best Bomber Jackets for Women—And How to Wear Them in 2026",
+          "outlet_domain": "vogue.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T17:02:24Z",
+          "retrieved_at": "2026-11-19T20:32:21Z",
+          "first_seen_at": "2026-11-19T20:32:21Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "20a5983b5ae7589dce7f9a77d1494f5ec0ce3465798cc14b8964aab2a6e5795d",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9811,
+          "terms": [
+            "bomber"
+          ]
+        }
+      ]
+    },
+    {
+      "signal_id": "leather-jacket",
+      "name": "leather jacket",
+      "type": "garment_silhouette",
+      "source_sectors": [
+        "editorial"
+      ],
+      "source_domains": [
+        "graziadaily.co.uk",
+        "stylerave.com",
+        "voguearabia.com"
+      ],
+      "source_corroboration_count": 3,
+      "confidence": "medium",
+      "confidence_source": "derived",
+      "volatility": "seasonal",
+      "origin_classification": "unclear",
+      "evidence": "The items cover the enduring appeal of the leather jacket, rugged leather jackets for men and ways to style a leather jacket.",
+      "index_note": "The signal has 3 items from 3 outlets, all editorial. The editor labeled it seasonal.",
+      "human_editor_note": "Editorial view: fall and winter time jacket.",
+      "evidence_items": [
+        {
+          "item_id": 37638,
+          "url": "https://graziadaily.co.uk/fashion/trends/leather-jacket-jensen-huang-timeless-appeal",
+          "title": "The Enduring Appeal Of The Leather Jacket",
+          "outlet_domain": "graziadaily.co.uk",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T16:46:56Z",
+          "retrieved_at": "2026-11-17T20:31:00Z",
+          "first_seen_at": "2026-11-17T20:31:00Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "cb7466c91ffd9842a0d22d116835567d8806986315265b1dbb7b37a569c979e8",
+          "lang": "en-gb",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9136,
+          "terms": [
+            "leather-jacket"
+          ]
+        },
+        {
+          "item_id": 38322,
+          "url": "https://www.stylerave.com/best-leather-jackets-men",
+          "title": "10 Rugged Leather Jackets for Men That Stand the Test of Time",
+          "outlet_domain": "stylerave.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T13:54:28Z",
+          "retrieved_at": "2026-11-18T16:32:33Z",
+          "first_seen_at": "2026-11-18T16:32:33Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "eaf9c45bc4a54c787fb0d2b36b221498878ab88d6f958fa8a47648aeb337874d",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9728,
+          "terms": [
+            "bomber",
+            "leather-jacket",
+            "shearling"
+          ]
+        },
+        {
+          "item_id": 39646,
+          "url": "https://www.voguearabia.com/article/how-to-style-leather-jacket",
+          "title": "How to Style Your Leather Jacket",
+          "outlet_domain": "voguearabia.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T05:00:00Z",
+          "retrieved_at": "2026-11-20T08:32:17Z",
+          "first_seen_at": "2026-11-20T08:32:17Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "3e4719426ef992730fd1d97feb317e120a50bdcf33a8ffdb7926c7b680d6ba16",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9703,
+          "terms": [
+            "leather-jacket"
+          ]
+        }
+      ]
+    },
+    {
+      "signal_id": "leopard",
+      "name": "leopard",
+      "type": "color_print",
+      "source_sectors": [
+        "editorial"
+      ],
+      "source_domains": [
+        "marieclaire.com",
+        "vogue.co.uk"
+      ],
+      "source_corroboration_count": 2,
+      "confidence": "medium",
+      "confidence_source": "derived",
+      "volatility": "volatile",
+      "origin_classification": "unclear",
+      "evidence": "The items cover faux fur as the statement winter coat, Dakota Johnson's leopard-print bag and a piece on statement sneakers, where the term was matched in the excerpt.",
+      "index_note": "The signal has 3 items from 2 outlets, all editorial, over two days, with vogue.co.uk contributing 2. The editor labeled it volatile.",
+      "human_editor_note": "Editorial view: told y'all, leopard gets its moment until January, then it'll disappear!",
+      "evidence_items": [
+        {
+          "item_id": 38544,
+          "url": "https://www.vogue.co.uk/article/statement-trainer-trend",
+          "title": "The Statement Sneakers That Might Tempt You Away From White Trainers",
+          "outlet_domain": "vogue.co.uk",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T17:01:39Z",
+          "retrieved_at": "2026-11-18T20:32:22Z",
+          "first_seen_at": "2026-11-18T20:32:22Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "dc81e4a44244e1f33bdf750fb74dd7fc3f080b9afaecd60cc88adfc797478713",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9024,
+          "terms": [
+            "leopard",
+            "sneaker"
+          ]
+        },
+        {
+          "item_id": 38541,
+          "url": "https://www.vogue.co.uk/article/best-faux-fur-coats-for-winter",
+          "title": "Why Faux Fur Is The Statement Winter Coat Trend To Invest In",
+          "outlet_domain": "vogue.co.uk",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T17:14:08Z",
+          "retrieved_at": "2026-11-18T20:32:22Z",
+          "first_seen_at": "2026-11-18T20:32:22Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "567783c4b07d95f5bfce2a96a607052e085a9d64df8f89aff36de763c2107f7c",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.8605,
+          "terms": [
+            "leopard"
+          ]
+        },
+        {
+          "item_id": 40367,
+          "url": "https://www.marieclaire.com/fashion/celebrity-style/dakota-johnson-leopard-print-bag-oversized-scarf-winter-2026",
+          "title": "Dakota Johnson's Leopard-Print Bag and Bold Scarf Make the Perfect Winter Pair",
+          "outlet_domain": "marieclaire.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-21T11:00:00Z",
+          "retrieved_at": "2026-11-21T12:31:28Z",
+          "first_seen_at": "2026-11-21T12:31:28Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "5ca1007865826a3a6252b05991e2d6195ac4652acf021d28144152cb1bda3822",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9089,
+          "terms": [
+            "leopard"
+          ]
+        }
+      ]
+    },
+    {
+      "signal_id": "maximalism",
+      "name": "maximalism",
+      "type": "aesthetic_term",
+      "source_sectors": [
+        "editorial"
+      ],
+      "source_domains": [
+        "harpersbazaar.com",
+        "marieclaire.com",
+        "vogue.com"
+      ],
+      "source_corroboration_count": 3,
+      "confidence": "medium",
+      "confidence_source": "derived",
+      "volatility": "emerging",
+      "origin_classification": "unclear",
+      "evidence": "The items cover Teyana Taylor's maximalist holiday look, a plus-size maximalist's approach to statement looks and black-tie wedding guest dresses.",
+      "index_note": "The signal has 3 items from 3 outlets, all editorial. The editor labeled it emerging.",
+      "human_editor_note": "Editorial view: still on the up!",
+      "evidence_items": [
+        {
+          "item_id": 36899,
+          "url": "https://www.vogue.com/slideshow/black-tie-wedding-guest-dresses",
+          "title": "28 Black-Tie Wedding Guest Dresses That Are Perfectly Formal",
+          "outlet_domain": "vogue.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T11:00:00Z",
+          "retrieved_at": "2026-11-16T20:32:30Z",
+          "first_seen_at": "2026-11-16T20:32:30Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "4c75bb24fb2ef011fb951e639dce5b6ddeeb2d2de1d575443a2f3bd232e43195",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9519,
+          "terms": [
+            "maximalism"
+          ]
+        },
+        {
+          "item_id": 37770,
+          "url": "https://www.harpersbazaar.com/celebrity/latest/a74456822/teyana-taylor-maximalist-fur-coat-burberry-holiday-party-photos",
+          "title": "Teyana Taylor Kicks Off the Holidays in True Maximalist Fashion",
+          "outlet_domain": "harpersbazaar.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T22:16:57Z",
+          "retrieved_at": "2026-11-18T00:31:10Z",
+          "first_seen_at": "2026-11-18T00:31:10Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "0fa07430ce1fd5aaf1824ff613d071ebacbc7b4b6b960273494e060c356dc7ba",
+          "lang": "unknown",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9352,
+          "terms": [
+            "fringe",
+            "maximalism"
+          ]
+        },
+        {
+          "item_id": 40366,
+          "url": "https://www.marieclaire.com/fashion/winter-fashion/plus-size-statement-occasion-looks-sarah-chiwaya",
+          "title": "I'm a Size 20 Maximalist—Here's How I Style Statement Looks for Every Occasion",
+          "outlet_domain": "marieclaire.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-21T11:00:00Z",
+          "retrieved_at": "2026-11-21T12:31:28Z",
+          "first_seen_at": "2026-11-21T12:31:28Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "d1165c7882088f400bf62c0390868ca452b850db05523837d3f4f64beb3b33d1",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9909,
+          "terms": [
+            "maximalism"
+          ]
+        }
+      ]
+    },
+    {
+      "signal_id": "oversized",
+      "name": "oversized",
+      "type": "garment_silhouette",
+      "source_sectors": [
+        "editorial"
+      ],
+      "source_domains": [
+        "highsnobiety.com",
+        "vogue.de",
+        "wwd.com"
+      ],
+      "source_corroboration_count": 3,
+      "confidence": "medium",
+      "confidence_source": "derived",
+      "volatility": "long_tail",
+      "origin_classification": "unclear",
+      "evidence": "The items cover a German-language Vogue Germany piece on knit accessories in place of an oversized beanie (translated), Jonathan Anderson's whimsy and designer shoulder bags.",
+      "index_note": "The signal has 3 items from 3 outlets, all editorial, over two days. The editor labeled it long tail.",
+      "human_editor_note": "Editorial view: hello, oversized!!!",
+      "evidence_items": [
+        {
+          "item_id": 36763,
+          "url": "https://www.highsnobiety.com/p/jw-anderson-christmas",
+          "title": "No One Out-Whimsies Jonathan Anderson",
+          "outlet_domain": "highsnobiety.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-16T19:33:00Z",
+          "retrieved_at": "2026-11-16T20:31:22Z",
+          "first_seen_at": "2026-11-16T20:31:22Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "c65ffbc6aafdfd9765d90b8c8180c345d849e0e4a2ad3d7c5db29316340d84ee",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9398,
+          "terms": [
+            "oversized"
+          ]
+        },
+        {
+          "item_id": 40128,
+          "url": "https://www.vogue.de/artikel/statt-oversized-beanie-strick-accessoires-trends-styling",
+          "title": "Statt Oversized-Beanie: 3 Strick-Accessoires, die sofort jeden Herbst-Look aufwerten",
+          "outlet_domain": "vogue.de",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T17:29:53Z",
+          "retrieved_at": "2026-11-20T20:32:24Z",
+          "first_seen_at": "2026-11-20T20:32:24Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "322580eda161490d06782161987defd3d1d5bc4128c805078856c34f9182e498",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9236,
+          "terms": [
+            "oversized"
+          ]
+        },
+        {
+          "item_id": 40151,
+          "url": "https://wwd.com/shop/shop-fashion/best-shoulder-bags-1235427896",
+          "title": "The 10 Best Designer Shoulder Bags for Women to Wear Everywhere This Winter",
+          "outlet_domain": "wwd.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T20:01:20Z",
+          "retrieved_at": "2026-11-20T20:32:43Z",
+          "first_seen_at": "2026-11-20T20:32:43Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "21ddf029d95c494133efede10dee20df9b30915c7594bb38d379b09c40167a36",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9798,
+          "terms": [
+            "oversized"
+          ]
+        }
+      ]
+    },
+    {
+      "signal_id": "ballet-flat",
+      "name": "ballet flat",
+      "type": "footwear",
+      "source_sectors": [
+        "editorial"
+      ],
+      "source_domains": [
+        "marieclaire.com",
+        "vogue.co.uk"
+      ],
+      "source_corroboration_count": 2,
+      "confidence": "medium",
+      "confidence_source": "derived",
+      "volatility": "revival",
+      "origin_classification": "unclear",
+      "evidence": "One item covers Hailey Bieber's ballet flats, and the other covers boots presented as winter's answer to the ballet flat.",
+      "index_note": "The signal has 2 items from 2 outlets, all editorial, the report minimum. The editor labeled it revival.",
+      "human_editor_note": "Editorial view: ballet flats are here to stay.",
+      "evidence_items": [
+        {
+          "item_id": 39145,
+          "url": "https://www.marieclaire.com/fashion/celebrity-style/high-vamp-ballet-flats-trend-winter-2026-hailey-bieber",
+          "title": "Yes, You Can Be Chic and Cozy This Winter—Just Try Hailey Bieber's Ballet Flats",
+          "outlet_domain": "marieclaire.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-19T16:13:44Z",
+          "retrieved_at": "2026-11-19T16:31:50Z",
+          "first_seen_at": "2026-11-19T16:31:50Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "f862a509d499c64bdd0c3ea22edd6ef3a9439a43c897825706b25fa3737c60e9",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9901,
+          "terms": [
+            "ballet-flat"
+          ]
+        },
+        {
+          "item_id": 39762,
+          "url": "https://www.vogue.co.uk/article/flat-sock-boots",
+          "title": "These Boots Are Winter’s Answer To The Ballet Flat",
+          "outlet_domain": "vogue.co.uk",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-20T12:07:35Z",
+          "retrieved_at": "2026-11-20T12:32:08Z",
+          "first_seen_at": "2026-11-20T12:32:08Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "d57249f39718faddd8e2fde3a9cb8657f62becd074300a4a50589b9f1ced84dc",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9846,
+          "terms": [
+            "ballet-flat"
+          ]
+        }
+      ]
+    },
+    {
+      "signal_id": "barrel-leg",
+      "name": "barrel leg",
+      "type": "garment_silhouette",
+      "source_sectors": [
+        "editorial"
+      ],
+      "source_domains": [
+        "marieclaire.com",
+        "vogue.de"
+      ],
+      "source_corroboration_count": 2,
+      "confidence": "medium",
+      "confidence_source": "derived",
+      "volatility": "microtrend",
+      "origin_classification": "unclear",
+      "evidence": "One item presents cocoon jeans as making barrel jeans obsolete, and a German-language Vogue Germany piece covers barrel jeans with ankle boots (translated).",
+      "index_note": "The signal has 2 items from 2 outlets, all editorial, the report minimum, and one headline frames barrel jeans as being replaced. The editor labeled it microtrend.",
+      "human_editor_note": "Editorial view: trust, if this keeps up as a term next week, both barrel leg and wide leg are turning to volatile.",
+      "evidence_items": [
+        {
+          "item_id": 37664,
+          "url": "https://www.marieclaire.com/fashion/cocoon-leg-jeans-trend",
+          "title": "Cocoon Jeans Are About to Make Barrel Jeans Obsolete",
+          "outlet_domain": "marieclaire.com",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-17T19:03:02Z",
+          "retrieved_at": "2026-11-17T20:31:36Z",
+          "first_seen_at": "2026-11-17T20:31:36Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "058ffe0c6fb3f8029d5e3cad2831361bf7a90e030fe764d4d0f291b458ee49e2",
+          "lang": "en",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9868,
+          "terms": [
+            "barrel-leg",
+            "denim"
+          ]
+        },
+        {
+          "item_id": 38345,
+          "url": "https://www.vogue.de/artikel/barrel-jeans-stiefeletten-kombinieren-trend-herbst-winter",
+          "title": "Barrel Jeans und Stiefeletten: 5 Arten, die elegante Trend-Kombi im Herbst/Winter zu tragen",
+          "outlet_domain": "vogue.de",
+          "sector": "editorial",
+          "sector_group": "editorial",
+          "published_at": "2026-11-18T13:18:16Z",
+          "retrieved_at": "2026-11-18T16:33:22Z",
+          "first_seen_at": "2026-11-18T16:33:22Z",
+          "first_seen_basis": "live_insert",
+          "content_hash": "a42393173d637a98ead228ce3e5aea6c5534557b86895255b4af948665ccacc3",
+          "lang": "en-us",
+          "style_set": [
+            "yes"
+          ],
+          "p_style": 0.9968,
+          "terms": [
+            "barrel-leg"
+          ]
+        }
+      ]
+    }
+  ],
+  "repeated_keywords": [],
+  "garments": [],
+  "silhouettes": [],
+  "materials": [],
+  "colors": [],
+  "aesthetic_terms": [],
+  "cultural_references": [],
+  "limitations": [
+    "Items are counted as style only when the ARI3 style classifier (frozen v0.0.2) gives a confident yes. On a 150-item prospective holdout of articles published after the classifier was frozen, its accuracy was 0.833, below its pre-registered 0.85 criterion (EXP-003A, H2 not supported). The editor reviews every evidence item used in this report.",
+    "In this window, 1,961 of 4,250 items (46.1%) received a not-sure prediction set and were excluded from style-positive counts.",
+    "In this window, 89.7% of collected items came from the editorial sector and 95.4% from the editorial group (editorial, trade intelligence and independent criticism). The stored corpus as a whole is 89.4% editorial sector.",
+    "The window has 0 items from social platforms, which are not collected, and 4 from resale sources. The report describes the language of the collected sources, not style culture, fashion consumers or the public at large.",
+    "Signal interpretation and evidence review are done by one editor.",
+    "ARI3 stores each item's headline and feed excerpt, not the full article.",
+    "0 of the window's 4250 items were stored before 2026-09-30, so their first-seen times are reconstructed from earlier records, not recorded as they happened.",
+    "Seven ambiguous lexicon terms (western, brat, demure, lace, bow, sustainable, glamour) are left out of every count until their uses are checked one by one.",
+    "Exact mirrors and syndicated, translated or lightly re-edited versions of the same publication across publisher domains are collapsed to one report evidence unit. The frozen source snapshot retains the raw records."
+  ],
+  "archive_tags": [],
+  "collection_status": "normal",
+  "review_status": "reviewed",
+  "evidence_snapshot_sha256": "cb643b3a0f6f62ea1fb78f3f37cc65813f524e3a333f9d55e872764ad48f0996",
+  "ai_assistance": "ARI3’s deterministic pipeline surfaced candidate signals and bound the report to a frozen evidence snapshot. An AI assistant drafted the executive summary, evidence text, and index notes using only the locked report evidence, including translations of non-English headlines. The editor selected and merged signals, set labels and confidence overrides, pruned evidence, reviewed the drafted text, wrote the editor notes, and approved the final report.",
+  "headline": "Denim leaned on party-season coverage and vintage on celebrity and royal dressing",
+  "reviewed_by": "the editor"
+}

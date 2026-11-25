@@ -1,0 +1,1893 @@
+{
+ "collection_window": {
+  "end": "2026-10-18",
+  "start": "2026-10-12"
+ },
+ "frozen_at": "2026-10-21T07:53:38Z",
+ "items": [
+  {
+   "content_hash": "d30b0f2a7e4552e771bd1af4c95f4549c2db3e8da7928703cd39b933eaf84197",
+   "first_seen_at": "2026-10-13T07:07:11Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 15971,
+   "published_at": "2026-10-12T12:47:49Z",
+   "retrieved_at": "2026-10-13T07:07:11Z",
+   "url": "https://apparelresources.com/fashion-news/trends/menswears-print-moment-indian-craft-enters-office-autumn"
+  },
+  {
+   "content_hash": "7dfd886bb9fe49552c5731527d9cedbf29ec932eb935d13c3e8903424cf62298",
+   "first_seen_at": "2026-10-13T07:07:51Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16096,
+   "published_at": "2026-10-13T05:48:44Z",
+   "retrieved_at": "2026-10-13T07:07:51Z",
+   "url": "https://www.elle.com.au/shopping/mesh-ballet-flats"
+  },
+  {
+   "content_hash": "7a3bc1955d34ab58ae38c688ff2a49b2acf17a4048b4f3791c103ef308383924",
+   "first_seen_at": "2026-10-13T07:07:51Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16102,
+   "published_at": "2026-10-12T06:07:31Z",
+   "retrieved_at": "2026-10-13T07:07:51Z",
+   "url": "https://www.elle.com.au/shopping/fashion-shopping/denim-trends-2026"
+  },
+  {
+   "content_hash": "4302c739203f8fcde0adf45e87ee3897d25db69901323905f805aa8fb2cca4d6",
+   "first_seen_at": "2026-10-13T07:08:25Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16179,
+   "published_at": "2026-10-12T18:18:57Z",
+   "retrieved_at": "2026-10-13T07:08:25Z",
+   "url": "https://wwd.com/footwear-news/sneaker-news/kith-giorgio-armani-asics-gel-mai-01-sneaker-release-date-1239343559"
+  },
+  {
+   "content_hash": "9476092eca6fceda81dae45ec1376334c43452eca7b8f86f91c3cfddedbf49f9",
+   "first_seen_at": "2026-10-13T07:08:25Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16180,
+   "published_at": "2026-10-12T17:03:44Z",
+   "retrieved_at": "2026-10-13T07:08:25Z",
+   "url": "https://wwd.com/footwear-news/shoe-trends/kim-kardashian-manolo-blahnik-sandals-singapore-1239343285"
+  },
+  {
+   "content_hash": "2e93627d718b68dd20ae37a351db4cac245c898bf8ce9172b3872ba230dc1ad9",
+   "first_seen_at": "2026-10-13T07:08:25Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16182,
+   "published_at": "2026-10-12T15:36:31Z",
+   "retrieved_at": "2026-10-13T07:08:25Z",
+   "url": "https://wwd.com/footwear-news/sneaker-news/loewe-on-cloudsolo-hiker-cloudtilt-cosmic-release-date-1239342998"
+  },
+  {
+   "content_hash": "11850e047ba3e3e251d850cc950bbf5bf8ecd3331a1db4d4eea48f87cea6b0c0",
+   "first_seen_at": "2026-10-13T07:08:25Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16183,
+   "published_at": "2026-10-12T12:08:22Z",
+   "retrieved_at": "2026-10-13T07:08:25Z",
+   "url": "https://wwd.com/footwear-news/shoe-industry-news/ugg-jw-anderson-loafer-boot-release-date-1239336395"
+  },
+  {
+   "content_hash": "d9bb9fccaa7e735e8a2639a2beb093adc4f2b36603677ab66aff4b0cce8f5d3a",
+   "first_seen_at": "2026-10-13T07:08:30Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16193,
+   "published_at": "2026-10-12T20:18:48Z",
+   "retrieved_at": "2026-10-13T07:08:30Z",
+   "url": "https://www.gq.com/story/baggy-dark-denim-jeans-for-men-trend"
+  },
+  {
+   "content_hash": "383751c6d552844fa4cf53d2681ccd9a663d1b71c294bba2345d473e79121cea",
+   "first_seen_at": "2026-10-13T07:08:34Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16207,
+   "published_at": "2026-10-13T04:00:00Z",
+   "retrieved_at": "2026-10-13T07:08:34Z",
+   "url": "https://www.gqitalia.it/article/asics-gel-transcend-fj-black-prezzo-data-uscita"
+  },
+  {
+   "content_hash": "1c901b3c34b92ca8a9c64df96ce6611bd93b3d3f480dbe22ac8e7727544f3f14",
+   "first_seen_at": "2026-10-13T07:08:36Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16229,
+   "published_at": "2026-10-13T04:30:00Z",
+   "retrieved_at": "2026-10-13T07:08:36Z",
+   "url": "https://www.grazia.it/moda/tendenze-moda/borse-suede-scamosciate-tracolla-shopper-a-mano-bags-camoscio-beige-marrone-nero-colorate-autunno-2026-1003825"
+  },
+  {
+   "content_hash": "1ac038f485a5e3dcad7affe41cf37718684373acf73844fdeb0898c1ae831fb4",
+   "first_seen_at": "2026-10-13T07:08:51Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16277,
+   "published_at": "2026-10-12T13:15:00Z",
+   "retrieved_at": "2026-10-13T07:08:51Z",
+   "url": "https://www.harpersbazaar.com/uk/beauty/hair/a74107413/princess-of-wales-blonde-hair"
+  },
+  {
+   "content_hash": "d11fa7b9e68425bd0aad011091003dcd9f74698b9c3c44cc7656ab1ed3dfbd34",
+   "first_seen_at": "2026-10-13T07:08:51Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16280,
+   "published_at": "2026-10-12T09:27:00Z",
+   "retrieved_at": "2026-10-13T07:08:51Z",
+   "url": "https://www.harpersbazaar.com/uk/fashion/shopping/a74105131/jennifer-aniston-jeans"
+  },
+  {
+   "content_hash": "0e489048ddeef8ed5cd5f7504786096c3eaa29a8e2be6df6a022834c72bf2d9c",
+   "first_seen_at": "2026-10-13T07:08:56Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16284,
+   "published_at": "2026-10-12T19:31:24Z",
+   "retrieved_at": "2026-10-13T07:08:56Z",
+   "url": "https://www.hellomagazine.com/us/928590/julianne-hough-leggy-display-fall-inspired-outfit-new-picture"
+  },
+  {
+   "content_hash": "4c610d21dec561beb3c951708feff5bc30cca6827596620d2770c7cda6d281b2",
+   "first_seen_at": "2026-10-13T07:09:02Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16308,
+   "published_at": "2026-10-12T09:54:08Z",
+   "retrieved_at": "2026-10-13T07:09:02Z",
+   "url": "https://hypebae.com/2026/10/uniqlo-jw-anderson-fw26-collection-collaboration-jonathan-anderson-release-date-where-to-buy"
+  },
+  {
+   "content_hash": "4990bae7a6a31d8bda555a73da55387d60f5da5f85f1692fd71b52717426471d",
+   "first_seen_at": "2026-10-13T07:09:04Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16309,
+   "published_at": "2026-10-13T06:36:08Z",
+   "retrieved_at": "2026-10-13T07:09:04Z",
+   "url": "https://hypebeast.com/2026/10/air-jordan-1-low-og-dia-de-muertos-iz4686-216-release-info"
+  },
+  {
+   "content_hash": "ef91a5cf20ff2cb59f2db7bf60328a918e83522703080fc77a970dae2c298be0",
+   "first_seen_at": "2026-10-13T07:09:04Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16310,
+   "published_at": "2026-10-13T05:58:15Z",
+   "retrieved_at": "2026-10-13T07:09:04Z",
+   "url": "https://hypebeast.com/2026/10/nanga-nigel-cabourn-collabo-collection-release-info"
+  },
+  {
+   "content_hash": "27fc9bd7920f1dc86085a41046f9b307820ad30a03f14dacd200bc50d65e7b63",
+   "first_seen_at": "2026-10-13T07:09:04Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16317,
+   "published_at": "2026-10-13T04:13:08Z",
+   "retrieved_at": "2026-10-13T07:09:04Z",
+   "url": "https://hypebeast.com/2026/10/air-jordan-3-fireside-ck9246-200-release-info"
+  },
+  {
+   "content_hash": "65986f7307049d8194c26ed1857fbcb614434f551f87f40d2ec17803ebc1c7db",
+   "first_seen_at": "2026-10-13T07:09:04Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16319,
+   "published_at": "2026-10-13T02:19:16Z",
+   "retrieved_at": "2026-10-13T07:09:04Z",
+   "url": "https://hypebeast.com/2026/10/stussy-denim-tears-fw26-collaboration-announcement-release-info"
+  },
+  {
+   "content_hash": "d46dd77205ed1dd7cfc4e05127dc38da298e81092d20452acd790a64b65ed395",
+   "first_seen_at": "2026-10-13T07:09:04Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16321,
+   "published_at": "2026-10-13T00:00:34Z",
+   "retrieved_at": "2026-10-13T07:09:04Z",
+   "url": "https://hypebeast.com/2026/10/levis-loopwheeler-beams-50th-anniversary-2026"
+  },
+  {
+   "content_hash": "cd8207da0da33f52d88b11e9b7b77ad530ea4f8267436400e8ddc15ef320982d",
+   "first_seen_at": "2026-10-13T07:09:04Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16325,
+   "published_at": "2026-10-12T10:30:10Z",
+   "retrieved_at": "2026-10-13T07:09:04Z",
+   "url": "https://hypebeast.com/2026/10/supreme-martine-rose-fall-2026-collaboration-collection-release-info"
+  },
+  {
+   "content_hash": "2e930f1fdf3d44fb3c627af272af7b02950e4799df1a540a491e0472a763468f",
+   "first_seen_at": "2026-10-13T07:09:47Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16392,
+   "published_at": "2026-10-13T06:32:00Z",
+   "retrieved_at": "2026-10-14T16:33:01Z",
+   "url": "https://www.stylerave.com/supreme-martine-rose-fall-2026-collection"
+  },
+  {
+   "content_hash": "573414c430f9c1b963d1b08e134de3f2891796afac57fd83fa002f4f93200e7c",
+   "first_seen_at": "2026-10-13T07:09:47Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16393,
+   "published_at": "2026-10-12T22:45:38Z",
+   "retrieved_at": "2026-10-13T07:09:47Z",
+   "url": "https://www.stylerave.com/jw-anderson-uniqlo-fall-winter-2026-collection"
+  },
+  {
+   "content_hash": "b53f687b1469b22bdd96e728bfaa289835cc4000d790287216cfc7c11400a9b1",
+   "first_seen_at": "2026-10-13T07:09:47Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16395,
+   "published_at": "2026-10-12T18:43:58Z",
+   "retrieved_at": "2026-10-13T07:09:47Z",
+   "url": "https://www.stylerave.com/philipp-plein-superlative-watch"
+  },
+  {
+   "content_hash": "74346c5a8c8e1f5568250ff2016b98c5b7835e3b89bd21f0f7fc33089c1cc4ad",
+   "first_seen_at": "2026-10-13T07:09:53Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16409,
+   "published_at": "2026-10-12T16:06:12Z",
+   "retrieved_at": "2026-10-13T07:09:53Z",
+   "url": "https://www.stylist.co.uk/beauty/hair/best-paris-fashion-week-hair/1118437"
+  },
+  {
+   "content_hash": "071954acb51211dc0a710404cc7f5ea01bbfa7dfa3dfb0eb66a3eb9418e910bf",
+   "first_seen_at": "2026-10-13T07:09:53Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16410,
+   "published_at": "2026-10-12T12:20:34Z",
+   "retrieved_at": "2026-10-13T07:09:53Z",
+   "url": "https://www.stylist.co.uk/fashion/how-to-shop-jeans/1118803"
+  },
+  {
+   "content_hash": "d97edeb7e1c337c6a3d4d53f018484e17b7f827842d58a1951967c58bee2ddd2",
+   "first_seen_at": "2026-10-13T07:09:53Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16412,
+   "published_at": "2026-10-12T10:47:09Z",
+   "retrieved_at": "2026-10-13T07:09:53Z",
+   "url": "https://www.stylist.co.uk/fashion/gh-bass-karl-largerfeld-penny-loafers-review/1118786"
+  },
+  {
+   "content_hash": "aa25fad080daea10cf4172e8a2eed7979ce7be678893fdb6be00980c5c4ac33d",
+   "first_seen_at": "2026-10-13T07:09:56Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16428,
+   "published_at": "2026-10-12T10:20:43Z",
+   "retrieved_at": "2026-10-13T07:09:56Z",
+   "url": "https://www.theindustry.fashion/dickies-launches-footwear-in-partnership-with-overland-shoes"
+  },
+  {
+   "content_hash": "d72ee66f04fafe3e0a2837aa03b16cf51baf6def214e5997b61b9918371535bb",
+   "first_seen_at": "2026-10-13T07:10:17Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16444,
+   "published_at": "2026-10-12T12:35:49Z",
+   "retrieved_at": "2026-10-13T07:10:17Z",
+   "url": "https://www.vogue.co.uk/article/soap-nails-trend"
+  },
+  {
+   "content_hash": "f344351468f722902b6710980f1bd4e3ab8cb8793c77f4002e8208a46a9a71ad",
+   "first_seen_at": "2026-10-13T07:10:19Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16484,
+   "published_at": "2026-10-12T15:22:13Z",
+   "retrieved_at": "2026-10-13T07:10:19Z",
+   "url": "https://www.vogue.de/galerie/meg-ryan-stilikone-fuer-den-herbst"
+  },
+  {
+   "content_hash": "0ad3c2420d1ff8478665392090d83e9e91cf198e50c4011f4fd462eaa651d983",
+   "first_seen_at": "2026-10-13T07:10:19Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16488,
+   "published_at": "2026-10-12T10:46:00Z",
+   "retrieved_at": "2026-10-13T07:10:19Z",
+   "url": "https://www.vogue.de/artikel/beste-barrel-jeans-modelle"
+  },
+  {
+   "content_hash": "f3ab413868351c3ba0494af314b0f645dd4d4911286f753e1f25c37574fbbd90",
+   "first_seen_at": "2026-10-13T07:10:19Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16491,
+   "published_at": "2026-10-12T09:23:13Z",
+   "retrieved_at": "2026-10-13T07:10:19Z",
+   "url": "https://www.vogue.de/artikel/boho-blusen-kombinieren-herbst-2026"
+  },
+  {
+   "content_hash": "c8af08250a44f1cb6bf2273e02f19bbd60efc751393befaadb80869e5073136d",
+   "first_seen_at": "2026-10-13T07:10:21Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16532,
+   "published_at": "2026-10-12T05:00:00Z",
+   "retrieved_at": "2026-10-13T07:10:21Z",
+   "url": "https://www.vogue.fr/mode/article/lhistoire-du-trench-coat-tout-ce-qu-il-faut-savoir-sur-limper-culte-de-aquascutum-a-burberry"
+  },
+  {
+   "content_hash": "43200e76606c5730b9cf3460fe885f9909b9389123abdd7524cbca462a33eaba",
+   "first_seen_at": "2026-10-13T07:10:24Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16563,
+   "published_at": "2026-10-12T17:23:51Z",
+   "retrieved_at": "2026-10-13T07:10:24Z",
+   "url": "https://www.vogue.mx/articulo/pantalones-wide-leg-mango-para-lucir-con-zapatos-de-tacon-y-botines-otono-2026"
+  },
+  {
+   "content_hash": "4c6e1f204e6bb86c45f95fcf3f158edb6254c7c33fa6809c7921cd007f13699b",
+   "first_seen_at": "2026-10-13T07:10:24Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16571,
+   "published_at": "2026-10-12T15:01:51Z",
+   "retrieved_at": "2026-10-13T07:10:24Z",
+   "url": "https://www.vogue.mx/articulo/como-llevar-blusas-de-seda-estilo-boho-otono-invierno-2026"
+  },
+  {
+   "content_hash": "39d8eca1fea2a81c44507d1709b36b950e74b59e1efd18e25821493f88cd4553",
+   "first_seen_at": "2026-10-13T07:10:25Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16589,
+   "published_at": "2026-10-13T05:33:58Z",
+   "retrieved_at": "2026-10-13T07:10:25Z",
+   "url": "https://www.voguearabia.com/article/autumn-nail-colours"
+  },
+  {
+   "content_hash": "6eab9de4a1dcf7336c9c38651586093fc2b72aa9f699e23e9b516e66ceb47043",
+   "first_seen_at": "2026-10-13T07:10:25Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16595,
+   "published_at": "2026-10-12T06:38:26Z",
+   "retrieved_at": "2026-10-13T07:10:25Z",
+   "url": "https://www.voguearabia.com/article/slingback-flats-ballet-flat-season-update"
+  },
+  {
+   "content_hash": "b929cfb23fd1318ed3e73cb2a22c2da24382444f98a0989393868479921721cc",
+   "first_seen_at": "2026-10-13T07:10:40Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16602,
+   "published_at": "2026-10-12T20:54:27Z",
+   "retrieved_at": "2026-10-14T16:34:08Z",
+   "url": "https://www.whowhatwear.com/fashion/celebrity-style/sheer-skinny-scarf-trend-zoe-kravitz"
+  },
+  {
+   "content_hash": "dddb2e150b4bbc78a58c7fd7069678c0e5e7963511350854a54ee975cf9b64da",
+   "first_seen_at": "2026-10-13T07:10:40Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16609,
+   "published_at": "2026-10-12T06:31:42Z",
+   "retrieved_at": "2026-10-13T07:10:40Z",
+   "url": "https://www.whowhatwear.com/fashion/trends/stand-collar-jacket-trend-2026"
+  },
+  {
+   "content_hash": "627da3adb4dedfe70a01db8c43a9f5793e23d1cea40c41600b722583e614e7dd",
+   "first_seen_at": "2026-10-14T16:30:10Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16655,
+   "published_at": "2026-10-13T11:15:25Z",
+   "retrieved_at": "2026-10-14T16:30:10Z",
+   "url": "https://apparelresources.com/fashion-news/trends/v-neck-doesnt-need-moment-indias-dependable-sweater-one-anyway"
+  },
+  {
+   "content_hash": "59c79b35a0d87af85a36d9ef2b6f572a8a4243ab2fa8aebc46f6a420e767a537",
+   "first_seen_at": "2026-10-14T16:30:10Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16656,
+   "published_at": "2026-10-13T11:09:01Z",
+   "retrieved_at": "2026-10-14T16:30:10Z",
+   "url": "https://apparelresources.com/fashion-news/trends/logos-front-runway-crewneck-landing-indian-wardrobes"
+  },
+  {
+   "content_hash": "e9dd6d90b94cc04f8fc7a675e77f269b9cd29bbac4f0e66cf38079f7a244985b",
+   "first_seen_at": "2026-10-14T16:31:10Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16881,
+   "published_at": "2026-10-14T11:40:53Z",
+   "retrieved_at": "2026-10-14T16:31:10Z",
+   "url": "https://fashionunited.com/press/fashion/pepe-jeans-focuses-on-layering-and-relaxed-denim-fits-for-third-fall-winter-2026-drop/2026101475172"
+  },
+  {
+   "content_hash": "8e9f00648f5669c2f224059ea5a8fa15a54255bd881dec4c5af0832017164a30",
+   "first_seen_at": "2026-10-14T16:31:10Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16905,
+   "published_at": "2026-10-13T11:00:00Z",
+   "retrieved_at": "2026-10-14T16:31:10Z",
+   "url": "https://fashionunited.com/news/fashion/after-the-barrel-jean-denim-settles-into-the-relaxed-straight-leg/2026101375097"
+  },
+  {
+   "content_hash": "960e34a07f3819720a715afd4b0951ea5dda6d89ee23e44fe96e35330f50b262",
+   "first_seen_at": "2026-10-14T16:31:12Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16920,
+   "published_at": "2026-10-13T07:00:00Z",
+   "retrieved_at": "2026-10-14T16:31:12Z",
+   "url": "https://fashionunited.uk/press/fashion/the-lycra-company-unveils-two-new-fabric-innovations-at-kingpins-amsterdam-autumn-2026/2026101390818"
+  },
+  {
+   "content_hash": "5281fcf76f948a7131607c339601fb12fcd6ba45106f97e6a899865c2837122d",
+   "first_seen_at": "2026-10-14T16:31:14Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16927,
+   "published_at": "2026-10-14T08:07:34Z",
+   "retrieved_at": "2026-10-14T16:31:14Z",
+   "url": "https://fashionweekonline.com/oversized-unisex-hoodie-fit-for-women-where-the-cut-actually-sits"
+  },
+  {
+   "content_hash": "6ad840f9ecdd0f6688847ca088640e7f9d2a785b004ce38201c3b2f7f4d028b5",
+   "first_seen_at": "2026-10-14T16:31:14Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16935,
+   "published_at": "2026-10-13T08:29:03Z",
+   "retrieved_at": "2026-10-14T16:31:14Z",
+   "url": "https://fashionweekonline.com/how-to-choose-a-leather-jacket-for-men"
+  },
+  {
+   "content_hash": "6e131d9af41fd7c5edd24fdd119f862940267008cf56b80f274c3dd394d1ecd1",
+   "first_seen_at": "2026-10-14T16:31:25Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16944,
+   "published_at": "2026-10-13T20:26:47Z",
+   "retrieved_at": "2026-10-14T16:31:25Z",
+   "url": "https://wwd.com/footwear-news/sneaker-news/tyler-the-creator-converse-pro-leather-october-2026-1239345924"
+  },
+  {
+   "content_hash": "e6ba7338d3f07e1cb33aa011b5a2cc355d6f39fef656e710b8bc73313a17a392",
+   "first_seen_at": "2026-10-14T16:31:30Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16961,
+   "published_at": "2026-10-13T21:19:28Z",
+   "retrieved_at": "2026-10-14T16:31:30Z",
+   "url": "https://www.gq.com/story/levis-beams-loopwheeler-collaboration"
+  },
+  {
+   "content_hash": "f93a23eb4e0761681b1b21cba93cc40bf2ed201fa97b8ef294441fedd56d669a",
+   "first_seen_at": "2026-10-14T16:31:41Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16972,
+   "published_at": "2026-10-14T05:30:00Z",
+   "retrieved_at": "2026-10-14T16:31:41Z",
+   "url": "https://www.gqitalia.it/article/harry-styles-si-veste-come-uno-skater-degli-anni-novanta"
+  },
+  {
+   "content_hash": "3a89a75c3aa8df3f2b2408f00150e674a0fdd35e2b7f67a314be48ca685d18d4",
+   "first_seen_at": "2026-10-14T16:31:41Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16974,
+   "published_at": "2026-10-14T04:00:00Z",
+   "retrieved_at": "2026-10-14T16:31:41Z",
+   "url": "https://www.gqitalia.it/article/salomon-xt-6-gtx-stormy-weather-prezzo-data-uscita"
+  },
+  {
+   "content_hash": "c504124b36ef7e17f24790b78d95a95ec451cf65a6edd0fb99c5516e28a619d5",
+   "first_seen_at": "2026-10-14T16:31:44Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 16988,
+   "published_at": "2026-10-14T13:25:59Z",
+   "retrieved_at": "2026-10-14T16:31:44Z",
+   "url": "https://www.grazia.it/moda/news-moda/guess-b-jean-low-rise-becky-g-1004814"
+  },
+  {
+   "content_hash": "f827e4f94469bd5e8b3add6d618c5caae6cbeca8a94f815f2dd65c7321d24565",
+   "first_seen_at": "2026-10-14T16:31:50Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17024,
+   "published_at": "2026-10-14T14:14:39Z",
+   "retrieved_at": "2026-10-14T16:31:50Z",
+   "url": "https://www.harpersbazaar.com/celebrity/latest/a74132482/lady-gaga-new-mom-wardrobe-style-headband"
+  },
+  {
+   "content_hash": "f9058d81df7c3545e12ad6c962ac093db296571ac6cb50523b39c5fafe0daff4",
+   "first_seen_at": "2026-10-14T16:31:59Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17051,
+   "published_at": "2026-10-14T14:40:00Z",
+   "retrieved_at": "2026-10-14T16:31:59Z",
+   "url": "https://www.harpersbazaar.com/uk/fashion/shopping/g69508522/best-burgundy-bags-how-to-wear"
+  },
+  {
+   "content_hash": "df6ed370e6dc35a3a330526852fbf947c5515cfb95e2569d0023e7f95780db82",
+   "first_seen_at": "2026-10-14T16:31:59Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17058,
+   "published_at": "2026-10-14T10:43:00Z",
+   "retrieved_at": "2026-10-14T16:31:59Z",
+   "url": "https://www.harpersbazaar.com/uk/fashion/shopping/a74129329/grey-jeans"
+  },
+  {
+   "content_hash": "3399e568c1199a7e8288aab7bf13e4bb96eea30dbdef492a176e363733ae5ba4",
+   "first_seen_at": "2026-10-14T16:31:59Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17059,
+   "published_at": "2026-10-14T10:35:00Z",
+   "retrieved_at": "2026-10-14T16:31:59Z",
+   "url": "https://www.harpersbazaar.com/uk/beauty/make-up-nails/a74117651/sienna-miller-ballet-blush-nails"
+  },
+  {
+   "content_hash": "0cf832f065f4a7fd09b99dd9c99245f38308f9e3d18af843975555fdae01d2a3",
+   "first_seen_at": "2026-10-14T16:31:59Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17063,
+   "published_at": "2026-10-13T11:32:00Z",
+   "retrieved_at": "2026-10-14T16:31:59Z",
+   "url": "https://www.harpersbazaar.com/uk/fashion/shopping/a74116696/french-girl-dress"
+  },
+  {
+   "content_hash": "6cdf4647195caed0009150cba3a921d430b607ac630602a426da6a1c1f1f3a20",
+   "first_seen_at": "2026-10-14T16:32:05Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17069,
+   "published_at": "2026-10-14T10:57:57Z",
+   "retrieved_at": "2026-10-14T16:32:05Z",
+   "url": "https://www.hellomagazine.com/shopping/928903/cat-deeley-boden-ruffle-blouse"
+  },
+  {
+   "content_hash": "993a28acd16db9728dfad8d7c5e2c049ea3be4563becd83e8c25b4f8976cac3a",
+   "first_seen_at": "2026-10-14T16:32:08Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17082,
+   "published_at": "2026-10-14T16:11:59Z",
+   "retrieved_at": "2026-10-14T16:32:08Z",
+   "url": "https://www.highsnobiety.com/p/models-own-emily-segal-childhood-was-full-of-glamorous-new-york-women"
+  },
+  {
+   "content_hash": "ddd582948778dc03f78eb9c12b42fcf2f22c51d22c0d59f9f539b106482aa8e6",
+   "first_seen_at": "2026-10-14T16:32:08Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17083,
+   "published_at": "2026-10-14T14:30:35Z",
+   "retrieved_at": "2026-10-14T16:32:08Z",
+   "url": "https://www.highsnobiety.com/p/sneaker-releases-2026-october-week-3"
+  },
+  {
+   "content_hash": "11166e5c90db12fba9d22d922ed4769148b70661f64722dfb0ec8feaaba5723a",
+   "first_seen_at": "2026-10-14T16:32:08Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17087,
+   "published_at": "2026-10-14T11:01:46Z",
+   "retrieved_at": "2026-10-14T16:32:08Z",
+   "url": "https://www.highsnobiety.com/p/new-blance-983"
+  },
+  {
+   "content_hash": "09538f162c411861f1ede99af04c22505204ac41df1ae443af33011669964e5d",
+   "first_seen_at": "2026-10-14T16:32:08Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17093,
+   "published_at": "2026-10-14T10:57:14Z",
+   "retrieved_at": "2026-10-14T16:32:08Z",
+   "url": "https://www.highsnobiety.com/p/nike-24-7-boots"
+  },
+  {
+   "content_hash": "b309c631157203ddf6decb00338b660b5617c383d3c7bc0c930366c0aee50948",
+   "first_seen_at": "2026-10-14T16:32:08Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17094,
+   "published_at": "2026-10-14T10:56:11Z",
+   "retrieved_at": "2026-10-14T16:32:08Z",
+   "url": "https://www.highsnobiety.com/p/jordan-trunner-os-space-jam-planet"
+  },
+  {
+   "content_hash": "13018a7564b059b9ec70da0086b7edcb202b278fdc26b524ae0d0618ed98ea0d",
+   "first_seen_at": "2026-10-14T16:32:11Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17107,
+   "published_at": "2026-10-14T09:04:16Z",
+   "retrieved_at": "2026-10-14T16:32:11Z",
+   "url": "https://hypebae.com/2026/10/guess-y2k-low-rise-jeans-becky-g-campaign-denim-where-to-buy"
+  },
+  {
+   "content_hash": "ea69fb7725097fe60fee5f44f4ee4a09321523d7eff307c389b6e488198ef13d",
+   "first_seen_at": "2026-10-14T16:32:11Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17109,
+   "published_at": "2026-10-13T19:46:20Z",
+   "retrieved_at": "2026-10-14T16:32:11Z",
+   "url": "https://hypebae.com/2026/10/supreme-martine-rose-fall-2026-capsule-collaboration-nike-dunk-low-release-date-where-to-buy"
+  },
+  {
+   "content_hash": "382ec10768a20328b5afdf4b6dc9da2f16fceb6e3728e008daf1b62c1e190917",
+   "first_seen_at": "2026-10-14T16:32:12Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17122,
+   "published_at": "2026-10-14T12:30:15Z",
+   "retrieved_at": "2026-10-14T16:32:12Z",
+   "url": "https://hypebeast.com/2026/10/best-drops-october-week-2-supreme-martine-rose-palace-skateboards-stussy-denim-tears"
+  },
+  {
+   "content_hash": "756a39996e6b433f44e51a6e99cbdc9257516f649e0a4ad992be6b943b098f35",
+   "first_seen_at": "2026-10-14T16:32:12Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17123,
+   "published_at": "2026-10-14T11:04:42Z",
+   "retrieved_at": "2026-10-14T16:32:12Z",
+   "url": "https://hypebeast.com/2026/10/beams-stitches-three-leathers-into-one-broken-in-blouson"
+  },
+  {
+   "content_hash": "e3cf188c715635ecdc93a6df1e1f749cd86ed90f1c64e5bbf36a21c63786e68f",
+   "first_seen_at": "2026-10-14T16:32:27Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17142,
+   "published_at": "2026-10-13T19:25:42Z",
+   "retrieved_at": "2026-10-14T16:32:27Z",
+   "url": "https://www.insidehook.com/style-news/new-menswear-releases-10-13-26"
+  },
+  {
+   "content_hash": "b7ae4cb1be8741f6fa59fd16aa84c36fa21c2fd12f575ac17df19d49fd1092af",
+   "first_seen_at": "2026-10-14T16:32:36Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17160,
+   "published_at": "2026-10-14T16:20:28Z",
+   "retrieved_at": "2026-10-14T16:32:36Z",
+   "url": "https://www.marieclaire.com/fashion/celebrity-style/daisy-edgar-jones-french-girl-boucheron-vintage-pendant-necklace-denim"
+  },
+  {
+   "content_hash": "fe52a3b29b880ee8abe61a3f8317fad33be1e0cdd6134c6f9f1ff0323c640df0",
+   "first_seen_at": "2026-10-14T16:32:36Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17162,
+   "published_at": "2026-10-14T15:16:55Z",
+   "retrieved_at": "2026-10-14T16:32:36Z",
+   "url": "https://www.marieclaire.com/fashion/fall-fashion/french-girl-denim-trends-2026"
+  },
+  {
+   "content_hash": "d1b09588b4e5ce4cbf6b2b5c73e990e0f61a4c35c2b051eb46b340dac6519c56",
+   "first_seen_at": "2026-10-14T16:32:36Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17169,
+   "published_at": "2026-10-13T19:58:56Z",
+   "retrieved_at": "2026-10-14T16:32:36Z",
+   "url": "https://www.marieclaire.com/fashion/celebrity-style/zoe-kravitz-ugg-tasman-slippers-riley-keough"
+  },
+  {
+   "content_hash": "bbfdb957655d62f4cc0df1231d74c7f419a5884eeb2986ad6b5cdfef66964064",
+   "first_seen_at": "2026-10-14T16:32:36Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17170,
+   "published_at": "2026-10-13T19:58:38Z",
+   "retrieved_at": "2026-10-14T16:32:36Z",
+   "url": "https://www.marieclaire.com/fashion/celebrity-style/flip-flops-trousers-trend-2026"
+  },
+  {
+   "content_hash": "73a9d6c72d922152f4d849e2a916dfb68a24ddcac5867d958de3c70d90cc6ac6",
+   "first_seen_at": "2026-10-14T16:32:54Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17212,
+   "published_at": "2026-10-13T22:01:14Z",
+   "retrieved_at": "2026-10-14T16:32:54Z",
+   "url": "https://www.refinery29.com/en-us/purple-sweater-trend"
+  },
+  {
+   "content_hash": "2684cd3fdd737964affaca8aae0d02e06c1b02b9ef56adca0cb4a0e7bffbb1bf",
+   "first_seen_at": "2026-10-14T16:32:54Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17214,
+   "published_at": "2026-10-12T20:52:00Z",
+   "retrieved_at": "2026-10-14T16:32:54Z",
+   "url": "https://www.refinery29.com/en-us/womens-fall-jackets"
+  },
+  {
+   "content_hash": "328e31d7e4e07121af85fb40c287782b102755cfe67dba1daff68bce41f14cac",
+   "first_seen_at": "2026-10-14T16:33:08Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17256,
+   "published_at": "2026-10-14T13:25:37Z",
+   "retrieved_at": "2026-10-14T16:33:08Z",
+   "url": "https://www.stylist.co.uk/fashion/kurt-geiger-chelsea-suede-bag-review/1119502"
+  },
+  {
+   "content_hash": "3b94d1ab63cc4727e0e128e8e882b5e13959e088b0e057b07256b9b38f4a79c6",
+   "first_seen_at": "2026-10-14T16:33:08Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17270,
+   "published_at": "2026-10-14T07:00:02Z",
+   "retrieved_at": "2026-10-14T16:33:08Z",
+   "url": "https://www.stylist.co.uk/fashion/best-olive-green-clothing-fashion/1118884"
+  },
+  {
+   "content_hash": "ee491c208164becf4d864c37bddf5123aa16283e8b10600f352a97486ae23c00",
+   "first_seen_at": "2026-10-14T16:33:11Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17283,
+   "published_at": "2026-10-14T09:00:58Z",
+   "retrieved_at": "2026-10-14T16:33:11Z",
+   "url": "https://www.theindustry.fashion/ugg-and-jw-anderson-launch-first-footwear-collaboration"
+  },
+  {
+   "content_hash": "18f9c0dc96c98b99123da57f6c271aef400fa80557627ab8c1e8ab80bf3bf6a9",
+   "first_seen_at": "2026-10-14T16:33:32Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17321,
+   "published_at": "2026-10-14T11:29:14Z",
+   "retrieved_at": "2026-10-14T16:33:32Z",
+   "url": "https://www.vogue.co.uk/gallery/rosalias-best-looks"
+  },
+  {
+   "content_hash": "6c81da5f006f9a14c29ce77ccfc94cbea3e9196cb29d1bf93747119a9f5a7ccf",
+   "first_seen_at": "2026-10-14T16:33:33Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17344,
+   "published_at": "2026-10-14T15:59:03Z",
+   "retrieved_at": "2026-10-14T20:33:11Z",
+   "url": "https://www.vogue.com/article/how-to-style-a-leather-jacket"
+  },
+  {
+   "content_hash": "816a51ffdb7b250ceba9bb39318f3d3a81e1b33a8d1c900fab5fc73dcc952a79",
+   "first_seen_at": "2026-10-14T16:33:36Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17423,
+   "published_at": "2026-10-14T13:30:36Z",
+   "retrieved_at": "2026-10-14T16:33:36Z",
+   "url": "https://www.vogue.fr/article/tendance-veste-officier"
+  },
+  {
+   "content_hash": "e4f8a0889258b67a55a4526f77794ebe2396fc2a6e27c32b0a2f1dd663cfee26",
+   "first_seen_at": "2026-10-14T16:33:37Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17462,
+   "published_at": "2026-10-14T04:30:00Z",
+   "retrieved_at": "2026-10-14T16:33:37Z",
+   "url": "https://www.vogue.it/article/collant-grigi-tendenza-autunno-inverno-2026-2027"
+  },
+  {
+   "content_hash": "2a0799442fcacbfd45c5a00db8dc8f4c0d62c9aafc9111e3374f6546b4aca703",
+   "first_seen_at": "2026-10-14T16:33:37Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17468,
+   "published_at": "2026-10-13T15:28:39Z",
+   "retrieved_at": "2026-10-14T16:33:37Z",
+   "url": "https://www.vogue.it/article/jeans-retro-modelli-tendenza-autunno-2026"
+  },
+  {
+   "content_hash": "fc9a14717338ec4c7652e9f992ba4b0ffcaf0994f9b2285daf4a3f8f64a6400a",
+   "first_seen_at": "2026-10-14T16:33:39Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17488,
+   "published_at": "2026-10-14T13:38:14Z",
+   "retrieved_at": "2026-10-14T16:33:39Z",
+   "url": "https://www.vogue.mx/articulo/como-llevar-zapatos-negros-de-tacon-bajo-a-la-oficina-con-pantalones-baggy-y-slim-en-otono-2026"
+  },
+  {
+   "content_hash": "fd5ed58a03bf626d26ec19d0dc4c7eb6b8f38874dcc36dad3a22371ac3a901f6",
+   "first_seen_at": "2026-10-14T16:33:40Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17513,
+   "published_at": "2026-10-13T11:36:04Z",
+   "retrieved_at": "2026-10-14T16:33:40Z",
+   "url": "https://www.voguearabia.com/article/sculptural-voluminous-curved-barrel-leg-jeans"
+  },
+  {
+   "content_hash": "e6f9cb0aaff7738229395c27654c4f32e885577e0fe027e488c79275cf4f04ea",
+   "first_seen_at": "2026-10-14T16:34:08Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17540,
+   "published_at": "2026-10-14T08:00:00Z",
+   "retrieved_at": "2026-10-14T16:34:08Z",
+   "url": "https://www.whowhatwear.com/fashion/denim/los-angeles-garment-district-feature"
+  },
+  {
+   "content_hash": "67ed96d6502fb565aaf46d7c2ee2a2afebb444dbb555744b6760a7c01007cd39",
+   "first_seen_at": "2026-10-14T16:34:08Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17546,
+   "published_at": "2026-10-13T22:06:59Z",
+   "retrieved_at": "2026-10-14T16:34:08Z",
+   "url": "https://www.whowhatwear.com/fashion/celebrity-style/camo-pants-with-ballet-flats-trend-alexa-chung"
+  },
+  {
+   "content_hash": "bec01aa6c72200ac4e22ebb1b841560c0487535c515b4224440272ef0016234a",
+   "first_seen_at": "2026-10-14T16:34:08Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17547,
+   "published_at": "2026-10-13T22:00:00Z",
+   "retrieved_at": "2026-10-14T16:34:08Z",
+   "url": "https://www.whowhatwear.com/fashion/celebrity-style/white-jeans-heeled-black-boots-outfit-dua-lipa-2026"
+  },
+  {
+   "content_hash": "f409b201176a24b8617f7b570681282fd4c9f45cfe80c9ca3049dc5845b71d43",
+   "first_seen_at": "2026-10-14T16:34:14Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17576,
+   "published_at": "2026-10-14T15:00:00Z",
+   "retrieved_at": "2026-10-14T16:34:14Z",
+   "url": "https://wwd.com/sourcing-journal/sj-denim/dnm-denim-innovates-linen-hemp-tencel-lyocell-hv100-1239343758"
+  },
+  {
+   "content_hash": "d9831f9fe4bc05a6fd0b7ec4089ee82ee2b264b79581edb775c1826cea7b0c23",
+   "first_seen_at": "2026-10-14T20:30:48Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17625,
+   "published_at": "2026-10-14T17:08:03Z",
+   "retrieved_at": "2026-10-14T20:30:48Z",
+   "url": "https://www.elle.com/fashion/shopping/a74134734/victoria-beckham-burgundy-midi-skirt-style"
+  },
+  {
+   "content_hash": "f4aa60324ef1e74539605035669a335e3b7ef224c95fd317721a8bbd2a012da1",
+   "first_seen_at": "2026-10-14T20:31:15Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17658,
+   "published_at": "2026-10-14T19:54:19Z",
+   "retrieved_at": "2026-10-14T20:31:15Z",
+   "url": "https://wwd.com/footwear-news/shoe-industry-news/timberland-jacquemus-croc-lug-sole-boat-shoes-release-date-1239347807"
+  },
+  {
+   "content_hash": "df1a9e900d478605c999a578467862eef6ad2201bb0612a08804614b966c80c1",
+   "first_seen_at": "2026-10-14T20:31:15Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17659,
+   "published_at": "2026-10-14T17:55:09Z",
+   "retrieved_at": "2026-10-14T20:31:15Z",
+   "url": "https://wwd.com/footwear-news/sneaker-news/vans-satoshi-nakamoto-era-95-gems-navy-release-date-1239347467"
+  },
+  {
+   "content_hash": "17c6d0c8e9d70dfaf71b0ca9d91c621c28ffa8317e8169974a47ac60e629d094",
+   "first_seen_at": "2026-10-14T20:31:20Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17665,
+   "published_at": "2026-10-14T17:54:24Z",
+   "retrieved_at": "2026-10-14T20:31:20Z",
+   "url": "https://www.gq.com/story/best-suit-brands"
+  },
+  {
+   "content_hash": "3583a09973d73c28efc6e175ed60554a06e6402d87abcc46845cdc7945dec955",
+   "first_seen_at": "2026-10-14T20:31:20Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17667,
+   "published_at": "2026-10-14T16:32:33Z",
+   "retrieved_at": "2026-10-14T20:31:20Z",
+   "url": "https://www.gq.com/story/best-denim-shirts-for-men"
+  },
+  {
+   "content_hash": "a4ee2607a0bf06adf6e6944d99ac37b0d2dcf69aa176109bb12f790c51623e6e",
+   "first_seen_at": "2026-10-14T20:31:50Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17684,
+   "published_at": "2026-10-14T18:18:55Z",
+   "retrieved_at": "2026-10-14T20:31:50Z",
+   "url": "https://hypebae.com/2026/10/jacquemus-timberland-boat-shoe-collaboration-crocodile-release-date-where-to-buy"
+  },
+  {
+   "content_hash": "7067b1cc42b55b73361b36bf22b0daf9dc5c94f91adeff08b6432607efe1cf29",
+   "first_seen_at": "2026-10-14T20:32:12Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17691,
+   "published_at": "2026-10-14T20:16:05Z",
+   "retrieved_at": "2026-10-14T20:32:12Z",
+   "url": "https://www.marieclaire.com/fashion/winter-fashion/cos-elevated-wardrobe-essentails"
+  },
+  {
+   "content_hash": "3536dfbdc4a0111e7d38f93ed49852c28eecd7211895ffa7aa166d9bbf136739",
+   "first_seen_at": "2026-10-14T20:32:36Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17715,
+   "published_at": "2026-10-14T18:52:59Z",
+   "retrieved_at": "2026-10-15T04:32:57Z",
+   "url": "https://www.stylerave.com/men-sport-coat"
+  },
+  {
+   "content_hash": "bcb8a6698548c200753d91fae32fa5950cda71c163a1c5c55bdfcf739884c377",
+   "first_seen_at": "2026-10-14T20:33:10Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17722,
+   "published_at": "2026-10-14T16:52:51Z",
+   "retrieved_at": "2026-10-14T20:33:10Z",
+   "url": "https://www.vogue.co.uk/article/best-barrel-leg-jeans"
+  },
+  {
+   "content_hash": "6d1f2c030f939fe2f269402a46a0b2118875e553055ce58da89b788bd5e0b7cf",
+   "first_seen_at": "2026-10-14T20:33:11Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17728,
+   "published_at": "2026-10-14T18:13:37Z",
+   "retrieved_at": "2026-10-14T20:33:11Z",
+   "url": "https://www.vogue.com/article/briana-andalore-wedding-something-bold-something-new"
+  },
+  {
+   "content_hash": "55d8234399e5fb875fff24197011bcdaa7fff5c50c809d07dc725a3b6e862e8c",
+   "first_seen_at": "2026-10-14T20:33:11Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17732,
+   "published_at": "2026-10-14T16:55:07Z",
+   "retrieved_at": "2026-10-14T20:33:11Z",
+   "url": "https://www.vogue.com/article/zoe-kravitz-fall-outfit-ideas"
+  },
+  {
+   "content_hash": "695fb4c11b11a3a030cf5f3d59359ebe5801eeb477c697ae605c3e5dfed0473d",
+   "first_seen_at": "2026-10-15T00:31:18Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17782,
+   "published_at": "2026-10-14T20:26:48Z",
+   "retrieved_at": "2026-10-15T00:31:18Z",
+   "url": "https://wwd.com/footwear-news/shoe-industry-news/vans-zara-retail-partnership-details-authentic-sneakers-1239347869"
+  },
+  {
+   "content_hash": "d6fff1143d06240f20c02e010f92f5c7f060c16fd27f1c6c6276a554b4ecb7cf",
+   "first_seen_at": "2026-10-15T00:33:22Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17808,
+   "published_at": "2026-10-14T22:41:00Z",
+   "retrieved_at": "2026-10-15T00:33:22Z",
+   "url": "https://www.vogue.mx/articulo/como-llevar-bailarinas-de-colores-bonitas-con-jeans-faldas-y-vestidos-en-otono-2026"
+  },
+  {
+   "content_hash": "6b357e2665802544fb19f8ac0644e37a32fc61939fbfd883470a91300a9f8285",
+   "first_seen_at": "2026-10-15T00:33:42Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17813,
+   "published_at": "2026-10-14T22:42:06Z",
+   "retrieved_at": "2026-10-15T00:33:42Z",
+   "url": "https://wwd.com/shop/shop-shoes/best-retro-inspired-running-shoes-sneakers-buy-online-1239336535"
+  },
+  {
+   "content_hash": "dd98bca18de8aef6f3a77a7b77fc2a912ad182b11c4ca2c60100c37fa659c8b5",
+   "first_seen_at": "2026-10-15T04:32:12Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17869,
+   "published_at": "2026-10-15T00:45:23Z",
+   "retrieved_at": "2026-10-15T04:32:12Z",
+   "url": "https://www.hollywoodreporter.com/lifestyle/shopping/jw-anderson-ugg-collaboration-loafer-boots-shop-online-2026-1236730309"
+  },
+  {
+   "content_hash": "16997bf5560b4061fef50370676d21a19b7560fd68677122a994347ba4a41270",
+   "first_seen_at": "2026-10-15T04:32:15Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17873,
+   "published_at": "2026-10-15T03:59:51Z",
+   "retrieved_at": "2026-10-15T04:32:15Z",
+   "url": "https://hypebeast.com/2026/10/jiyonkim-lansmere-collection-lookbooks-release-info"
+  },
+  {
+   "content_hash": "1fad68da9b36bb5ec7d706f3a39c0aa2b60434a9351ddd3452f5a452fd585cb4",
+   "first_seen_at": "2026-10-15T08:32:00Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17961,
+   "published_at": "2026-10-15T07:46:39Z",
+   "retrieved_at": "2026-10-15T08:32:00Z",
+   "url": "https://hypebeast.com/2026/10/evisu-mastermind-japan-roarguns-collaboration-collection-release-info"
+  },
+  {
+   "content_hash": "91cdab27c4e5dd6c4f29d5f5dd4f3b01dad5844b6589721e0c9bd7b262517e54",
+   "first_seen_at": "2026-10-15T08:32:00Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17965,
+   "published_at": "2026-10-15T06:27:24Z",
+   "retrieved_at": "2026-10-15T08:32:00Z",
+   "url": "https://hypebeast.com/2026/10/nike-air-force-1-what-the-la-ct1117-100-2026-re-release-info"
+  },
+  {
+   "content_hash": "05e2637784d550127916c75009d7a946ff8ace0a386cad2376a72889549ccfa6",
+   "first_seen_at": "2026-10-15T08:32:00Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17967,
+   "published_at": "2026-10-15T04:54:30Z",
+   "retrieved_at": "2026-10-15T08:32:00Z",
+   "url": "https://hypebeast.com/2026/10/engineered-garments-beams-plus-peg-trench-coat-release-info"
+  },
+  {
+   "content_hash": "6dd71c0ea147617b6e85c9d4bc378f831ee9b5806c136581fbc28bc8b42861e3",
+   "first_seen_at": "2026-10-15T08:32:48Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17980,
+   "published_at": "2026-10-15T06:00:10Z",
+   "retrieved_at": "2026-10-15T08:32:48Z",
+   "url": "https://www.stylist.co.uk/fashion/ugg-jw-anderson-collaboration/1119354"
+  },
+  {
+   "content_hash": "3eddcf6e32e1b0acf02ddb459149406cf049d79753b32c2599abd9b6f3e94375",
+   "first_seen_at": "2026-10-15T08:32:58Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17992,
+   "published_at": "2026-10-15T06:00:00Z",
+   "retrieved_at": "2026-10-15T08:32:58Z",
+   "url": "https://www.vogue.co.uk/article/best-burgundy-boots"
+  },
+  {
+   "content_hash": "c212367802ed1961264ab3820390f68c945cc3a16e5db1a17a774e7ab78bedf8",
+   "first_seen_at": "2026-10-15T08:33:06Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 17999,
+   "published_at": "2026-10-15T07:31:34Z",
+   "retrieved_at": "2026-10-15T08:33:06Z",
+   "url": "https://www.vogue.es/articulos/tendencias-zapatillas-otono-invierno-2026-2027"
+  },
+  {
+   "content_hash": "fa40c4bbd1c5a938d9e0d040d608f2f57f901d6c1ee255d5bd8f93148f11dd78",
+   "first_seen_at": "2026-10-15T08:33:09Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18011,
+   "published_at": "2026-10-15T05:04:15Z",
+   "retrieved_at": "2026-10-15T08:33:09Z",
+   "url": "https://www.vogue.mx/articulo/como-llevar-vestidos-boho-con-chamarra-de-cuero-en-otono-2026"
+  },
+  {
+   "content_hash": "db2b0aac57892e7a10e1ec4371347da32de08b22e041e03bb387b06276345690",
+   "first_seen_at": "2026-10-15T08:33:10Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18013,
+   "published_at": "2026-10-15T05:51:01Z",
+   "retrieved_at": "2026-10-15T08:33:10Z",
+   "url": "https://www.voguearabia.com/article/wearing-velvet-autumn-winter-2026"
+  },
+  {
+   "content_hash": "7f5525760b71b1f8e757a6486287a2814c36e268abb462f0b24f8b6e4a140d31",
+   "first_seen_at": "2026-10-15T16:30:13Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18032,
+   "published_at": "2026-10-15T11:14:23Z",
+   "retrieved_at": "2026-10-15T16:30:13Z",
+   "url": "https://apparelresources.com/fashion-news/trends/green-takes-lead-autumn-winter-anchored-black-bitter-chocolate"
+  },
+  {
+   "content_hash": "c87eb0df0f929865c94beaff218227543ab0de1ef0e24b2541c3cc86ca135edd",
+   "first_seen_at": "2026-10-15T16:30:49Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18097,
+   "published_at": "2026-10-15T12:00:00Z",
+   "retrieved_at": "2026-10-15T16:30:49Z",
+   "url": "https://www.elle.com/fashion/shopping/a73933517/best-khaki-slip-dresses-fall-2026"
+  },
+  {
+   "content_hash": "25823876d8fb1308d6d45c63baf726a68af7cfec02d2c818cfb466652bf47332",
+   "first_seen_at": "2026-10-15T16:30:49Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18099,
+   "published_at": "2026-10-15T12:00:00Z",
+   "retrieved_at": "2026-10-15T16:30:49Z",
+   "url": "https://www.elle.com/fashion/shopping/a74110603/ugg-x-jw-anderson-collaboration"
+  },
+  {
+   "content_hash": "336e07c911eca0701b03fb685ea9bf4ff731735f6459c5241ec826dcdca3cc59",
+   "first_seen_at": "2026-10-15T16:31:27Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18167,
+   "published_at": "2026-10-15T13:56:42Z",
+   "retrieved_at": "2026-10-15T16:31:27Z",
+   "url": "https://www.gqitalia.it/article/le-nuove-sneaker-prada-americas-cup-nascono-gia-invecchiate"
+  },
+  {
+   "content_hash": "d990015f781e61d7d27dbbe7678559aa9b40ea6f3cc4229bc097cb3faca46b57",
+   "first_seen_at": "2026-10-15T16:31:29Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18173,
+   "published_at": "2026-10-15T13:00:00Z",
+   "retrieved_at": "2026-10-15T16:31:29Z",
+   "url": "https://www.grazia.it/moda/news-moda/dite-addio-alle-classiche-samba-questo-autunno-liconico-modello-di-adidas-si-e-rifatto-il-look-1004777"
+  },
+  {
+   "content_hash": "e5a269a828d9eaa2eb258b9f0cad7609612cc8050c1ec499679bbe3ca5151f74",
+   "first_seen_at": "2026-10-15T16:31:34Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18184,
+   "published_at": "2026-10-15T14:04:03Z",
+   "retrieved_at": "2026-10-15T16:31:34Z",
+   "url": "https://graziadaily.co.uk/fashion/celeb-style/meghan-markle-nottingham-visit-burdungy-outfit"
+  },
+  {
+   "content_hash": "b54b4b219e975b7d25a1e8c0fc556bf43194074341aff194afd18f081ec19a07",
+   "first_seen_at": "2026-10-15T16:31:35Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18195,
+   "published_at": "2026-10-15T14:44:50Z",
+   "retrieved_at": "2026-10-15T16:31:35Z",
+   "url": "https://www.harpersbazaar.com/celebrity/latest/a74145014/jennifer-lawrence-commuter-look-chunky-studded-belt-trend-photos"
+  },
+  {
+   "content_hash": "84a92231068896b104d1f6399a5bca2405e002411cae95f493477e4cf1b7733f",
+   "first_seen_at": "2026-10-15T16:31:47Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18200,
+   "published_at": "2026-10-15T16:00:00Z",
+   "retrieved_at": "2026-10-15T16:31:47Z",
+   "url": "https://www.harpersbazaar.com/uk/fashion/shopping/a74141171/claudia-winkleman-tassel-loafers"
+  },
+  {
+   "content_hash": "473673806aacb5e59b5fd0cc41f892877d21ead113ef24885370d92fc97a6c9d",
+   "first_seen_at": "2026-10-15T16:31:47Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18204,
+   "published_at": "2026-10-15T12:12:00Z",
+   "retrieved_at": "2026-10-15T16:31:47Z",
+   "url": "https://www.harpersbazaar.com/uk/fashion/shopping/a74144122/meghan-markle-burgundy-outfit"
+  },
+  {
+   "content_hash": "c2cc3758cadfe8207ff0e407e7b6d295fb89598550882a5ccf79b8b6de5303a0",
+   "first_seen_at": "2026-10-15T16:32:00Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18213,
+   "published_at": "2026-10-15T16:12:01Z",
+   "retrieved_at": "2026-10-15T16:32:00Z",
+   "url": "https://www.highsnobiety.com/p/nike-air-max-goadome-yellow-croc"
+  },
+  {
+   "content_hash": "1a8a9a0395ac443dfb0b3c61e6bc179d4ef98400f3a0d80e1675669b9d6e848f",
+   "first_seen_at": "2026-10-15T16:32:00Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18218,
+   "published_at": "2026-10-15T09:42:05Z",
+   "retrieved_at": "2026-10-15T16:32:00Z",
+   "url": "https://www.highsnobiety.com/p/nike-sneaker-releases-october-week-3"
+  },
+  {
+   "content_hash": "7f9f5e34898b7794a1445b259cfee5950b4a5ed60bce9a97b7089435fa0db0ea",
+   "first_seen_at": "2026-10-15T16:32:01Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18220,
+   "published_at": "2026-10-15T13:16:46Z",
+   "retrieved_at": "2026-10-15T16:32:01Z",
+   "url": "https://www.hollywoodreporter.com/lifestyle/shopping/ganni-lululemon-collection-80s-activewear-2026-shop-online-1236730802"
+  },
+  {
+   "content_hash": "e0e2c9a0585285a8d502459ed5a9a3637a5dd79935150b2505e85be89703d331",
+   "first_seen_at": "2026-10-15T16:32:05Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18235,
+   "published_at": "2026-10-15T09:18:33Z",
+   "retrieved_at": "2026-10-15T16:32:05Z",
+   "url": "https://hypebeast.com/2026/10/timberland-jacquemus-3-eye-classic-lug-authentic-boat-shoe-navy-dark-brown-croc-collaboration-release-info"
+  },
+  {
+   "content_hash": "7a1cc2791c48393d334bf9d702e685b22e64ac586cd3d4b044ad2d860462bf08",
+   "first_seen_at": "2026-10-15T16:32:05Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18237,
+   "published_at": "2026-10-15T09:10:04Z",
+   "retrieved_at": "2026-10-15T16:32:05Z",
+   "url": "https://hypebeast.com/2026/10/yohji-yamamoto-pour-homme-spins-its-fw18-spider-web-into-a-four-piece-capsule"
+  },
+  {
+   "content_hash": "d47cf61c1745cc07fdf920080c18d867e14104a1345a46aa136a19cb83f52b2d",
+   "first_seen_at": "2026-10-15T16:32:05Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18238,
+   "published_at": "2026-10-15T09:03:18Z",
+   "retrieved_at": "2026-10-15T16:32:05Z",
+   "url": "https://hypebeast.com/2026/10/callum-turner-fronts-louis-vuittons-ss27-mens-trunk-campaign"
+  },
+  {
+   "content_hash": "05385f7b76cb7a07d024165e7cc6b4363b7b79e24dfc6170603ca7a77ef1dd71",
+   "first_seen_at": "2026-10-15T16:32:05Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18242,
+   "published_at": "2026-10-15T08:17:38Z",
+   "retrieved_at": "2026-10-15T16:32:05Z",
+   "url": "https://hypebeast.com/2026/10/otw-by-vans-satoshi-nakamoto-era-95-gems-collaboration-release-info"
+  },
+  {
+   "content_hash": "e97169b9b88a719ff158fb3fe82d86269e32afce9f3ae81b6c5dc9f35893c922",
+   "first_seen_at": "2026-10-15T16:32:28Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18259,
+   "published_at": "2026-10-15T13:00:00Z",
+   "retrieved_at": "2026-10-15T16:32:28Z",
+   "url": "https://www.marieclaire.com/fashion/best-leather-pants-fall-2026"
+  },
+  {
+   "content_hash": "304d5ee8ccb303a6af9f4fa7fa41ed1a1fa0622f0ecf34617e853be2db8ca8e4",
+   "first_seen_at": "2026-10-15T16:33:01Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18288,
+   "published_at": "2026-10-15T15:26:41Z",
+   "retrieved_at": "2026-10-15T16:33:01Z",
+   "url": "https://www.stylist.co.uk/fashion/best-white-blouses/1119508"
+  },
+  {
+   "content_hash": "dc7ac51116028903fb936041c9b28a594ab9b7436688e83d471060649fc5d02d",
+   "first_seen_at": "2026-10-15T16:33:02Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18295,
+   "published_at": "2026-10-15T14:00:03Z",
+   "retrieved_at": "2026-10-15T16:33:02Z",
+   "url": "https://www.theguardian.com/thefilter/2026/oct/15/best-womens-shoes-boots-autumn-winter-uk"
+  },
+  {
+   "content_hash": "733adeec3f7c3a252d34d99c570f13bc817658acda02a6a28461abf3e097a08c",
+   "first_seen_at": "2026-10-15T16:33:25Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18309,
+   "published_at": "2026-10-15T13:17:16Z",
+   "retrieved_at": "2026-10-15T16:33:25Z",
+   "url": "https://www.vogue.co.uk/article/meghan-markle-prince-harry-joseph"
+  },
+  {
+   "content_hash": "d7253c69bcc513bf99f45fecd185ced83bf91f65f6e016a9e6efe317c2941ec9",
+   "first_seen_at": "2026-10-15T16:33:25Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18312,
+   "published_at": "2026-10-15T12:09:14Z",
+   "retrieved_at": "2026-10-15T16:33:25Z",
+   "url": "https://www.vogue.co.uk/article/how-to-style-boat-shoes"
+  },
+  {
+   "content_hash": "2a259ccfb0732e18255dbda9ddc018fc5fe2b2cae18066c6a54b6e21912c6d5d",
+   "first_seen_at": "2026-10-15T16:33:25Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18317,
+   "published_at": "2026-10-15T09:41:52Z",
+   "retrieved_at": "2026-10-15T16:33:25Z",
+   "url": "https://www.vogue.co.uk/article/jw-anderson-uniqlo-aw26"
+  },
+  {
+   "content_hash": "78d2da5f9a2cd6fc1d3a5de4858ef6ed10e791de06a1d0c7b35746c00b539d84",
+   "first_seen_at": "2026-10-15T16:33:25Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18318,
+   "published_at": "2026-10-15T09:28:30Z",
+   "retrieved_at": "2026-10-15T16:33:25Z",
+   "url": "https://www.vogue.co.uk/article/briana-andalore-wedding"
+  },
+  {
+   "content_hash": "c14e50795322ee9d5740dbf7e74aeb453573f8f5d3bbcb5542edc0739a2f6e64",
+   "first_seen_at": "2026-10-15T16:33:29Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18365,
+   "published_at": "2026-10-15T10:25:49Z",
+   "retrieved_at": "2026-10-15T16:33:29Z",
+   "url": "https://www.vogue.fr/article/uniqlo-jw-anderson-collaboration-automne-2026"
+  },
+  {
+   "content_hash": "414fa9839c9a0153cc2304c55030a0870a255f68b539289292e7349f0d8ca465",
+   "first_seen_at": "2026-10-15T16:33:56Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18395,
+   "published_at": "2026-10-15T15:00:00Z",
+   "retrieved_at": "2026-10-15T16:33:56Z",
+   "url": "https://www.whowhatwear.com/fashion/shopping/new-arrivals-october-2026"
+  },
+  {
+   "content_hash": "7839813c3bdb4495df406f4c48fddbdc0b9457bd08fe0d4f2b826810fa275eaa",
+   "first_seen_at": "2026-10-15T16:33:56Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18400,
+   "published_at": "2026-10-15T11:00:00Z",
+   "retrieved_at": "2026-10-15T16:33:56Z",
+   "url": "https://www.whowhatwear.com/beauty/fragrance/suede-perfume"
+  },
+  {
+   "content_hash": "131fc18f13d4b39b5f3cec77a0511d44ea6ea93641f3026bfabf3012b6c70dff",
+   "first_seen_at": "2026-10-15T16:33:56Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18403,
+   "published_at": "2026-10-15T10:00:00Z",
+   "retrieved_at": "2026-10-15T16:33:56Z",
+   "url": "https://www.whowhatwear.com/fashion/celebrity-style/baseball-tee-outfits-daisy-edgar-jones"
+  },
+  {
+   "content_hash": "8478f6e56ed79bf8cf8302c20365a245e0d6c239bed12105bf1cbf2d50fa3fdc",
+   "first_seen_at": "2026-10-15T20:30:36Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18451,
+   "published_at": "2026-10-15T16:47:00Z",
+   "retrieved_at": "2026-10-15T20:30:36Z",
+   "url": "https://www.dazeddigital.com/fashion/article/71137/1/guess-jean-with-becky-g-campaign-y2k"
+  },
+  {
+   "content_hash": "badef3677bf729fdf03cedf32d27226eff5d8165fb4a2528277aa50fef89c377",
+   "first_seen_at": "2026-10-15T20:30:59Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18466,
+   "published_at": "2026-10-15T12:00:00Z",
+   "retrieved_at": "2026-10-15T20:30:59Z",
+   "url": "https://fashionunited.com/news/fashion/lee-launches-selvedge-denim-capsule-with-indian-motorcycle/2026101575196"
+  },
+  {
+   "content_hash": "2e7100259c601c19a7104ec642369f2bca2974e1e733c146bcaffcc937acb9eb",
+   "first_seen_at": "2026-10-15T20:31:28Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18506,
+   "published_at": "2026-10-15T19:04:42Z",
+   "retrieved_at": "2026-10-15T20:31:28Z",
+   "url": "https://www.harpersbazaar.com/fashion/trends/a74133747/croc-embossed-bag-trend"
+  },
+  {
+   "content_hash": "fef8d32fff78836322658e9c65f8e50497acba293fed34ba6c59486d59b7c881",
+   "first_seen_at": "2026-10-15T20:31:28Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18509,
+   "published_at": "2026-10-15T18:17:40Z",
+   "retrieved_at": "2026-10-15T20:31:28Z",
+   "url": "https://www.harpersbazaar.com/celebrity/latest/a74147695/nara-smith-nyc-style-streak-schiaparelli-veggie-outfit-vintage-mugler-ilya-migmoon-photos"
+  },
+  {
+   "content_hash": "ddd058d1f710e8dd0a162246410b1a647ade9ddd79880cf7400bedb41c25e2b4",
+   "first_seen_at": "2026-10-15T20:31:46Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18519,
+   "published_at": "2026-10-15T16:51:19Z",
+   "retrieved_at": "2026-10-15T20:31:46Z",
+   "url": "https://www.highsnobiety.com/p/adidas-sneaker-releases-october-week-3"
+  },
+  {
+   "content_hash": "cea0638d2ca1c861594e9df976e7567b14a5e0568dfb2675a1066b60678c22b2",
+   "first_seen_at": "2026-10-15T20:31:50Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18523,
+   "published_at": "2026-10-15T18:41:53Z",
+   "retrieved_at": "2026-10-15T20:31:50Z",
+   "url": "https://hypebeast.com/2026/10/carhart-wip-nike-goadome-low-release-date-info"
+  },
+  {
+   "content_hash": "36724098517579a2c2131db8d523820dcb9c281684d46a77df3f32df0b2da200",
+   "first_seen_at": "2026-10-15T20:31:50Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18524,
+   "published_at": "2026-10-15T16:50:05Z",
+   "retrieved_at": "2026-10-15T20:31:50Z",
+   "url": "https://hypebeast.com/2026/10/cher-grace-jones-jennie-moncler-reicons-campaign-info"
+  },
+  {
+   "content_hash": "a69122d17bf64ae707a7832ee1282e5a1b92a4ab97d5698e4bc96be30393cd18",
+   "first_seen_at": "2026-10-15T20:32:10Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18530,
+   "published_at": "2026-10-15T19:41:40Z",
+   "retrieved_at": "2026-10-15T20:32:10Z",
+   "url": "https://www.marieclaire.com/fashion/fall-fashion/dresses-and-sneakers-outfit-combo"
+  },
+  {
+   "content_hash": "dbc1f1fbf4f72ee9cc87a4d04137e55c2ce308dac56cc34e471d2f518d29f4b8",
+   "first_seen_at": "2026-10-15T20:33:17Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18575,
+   "published_at": "2026-10-15T19:38:48Z",
+   "retrieved_at": "2026-10-15T20:33:17Z",
+   "url": "https://www.wmagazine.com/fashion/gemma-chan-burberry-tassel-dress-josephine"
+  },
+  {
+   "content_hash": "1c30a2aeba806ec86421d947910e9fb686deb2f294314a91a18952709d06cf14",
+   "first_seen_at": "2026-10-16T00:30:56Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18615,
+   "published_at": "2026-10-15T17:00:19Z",
+   "retrieved_at": "2026-10-16T00:30:56Z",
+   "url": "https://fashionunited.com/news/fashion/g-star-on-womenswear-relaunch-denim-is-the-heart-of-the-collection/2026101575139"
+  },
+  {
+   "content_hash": "6aafe39367aa1b253468e42be6d89ebb40b91de303abe735bb833c027969afd5",
+   "first_seen_at": "2026-10-16T00:32:26Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18630,
+   "published_at": "2026-10-16T00:00:15Z",
+   "retrieved_at": "2026-10-16T00:32:26Z",
+   "url": "https://www.scmp.com/magazines/style/fashion/trends/article/3370880/nina-christen-has-redefined-luxury-footwear-dior-and-loewe-now-shes-doing-it-her-own-label"
+  },
+  {
+   "content_hash": "5ab2eca3db649e0b2ac2ddd0bdac590a65217dfb574fe056f7474148d66ca502",
+   "first_seen_at": "2026-10-16T00:33:35Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18640,
+   "published_at": "2026-10-15T21:00:00Z",
+   "retrieved_at": "2026-10-16T00:33:35Z",
+   "url": "https://www.whowhatwear.com/fashion/shopping/fashion-editor-approved-denim-brands-fall-2026"
+  },
+  {
+   "content_hash": "74d385f3e96d199de7fb4fe775aa9c30972938435748da16042350e4b3525c05",
+   "first_seen_at": "2026-10-16T04:32:41Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18676,
+   "published_at": "2026-10-16T02:20:33Z",
+   "retrieved_at": "2026-10-16T04:32:41Z",
+   "url": "https://hypebeast.com/2026/10/jjjjound-new-balance-990v3-suede-u9904d8-official-look-release-info"
+  },
+  {
+   "content_hash": "d1566a57e71168134897700a100eb466b0c4dae4b99228186ba67a044901d49d",
+   "first_seen_at": "2026-10-16T04:33:45Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18682,
+   "published_at": "2026-10-16T02:13:47Z",
+   "retrieved_at": "2026-10-16T08:32:36Z",
+   "url": "https://www.stylerave.com/jw-anderson-ugg-loafer-collections"
+  },
+  {
+   "content_hash": "e935508f93e04459b353083a498891a51417b26ea05add365eb746f8d08b425b",
+   "first_seen_at": "2026-10-16T08:31:45Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18724,
+   "published_at": "2026-10-16T07:53:20Z",
+   "retrieved_at": "2026-10-16T08:31:45Z",
+   "url": "https://www.highsnobiety.com/p/adidas-adisignature-fall-winter-collection-comfort-best-picks"
+  },
+  {
+   "content_hash": "d300154e538c26e681e8726a4f1575a846b0553bd998e89e9281c8b28c0a5fff",
+   "first_seen_at": "2026-10-16T08:31:45Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18726,
+   "published_at": "2026-10-16T08:01:17Z",
+   "retrieved_at": "2026-10-16T08:31:45Z",
+   "url": "https://www.highsnobiety.com/p/satoshi-nakamotos-vans-otw-95-navy"
+  },
+  {
+   "content_hash": "0b5d2a99d964a9f67ee771d9cfea346e38849301fceb79fbd3ea247bc30a4786",
+   "first_seen_at": "2026-10-16T08:31:50Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18727,
+   "published_at": "2026-10-16T08:12:02Z",
+   "retrieved_at": "2026-10-16T08:31:50Z",
+   "url": "https://hypebeast.com/2026/10/tyrrell-winston-adidas-spiritain-2000-kj7676-first-look-release-info"
+  },
+  {
+   "content_hash": "f16dcf706ee29cdafdd4991aa65f6be2b69a4398852b48ee5f7e97b830f6b509",
+   "first_seen_at": "2026-10-16T08:33:06Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18752,
+   "published_at": "2026-10-16T07:00:00Z",
+   "retrieved_at": "2026-10-16T08:33:06Z",
+   "url": "https://www.vogue.co.uk/article/how-to-style-low-rise-jeans"
+  },
+  {
+   "content_hash": "071c41154522b030bce321da4598530ff6a7de64d7a7b11db024a89f210e0f3f",
+   "first_seen_at": "2026-10-16T12:30:10Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18792,
+   "published_at": "2026-10-16T11:52:59Z",
+   "retrieved_at": "2026-10-16T12:30:10Z",
+   "url": "https://apparelresources.com/fashion-news/trends/narrow-trouser-returning-w-season"
+  },
+  {
+   "content_hash": "c3d459ca8eaa58077ecfd7a99cabc3e93d6393642f008f7839e48ad1efc4c6a6",
+   "first_seen_at": "2026-10-16T12:31:38Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18852,
+   "published_at": "2026-10-16T11:06:00Z",
+   "retrieved_at": "2026-10-16T12:31:38Z",
+   "url": "https://www.harpersbazaar.com/uk/fashion/shopping/a74155977/meghan-markle-blue-jeans"
+  },
+  {
+   "content_hash": "1404dbd14f1d79357e330d1dd8ef6a26e0f1be4494870ba6fceb0982ea5dbd76",
+   "first_seen_at": "2026-10-16T12:31:38Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18856,
+   "published_at": "2026-10-16T08:50:00Z",
+   "retrieved_at": "2026-10-16T12:31:38Z",
+   "url": "https://www.harpersbazaar.com/uk/fashion/shopping/a74144122/meghan-markle-burgundy-skirt"
+  },
+  {
+   "content_hash": "d4dce559c7306171e206f39b9b30467fc45e3358af65fb98b0af655e6135c6aa",
+   "first_seen_at": "2026-10-16T12:31:45Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18858,
+   "published_at": "2026-10-16T10:58:00Z",
+   "retrieved_at": "2026-10-16T12:31:45Z",
+   "url": "https://www.highsnobiety.com/p/nike-air-rift-sneaker-mesh-black"
+  },
+  {
+   "content_hash": "e9bbce81bd884a4c88cba40e41192714701cbe0e5e0621a33419393a3710ae2d",
+   "first_seen_at": "2026-10-16T12:31:49Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18864,
+   "published_at": "2026-10-16T09:48:33Z",
+   "retrieved_at": "2026-10-16T12:31:49Z",
+   "url": "https://hypebeast.com/2026/10/nike-air-force-1-low-07-premium-iron-man-ix8058-687-official-look-release-info"
+  },
+  {
+   "content_hash": "599d25fd1c651d59045e441fcc0e8a941fb80bc3a888cbf7d7bf09a4b1e0002e",
+   "first_seen_at": "2026-10-16T12:32:36Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18886,
+   "published_at": "2026-10-16T12:11:13Z",
+   "retrieved_at": "2026-10-16T20:32:35Z",
+   "url": "https://www.stylerave.com/how-to-wear-rings-as-a-man"
+  },
+  {
+   "content_hash": "3e9fc4404cc98db018d32f068ab1b1de6a0db11a57021b05085a400e1da4af30",
+   "first_seen_at": "2026-10-16T12:32:36Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18887,
+   "published_at": "2026-10-16T09:57:33Z",
+   "retrieved_at": "2026-10-17T04:32:39Z",
+   "url": "https://www.stylerave.com/ganni-lululemon-dance-activewear-collection"
+  },
+  {
+   "content_hash": "ddf7a56e307ae1f15132091c60ecb01a6a0925f51a470b1a70dd784b9f4f6465",
+   "first_seen_at": "2026-10-16T16:30:37Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18967,
+   "published_at": "2026-10-16T16:29:06Z",
+   "retrieved_at": "2026-10-16T16:30:37Z",
+   "url": "https://www.complex.com/sneakers/a/complexstaff3/best-sneakers-available-at-foot-locker-right-now-oct-16-2026"
+  },
+  {
+   "content_hash": "c0f163ae6ac6f504a0d0310fea91c5ff3f05fb990b432bfd4ba4fbf5571193c9",
+   "first_seen_at": "2026-10-16T16:30:37Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18971,
+   "published_at": "2026-10-16T16:12:13Z",
+   "retrieved_at": "2026-10-16T16:30:37Z",
+   "url": "https://www.complex.com/sneakers/a/josephturuseta/shaq-footwear-shareef-sneaker-line"
+  },
+  {
+   "content_hash": "39fc03b0aa2c05c4c4465faf2b4f5c85442db9b2008021f339492078d53da694",
+   "first_seen_at": "2026-10-16T16:30:37Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 18987,
+   "published_at": "2026-10-16T14:15:05Z",
+   "retrieved_at": "2026-10-16T16:30:37Z",
+   "url": "https://www.complex.com/sneakers/a/victor-deng/nike-basketball-halloween-2026-collection-release-date"
+  },
+  {
+   "content_hash": "9898295ee225369de73bfe3dea8d626677b35d77582a19fbc8e0b6ce811a490a",
+   "first_seen_at": "2026-10-16T16:30:52Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19006,
+   "published_at": "2026-10-16T16:00:00Z",
+   "retrieved_at": "2026-10-16T16:30:52Z",
+   "url": "https://www.elle.com/fashion/shopping/a74134870/fall-2026-heel-trends"
+  },
+  {
+   "content_hash": "8abc1fc42646954278709e11099285cb0f479425dacee2a87031aa354dad7032",
+   "first_seen_at": "2026-10-16T16:31:56Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19055,
+   "published_at": "2026-10-16T14:59:35Z",
+   "retrieved_at": "2026-10-16T16:31:56Z",
+   "url": "https://www.harpersbazaar.com/celebrity/latest/a74158082/michelle-obama-ribbon-fringe-ladylike-jacket-girls-night-with-megan-thee-stallion-and-la-la-anthony"
+  },
+  {
+   "content_hash": "ccd5a69b911e4a309b2c90b0cee952106f7797e67541df3e12b826f084d43627",
+   "first_seen_at": "2026-10-16T16:32:18Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19065,
+   "published_at": "2026-10-16T15:21:05Z",
+   "retrieved_at": "2026-10-16T16:32:18Z",
+   "url": "https://hypebae.com/2026/10/saucony-gore-tex-sneaker-collection-running-hiking-shoes-gtx-info-where-to-buy"
+  },
+  {
+   "content_hash": "555ee77274bff0eba6d53d84eccc6fae414fa5bd946bbbc780796a2f844857f9",
+   "first_seen_at": "2026-10-16T16:32:19Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19073,
+   "published_at": "2026-10-16T13:00:39Z",
+   "retrieved_at": "2026-10-16T16:32:19Z",
+   "url": "https://hypebeast.com/2026/10/a-p-c-barbour-fall-winter-2026-fw26-collaboration-collection-release-info"
+  },
+  {
+   "content_hash": "6581766a1a4f096711806c9367de821f2d11296db386ae6090a909bc8274b98b",
+   "first_seen_at": "2026-10-16T16:32:19Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19074,
+   "published_at": "2026-10-16T13:00:39Z",
+   "retrieved_at": "2026-10-16T16:32:19Z",
+   "url": "https://hypebeast.com/2026/10/pharrell-williams-louis-vuitton-2027-mens-ski-collection-lookbook"
+  },
+  {
+   "content_hash": "2e009b685a445e14096141a151de67b83a7294275eed2c701061c8e529f1f850",
+   "first_seen_at": "2026-10-16T16:32:39Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19083,
+   "published_at": "2026-10-16T16:20:51Z",
+   "retrieved_at": "2026-10-16T16:32:39Z",
+   "url": "https://www.modernluxury.com/pooky-and-samuel-sons-bring-maximalist-holiday-style-to-lighting"
+  },
+  {
+   "content_hash": "56ce64514e6ee80cfe42ccf7fa4d8b63ec0bd95ff0085ba055fd78ab6f348454",
+   "first_seen_at": "2026-10-16T16:33:40Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19140,
+   "published_at": "2026-10-16T13:11:31Z",
+   "retrieved_at": "2026-10-16T16:33:40Z",
+   "url": "https://www.voguearabia.com/article/slim-fit-pants-and-black-loafers"
+  },
+  {
+   "content_hash": "e14d02aa74ce4372c2617a225a7b05064a804a4147674cc1003e826366d40042",
+   "first_seen_at": "2026-10-16T16:34:04Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19147,
+   "published_at": "2026-10-16T16:31:50Z",
+   "retrieved_at": "2026-10-16T16:34:04Z",
+   "url": "https://wwd.com/footwear-news/shoe-trends/kim-kardashian-minimalist-strappy-sandals-jimmy-kimmel-live-1239363833"
+  },
+  {
+   "content_hash": "3a6a0b7ca49cbafb3a2690b964ea641a1961e4a8477acb23c205eda477ca5297",
+   "first_seen_at": "2026-10-16T20:30:19Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19162,
+   "published_at": "2026-10-16T18:15:21Z",
+   "retrieved_at": "2026-10-16T20:30:19Z",
+   "url": "https://www.businessoffashion.com/briefings/sports/why-every-brand-wants-to-be-everything-for-you"
+  },
+  {
+   "content_hash": "6901e42cbef64a6a7a6e5a41e485916c5ed5bc6fb4d8e350d7417b172651171d",
+   "first_seen_at": "2026-10-16T20:30:46Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19195,
+   "published_at": "2026-10-16T16:47:43Z",
+   "retrieved_at": "2026-10-16T20:30:46Z",
+   "url": "https://elle.com.br/moda/6-estilos-de-blusas-boho"
+  },
+  {
+   "content_hash": "94e9c340935350dec242b308866e3f1d31874a3aa3dcd5fa44930612634d8d66",
+   "first_seen_at": "2026-10-16T20:30:58Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19201,
+   "published_at": "2026-10-16T12:46:33Z",
+   "retrieved_at": "2026-10-16T20:30:58Z",
+   "url": "https://fashionunited.uk/press/fashion/denham-pairs-european-denim-roots-with-japanese-craftsmanship-for-fall-winter-2026/2026101690888"
+  },
+  {
+   "content_hash": "2b7e1ad141a63bf261973210be31790662139f73ccd636f2b53a2bb1448fb1ed",
+   "first_seen_at": "2026-10-16T20:31:47Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19222,
+   "published_at": "2026-10-16T19:38:11Z",
+   "retrieved_at": "2026-10-16T20:31:47Z",
+   "url": "https://www.highsnobiety.com/p/nike-zoom-vomero-roam-obsidian"
+  },
+  {
+   "content_hash": "de8f70eeefd516e83f06613a35474a2b4977d378ce28a86a10ebddfc321e28e4",
+   "first_seen_at": "2026-10-16T20:31:47Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19223,
+   "published_at": "2026-10-16T18:46:48Z",
+   "retrieved_at": "2026-10-16T20:31:47Z",
+   "url": "https://www.highsnobiety.com/p/nike-air-max-moto-2k-cordura"
+  },
+  {
+   "content_hash": "1e97adb40c341f3661f9c55814d291bffd98af4bcde46147edd27866081dcaa5",
+   "first_seen_at": "2026-10-16T20:31:53Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19231,
+   "published_at": "2026-10-16T20:08:55Z",
+   "retrieved_at": "2026-10-16T20:31:53Z",
+   "url": "https://hypebeast.com/2026/10/lil-yachty-nike-tech-collection-info"
+  },
+  {
+   "content_hash": "13b16262293b04757f58368008d63ee4163ec4551a1f7b07c1a618d14add1fa8",
+   "first_seen_at": "2026-10-16T20:32:35Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19256,
+   "published_at": "2026-10-16T18:42:11Z",
+   "retrieved_at": "2026-10-17T08:32:38Z",
+   "url": "https://www.stylerave.com/tom-cruise-movie-style"
+  },
+  {
+   "content_hash": "4fee6fd492c268be23c820865c7fff63ec073aac251567b4d906d6f4a6474622",
+   "first_seen_at": "2026-10-17T00:30:31Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19299,
+   "published_at": "2026-10-16T23:00:33Z",
+   "retrieved_at": "2026-10-17T00:30:31Z",
+   "url": "https://www.complex.com/style/a/markelibert/born-x-raised-bxr-holiday-pack-hoodie-los-angeles-drop-2"
+  },
+  {
+   "content_hash": "db4152efc20f8bd5e06dc2f430d031952f65cb2e5a6939d69ba2cb4a94f4211c",
+   "first_seen_at": "2026-10-17T00:31:46Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19332,
+   "published_at": "2026-10-16T21:20:26Z",
+   "retrieved_at": "2026-10-17T00:31:46Z",
+   "url": "https://www.highsnobiety.com/p/adidas-italia-60s-dark-brown"
+  },
+  {
+   "content_hash": "0a1571dab2cafc285cf7de957d13bc53f853704473594b801ef2a80984b91425",
+   "first_seen_at": "2026-10-17T00:33:10Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19345,
+   "published_at": "2026-10-17T00:00:00Z",
+   "retrieved_at": "2026-10-17T00:33:10Z",
+   "url": "https://www.vogue.com/article/fall-accessories-and-full-tilt-maximalism-tie-the-knot"
+  },
+  {
+   "content_hash": "cb6ae5e43a3fcd7d8d2c015508976d48e9d273b1b1dbe680ba26b542ec682c95",
+   "first_seen_at": "2026-10-17T00:33:10Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19346,
+   "published_at": "2026-10-16T21:30:09Z",
+   "retrieved_at": "2026-10-17T00:33:10Z",
+   "url": "https://www.vogue.com/article/lady-jacket-outfits"
+  },
+  {
+   "content_hash": "515e12d5f6d1728ef1e490e2778ec21043a5d1152725bbedf55f73dd1d53e3fe",
+   "first_seen_at": "2026-10-17T00:33:36Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19354,
+   "published_at": "2026-10-16T21:00:00Z",
+   "retrieved_at": "2026-10-17T00:33:36Z",
+   "url": "https://www.whowhatwear.com/fashion/celebrity-style/side-stripe-leggings-trend-jennifer-lawrence-2026"
+  },
+  {
+   "content_hash": "dc270cbdb8e3b8b895dee02a712c5e758b2b851c978241f42b40f11c518297f9",
+   "first_seen_at": "2026-10-17T00:33:39Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19361,
+   "published_at": "2026-10-16T20:02:26Z",
+   "retrieved_at": "2026-10-17T00:33:39Z",
+   "url": "https://wwd.com/fashion-news/fashion-scoops/sturbridge-vintage-show-menswear-1239365223"
+  },
+  {
+   "content_hash": "d220c15213f1989c994dcac04c9dc77e3fc6e506c31eac8b9eab331daf95f7de",
+   "first_seen_at": "2026-10-17T04:30:32Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19363,
+   "published_at": "2026-10-17T03:00:05Z",
+   "retrieved_at": "2026-10-17T04:30:32Z",
+   "url": "https://www.complex.com/sneakers/a/victor-deng/nike-doernbecher-freestyle-22-collection-what-you-need-to-know"
+  },
+  {
+   "content_hash": "51cbc02a88075f401fc790ec081504f569bffe48bc935f176ef05f98ec354166",
+   "first_seen_at": "2026-10-17T04:31:59Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19381,
+   "published_at": "2026-10-17T04:00:22Z",
+   "retrieved_at": "2026-10-17T04:31:59Z",
+   "url": "https://hypebeast.com/2026/10/baracuta-wild-things-wacko-maria-fall-winter-2026-fw26-collaboration-collection-release-info"
+  },
+  {
+   "content_hash": "a29b1817d0f38716317754d5c36343d876c677cbbccb90cd7a2ab8789da32945",
+   "first_seen_at": "2026-10-17T08:31:48Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19406,
+   "published_at": "2026-10-17T07:30:00Z",
+   "retrieved_at": "2026-10-17T08:31:48Z",
+   "url": "https://www.hellomagazine.com/fashion/royal-style/929431/meghan-markle-wearing-marks-and-spencer-nottingham"
+  },
+  {
+   "content_hash": "fcde937040309541e92319f100a9c5d786b2d58eea21e61254af101094a0cfb4",
+   "first_seen_at": "2026-10-17T08:33:40Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19440,
+   "published_at": "2026-10-17T07:00:00Z",
+   "retrieved_at": "2026-10-17T08:33:40Z",
+   "url": "https://www.whowhatwear.com/fashion/shopping/nordstrom-fall-2026-trends"
+  },
+  {
+   "content_hash": "09309744321bab19c55237ea9f8a75b0bda763145ac56acb707940c6baee6f88",
+   "first_seen_at": "2026-10-17T12:30:54Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19451,
+   "published_at": "2026-10-17T05:00:00Z",
+   "retrieved_at": "2026-10-19T20:36:28Z",
+   "url": "https://fashionunited.com/news/fashion/ss27-double-denim-trend-at-conner-ives-zimmermann-and-more/2026101775133"
+  },
+  {
+   "content_hash": "b558319483dc9a212e4dac52e1dd44057c9503d4b9b2de457b1720f2513ae336",
+   "first_seen_at": "2026-10-17T12:31:15Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19453,
+   "published_at": "2026-10-17T11:29:54Z",
+   "retrieved_at": "2026-10-17T12:31:15Z",
+   "url": "https://www.gqitalia.it/article/industrial-belt-off-white-2026"
+  },
+  {
+   "content_hash": "6f3117215b34cd0c036aba24a113bc6afc11dedc664935cd4d8bb3f1e02869f3",
+   "first_seen_at": "2026-10-17T12:31:43Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19459,
+   "published_at": "2026-10-17T09:54:12Z",
+   "retrieved_at": "2026-10-17T12:31:43Z",
+   "url": "https://hypebeast.com/2026/10/baby-milo-12-zodiac-blind-box-series-fw26-collection-release-info"
+  },
+  {
+   "content_hash": "b8651d1f732fc656a0338bafb7dfd5c6e27595e75ffc4e6510c2067f81e53015",
+   "first_seen_at": "2026-10-17T12:31:58Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19462,
+   "published_at": "2026-10-17T12:00:00Z",
+   "retrieved_at": "2026-10-17T12:31:58Z",
+   "url": "https://www.marieclaire.com/beauty/nails/best-nail-looks-of-the-week-october-12-2026"
+  },
+  {
+   "content_hash": "cbc191a7e2063b0d34063d33cb55d07df19bb93efe1d67f834f30d23c6dba01a",
+   "first_seen_at": "2026-10-17T12:31:58Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19463,
+   "published_at": "2026-10-17T11:00:00Z",
+   "retrieved_at": "2026-10-17T12:31:58Z",
+   "url": "https://www.marieclaire.com/fashion/anti-trend-edit-fall-denim-styles"
+  },
+  {
+   "content_hash": "c637abb8e94a25d2383a0ebcd4ec27cfe878b4b0c05abf19fa032f8db9590cdb",
+   "first_seen_at": "2026-10-17T12:32:42Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19471,
+   "published_at": "2026-10-17T12:00:25Z",
+   "retrieved_at": "2026-10-17T12:32:42Z",
+   "url": "https://www.thezoereport.com/fashion/maximalist-fall-sweaters"
+  },
+  {
+   "content_hash": "75076c35a27a7bed87dfae2e6a7b5548140d9817764b409ef5c814383a679056",
+   "first_seen_at": "2026-10-17T16:33:40Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19547,
+   "published_at": "2026-10-17T14:50:55Z",
+   "retrieved_at": "2026-10-19T20:39:20Z",
+   "url": "https://www.whowhatwear.com/fashion/celebrity-style/slip-skirt-brown-heels-outfit-zoe-kravitz-2026"
+  },
+  {
+   "content_hash": "6dce9fa9c8e740cee4ce0a5c3d8c0feeb6256c23d7fbb3df0a188572266a0876",
+   "first_seen_at": "2026-10-17T20:31:59Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19572,
+   "published_at": "2026-10-17T20:05:27Z",
+   "retrieved_at": "2026-10-17T20:31:59Z",
+   "url": "https://www.highsnobiety.com/p/crocs-gallery-leather-shoe"
+  },
+  {
+   "content_hash": "766824ab0936da04233aeeab84933a26d6bc3cfffd1fc9a39dfd96a20871efdb",
+   "first_seen_at": "2026-10-17T20:31:59Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19573,
+   "published_at": "2026-10-17T19:26:20Z",
+   "retrieved_at": "2026-10-17T20:31:59Z",
+   "url": "https://www.highsnobiety.com/p/nike-rejuven8-wntr-sneakers"
+  },
+  {
+   "content_hash": "1640e83ec4607f144688ea1d1d87e5eda35a8c4836fda95536a471fdff9fdafb",
+   "first_seen_at": "2026-10-17T20:33:31Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19584,
+   "published_at": "2026-10-17T17:11:59Z",
+   "retrieved_at": "2026-10-17T20:33:31Z",
+   "url": "https://www.vogue.mx/articulo/kate-middleton-luce-sueter-calientito-con-blusa-boho-en-otono-2026"
+  },
+  {
+   "content_hash": "b484c0baefdef5e4723a84dbf01f5ce224de6db57ebbdd877b24c6a57ae61c21",
+   "first_seen_at": "2026-10-17T20:33:48Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19587,
+   "published_at": "2026-10-17T18:48:13Z",
+   "retrieved_at": "2026-10-17T20:33:48Z",
+   "url": "https://wwd.com/pop-culture/celebrity-news/jenna-ortega-1966-vintage-mod-dress-rome-film-festival-1239371577"
+  },
+  {
+   "content_hash": "51e8ed2fdd32b03ac23820f550731cfbd6148bd6327e1ab1c0e97bd1ae2826e0",
+   "first_seen_at": "2026-10-18T04:30:45Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19611,
+   "published_at": "2026-10-18T03:12:27Z",
+   "retrieved_at": "2026-10-19T20:36:07Z",
+   "url": "https://www.elle.com/culture/celebrities/a74168700/blackpink-rose-photos-academy-museum-gala-2026"
+  },
+  {
+   "content_hash": "3ea9d9a1cc1e6753a80f753a15950d068170f886258f35f70e2f6191c5fd2cb8",
+   "first_seen_at": "2026-10-18T04:31:22Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19615,
+   "published_at": "2026-10-18T04:00:00Z",
+   "retrieved_at": "2026-10-18T04:31:22Z",
+   "url": "https://www.gqitalia.it/article/on-cloud-6-geo-waterproof-prezzo-data-uscita"
+  },
+  {
+   "content_hash": "0dfbfd48b38a1df729c32fa963aed4560f930d68ad27dc1fe29c1b9b75436187",
+   "first_seen_at": "2026-10-18T04:33:28Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 19631,
+   "published_at": "2026-10-18T02:06:39Z",
+   "retrieved_at": "2026-10-18T04:33:28Z",
+   "url": "https://wwd.com/footwear-news/shoe-trends/pumps-sandals-thigh-high-slits-academy-museum-gala-2026-1239371980"
+  },
+  {
+   "content_hash": "f1919d912452b8918cf76be4138de4b373011a3608b22e9bebc32353b74a857b",
+   "first_seen_at": "2026-10-19T20:37:51Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 20091,
+   "published_at": "2026-10-18T15:37:00Z",
+   "retrieved_at": "2026-10-19T20:37:51Z",
+   "url": "https://www.marieclaire.com/fashion/celebrity-style/taylor-swift-dior-gown-ralph-lauren-sheer-dress-chopard-jewels-academy-museum-gala"
+  },
+  {
+   "content_hash": "142d80df1f7a7d42f731dd8f06a3a80e19203669ae323aefa33558a4b77b79a2",
+   "first_seen_at": "2026-10-19T20:38:30Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 20181,
+   "published_at": "2026-10-18T12:00:24Z",
+   "retrieved_at": "2026-10-19T20:38:30Z",
+   "url": "https://www.thezoereport.com/culture/celebrity-denim-moments"
+  },
+  {
+   "content_hash": "63b417fb1116ae6bdd2c1a4e692c2d5b0ed2f0d536c1155c71b1d3aab82e6aac",
+   "first_seen_at": "2026-10-19T20:38:51Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 20212,
+   "published_at": "2026-10-18T06:00:00Z",
+   "retrieved_at": "2026-10-19T20:38:51Z",
+   "url": "https://www.vogue.co.uk/article/boho-style-for-autumn"
+  },
+  {
+   "content_hash": "4e843c3d0de75feb8c656f7e0a8ce0d2f65c7076a1981c87a39ef174544d1d16",
+   "first_seen_at": "2026-10-19T20:39:20Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 20402,
+   "published_at": "2026-10-18T12:00:00Z",
+   "retrieved_at": "2026-10-19T20:39:20Z",
+   "url": "https://www.whowhatwear.com/fashion/celebrity-style/low-rise-dark-wash-bootcut-jeans-trend-hailey-bieber"
+  },
+  {
+   "content_hash": "3bdaeb5e67b977e3491104e8a8d1ab4ecfeb5b773cc551350877f0c46f42d956",
+   "first_seen_at": "2026-10-19T20:39:20Z",
+   "first_seen_basis": "live_insert",
+   "item_id": 20408,
+   "published_at": "2026-10-18T10:00:00Z",
+   "retrieved_at": "2026-10-19T20:39:20Z",
+   "url": "https://www.whowhatwear.com/fashion/celebrity-style/burgundy-ballet-flats-trend-zoe-kravitz-2026"
+  }
+ ],
+ "report_date": "2026-10-18",
+ "snapshot_sha256": "3ca948b445408b4103bbd56218b801f92c578f4ea88aabb5f1ab1bac0eeef894",
+ "snapshot_version": "evidence-review-snapshot-v1"
+}
