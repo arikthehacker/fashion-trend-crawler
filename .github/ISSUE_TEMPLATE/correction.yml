@@ -1,0 +1,31 @@
+name: Correction
+description: Report an error in a published ARI3LLA INDEX report
+title: "Correction: "
+labels: ["correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for checking the record. A published report is never silently edited: a confirmed error gets a dated correction note, and the outcome is recorded here. See [how to contribute](https://github.com/arikthehacker/fashion-trend-crawler/blob/master/CONTRIBUTING.md).
+  - type: input
+    id: where
+    attributes:
+      label: Report or signal link
+      description: The report's address, or a signal's link (ending in #signal-<name>).
+      placeholder: https://www.ari3lla.com/reports/2026-11-22#signal-denim
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong
+      description: Quote the sentence, count or label.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: A link to the article or record that shows the error, ideally one of the dated articles listed under the signal.
+    validations:
+      required: true

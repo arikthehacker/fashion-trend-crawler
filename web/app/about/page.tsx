@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { EDITOR_LABEL, pageMetadata } from "../../lib/site";
-import { CONTACT_EMAIL, ISSUES_URL, REPO_URL } from "../../lib/nav";
+import { ISSUES_URL, REPO_URL, CONTRIBUTING_URL } from "../../lib/nav";
 import { Folio } from "../components/Chrome";
 
 export const metadata = pageMetadata("/about", "About", "What ARI3LLA INDEX is and is not: an independent, source-linked archive of style language, its editorial independence, AI use and corrections policy.");
@@ -41,7 +41,7 @@ export default function About() {
             <p>ARI3LLA INDEX is not sponsored by or affiliated with any brand, publication, retailer or platform named in its reports. Editorial sources are cited as a source sector with its own commercial incentives, not treated as neutral authority.</p>
             <p>ARI3LLA INDEX is an independent research project built and maintained by one researcher and developer. Its source code is public. It has no editorial board, owners or funding to disclose.</p>
             <p>Software collects items and extracts style terms, and ARI3, a machine-learning model, flags which items are about style. Software does not decide what matters. Every claim in a report links to a specific, dated source, and a report is published only after human review. Each report states its recorded software or AI assistance, or says when those details were not recorded. The human-editor note on each signal is written by the editor, never by software.</p>
-            <p>Errors in a published report are not silently edited. A dated correction is added to the report and the original entry is kept. Suspected errors can be reported by email to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> or as an issue on the <a href={ISSUES_URL} rel="noopener noreferrer">project&apos;s public repository</a>. The full process is on the <Link href="/methodology">How it works</Link> page.</p>
+            <p>Errors in a published report are not silently edited. A dated correction is added to the report and the original entry is kept. Suspected errors can be reported as a <a href={ISSUES_URL} rel="noopener noreferrer">correction issue on GitHub</a>, as the <a href={CONTRIBUTING_URL} rel="noopener noreferrer">contributing guide</a> explains. The full process is on the <Link href="/methodology">How it works</Link> page.</p>
           </div>
         </div>
 
@@ -54,7 +54,7 @@ export default function About() {
             <dt>Funding</dt>
             <dd>None to disclose. No owners, sponsors or editorial board</dd>
             <dt>Corrections and tips</dt>
-            <dd><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></dd>
+            <dd><a href={ISSUES_URL} rel="noopener noreferrer">Open an issue on GitHub</a>. <a href={CONTRIBUTING_URL} rel="noopener noreferrer">How to contribute</a></dd>
             <dt>Source code</dt>
             <dd><a href={REPO_URL} rel="noopener noreferrer">{REPO_URL.replace(/^https:\/\//, "")}</a></dd>
           </dl>

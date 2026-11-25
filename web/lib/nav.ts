@@ -24,8 +24,10 @@ export const FOOTER_NAV = [
   { href: "/rss.xml", label: "RSS" },
   { href: "/llms.txt", label: "For AI agents" },
   { href: "/data/reports/index.json", label: "Data (JSON)" },
+  { href: "https://github.com/arikthehacker/fashion-trend-crawler/blob/master/CONTRIBUTING.md", label: "How to contribute" },
 ] as const;
 
 export const CONTACT_EMAIL = "ariella@duck.com";
 export const ISSUES_URL = "https://github.com/arikthehacker/fashion-trend-crawler/issues";
 export const REPO_URL = "https://github.com/arikthehacker/fashion-trend-crawler";
+export const CONTRIBUTING_URL = `${REPO_URL}/blob/master/CONTRIBUTING.md`;

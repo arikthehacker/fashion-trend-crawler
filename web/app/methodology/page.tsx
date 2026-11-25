@@ -4,7 +4,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { pageMetadata } from "../../lib/site";
-import { CONTACT_EMAIL, ISSUES_URL } from "../../lib/nav";
+import { ISSUES_URL, CONTRIBUTING_URL } from "../../lib/nav";
 import { Folio } from "../components/Chrome";
 
 export const metadata = pageMetadata("/methodology", "Methodology", "How ARI3LLA INDEX collects, classifies and cites style signals: source sectors, confidence, volatility, citations, corrections and AI involvement.");
@@ -114,7 +114,7 @@ const sections: { title: string; body: ReactNode[] }[] = [
       "A published report is never silently edited. When a classification or a stated fact turns out to be wrong, a dated correction note is added to the report, saying what was wrong and what changed.",
       "The original entry is kept beside the correction, so the archive shows what was published at the time.",
       "Each correction also records which signals were added, removed or changed, and which fields changed. A hash of the earlier signal content is kept, so the archive can prove the content changed even if a correction note were incomplete.",
-      <>Suspected errors can be reported by email to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> or as an issue on the project&apos;s <a href={ISSUES_URL} rel="noopener noreferrer">public repository</a>. Response time is not guaranteed.</>,
+      <>Suspected errors can be reported as a <a href={ISSUES_URL} rel="noopener noreferrer">correction issue on GitHub</a>. The <a href={CONTRIBUTING_URL} rel="noopener noreferrer">contributing guide</a> explains what to include and what happens next. Response time is not guaranteed.</>,
     ],
   },
   {
