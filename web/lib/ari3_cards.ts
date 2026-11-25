@@ -229,6 +229,4 @@ export const TIMELINE: TimelineEvent[] = [
   { date: "2026-10-01", title: "EXP-004: grounded retrieval tested once", detail: "The frozen hybrid retriever reached Recall@10 0.770 and Hit@10 1.000 on 12 answerable held-out questions.", href: "/ari3/exp-004" },
   { date: "2026-10-02", title: "EXP-003A: v0.0.2 on newer articles", detail: "Coverage 0.927 and not-sure share 0.327 met their pass marks. Accuracy 0.833 missed its pass mark of 0.85.", href: "/ari3/exp-003" },
   { date: "2026-10-03", title: "v0.0.3 released", detail: "The release records both EXP-003 results and a frozen forecast head that is not used. The style classifier is still the frozen v0.0.2 model.", href: "/ari3/exp-003" },
-  { date: "Later", title: "PROVIDENTIA", detail: "The system begins looking forward.", planned: true },
-  { date: "Later", title: "CONCORDIA", detail: "Independent models act in concert.", planned: true },
 ];
