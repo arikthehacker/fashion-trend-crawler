@@ -112,6 +112,15 @@ h2.sec { font-size: 12.5px; font-weight: 600; letter-spacing: 0.08em; text-trans
 .side li a:hover .w { text-decoration: underline; }
 .side .w { font-family: var(--serif); font-size: 21px; }
 .side .c { font-size: 13px; color: var(--muted); }
+/* front page: the index is exactly as tall as the story beside it, on every screen.
+   container-type: size takes the index out of the row's height, so the story sets it; the rows then
+   share that height evenly and the type sizes itself to the row (--n is the week's signal count). */
+.side.fit { container-type: size; display: flex; flex-direction: column; min-height: 0; }
+.side.fit ol { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+.side.fit li { flex: 1 1 0; display: flex; min-height: 0; }
+.side.fit li a { flex: 1; align-items: center; padding: 0; border-bottom: 1px solid var(--rule); }
+.side.fit .w { font-size: clamp(7px, calc(100cqh / (var(--n) + 2) * 0.6), 21px); line-height: 1.05; }
+.side.fit .c { font-size: clamp(6.5px, calc(100cqh / (var(--n) + 2) * 0.4), 13px); }
 
 /* ---------- report ---------- */
 .rtop { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 20px 40px; }
@@ -359,8 +368,6 @@ figure svg { width: 100%; height: auto; display: block; }
   /* front page index */
   .side { padding-left: 10px; }
   .side li a { padding: 2px 0 1px; gap: 4px; }
-  .side .w { font-size: clamp(8px, 2.15vw, 21px); }
-  .side .c { font-size: 7px; }
 
   /* report */
   .who dl { grid-template-columns: minmax(0, 1fr); }

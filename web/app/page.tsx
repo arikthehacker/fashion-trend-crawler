@@ -1,5 +1,6 @@
 // The front page: the newest report's headline and story, and its index of signals.
 
+import type React from "react";
 import Link from "next/link";
 import { getLatestReport } from "../lib/reports";
 import { headline, ranked, items, slugOf, sentences, standfirst, plusFinds } from "../lib/editorial";
@@ -56,7 +57,7 @@ export default function Home() {
             <Link href="/methodology">How the index works</Link>
           </nav>
         </article>
-        <aside className="side" aria-labelledby="idx-h">
+        <aside className="side fit" aria-labelledby="idx-h" style={{ ["--n" as string]: S.length } as React.CSSProperties}>
           <h2 id="idx-h">Latest index <span>articles</span></h2>
           <ol>
             {S.map((s, i) => (
