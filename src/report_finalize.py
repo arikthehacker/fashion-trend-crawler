@@ -39,7 +39,20 @@ DEDUP_LIMITATION = ("Exact mirrors and syndicated, translated or lightly re-edit
                     "domains are collapsed to one report evidence unit. The frozen source snapshot retains the raw records.")
 BANNED = ["—", ";", "must-have", "obsessed", "everyone is wearing", "this season is all about", "declared", "revealed", "proves",
           "rising", "surging", "taking over", "next big", "consumers are", "moving toward", "discovered"]
-FIRST_PERSON = re.compile(r"\b(I|I'm|I've|I'd|me|my|myself|mine|we|our|us)\b")
+FIRST_PERSON = re.compile(r"\b(I|I'm|I've|I'd|[Mm]e|[Mm]y|[Mm]yself|[Mm]ine|[Ww]e|[Oo]ur|[Uu]s)\b")
+
+
+def first_person(value):
+    """True when the text speaks in the first person. A capitalised form inside a sentence and
+    followed by another capitalised word is part of a name (the brand Our Legacy), not a voice."""
+    for m in FIRST_PERSON.finditer(value):
+        word, before, after = m.group(0), value[:m.start()].rstrip(), value[m.end():]
+        name_like = word[0].isupper() and word not in ("I", "I'm", "I've", "I'd") and re.match(r" [A-Z]", after)
+        sentence_start = not before or before[-1] in ".!?:\"\u201c("
+        if name_like and not sentence_start:
+            continue
+        return True
+    return False  # sentence-initial forms too; "US" (the country) stays allowed
 
 
 def _now():
@@ -194,12 +207,14 @@ def structure(report):
     for s in x["top_signals"]:
         s["evidence"], s["index_note"], s["human_editor_note"] = "", "", ""
     x["draft_meta"]["editor_decisions"].pop("revisions", None)
+    x["draft_meta"]["editor_decisions"].pop("first_person_ok", None)  # part of the text, set with it
     x.pop("ai_assistance", None)
     return x
 
 
 def text_of(report):
     return {"headline": report.get("headline", ""), "executive_summary": report["executive_summary"],
+            "first_person_ok": (report.get("draft_meta") or {}).get("editor_decisions", {}).get("first_person_ok", []),
             "signals": {s["signal_id"]: {k: s[k] for k in ("evidence", "index_note", "human_editor_note")} for s in report["top_signals"]}}
 
 
@@ -249,8 +264,13 @@ def text_errors(report, text):
     for where, value in machine:
         errors += [f"{where} uses {b!r}" for b in BANNED
                    if (re.search(rf"\b{re.escape(b)}\b", value, re.I) if b[0].isalpha() else b in value)]
+    # The editor may keep first person in her own note, one named signal at a time, on her
+    # explicit request (2026-11-25). The exception is recorded and shown on the approval card.
+    allowed = set(text.get("first_person_ok") or [])
+    if allowed - set(counts):
+        errors.append(f"first_person_ok names signals not in the report: {sorted(allowed - set(counts))}")
     for where, value in machine + notes:
-        if FIRST_PERSON.search(value):
+        if first_person(value) and not (where.endswith(".human_editor_note") and where.split(".")[0] in allowed):
             errors.append(f"{where} is in the first person")
         if "—" in value or ";" in value:
             errors.append(f"{where} has an em dash or a semicolon")
@@ -264,6 +284,7 @@ def set_text(report, text):
         raise ValueError("\n".join(errors))
     out = json.loads(json.dumps(report))
     out["headline"] = text["headline"].strip()
+    out["draft_meta"]["editor_decisions"]["first_person_ok"] = sorted(text.get("first_person_ok") or [])
     out["executive_summary"] = text["executive_summary"].strip()
     for s in out["top_signals"]:
         for field in ("evidence", "index_note", "human_editor_note"):
@@ -293,7 +314,10 @@ def approval_queue(report, reviews_path):
                 f"{s['confidence']} ({s['confidence_source']})  |  volatility {s['volatility']}  |  origin {s['origin_classification']}\n"
                 f"Sectors: " + ", ".join(f"{k} {v}" for k, v in a["items_by_sector"].items()) + "\n\n"
                 f"EVIDENCE TEXT\n{s['evidence']}\n\nINDEX NOTE\n{s['index_note']}\n\n"
-                f"EDITOR NOTE AS IT WILL APPEAR\n{s['human_editor_note']}\n\nYOUR THOUGHTS AS YOU WROTE THEM\n{thoughts.get(s['signal_id'], '')}\n\n"
+                f"EDITOR NOTE AS IT WILL APPEAR\n{s['human_editor_note']}\n"
+                + ("(First person kept at your request: the voice rule is waived for this note only.)\n"
+                   if s["signal_id"] in report["draft_meta"]["editor_decisions"].get("first_person_ok", []) else "")
+                + f"\nYOUR THOUGHTS AS YOU WROTE THEM\n{thoughts.get(s['signal_id'], '')}\n\n"
                 f"Merged in: {', '.join(a['merged_terms']) or 'none'}. Removed by you: {a['removed_by_editor'] or 'none'}. "
                 f"Duplicates counted once: {len(a['collapsed_duplicates'])}.")
         add(f"signal:{s['signal_id']}", s["name"], "report_signal", body)

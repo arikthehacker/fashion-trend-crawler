@@ -156,6 +156,16 @@ class WorkflowTests(unittest.TestCase):
             t["headline"] = hed
             self.assertTrue(any(expect in e for e in rf.text_errors(r, t)), (hed, rf.text_errors(r, t)))
         self.assertEqual(out["headline"], "Alpha was the largest signal of a short week")
+        we = self.text(human_editor_note="Editorial view: alpha, we love you.")
+        self.assertTrue(any("first person" in e for e in rf.text_errors(r, we)))
+        we["first_person_ok"] = ["alpha"]
+        self.assertEqual(rf.text_errors(r, we), [])
+        self.assertTrue(any("first person" in e for e in rf.text_errors(r, dict(we, executive_summary=we["executive_summary"] + " We saw it."))))
+        self.assertEqual(rf.set_text(r, we)["draft_meta"]["editor_decisions"]["first_person_ok"], ["alpha"])
+        self.assertFalse(rf.first_person("Nike worked with Our Legacy on a sneaker."))  # a brand name
+        self.assertFalse(rf.first_person("US retailers stocked it."))
+        self.assertTrue(rf.first_person("Our view is that it recurs."))
+        self.assertTrue(rf.first_person("It recurs. We Think so."))
         bad_summary = self.text()
         bad_summary["executive_summary"] = "ARI3 collected 1,234 raw source records from 9 outlet domains. Alpha (5 items from 3 outlets)."
         self.assertTrue(any("matches no signal" in e for e in rf.text_errors(r, bad_summary)))
