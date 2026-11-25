@@ -1,0 +1,15 @@
+{
+ "amendment": "AMENDMENT_2026-11-25_self_edits.md",
+ "amendment_sha256": "14ecba5175be5fae96fba2463dba47cf8c9503dc6a9a700f0044c0dcfb9a3bd1",
+ "amends_protocol_sha256": "b9060ffe2b6e0e49831cc5692f4906b4329e140a21f72f7d894b934e395a3ade",
+ "code_sha256": {
+  "exp007.py": "c385e4f1d2e9f67840ecb644ea73ab34d8a90e383822b407788213b2cef21115",
+  "report_review.py": "19baa88443100e6e169ec675ed84597d65118bebb68bda10de86acc964895cc1",
+  "report_definitions.py": "8829fd608250bff1179a11a252fc687633858ac0ac31c18a0d84dab917857a18",
+  "llm_deepseek.py": "9ecf2e968bcc0b0d742826296edd9cd27f02f98ab857e993fb5da72747f84dc8",
+  "llm_provider.py": "30ae90f2854145ffc67e762f1d5dcc4024630ec7ec47e9e57f06e0f4041ce942",
+  "llm_deepseek_thinking.py": "c2a525147e2323726598190811420f0427952d5d6379d4aebf6746c6e5a57e30",
+  "exp008.py": "0e43275bfc298f6689b35a2fea8f224ba772375d2221a0fcc7187df5d900f206"
+ },
+ "frozen_at": "2026-11-25T02:36:37Z"
+}

@@ -78,8 +78,19 @@ class AuditTests(unittest.TestCase):
             ("Write", os.path.join(x.PROFILES, f"{self.held}.md"))]
         for reply in ("532", "453 words", " 504 "):
             self.assertEqual(x.audit_transcript(transcript(ok + [("SubagentHandback", reply)]), self.held)[1], [])
-        problems = x.audit_transcript(transcript(ok + [("SubagentHandback", "532. The editor keeps...")]), self.held)[1]
-        self.assertTrue(any("SubagentHandback" in p for p in problems))
+        short = x.audit_transcript(transcript(ok + [("SubagentHandback", "About 537 words, counted by hand.")]), self.held)
+        self.assertEqual(short[1], [])  # amendment 2
+        for reply in ("x" * 301, "Done. The editor keeps every loafer card."):
+            problems = x.audit_transcript(transcript(ok + [("SubagentHandback", reply)]), self.held)[1]
+            self.assertTrue(any("SubagentHandback" in p for p in problems))
+
+    def test_self_edits_of_the_own_profile_are_allowed_but_not_other_files(self):
+        own = os.path.join(x.PROFILES, f"{self.held}.md")
+        ok = [("Read", p) for p in x.input_paths(self.held).values()] + [("Write", own), ("Edit", own), ("Read", own)]
+        self.assertEqual(x.audit_transcript(transcript(ok), self.held)[1], [])
+        other = os.path.join(x.PROFILES, "2026-11-15.md")
+        problems = x.audit_transcript(transcript(ok + [("Edit", other)]), self.held)[1]
+        self.assertTrue(any("Edit" in p for p in problems))
 
     def test_held_out_week_is_never_an_input(self):
         for w in x.WEEKS:

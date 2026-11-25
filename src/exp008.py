@@ -42,8 +42,11 @@ PREREG = os.path.join(EXP, "PREREGISTRATION.md")
 INSTRUCTIONS = os.path.join(EXP, "protocol", "profile_instructions_v1.md")
 PROMPT_SPEC = os.path.join(EXP, "protocol", "prompt_v2.md")
 PROFILE_MANIFEST = os.path.join(EXP, "runs", "sealed_profiles.json")
-AMENDMENT = os.path.join(EXP, "AMENDMENT_2026-11-25_handback.md")
-AMENDMENT_JSON = os.path.join(EXP, "protocol", "amendment_1.json")
+# (written record, frozen fingerprint) per amendment, in order; the code must match the latest frozen one
+AMENDMENTS = [(os.path.join(EXP, "AMENDMENT_2026-11-25_handback.md"), os.path.join(EXP, "protocol", "amendment_1.json")),
+              (os.path.join(EXP, "AMENDMENT_2026-11-25_self_edits.md"), os.path.join(EXP, "protocol", "amendment_2.json"))]
+AUDIT_RULES = "amendment 2"
+MAX_REPLY_CHARS = 300
 MANIFEST = os.path.join(EXP, "runs", "sealed_manifest.json")
 RESULT = os.path.join(EXP, "runs", "comparison.json")
 BLIND = os.path.join(ROOT, "data", "store", "blind", "exp008")
@@ -237,18 +240,25 @@ def audit_transcript(path, held):
                     calls.append({"tool": name, "path": target})
                     if name == "Read" and target in allowed_read:
                         continue
-                    if name == "Write" and target == allowed_write:
-                        continue
-                    if name == HANDBACK_TOOL and HANDBACK_REPLY.fullmatch(str(inp.get("message", ""))):
+                    if name in ("Write", "Edit", "Read") and target == allowed_write:
+                        continue  # amendment 2: the subagent may reread and revise its own profile
+                    if name == HANDBACK_TOOL and _reply_ok(str(inp.get("message", ""))):
                         calls[-1]["reply"] = str(inp.get("message"))
                         continue
                     problems.append(f"tool call not allowed: {name} {target or ''}".strip())
     if not any(c["tool"] == "Write" for c in calls):
         problems.append("the profile was not written with the Write tool")
-    read = {c["path"] for c in calls if c["tool"] == "Read"}
+    read = {c["path"] for c in calls if c["tool"] == "Read"} - {allowed_write}
     if read != allowed_read:
         problems.append(f"input files not read: {len(allowed_read - read)}")
     return calls, problems
+
+
+def _reply_ok(message):
+    """Amendment 1 allowed a bare word count. Amendment 2: any short reply that leaks nothing."""
+    if HANDBACK_REPLY.fullmatch(message):
+        return True
+    return len(message) <= MAX_REPLY_CHARS and not leak_problems(message)
 
 
 def check_profile(held, transcript):
@@ -260,8 +270,10 @@ def check_profile(held, transcript):
     calls, audit = audit_transcript(transcript, held)
     leaks = leak_problems(text)
     os.makedirs(CHECKS, exist_ok=True)
-    prior = [r for r in _load_jsonl(os.path.join(CHECKS, f"{held}.jsonl"))]
-    rec = {"week": held, "attempt": len(prior) + 1, "checked_at": _now(), "profile_sha256": e7.sha_file(path),
+    shas = list(dict.fromkeys(r["profile_sha256"] for r in _load_jsonl(os.path.join(CHECKS, f"{held}.jsonl"))))
+    sha = e7.sha_file(path)
+    attempt = shas.index(sha) + 1 if sha in shas else len(shas) + 1  # a recheck of the same profile is not a new attempt
+    rec = {"week": held, "attempt": attempt, "audit_rules": AUDIT_RULES, "checked_at": _now(), "profile_sha256": sha,
            "words": len(WORD.findall(text.lower())), "transcript": os.path.basename(transcript),
            "transcript_sha256": e7.sha_file(transcript), "tool_calls": calls, "audit_problems": audit,
            "leak_problems": leaks, "pass": not audit and not leaks}
@@ -289,10 +301,14 @@ def seal_profiles():
         path = os.path.join(PROFILES, f"{w}.md")
         if e7.sha_file(path) != checks[-1]["profile_sha256"]:
             raise RuntimeError(f"{w}: the profile changed after its check")
-        body["weeks"][w] = {"profile_sha256": checks[-1]["profile_sha256"], "words": checks[-1]["words"],
-                            "attempts": len(checks), "transcript_sha256": checks[-1]["transcript_sha256"],
+        final = checks[-1]["profile_sha256"]
+        last = {c["profile_sha256"]: c for c in checks}  # the latest check of each attempt
+        body["weeks"][w] = {"profile_sha256": final, "words": checks[-1]["words"], "attempts": len(last),
+                            "checks_run": len(checks), "audit_rules": checks[-1].get("audit_rules"),
+                            "transcript_sha256": checks[-1]["transcript_sha256"],
                             "failed_attempts": [{"attempt": c["attempt"], "audit_problems": c["audit_problems"],
-                                                 "leak_problems": c["leak_problems"]} for c in checks[:-1]]}
+                                                 "leak_problems": c["leak_problems"]}
+                                                for sha, c in last.items() if sha != final]}
     os.makedirs(os.path.dirname(PROFILE_MANIFEST), exist_ok=True)
     with open(PROFILE_MANIFEST, "x", encoding="utf-8", newline="\n") as f:
         json.dump(body, f, indent=1, ensure_ascii=False)
@@ -368,13 +384,16 @@ def check_frozen():
             "leak_vocabulary", "definitions", "weeks", "editor_logs_manifest_sha256",
             "exp007_thinking_off_outputs_sha256", "reader", "code_sha256")
     changed = [k for k in keys if p[k] != now[k]]
-    if changed == ["code_sha256"] and os.path.exists(AMENDMENT_JSON):
-        with open(AMENDMENT_JSON, encoding="utf-8") as f:
-            a = json.load(f)
-        if (a["amends_protocol_sha256"] == e7.sha_file(PROTOCOL) and a["amendment_sha256"] == e7.sha_file(AMENDMENT)
-                and a["code_sha256"] == now["code_sha256"]):
+    frozen = [(md, js) for md, js in AMENDMENTS if os.path.exists(js)]
+    if changed == ["code_sha256"] and frozen:
+        for md, js in frozen:
+            with open(js, encoding="utf-8") as f:
+                a = json.load(f)
+            if a["amends_protocol_sha256"] != e7.sha_file(PROTOCOL) or a["amendment_sha256"] != e7.sha_file(md):
+                raise RuntimeError(f"{os.path.basename(js)} no longer matches its files")
+        if a["code_sha256"] == now["code_sha256"]:
             return p
-        raise RuntimeError("the code matches neither the protocol nor amendment 1")
+        raise RuntimeError("the code matches neither the protocol nor the latest amendment")
     if changed:
         raise RuntimeError(f"a frozen input changed: {changed}")
     return p
@@ -406,7 +425,7 @@ def run(provider=None, out_path=OUT, manifest_path=MANIFEST):
     live = provider is None
     if live:
         import rag_select as rs
-        for path in (PROTOCOL, AMENDMENT_JSON, PROFILE_MANIFEST):
+        for path in (PROTOCOL, *[js for _, js in AMENDMENTS], PROFILE_MANIFEST):
             ok, info = rs.rule_is_committed_and_pushed(path)
             if not ok:
                 raise RuntimeError(f"{os.path.basename(path)}: {info}")
@@ -551,7 +570,7 @@ def run_compare():
     import rag_select as rs
     if os.path.exists(RESULT):
         raise RuntimeError("the comparison already exists")
-    for path in (PROTOCOL, AMENDMENT_JSON, PROFILE_MANIFEST, MANIFEST):
+    for path in (PROTOCOL, *[js for _, js in AMENDMENTS], PROFILE_MANIFEST, MANIFEST):
         ok, info = rs.rule_is_committed_and_pushed(path)
         if not ok:
             raise RuntimeError(f"{os.path.basename(path)}: {info}")
@@ -610,11 +629,13 @@ def main(argv=None):
                 json.dump(protocol_body(), f, indent=1, ensure_ascii=False)
             body = {"protocol_sha256": e7.sha_file(PROTOCOL)}
         elif args.cmd == "freeze-amendment":
-            with open(AMENDMENT_JSON, "x", encoding="utf-8", newline="\n") as f:
-                json.dump({"amendment": os.path.basename(AMENDMENT), "amendment_sha256": e7.sha_file(AMENDMENT),
+            n = next(i for i, (_, js) in enumerate(AMENDMENTS, 1) if not os.path.exists(js))
+            md, js = AMENDMENTS[n - 1]
+            with open(js, "x", encoding="utf-8", newline="\n") as f:
+                json.dump({"amendment": os.path.basename(md), "amendment_sha256": e7.sha_file(md),
                            "amends_protocol_sha256": e7.sha_file(PROTOCOL), "code_sha256": code_sha(),
                            "frozen_at": _now()}, f, indent=1)
-            body = {"amendment_1_sha256": e7.sha_file(AMENDMENT_JSON)}
+            body = {f"amendment_{n}_sha256": e7.sha_file(js)}
         elif args.cmd == "instructions":
             print(instructions(args.week))
             return 0
