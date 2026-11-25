@@ -1,0 +1,42 @@
+{
+ "records": 452,
+ "calls": 452,
+ "first_attempt_valid": 452,
+ "retries": 0,
+ "status_counts": {
+  "decided": 452
+ },
+ "finish_reasons": {
+  "stop": 452
+ },
+ "tokens": {
+  "prompt": 1358834,
+  "completion": 59473,
+  "reasoning": 0
+ },
+ "estimated_cost_usd": 0.450794,
+ "started_at": "2026-11-25T02:37:12Z",
+ "finished_at": "2026-11-25T02:50:21Z",
+ "stopped_by_cost_cap": false,
+ "outputs_sha256": "21571fb2edbac33fecc49861eb7112ed330cae3ba85d4750bdc4c3314ffb237a",
+ "max_cost_estimate": {
+  "max_total_usd": 4.7688,
+  "first_calls": 452,
+  "running_cap_usd": 1.0,
+  "assumptions": "1 token per character, 2 attempts, full max_tokens output, peak prices"
+ },
+ "provider": {
+  "provider": "deepseek",
+  "model": "deepseek-flash",
+  "base_url": "https://api.deepseek.com",
+  "temperature": 0.0,
+  "top_p": 1.0,
+  "max_tokens": 1000,
+  "timeout_s": 60,
+  "max_retries": 2,
+  "thinking": "disabled",
+  "response_format": "json_object",
+  "docs_checked": "2026-10-01"
+ },
+ "note": "counts only; the decisions stay sealed in data/store/blind/exp008/ until compare"
+}
