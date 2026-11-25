@@ -37,7 +37,6 @@ export default function Ari3Overview() {
           </article>
         ))}
       </div>
-      <p className="caption">Entries are permanent. A correction is added as a dated note, never by editing the result.</p>
 
       <h2 className="sec">State of the project</h2>
       <div className="state">
