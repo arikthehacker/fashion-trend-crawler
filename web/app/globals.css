@@ -301,8 +301,9 @@ figure svg { width: 100%; height: auto; display: block; }
 @media (max-width: 860px) {
   /* Phones keep the desktop's newspaper layout, scaled down with the screen (the editor's call, 2026-11-25).
      Type sizes use vw so the page shrinks evenly from tablet to phone; grids keep their columns. */
-  .page { padding: 8px 12px 28px; transform: none; }
-  .name, .plate.small .name { font-size: 10.2vw; white-space: nowrap; letter-spacing: 0.02em; }
+  /* the whole phone page renders at 85%, like a scaled-down printed page; layout gains the room */
+  .page { padding: 8px 12px 28px; transform: none; zoom: 0.85; }
+  .name, .plate.small .name { font-size: 12vw; white-space: nowrap; letter-spacing: 0.02em; }
   .plate { padding: 8px 0 6px; }
   .topnav { font-size: 10px; gap: 2px 12px; padding-bottom: 6px; }
   .topnav ul { gap: 0 11px; }
@@ -342,8 +343,8 @@ figure svg { width: 100%; height: auto; display: block; }
   .caption { font-size: 10px; }
   .note { font-size: 9.5px; }
   .cols { columns: 2; column-gap: 9px; font-size: clamp(9.5px, 2.55vw, 16.5px); line-height: 1.45; }
-  /* narrow columns: flush left, ragged right; justified text opens wide gaps in Safari */
-  .cols, .sig .body, .prose, .reg p.hl, .bul, .chron p { text-align: left; text-wrap: wrap; }
+  /* justified like print; Safari's text-wrap: pretty plus justify opens wide gaps, so plain wrapping with hyphenation */
+  .cols { text-align: justify; text-wrap: wrap; hyphens: auto; -webkit-hyphens: auto; hyphenate-limit-chars: 6 3 2; word-spacing: -0.02em; }
   .cols.three { columns: 3; column-gap: 7px; font-size: clamp(8.5px, 2.25vw, 16.5px); }
   .cols.one { columns: 1; }
   .cols p { margin-bottom: 6px; }
