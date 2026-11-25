@@ -304,10 +304,10 @@ figure svg { width: 100%; height: auto; display: block; }
   .page { padding: 8px 12px 28px; transform: none; }
   .name, .plate.small .name { font-size: 10.2vw; white-space: nowrap; letter-spacing: 0.02em; }
   .plate { padding: 8px 0 6px; }
-  .topnav { font-size: 11px; gap: 2px 12px; padding-bottom: 6px; }
+  .topnav { font-size: 10px; gap: 2px 12px; padding-bottom: 6px; }
   .topnav ul { gap: 0 11px; }
   .topnav a { padding: 4px 0; }
-  .dateline { font-size: clamp(11.5px, 3.4vw, 22px); padding: 5px 0 4px; }
+  .dateline { font-size: clamp(10px, 2.9vw, 22px); padding: 5px 0 4px; }
   .dateline small { font-size: 10px; }
   .folio { font-size: 10.5px; padding: 5px 0; margin-bottom: 14px; }
   .folio .fl, .folio b { font-size: 9.5px; }
@@ -323,7 +323,7 @@ figure svg { width: 100%; height: auto; display: block; }
   .chron li { grid-template-columns: 5.6em minmax(0, 1fr); gap: 4px 12px; padding: 8px 0; }
   .pair { gap: 0 14px; }
   .cards, .figs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  .foot { grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; font-size: 10.5px; }
+  .foot { grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; font-size: 9.5px; }
   .foot ul { gap: 0 10px; }
   .state, .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .state > div { padding: 6px 6px 0 0; }
@@ -332,56 +332,56 @@ figure svg { width: 100%; height: auto; display: block; }
   .steps div + div { padding-left: 6px; }
 
   /* type */
-  .kicker, h2.sec, .who h2, .who h3, .side h2, .side h3, .box h2, .box h3, .pull small, .inside b, .pair h3, .state h3, .state h4, .ledger th, .weeks th, figure .ft, .prov dt, .entry .facts dt, .rulings dt, .staff dt { font-size: 9.5px; }
+  .kicker, h2.sec, .who h2, .who h3, .side h2, .side h3, .box h2, .box h3, .pull small, .inside b, .pair h3, .state h3, .state h4, .ledger th, .weeks th, figure .ft, .prov dt, .entry .facts dt, .rulings dt, .staff dt { font-size: 8.5px; }
   h2.sec { margin: 18px 0 8px; padding-bottom: 4px; }
-  .hed, .hed.rp { font-size: clamp(24px, 7.4vw, 72px); margin-bottom: 8px; }
-  .hed.md { font-size: clamp(22px, 6.4vw, 58px); }
-  .deck { font-size: clamp(13px, 3.6vw, 21px); margin-bottom: 8px; }
-  .byline { font-size: 9.5px; padding: 5px 0; margin-bottom: 10px; }
-  .lede-intro { font-size: clamp(13.5px, 3.8vw, 20px); }
-  .caption { font-size: 11.5px; }
-  .note { font-size: 10.5px; }
-  .cols { columns: 2; column-gap: 10px; font-size: clamp(11px, 3vw, 16.5px); line-height: 1.45; }
-  .cols.three { columns: 3; column-gap: 8px; font-size: clamp(10px, 2.65vw, 16.5px); }
+  .hed, .hed.rp { font-size: clamp(19px, 5.8vw, 72px); margin-bottom: 8px; }
+  .hed.md { font-size: clamp(18px, 5vw, 58px); }
+  .deck { font-size: clamp(11px, 3vw, 21px); margin-bottom: 8px; }
+  .byline { font-size: 8.5px; padding: 5px 0; margin-bottom: 10px; }
+  .lede-intro { font-size: clamp(11.5px, 3.2vw, 20px); }
+  .caption { font-size: 10px; }
+  .note { font-size: 9.5px; }
+  .cols { columns: 2; column-gap: 9px; font-size: clamp(9.5px, 2.55vw, 16.5px); line-height: 1.45; }
+  .cols.three { columns: 3; column-gap: 7px; font-size: clamp(8.5px, 2.25vw, 16.5px); }
   .cols.one { columns: 1; }
   .cols p { margin-bottom: 6px; }
-  .inside { font-size: 11px; gap: 2px 10px; margin-top: 10px; }
+  .inside { font-size: 9.5px; gap: 2px 10px; margin-top: 10px; }
 
   /* front page index */
   .side { padding-left: 10px; }
   .side li a { padding: 3px 0 2px; gap: 4px; }
-  .side .w { font-size: clamp(12.5px, 3.5vw, 21px); }
-  .side .c { font-size: 10px; }
+  .side .w { font-size: clamp(10.5px, 2.9vw, 21px); }
+  .side .c { font-size: 8.5px; }
 
   /* report */
   .who dl { grid-template-columns: minmax(0, 1fr); }
-  .who dt { font-size: 9.5px; padding: 5px 0 0; border-bottom: 0; }
-  .who dd { font-size: 11px; padding: 0 0 5px; }
+  .who dt { font-size: 8.5px; padding: 5px 0 0; border-bottom: 0; }
+  .who dd { font-size: 9.5px; padding: 0 0 5px; }
   .box { font-size: 11px; padding: 8px 10px; }
-  .bars { grid-template-columns: 6.2rem minmax(0, 1fr) 2.6rem; gap: 3px 8px; font-size: 11px; }
+  .bars { grid-template-columns: 5.4rem minmax(0, 1fr) 2.4rem; gap: 2px 8px; font-size: 9.5px; }
   .bars .track { height: 9px; }
-  .contents { font-size: 13px; gap: 2px 10px; }
-  .sig h3 { font-size: clamp(22px, 6.5vw, 46px); }
-  .sig .facts { font-size: 10.5px; margin-bottom: 6px; }
-  .sig .body { font-size: clamp(11px, 3vw, 16.5px); line-height: 1.45; }
+  .contents { font-size: 11px; gap: 2px 10px; }
+  .sig h3 { font-size: clamp(18px, 5.2vw, 46px); }
+  .sig .facts { font-size: 9px; margin-bottom: 6px; }
+  .sig .body { font-size: clamp(9.5px, 2.55vw, 16.5px); line-height: 1.45; }
   .sig .body p { margin-bottom: 6px; }
-  .pull { font-size: clamp(12px, 3.3vw, 20px); padding: 6px 0; margin: 2px 0 8px; }
+  .pull { font-size: clamp(10.5px, 2.8vw, 20px); padding: 6px 0; margin: 2px 0 8px; }
   .srcs { font-size: 10.5px; }
   .srcs li { padding: 4px 0; }
-  .srcs a { font-size: clamp(10.5px, 2.9vw, 15px); }
-  .srcs span { font-size: 9.5px; }
-  details.more summary { font-size: 11px; padding: 6px 0; min-height: 36px; }
-  .notes, .limits { columns: 2; column-gap: 12px; font-size: 10.5px; }
-  .prov { grid-template-columns: 7em minmax(0, 1fr); font-size: 11px; }
+  .srcs a { font-size: clamp(9px, 2.45vw, 15px); }
+  .srcs span { font-size: 8.5px; }
+  details.more summary { font-size: 9.5px; padding: 6px 0; min-height: 36px; }
+  .notes, .limits { columns: 2; column-gap: 10px; font-size: 9.5px; }
+  .prov { grid-template-columns: 7em minmax(0, 1fr); font-size: 9.5px; }
 
   /* signal file, back issues, index */
   .classifieds { columns: 3; column-gap: 8px; }
   .classifieds .day h3, .classifieds .day h4 { font-size: 9.5px; }
-  .weeks { font-size: 11px; }
-  .weeks td.s, .weeks td.q { font-size: 12px; }
-  .issue .when { font-size: clamp(14px, 4.2vw, 30px); }
-  .issue .what { font-size: clamp(13px, 3.8vw, 24px); }
-  .issue .names { font-size: clamp(11px, 3.1vw, 20px); margin-top: 4px; }
+  .weeks { font-size: 9.5px; }
+  .weeks td.s, .weeks td.q { font-size: 10.5px; }
+  .issue .when { font-size: clamp(12px, 3.5vw, 30px); }
+  .issue .what { font-size: clamp(11px, 3.2vw, 24px); }
+  .issue .names { font-size: clamp(9.5px, 2.6vw, 20px); margin-top: 4px; }
   .bindex { columns: 3; column-gap: 8px; }
   .bindex .letter h2, .bindex .letter h4 { font-size: 20px; }
   .bindex p { font-size: 10.5px; }
@@ -392,14 +392,14 @@ figure svg { width: 100%; height: auto; display: block; }
   .steps p { font-size: 9.5px; }
   .method h2, .method h3 { font-size: 12.5px; }
   .staff { padding: 8px 10px; }
-  .staff dd { font-size: 12px; }
-  .prose { font-size: 14.5px; }
+  .staff dd { font-size: 10.5px; }
+  .prose { font-size: 13px; }
 
   /* ARI3 */
-  .tabs { font-size: 11.5px; gap: 0 12px; margin: -6px 0 14px; }
-  .reg h2, .reg h3 { font-size: clamp(18px, 5.2vw, 40px); }
+  .tabs { font-size: 10px; gap: 0 12px; margin: -6px 0 14px; }
+  .reg h2, .reg h3 { font-size: clamp(15px, 4.4vw, 40px); }
   .reg .id { font-size: 10px; }
-  .reg p.hl { font-size: 11.5px; }
+  .reg p.hl { font-size: 10px; }
   .reg .stamps { gap: 5px; }
   .stamp { font-size: 8.5px; padding: 1px 5px 0; border-width: 1.5px; }
   .state p { font-size: 9.5px; padding: 4px 0; }
@@ -407,8 +407,8 @@ figure svg { width: 100%; height: auto; display: block; }
   table.ledger, .ledger td, .cm { font-size: 11px; }
   .ledger td.s { font-size: 12.5px; }
   .entry .facts dl { grid-template-columns: minmax(0, 1fr); font-size: 11px; }
-  .bul, .rulings dd, .chron p, .steps-log li { font-size: 12.5px; }
-  .chron b { font-size: 15px; }
+  .bul, .rulings dd, .chron p, .steps-log li { font-size: 11px; }
+  .chron b { font-size: 13px; }
   .chron .d { font-size: 10.5px; }
   .rulings h2, .rulings h3 { font-size: 18px; }
   .princ { columns: 2; column-gap: 12px; }
